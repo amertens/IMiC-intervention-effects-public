@@ -1,0 +1,6 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Misame (1-2 mo.)","BEP/IFA","combined","Thiamine Metabolism",9,1,0.026759,0.026547,1,0.95
+"Misame (1-2 mo.)","BEP/IFA","combined","Pantothenate and CoA Biosynthesis",19,1,0.056492,0.055488,1,0.068702
+"Misame (1-2 mo.)","BEP/IFA","combined","Beta-Alanine Metabolism",26,1,0.077304,0.075402,1,0
+"Misame (1-2 mo.)","BEP/IFA","combined","Valine, Leucine and Isoleucine Degradation",51,1,0.15164,0.14424,1,0.025039
+"Misame (1-2 mo.)","BEP/IFA","combined","Tryptophan Metabolism",55,1,0.16353,0.15492,1,0

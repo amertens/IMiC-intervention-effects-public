@@ -1,0 +1,15 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/IFA","down","Warburg Effect",5,2,0.0325,0.000316,0.0309
+"Misame (14-21 days)","BEP/IFA","down","Ketone Body Metabolism",1,1,0.0065,0.0065,0.127
+"Misame (14-21 days)","BEP/IFA","down","Butyrate Metabolism",1,1,0.0065,0.0065,0.127
+"Misame (14-21 days)","BEP/IFA","down","Mitochondrial Electron Transport Chain",1,1,0.0065,0.0065,0.127
+"Misame (14-21 days)","BEP/IFA","down","Phytanic Acid Peroxisomal Oxidation",1,1,0.0065,0.0065,0.127
+"Misame (14-21 days)","BEP/IFA","down","Citric Acid Cycle",2,1,0.013,0.013,0.159
+"Misame (14-21 days)","BEP/IFA","down","Pyruvate Metabolism",2,1,0.013,0.013,0.159
+"Misame (14-21 days)","BEP/IFA","down","Gluconeogenesis",2,1,0.013,0.013,0.159
+"Misame (14-21 days)","BEP/IFA","down","Oxidation of Branched Chain Fatty Acids",4,1,0.026,0.0258,0.281
+"Misame (14-21 days)","BEP/IFA","down","Valine, Leucine and Isoleucine Degradation",5,1,0.0325,0.0322,0.287
+"Misame (14-21 days)","BEP/IFA","down","Carnitine Synthesis",5,1,0.0325,0.0322,0.287
+"Misame (14-21 days)","BEP/IFA","down","Glutamate Metabolism",8,1,0.052,0.0511,0.418
+"Misame (14-21 days)","BEP/IFA","down","Arginine and Proline Metabolism",10,1,0.065,0.0636,0.48
+"Misame (14-21 days)","BEP/IFA","down","Bile Acid Biosynthesis",15,1,0.0976,0.0943,0.66

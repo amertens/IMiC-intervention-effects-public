@@ -1,0 +1,28 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Fatty Acid Biosynthesis",4,1.19,4,0.0074,0.725,0.725
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,2.68,6,0.0221,1,1
+"Arachidonic Acid Metabolism",6,1.79,4,0.0663,1,1
+"Beta Oxidation of Very Long Chain Fatty Acids",5,1.49,3,0.158,1,1
+"Steroidogenesis",3,0.894,2,0.212,1,1
+"Steroid Biosynthesis",1,0.298,1,0.298,1,1
+"Sulfate/Sulfite Metabolism",1,0.298,1,0.298,1,1
+"Fatty Acid Elongation In Mitochondria",1,0.298,1,0.298,1,1
+"Androgen and Estrogen Metabolism",1,0.298,1,0.298,1,1
+"Retinol Metabolism",1,0.298,1,0.298,1,1
+"Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,0.298,1,0.298,1,1
+"Bile Acid Biosynthesis",5,1.49,2,0.468,1,1
+"Caffeine Metabolism",2,0.596,1,0.508,1,1
+"Glycerolipid Metabolism",2,0.596,1,0.508,1,1
+"Fatty acid Metabolism",2,0.596,1,0.508,1,1
+"Phenylacetate Metabolism",2,0.596,1,0.508,1,1
+"Threonine and 2-Oxobutanoate Degradation",2,0.596,1,0.508,1,1
+"Pyruvate Metabolism",3,0.894,1,0.656,1,1
+"Sphingolipid Metabolism",5,1.49,1,0.832,1,1
+"Gluconeogenesis",5,1.49,1,0.832,1,1
+"Phenylalanine and Tyrosine Metabolism",6,1.79,1,0.883,1,1
+"Carnitine Synthesis",6,1.79,1,0.883,1,1
+"Glycine and Serine Metabolism",11,3.28,2,0.89,1,1
+"Aspartate Metabolism",8,2.38,1,0.944,1,1
+"Warburg Effect",9,2.68,1,0.961,1,1
+"Arginine and Proline Metabolism",10,2.98,1,0.973,1,1
+"Urea Cycle",10,2.98,1,0.973,1,1

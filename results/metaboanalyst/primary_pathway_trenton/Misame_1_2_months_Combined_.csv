@@ -1,0 +1,6 @@
+"","Total","Expected","Hits","Raw p","-log10(p)","Holm adjust","FDR","Impact"
+"Nicotinate and nicotinamide metabolism",15,0.094221,4,1.0398e-06,5.9831,8.3182e-05,8.3182e-05,0.38509
+"Riboflavin metabolism",4,0.025126,2,0.00021177,3.6741,0.01673,0.0084708,1
+"Vitamin B6 metabolism",9,0.056533,2,0.0012494,2.9033,0.097456,0.033318,0.56863
+"Thiamine metabolism",7,0.04397,1,0.04323,1.3642,1,0.8646,0
+"Pantothenate and CoA biosynthesis",20,0.12563,1,0.11908,0.92417,1,1,0.0068

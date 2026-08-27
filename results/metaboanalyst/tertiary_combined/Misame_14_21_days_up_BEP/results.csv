@@ -1,0 +1,5 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP","up","Nucleotide Sugars Metabolism",1,1,0.00163,0.00163,0.159
+"Misame (14-21 days)","BEP","up","Lactose Degradation",2,1,0.00325,0.00325,0.159
+"Misame (14-21 days)","BEP","up","Galactose Metabolism",5,1,0.00813,0.00813,0.266
+"Misame (14-21 days)","BEP","up","Sphingolipid Metabolism",7,1,0.0114,0.0114,0.279

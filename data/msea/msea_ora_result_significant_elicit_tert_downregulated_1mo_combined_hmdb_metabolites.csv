@@ -1,0 +1,18 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Oxidation of Branched Chain Fatty Acids",4,0.0349,3,1.98e-06,0.000194,0.000194
+"Beta Oxidation of Very Long Chain Fatty Acids",3,0.0262,2,0.000207,0.0201,0.0102
+"Carnitine Synthesis",5,0.0437,2,0.000685,0.0657,0.0224
+"Ketone Body Metabolism",1,0.00874,1,0.00874,0.83,0.122
+"Butyrate Metabolism",1,0.00874,1,0.00874,0.83,0.122
+"Mitochondrial Electron Transport Chain",1,0.00874,1,0.00874,0.83,0.122
+"Phytanic Acid Peroxisomal Oxidation",1,0.00874,1,0.00874,0.83,0.122
+"Fatty acid Metabolism",2,0.0175,1,0.0174,1,0.171
+"Citric Acid Cycle",2,0.0175,1,0.0174,1,0.171
+"Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,0.0175,1,0.0174,1,0.171
+"Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,0.0262,1,0.026,1,0.232
+"Valine, Leucine and Isoleucine Degradation",5,0.0437,1,0.043,1,0.324
+"Warburg Effect",5,0.0437,1,0.043,1,0.324
+"Glutamate Metabolism",8,0.0699,1,0.068,1,0.476
+"Arginine and Proline Metabolism",10,0.0874,1,0.0843,1,0.551
+"Methionine Metabolism",11,0.0961,1,0.0924,1,0.566
+"Glycine and Serine Metabolism",13,0.114,1,0.108,1,0.624

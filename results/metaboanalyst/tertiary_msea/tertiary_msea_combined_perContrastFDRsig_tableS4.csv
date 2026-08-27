@@ -1,0 +1,12 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+MISAME-III,14-21 days,BEP,down,Glycine and Serine Metabolism,13,0.359,5,9.67e-6,8.64e-4,-13.92757660167131
+ELICIT,1 mo.,Nico,down,Oxidation of Branched Chain Fatty Acids,4,0.065,3,1.23e-5,0.00121,-46.15384615384615
+MISAME-III,14-21 days,BEP,down,Homocysteine Degradation,3,0.0829,3,1.76e-5,8.64e-4,-36.18817852834741
+MISAME-III,3-4 mo.,BEP,down,Glycine and Serine Metabolism,13,0.275,4,7.78e-5,0.00763,-14.545454545454545
+Mumta-LW,2 mo.,BEP,down,Methionine Metabolism,11,0.143,3,2.28e-4,0.0191,-20.97902097902098
+MISAME-III,1-2 mo.,BEP,down,Spermidine and Spermine Biosynthesis,5,0.179,3,3.81e-4,0.0373,-16.75977653631285
+Mumta-LW,2 mo.,BEP,down,Glycine and Serine Metabolism,13,0.169,3,3.9e-4,0.0191,-17.75147928994083
+Mumta-LW,2 mo.,BEP,down,Bile Acid Biosynthesis,15,0.195,3,6.13e-4,0.02,-15.384615384615383
+ELICIT,1 mo.,Nico,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0488,2,7.09e-4,0.0347,-40.983606557377044
+MISAME-III,3-4 mo.,BEP,down,Methionine Metabolism,11,0.233,3,0.00111,0.04,-12.875536480686694
+MISAME-III,3-4 mo.,BEP,down,Homocysteine Degradation,3,0.0634,2,0.00122,0.04,-31.545741324921135

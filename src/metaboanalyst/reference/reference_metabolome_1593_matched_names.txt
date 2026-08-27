@@ -1,0 +1,615 @@
+L-Carnitine
+L-Acetylcarnitine
+Propionylcarnitine
+Malonylcarnitine
+Hydroxypropionylcarnitine
+Propenoylcarnitine
+Butyrylcarnitine
+Isobutyryl-L-carnitine
+Butenylcarnitine
+Valerylcarnitine
+2-Methylbutyroylcarnitine
+Isovalerylcarnitine
+Pivaloylcarnitine
+Glutarylcarnitine
+3-Methylglutarylcarnitine
+Hydroxyvalerylcarnitine
+Methylmalonylcarnitine
+Tiglylcarnitine
+Glutaconylcarnitine
+Hexanoylcarnitine
+2-Hexenoylcarnitine
+Pimelylcarnitine
+Octanoylcarnitine
+2,6 Dimethylheptanoyl carnitine
+Nonanoylcarnitine
+Decanoylcarnitine
+9-Decenoylcarnitine
+2-trans,4-cis-Decadienoylcarnitine
+Dodecanoylcarnitine
+Dodecanedioylcarnitine
+trans-2-Dodecenoylcarnitine
+Tetradecanoylcarnitine
+cis-5-Tetradecenoylcarnitine
+3-Hydroxy-cis-5-tetradecenoylcarnitine
+3, 5-Tetradecadiencarnitine
+Palmitoylcarnitine
+3-Hydroxyhexadecanoylcarnitine
+trans-Hexadec-2-enoyl carnitine
+9-Hexadecenoylcarnitine
+3-Hydroxy-9-hexadecenoylcarnitine
+9,12-Hexadecadienoylcarnitine
+3-Hydroxyhexadecadienoylcarnitine
+Stearoylcarnitine
+Vaccenyl carnitine
+Oleoylcarnitine
+Elaidic carnitine
+3-Hydroxy-11Z-octadecenoylcarnitine
+Linoleyl carnitine
+Linoelaidylcarnitine
+Trigonelline
+Trimethylamine N-oxide
+1-Methylhistidine
+Methylhistidine
+5-Aminopentanoic acid
+L-alpha-Aminobutyric acid
+D-alpha-Aminobutyric acid
+N2-Acetylornithine
+Asymmetric dimethylarginine
+Aminoadipic acid
+Anserine
+3-Aminobutanoic acid
+Betaine
+cis-4-Hydroxyproline
+Carnosine
+Citrulline
+Creatinine
+L-Cystine
+DOPA
+DL-Dopa
+Homo-L-arginine
+Homocysteine
+Kynurenine
+Methionine sulfoxide
+3-Nitrotyrosine
+Ornithine
+D-Ornithine
+Phenylacetylglycine
+Proline betaine
+Sarcosine
+Symmetric dimethylarginine
+4-Hydroxyproline
+Taurine
+Lenticin
+L-Alanine
+D-Alanine
+L-Arginine
+D-Arginine
+L-Asparagine
+D-Asparagine
+L-Aspartic acid
+D-Aspartic acid
+L-Cysteine
+D-Cysteine
+Glutamine
+D-Glutamine
+Glutamic acid
+D-Glutamic acid
+Glycine
+Histidine
+Isoleucine
+L-Alloisoleucine
+Leucine
+D-Leucine
+Lysine
+D-Lysine
+Methionine
+Phenylalanine
+Proline
+D-Proline
+Serine
+D-Serine
+L-Allothreonine
+L-Threonine
+L-Tryptophan
+D-Tryptophan
+L-Tyrosine
+L-Valine
+Cholic acid
+Chenodeoxycholic acid
+Deoxycholic acid
+Glycocholic acid
+Chenodeoxycholic acid glycine conjugate
+Chenodeoxyglycocholic acid
+Deoxycholic acid glycine conjugate
+Lithocholic acid glycine conjugate
+Sulfolithocholylglycine
+Glycoursodeoxycholic acid
+Taurocholic acid
+Taurochenodesoxycholic acid
+Taurodeoxycholic acid
+Lithocholyltaurine
+Tauro-b-muricholic acid
+beta-Alanine
+Dopamine
+gamma-Aminobutyric acid
+Histamine
+Phenylethylamine
+Putrescine
+Serotonin
+Spermidine
+Spermine
+myo-Inositol
+D-Mannose
+D-Glucose
+scyllo-Inositol
+D-Fructose
+D-Galactose
+cis-Aconitic acid
+trans-Aconitic acid
+Dodecanedioic acid
+Tetradecanedioic acid
+Hippuric acid
+D-Lactic acid
+Lactic acid
+3-Hydroxyglutaric acid
+Succinic acid
+Cer(d18:1/14:0)
+Cer(d18:1/16:0)
+Cer(d18:1/18:0)
+Cer(d18:1/18:1(9Z))
+Cer(d18:1/20:0)
+Cer(d18:1/22:0)
+Cer(d18:1/23:0)
+Cer(d18:1/24:0)
+Cer(d18:1/24:1)
+Cer(d18:1/25:0)
+Cer(d18:1/26:0)
+CE(14:0)
+cholest-5-en-3b-yl (9Z-tetradecenoate)
+CE(16:0)
+CE(16:1)
+cholest-5-en-3beta-yl octadecanoate
+CE(18:1)
+CE(18:1(11Z))
+CE(18:3(9Z,12Z,15Z))
+CE(18:3)
+cholest-5-en-3beta-yl eicosanoate
+CE(20:3)
+CE(20:4)
+CE(20:4(8Z,11Z,14Z,17Z))
+CE(20:5)
+CE(22:0)
+cholest-5-en-3b-yl (13Z-docosenoate)
+CE(22:2)
+CE(22:5)
+CE(22:5(7Z,10Z,13Z,16Z,19Z))
+CE(22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+p-Cresol sulfate
+DG(14:0/14:0/0:0)
+DG(14:0/18:1(9Z)/0:0)
+DG(14:0/18:2)
+DG(14:0/20:0)
+DG(14:1(9Z)/18:1(9Z)/0:0)
+DG(14:1(9Z)/20:2(11Z,14Z)/0:0)
+DG(16:0/16:0)
+DG(16:0/16:1)
+DG(18:1(9Z)/16:0/0:0)
+DG(16:0/18:1(9Z)/0:0)
+DG(16:0/18:1)
+DG(16:0/18:2)
+DG(16:0/20:0)
+DG(16:0/20:3(8Z,11Z,14Z)/0:0)
+DG(16:0/20:4(5Z,8Z,11Z,14Z)/0:0)
+DG(16:1(9Z)/18:0/0:0)
+DG(16:1(9Z)/18:1(9Z)/0:0)
+DG(16:1/18:2)
+DG(16:1/20:0)
+DG(18:0/20:0)
+DG(18:0/20:4(5Z,8Z,11Z,14Z)/0:0)
+DG(18:1(9Z)/18:1(9Z)/0:0)
+DG(18:1/18:1)
+DG(18:1(9Z)/18:2(9Z,12Z)/0:0)
+DG(18:1(9Z)/18:3(9Z,12Z,15Z)/0:0)
+DG(18:3(6Z,9Z,12Z)/18:1(9Z)/0:0)
+DG(18:4(6Z,9Z,12Z,15Z)/18:1(9Z)/0:0)
+DG(18:1(9Z)/20:0/0:0)
+DG(18:1(9Z)/20:1(11Z)/0:0)
+DG(18:1(9Z)/20:2(11Z,14Z)/0:0)
+DG(18:1(9Z)/20:3(8Z,11Z,14Z)/0:0)
+DG(18:1(9Z)/20:4(5Z,8Z,11Z,14Z)/0:0)
+DG(18:1(9Z)/22:5(7Z,10Z,13Z,16Z,19Z)/0:0)
+DG(18:1(9Z)/22:6(4Z,7Z,10Z,13Z,16Z,19Z)/0:0)
+DG(18:2/18:2)
+DG(18:2(9Z,12Z)/18:3(9Z,12Z,15Z)/0:0)
+DG(18:3(6Z,9Z,12Z)/18:2(9Z,12Z)/0:0)
+DG(18:4(6Z,9Z,12Z,15Z)/18:2(9Z,12Z)/0:0)
+DG(18:2(9Z,12Z)/20:0/0:0)
+DG(18:2(9Z,12Z)/20:4(5Z,8Z,11Z,14Z)/0:0)
+DG(18:3(6Z,9Z,12Z)/18:3(9Z,12Z,15Z)/0:0)
+DG(18:3(6Z,9Z,12Z)/18:3(6Z,9Z,12Z)/0:0)
+DG(18:3(9Z,12Z,15Z)/18:3(9Z,12Z,15Z)/0:0)
+DG(18:3(9Z,12Z,15Z)/18:3(6Z,9Z,12Z)/0:0)
+DG(18:3(9Z,12Z,15Z)/20:2(11Z,14Z)/0:0)
+DG(22:1(13Z)/22:2(13Z,16Z)/0:0)
+Galabiosylceramide (d18:1/16:0)
+LacCer(d18:1/16:0)
+Galabiosylceramide (d18:1/18:0)
+LacCer(d18:1/18:0)
+Galabiosylceramide (d18:1/20:0)
+LacCer(d18:1/20:0)
+Galabiosylceramide (d18:1/22:0)
+LacCer(d18:1/22:0)
+Galabiosylceramide (d18:1/24:0)
+LacCer(d18:1/24:0)
+Galabiosylceramide (d18:1/24:1(15Z))
+LacCer(d18:1/24:1)
+Galabiosylceramide (d18:1/26:0)
+LacCer(d18:1/26:0)
+Galabiosylceramide (d18:1/26:1(17Z))
+LacCer(d18:1/26:1(17Z))
+Cer(d18:0/18:0)
+Cer(d18:0/20:0)
+Cer(d18:0/22:0)
+Cer(d18:0/24:0)
+Cer(d18:0/24:1)
+Cer(d18:0/26:1(17Z))
+Arachidonic acid
+Docosahexaenoic acid
+Eicosapentaenoic acid
+Dodecanoic acid
+Myristic acid
+Palmitic acid
+Stearic acid
+7Z-octadecenoic acid
+(Z)-13-Octadecenoic acid
+Octadec-9-enoic Acid
+Petroselinic acid
+Vaccenic acid
+Elaidic acid
+Octadecadienoate
+(9E,11E)-Octadecadienoic acid
+6Z,9Z-octadecadienoic acid
+(10E,12Z)-Octadecadienoic acid
+Mangiferic acid
+Linoelaidic acid
+Bovinic acid
+Linoleic acid
+11Z-Eicosenoic acid
+Eicosadienoic acid
+Dihomo-gamma-linolenic acid
+Galactosylceramide (d18:1/14:0)
+GlcCer(d18:1/16:0)
+Galactosylceramide (d18:1/16:0)
+Galactosylceramide (d18:1/18:0)
+GlcCer(d18:1/18:0)
+Galactosylceramide (d18:1/18:1(9Z))
+GlcCer(d18:1/18:1)
+Galactosylceramide (d18:1/20:0)
+GlcCer(d18:1/20:0)
+Galactosylceramide (d18:1/22:0)
+GlcCer(d18:1/22:0)
+GlcCer(d18:1/24:0)
+Galactosylceramide (d18:1/24:1(15Z))
+GlcCer(d18:1/24:1)
+GlcCer(d18:1/26:0)
+Galactosylceramide (d18:1/26:1(17Z))
+GlcCer(d18:1/26:1)
+(S)-Abscisic acid
+Cortisol
+Cortisone
+Dehydroepiandrosterone sulfate
+Indoleacetic acid
+Indole-3-propionic acid
+Indoxyl sulfate
+Indole
+LysoPC(14:0/0:0)
+LysoPC(16:0/0:0)
+LysoPC(16:1/0:0)
+LysoPC(17:0/0:0)
+LysoPC(18:0/0:0)
+LysoPC(0:0/18:0)
+LysoPC(18:1/0:0)
+LysoPC(18:1(11Z)/0:0)
+LysoPC(0:0/18:1(9Z))
+LysoPC(18:2/0:0)
+LysoPC(20:3(8Z,11Z,14Z)/0:0)
+LysoPC(20:3/0:0)
+LysoPC(20:4/0:0)
+LysoPC(20:4(8Z,11Z,14Z,17Z)/0:0)
+LysoPC(24:0/0:0)
+LysoPC(26:0/0:0)
+LysoPC(26:1/0:0)
+LysoPC(28:0/0:0)
+LysoPC(28:1/0:0)
+Hypoxanthine
+Xanthine
+PC(28:1)
+PC(14:1(9Z)/14:0)
+PC(15:0/15:0)
+PC(30:0)
+PC(16:0/14:0)
+PC(16:1(9Z)/14:1(9Z))
+PC(32:0)
+PC(14:0/18:0)
+PC(18:0/14:0)
+PC(32:1)
+PC(14:0/18:1(9Z))
+PC(18:1(9Z)/14:0)
+PC(16:0/16:1(9Z))
+PC(16:1(9Z)/16:1(9Z))
+PC(32:2)
+PC(14:0/18:3(9Z,12Z,15Z))
+PC(16:0/18:1(11Z))
+PC(18:1(9Z)/16:0)
+PC(18:0/16:1(9Z))
+PC(16:0/18:1(9Z))
+PC(16:1(9Z)/18:0)
+PC(16:0/18:2(9Z,12Z))
+PC(18:1(9Z)/16:1(9Z))
+PC(18:2(9Z,12Z)/16:0)
+PC(16:1(9Z)/18:1(9Z))
+PC(16:1(9Z)/18:1(11Z))
+PC(16:1(9Z)/18:2(9Z,12Z))
+PC(16:0/18:3(6Z,9Z,12Z))
+PC(16:0/18:3(9Z,12Z,15Z))
+PC(34:4)
+PC(16:0/18:4(6Z,9Z,12Z,15Z))
+PC(20:0/16:0)
+PC(18:0/18:0)
+PC(22:0/14:0)
+PC(36:0)
+PC(18:0/18:1(9Z))
+PC(18:1(11Z)/18:0)
+PC(16:0/20:1(11Z))
+PC(18:1(9Z)/18:0)
+PC(18:0/18:2(9Z,12Z))
+PC(18:1(11Z)/18:1(11Z))
+PC(18:2(9Z,12Z)/18:0)
+PC(16:0/20:2(11Z,14Z))
+PC(18:1(9Z)/18:2(9Z,12Z))
+PC(16:0/20:3(5Z,8Z,11Z))
+PC(16:0/20:3(8Z,11Z,14Z))
+PC(18:0/18:3(6Z,9Z,12Z))
+PC(16:0/20:4(5Z,8Z,11Z,14Z))
+PC(18:1(9Z)/18:3(9Z,12Z,15Z))
+PC(18:2(9Z,12Z)/18:2(9Z,12Z))
+PC(18:4(6Z,9Z,12Z,15Z)/18:0)
+PC(20:4(5Z,8Z,11Z,14Z)/16:0)
+PC(18:3(6Z,9Z,12Z)/18:1(9Z))
+PC(18:0/18:4(6Z,9Z,12Z,15Z))
+PC(18:3(9Z,12Z,15Z)/18:1(9Z))
+PC(18:1(9Z)/18:3(6Z,9Z,12Z))
+PC(16:0/20:5(5Z,8Z,11Z,14Z,17Z))
+PC(16:1(9Z)/20:4(5Z,8Z,11Z,14Z))
+PC(18:3(9Z,12Z,15Z)/18:3(9Z,12Z,15Z))
+PC(14:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PC(38:0)
+PC(22:0/16:0)
+PC(18:0/20:0)
+PC(24:0/14:0)
+PC(20:0/18:0)
+PC(16:0/22:0)
+PC(38:1)
+PC(20:0/18:1(9Z))
+PC(16:0/22:1(13Z))
+PC(20:0/18:1(11Z))
+PC(18:1(9Z)/20:0)
+PC(18:0/20:1(11Z))
+PC(38:3)
+PC(18:0/20:3(5Z,8Z,11Z))
+PC(18:0/20:3(8Z,11Z,14Z))
+PC(18:0/20:4(5Z,8Z,11Z,14Z))
+PC(18:1(9Z)/20:3(5Z,8Z,11Z))
+PC(18:1(9Z)/20:3(8Z,11Z,14Z))
+PC(38:4)
+PC(16:0/22:5(7Z,10Z,13Z,16Z,19Z))
+PC(38:5)
+PC(18:0/20:5(5Z,8Z,11Z,14Z,17Z))
+PC(18:1(9Z)/20:4(5Z,8Z,11Z,14Z))
+PC(22:6(4Z,7Z,10Z,13Z,16Z,19Z)/16:0)
+PC(18:1(9Z)/20:5(5Z,8Z,11Z,14Z,17Z))
+PC(20:4(5Z,8Z,11Z,14Z)/18:2(9Z,12Z))
+PC(38:6)
+PC(18:2(9Z,12Z)/20:4(5Z,8Z,11Z,14Z))
+PC(18:1(11Z)/20:5(5Z,8Z,11Z,14Z,17Z))
+PC(20:5(5Z,8Z,11Z,14Z,17Z)/18:1(9Z))
+PC(18:1(11Z)/22:0)
+PC(18:0/22:1(13Z))
+PC(18:1(9Z)/22:0)
+PC(40:1)
+PC(20:0/20:1(11Z))
+PC(20:1(11Z)/20:1(11Z))
+PC(20:0/20:2(11Z,14Z))
+PC(20:0/20:3(8Z,11Z,14Z))
+PC(20:0/20:3(5Z,8Z,11Z))
+PC(40:3)
+PC(18:1(9Z)/22:2(13Z,16Z))
+PC(20:0/20:4(5Z,8Z,11Z,14Z))
+PC(22:4(7Z,10Z,13Z,16Z)/18:0)
+PC(40:4)
+PC(18:0/22:5(7Z,10Z,13Z,16Z,19Z))
+PC(40:5)
+PC(18:1(9Z)/22:4(7Z,10Z,13Z,16Z))
+PC(40:6)
+PC(18:1(11Z)/22:5(7Z,10Z,13Z,16Z,19Z))
+PC(22:0/20:0)
+PC(24:0/18:0)
+PC(20:0/22:0)
+PC(42:0)
+PC(24:0/18:1(9Z))
+PC(18:1(9Z)/24:0)
+PC(20:0/22:1(13Z))
+PC(22:0/20:1(11Z))
+PC(42:1)
+PC(18:2(9Z,12Z)/24:0)
+PC(24:1(15Z)/18:1(9Z))
+PC(18:1(9Z)/24:1(15Z))
+PC(24:0/18:2(9Z,12Z))
+PC(42:2)
+PC(20:1(11Z)/22:1(13Z))
+PC(24:1(15Z)/18:1(11Z))
+PC(22:2(13Z,16Z)/20:0)
+PC(20:0/22:2(13Z,16Z))
+PC(20:2(11Z,14Z)/22:0)
+PC(22:0/20:2(11Z,14Z))
+PC(P-18:1(9Z)/24:1(15Z))
+PC(22:1(13Z)/20:1(11Z))
+PC(42:4)
+PC(20:0/22:5(7Z,10Z,13Z,16Z,19Z))
+PC(42:6)
+PC(O-30:0)
+PC(O-30:1)
+PC(O-16:0/14:1(9Z))
+PC(O-30:2)
+PC(O-32:1)
+PC(14:0/P-18:0)
+PC(16:0/P-16:0)
+PC(O-32:2)
+PC(O-34:0)
+PC(O-18:1(9Z)/16:0)
+PC(O-34:2)
+PC(O-34:3)
+PC(O-36:0)
+PC(O-18:0/18:0)
+PC(O-18:1(9Z)/18:0)
+PC(O-36:1)
+PC(O-36:2)
+PC(O-18:1(9Z)/18:1(11Z))
+PC(P-18:0/18:1(9Z))
+PC(O-18:1(9Z)/18:2(9Z,12Z))
+PC(O-36:3)
+PC(O-18:2(9Z,12Z)/18:2(9Z,12Z))
+PC(O-36:4)
+PC(O-36:5)
+PC(P-16:0/20:4(5Z,8Z,11Z,14Z))
+PC(O-38:0)
+PC(O-18:0/20:0)
+PC(O-38:1)
+PC(O-18:1(9Z)/20:0)
+PC(O-18:2(9Z,12Z)/20:0)
+PC(O-38:2)
+PC(O-38:4)
+PC(P-18:0/20:4(5Z,8Z,11Z,14Z))
+PC(O-38:5)
+PC(O-38:6)
+PC(O-40:1)
+PC(O-40:2)
+PC(O-40:3)
+PC(O-22:0/18:3(9Z,12Z,15Z))
+PC(O-40:4)
+PC(O-40:5)
+PC(O-40:6)
+PC(O-42:0)
+PC(O-42:1)
+PC(O-22:0/20:1(11Z))
+PC(O-42:2)
+PC(O-42:3)
+PC(O-24:0/18:3(9Z,12Z,15Z))
+PC(O-42:4)
+PC(O-22:2(13Z,16Z)/20:2(11Z,14Z))
+PC(O-42:5)
+PC(O-44:3)
+PC(O-22:1(13Z)/22:2(13Z,16Z))
+PC(O-22:2(13Z,16Z)/22:2(13Z,16Z))
+PC(O-44:4)
+PC(O-24:0/20:4(8Z,11Z,14Z,17Z))
+PC(O-44:5)
+PC(O-44:6)
+PC(O-22:3(10Z,13Z,16Z)/22:3(10Z,13Z,16Z))
+Hydroxysphingomyeline C14:1
+Hydroxysphingomyeline C16:1
+Hydroxysphingomyeline C22:1
+Hydroxysphingomyeline C22:2
+Hydroxysphingomyeline C24:1
+SM(d18:1/16:0)
+SM C16:1
+SM(d18:1/18:0)
+SM(d18:1/18:1)
+SM(d18:1/18:1(9Z))
+SM(d18:1/24:0)
+SM(d18:1/24:1)
+SM(d18:1/26:0)
+SM(d18:1/26:1)
+1-tetradecanoyl-2,3-dioleoyl-sn-glycerol
+TG(16:0_32:0)
+TG(16:0_32:1)
+TG(16:0_32:2)
+TG(16:0/16:1(9Z)/18:0)
+TG(16:0_34:1)
+TG(16:0_34:2)
+TG(16:0/16:1(9Z)/18:1(9Z))
+TG(16:0_34:3)
+TG(16:0/16:0/18:3(9Z,12Z,15Z))
+TG(15:0/16:0/20:2(11Z,14Z))
+TG(15:0/16:0/20:3(8Z,11Z,14Z))
+TG(16:0/18:1(9Z)/18:1(9Z))
+TG(16:0_36:2)
+TG(16:0/16:1(9Z)/20:1(11Z))
+TG(16:0_36:3)
+TG(16:0/18:2(9Z,12Z)/18:2(9Z,12Z))
+TG(16:0_36:4)
+TG(16:0_36:5)
+TG(16:0/18:1(9Z)/20:0)
+TG(16:0_38:1)
+TG(16:0_38:2)
+TG(16:0/18:2(9Z,12Z)/20:0)
+TG(16:0_38:3)
+TG(16:0_38:4)
+TG(16:0_38:5)
+TG(16:0/16:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+TG(16:0_38:6)
+TG(16:0_40:8)
+TG(16:1(9Z)/16:1(9Z)/16:1(9Z))
+TG(16:1(9Z)/16:1(9Z)/18:1(9Z))
+TG(16:1(9Z)/16:1(9Z)/18:2(9Z,12Z))
+TG(16:1(9Z)/18:0/18:1(9Z))
+TG(16:1(9Z)/18:1(9Z)/18:1(9Z))
+TG(16:1(9Z)/18:0/18:2(9Z,12Z))
+TG(16:1(9Z)/16:1(9Z)/20:1(11Z))
+TG(16:1(9Z)/18:1(9Z)/18:2(9Z,12Z))
+TG(16:1(9Z)/18:2(9Z,12Z)/18:2(9Z,12Z))
+TG(16:1(9Z)/16:1(9Z)/20:4(5Z,8Z,11Z,14Z))
+TG(16:1(9Z)/18:2(9Z,12Z)/20:1(11Z))
+TG(16:1(9Z)/18:0/20:4(5Z,8Z,11Z,14Z))
+TG(16:1(9Z)/18:1(9Z)/20:4(5Z,8Z,11Z,14Z))
+TG(18:0_36:1)
+TG(18:0/18:1(9Z)/18:1(9Z))
+TG(18:0_36:2)
+TG(16:1(9Z)/18:0/20:1(11Z))
+TG(18:0_36:3)
+TG(18:0_36:4)
+TG(18:0_38:6)
+TG(16:0/16:0/18:1(11Z))
+TG(15:0/18:1(9Z)/18:1(9Z))
+TG(15:0/18:1(9Z)/18:2(9Z,12Z))
+TG(15:0/18:1(9Z)/18:3(9Z,12Z,15Z))
+TG(20:0/18:1(9Z)/16:1(9Z))
+TG(16:1(9Z)/18:1(9Z)/20:1(11Z))
+TG(18:1(9Z)/18:1(9Z)/18:1(9Z))
+TG(18:1(9Z)/18:1(9Z)/18:2(9Z,12Z))
+TG(18:1(9Z)/18:1(11Z)/18:2(9Z,12Z))
+TG(18:1(9Z)/18:1(9Z)/18:3(9Z,12Z,15Z))
+TG(18:1(9Z)/18:2(9Z,12Z)/18:2(9Z,12Z))
+TG(18:1(9Z)/18:1(9Z)/20:4(5Z,8Z,11Z,14Z))
+TG(18:1(9Z)/18:2(9Z,12Z)/20:4(5Z,8Z,11Z,14Z))
+TG(18:1(9Z)/18:1(9Z)/20:5(5Z,8Z,11Z,14Z,17Z))
+TG(15:0/18:0/18:2(9Z,12Z))
+TG(15:0/18:2(9Z,12Z)/18:2(9Z,12Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/18:2(9Z,12Z))
+TG(16:1(9Z)/18:2(9Z,12Z)/20:4(5Z,8Z,11Z,14Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/18:3(9Z,12Z,15Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/20:2(11Z,14Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/20:3(8Z,11Z,14Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/20:4(5Z,8Z,11Z,14Z))
+TG(18:1(9Z)/18:1(9Z)/18:3(6Z,9Z,12Z))
+TG(18:2(9Z,12Z)/18:2(9Z,12Z)/18:3(6Z,9Z,12Z))
+TG(16:1(9Z)/20:1(11Z)/20:4(5Z,8Z,11Z,14Z))
+TG(16:1(9Z)/20:4(5Z,8Z,11Z,14Z)/20:4(5Z,8Z,11Z,14Z))
+Trihexosylceramide (d18:1/20:0)
+Trihexosylceramide(d18:1/22:0)
+Trihexosylceramide(d18:1/16:0)
+Trihexosylceramide(d18:1/18:0)
+Trihexosylceramide(d18:1/24:1)
+Trihexosylceramide (d18:1/26:1(17Z))
+Choline

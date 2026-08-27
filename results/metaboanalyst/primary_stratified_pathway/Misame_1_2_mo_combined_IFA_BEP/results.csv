@@ -1,0 +1,8 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Misame (1-2 mo.)","IFA/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.31715,0.00015366,0.015212,0.20487
+"Misame (1-2 mo.)","IFA/BEP","combined","Thiamine Metabolism",9,2,0.089197,0.0030693,0.15193,0.95
+"Misame (1-2 mo.)","IFA/BEP","combined","Vitamin B6 Metabolism",15,2,0.14866,0.0086713,0.28615,0.095097
+"Misame (1-2 mo.)","IFA/BEP","combined","Riboflavin Metabolism",14,1,0.13875,0.13095,1,0.044118
+"Misame (1-2 mo.)","IFA/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.18831,0.17384,1,0.068702
+"Misame (1-2 mo.)","IFA/BEP","combined","Beta-Alanine Metabolism",26,1,0.25768,0.23068,1,0
+"Misame (1-2 mo.)","IFA/BEP","combined","Valine, Leucine and Isoleucine Degradation",51,1,0.50545,0.40611,1,0.025039

@@ -1,0 +1,29 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Nico+Az.","down","Methionine Metabolism",11,5,0.215,4.79e-07,4.69e-05
+"Elicit (1 mo.)","Nico+Az.","down","Glutamate Metabolism",8,4,0.156,5.63e-06,0.000276
+"Elicit (1 mo.)","Nico+Az.","down","Glycine and Serine Metabolism",13,4,0.254,5.45e-05,0.00137
+"Elicit (1 mo.)","Nico+Az.","down","Valine, Leucine and Isoleucine Degradation",5,3,0.0976,5.58e-05,0.00137
+"Elicit (1 mo.)","Nico+Az.","down","Arginine and Proline Metabolism",10,3,0.195,0.000633,0.0124
+"Elicit (1 mo.)","Nico+Az.","down","Glutathione Metabolism",4,2,0.078,0.00205,0.0287
+"Elicit (1 mo.)","Nico+Az.","down","Betaine Metabolism",4,2,0.078,0.00205,0.0287
+"Elicit (1 mo.)","Nico+Az.","down","Spermidine and Spermine Biosynthesis",5,2,0.0976,0.00338,0.0368
+"Elicit (1 mo.)","Nico+Az.","down","Carnitine Synthesis",5,2,0.0976,0.00338,0.0368
+"Elicit (1 mo.)","Nico+Az.","down","Porphyrin Metabolism",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Pantothenate and CoA Biosynthesis",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Ketone Body Metabolism",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Butyrate Metabolism",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Mitochondrial Electron Transport Chain",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Phytanic Acid Peroxisomal Oxidation",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Phosphatidylcholine Biosynthesis",1,1,0.0195,0.0195,0.12
+"Elicit (1 mo.)","Nico+Az.","down","Cysteine Metabolism",2,1,0.039,0.0387,0.19
+"Elicit (1 mo.)","Nico+Az.","down","Taurine and Hypotaurine Metabolism",2,1,0.039,0.0387,0.19
+"Elicit (1 mo.)","Nico+Az.","down","Citric Acid Cycle",2,1,0.039,0.0387,0.19
+"Elicit (1 mo.)","Nico+Az.","down","Phosphatidylethanolamine Biosynthesis",2,1,0.039,0.0387,0.19
+"Elicit (1 mo.)","Nico+Az.","down","Alanine Metabolism",3,1,0.0585,0.0575,0.256
+"Elicit (1 mo.)","Nico+Az.","down","Homocysteine Degradation",3,1,0.0585,0.0575,0.256
+"Elicit (1 mo.)","Nico+Az.","down","Phospholipid Biosynthesis",4,1,0.078,0.076,0.31
+"Elicit (1 mo.)","Nico+Az.","down","Oxidation of Branched Chain Fatty Acids",4,1,0.078,0.076,0.31
+"Elicit (1 mo.)","Nico+Az.","down","Warburg Effect",5,1,0.0976,0.0941,0.369
+"Elicit (1 mo.)","Nico+Az.","down","Purine Metabolism",6,1,0.117,0.112,0.422
+"Elicit (1 mo.)","Nico+Az.","down","Ammonia Recycling",7,1,0.137,0.129,0.47
+"Elicit (1 mo.)","Nico+Az.","down","Bile Acid Biosynthesis",15,1,0.293,0.258,0.905

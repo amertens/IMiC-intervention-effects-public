@@ -1,0 +1,7 @@
+study,timepoint,contrast,direction,klass,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+MISAME-III,1-2 mo.,BEP/IFA,down,lipid,Sphingolipid Metabolism,6,0.0241,1,0.0239,1,-41.49377593360996
+MISAME-III,3-4 mo.,BEP/BEP,down,lipid,Sphingolipid Metabolism,6,0.0241,1,0.0239,1,-41.49377593360996
+MISAME-III,14-21 days,IFA/BEP,down,lipid,Sphingolipid Metabolism,6,0.0302,1,0.0298,1,-33.11258278145695
+MISAME-III,1-2 mo.,IFA/BEP,down,lipid,Sphingolipid Metabolism,6,0.0603,1,0.059,1,-16.58374792703151
+MISAME-III,1-2 mo.,BEP,down,lipid,Sphingolipid Metabolism,6,0.0724,1,0.0704,1,-13.812154696132595
+MISAME-III,1-2 mo.,BEP/BEP,down,lipid,Sphingolipid Metabolism,6,0.0724,1,0.0704,1,-13.812154696132595

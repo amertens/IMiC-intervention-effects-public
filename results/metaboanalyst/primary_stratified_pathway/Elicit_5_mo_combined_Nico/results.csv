@@ -1,0 +1,8 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Elicit (5 mo.)","Nico","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.15857,0.00027815,0.027536,0.20487
+"Elicit (5 mo.)","Nico","combined","Lactose Degradation",9,1,0.044599,0.043896,1,0
+"Elicit (5 mo.)","Nico","combined","Trehalose Degradation",11,1,0.054509,0.053438,1,0.078947
+"Elicit (5 mo.)","Nico","combined","Androstenedione Metabolism",23,1,0.11397,0.1091,1,0
+"Elicit (5 mo.)","Nico","combined","Androgen and Estrogen Metabolism",29,1,0.14371,0.13593,1,0
+"Elicit (5 mo.)","Nico","combined","Steroidogenesis",42,1,0.20813,0.19186,1,0
+"Elicit (5 mo.)","Nico","combined","Glycine and Serine Metabolism",50,1,0.24777,0.2248,1,0

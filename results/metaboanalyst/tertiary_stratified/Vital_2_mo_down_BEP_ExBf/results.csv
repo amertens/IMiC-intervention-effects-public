@@ -1,0 +1,7 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP+ExBf","down","Bile Acid Biosynthesis",15,3,0.146,0.000226,0.0221
+"Vital (2 mo.)","BEP+ExBf","down","Homocysteine Degradation",3,1,0.0293,0.029,0.944
+"Vital (2 mo.)","BEP+ExBf","down","Catecholamine Biosynthesis",4,1,0.039,0.0385,0.944
+"Vital (2 mo.)","BEP+ExBf","down","Betaine Metabolism",4,1,0.039,0.0385,0.944
+"Vital (2 mo.)","BEP+ExBf","down","Methionine Metabolism",11,1,0.107,0.103,1
+"Vital (2 mo.)","BEP+ExBf","down","Glycine and Serine Metabolism",13,1,0.127,0.121,1

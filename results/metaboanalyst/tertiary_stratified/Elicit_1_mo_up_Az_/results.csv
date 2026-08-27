@@ -1,0 +1,6 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Az.","up","Homocysteine Degradation",3,1,0.0146,0.0146,0.634
+"Elicit (1 mo.)","Az.","up","Catecholamine Biosynthesis",4,1,0.0195,0.0194,0.634
+"Elicit (1 mo.)","Az.","up","Betaine Metabolism",4,1,0.0195,0.0194,0.634
+"Elicit (1 mo.)","Az.","up","Methionine Metabolism",11,1,0.0537,0.0528,1
+"Elicit (1 mo.)","Az.","up","Glycine and Serine Metabolism",13,1,0.0634,0.0622,1

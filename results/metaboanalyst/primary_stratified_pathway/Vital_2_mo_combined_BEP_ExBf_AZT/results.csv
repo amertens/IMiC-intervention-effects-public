@@ -1,0 +1,11 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.25372,0.001459,0.14444,0.19443
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Biotin Metabolism",7,1,0.0555,0.054356,1,0.25
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Thiamine Metabolism",9,1,0.071358,0.069403,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Riboflavin Metabolism",14,1,0.111,0.10611,1,0.044118
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Pantothenate and CoA Biosynthesis",19,1,0.15064,0.14154,1,0.068702
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Androstenedione Metabolism",23,1,0.18236,0.169,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Beta-Alanine Metabolism",26,1,0.20614,0.18908,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Androgen and Estrogen Metabolism",29,1,0.22993,0.20874,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Steroidogenesis",42,1,0.333,0.28919,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Glycine and Serine Metabolism",50,1,0.39643,0.33505,1,0

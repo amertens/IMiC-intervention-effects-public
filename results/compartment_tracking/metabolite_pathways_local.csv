@@ -1,0 +1,17 @@
+tracking_name,pathway,kegg_id,raw_p,fdr,impact
+4-Hydroxy-2-oxoglutarate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0057478,0.45982,0.2
+(R)-Glycerate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0057478,0.45982,0.2
+Citrate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0057478,0.45982,0.2
+CMP,Pyrimidine metabolism,hsa00240,0.076956,1,0.03511
+dCMP,Pyrimidine metabolism,hsa00240,0.076956,1,0.03511
+Pyridoxal,Vitamin B6 metabolism,hsa00750,0.10267,1,0.4902
+N(pi)-Methyl-L-histidine,Histidine metabolism,hsa00340,0.17553,1,0
+(R)-Glycerate,Glycerolipid metabolism,hsa00561,0.17553,1,0.09346
+Citrate,Citrate cycle (TCA cycle),hsa00020,0.21462,1,0.09038
+(R)-Pantothenate,Pantothenate and CoA biosynthesis,hsa00770,0.21462,1,0.0068
+(R)-Glycerate,Pentose phosphate pathway,hsa00030,0.24277,1,0
+Citrate,"Alanine, aspartate and glutamate metabolism",hsa00250,0.28758,1,0
+(R)-Glycerate,"Glycine, serine and threonine metabolism",hsa00260,0.32986,1,0.02475
+"(6Z,9Z,12Z)-Octadecatrienoic acid",Biosynthesis of unsaturated fatty acids,hsa01040,0.35408,1,0
+N-Acetylserotonin,Tryptophan metabolism,hsa00380,0.39262,1,0.03901
+N2-Formyl-N1-(5-phospho-D-ribosyl)glycinamide,Purine metabolism,hsa00230,0.57655,1,0.04405

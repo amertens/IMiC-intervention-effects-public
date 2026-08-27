@@ -1,0 +1,8 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Vital (2 mo.)","BEP","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.28543,9.4295e-05,0.0093352,0.20487
+"Vital (2 mo.)","BEP","combined","Biotin Metabolism",7,1,0.062438,0.060969,1,0.25
+"Vital (2 mo.)","BEP","combined","Thiamine Metabolism",9,1,0.080278,0.07777,1,0
+"Vital (2 mo.)","BEP","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Vital (2 mo.)","BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Vital (2 mo.)","BEP","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Vital (2 mo.)","BEP","combined","Retinol Metabolism",30,1,0.26759,0.23872,1,0.33566

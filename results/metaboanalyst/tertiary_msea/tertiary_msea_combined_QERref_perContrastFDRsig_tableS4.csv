@@ -1,0 +1,4 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+MISAME-III,1-2 mo.,BEP,down,Spermidine and Spermine Biosynthesis,4,0.0444,3,4.06e-6,3.98e-4,-67.56756756756756
+MISAME-III,14-21 days,BEP,down,Glycine and Serine Metabolism,9,0.0817,3,4.25e-5,0.00416,-36.719706242350064
+MISAME-III,3-4 mo.,BEP,down,Glycine and Serine Metabolism,9,0.0817,3,4.25e-5,0.00416,-36.719706242350064

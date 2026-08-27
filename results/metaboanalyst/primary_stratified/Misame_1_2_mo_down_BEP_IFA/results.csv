@@ -1,0 +1,79 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP/IFA","down","Propanoate Metabolism",6,4,0.857,0.00136,0.0666
+"Misame (1-2 mo.)","BEP/IFA","down","Citric Acid Cycle",6,4,0.857,0.00136,0.0666
+"Misame (1-2 mo.)","BEP/IFA","down","Warburg Effect",7,4,1,0.00308,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Lysine Degradation",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Tryptophan Metabolism",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Transfer of Acetyl Groups into Mitochondria",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Pyruvate Metabolism",8,4,1.14,0.00599,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Arginine and Proline Metabolism",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Phospholipid Biosynthesis",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Threonine and 2-Oxobutanoate Degradation",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Caffeine Metabolism",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Glycerolipid Metabolism",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Glycerol Phosphate Shuttle",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Electron Transport Chain",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Valine, Leucine and Isoleucine Degradation",6,3,0.857,0.0264,0.162
+"Misame (1-2 mo.)","BEP/IFA","down","Histidine Metabolism",7,3,1,0.0438,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Bile Acid Biosynthesis",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty acid Metabolism",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Butyrate Metabolism",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Plasmalogen Synthesis",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Inositol Metabolism",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Urea Cycle",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Gluconeogenesis",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Phytanic Acid Peroxisomal Oxidation",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Glycine and Serine Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Ammonia Recycling",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Porphyrin Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Folate Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Betaine Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","D-Arginine and D-Ornithine Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty Acid Elongation In Mitochondria",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Ketone Body Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Steroidogenesis",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Vitamin K Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Cardiolipin Biosynthesis",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Androstenedione Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Methionine Metabolism",6,2,0.857,0.195,0.467
+"Misame (1-2 mo.)","BEP/IFA","down","Glutamate Metabolism",6,2,0.857,0.195,0.467
+"Misame (1-2 mo.)","BEP/IFA","down","Nicotinate and Nicotinamide Metabolism",7,2,1,0.256,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Purine Metabolism",7,2,1,0.256,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Pterine Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Glutathione Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Selenoamino Acid Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Androgen and Estrogen Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Glucose-Alanine Cycle",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Ethanol Degradation",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty Acid Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Pyruvaldehyde Degradation",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Inositol Phosphate Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Carnitine Synthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","De Novo Triacylglycerol Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Estrone Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Tyrosine Metabolism",8,2,1.14,0.319,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Beta-Alanine Metabolism",8,2,1.14,0.319,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Cysteine Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Steroid Biosynthesis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Oxidation of Branched Chain Fatty Acids",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Glycolysis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Fructose and Mannose Degradation",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Retinol Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Thiamine Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Malate-Aspartate Shuttle",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Degradation of Superoxides",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Thyroid hormone synthesis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Nucleotide Sugars Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Galactose Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Alanine Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Starch and Sucrose Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Aspartate Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Phenylalanine and Tyrosine Metabolism",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Pyrimidine Metabolism",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Lactose Synthesis",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Riboflavin Metabolism",7,1,1,0.697,0.887
+"Misame (1-2 mo.)","BEP/IFA","down","Vitamin B6 Metabolism",8,1,1.14,0.751,0.944

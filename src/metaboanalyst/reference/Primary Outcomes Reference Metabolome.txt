@@ -1,0 +1,35 @@
+alpha-Tocopherol
+Arsenic
+Calcium
+Chromium
+Copper
+Cyanocobalamin
+gamma-Tocopherol
+Iron
+Magnesium
+Manganese
+Molybdenum
+Niacinamide
+Nicotinic acid mononucleotide
+Nudifloramide
+Phosphorus
+Potassium
+Pyridoxine
+Riboflavin
+Selenium
+Sodium
+Thiamine
+Vitamin A
+Zinc
+Biotin
+FAD
+Flavin mononucleotide
+NAD
+Nicotinamide riboside
+Pantothenic acid
+Pyridoxal
+Pyridoxal 5'-phosphate
+Pyridoxamine
+Thiamine monophosphate
+Thiamine pyrophosphate
+L-Tryptophan

@@ -1,0 +1,2072 @@
+---
+title: "Primary Outcomes"
+output: html_document
+date: "2026-07-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(broom)
+library(cowplot)
+library(dplyr)
+library(DT)
+library(ggbreak)
+library(ggplot2)
+library(ggrepel)
+library(kableExtra)
+library(knitr)
+library(openxlsx)
+library(readxl)
+library(stringr)
+library(tidyr)
+library(tidyverse)
+library(writexl)
+
+```
+
+# Import Data
+
+## combined_intervention_effects_results_combined_arms.RDS
+
+```{r}
+
+combined_intervention <- 
+  readRDS("../1. Data/combined_intervention_effects_results_combined_arms.RDS")
+
+```
+
+## combined_intervention_effects_results_stratified_arms.RDS
+
+```{r}
+
+stratified_intervention <- 
+  readRDS("../1. Data/combined_intervention_effects_results_stratified_arms.RDS")
+
+```
+
+# Wrangle Data
+
+## Generate Label for Metaboanalyst
+
+### Combined Intervention
+
+```{r}
+
+# Generate label for Metaboanalyst
+
+combined_intervention <-
+  combined_intervention %>%
+  mutate(
+    metaboanalyst_label = label_f,
+    metaboanalyst_label = str_replace_all(
+      metaboanalyst_label,
+      c(
+        "nicotinamide mononucleotide" = "Nicotinic acid mononucleotide",
+        "vitamin B3 \\( expressed as NAM\\)" = "Niacinamide",
+        "nudifloramide \\(niacin catabolite\\)" = "Nudifloramide",
+        "free thiamin" = "Thiamine",
+        "total vitamin B1 \\(expressed as thiamin\\)" = "Thiamine",
+        "vitamin B2 \\(expressed as riboflavin\\)" = "Riboflavin",
+        "vitamin B12 \\(expressed as cyanocobalamin\\)" = "Cyanocobalamin",
+        "vitamin B6 \\(expressed as PL\\)" = "Pyridoxine",
+        "^a\\.tocopherol$|^A\\.tocopherol$" = "Alpha-tocopherol",
+        "^g\\.tocopherol$|^G\\.tocopherol$" = "Gamma-tocopherol",
+        "^vitamin\\.a$|^Vitamin\\.a$" = "Vitamin A"
+      )
+    )
+  )
+
+# Verify that everything is labeled
+
+combined_intervention %>%
+  filter(outcome_group == "primary") %>%
+  distinct(metaboanalyst_label) %>%
+  arrange(metaboanalyst_label) %>%
+  print(n = Inf)
+
+```
+
+### Stratified Intervention
+
+```{r}
+
+# Generate label for Metaboanalyst
+
+stratified_intervention <-
+  stratified_intervention %>%
+  mutate(
+    metaboanalyst_label = label_f,
+    metaboanalyst_label = str_replace_all(
+      metaboanalyst_label,
+      c(
+        "nicotinamide mononucleotide" = "Nicotinic acid mononucleotide",
+        "vitamin B3 \\( expressed as NAM\\)" = "Niacinamide",
+        "nudifloramide \\(niacin catabolite\\)" = "Nudifloramide",
+        "free thiamin" = "Thiamine",
+        "total vitamin B1 \\(expressed as thiamin\\)" = "Thiamine",
+        "vitamin B2 \\(expressed as riboflavin\\)" = "Riboflavin",
+        "vitamin B12 \\(expressed as cyanocobalamin\\)" = "Cyanocobalamin",
+        "vitamin B6 \\(expressed as PL\\)" = "Pyridoxine",
+        "^a\\.tocopherol$|^A\\.tocopherol$" = "Alpha-tocopherol",
+        "^g\\.tocopherol$|^G\\.tocopherol$" = "Gamma-tocopherol",
+        "^vitamin\\.a$|^Vitamin\\.a$" = "Vitamin A"
+      )
+    )
+  )
+
+# Verify that everything is labeled
+
+stratified_intervention %>%
+  filter(outcome_group == "primary") %>%
+  distinct(metaboanalyst_label) %>%
+  arrange(metaboanalyst_label) %>%
+  print(n = Inf)
+
+```
+
+## Create Reference Metabolome
+
+### Export .xslx
+
+```{r}
+
+primary_reference_metabolome_xlsx <-
+  combined_intervention %>%
+  filter(
+    outcome_group == "primary",
+    !str_starts(metaboanalyst_label, "Total")) %>%
+  distinct(metaboanalyst_label) %>%
+  arrange(metaboanalyst_label)
+
+primary_reference_metabolome_xlsx
+
+# write_xlsx(
+#  primary_reference_metabolome_xlsx,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome.xlsx")
+
+```
+
+The reference metabolome was exported to Excel and uploaded to the MetaboAnalyst Metabolite ID Conversion tool using “Common Name” as the specified input type (https://www.metaboanalyst.ca/MetaboAnalyst/upload/ConvertView.xhtml). All compounds were successfully matched to MetaboAnalyst identifiers. The resulting name-mapping file was downloaded as “Primary Outcomes Reference Metabolome Name Map.csv” and saved in "Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome Name Map.csv".
+
+### Import Results from Metabolite ID Conversion and Create Final .txt File
+
+```{r}
+
+# Import the name map
+
+primary_outcomes_reference_metabolome_name_map <-
+  read_csv(
+    "../3. Results/Primary Outcomes (MSEA ORA)/Primary Outcomes Reference Metabolome Name Map.csv")
+
+primary_outcomes_reference_metabolome_name_map
+
+# Export the Match column as a .txt file (one compound per line)
+
+# write.table(
+#  primary_outcomes_reference_metabolome_name_map %>%
+#    filter(!is.na(Match)) %>%
+#    distinct(Match) %>%
+#    pull(Match),
+#  file = "../3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome.txt",
+#  quote = FALSE,
+#  row.names = FALSE,
+#  col.names = FALSE
+# )
+
+```
+
+### Import Results from Metabolite ID Conversion and Create Final .txt File (KEGG)
+
+```{r}
+
+# write.table(
+#  primary_outcomes_reference_metabolome_name_map %>%
+#    filter(!is.na(KEGG)) %>%
+#   distinct(KEGG) %>%
+#   pull(KEGG),
+# file = "../3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome (KEGG).txt",
+# quote = FALSE,
+# row.names = FALSE,
+# col.names = FALSE
+# )
+
+```
+
+# Analysis
+
+## Elicit
+
+### Downregulated
+
+#### 1 Month
+
+##### Elicit · Downregulated · 1 month (Combined)
+
+```{r}
+
+primary_elicit_downregulated_1mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (1 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_elicit_downregulated_1mo_combined
+
+```
+
+###### ✗ No statistically significant effects.
+#### 5 Months
+
+##### Elicit · Downregulated · 5 months (Combined)
+
+```{r}
+
+primary_elicit_downregulated_5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (5 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_elicit_downregulated_5mo_combined
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_elicit_downregulated_5mo_combined,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Elicit · Downregulated · 5 months (Combined)/primary_elicit_downregulated_5mo_combined.xlsx")
+
+```
+
+### Upregulated
+
+#### 1 month
+
+##### Elicit · Upregulated · 1 month (Combined)
+
+```{r}
+
+primary_elicit_upregulated_1mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (1 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_elicit_upregulated_1mo_combined
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_elicit_upregulated_1mo_combined,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Elicit · Upregulated · 1 month (Combined)/primary_elicit_upregulated_1mo_combined.xlsx")
+
+```
+
+Instructions to Conduct an "Enrichment Analysis (Over Representation Analysis)"
+
+Open the .xlsx file above and copy the feature names from column Y, “metaboanalyst_label.” 
+
+Navigate to MetaboAnalyst.ca and select “Enrichment Analysis” under “Annotated Features.” Choose “Compound names” as the Input Type, leave Feature Type set to “General,” and click “Submit.”
+
+Verify that all, or nearly all, submitted queries have matching hits, then click “Proceed.” Retain the default pathway library: “Pathway-based SMPDB” (99 metabolite sets based on normal human metabolic pathways). Specify the reference metabolome by uploading:
+
+"/Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome.txt"
+
+Submit the file and confirm that the blue notification states: “A total of ## were successfully added to the library.” Continue by clicking “Submit.” Review the enrichment-analysis results, then select “Download.zip” and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
+
+Instructions to Conduct a Pathway Analysis:
+
+Open the .xlsx file above and copy the feature names from column Y, “metaboanalyst_label.” 
+
+Navigate to MetaboAnalyst.ca and select “Pathway Analysis” under “Annotated Features.” Leave the option as default "Compound List."
+
+Choose “Compound names” as the Input Type, leave Feature Type set to “General,” and click “Submit.” 
+
+Verify that all, or nearly all, submitted queries have matching hits, then click “Proceed.” 
+
+Use the default parameters: Visualization method (Scatter plot (testing significant features); Enrichment method (Hypergeometric Test); Topology measure (Relative-betweeness Centrality).
+
+Specify the reference metabolome by uploading:
+
+"/Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome (KEGG).txt"
+
+Select the pathway library Mammals [21] Homo sapiens (SMPDB) and click proceed. Sometimes this network will throw the following error, if few metabolite features are found (ErrorThere is something wrong with the pathway enrichment analysis: Possible causes of error (last one being the most relevant): Cannot perform enrichment analysis on a single metabolite set!). In this case, select the pathway library Mammals [21] Homo sapiens (SMPDB) and see if results are generated. 
+
+Review the enrichment-analysis results, then select “Download.zip” and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
+
+Note: A minimum of 3 features is required for the Pathway Analysis module, or the following message will appear "Less than 3 metabolites left - too few to perform meaningful enrichment analysis!"
+
+#### 5 months
+
+##### Elicit · Upregulated · 5 months (Combined)
+
+```{r}
+
+primary_elicit_upregulated_5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (5 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_elicit_upregulated_5mo_combined
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_elicit_upregulated_5mo_combined,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Elicit · Upregulated · 5 months (Combined)/primary_elicit_upregulated_5mo_combined.xlsx")
+
+```
+
+## Misame
+
+### Downregulated
+
+#### 14-21 Days
+
+##### Misame · Downregulated · 14-21 days · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_1421d_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_1421d_bepbep_stratified
+
+```
+
+####### ✗ No statistically significant effects.
+
+##### Misame · Downregulated · 14-21 days · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_downregulated_1421d_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_1421d_bepifa_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_1421d_bepifa_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 14-21 days · BEPIFA (Stratified)/primary_misame_downregulated_1421d_bepifa_stratified.xlsx")
+
+```
+
+Note: For this analysis, the only statistically significant metabolite is Arsenic. This returns the following error from MetaboAnalyst: "No match was found to the selected metabolite set library!"
+
+##### Misame · Downregulated · 14-21 days · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_1421d_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_1421d_ifabep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_1421d_ifabep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 14-21 days · IFABEP (Stratified)/primary_misame_downregulated_1421d_ifabep_stratified.xlsx")
+
+```
+
+#### 1-2 Months
+
+##### Misame · Downregulated · 1-2 months · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_12mo_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_12mo_bepbep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_12mo_bepbep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 1-2 months · BEPBEP (Stratified)/primary_misame_downregulated_12mo_bepbep_stratified.xlsx")
+
+```
+
+##### Misame · Downregulated · 1-2 months · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_downregulated_12mo_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_12mo_bepifa_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_12mo_bepifa_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 1-2 months · BEPIFA (Stratified)/primary_misame_downregulated_12mo_bepifa_stratified.xlsx")
+
+```
+
+##### Misame · Downregulated · 1-2 months · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_12mo_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_12mo_ifabep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_12mo_ifabep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 1-2 months · IFABEP (Stratified)/primary_misame_downregulated_12mo_ifabep_stratified.xlsx")
+
+```
+
+#### 3-4 Months
+
+##### Misame · Downregulated · 3-4 months · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_34mo_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_34mo_bepbep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+#write_xlsx(
+#  primary_misame_downregulated_34mo_bepbep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 3-4 months · BEPBEP (Stratified)/primary_misame_downregulated_34mo_bepbep_stratified.xlsx")
+
+```
+
+##### Misame · Downregulated · 3-4 months · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_downregulated_34mo_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_34mo_bepifa_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_downregulated_34mo_bepifa_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Downregulated · 3-4 months · BEPIFA (Stratified)/primary_misame_downregulated_34mo_bepifa_stratified.xlsx")
+
+```
+
+##### Misame · Downregulated · 3-4 months · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_downregulated_34mo_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_downregulated_34mo_ifabep_stratified
+
+```
+
+####### ✗ No statistically significant effects.
+
+### Upregulated
+
+#### 14-21 Days
+
+##### Misame · Upregulated · 14-21 days · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_1421d_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_1421d_bepbep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_1421d_bepbep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 14-21 days · BEPBEP (Stratified)/primary_misame_upregulated_1421d_bepbep_stratified.xlsx")
+
+```
+
+##### Misame · Upregulated · 14-21 days · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_upregulated_1421d_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_1421d_bepifa_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_1421d_bepifa_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 14-21 days · BEPIFA (Stratified)/primary_misame_upregulated_1421d_bepifa_stratified.xlsx")
+
+```
+
+##### Misame · Upregulated · 14-21 days · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_1421d_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_1421d_ifabep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_1421d_ifabep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 14-21 days · IFABEP (Stratified)/primary_misame_upregulated_1421d_ifabep_stratified.xlsx")
+
+```
+
+#### 1-2 Months
+
+##### Misame · Upregulated · 1-2 months · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_12mo_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_12mo_bepbep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+# primary_misame_upregulated_12mo_bepbep_stratified,
+# path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 1-2 months · BEPBEP (Stratified)/primary_misame_upregulated_12mo_bepbep_stratified.xlsx")
+
+```
+
+##### Misame · Upregulated · 1-2 months · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_upregulated_12mo_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_12mo_bepifa_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_12mo_bepifa_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 1-2 months · BEPIFA (Stratified)/primary_misame_upregulated_12mo_bepifa_stratified.xlsx")
+
+```
+
+##### Misame · Upregulated · 1-2 months · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_12mo_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_12mo_ifabep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_12mo_ifabep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 1-2 months · IFABEP (Stratified)/primary_misame_upregulated_12mo_ifabep_stratified.xlsx")
+
+```
+
+#### 3-4 Months
+
+##### Misame · Upregulated · 3-4 months · BEPBEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_34mo_bepbep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_34mo_bepbep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_34mo_bepbep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 3-4 months · BEPBEP (Stratified)/primary_misame_upregulated_34mo_bepbep_stratified.xlsx")
+
+```
+
+##### Misame · Upregulated · 3-4 months · BEPIFA (Stratified)
+
+```{r}
+
+primary_misame_upregulated_34mo_bepifa_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP/IFA",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_34mo_bepifa_stratified
+
+```
+
+####### ✗ No statistically significant effects.
+
+##### Misame · Upregulated · 3-4 months · IFABEP (Stratified)
+
+```{r}
+
+primary_misame_upregulated_34mo_ifabep_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    contrast == "IFA/BEP",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_misame_upregulated_34mo_ifabep_stratified
+
+```
+
+####### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_misame_upregulated_34mo_ifabep_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Misame · Upregulated · 3-4 months · IFABEP (Stratified)/primary_misame_upregulated_34mo_ifabep_stratified.xlsx")
+
+```
+
+## Mumpta
+
+### Downregulated
+
+#### 1.5 Months
+
+##### MumptaLW · Downregulated · 1.5 months (Combined)
+
+```{r}
+
+primary_mumpta_downregulated_1p5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Vital (1.5 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_downregulated_1p5mo_combined
+
+```
+
+###### ✗ No statistically significant effects.
+
+#### 2 Months
+
+##### Mumpta · Downregulated · 2 months BEPExBfAZT (Stratified)
+
+```{r}
+
+primary_mumpta_downregulated_2mo_bepexbfazt_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Vital (2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP+ExBf+AZT",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_downregulated_2mo_bepexbfazt_stratified
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_mumpta_downregulated_2mo_bepexbfazt_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Mumpta · Downregulated · 2 months BEPExBfAZT (Stratified)/primary_mumpta_downregulated_2mo_bepexbfazt_stratified.xlsx")
+
+```
+
+##### Mumpta · Downregulated · 2 months BEPExBf (Stratified)
+
+```{r}
+
+primary_mumpta_downregulated_2mo_bepexbf_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Vital (2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP+ExBf",
+    pval < 0.05,
+    est < 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_downregulated_2mo_bepexbf_stratified
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_mumpta_downregulated_2mo_bepexbf_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Mumpta · Downregulated · 2 months BEPExBf (Stratified)/primary_mumpta_downregulated_2mo_bepexbf_stratified.xlsx")
+
+```
+
+### Upregulated
+
+#### 1.5 Months
+
+##### MumptaLW · Upregulated · 1.5 months (Combined)
+
+```{r}
+
+primary_mumpta_upregulated_1p5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Vital (1.5 mo.)",
+    outcome_group == "primary",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_upregulated_1p5mo_combined
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_mumpta_upregulated_1p5mo_combined,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Mumpta · Upregulated · 1.5 months (Combined)/primary_mumpta_upregulated_1p5mo_combined.xlsx")
+
+```
+
+#### 2 Months
+
+##### Mumpta · Upregulated · 2 months BEPExBfAZT (Stratified)
+
+```{r}
+
+primary_mumpta_upregulated_2mo_bepexbfazt_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Vital (2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP+ExBf+AZT",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_upregulated_2mo_bepexbfazt_stratified
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_mumpta_upregulated_2mo_bepexbfazt_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Mumpta · Upregulated · 2 months BEPExBfAZT (Stratified)/primary_mumpta_upregulated_2mo_bepexbfazt_stratified.xlsx")
+
+```
+
+##### Mumpta · Upregulated · 2 months BEPExBf (Stratified)
+
+```{r}
+
+primary_mumpta_upregulated_2mo_bepexbf_stratified <-
+  stratified_intervention %>%
+  filter(
+    studytime == "Vital (2 mo.)",
+    outcome_group == "primary",
+    contrast == "BEP+ExBf",
+    pval < 0.05,
+    est > 0,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+  
+primary_mumpta_upregulated_2mo_bepexbf_stratified
+
+```
+
+###### Export .xslx
+
+```{r}
+
+# write_xlsx(
+#  primary_mumpta_upregulated_2mo_bepexbf_stratified,
+#  path = "../3. Results/Primary Outcomes (MSEA ORA)//Mumpta · Upregulated · 2 months BEPExBf (Stratified)/primary_mumpta_upregulated_2mo_bepexbf_stratified.xlsx")
+
+```
+
+# Import Results
+
+## Metabolite Site Enrichment Analyses (MSEA) · Over Representation Analyses (ORA)  
+
+### Results From MetaboAnalyst
+
+```{r}
+
+# Define the main results folder
+
+msea_root <-
+  paste0(
+    "../../",
+    "Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/",
+    "Primary Outcomes (MSEA ORA)"
+  )
+
+# Find every msea_ora_result.csv file
+
+msea_files <-
+  msea_root %>%
+  list.files(
+    pattern = "^msea_ora_result[.]csv$",
+    recursive = TRUE,
+    full.names = TRUE
+  )
+
+# Check the number of files found
+
+length(msea_files)
+
+# Import files and extract metadata from folder names
+
+primary_msea_ora_results <-
+  tibble(file = msea_files) %>%
+  mutate(
+    
+    # Analysis folder immediately above the Download folder
+    source_folder =
+      file %>%
+      str_remove(fixed(paste0(msea_root, "/"))) %>%
+      str_remove(fixed("/Download/msea_ora_result.csv")),
+    
+    # Study
+    study =
+      source_folder %>%
+      str_extract("^[^·]+") %>%
+      str_trim(),
+    
+    # Direction of regulation
+    regulation =
+      source_folder %>%
+      str_extract("(?<=· )(Downregulated|Upregulated|Upnregulated)") %>%
+      str_replace("Upnregulated", "Upregulated"),
+    
+    # Combined or stratified analysis
+    analysis_type =
+      source_folder %>%
+      str_extract("(?<=\\()(Combined|Stratified)(?=\\)$)"),
+    
+    # Time point
+    timepoint =
+      case_when(
+        study == "Elicit" ~
+          source_folder %>%
+          str_extract("[0-9.]+ months?"),
+        
+        study == "Misame" ~
+          source_folder %>%
+          str_extract("[0-9]+-[0-9]+ (days|months)"),
+        
+        study == "Mumpta" ~
+          source_folder %>%
+          str_extract("[0-9.]+ months?"),
+        
+        TRUE ~ NA_character_
+      ),
+    
+    # Extract compact contrast labels
+    contrast =
+      case_when(
+        study == "Misame" ~
+          source_folder %>%
+          str_extract("(BEPBEP|BEPIFA|IFABEP)"),
+        
+        study == "Mumpta" ~
+          source_folder %>%
+          str_extract("(BEPExBfAZT|BEPExBf)"),
+        
+        TRUE ~ NA_character_
+      ),
+    
+    # Format contrast labels
+    contrast =
+      recode(
+        contrast,
+        "BEPBEP" = "BEP/BEP",
+        "BEPIFA" = "BEP/IFA",
+        "IFABEP" = "IFA/BEP",
+        "BEPExBf" = "BEP+ExBf",
+        "BEPExBfAZT" = "BEP+ExBf+AZT"
+      ),
+    
+    # Import each CSV file
+    data =
+      map(
+        file,
+        ~ read_csv(
+          .x,
+          show_col_types = FALSE,
+          name_repair = "unique_quiet"
+        )
+      )
+  ) %>%
+  
+  unnest(cols = data) %>%
+  
+  rename(
+    pathway = `...1`,
+    raw_p = `Raw p`,
+    holm_p = `Holm p`,
+    fdr = FDR
+  ) %>%
+  
+  select(
+    study,
+    timepoint,
+    regulation,
+    contrast,
+    analysis_type,
+    pathway,
+    total,
+    expected,
+    hits,
+    raw_p,
+    holm_p,
+    fdr,
+    source_folder,
+    file
+  ) %>%
+  
+  arrange(
+    study,
+    timepoint,
+    regulation,
+    contrast,
+    raw_p,
+    pathway
+  )
+
+# -------------------------------------------------------------------
+# Inspect the final dataframe
+# -------------------------------------------------------------------
+
+primary_msea_ora_results
+
+glimpse(primary_msea_ora_results)
+
+# -------------------------------------------------------------------
+# Validate imported files and rows
+# -------------------------------------------------------------------
+
+primary_msea_ora_results %>%
+  summarise(
+    number_of_files = n_distinct(file),
+    number_of_rows = n()
+  )
+
+primary_msea_ora_results %>%
+  count(
+    study,
+    timepoint,
+    regulation,
+    contrast,
+    analysis_type,
+    name = "pathway_rows"
+  ) %>%
+  arrange(
+    study,
+    timepoint,
+    regulation,
+    contrast
+  ) %>%
+  print(n = Inf)
+
+```
+
+### 1. Label only FDR statistically significant
+
+```{r}
+
+# -------------------------------------------------------------------
+# Colours
+# -------------------------------------------------------------------
+
+study_colors <-
+  c(
+    "ELICIT" = "#4E79A7",
+    "MISAME-III" = "#F28E2B",
+    "Mumpta-LW" = "#E15759"
+  )
+
+p_line_col <- "#BAB0AC"
+
+# -------------------------------------------------------------------
+# Thresholds
+# -------------------------------------------------------------------
+
+p_thr <- 0.05
+
+y_p_line <-
+  -log10(p_thr)
+
+# -------------------------------------------------------------------
+# Prepare data
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot_df <-
+  primary_msea_ora_results %>%
+  filter(!is.na(raw_p),
+         !is.na(expected),
+         expected > 0,
+         hits > 0) %>%
+  mutate( # Calculate enrichment ratio
+    enrichment_ratio =
+      hits / expected,
+    
+    # Downregulated pathways appear on the negative side
+    signed_enrichment_ratio =
+      case_when(
+        regulation == "Downregulated" ~ -enrichment_ratio,
+        regulation == "Upregulated" ~ enrichment_ratio,
+        TRUE ~ NA_real_
+      ),
+    
+    # Calculate -log10(P-value)
+    logp =
+      -log10(
+        pmax(
+          raw_p,
+          .Machine$double.xmin
+        )
+      ),
+    
+    # Format study names
+    study =
+      recode(
+        study,
+        "Elicit" = "ELICIT",
+        "Misame" = "MISAME-III",
+        "Mumpta" = "Mumpta-LW"
+      ),
+    
+    study =
+      factor(
+        study,
+        levels =
+          c(
+            "ELICIT",
+            "MISAME-III",
+            "Mumpta-LW"
+          )
+      ),
+    
+    # Abbreviate time points
+    timepoint_clean =
+      timepoint %>%
+      str_replace_all(
+        "days",
+        "d"
+      ) %>%
+      str_replace_all(
+        "months",
+        "m"
+      ) %>%
+      str_squish(),
+    
+    # Add contrast where relevant
+    analysis_label =
+      case_when(
+        is.na(contrast) ~ timepoint_clean,
+        TRUE ~
+          paste0(
+            timepoint_clean,
+            ", ",
+            contrast
+          )
+      ),
+    
+    # Label FDR-significant pathways with at least two hits
+    pathway_label =
+      case_when(
+        fdr < 0.05 & hits >= 2 ~
+          paste0(
+            pathway,
+            " (",
+            analysis_label,
+            ")"
+          ),
+        TRUE ~ NA_character_
+      ),
+    
+    # Grey for non-significant results
+    color_group =
+      case_when(
+        raw_p < p_thr ~ as.character(study),
+        TRUE ~ "Not significant"
+      )
+  )
+
+# -------------------------------------------------------------------
+# Complete colour scale
+# -------------------------------------------------------------------
+
+full_colors <-
+  c(
+    "Not significant" = p_line_col,
+    study_colors
+  )
+
+# -------------------------------------------------------------------
+# Plot
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot <-
+  ggplot(
+    primary_msea_ora_plot_df,
+    aes(
+      x = signed_enrichment_ratio,
+      y = logp,
+      color = color_group
+    )
+  ) +
+  
+  # P-value threshold
+  geom_hline(
+    yintercept = y_p_line,
+    color = p_line_col,
+    linewidth = 0.5
+  ) +
+  
+  # Separate downregulated and upregulated results
+  geom_vline(
+    xintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  
+  # Pathway points
+  geom_point(
+    aes(
+      size = hits
+    ),
+    alpha = 0.85
+  ) +
+  
+  # FDR-significant pathway labels
+  geom_text_repel(
+    aes(
+      label = pathway_label
+    ),
+    size = 2,
+    color = "black",
+    box.padding = 0.3,
+    point.padding = 0.3,
+    segment.color = "grey50",
+    segment.size = 0.4,
+    max.overlaps = Inf,
+    na.rm = TRUE
+  ) +
+  
+  scale_color_manual(
+    values = full_colors
+  ) +
+  
+  scale_size_continuous(
+    range = c(
+      1.5,
+      4
+    )
+  ) +
+  
+  labs(
+    x = "Enrichment Ratio",
+    y = expression(
+      -log[10](italic(P))
+    ),
+    color = "Study",
+    size = "Hits"
+  ) +
+  
+  theme_bw(
+    base_size = 7
+  ) +
+  
+  theme(
+    axis.text = element_text(
+      size = 7
+    ),
+    axis.title = element_text(
+      size = 7
+    ),
+    legend.text = element_text(
+      size = 7
+    ),
+    legend.title = element_text(
+      size = 7
+    ),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    plot.margin = margin(
+      5,
+      5,
+      5,
+      5
+    )
+  ) +
+  
+  guides(
+    color =
+      guide_legend(
+        override.aes =
+          list(
+            size = 3
+          )
+      )
+  )
+
+primary_msea_ora_plot
+```
+
+#### 
+
+```{r}
+# -------------------------------------------------------------------
+# Colours
+# -------------------------------------------------------------------
+
+study_colors <-
+  c(
+    "ELICIT" = "#4E79A7",
+    "MISAME-III" = "#F28E2B",
+    "Mumpta-LW" = "#E15759"
+  )
+
+p_line_col <- "#BAB0AC"
+
+# -------------------------------------------------------------------
+# Threshold
+# -------------------------------------------------------------------
+
+p_thr <- 0.05
+y_p_line <- -log10(p_thr)
+
+# -------------------------------------------------------------------
+# Prepare data
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot_df <-
+  primary_msea_ora_results %>%
+  filter(
+    !is.na(raw_p),
+    !is.na(expected),
+    expected > 0,
+    hits > 0
+  ) %>%
+  mutate(
+    enrichment_ratio = hits / expected,
+    
+    signed_enrichment_ratio =
+      case_when(
+        regulation == "Downregulated" ~ -enrichment_ratio,
+        regulation == "Upregulated" ~ enrichment_ratio,
+        TRUE ~ NA_real_
+      ),
+    
+    logp =
+      -log10(
+        pmax(raw_p, .Machine$double.xmin)
+      ),
+    
+    study =
+      recode(
+        study,
+        "Elicit" = "ELICIT",
+        "Misame" = "MISAME-III",
+        "Mumpta" = "Mumpta-LW"
+      ),
+    
+    study =
+      factor(
+        study,
+        levels = c(
+          "ELICIT",
+          "MISAME-III",
+          "Mumpta-LW"
+        )
+      ),
+    
+    timepoint_clean =
+      timepoint %>%
+      str_replace_all("days", "d") %>%
+      str_replace_all("months", "m") %>%
+      str_squish(),
+    
+    analysis_label =
+      case_when(
+        is.na(contrast) ~ timepoint_clean,
+        TRUE ~ paste0(timepoint_clean, ", ", contrast)
+      ),
+    
+    # Label every nominally significant result
+    pathway_label =
+      case_when(
+        raw_p < p_thr ~
+          paste0(
+            pathway,
+            " (",
+            analysis_label,
+            ")"
+          ),
+        TRUE ~ NA_character_
+      ),
+    
+    color_group =
+      case_when(
+        raw_p < p_thr ~ as.character(study),
+        TRUE ~ "Not significant"
+      )
+  )
+
+# -------------------------------------------------------------------
+# Identify repeated significant pathways for ellipses
+# -------------------------------------------------------------------
+
+primary_msea_ora_ellipse_df <-
+  primary_msea_ora_plot_df %>%
+  filter(raw_p < p_thr) %>%
+  add_count(
+    pathway,
+    name = "pathway_count"
+  ) %>%
+  filter(pathway_count >= 2)
+
+# -------------------------------------------------------------------
+# Complete colour scale
+# -------------------------------------------------------------------
+
+full_colors <-
+  c(
+    "Not significant" = p_line_col,
+    study_colors
+  )
+
+# -------------------------------------------------------------------
+# Plot
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot <-
+  ggplot(
+    primary_msea_ora_plot_df,
+    aes(
+      x = signed_enrichment_ratio,
+      y = logp,
+      color = color_group
+    )
+  ) +
+  
+  # P-value threshold
+  geom_hline(
+    yintercept = y_p_line,
+    color = p_line_col,
+    linewidth = 0.5
+  ) +
+  
+  # Divide downregulated and upregulated results
+  geom_vline(
+    xintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  
+  # Ellipses around repeated significant pathways
+  ggforce::geom_mark_ellipse(
+    data = primary_msea_ora_ellipse_df,
+    aes(group = pathway),
+    color = "black",
+    fill = NA,
+    linewidth = 0.35,
+    expand = grid::unit(2, "mm"),
+    inherit.aes = TRUE,
+    show.legend = FALSE
+  ) +
+  
+  # Pathway points
+  geom_point(
+    aes(size = hits),
+    alpha = 0.85
+  ) +
+  
+  # Labels for all nominally significant results
+  geom_text_repel(
+    data =
+      primary_msea_ora_plot_df %>%
+      filter(raw_p < p_thr),
+    aes(label = pathway_label),
+    size = 2,
+    color = "black",
+    box.padding = 0.4,
+    point.padding = 0.4,
+    segment.color = "grey50",
+    segment.size = 0.4,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    seed = 123,
+    na.rm = TRUE
+  ) +
+  
+  scale_color_manual(
+    values = full_colors
+  ) +
+  
+  scale_size_continuous(
+    range = c(1.5, 4)
+  ) +
+  
+  labs(
+    x = "Enrichment Ratio",
+    y = expression(-log[10](italic(P))),
+    color = "Study",
+    size = "Hits"
+  ) +
+  
+  theme_bw(base_size = 7) +
+  
+  theme(
+    axis.text = element_text(size = 7),
+    axis.title = element_text(size = 7),
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 7),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    plot.margin = margin(5, 5, 5, 5)
+  ) +
+  
+  guides(
+    color =
+      guide_legend(
+        override.aes = list(size = 3)
+      )
+  )
+
+primary_msea_ora_plot
+```
+
+# Common Pathways
+
+```{r}
+
+# -------------------------------------------------------------------
+# Colours
+# -------------------------------------------------------------------
+
+study_colors <-
+  c(
+    "ELICIT" = "#4E79A7",
+    "MISAME-III" = "#F28E2B",
+    "Mumpta-LW" = "#E15759"
+  )
+
+p_line_col <- "#BAB0AC"
+
+# -------------------------------------------------------------------
+# Threshold
+# -------------------------------------------------------------------
+
+p_thr <- 0.05
+y_p_line <- -log10(p_thr)
+
+# -------------------------------------------------------------------
+# Prepare data
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot_df <-
+  primary_msea_ora_results %>%
+  filter(
+    !is.na(raw_p),
+    !is.na(expected),
+    expected > 0,
+    hits > 0
+  ) %>%
+  mutate(
+    # Calculate enrichment ratio
+    enrichment_ratio = hits / expected,
+    
+    # Downregulated pathways appear on the negative side
+    signed_enrichment_ratio =
+      case_when(
+        regulation == "Downregulated" ~ -enrichment_ratio,
+        regulation == "Upregulated" ~ enrichment_ratio,
+        TRUE ~ NA_real_
+      ),
+    
+    # Calculate -log10(P-value)
+    logp =
+      -log10(
+        pmax(raw_p, .Machine$double.xmin)
+      ),
+    
+    # Format study names
+    study =
+      recode(
+        study,
+        "Elicit" = "ELICIT",
+        "Misame" = "MISAME-III",
+        "Mumpta" = "Mumpta-LW"
+      ),
+    
+    study =
+      factor(
+        study,
+        levels = c(
+          "ELICIT",
+          "MISAME-III",
+          "Mumpta-LW"
+        )
+      ),
+    
+    # Abbreviate time points
+    timepoint_clean =
+      timepoint %>%
+      str_replace_all("days", "d") %>%
+      str_replace_all("months", "m") %>%
+      str_squish(),
+    
+    # Add contrast where relevant
+    analysis_label =
+      case_when(
+        is.na(contrast) ~ timepoint_clean,
+        TRUE ~ paste0(timepoint_clean, ", ", contrast)
+      ),
+    
+    # Create labels for statistically significant pathways
+    pathway_label =
+      case_when(
+        raw_p < p_thr ~
+          paste0(
+            pathway,
+            " (",
+            analysis_label,
+            ")"
+          ),
+        TRUE ~ NA_character_
+      ),
+    
+    # Grey for non-significant results
+    color_group =
+      case_when(
+        raw_p < p_thr ~ as.character(study),
+        TRUE ~ "Not significant"
+      )
+  )
+
+# -------------------------------------------------------------------
+# Identify repeated significant pathways
+# -------------------------------------------------------------------
+
+primary_msea_ora_ellipse_df <-
+  primary_msea_ora_plot_df %>%
+  filter(raw_p < p_thr) %>%
+  add_count(
+    pathway,
+    name = "pathway_count"
+  ) %>%
+  filter(pathway_count >= 2)
+
+# -------------------------------------------------------------------
+# Complete colour scale
+# -------------------------------------------------------------------
+
+full_colors <-
+  c(
+    "Not significant" = p_line_col,
+    study_colors
+  )
+
+# -------------------------------------------------------------------
+# Plot
+# -------------------------------------------------------------------
+
+primary_msea_ora_plot <-
+  ggplot(
+    primary_msea_ora_plot_df,
+    aes(
+      x = signed_enrichment_ratio,
+      y = logp,
+      color = color_group
+    )
+  ) +
+  
+  # P-value threshold
+  geom_hline(
+    yintercept = y_p_line,
+    color = p_line_col,
+    linewidth = 0.5
+  ) +
+  
+  # Separate downregulated and upregulated results
+  geom_vline(
+    xintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  
+  # Ellipses around repeated significant pathways
+  ggforce::geom_mark_ellipse(
+    data = primary_msea_ora_ellipse_df,
+    aes(group = pathway),
+    color = "black",
+    fill = NA,
+    linewidth = 0.35,
+    expand = grid::unit(2, "mm"),
+    inherit.aes = TRUE,
+    show.legend = FALSE
+  ) +
+  
+  # Pathway points
+  geom_point(
+    aes(size = hits),
+    alpha = 0.85
+  ) +
+  
+  # Labels only for pathways enclosed by ellipses
+  geom_text_repel(
+    data = primary_msea_ora_ellipse_df,
+    aes(label = pathway_label),
+    size = 2,
+    color = "black",
+    box.padding = 0.4,
+    point.padding = 0.4,
+    segment.color = "grey50",
+    segment.size = 0.4,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    seed = 123,
+    na.rm = TRUE
+  ) +
+  
+  scale_color_manual(
+    values = full_colors
+  ) +
+  
+  scale_size_continuous(
+    range = c(1.5, 4)
+  ) +
+  
+  labs(
+    x = "Enrichment Ratio",
+    y = expression(-log[10](italic(P))),
+    color = "Study",
+    size = "Hits"
+  ) +
+  
+  theme_bw(base_size = 7) +
+  
+  theme(
+    axis.text = element_text(size = 7),
+    axis.title = element_text(size = 7),
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 7),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    plot.margin = margin(5, 5, 5, 5)
+  ) +
+  
+  guides(
+    color =
+      guide_legend(
+        override.aes = list(size = 3)
+      )
+  )
+
+primary_msea_ora_plot
+
+# -------------------------------------------------------------------
+# Save figure
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    "../3. Results/Primary Outcomes (MSEA ORA)/primary_msea_ora_plot.png",
+  plot = primary_msea_ora_plot,
+  width = 2796,
+  height = 1290,
+  units = "px",
+  dpi = 600,
+  bg = "white"
+)
+```
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

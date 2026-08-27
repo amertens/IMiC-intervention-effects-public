@@ -1,0 +1,53 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Glutamate Metabolism",8,2,5,0.0251,1,1
+"Purine Metabolism",9,2.25,5,0.0456,1,1
+"Glycerolipid Metabolism",2,0.5,2,0.0617,1,1
+"Mitochondrial Electron Transport Chain",2,0.5,2,0.0617,1,1
+"Urea Cycle",10,2.5,5,0.0737,1,1
+"Citric Acid Cycle",5,1.25,3,0.101,1,1
+"Ammonia Recycling",8,2,4,0.11,1,1
+"Warburg Effect",9,2.25,4,0.162,1,1
+"Tyrosine Metabolism",6,1.5,3,0.167,1,1
+"Beta-Alanine Metabolism",6,1.5,3,0.167,1,1
+"Phenylalanine and Tyrosine Metabolism",6,1.5,3,0.167,1,1
+"Arginine and Proline Metabolism",10,2.5,4,0.22,1,1
+"Steroid Biosynthesis",1,0.25,1,0.25,1,1
+"Pyrimidine Metabolism",1,0.25,1,0.25,1,1
+"Fatty Acid Elongation In Mitochondria",1,0.25,1,0.25,1,1
+"Ketone Body Metabolism",1,0.25,1,0.25,1,1
+"Butyrate Metabolism",1,0.25,1,0.25,1,1
+"Pyruvaldehyde Degradation",1,0.25,1,0.25,1,1
+"Thyroid hormone synthesis",1,0.25,1,0.25,1,1
+"Alanine Metabolism",4,1,2,0.261,1,1
+"Aspartate Metabolism",8,2,3,0.32,1,1
+"Valine, Leucine and Isoleucine Degradation",5,1.25,2,0.367,1,1
+"Amino Sugar Metabolism",5,1.25,2,0.367,1,1
+"Glucose-Alanine Cycle",5,1.25,2,0.367,1,1
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,2.25,3,0.399,1,1
+"Catecholamine Biosynthesis",2,0.5,1,0.438,1,1
+"Pantothenate and CoA Biosynthesis",2,0.5,1,0.438,1,1
+"Selenoamino Acid Metabolism",2,0.5,1,0.438,1,1
+"Glycolysis",2,0.5,1,0.438,1,1
+"Nicotinate and Nicotinamide Metabolism",2,0.5,1,0.438,1,1
+"Fatty acid Metabolism",2,0.5,1,0.438,1,1
+"Phenylacetate Metabolism",2,0.5,1,0.438,1,1
+"Methylhistidine Metabolism",2,0.5,1,0.438,1,1
+"Oxidation of Branched Chain Fatty Acids",6,1.5,2,0.467,1,1
+"Propanoate Metabolism",3,0.75,1,0.58,1,1
+"Histidine Metabolism",3,0.75,1,0.58,1,1
+"Pyruvate Metabolism",3,0.75,1,0.58,1,1
+"Steroidogenesis",3,0.75,1,0.58,1,1
+"Phytanic Acid Peroxisomal Oxidation",3,0.75,1,0.58,1,1
+"Transfer of Acetyl Groups into Mitochondria",3,0.75,1,0.58,1,1
+"Cysteine Metabolism",4,1,1,0.686,1,1
+"Glutathione Metabolism",4,1,1,0.686,1,1
+"Tryptophan Metabolism",4,1,1,0.686,1,1
+"Malate-Aspartate Shuttle",4,1,1,0.686,1,1
+"Fatty Acid Biosynthesis",4,1,1,0.686,1,1
+"Glycine and Serine Metabolism",10,2.5,2,0.762,1,1
+"Sphingolipid Metabolism",5,1.25,1,0.766,1,1
+"Bile Acid Biosynthesis",5,1.25,1,0.766,1,1
+"Beta Oxidation of Very Long Chain Fatty Acids",5,1.25,1,0.766,1,1
+"Gluconeogenesis",5,1.25,1,0.766,1,1
+"Arachidonic Acid Metabolism",6,1.5,1,0.826,1,1
+"Carnitine Synthesis",6,1.5,1,0.826,1,1

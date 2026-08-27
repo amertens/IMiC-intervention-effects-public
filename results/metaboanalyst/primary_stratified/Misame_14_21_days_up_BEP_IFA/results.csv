@@ -1,0 +1,7 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/IFA","up","Pantothenate and CoA Biosynthesis",3,2,0.257,0.0148,1
+"Misame (14-21 days)","BEP/IFA","up","Riboflavin Metabolism",7,2,0.6,0.0952,1
+"Misame (14-21 days)","BEP/IFA","up","Beta-Alanine Metabolism",8,2,0.686,0.124,1
+"Misame (14-21 days)","BEP/IFA","up","Arginine and Proline Metabolism",5,1,0.429,0.38,1
+"Misame (14-21 days)","BEP/IFA","up","Pyrimidine Metabolism",5,1,0.429,0.38,1
+"Misame (14-21 days)","BEP/IFA","up","Vitamin B6 Metabolism",8,1,0.686,0.553,1

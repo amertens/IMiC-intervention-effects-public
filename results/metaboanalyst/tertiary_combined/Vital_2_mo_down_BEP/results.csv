@@ -1,0 +1,19 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP","down","Methionine Metabolism",11,3,0.143,0.000228,0.0191
+"Vital (2 mo.)","BEP","down","Glycine and Serine Metabolism",13,3,0.169,0.00039,0.0191
+"Vital (2 mo.)","BEP","down","Bile Acid Biosynthesis",15,3,0.195,0.000613,0.02
+"Vital (2 mo.)","BEP","down","Porphyrin Metabolism",1,1,0.013,0.013,0.319
+"Vital (2 mo.)","BEP","down","Pyruvate Metabolism",2,1,0.026,0.0259,0.423
+"Vital (2 mo.)","BEP","down","Gluconeogenesis",2,1,0.026,0.0259,0.423
+"Vital (2 mo.)","BEP","down","Alanine Metabolism",3,1,0.039,0.0386,0.445
+"Vital (2 mo.)","BEP","down","Homocysteine Degradation",3,1,0.039,0.0386,0.445
+"Vital (2 mo.)","BEP","down","Catecholamine Biosynthesis",4,1,0.052,0.0511,0.445
+"Vital (2 mo.)","BEP","down","Glutathione Metabolism",4,1,0.052,0.0511,0.445
+"Vital (2 mo.)","BEP","down","Betaine Metabolism",4,1,0.052,0.0511,0.445
+"Vital (2 mo.)","BEP","down","Spermidine and Spermine Biosynthesis",5,1,0.065,0.0636,0.445
+"Vital (2 mo.)","BEP","down","Carnitine Synthesis",5,1,0.065,0.0636,0.445
+"Vital (2 mo.)","BEP","down","Warburg Effect",5,1,0.065,0.0636,0.445
+"Vital (2 mo.)","BEP","down","Purine Metabolism",6,1,0.078,0.0759,0.496
+"Vital (2 mo.)","BEP","down","Ammonia Recycling",7,1,0.0911,0.088,0.539
+"Vital (2 mo.)","BEP","down","Glutamate Metabolism",8,1,0.104,0.1,0.576
+"Vital (2 mo.)","BEP","down","Arginine and Proline Metabolism",10,1,0.13,0.124,0.673

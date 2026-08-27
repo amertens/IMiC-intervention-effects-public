@@ -1,0 +1,63 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Nico+Az.","up","Nicotinate and Nicotinamide Metabolism",7,5,1.4,0.00121,0.119
+"Elicit (5 mo.)","Nico+Az.","up","Retinol Metabolism",3,2,0.6,0.0952,1
+"Elicit (5 mo.)","Nico+Az.","up","Lysine Degradation",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Phytanic Acid Peroxisomal Oxidation",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Transfer of Acetyl Groups into Mitochondria",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Fatty Acid Elongation In Mitochondria",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Ketone Body Metabolism",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Steroidogenesis",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Cardiolipin Biosynthesis",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Androstenedione Metabolism",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Threonine and 2-Oxobutanoate Degradation",5,2,1,0.256,1
+"Elicit (5 mo.)","Nico+Az.","up","Propanoate Metabolism",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Valine, Leucine and Isoleucine Degradation",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Citric Acid Cycle",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Pterine Biosynthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Caffeine Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Selenoamino Acid Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycerolipid Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Androgen and Estrogen Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycerol Phosphate Shuttle",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glucose-Alanine Cycle",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Electron Transport Chain",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Ethanol Degradation",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Inositol Phosphate Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Carnitine Synthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","De Novo Triacylglycerol Biosynthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Estrone Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Warburg Effect",7,2,1.4,0.432,1
+"Elicit (5 mo.)","Nico+Az.","up","Cysteine Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Oxidation of Branched Chain Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Bile Acid Biosynthesis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycolysis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Fatty acid Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Fructose and Mannose Degradation",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Butyrate Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Thiamine Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Malate-Aspartate Shuttle",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Plasmalogen Synthesis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Pyruvate Metabolism",8,2,1.6,0.516,1
+"Elicit (5 mo.)","Nico+Az.","up","Nucleotide Sugars Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Inositol Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Galactose Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Starch and Sucrose Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Urea Cycle",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Tryptophan Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Gluconeogenesis",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycine and Serine Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Ammonia Recycling",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Arginine and Proline Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Porphyrin Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Phospholipid Biosynthesis",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Folate Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Betaine Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Methionine Metabolism",6,1,1.2,0.768,1
+"Elicit (5 mo.)","Nico+Az.","up","Glutamate Metabolism",6,1,1.2,0.768,1
+"Elicit (5 mo.)","Nico+Az.","up","Histidine Metabolism",7,1,1.4,0.824,1
+"Elicit (5 mo.)","Nico+Az.","up","Purine Metabolism",7,1,1.4,0.824,1
+"Elicit (5 mo.)","Nico+Az.","up","Tyrosine Metabolism",8,1,1.6,0.868,1
+"Elicit (5 mo.)","Nico+Az.","up","Beta-Alanine Metabolism",8,1,1.6,0.868,1

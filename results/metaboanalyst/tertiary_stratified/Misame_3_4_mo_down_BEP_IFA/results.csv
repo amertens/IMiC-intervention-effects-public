@@ -1,0 +1,6 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (3-4 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0065,0.0065,0.634
+"Misame (3-4 mo.)","BEP/IFA","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.0195,0.0194,0.634
+"Misame (3-4 mo.)","BEP/IFA","down","Fatty Acid Biosynthesis",3,1,0.0195,0.0194,0.634
+"Misame (3-4 mo.)","BEP/IFA","down","Methionine Metabolism",11,1,0.0715,0.0698,1
+"Misame (3-4 mo.)","BEP/IFA","down","Glycine and Serine Metabolism",13,1,0.0846,0.0821,1

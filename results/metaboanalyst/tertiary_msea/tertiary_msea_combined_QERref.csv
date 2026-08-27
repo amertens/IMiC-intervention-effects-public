@@ -1,0 +1,66 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+MISAME-III,1-2 mo.,BEP,down,Spermidine and Spermine Biosynthesis,4,0.0444,3,4.06e-6,3.98e-4,-67.56756756756756
+MISAME-III,14-21 days,BEP,down,Glycine and Serine Metabolism,9,0.0817,3,4.25e-5,0.00416,-36.719706242350064
+MISAME-III,3-4 mo.,BEP,down,Glycine and Serine Metabolism,9,0.0817,3,4.25e-5,0.00416,-36.719706242350064
+MISAME-III,14-21 days,BEP,up,Nucleotide Sugars Metabolism,1,0.00101,1,0.00101,0.0989,990.09900990099
+MISAME-III,14-21 days,BEP,down,Aspartate Metabolism,6,0.0545,2,0.00108,0.0529,-36.69724770642202
+MISAME-III,1-2 mo.,BEP,up,Bile Acid Biosynthesis,14,0.0565,2,0.0011,0.107,35.39823008849557
+MISAME-III,14-21 days,BEP,down,Arginine and Proline Metabolism,8,0.0727,2,0.002,0.0652,-27.51031636863824
+MISAME-III,3-4 mo.,BEP,down,Methionine Metabolism,8,0.0727,2,0.002,0.0979,-27.51031636863824
+MISAME-III,14-21 days,BEP,up,Lactose Degradation,2,0.00202,1,0.00202,0.0989,495.049504950495
+MISAME-III,1-2 mo.,BEP,down,Arginine and Proline Metabolism,8,0.0888,2,0.00303,0.0948,-22.52252252252252
+MISAME-III,1-2 mo.,BEP,down,Methionine Metabolism,8,0.0888,2,0.00303,0.0948,-22.52252252252252
+MISAME-III,1-2 mo.,BEP,down,Glycine and Serine Metabolism,9,0.0999,2,0.00387,0.0948,-20.02002002002002
+MISAME-III,1-2 mo.,BEP,up,Pyrimidine Metabolism,1,0.00404,1,0.00404,0.197,247.5247524752475
+MISAME-III,3-4 mo.,BEP,up,Tryptophan Metabolism,4,0.00404,1,0.00404,0.396,247.5247524752475
+MISAME-III,14-21 days,BEP,up,Sphingolipid Metabolism,5,0.00505,1,0.00505,0.124,198.01980198019803
+MISAME-III,14-21 days,BEP,up,Galactose Metabolism,5,0.00505,1,0.00505,0.124,198.01980198019803
+MISAME-III,1-2 mo.,BEP,up,Propanoate Metabolism,2,0.00807,1,0.00806,0.197,123.91573729863691
+MISAME-III,1-2 mo.,BEP,up,Taurine and Hypotaurine Metabolism,2,0.00807,1,0.00806,0.197,123.91573729863691
+MISAME-III,14-21 days,BEP,down,Cysteine Metabolism,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,14-21 days,BEP,down,Pantothenate and CoA Biosynthesis,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,14-21 days,BEP,down,Arachidonic Acid Metabolism,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,14-21 days,BEP,down,Threonine and 2-Oxobutanoate Degradation,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,14-21 days,BEP,down,Homocysteine Degradation,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,14-21 days,BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.00908,1,0.00908,0.0989,-110.13215859030838
+MISAME-III,3-4 mo.,BEP,down,Cysteine Metabolism,1,0.00908,1,0.00908,0.148,-110.13215859030838
+MISAME-III,3-4 mo.,BEP,down,Pantothenate and CoA Biosynthesis,1,0.00908,1,0.00908,0.148,-110.13215859030838
+MISAME-III,3-4 mo.,BEP,down,Arachidonic Acid Metabolism,1,0.00908,1,0.00908,0.148,-110.13215859030838
+MISAME-III,3-4 mo.,BEP,down,Homocysteine Degradation,1,0.00908,1,0.00908,0.148,-110.13215859030838
+MISAME-III,1-2 mo.,BEP,down,Ketone Body Metabolism,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,down,Butyrate Metabolism,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,down,Arachidonic Acid Metabolism,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,down,Mitochondrial Electron Transport Chain,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,down,Phytanic Acid Peroxisomal Oxidation,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0111,1,0.0111,0.109,-90.09009009009009
+MISAME-III,1-2 mo.,BEP,up,Beta-Alanine Metabolism,4,0.0161,1,0.0161,0.315,62.11180124223603
+MISAME-III,14-21 days,BEP,down,Taurine and Hypotaurine Metabolism,2,0.0182,1,0.0181,0.161,-54.94505494505494
+MISAME-III,14-21 days,BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,2,0.0182,1,0.0181,0.161,-54.94505494505494
+MISAME-III,3-4 mo.,BEP,down,Taurine and Hypotaurine Metabolism,2,0.0182,1,0.0181,0.253,-54.94505494505494
+MISAME-III,1-2 mo.,BEP,up,Histidine Metabolism,5,0.0202,1,0.0201,0.328,49.504950495049506
+MISAME-III,1-2 mo.,BEP,down,"Valine, Leucine and Isoleucine Degradation",2,0.0222,1,0.0221,0.155,-45.04504504504504
+MISAME-III,1-2 mo.,BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,2,0.0222,1,0.0221,0.155,-45.04504504504504
+MISAME-III,1-2 mo.,BEP,down,Citric Acid Cycle,2,0.0222,1,0.0221,0.155,-45.04504504504504
+MISAME-III,1-2 mo.,BEP,down,Warburg Effect,2,0.0222,1,0.0221,0.155,-45.04504504504504
+MISAME-III,1-2 mo.,BEP,up,Aspartate Metabolism,6,0.0242,1,0.024,0.336,41.32231404958678
+MISAME-III,14-21 days,BEP,down,Ammonia Recycling,3,0.0272,1,0.027,0.189,-36.76470588235294
+MISAME-III,14-21 days,BEP,down,Glutathione Metabolism,3,0.0272,1,0.027,0.189,-36.76470588235294
+MISAME-III,14-21 days,BEP,down,Fatty Acid Biosynthesis,3,0.0272,1,0.027,0.189,-36.76470588235294
+MISAME-III,3-4 mo.,BEP,down,Glutathione Metabolism,3,0.0272,1,0.027,0.331,-36.76470588235294
+MISAME-III,1-2 mo.,BEP,down,Oxidation of Branched Chain Fatty Acids,3,0.0333,1,0.033,0.202,-30.030030030030026
+MISAME-III,1-2 mo.,BEP,down,Fatty Acid Biosynthesis,3,0.0333,1,0.033,0.202,-30.030030030030026
+MISAME-III,14-21 days,BEP,down,Beta-Alanine Metabolism,4,0.0363,1,0.0359,0.22,-27.548209366391184
+MISAME-III,14-21 days,BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,4,0.0363,1,0.0359,0.22,-27.548209366391184
+MISAME-III,3-4 mo.,BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,4,0.0363,1,0.0359,0.352,-27.548209366391184
+MISAME-III,3-4 mo.,BEP,down,Spermidine and Spermine Biosynthesis,4,0.0363,1,0.0359,0.352,-27.548209366391184
+MISAME-III,1-2 mo.,BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,4,0.0444,1,0.0437,0.238,-22.52252252252252
+MISAME-III,1-2 mo.,BEP,down,Carnitine Synthesis,4,0.0444,1,0.0437,0.238,-22.52252252252252
+MISAME-III,14-21 days,BEP,down,Histidine Metabolism,5,0.0454,1,0.0447,0.23,-22.026431718061673
+MISAME-III,14-21 days,BEP,down,Urea Cycle,5,0.0454,1,0.0447,0.23,-22.026431718061673
+MISAME-III,14-21 days,BEP,down,Glutamate Metabolism,5,0.0454,1,0.0447,0.23,-22.026431718061673
+MISAME-III,3-4 mo.,BEP,down,Urea Cycle,5,0.0454,1,0.0447,0.365,-22.026431718061673
+MISAME-III,3-4 mo.,BEP,down,Glutamate Metabolism,5,0.0454,1,0.0447,0.365,-22.026431718061673
+MISAME-III,1-2 mo.,BEP,down,Urea Cycle,5,0.0555,1,0.0544,0.267,-18.01801801801802
+MISAME-III,1-2 mo.,BEP,down,Glutamate Metabolism,5,0.0555,1,0.0544,0.267,-18.01801801801802
+MISAME-III,14-21 days,BEP,down,Methionine Metabolism,8,0.0727,1,0.0706,0.346,-13.75515818431912
+MISAME-III,3-4 mo.,BEP,down,Arginine and Proline Metabolism,8,0.0727,1,0.0706,0.532,-13.75515818431912

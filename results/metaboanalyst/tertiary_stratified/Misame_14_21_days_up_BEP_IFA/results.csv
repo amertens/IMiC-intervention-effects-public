@@ -1,0 +1,15 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/IFA","up","Aspartate Metabolism",8,2,0.065,0.00145,0.143
+"Misame (14-21 days)","BEP/IFA","up","Pyrimidine Metabolism",2,1,0.0163,0.0162,0.297
+"Misame (14-21 days)","BEP/IFA","up","Fatty acid Metabolism",2,1,0.0163,0.0162,0.297
+"Misame (14-21 days)","BEP/IFA","up","Steroidogenesis",2,1,0.0163,0.0162,0.297
+"Misame (14-21 days)","BEP/IFA","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.0163,0.0162,0.297
+"Misame (14-21 days)","BEP/IFA","up","Propanoate Metabolism",3,1,0.0244,0.0242,0.297
+"Misame (14-21 days)","BEP/IFA","up","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.0244,0.0242,0.297
+"Misame (14-21 days)","BEP/IFA","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.0244,0.0242,0.297
+"Misame (14-21 days)","BEP/IFA","up","Oxidation of Branched Chain Fatty Acids",4,1,0.0325,0.0322,0.351
+"Misame (14-21 days)","BEP/IFA","up","Carnitine Synthesis",5,1,0.0407,0.0401,0.393
+"Misame (14-21 days)","BEP/IFA","up","Tryptophan Metabolism",6,1,0.0488,0.048,0.421
+"Misame (14-21 days)","BEP/IFA","up","Beta-Alanine Metabolism",7,1,0.0569,0.0558,0.421
+"Misame (14-21 days)","BEP/IFA","up","Ammonia Recycling",7,1,0.0569,0.0558,0.421
+"Misame (14-21 days)","BEP/IFA","up","Histidine Metabolism",8,1,0.065,0.0636,0.445

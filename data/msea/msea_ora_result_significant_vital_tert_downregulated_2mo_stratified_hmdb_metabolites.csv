@@ -1,0 +1,5 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Pyruvate Metabolism",2,0.0127,2,3.54e-05,0.00347,0.00347
+"Pyruvaldehyde Degradation",1,0.00635,1,0.00635,0.616,0.311
+"Gluconeogenesis",2,0.0127,1,0.0127,1,0.414
+"Warburg Effect",5,0.0318,1,0.0314,1,0.77

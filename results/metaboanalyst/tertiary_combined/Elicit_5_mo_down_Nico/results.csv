@@ -1,0 +1,11 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Nico","down","Malate-Aspartate Shuttle",2,1,0.013,0.013,0.557
+"Elicit (5 mo.)","Nico","down","Tyrosine Metabolism",5,1,0.0325,0.0322,0.557
+"Elicit (5 mo.)","Nico","down","Purine Metabolism",6,1,0.039,0.0385,0.557
+"Elicit (5 mo.)","Nico","down","Tryptophan Metabolism",6,1,0.039,0.0385,0.557
+"Elicit (5 mo.)","Nico","down","Beta-Alanine Metabolism",7,1,0.0455,0.0449,0.557
+"Elicit (5 mo.)","Nico","down","Ammonia Recycling",7,1,0.0455,0.0449,0.557
+"Elicit (5 mo.)","Nico","down","Urea Cycle",7,1,0.0455,0.0449,0.557
+"Elicit (5 mo.)","Nico","down","Aspartate Metabolism",8,1,0.052,0.0511,0.557
+"Elicit (5 mo.)","Nico","down","Glutamate Metabolism",8,1,0.052,0.0511,0.557
+"Elicit (5 mo.)","Nico","down","Arginine and Proline Metabolism",10,1,0.065,0.0636,0.624

@@ -1,0 +1,85 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+ELICIT,1 mo.,Nico+Az.,down,Methionine Metabolism,8,0.0565,4,6.07e-8,5.95e-6,-70.79646017699115
+ELICIT,1 mo.,Nico+Az.,down,Glutamate Metabolism,5,0.0353,3,2.15e-6,1.05e-4,-84.98583569405099
+ELICIT,1 mo.,Nico+Az.,down,Glycine and Serine Metabolism,9,0.0636,3,1.79e-5,5.83e-4,-47.16981132075471
+ELICIT,5 mo.,Az.,down,Propanoate Metabolism,2,0.0182,2,7.34e-5,0.00719,-109.89010989010988
+ELICIT,1 mo.,Nico+Az.,down,Glutathione Metabolism,3,0.0212,2,1.28e-4,0.00314,-94.33962264150944
+ELICIT,1 mo.,Nico+Az.,down,Carnitine Synthesis,4,0.0283,2,2.55e-4,0.005,-70.6713780918728
+ELICIT,5 mo.,Az.,down,Purine Metabolism,4,0.0363,2,4.36e-4,0.0214,-55.09641873278237
+ELICIT,1 mo.,Nico+Az.,down,Arginine and Proline Metabolism,8,0.0565,2,0.00117,0.0192,-35.39823008849557
+ELICIT,5 mo.,Az.,down,Arginine and Proline Metabolism,8,0.0727,2,0.002,0.0489,-27.51031636863824
+ELICIT,5 mo.,Az.,down,Methionine Metabolism,8,0.0727,2,0.002,0.0489,-27.51031636863824
+ELICIT,5 mo.,Az.,up,Nucleotide Sugars Metabolism,1,0.00202,1,0.00202,0.197,495.049504950495
+ELICIT,5 mo.,Az.,down,Glycine and Serine Metabolism,9,0.0817,2,0.00256,0.0501,-24.479804161566708
+ELICIT,5 mo.,Nico+Az.,down,Steroid Biosynthesis,1,0.00303,1,0.00303,0.0989,-330.03300330033
+ELICIT,5 mo.,Nico+Az.,down,Glycerolipid Metabolism,1,0.00303,1,0.00303,0.0989,-330.03300330033
+ELICIT,5 mo.,Nico+Az.,down,Fatty Acid Elongation In Mitochondria,1,0.00303,1,0.00303,0.0989,-330.03300330033
+ELICIT,5 mo.,Nico,down,Bile Acid Biosynthesis,14,0.0989,2,0.00374,0.345,-20.222446916076844
+ELICIT,5 mo.,Az.,up,Lactose Degradation,2,0.00404,1,0.00403,0.197,247.5247524752475
+ELICIT,5 mo.,Az.,down,Bile Acid Biosynthesis,14,0.127,2,0.00631,0.103,-15.748031496062993
+ELICIT,1 mo.,Nico,down,Ketone Body Metabolism,1,0.00706,1,0.00706,0.173,-141.64305949008497
+ELICIT,1 mo.,Nico,down,Butyrate Metabolism,1,0.00706,1,0.00706,0.173,-141.64305949008497
+ELICIT,1 mo.,Nico,down,Mitochondrial Electron Transport Chain,1,0.00706,1,0.00706,0.173,-141.64305949008497
+ELICIT,1 mo.,Nico,down,Phytanic Acid Peroxisomal Oxidation,1,0.00706,1,0.00706,0.173,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Cysteine Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Porphyrin Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phospholipid Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Pantothenate and CoA Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Ketone Body Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Butyrate Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Mitochondrial Electron Transport Chain,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phytanic Acid Peroxisomal Oxidation,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Homocysteine Degradation,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylcholine Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylethanolamine Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,5 mo.,Az.,up,Alpha Linolenic Acid and Linoleic Acid Metabolism,4,0.00807,1,0.00806,0.197,123.91573729863691
+ELICIT,5 mo.,Nico+Az.,down,Ammonia Recycling,3,0.00908,1,0.00906,0.148,-110.13215859030838
+ELICIT,5 mo.,Nico+Az.,down,Fatty acid Metabolism,3,0.00908,1,0.00906,0.148,-110.13215859030838
+ELICIT,5 mo.,Nico+Az.,down,Fatty Acid Biosynthesis,3,0.00908,1,0.00906,0.148,-110.13215859030838
+ELICIT,5 mo.,Az.,down,Porphyrin Metabolism,1,0.00908,1,0.00908,0.111,-110.13215859030838
+ELICIT,5 mo.,Az.,down,Pyrimidine Metabolism,1,0.00908,1,0.00908,0.111,-110.13215859030838
+ELICIT,5 mo.,Az.,up,Sphingolipid Metabolism,5,0.0101,1,0.0101,0.197,99.00990099009901
+ELICIT,5 mo.,Az.,up,Galactose Metabolism,5,0.0101,1,0.0101,0.197,99.00990099009901
+ELICIT,1 mo.,Nico,down,"Valine, Leucine and Isoleucine Degradation",2,0.0141,1,0.0141,0.197,-70.92198581560284
+ELICIT,1 mo.,Nico,down,Citric Acid Cycle,2,0.0141,1,0.0141,0.197,-70.92198581560284
+ELICIT,1 mo.,Nico,down,Warburg Effect,2,0.0141,1,0.0141,0.197,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,Taurine and Hypotaurine Metabolism,2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,"Valine, Leucine and Isoleucine Degradation",2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,Alanine Metabolism,2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,Citric Acid Cycle,2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,Betaine Metabolism,2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,1 mo.,Nico+Az.,down,Warburg Effect,2,0.0141,1,0.0141,0.06,-70.92198581560284
+ELICIT,5 mo.,Nico,down,Propanoate Metabolism,2,0.0141,1,0.0141,0.345,-70.92198581560284
+ELICIT,5 mo.,Nico,down,Taurine and Hypotaurine Metabolism,2,0.0141,1,0.0141,0.345,-70.92198581560284
+ELICIT,5 mo.,Nico,down,"Valine, Leucine and Isoleucine Degradation",2,0.0141,1,0.0141,0.345,-70.92198581560284
+ELICIT,1 mo.,Nico,up,Purine Metabolism,4,0.0161,1,0.0161,0.783,62.11180124223603
+ELICIT,5 mo.,Az.,down,Taurine and Hypotaurine Metabolism,2,0.0182,1,0.0181,0.161,-54.94505494505494
+ELICIT,5 mo.,Az.,down,"Valine, Leucine and Isoleucine Degradation",2,0.0182,1,0.0181,0.161,-54.94505494505494
+ELICIT,5 mo.,Az.,down,Alanine Metabolism,2,0.0182,1,0.0181,0.161,-54.94505494505494
+ELICIT,5 mo.,Nico+Az.,down,Aspartate Metabolism,6,0.0182,1,0.0181,0.253,-54.94505494505494
+ELICIT,1 mo.,Nico,up,Urea Cycle,5,0.0202,1,0.0201,0.783,49.504950495049506
+ELICIT,1 mo.,Nico,down,Oxidation of Branched Chain Fatty Acids,3,0.0212,1,0.0211,0.258,-47.16981132075472
+ELICIT,1 mo.,Nico+Az.,down,Ammonia Recycling,3,0.0212,1,0.0211,0.0826,-47.16981132075472
+ELICIT,1 mo.,Nico+Az.,down,Oxidation of Branched Chain Fatty Acids,3,0.0212,1,0.0211,0.0826,-47.16981132075472
+ELICIT,1 mo.,Nico,up,Aspartate Metabolism,6,0.0242,1,0.024,0.783,41.32231404958678
+ELICIT,5 mo.,Az.,down,Ammonia Recycling,3,0.0272,1,0.027,0.204,-36.76470588235294
+ELICIT,5 mo.,Az.,down,Glutathione Metabolism,3,0.0272,1,0.027,0.204,-36.76470588235294
+ELICIT,1 mo.,Nico,down,Carnitine Synthesis,4,0.0283,1,0.028,0.305,-35.3356890459364
+ELICIT,1 mo.,Nico+Az.,down,Purine Metabolism,4,0.0283,1,0.028,0.102,-35.3356890459364
+ELICIT,1 mo.,Nico+Az.,down,Spermidine and Spermine Biosynthesis,4,0.0283,1,0.028,0.102,-35.3356890459364
+ELICIT,5 mo.,Nico,down,Purine Metabolism,4,0.0283,1,0.028,0.457,-35.3356890459364
+ELICIT,5 mo.,Nico,down,Tryptophan Metabolism,4,0.0283,1,0.028,0.457,-35.3356890459364
+ELICIT,1 mo.,Nico,up,Arginine and Proline Metabolism,8,0.0323,1,0.0319,0.783,30.959752321981423
+ELICIT,1 mo.,Nico,down,Glutamate Metabolism,5,0.0353,1,0.0349,0.342,-28.328611898016998
+ELICIT,5 mo.,Az.,down,Beta-Alanine Metabolism,4,0.0363,1,0.0359,0.234,-27.548209366391184
+ELICIT,5 mo.,Az.,down,Carnitine Synthesis,4,0.0363,1,0.0359,0.234,-27.548209366391184
+ELICIT,5 mo.,Nico+Az.,down,Bile Acid Biosynthesis,14,0.0424,1,0.0418,0.512,-23.58490566037736
+ELICIT,5 mo.,Az.,down,Histidine Metabolism,5,0.0454,1,0.0447,0.258,-22.026431718061673
+ELICIT,5 mo.,Az.,down,Glutamate Metabolism,5,0.0454,1,0.0447,0.258,-22.026431718061673
+ELICIT,5 mo.,Az.,down,Aspartate Metabolism,6,0.0545,1,0.0534,0.291,-18.34862385321101
+ELICIT,1 mo.,Nico,down,Arginine and Proline Metabolism,8,0.0565,1,0.0553,0.452,-17.699115044247787
+ELICIT,1 mo.,Nico,down,Methionine Metabolism,8,0.0565,1,0.0553,0.452,-17.699115044247787
+ELICIT,5 mo.,Nico,down,Methionine Metabolism,8,0.0565,1,0.0553,0.76,-17.699115044247787
+ELICIT,1 mo.,Nico,down,Glycine and Serine Metabolism,9,0.0636,1,0.062,0.468,-15.723270440251572
+ELICIT,5 mo.,Nico,down,Glycine and Serine Metabolism,9,0.0636,1,0.062,0.76,-15.723270440251572
+ELICIT,1 mo.,Nico+Az.,down,Bile Acid Biosynthesis,14,0.0989,1,0.0951,0.333,-10.111223458038422

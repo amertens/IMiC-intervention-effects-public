@@ -1,0 +1,8 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP","up","Bile Acid Biosynthesis",15,2,0.0976,0.00324,0.318
+"Misame (1-2 mo.)","BEP","up","Taurine and Hypotaurine Metabolism",2,1,0.013,0.013,0.424
+"Misame (1-2 mo.)","BEP","up","Pyrimidine Metabolism",2,1,0.013,0.013,0.424
+"Misame (1-2 mo.)","BEP","up","Propanoate Metabolism",3,1,0.0195,0.0194,0.476
+"Misame (1-2 mo.)","BEP","up","Beta-Alanine Metabolism",7,1,0.0455,0.0449,0.716
+"Misame (1-2 mo.)","BEP","up","Histidine Metabolism",8,1,0.052,0.0511,0.716
+"Misame (1-2 mo.)","BEP","up","Aspartate Metabolism",8,1,0.052,0.0511,0.716

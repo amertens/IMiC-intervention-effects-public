@@ -1,0 +1,1030 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Misame (14-21 days)","BEP/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (14-21 days)","BEP/BEP","up","Thiamine Metabolism",3,2,1.11,0.306,1
+"Misame (14-21 days)","BEP/BEP","up","Vitamin B6 Metabolism",8,4,2.97,0.325,1
+"Misame (14-21 days)","BEP/BEP","up","Biotin Metabolism",1,1,0.371,0.371,1
+"Misame (14-21 days)","BEP/BEP","up","Fatty Acid Biosynthesis",2,1,0.743,0.612,1
+"Misame (14-21 days)","BEP/BEP","up","Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1
+"Misame (14-21 days)","BEP/BEP","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Misame (14-21 days)","BEP/BEP","up","Alanine Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Gluconeogenesis",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Transfer of Acetyl Groups into Mitochondria",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Beta-Alanine Metabolism",8,2,2.97,0.892,1
+"Misame (14-21 days)","BEP/BEP","up","Ammonia Recycling",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Arginine and Proline Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Propanoate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Citric Acid Cycle",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Glutamate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Warburg Effect",7,1,2.6,0.975,1
+"Misame (14-21 days)","BEP/BEP","up","Pyruvate Metabolism",8,1,2.97,0.986,1
+"Misame (14-21 days)","BEP/IFA","up","Pantothenate and CoA Biosynthesis",3,2,0.257,0.0148,1
+"Misame (14-21 days)","BEP/IFA","up","Riboflavin Metabolism",7,2,0.6,0.0952,1
+"Misame (14-21 days)","BEP/IFA","up","Beta-Alanine Metabolism",8,2,0.686,0.124,1
+"Misame (14-21 days)","BEP/IFA","up","Arginine and Proline Metabolism",5,1,0.429,0.38,1
+"Misame (14-21 days)","BEP/IFA","up","Pyrimidine Metabolism",5,1,0.429,0.38,1
+"Misame (14-21 days)","BEP/IFA","up","Vitamin B6 Metabolism",8,1,0.686,0.553,1
+"Misame (14-21 days)","IFA/BEP","down","Ubiquinone Biosynthesis",1,1,0.0286,0.0286,1
+"Misame (14-21 days)","IFA/BEP","down","Taurine and Hypotaurine Metabolism",2,1,0.0571,0.0571,1
+"Misame (14-21 days)","IFA/BEP","down","Steroid Biosynthesis",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Oxidation of Branched Chain Fatty Acids",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Bile Acid Biosynthesis",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Nucleotide Sugars Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Galactose Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Arachidonic Acid Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Phenylalanine and Tyrosine Metabolism",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Porphyrin Metabolism",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Lactose Synthesis",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Purine Metabolism",7,1,0.2,0.2,1
+"Misame (14-21 days)","IFA/BEP","down","Tyrosine Metabolism",8,1,0.229,0.229,1
+"Misame (14-21 days)","IFA/BEP","up","Vitamin B6 Metabolism",8,5,2.97,0.103,1
+"Misame (14-21 days)","IFA/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Misame (14-21 days)","IFA/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (14-21 days)","IFA/BEP","up","Thiamine Metabolism",3,2,1.11,0.306,1
+"Misame (14-21 days)","IFA/BEP","up","Homocysteine Degradation",1,1,0.371,0.371,1
+"Misame (14-21 days)","IFA/BEP","up","Catecholamine Biosynthesis",2,1,0.743,0.612,1
+"Misame (14-21 days)","IFA/BEP","up","Taurine and Hypotaurine Metabolism",2,1,0.743,0.612,1
+"Misame (14-21 days)","IFA/BEP","up","Selenoamino Acid Metabolism",2,1,0.743,0.612,1
+"Misame (14-21 days)","IFA/BEP","up","Glucose-Alanine Cycle",2,1,0.743,0.612,1
+"Misame (14-21 days)","IFA/BEP","up","Carnitine Synthesis",2,1,0.743,0.612,1
+"Misame (14-21 days)","IFA/BEP","up","Arginine and Proline Metabolism",5,2,1.86,0.626,1
+"Misame (14-21 days)","IFA/BEP","up","Beta-Alanine Metabolism",8,3,2.97,0.645,1
+"Misame (14-21 days)","IFA/BEP","up","Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1
+"Misame (14-21 days)","IFA/BEP","up","Cysteine Metabolism",3,1,1.11,0.765,1
+"Misame (14-21 days)","IFA/BEP","up","Malate-Aspartate Shuttle",3,1,1.11,0.765,1
+"Misame (14-21 days)","IFA/BEP","up","Spermidine and Spermine Biosynthesis",3,1,1.11,0.765,1
+"Misame (14-21 days)","IFA/BEP","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Misame (14-21 days)","IFA/BEP","up","Sphingolipid Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Lysine Degradation",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Alanine Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Starch and Sucrose Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Urea Cycle",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Tryptophan Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Aspartate Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","IFA/BEP","up","Glycine and Serine Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Phenylalanine and Tyrosine Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Ammonia Recycling",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Porphyrin Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Folate Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.86,0.919,1
+"Misame (14-21 days)","IFA/BEP","up","Propanoate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","IFA/BEP","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","IFA/BEP","up","Glutamate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","IFA/BEP","up","Histidine Metabolism",7,1,2.6,0.975,1
+"Misame (14-21 days)","IFA/BEP","up","Tyrosine Metabolism",8,1,2.97,0.986,1
+"Misame (1-2 mo.)","BEP/BEP","down","Degradation of Superoxides",3,2,0.343,0.029,1
+"Misame (1-2 mo.)","BEP/BEP","down","Transfer of Acetyl Groups into Mitochondria",4,2,0.457,0.0557,1
+"Misame (1-2 mo.)","BEP/BEP","down","Propanoate Metabolism",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","BEP/BEP","down","Citric Acid Cycle",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","BEP/BEP","down","Histidine Metabolism",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","BEP/BEP","down","Warburg Effect",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","BEP/BEP","down","Pyruvate Metabolism",8,2,0.914,0.218,1
+"Misame (1-2 mo.)","BEP/BEP","down","Catecholamine Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","BEP/BEP","down","Fatty Acid Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","BEP/BEP","down","Oxidation of Branched Chain Fatty Acids",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/BEP","down","Thiamine Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/BEP","down","Inositol Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Lysine Degradation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Alanine Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Urea Cycle",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Gluconeogenesis",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","BEP/BEP","down","Arginine and Proline Metabolism",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","BEP/BEP","down","Phospholipid Biosynthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","BEP/BEP","down","Lactose Synthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","BEP/BEP","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","BEP/BEP","down","Valine, Leucine and Isoleucine Degradation",6,1,0.686,0.546,1
+"Misame (1-2 mo.)","BEP/BEP","down","Riboflavin Metabolism",7,1,0.8,0.609,1
+"Misame (1-2 mo.)","BEP/BEP","down","Tyrosine Metabolism",8,1,0.914,0.665,1
+"Misame (1-2 mo.)","BEP/BEP","down","Beta-Alanine Metabolism",8,1,0.914,0.665,1
+"Misame (1-2 mo.)","BEP/BEP","up","Pantothenate and CoA Biosynthesis",3,2,0.857,0.19,1
+"Misame (1-2 mo.)","BEP/BEP","up","Nicotinate and Nicotinamide Metabolism",7,3,2,0.31,1
+"Misame (1-2 mo.)","BEP/BEP","up","Vitamin B6 Metabolism",8,3,2.29,0.411,1
+"Misame (1-2 mo.)","BEP/BEP","up","Lactose Degradation",2,1,0.571,0.496,1
+"Misame (1-2 mo.)","BEP/BEP","up","Trehalose Degradation",2,1,0.571,0.496,1
+"Misame (1-2 mo.)","BEP/BEP","up","Glycolysis",3,1,0.857,0.649,1
+"Misame (1-2 mo.)","BEP/BEP","up","Thiamine Metabolism",3,1,0.857,0.649,1
+"Misame (1-2 mo.)","BEP/BEP","up","Spermidine and Spermine Biosynthesis",3,1,0.857,0.649,1
+"Misame (1-2 mo.)","BEP/BEP","up","Riboflavin Metabolism",7,2,2,0.665,1
+"Misame (1-2 mo.)","BEP/BEP","up","Beta-Alanine Metabolism",8,2,2.29,0.75,1
+"Misame (1-2 mo.)","BEP/BEP","up","Arginine and Proline Metabolism",5,1,1.43,0.836,1
+"Misame (1-2 mo.)","BEP/BEP","up","Pyrimidine Metabolism",5,1,1.43,0.836,1
+"Misame (1-2 mo.)","BEP/BEP","up","Betaine Metabolism",5,1,1.43,0.836,1
+"Misame (1-2 mo.)","BEP/BEP","up","Valine, Leucine and Isoleucine Degradation",6,1,1.71,0.891,1
+"Misame (1-2 mo.)","BEP/BEP","up","Methionine Metabolism",6,1,1.71,0.891,1
+"Misame (1-2 mo.)","BEP/BEP","up","Purine Metabolism",7,1,2,0.929,1
+"Misame (1-2 mo.)","BEP/BEP","up","Warburg Effect",7,1,2,0.929,1
+"Misame (1-2 mo.)","BEP/BEP","up","Pyruvate Metabolism",8,1,2.29,0.954,1
+"Misame (1-2 mo.)","BEP/IFA","down","Propanoate Metabolism",6,4,0.857,0.00136,0.0666
+"Misame (1-2 mo.)","BEP/IFA","down","Citric Acid Cycle",6,4,0.857,0.00136,0.0666
+"Misame (1-2 mo.)","BEP/IFA","down","Warburg Effect",7,4,1,0.00308,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Lysine Degradation",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Tryptophan Metabolism",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Transfer of Acetyl Groups into Mitochondria",4,3,0.571,0.00583,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Pyruvate Metabolism",8,4,1.14,0.00599,0.0839
+"Misame (1-2 mo.)","BEP/IFA","down","Arginine and Proline Metabolism",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Phospholipid Biosynthesis",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Threonine and 2-Oxobutanoate Degradation",5,3,0.714,0.0139,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Caffeine Metabolism",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Glycerolipid Metabolism",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Glycerol Phosphate Shuttle",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Electron Transport Chain",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,2,0.286,0.0168,0.11
+"Misame (1-2 mo.)","BEP/IFA","down","Valine, Leucine and Isoleucine Degradation",6,3,0.857,0.0264,0.162
+"Misame (1-2 mo.)","BEP/IFA","down","Histidine Metabolism",7,3,1,0.0438,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Bile Acid Biosynthesis",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty acid Metabolism",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Butyrate Metabolism",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Plasmalogen Synthesis",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,2,0.429,0.0474,0.202
+"Misame (1-2 mo.)","BEP/IFA","down","Inositol Metabolism",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Urea Cycle",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Gluconeogenesis",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Phytanic Acid Peroxisomal Oxidation",4,2,0.571,0.0889,0.323
+"Misame (1-2 mo.)","BEP/IFA","down","Glycine and Serine Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Ammonia Recycling",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Porphyrin Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Folate Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Betaine Metabolism",5,2,0.714,0.139,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","D-Arginine and D-Ornithine Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty Acid Elongation In Mitochondria",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Ketone Body Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Steroidogenesis",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Vitamin K Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Cardiolipin Biosynthesis",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Androstenedione Metabolism",1,1,0.143,0.143,0.359
+"Misame (1-2 mo.)","BEP/IFA","down","Methionine Metabolism",6,2,0.857,0.195,0.467
+"Misame (1-2 mo.)","BEP/IFA","down","Glutamate Metabolism",6,2,0.857,0.195,0.467
+"Misame (1-2 mo.)","BEP/IFA","down","Nicotinate and Nicotinamide Metabolism",7,2,1,0.256,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Purine Metabolism",7,2,1,0.256,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Pterine Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Glutathione Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Selenoamino Acid Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Androgen and Estrogen Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Glucose-Alanine Cycle",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Ethanol Degradation",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Fatty Acid Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Pyruvaldehyde Degradation",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Inositol Phosphate Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Carnitine Synthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","De Novo Triacylglycerol Biosynthesis",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Estrone Metabolism",2,1,0.286,0.269,0.479
+"Misame (1-2 mo.)","BEP/IFA","down","Tyrosine Metabolism",8,2,1.14,0.319,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Beta-Alanine Metabolism",8,2,1.14,0.319,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Cysteine Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Steroid Biosynthesis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Oxidation of Branched Chain Fatty Acids",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Glycolysis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Fructose and Mannose Degradation",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Retinol Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Thiamine Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Malate-Aspartate Shuttle",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Degradation of Superoxides",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Thyroid hormone synthesis",3,1,0.429,0.38,0.547
+"Misame (1-2 mo.)","BEP/IFA","down","Nucleotide Sugars Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Galactose Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Alanine Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Starch and Sucrose Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Aspartate Metabolism",4,1,0.571,0.477,0.64
+"Misame (1-2 mo.)","BEP/IFA","down","Phenylalanine and Tyrosine Metabolism",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Pyrimidine Metabolism",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Lactose Synthesis",5,1,0.714,0.561,0.723
+"Misame (1-2 mo.)","BEP/IFA","down","Riboflavin Metabolism",7,1,1,0.697,0.887
+"Misame (1-2 mo.)","BEP/IFA","down","Vitamin B6 Metabolism",8,1,1.14,0.751,0.944
+"Misame (1-2 mo.)","BEP/IFA","up","Pantothenate and CoA Biosynthesis",3,2,0.257,0.0148,1
+"Misame (1-2 mo.)","BEP/IFA","up","Alpha Linolenic Acid and Linoleic Acid Metabolism",1,1,0.0857,0.0857,1
+"Misame (1-2 mo.)","BEP/IFA","up","Purine Metabolism",7,2,0.6,0.0952,1
+"Misame (1-2 mo.)","BEP/IFA","up","Beta-Alanine Metabolism",8,2,0.686,0.124,1
+"Misame (1-2 mo.)","BEP/IFA","up","Androgen and Estrogen Metabolism",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Lactose Degradation",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Trehalose Degradation",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Glycolysis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Malate-Aspartate Shuttle",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Spermidine and Spermine Biosynthesis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phosphatidylinositol Phosphate Metabolism",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Thyroid hormone synthesis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Inositol Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Sphingolipid Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Starch and Sucrose Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Urea Cycle",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Arachidonic Acid Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phenylalanine and Tyrosine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phospholipid Biosynthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Pyrimidine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Folate Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Betaine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Lactose Synthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Methionine Metabolism",6,1,0.514,0.442,1
+"Misame (1-2 mo.)","BEP/IFA","up","Histidine Metabolism",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Riboflavin Metabolism",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Warburg Effect",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Tyrosine Metabolism",8,1,0.686,0.553,1
+"Misame (1-2 mo.)","BEP/IFA","up","Pyruvate Metabolism",8,1,0.686,0.553,1
+"Misame (1-2 mo.)","IFA/BEP","down","Degradation of Superoxides",3,2,0.343,0.029,1
+"Misame (1-2 mo.)","IFA/BEP","down","Transfer of Acetyl Groups into Mitochondria",4,2,0.457,0.0557,1
+"Misame (1-2 mo.)","IFA/BEP","down","Propanoate Metabolism",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","IFA/BEP","down","Citric Acid Cycle",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","IFA/BEP","down","Histidine Metabolism",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","IFA/BEP","down","Warburg Effect",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","IFA/BEP","down","Pyruvate Metabolism",8,2,0.914,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Catecholamine Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Fatty Acid Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Oxidation of Branched Chain Fatty Acids",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Thiamine Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Inositol Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Lysine Degradation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Alanine Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Urea Cycle",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Gluconeogenesis",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Arginine and Proline Metabolism",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phospholipid Biosynthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Lactose Synthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Valine, Leucine and Isoleucine Degradation",6,1,0.686,0.546,1
+"Misame (1-2 mo.)","IFA/BEP","down","Riboflavin Metabolism",7,1,0.8,0.609,1
+"Misame (1-2 mo.)","IFA/BEP","down","Tyrosine Metabolism",8,1,0.914,0.665,1
+"Misame (1-2 mo.)","IFA/BEP","down","Beta-Alanine Metabolism",8,1,0.914,0.665,1
+"Misame (1-2 mo.)","IFA/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (1-2 mo.)","IFA/BEP","up","Lactose Degradation",2,1,0.743,0.612,1
+"Misame (1-2 mo.)","IFA/BEP","up","Trehalose Degradation",2,1,0.743,0.612,1
+"Misame (1-2 mo.)","IFA/BEP","up","Vitamin B6 Metabolism",8,3,2.97,0.645,1
+"Misame (1-2 mo.)","IFA/BEP","up","Glycolysis",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Thiamine Metabolism",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Spermidine and Spermine Biosynthesis",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Misame (1-2 mo.)","IFA/BEP","up","Beta-Alanine Metabolism",8,2,2.97,0.892,1
+"Misame (1-2 mo.)","IFA/BEP","up","Arginine and Proline Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Betaine Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Valine, Leucine and Isoleucine Degradation",6,1,2.23,0.954,1
+"Misame (1-2 mo.)","IFA/BEP","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Misame (1-2 mo.)","IFA/BEP","up","Purine Metabolism",7,1,2.6,0.975,1
+"Misame (1-2 mo.)","IFA/BEP","up","Warburg Effect",7,1,2.6,0.975,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pyruvate Metabolism",8,1,2.97,0.986,1
+"Misame (3-4 mo.)","BEP/BEP","down","Oxidation of Branched Chain Fatty Acids",3,2,0.171,0.00504,0.494
+"Misame (3-4 mo.)","BEP/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,2,0.229,0.0101,0.494
+"Misame (3-4 mo.)","BEP/BEP","down","Citric Acid Cycle",6,2,0.343,0.0252,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Warburg Effect",7,2,0.4,0.0353,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Pyruvate Metabolism",8,2,0.457,0.0471,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Pentose Phosphate Pathway",1,1,0.0571,0.0571,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Amino Sugar Metabolism",1,1,0.0571,0.0571,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Beta Oxidation of Very Long Chain Fatty Acids",1,1,0.0571,0.0571,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Phenylacetate Metabolism",1,1,0.0571,0.0571,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Sulfate/Sulfite Metabolism",2,1,0.114,0.113,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Inositol Phosphate Metabolism",2,1,0.114,0.113,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","De Novo Triacylglycerol Biosynthesis",2,1,0.114,0.113,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Estrone Metabolism",2,1,0.114,0.113,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Steroid Biosynthesis",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Glycolysis",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Fatty acid Metabolism",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Fructose and Mannose Degradation",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Butyrate Metabolism",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Thiamine Metabolism",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Spermidine and Spermine Biosynthesis",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Plasmalogen Synthesis",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.171,0.166,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Nucleotide Sugars Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Inositol Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Sphingolipid Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Lysine Degradation",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Galactose Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Starch and Sucrose Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Aspartate Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Arachidonic Acid Metabolism",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Gluconeogenesis",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.229,0.218,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Glycine and Serine Metabolism",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Phenylalanine and Tyrosine Metabolism",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Ammonia Recycling",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Phospholipid Biosynthesis",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Pyrimidine Metabolism",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Folate Metabolism",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Betaine Metabolism",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Lactose Synthesis",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.286,0.269,0.613
+"Misame (3-4 mo.)","BEP/BEP","down","Propanoate Metabolism",6,1,0.343,0.318,0.662
+"Misame (3-4 mo.)","BEP/BEP","down","Valine, Leucine and Isoleucine Degradation",6,1,0.343,0.318,0.662
+"Misame (3-4 mo.)","BEP/BEP","down","Methionine Metabolism",6,1,0.343,0.318,0.662
+"Misame (3-4 mo.)","BEP/BEP","down","Glutamate Metabolism",6,1,0.343,0.318,0.662
+"Misame (3-4 mo.)","BEP/BEP","down","Nicotinate and Nicotinamide Metabolism",7,1,0.4,0.365,0.715
+"Misame (3-4 mo.)","BEP/BEP","down","Purine Metabolism",7,1,0.4,0.365,0.715
+"Misame (3-4 mo.)","BEP/BEP","down","Riboflavin Metabolism",7,1,0.4,0.365,0.715
+"Misame (3-4 mo.)","BEP/BEP","down","Tyrosine Metabolism",8,1,0.457,0.41,0.773
+"Misame (3-4 mo.)","BEP/BEP","down","Vitamin B6 Metabolism",8,1,0.457,0.41,0.773
+"Misame (3-4 mo.)","BEP/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.4,0.163,1
+"Misame (3-4 mo.)","BEP/BEP","up","Vitamin B6 Metabolism",8,4,2.74,0.257,1
+"Misame (3-4 mo.)","BEP/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.03,0.266,1
+"Misame (3-4 mo.)","BEP/BEP","up","Riboflavin Metabolism",7,2,2.4,0.783,1
+"Misame (3-4 mo.)","BEP/BEP","up","Beta-Alanine Metabolism",8,2,2.74,0.854,1
+"Misame (3-4 mo.)","BEP/BEP","up","Arginine and Proline Metabolism",5,1,1.71,0.896,1
+"Misame (3-4 mo.)","BEP/BEP","up","Pyrimidine Metabolism",5,1,1.71,0.896,1
+"Misame (3-4 mo.)","BEP/BEP","up","Valine, Leucine and Isoleucine Degradation",6,1,2.06,0.938,1
+"Misame (3-4 mo.)","BEP/IFA","down","Nicotinate and Nicotinamide Metabolism",7,2,0.4,0.0353,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Pentose Phosphate Pathway",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Amino Sugar Metabolism",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Beta Oxidation of Very Long Chain Fatty Acids",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phenylacetate Metabolism",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Sulfate/Sulfite Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Inositol Phosphate Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","De Novo Triacylglycerol Biosynthesis",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Estrone Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Steroid Biosynthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Oxidation of Branched Chain Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Glycolysis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Fatty acid Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Fructose and Mannose Degradation",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Butyrate Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Spermidine and Spermine Biosynthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Plasmalogen Synthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Nucleotide Sugars Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Inositol Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Sphingolipid Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Galactose Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Starch and Sucrose Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Aspartate Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Arachidonic Acid Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Gluconeogenesis",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Glycine and Serine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phenylalanine and Tyrosine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Ammonia Recycling",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phospholipid Biosynthesis",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Pyrimidine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Folate Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Betaine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Lactose Synthesis",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Methionine Metabolism",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Citric Acid Cycle",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Glutamate Metabolism",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Purine Metabolism",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Riboflavin Metabolism",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Warburg Effect",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Tyrosine Metabolism",8,1,0.457,0.41,0.874
+"Misame (3-4 mo.)","BEP/IFA","down","Vitamin B6 Metabolism",8,1,0.457,0.41,0.874
+"Misame (3-4 mo.)","BEP/IFA","down","Pyruvate Metabolism",8,1,0.457,0.41,0.874
+"Misame (3-4 mo.)","IFA/BEP","up","Nicotinate and Nicotinamide Metabolism",7,5,2.6,0.0501,1
+"Misame (3-4 mo.)","IFA/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (3-4 mo.)","IFA/BEP","up","Vitamin B6 Metabolism",8,4,2.97,0.325,1
+"Misame (3-4 mo.)","IFA/BEP","up","D-Arginine and D-Ornithine Metabolism",1,1,0.371,0.371,1
+"Misame (3-4 mo.)","IFA/BEP","up","Vitamin K Metabolism",1,1,0.371,0.371,1
+"Misame (3-4 mo.)","IFA/BEP","up","Tryptophan Metabolism",4,2,1.49,0.478,1
+"Misame (3-4 mo.)","IFA/BEP","up","Riboflavin Metabolism",7,3,2.6,0.525,1
+"Misame (3-4 mo.)","IFA/BEP","up","Glutathione Metabolism",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Caffeine Metabolism",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Glycerolipid Metabolism",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Glycerol Phosphate Shuttle",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Mitochondrial Electron Transport Chain",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Pyruvaldehyde Degradation",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.743,0.612,1
+"Misame (3-4 mo.)","IFA/BEP","up","Arginine and Proline Metabolism",5,2,1.86,0.626,1
+"Misame (3-4 mo.)","IFA/BEP","up","Pyrimidine Metabolism",5,2,1.86,0.626,1
+"Misame (3-4 mo.)","IFA/BEP","up","Beta-Alanine Metabolism",8,3,2.97,0.645,1
+"Misame (3-4 mo.)","IFA/BEP","up","Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1
+"Misame (3-4 mo.)","IFA/BEP","up","Steroid Biosynthesis",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Bile Acid Biosynthesis",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Fatty acid Metabolism",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Butyrate Metabolism",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Plasmalogen Synthesis",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Thyroid hormone synthesis",3,1,1.11,0.765,1
+"Misame (3-4 mo.)","IFA/BEP","up","Lysine Degradation",4,1,1.49,0.86,1
+"Misame (3-4 mo.)","IFA/BEP","up","Aspartate Metabolism",4,1,1.49,0.86,1
+"Misame (3-4 mo.)","IFA/BEP","up","Glycine and Serine Metabolism",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Phenylalanine and Tyrosine Metabolism",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Ammonia Recycling",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Porphyrin Metabolism",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Phospholipid Biosynthesis",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Folate Metabolism",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Betaine Metabolism",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.86,0.919,1
+"Misame (3-4 mo.)","IFA/BEP","up","Propanoate Metabolism",6,1,2.23,0.954,1
+"Misame (3-4 mo.)","IFA/BEP","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Misame (3-4 mo.)","IFA/BEP","up","Citric Acid Cycle",6,1,2.23,0.954,1
+"Misame (3-4 mo.)","IFA/BEP","up","Glutamate Metabolism",6,1,2.23,0.954,1
+"Misame (3-4 mo.)","IFA/BEP","up","Histidine Metabolism",7,1,2.6,0.975,1
+"Misame (3-4 mo.)","IFA/BEP","up","Purine Metabolism",7,1,2.6,0.975,1
+"Misame (3-4 mo.)","IFA/BEP","up","Warburg Effect",7,1,2.6,0.975,1
+"Misame (3-4 mo.)","IFA/BEP","up","Tyrosine Metabolism",8,1,2.97,0.986,1
+"Misame (3-4 mo.)","IFA/BEP","up","Pyruvate Metabolism",8,1,2.97,0.986,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Nicotinate and Nicotinamide Metabolism",7,6,3.2,0.0243,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Caffeine Metabolism",2,2,0.914,0.202,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glycerolipid Metabolism",2,2,0.914,0.202,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glycerol Phosphate Shuttle",2,2,0.914,0.202,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Mitochondrial Electron Transport Chain",2,2,0.914,0.202,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,2,0.914,0.202,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Valine, Leucine and Isoleucine Degradation",6,4,2.74,0.248,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Ammonia Recycling",5,3,2.29,0.415,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Arginine and Proline Metabolism",5,3,2.29,0.415,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Threonine and 2-Oxobutanoate Degradation",5,3,2.29,0.415,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Pantothenate and CoA Biosynthesis",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Bile Acid Biosynthesis",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Fatty acid Metabolism",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Butyrate Metabolism",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Retinol Metabolism",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Thiamine Metabolism",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Plasmalogen Synthesis",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,2,1.37,0.434,1
+"Vital (1.5 mo.)","BEP+ExBf","up","D-Arginine and D-Ornithine Metabolism",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Fatty Acid Elongation In Mitochondria",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Biotin Metabolism",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Ketone Body Metabolism",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Steroidogenesis",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Vitamin K Metabolism",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Cardiolipin Biosynthesis",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Androstenedione Metabolism",1,1,0.457,0.457,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Beta-Alanine Metabolism",8,4,3.66,0.548,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Vitamin B6 Metabolism",8,4,3.66,0.548,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Propanoate Metabolism",6,3,2.74,0.582,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Citric Acid Cycle",6,3,2.74,0.582,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glutamate Metabolism",6,3,2.74,0.582,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Lysine Degradation",4,2,1.83,0.63,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Tryptophan Metabolism",4,2,1.83,0.63,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Gluconeogenesis",4,2,1.83,0.63,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Transfer of Acetyl Groups into Mitochondria",4,2,1.83,0.63,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Pterine Biosynthesis",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glutathione Metabolism",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Selenoamino Acid Metabolism",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Androgen and Estrogen Metabolism",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glucose-Alanine Cycle",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Ethanol Degradation",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Fatty Acid Biosynthesis",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Pyruvaldehyde Degradation",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Inositol Phosphate Metabolism",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Carnitine Synthesis",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","De Novo Triacylglycerol Biosynthesis",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Estrone Metabolism",2,1,0.914,0.713,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Riboflavin Metabolism",7,3,3.2,0.72,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Warburg Effect",7,3,3.2,0.72,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glycine and Serine Metabolism",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Porphyrin Metabolism",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Phospholipid Biosynthesis",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Pyrimidine Metabolism",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Folate Metabolism",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Betaine Metabolism",5,2,2.29,0.773,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Pyruvate Metabolism",8,3,3.66,0.824,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Cysteine Metabolism",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Steroid Biosynthesis",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Glycolysis",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Fructose and Mannose Degradation",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Malate-Aspartate Shuttle",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Thyroid hormone synthesis",3,1,1.37,0.852,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Methionine Metabolism",6,2,2.74,0.869,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Nucleotide Sugars Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Inositol Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Galactose Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Alanine Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Starch and Sucrose Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Urea Cycle",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Aspartate Metabolism",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Phytanic Acid Peroxisomal Oxidation",4,1,1.83,0.926,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Histidine Metabolism",7,2,3.2,0.928,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Purine Metabolism",7,2,3.2,0.928,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Tyrosine Metabolism",8,2,3.66,0.963,1
+"Vital (1.5 mo.)","BEP+ExBf","up","Phenylalanine and Tyrosine Metabolism",5,1,2.29,0.964,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Nicotinate and Nicotinamide Metabolism",7,5,3,0.101,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Caffeine Metabolism",2,2,0.857,0.176,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glycerolipid Metabolism",2,2,0.857,0.176,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glycerol Phosphate Shuttle",2,2,0.857,0.176,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Mitochondrial Electron Transport Chain",2,2,0.857,0.176,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,2,0.857,0.176,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Valine, Leucine and Isoleucine Degradation",6,4,2.57,0.2,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Ammonia Recycling",5,3,2.14,0.36,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Arginine and Proline Metabolism",5,3,2.14,0.36,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Threonine and 2-Oxobutanoate Degradation",5,3,2.14,0.36,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Pantothenate and CoA Biosynthesis",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Bile Acid Biosynthesis",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Fatty acid Metabolism",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Butyrate Metabolism",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Retinol Metabolism",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Thiamine Metabolism",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Plasmalogen Synthesis",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,2,1.29,0.39,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","D-Arginine and D-Ornithine Metabolism",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Fatty Acid Elongation In Mitochondria",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Biotin Metabolism",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Ketone Body Metabolism",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Steroidogenesis",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Vitamin K Metabolism",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Cardiolipin Biosynthesis",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Androstenedione Metabolism",1,1,0.429,0.429,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Beta-Alanine Metabolism",8,4,3.43,0.473,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Vitamin B6 Metabolism",8,4,3.43,0.473,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Propanoate Metabolism",6,3,2.57,0.519,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Citric Acid Cycle",6,3,2.57,0.519,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glutamate Metabolism",6,3,2.57,0.519,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Lysine Degradation",4,2,1.71,0.581,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Tryptophan Metabolism",4,2,1.71,0.581,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Gluconeogenesis",4,2,1.71,0.581,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Transfer of Acetyl Groups into Mitochondria",4,2,1.71,0.581,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Riboflavin Metabolism",7,3,3,0.66,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Warburg Effect",7,3,3,0.66,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Pterine Biosynthesis",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glutathione Metabolism",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Selenoamino Acid Metabolism",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Androgen and Estrogen Metabolism",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glucose-Alanine Cycle",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Ethanol Degradation",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Fatty Acid Biosynthesis",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Pyruvaldehyde Degradation",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Inositol Phosphate Metabolism",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Carnitine Synthesis",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","De Novo Triacylglycerol Biosynthesis",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Estrone Metabolism",2,1,0.857,0.681,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glycine and Serine Metabolism",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Porphyrin Metabolism",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Phospholipid Biosynthesis",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Pyrimidine Metabolism",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Folate Metabolism",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Betaine Metabolism",5,2,2.14,0.728,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Pyruvate Metabolism",8,3,3.43,0.772,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Cysteine Metabolism",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Steroid Biosynthesis",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Glycolysis",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Fructose and Mannose Degradation",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Malate-Aspartate Shuttle",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Thyroid hormone synthesis",3,1,1.29,0.826,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Methionine Metabolism",6,2,2.57,0.833,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Histidine Metabolism",7,2,3,0.902,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Purine Metabolism",7,2,3,0.902,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Nucleotide Sugars Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Inositol Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Galactose Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Alanine Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Starch and Sucrose Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Urea Cycle",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Aspartate Metabolism",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Phytanic Acid Peroxisomal Oxidation",4,1,1.71,0.907,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Tyrosine Metabolism",8,2,3.43,0.945,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","up","Phenylalanine and Tyrosine Metabolism",5,1,2.14,0.952,1
+"Vital (2 mo.)","BEP+ExBf","down","Fatty Acid Biosynthesis",2,1,0.0571,0.0571,1
+"Vital (2 mo.)","BEP+ExBf","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.0857,0.0857,1
+"Vital (2 mo.)","BEP+ExBf","down","Degradation of Superoxides",3,1,0.0857,0.0857,1
+"Vital (2 mo.)","BEP+ExBf","down","Inositol Metabolism",4,1,0.114,0.114,1
+"Vital (2 mo.)","BEP+ExBf","down","Alanine Metabolism",4,1,0.114,0.114,1
+"Vital (2 mo.)","BEP+ExBf","down","Urea Cycle",4,1,0.114,0.114,1
+"Vital (2 mo.)","BEP+ExBf","down","Gluconeogenesis",4,1,0.114,0.114,1
+"Vital (2 mo.)","BEP+ExBf","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.114,0.114,1
+"Vital (2 mo.)","BEP+ExBf","down","Arginine and Proline Metabolism",5,1,0.143,0.143,1
+"Vital (2 mo.)","BEP+ExBf","down","Phospholipid Biosynthesis",5,1,0.143,0.143,1
+"Vital (2 mo.)","BEP+ExBf","down","Lactose Synthesis",5,1,0.143,0.143,1
+"Vital (2 mo.)","BEP+ExBf","down","Propanoate Metabolism",6,1,0.171,0.171,1
+"Vital (2 mo.)","BEP+ExBf","down","Citric Acid Cycle",6,1,0.171,0.171,1
+"Vital (2 mo.)","BEP+ExBf","down","Histidine Metabolism",7,1,0.2,0.2,1
+"Vital (2 mo.)","BEP+ExBf","down","Warburg Effect",7,1,0.2,0.2,1
+"Vital (2 mo.)","BEP+ExBf","down","Pyruvate Metabolism",8,1,0.229,0.229,1
+"Vital (2 mo.)","BEP+ExBf","up","Nicotinate and Nicotinamide Metabolism",7,4,1.6,0.0335,1
+"Vital (2 mo.)","BEP+ExBf","up","Pantothenate and CoA Biosynthesis",3,2,0.686,0.124,1
+"Vital (2 mo.)","BEP+ExBf","up","Biotin Metabolism",1,1,0.229,0.229,1
+"Vital (2 mo.)","BEP+ExBf","up","Fatty Acid Biosynthesis",2,1,0.457,0.41,1
+"Vital (2 mo.)","BEP+ExBf","up","Riboflavin Metabolism",7,2,1.6,0.516,1
+"Vital (2 mo.)","BEP+ExBf","up","Beta-Alanine Metabolism",8,2,1.83,0.604,1
+"Vital (2 mo.)","BEP+ExBf","up","Alanine Metabolism",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Gluconeogenesis",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Transfer of Acetyl Groups into Mitochondria",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Ammonia Recycling",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Arginine and Proline Metabolism",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Pyrimidine Metabolism",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Propanoate Metabolism",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Valine, Leucine and Isoleucine Degradation",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Citric Acid Cycle",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Glutamate Metabolism",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Warburg Effect",7,1,1.6,0.868,1
+"Vital (2 mo.)","BEP+ExBf","up","Vitamin B6 Metabolism",8,1,1.83,0.906,1
+"Vital (2 mo.)","BEP+ExBf","up","Pyruvate Metabolism",8,1,1.83,0.906,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Fatty Acid Biosynthesis",2,1,0.114,0.113,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.171,0.166,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Degradation of Superoxides",3,1,0.171,0.166,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Inositol Metabolism",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Alanine Metabolism",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Urea Cycle",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Gluconeogenesis",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Arginine and Proline Metabolism",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Phospholipid Biosynthesis",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Lactose Synthesis",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Propanoate Metabolism",6,1,0.343,0.318,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Citric Acid Cycle",6,1,0.343,0.318,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Histidine Metabolism",7,1,0.4,0.365,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Warburg Effect",7,1,0.4,0.365,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Pyruvate Metabolism",8,1,0.457,0.41,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Retinol Metabolism",3,2,1.11,0.306,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty Acid Elongation In Mitochondria",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Biotin Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ketone Body Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Steroidogenesis",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Cardiolipin Biosynthesis",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Androstenedione Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Valine, Leucine and Isoleucine Degradation",6,3,2.23,0.392,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Gluconeogenesis",4,2,1.49,0.478,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Transfer of Acetyl Groups into Mitochondria",4,2,1.49,0.478,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pterine Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Caffeine Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Selenoamino Acid Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycerolipid Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Androgen and Estrogen Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycerol Phosphate Shuttle",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glucose-Alanine Cycle",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Electron Transport Chain",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ethanol Degradation",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty Acid Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Inositol Phosphate Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Carnitine Synthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","De Novo Triacylglycerol Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Estrone Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ammonia Recycling",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Arginine and Proline Metabolism",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Threonine and 2-Oxobutanoate Degradation",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Beta-Alanine Metabolism",8,3,2.97,0.645,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Vitamin B6 Metabolism",8,3,2.97,0.645,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Propanoate Metabolism",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Citric Acid Cycle",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glutamate Metabolism",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Cysteine Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Bile Acid Biosynthesis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycolysis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty acid Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fructose and Mannose Degradation",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Butyrate Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Thiamine Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Malate-Aspartate Shuttle",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Plasmalogen Synthesis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Warburg Effect",7,2,2.6,0.83,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Nucleotide Sugars Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Inositol Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Lysine Degradation",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Galactose Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Alanine Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Starch and Sucrose Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Urea Cycle",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Tryptophan Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Phytanic Acid Peroxisomal Oxidation",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pyruvate Metabolism",8,2,2.97,0.892,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycine and Serine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Porphyrin Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Phospholipid Biosynthesis",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Folate Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Betaine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Histidine Metabolism",7,1,2.6,0.975,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Purine Metabolism",7,1,2.6,0.975,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Tyrosine Metabolism",8,1,2.97,0.986,1
+"Elicit (1 mo.)","Az.","down","Tryptophan Metabolism",4,1,0.114,0.114,1
+"Elicit (1 mo.)","Nico","up","Nicotinate and Nicotinamide Metabolism",7,5,1.2,0.000367,0.0359
+"Elicit (1 mo.)","Nico","up","Fatty Acid Elongation In Mitochondria",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico","up","Ketone Body Metabolism",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico","up","Steroidogenesis",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico","up","Cardiolipin Biosynthesis",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico","up","Androstenedione Metabolism",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico","up","Pterine Biosynthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Caffeine Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Selenoamino Acid Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Glycerolipid Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Sulfate/Sulfite Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Androgen and Estrogen Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Glycerol Phosphate Shuttle",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Glucose-Alanine Cycle",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Mitochondrial Electron Transport Chain",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Ethanol Degradation",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Inositol Phosphate Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Carnitine Synthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","De Novo Triacylglycerol Biosynthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Estrone Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico","up","Cysteine Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Bile Acid Biosynthesis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Glycolysis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Fatty acid Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Fructose and Mannose Degradation",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Butyrate Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Retinol Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Malate-Aspartate Shuttle",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Plasmalogen Synthesis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico","up","Nucleotide Sugars Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Inositol Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Lysine Degradation",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Galactose Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Starch and Sucrose Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Urea Cycle",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Tryptophan Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Gluconeogenesis",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Phytanic Acid Peroxisomal Oxidation",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Transfer of Acetyl Groups into Mitochondria",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico","up","Glycine and Serine Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Ammonia Recycling",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Arginine and Proline Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Porphyrin Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Phospholipid Biosynthesis",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Folate Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Betaine Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Threonine and 2-Oxobutanoate Degradation",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico","up","Propanoate Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico","up","Valine, Leucine and Isoleucine Degradation",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico","up","Methionine Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico","up","Citric Acid Cycle",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico","up","Glutamate Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico","up","Histidine Metabolism",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico","up","Purine Metabolism",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico","up","Warburg Effect",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico","up","Tyrosine Metabolism",8,1,1.37,0.818,1
+"Elicit (1 mo.)","Nico","up","Beta-Alanine Metabolism",8,1,1.37,0.818,1
+"Elicit (1 mo.)","Nico","up","Pyruvate Metabolism",8,1,1.37,0.818,1
+"Elicit (1 mo.)","Nico+Az.","down","Oxidation of Branched Chain Fatty Acids",3,2,0.257,0.0148,0.726
+"Elicit (1 mo.)","Nico+Az.","down","Thiamine Metabolism",3,2,0.257,0.0148,0.726
+"Elicit (1 mo.)","Nico+Az.","down","Phytanic Acid Peroxisomal Oxidation",4,2,0.343,0.029,0.948
+"Elicit (1 mo.)","Nico+Az.","down","Ubiquinone Biosynthesis",1,1,0.0857,0.0857,1
+"Elicit (1 mo.)","Nico+Az.","down","Taurine and Hypotaurine Metabolism",2,1,0.171,0.166,1
+"Elicit (1 mo.)","Nico+Az.","down","Steroid Biosynthesis",3,1,0.257,0.242,1
+"Elicit (1 mo.)","Nico+Az.","down","Bile Acid Biosynthesis",3,1,0.257,0.242,1
+"Elicit (1 mo.)","Nico+Az.","down","Nucleotide Sugars Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Lysine Degradation",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Galactose Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Arachidonic Acid Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Phenylalanine and Tyrosine Metabolism",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Porphyrin Metabolism",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Lactose Synthesis",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Propanoate Metabolism",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Valine, Leucine and Isoleucine Degradation",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Citric Acid Cycle",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Purine Metabolism",7,1,0.6,0.499,1
+"Elicit (1 mo.)","Nico+Az.","down","Warburg Effect",7,1,0.6,0.499,1
+"Elicit (1 mo.)","Nico+Az.","down","Tyrosine Metabolism",8,1,0.686,0.553,1
+"Elicit (1 mo.)","Nico+Az.","down","Pyruvate Metabolism",8,1,0.686,0.553,1
+"Elicit (1 mo.)","Nico+Az.","up","Nicotinate and Nicotinamide Metabolism",7,5,1.2,0.000367,0.0359
+"Elicit (1 mo.)","Nico+Az.","up","Fatty Acid Elongation In Mitochondria",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico+Az.","up","Ketone Body Metabolism",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico+Az.","up","Steroidogenesis",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico+Az.","up","Cardiolipin Biosynthesis",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico+Az.","up","Androstenedione Metabolism",1,1,0.171,0.171,1
+"Elicit (1 mo.)","Nico+Az.","up","Pterine Biosynthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Caffeine Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Selenoamino Acid Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Glycerolipid Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Androgen and Estrogen Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Glycerol Phosphate Shuttle",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Glucose-Alanine Cycle",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Mitochondrial Electron Transport Chain",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Ethanol Degradation",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Inositol Phosphate Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Carnitine Synthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","De Novo Triacylglycerol Biosynthesis",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Estrone Metabolism",2,1,0.343,0.318,1
+"Elicit (1 mo.)","Nico+Az.","up","Cysteine Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Bile Acid Biosynthesis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Glycolysis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Fatty acid Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Fructose and Mannose Degradation",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Butyrate Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Retinol Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Thiamine Metabolism",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Malate-Aspartate Shuttle",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Plasmalogen Synthesis",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","up","Nucleotide Sugars Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Inositol Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Lysine Degradation",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Galactose Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Starch and Sucrose Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Urea Cycle",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Tryptophan Metabolism",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Gluconeogenesis",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Phytanic Acid Peroxisomal Oxidation",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Transfer of Acetyl Groups into Mitochondria",4,1,0.686,0.546,1
+"Elicit (1 mo.)","Nico+Az.","up","Glycine and Serine Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Ammonia Recycling",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Arginine and Proline Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Porphyrin Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Phospholipid Biosynthesis",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Folate Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Betaine Metabolism",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Threonine and 2-Oxobutanoate Degradation",5,1,0.857,0.634,1
+"Elicit (1 mo.)","Nico+Az.","up","Propanoate Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico+Az.","up","Valine, Leucine and Isoleucine Degradation",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico+Az.","up","Methionine Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico+Az.","up","Citric Acid Cycle",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico+Az.","up","Glutamate Metabolism",6,1,1.03,0.707,1
+"Elicit (1 mo.)","Nico+Az.","up","Histidine Metabolism",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico+Az.","up","Purine Metabolism",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico+Az.","up","Warburg Effect",7,1,1.2,0.768,1
+"Elicit (1 mo.)","Nico+Az.","up","Tyrosine Metabolism",8,1,1.37,0.818,1
+"Elicit (1 mo.)","Nico+Az.","up","Beta-Alanine Metabolism",8,1,1.37,0.818,1
+"Elicit (1 mo.)","Nico+Az.","up","Pyruvate Metabolism",8,1,1.37,0.818,1
+"Elicit (5 mo.)","Az.","down","Pentose Phosphate Pathway",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Amino Sugar Metabolism",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Beta Oxidation of Very Long Chain Fatty Acids",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Phenylacetate Metabolism",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Sulfate/Sulfite Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Inositol Phosphate Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","De Novo Triacylglycerol Biosynthesis",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Estrone Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Steroid Biosynthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Oxidation of Branched Chain Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Glycolysis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Fatty acid Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Fructose and Mannose Degradation",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Butyrate Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Spermidine and Spermine Biosynthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Plasmalogen Synthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Nucleotide Sugars Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Inositol Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Sphingolipid Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Galactose Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Starch and Sucrose Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Aspartate Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Arachidonic Acid Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Gluconeogenesis",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Glycine and Serine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Phenylalanine and Tyrosine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Ammonia Recycling",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Phospholipid Biosynthesis",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Pyrimidine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Folate Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Betaine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Lactose Synthesis",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Methionine Metabolism",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Citric Acid Cycle",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Glutamate Metabolism",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Nicotinate and Nicotinamide Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Purine Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Riboflavin Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Warburg Effect",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Tyrosine Metabolism",8,1,0.229,0.229,0.487
+"Elicit (5 mo.)","Az.","down","Vitamin B6 Metabolism",8,1,0.229,0.229,0.487
+"Elicit (5 mo.)","Az.","down","Pyruvate Metabolism",8,1,0.229,0.229,0.487
+"Elicit (5 mo.)","Az.","up","Pantothenate and CoA Biosynthesis",3,1,0.0857,0.0857,1
+"Elicit (5 mo.)","Az.","up","Beta-Alanine Metabolism",8,1,0.229,0.229,1
+"Elicit (5 mo.)","Nico","down","Lactose Degradation",2,1,0.0571,0.0571,1
+"Elicit (5 mo.)","Nico","down","Trehalose Degradation",2,1,0.0571,0.0571,1
+"Elicit (5 mo.)","Nico","down","Glycolysis",3,1,0.0857,0.0857,1
+"Elicit (5 mo.)","Nico","down","Spermidine and Spermine Biosynthesis",3,1,0.0857,0.0857,1
+"Elicit (5 mo.)","Nico","down","Betaine Metabolism",5,1,0.143,0.143,1
+"Elicit (5 mo.)","Nico","down","Methionine Metabolism",6,1,0.171,0.171,1
+"Elicit (5 mo.)","Nico","down","Purine Metabolism",7,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico","down","Warburg Effect",7,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico","down","Pyruvate Metabolism",8,1,0.229,0.229,1
+"Elicit (5 mo.)","Nico","up","Nicotinate and Nicotinamide Metabolism",7,5,1.8,0.00642,0.629
+"Elicit (5 mo.)","Nico","up","Transfer of Acetyl Groups into Mitochondria",4,3,1.03,0.0441,1
+"Elicit (5 mo.)","Nico","up","Propanoate Metabolism",6,3,1.54,0.162,1
+"Elicit (5 mo.)","Nico","up","Citric Acid Cycle",6,3,1.54,0.162,1
+"Elicit (5 mo.)","Nico","up","Warburg Effect",7,3,1.8,0.242,1
+"Elicit (5 mo.)","Nico","up","Fatty Acid Elongation In Mitochondria",1,1,0.257,0.257,1
+"Elicit (5 mo.)","Nico","up","Ketone Body Metabolism",1,1,0.257,0.257,1
+"Elicit (5 mo.)","Nico","up","Steroidogenesis",1,1,0.257,0.257,1
+"Elicit (5 mo.)","Nico","up","Cardiolipin Biosynthesis",1,1,0.257,0.257,1
+"Elicit (5 mo.)","Nico","up","Androstenedione Metabolism",1,1,0.257,0.257,1
+"Elicit (5 mo.)","Nico","up","Inositol Metabolism",4,2,1.03,0.268,1
+"Elicit (5 mo.)","Nico","up","Lysine Degradation",4,2,1.03,0.268,1
+"Elicit (5 mo.)","Nico","up","Urea Cycle",4,2,1.03,0.268,1
+"Elicit (5 mo.)","Nico","up","Gluconeogenesis",4,2,1.03,0.268,1
+"Elicit (5 mo.)","Nico","up","Phytanic Acid Peroxisomal Oxidation",4,2,1.03,0.268,1
+"Elicit (5 mo.)","Nico","up","Pyruvate Metabolism",8,3,2.06,0.33,1
+"Elicit (5 mo.)","Nico","up","Arginine and Proline Metabolism",5,2,1.29,0.383,1
+"Elicit (5 mo.)","Nico","up","Phospholipid Biosynthesis",5,2,1.29,0.383,1
+"Elicit (5 mo.)","Nico","up","Threonine and 2-Oxobutanoate Degradation",5,2,1.29,0.383,1
+"Elicit (5 mo.)","Nico","up","Pterine Biosynthesis",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Caffeine Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Selenoamino Acid Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Glycerolipid Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Sulfate/Sulfite Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Androgen and Estrogen Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Glycerol Phosphate Shuttle",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Glucose-Alanine Cycle",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Mitochondrial Electron Transport Chain",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Ethanol Degradation",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Fatty Acid Biosynthesis",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Inositol Phosphate Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Carnitine Synthesis",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","De Novo Triacylglycerol Biosynthesis",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Estrone Metabolism",2,1,0.514,0.454,1
+"Elicit (5 mo.)","Nico","up","Valine, Leucine and Isoleucine Degradation",6,2,1.54,0.493,1
+"Elicit (5 mo.)","Nico","up","Histidine Metabolism",7,2,1.8,0.594,1
+"Elicit (5 mo.)","Nico","up","Cysteine Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Pantothenate and CoA Biosynthesis",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Oxidation of Branched Chain Fatty Acids",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Bile Acid Biosynthesis",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Glycolysis",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Fatty acid Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Fructose and Mannose Degradation",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Butyrate Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Retinol Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Thiamine Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Malate-Aspartate Shuttle",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Phosphatidylinositol Phosphate Metabolism",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Degradation of Superoxides",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Plasmalogen Synthesis",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.771,0.603,1
+"Elicit (5 mo.)","Nico","up","Beta-Alanine Metabolism",8,2,2.06,0.682,1
+"Elicit (5 mo.)","Nico","up","Nucleotide Sugars Metabolism",4,1,1.03,0.714,1
+"Elicit (5 mo.)","Nico","up","Galactose Metabolism",4,1,1.03,0.714,1
+"Elicit (5 mo.)","Nico","up","Alanine Metabolism",4,1,1.03,0.714,1
+"Elicit (5 mo.)","Nico","up","Starch and Sucrose Metabolism",4,1,1.03,0.714,1
+"Elicit (5 mo.)","Nico","up","Tryptophan Metabolism",4,1,1.03,0.714,1
+"Elicit (5 mo.)","Nico","up","Glycine and Serine Metabolism",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Ammonia Recycling",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Porphyrin Metabolism",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Folate Metabolism",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Betaine Metabolism",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Lactose Synthesis",5,1,1.29,0.797,1
+"Elicit (5 mo.)","Nico","up","Methionine Metabolism",6,1,1.54,0.858,1
+"Elicit (5 mo.)","Nico","up","Glutamate Metabolism",6,1,1.54,0.858,1
+"Elicit (5 mo.)","Nico","up","Purine Metabolism",7,1,1.8,0.902,1
+"Elicit (5 mo.)","Nico","up","Tyrosine Metabolism",8,1,2.06,0.934,1
+"Elicit (5 mo.)","Nico+Az.","up","Nicotinate and Nicotinamide Metabolism",7,5,1.4,0.00121,0.119
+"Elicit (5 mo.)","Nico+Az.","up","Retinol Metabolism",3,2,0.6,0.0952,1
+"Elicit (5 mo.)","Nico+Az.","up","Lysine Degradation",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Phytanic Acid Peroxisomal Oxidation",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Transfer of Acetyl Groups into Mitochondria",4,2,0.8,0.171,1
+"Elicit (5 mo.)","Nico+Az.","up","Fatty Acid Elongation In Mitochondria",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Ketone Body Metabolism",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Steroidogenesis",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Cardiolipin Biosynthesis",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Androstenedione Metabolism",1,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico+Az.","up","Threonine and 2-Oxobutanoate Degradation",5,2,1,0.256,1
+"Elicit (5 mo.)","Nico+Az.","up","Propanoate Metabolism",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Valine, Leucine and Isoleucine Degradation",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Citric Acid Cycle",6,2,1.2,0.344,1
+"Elicit (5 mo.)","Nico+Az.","up","Pterine Biosynthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Caffeine Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Selenoamino Acid Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycerolipid Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Androgen and Estrogen Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycerol Phosphate Shuttle",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Glucose-Alanine Cycle",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Electron Transport Chain",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Ethanol Degradation",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Inositol Phosphate Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Carnitine Synthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","De Novo Triacylglycerol Biosynthesis",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Estrone Metabolism",2,1,0.4,0.365,1
+"Elicit (5 mo.)","Nico+Az.","up","Warburg Effect",7,2,1.4,0.432,1
+"Elicit (5 mo.)","Nico+Az.","up","Cysteine Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Oxidation of Branched Chain Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Bile Acid Biosynthesis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycolysis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Fatty acid Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Fructose and Mannose Degradation",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Butyrate Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Thiamine Metabolism",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Malate-Aspartate Shuttle",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Plasmalogen Synthesis",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.6,0.499,1
+"Elicit (5 mo.)","Nico+Az.","up","Pyruvate Metabolism",8,2,1.6,0.516,1
+"Elicit (5 mo.)","Nico+Az.","up","Nucleotide Sugars Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Inositol Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Galactose Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Starch and Sucrose Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Urea Cycle",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Tryptophan Metabolism",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Gluconeogenesis",4,1,0.8,0.609,1
+"Elicit (5 mo.)","Nico+Az.","up","Glycine and Serine Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Ammonia Recycling",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Arginine and Proline Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Porphyrin Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Phospholipid Biosynthesis",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Folate Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Betaine Metabolism",5,1,1,0.697,1
+"Elicit (5 mo.)","Nico+Az.","up","Methionine Metabolism",6,1,1.2,0.768,1
+"Elicit (5 mo.)","Nico+Az.","up","Glutamate Metabolism",6,1,1.2,0.768,1
+"Elicit (5 mo.)","Nico+Az.","up","Histidine Metabolism",7,1,1.4,0.824,1
+"Elicit (5 mo.)","Nico+Az.","up","Purine Metabolism",7,1,1.4,0.824,1
+"Elicit (5 mo.)","Nico+Az.","up","Tyrosine Metabolism",8,1,1.6,0.868,1
+"Elicit (5 mo.)","Nico+Az.","up","Beta-Alanine Metabolism",8,1,1.6,0.868,1

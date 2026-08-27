@@ -1,0 +1,35 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Fatty Acid Biosynthesis",4,1.67,4,0.0292,1,1
+"Caffeine Metabolism",2,0.834,2,0.173,1,1
+"Glycerolipid Metabolism",2,0.834,2,0.173,1,1
+"Phospholipid Biosynthesis",3,1.25,2,0.376,1,1
+"Spermidine and Spermine Biosynthesis",3,1.25,2,0.376,1,1
+"Steroid Biosynthesis",1,0.417,1,0.417,1,1
+"Fatty Acid Elongation In Mitochondria",1,0.417,1,0.417,1,1
+"Biotin Metabolism",1,0.417,1,0.417,1,1
+"Plasmalogen Synthesis",1,0.417,1,0.417,1,1
+"Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,0.417,1,0.417,1,1
+"Malate-Aspartate Shuttle",4,1.67,2,0.555,1,1
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,3.75,4,0.562,1,1
+"Fatty acid Metabolism",2,0.834,1,0.661,1,1
+"Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",2,0.834,1,0.661,1,1
+"Beta Oxidation of Very Long Chain Fatty Acids",5,2.09,2,0.694,1,1
+"Arachidonic Acid Metabolism",6,2.5,2,0.796,1,1
+"Pyruvate Metabolism",3,1.25,1,0.804,1,1
+"Transfer of Acetyl Groups into Mitochondria",3,1.25,1,0.804,1,1
+"Lysine Degradation",4,1.67,1,0.887,1,1
+"Sphingolipid Metabolism",5,2.09,1,0.935,1,1
+"Bile Acid Biosynthesis",5,2.09,1,0.935,1,1
+"Citric Acid Cycle",5,2.09,1,0.935,1,1
+"Gluconeogenesis",5,2.09,1,0.935,1,1
+"Tyrosine Metabolism",6,2.5,1,0.963,1,1
+"Beta-Alanine Metabolism",6,2.5,1,0.963,1,1
+"Methionine Metabolism",6,2.5,1,0.963,1,1
+"Carnitine Synthesis",6,2.5,1,0.963,1,1
+"Ammonia Recycling",8,3.34,1,0.988,1,1
+"Aspartate Metabolism",8,3.34,1,0.988,1,1
+"Glutamate Metabolism",8,3.34,1,0.988,1,1
+"Purine Metabolism",9,3.75,1,0.993,1,1
+"Warburg Effect",9,3.75,1,0.993,1,1
+"Arginine and Proline Metabolism",10,4.17,1,0.996,1,1
+"Urea Cycle",10,4.17,1,0.996,1,1

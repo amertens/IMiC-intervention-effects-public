@@ -1,0 +1,20 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Az.","down","Propanoate Metabolism",3,2,0.0488,0.000709,0.0695
+"Elicit (5 mo.)","Az.","down","Purine Metabolism",6,2,0.0976,0.00345,0.117
+"Elicit (5 mo.)","Az.","down","Beta-Alanine Metabolism",7,2,0.114,0.00479,0.117
+"Elicit (5 mo.)","Az.","down","Ammonia Recycling",7,2,0.114,0.00479,0.117
+"Elicit (5 mo.)","Az.","down","Histidine Metabolism",8,2,0.13,0.00633,0.124
+"Elicit (5 mo.)","Az.","down","Arginine and Proline Metabolism",10,2,0.163,0.01,0.163
+"Elicit (5 mo.)","Az.","down","Methionine Metabolism",11,2,0.179,0.0121,0.17
+"Elicit (5 mo.)","Az.","down","Porphyrin Metabolism",1,1,0.0163,0.0163,0.184
+"Elicit (5 mo.)","Az.","down","Glycine and Serine Metabolism",13,2,0.211,0.0169,0.184
+"Elicit (5 mo.)","Az.","down","Bile Acid Biosynthesis",15,2,0.244,0.0223,0.219
+"Elicit (5 mo.)","Az.","down","Taurine and Hypotaurine Metabolism",2,1,0.0325,0.0323,0.243
+"Elicit (5 mo.)","Az.","down","Pyrimidine Metabolism",2,1,0.0325,0.0323,0.243
+"Elicit (5 mo.)","Az.","down","Methylhistidine Metabolism",2,1,0.0325,0.0323,0.243
+"Elicit (5 mo.)","Az.","down","Alanine Metabolism",3,1,0.0488,0.0481,0.336
+"Elicit (5 mo.)","Az.","down","Glutathione Metabolism",4,1,0.065,0.0636,0.416
+"Elicit (5 mo.)","Az.","down","Valine, Leucine and Isoleucine Degradation",5,1,0.0813,0.0789,0.455
+"Elicit (5 mo.)","Az.","down","Carnitine Synthesis",5,1,0.0813,0.0789,0.455
+"Elicit (5 mo.)","Az.","down","Aspartate Metabolism",8,1,0.13,0.124,0.637
+"Elicit (5 mo.)","Az.","down","Glutamate Metabolism",8,1,0.13,0.124,0.637

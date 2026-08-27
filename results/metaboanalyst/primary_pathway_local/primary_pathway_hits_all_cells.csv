@@ -1,0 +1,71 @@
+study,tp,pathway,kegg_id,tracking_name
+MISAME-III,14-21 days,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+MISAME-III,14-21 days,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+MISAME-III,14-21 days,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+MISAME-III,14-21 days,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+MISAME-III,14-21 days,Vitamin B6 metabolism,hsa00750,Pyridoxine
+MISAME-III,14-21 days,Vitamin B6 metabolism,hsa00750,pyridoxal
+MISAME-III,14-21 days,Vitamin B6 metabolism,hsa00750,pyridoxamine
+MISAME-III,14-21 days,Riboflavin metabolism,hsa00740,riboflavin
+MISAME-III,14-21 days,Riboflavin metabolism,hsa00740,flavin mononucleotide
+MISAME-III,14-21 days,Thiamine metabolism,hsa00730,Thiamine
+MISAME-III,14-21 days,Thiamine metabolism,hsa00730,thiamine monophosphate
+MISAME-III,14-21 days,Pantothenate and CoA biosynthesis,hsa00770,pantothenic acid
+MISAME-III,14-21 days,Porphyrin metabolism,hsa00860,Iron
+MISAME-III,1-2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+MISAME-III,1-2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+MISAME-III,1-2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide
+MISAME-III,1-2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+MISAME-III,1-2 mo.,Riboflavin metabolism,hsa00740,riboflavin
+MISAME-III,1-2 mo.,Riboflavin metabolism,hsa00740,flavin mononucleotide
+MISAME-III,1-2 mo.,Vitamin B6 metabolism,hsa00750,Pyridoxine
+MISAME-III,1-2 mo.,Vitamin B6 metabolism,hsa00750,pyridoxal
+MISAME-III,1-2 mo.,Thiamine metabolism,hsa00730,Thiamine
+MISAME-III,1-2 mo.,Pantothenate and CoA biosynthesis,hsa00770,pantothenic acid
+MISAME-III,3-4 mo.,Riboflavin metabolism,hsa00740,Riboflavin
+MISAME-III,3-4 mo.,Riboflavin metabolism,hsa00740,flavin mononucleotide
+MISAME-III,3-4 mo.,Riboflavin metabolism,hsa00740,flavin adenine dinucleotide
+MISAME-III,3-4 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+MISAME-III,3-4 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+MISAME-III,3-4 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+MISAME-III,3-4 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+MISAME-III,3-4 mo.,Vitamin B6 metabolism,hsa00750,Pyridoxine
+MISAME-III,3-4 mo.,Vitamin B6 metabolism,hsa00750,pyridoxal
+MISAME-III,3-4 mo.,Vitamin B6 metabolism,hsa00750,pyridoxamine
+MISAME-III,3-4 mo.,Thiamine metabolism,hsa00730,Thiamine
+MISAME-III,3-4 mo.,Pantothenate and CoA biosynthesis,hsa00770,pantothenic acid
+MISAME-III,3-4 mo.,Tryptophan metabolism,hsa00380,tryptophan
+Mumta-LW,1.5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+Mumta-LW,1.5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide adenine dinucleotide
+Mumta-LW,1.5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+Mumta-LW,1.5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+Mumta-LW,1.5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+Mumta-LW,1.5 mo.,Riboflavin metabolism,hsa00740,Riboflavin
+Mumta-LW,1.5 mo.,Riboflavin metabolism,hsa00740,flavin mononucleotide
+Mumta-LW,1.5 mo.,Riboflavin metabolism,hsa00740,flavin adenine dinucleotide
+Mumta-LW,1.5 mo.,Thiamine metabolism,hsa00730,Thiamine
+Mumta-LW,1.5 mo.,Thiamine metabolism,hsa00730,thiamine monophosphate
+Mumta-LW,1.5 mo.,Vitamin B6 metabolism,hsa00750,Pyridoxine
+Mumta-LW,1.5 mo.,Vitamin B6 metabolism,hsa00750,pyridoxal
+Mumta-LW,1.5 mo.,Biotin metabolism,hsa00780,biotin
+Mumta-LW,1.5 mo.,Retinol metabolism,hsa00830,Vitamin A
+Mumta-LW,1.5 mo.,Pantothenate and CoA biosynthesis,hsa00770,pantothenic acid
+Mumta-LW,2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+Mumta-LW,2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+Mumta-LW,2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+Mumta-LW,2 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+Mumta-LW,2 mo.,Riboflavin metabolism,hsa00740,Riboflavin
+Mumta-LW,2 mo.,Riboflavin metabolism,hsa00740,flavin mononucleotide
+Mumta-LW,2 mo.,Biotin metabolism,hsa00780,biotin
+Mumta-LW,2 mo.,Retinol metabolism,hsa00830,Vitamin A
+Mumta-LW,2 mo.,Pantothenate and CoA biosynthesis,hsa00770,pantothenic acid
+ELICIT,1 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+ELICIT,1 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide adenine dinucleotide
+ELICIT,1 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+ELICIT,1 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+ELICIT,1 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide
+ELICIT,5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nicotinic acid mononucleotide
+ELICIT,5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide adenine dinucleotide
+ELICIT,5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,nicotinamide riboside
+ELICIT,5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Niacinamide
+ELICIT,5 mo.,Nicotinate and nicotinamide metabolism,hsa00760,Nudifloramide

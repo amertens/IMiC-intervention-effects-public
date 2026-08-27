@@ -1,0 +1,17 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP","down","Fatty Acid Biosynthesis",2,1,0.114,0.113,1
+"Vital (2 mo.)","BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.171,0.166,1
+"Vital (2 mo.)","BEP","down","Degradation of Superoxides",3,1,0.171,0.166,1
+"Vital (2 mo.)","BEP","down","Inositol Metabolism",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP","down","Alanine Metabolism",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP","down","Urea Cycle",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP","down","Gluconeogenesis",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.229,0.218,1
+"Vital (2 mo.)","BEP","down","Arginine and Proline Metabolism",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP","down","Phospholipid Biosynthesis",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP","down","Lactose Synthesis",5,1,0.286,0.269,1
+"Vital (2 mo.)","BEP","down","Propanoate Metabolism",6,1,0.343,0.318,1
+"Vital (2 mo.)","BEP","down","Citric Acid Cycle",6,1,0.343,0.318,1
+"Vital (2 mo.)","BEP","down","Histidine Metabolism",7,1,0.4,0.365,1
+"Vital (2 mo.)","BEP","down","Warburg Effect",7,1,0.4,0.365,1
+"Vital (2 mo.)","BEP","down","Pyruvate Metabolism",8,1,0.457,0.41,1

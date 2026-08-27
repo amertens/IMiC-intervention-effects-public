@@ -1,0 +1,16 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Vital (1.5 mo.)","BEP+ExBf","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.41229,0.000489,0.048411,0.20487
+"Vital (1.5 mo.)","BEP+ExBf","combined","Vitamin B6 Metabolism",15,2,0.19326,0.014647,0.72502,0.095097
+"Vital (1.5 mo.)","BEP+ExBf","combined","Biotin Metabolism",7,1,0.090188,0.087025,1,0.25
+"Vital (1.5 mo.)","BEP+ExBf","combined","Thiamine Metabolism",9,1,0.11596,0.11057,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Riboflavin Metabolism",14,1,0.18038,0.16701,1,0.044118
+"Vital (1.5 mo.)","BEP+ExBf","combined","Pantothenate and CoA Biosynthesis",19,1,0.2448,0.22013,1,0.068702
+"Vital (1.5 mo.)","BEP+ExBf","combined","Androstenedione Metabolism",23,1,0.29633,0.26035,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Phospholipid Biosynthesis",25,1,0.3221,0.27974,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Beta-Alanine Metabolism",26,1,0.33499,0.28925,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Citric Acid Cycle",26,1,0.33499,0.28925,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Androgen and Estrogen Metabolism",29,1,0.37364,0.31711,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Retinol Metabolism",30,1,0.38652,0.32617,1,0.33566
+"Vital (1.5 mo.)","BEP+ExBf","combined","Steroidogenesis",42,1,0.54113,0.42656,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Warburg Effect",49,1,0.63132,0.47855,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Glycine and Serine Metabolism",50,1,0.6442,0.48561,1,0

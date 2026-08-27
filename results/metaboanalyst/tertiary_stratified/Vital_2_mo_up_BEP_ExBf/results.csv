@@ -1,0 +1,11 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP+ExBf","up","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,2,0.0569,0.00109,0.08
+"Vital (2 mo.)","BEP+ExBf","up","Tryptophan Metabolism",6,2,0.0683,0.00163,0.08
+"Vital (2 mo.)","BEP+ExBf","up","Selenoamino Acid Metabolism",2,1,0.0228,0.0227,0.628
+"Vital (2 mo.)","BEP+ExBf","up","Alanine Metabolism",3,1,0.0341,0.0338,0.628
+"Vital (2 mo.)","BEP+ExBf","up","Glucose-Alanine Cycle",3,1,0.0341,0.0338,0.628
+"Vital (2 mo.)","BEP+ExBf","up","Glutathione Metabolism",4,1,0.0455,0.0449,0.628
+"Vital (2 mo.)","BEP+ExBf","up","Arachidonic Acid Metabolism",4,1,0.0455,0.0449,0.628
+"Vital (2 mo.)","BEP+ExBf","up","Urea Cycle",7,1,0.0797,0.0774,0.948
+"Vital (2 mo.)","BEP+ExBf","up","Glutamate Metabolism",8,1,0.0911,0.088,0.958
+"Vital (2 mo.)","BEP+ExBf","up","Glycine and Serine Metabolism",13,1,0.148,0.14,1

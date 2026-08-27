@@ -1,0 +1,428 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+ELICIT,1 mo.,Nico+Az.,down,Methionine Metabolism,11,0.215,5,4.79e-7,4.69e-5,-23.25581395348837
+ELICIT,1 mo.,Nico+Az.,down,Glutamate Metabolism,8,0.156,4,5.63e-6,2.76e-4,-25.641025641025642
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Fatty Acid Biosynthesis,3,0.0683,3,9.44e-6,9.25e-4,-43.92386530014641
+MISAME-III,3-4 mo.,BEP/BEP,down,Glycine and Serine Metabolism,13,0.233,4,3.68e-5,0.0036,-17.167381974248926
+ELICIT,1 mo.,Nico+Az.,down,Glycine and Serine Metabolism,13,0.254,4,5.45e-5,0.00137,-15.748031496062993
+ELICIT,1 mo.,Az.,down,"Valine, Leucine and Isoleucine Degradation",5,0.0976,3,5.58e-5,0.00547,-30.737704918032787
+ELICIT,1 mo.,Nico+Az.,down,"Valine, Leucine and Isoleucine Degradation",5,0.0976,3,5.58e-5,0.00137,-30.737704918032787
+MISAME-III,14-21 days,IFA/BEP,down,Arginine and Proline Metabolism,10,0.325,4,1.52e-4,0.0149,-12.307692307692307
+Mumta-LW,2 mo.,BEP+ExBf,down,Bile Acid Biosynthesis,15,0.146,3,2.26e-4,0.0221,-20.547945205479454
+MISAME-III,14-21 days,BEP/IFA,down,Warburg Effect,5,0.0325,2,3.16e-4,0.0309,-61.53846153846153
+MISAME-III,1-2 mo.,BEP/BEP,down,Spermidine and Spermine Biosynthesis,5,0.171,3,3.3e-4,0.0323,-17.543859649122805
+MISAME-III,1-2 mo.,BEP/BEP,up,Bile Acid Biosynthesis,15,0.171,3,3.89e-4,0.0381,17.543859649122805
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Urea Cycle,7,0.182,3,4.76e-4,0.0467,16.483516483516485
+MISAME-III,1-2 mo.,IFA/BEP,down,Spermidine and Spermine Biosynthesis,5,0.203,3,5.64e-4,0.0553,-14.778325123152708
+MISAME-III,14-21 days,BEP/BEP,down,Homocysteine Degradation,3,0.0439,2,5.68e-4,0.0283,-45.558086560364465
+MISAME-III,14-21 days,BEP/BEP,down,Glycine and Serine Metabolism,13,0.19,3,5.78e-4,0.0283,-15.789473684210526
+ELICIT,1 mo.,Nico+Az.,down,Arginine and Proline Metabolism,10,0.195,3,6.33e-4,0.0124,-15.384615384615383
+MISAME-III,3-4 mo.,BEP/BEP,down,Methionine Metabolism,11,0.197,3,6.52e-4,0.032,-15.228426395939085
+ELICIT,5 mo.,Az.,down,Propanoate Metabolism,3,0.0488,2,7.09e-4,0.0695,-40.983606557377044
+ELICIT,1 mo.,Nico,down,Oxidation of Branched Chain Fatty Acids,4,0.052,2,8.78e-4,0.0861,-38.46153846153846
+MISAME-III,1-2 mo.,BEP/IFA,up,Beta-Alanine Metabolism,7,0.0569,2,0.00109,0.0713,35.1493848857645
+Mumta-LW,2 mo.,BEP+ExBf,up,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.0569,2,0.00109,0.08,35.1493848857645
+MISAME-III,3-4 mo.,IFA/BEP,down,Methionine Metabolism,11,0.233,3,0.00111,0.06,-12.875536480686694
+MISAME-III,3-4 mo.,IFA/BEP,down,Homocysteine Degradation,3,0.0634,2,0.00122,0.06,-31.545741324921135
+MISAME-III,14-21 days,BEP/IFA,up,Aspartate Metabolism,8,0.065,2,0.00145,0.143,30.769230769230766
+MISAME-III,1-2 mo.,BEP/IFA,up,Histidine Metabolism,8,0.065,2,0.00145,0.0713,30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Glutamate Metabolism,8,0.26,3,0.00149,0.073,-11.538461538461538
+Mumta-LW,2 mo.,BEP+ExBf,up,Tryptophan Metabolism,6,0.0683,2,0.00163,0.08,29.282576866764277
+MISAME-III,3-4 mo.,BEP/BEP,down,Betaine Metabolism,4,0.0715,2,0.00171,0.056,-27.972027972027973
+MISAME-III,3-4 mo.,IFA/BEP,down,Glycine and Serine Metabolism,13,0.275,3,0.00187,0.0612,-10.909090909090908
+ELICIT,1 mo.,Nico+Az.,down,Glutathione Metabolism,4,0.078,2,0.00205,0.0287,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Betaine Metabolism,4,0.078,2,0.00205,0.0287,-25.641025641025642
+MISAME-III,1-2 mo.,BEP/IFA,down,Fatty Acid Biosynthesis,3,0.0829,2,0.00213,0.208,-24.125452352231605
+MISAME-III,1-2 mo.,BEP/BEP,up,Beta-Alanine Metabolism,7,0.0797,2,0.00227,0.0985,25.094102885821833
+Mumta-LW,1.5 mo.,BEP+ExBf,down,Methionine Metabolism,11,0.0894,2,0.00283,0.195,-22.371364653243848
+MISAME-III,1-2 mo.,BEP/BEP,up,Histidine Metabolism,8,0.0911,2,0.00301,0.0985,21.95389681668496
+MISAME-III,3-4 mo.,BEP/BEP,up,Pyrimidine Metabolism,2,0.00325,1,0.00325,0.239,307.6923076923077
+ELICIT,5 mo.,Az.,up,Nucleotide Sugars Metabolism,1,0.00325,1,0.00325,0.318,307.6923076923077
+ELICIT,1 mo.,Az.,down,Warburg Effect,5,0.0976,2,0.00338,0.166,-20.491803278688522
+ELICIT,1 mo.,Nico+Az.,down,Spermidine and Spermine Biosynthesis,5,0.0976,2,0.00338,0.0368,-20.491803278688522
+ELICIT,1 mo.,Nico+Az.,down,Carnitine Synthesis,5,0.0976,2,0.00338,0.0368,-20.491803278688522
+ELICIT,5 mo.,Az.,down,Purine Metabolism,6,0.0976,2,0.00345,0.117,-20.491803278688522
+MISAME-III,14-21 days,BEP/BEP,down,Beta-Alanine Metabolism,7,0.102,2,0.00385,0.125,-19.607843137254903
+MISAME-III,3-4 mo.,IFA/BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.106,2,0.00398,0.0976,-18.867924528301888
+Mumta-LW,1.5 mo.,BEP+ExBf,down,Glycine and Serine Metabolism,13,0.106,2,0.00398,0.195,-18.867924528301888
+MISAME-III,14-21 days,IFA/BEP,down,Methionine Metabolism,11,0.358,3,0.00412,0.133,-8.379888268156424
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.114,2,0.00463,0.227,-17.543859649122805
+MISAME-III,1-2 mo.,BEP/BEP,down,Methionine Metabolism,11,0.376,3,0.00476,0.233,-7.9787234042553195
+ELICIT,5 mo.,Az.,down,Beta-Alanine Metabolism,7,0.114,2,0.00479,0.117,-17.543859649122805
+ELICIT,5 mo.,Az.,down,Ammonia Recycling,7,0.114,2,0.00479,0.117,-17.543859649122805
+MISAME-III,3-4 mo.,BEP/BEP,up,Propanoate Metabolism,3,0.00488,1,0.00488,0.239,204.91803278688525
+MISAME-III,3-4 mo.,BEP/IFA,up,Ketone Body Metabolism,1,0.00488,1,0.00488,0.12,204.91803278688525
+MISAME-III,3-4 mo.,BEP/IFA,up,Butyrate Metabolism,1,0.00488,1,0.00488,0.12,204.91803278688525
+MISAME-III,3-4 mo.,BEP/IFA,up,Mitochondrial Electron Transport Chain,1,0.00488,1,0.00488,0.12,204.91803278688525
+MISAME-III,3-4 mo.,BEP/IFA,up,Phytanic Acid Peroxisomal Oxidation,1,0.00488,1,0.00488,0.12,204.91803278688525
+MISAME-III,14-21 days,BEP/BEP,down,Histidine Metabolism,8,0.117,2,0.0051,0.125,-17.094017094017094
+MISAME-III,14-21 days,IFA/BEP,down,Glutathione Metabolism,4,0.13,2,0.0058,0.133,-15.384615384615383
+ELICIT,5 mo.,Az.,down,Histidine Metabolism,8,0.13,2,0.00633,0.124,-15.384615384615383
+MISAME-III,14-21 days,BEP/IFA,down,Ketone Body Metabolism,1,0.0065,1,0.0065,0.127,-153.84615384615384
+MISAME-III,14-21 days,BEP/IFA,down,Butyrate Metabolism,1,0.0065,1,0.0065,0.127,-153.84615384615384
+MISAME-III,14-21 days,BEP/IFA,down,Mitochondrial Electron Transport Chain,1,0.0065,1,0.0065,0.127,-153.84615384615384
+MISAME-III,14-21 days,BEP/IFA,down,Phytanic Acid Peroxisomal Oxidation,1,0.0065,1,0.0065,0.127,-153.84615384615384
+MISAME-III,3-4 mo.,BEP/IFA,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0065,1,0.0065,0.634,-153.84615384615384
+ELICIT,5 mo.,Az.,up,Lactose Degradation,2,0.0065,1,0.0065,0.318,153.84615384615384
+ELICIT,5 mo.,Nico+Az.,down,Steroid Biosynthesis,1,0.0065,1,0.0065,0.319,-153.84615384615384
+ELICIT,5 mo.,Nico+Az.,down,Fatty Acid Elongation In Mitochondria,1,0.0065,1,0.0065,0.319,-153.84615384615384
+MISAME-III,1-2 mo.,BEP/IFA,down,Warburg Effect,5,0.138,2,0.00686,0.31,-14.492753623188404
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Tryptophan Metabolism,6,0.156,2,0.00897,0.318,12.820512820512821
+MISAME-III,14-21 days,IFA/BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.163,2,0.00948,0.133,-12.269938650306749
+MISAME-III,14-21 days,IFA/BEP,down,Carnitine Synthesis,5,0.163,2,0.00948,0.133,-12.269938650306749
+MISAME-III,14-21 days,IFA/BEP,down,Warburg Effect,5,0.163,2,0.00948,0.133,-12.269938650306749
+MISAME-III,3-4 mo.,BEP/IFA,up,Citric Acid Cycle,2,0.00976,1,0.00974,0.191,102.45901639344262
+MISAME-III,3-4 mo.,IFA/BEP,up,Tryptophan Metabolism,6,0.00976,1,0.00976,0.956,102.45901639344262
+MISAME-III,14-21 days,BEP/BEP,down,Methionine Metabolism,11,0.161,2,0.00979,0.192,-12.422360248447205
+ELICIT,5 mo.,Az.,down,Arginine and Proline Metabolism,10,0.163,2,0.01,0.163,-12.269938650306749
+ELICIT,5 mo.,Nico,down,Bile Acid Biosynthesis,15,0.171,2,0.0109,1,-11.695906432748536
+MISAME-III,3-4 mo.,BEP/BEP,up,Beta-Alanine Metabolism,7,0.0114,1,0.0114,0.255,87.71929824561403
+ELICIT,5 mo.,Az.,down,Methionine Metabolism,11,0.179,2,0.0121,0.17,-11.1731843575419
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Ammonia Recycling,7,0.182,2,0.0124,0.318,10.989010989010989
+MISAME-III,14-21 days,BEP/IFA,down,Citric Acid Cycle,2,0.013,1,0.013,0.159,-76.92307692307692
+MISAME-III,14-21 days,BEP/IFA,down,Pyruvate Metabolism,2,0.013,1,0.013,0.159,-76.92307692307692
+MISAME-III,14-21 days,BEP/IFA,down,Gluconeogenesis,2,0.013,1,0.013,0.159,-76.92307692307692
+MISAME-III,3-4 mo.,BEP/BEP,up,Histidine Metabolism,8,0.013,1,0.013,0.255,76.92307692307692
+MISAME-III,3-4 mo.,BEP/BEP,up,Aspartate Metabolism,8,0.013,1,0.013,0.255,76.92307692307692
+ELICIT,1 mo.,Nico,down,Ketone Body Metabolism,1,0.013,1,0.013,0.255,-76.92307692307692
+ELICIT,1 mo.,Nico,down,Butyrate Metabolism,1,0.013,1,0.013,0.255,-76.92307692307692
+ELICIT,1 mo.,Nico,down,Mitochondrial Electron Transport Chain,1,0.013,1,0.013,0.255,-76.92307692307692
+ELICIT,1 mo.,Nico,down,Phytanic Acid Peroxisomal Oxidation,1,0.013,1,0.013,0.255,-76.92307692307692
+ELICIT,5 mo.,Nico+Az.,down,Fatty acid Metabolism,2,0.013,1,0.013,0.381,-76.92307692307692
+ELICIT,1 mo.,Az.,down,Arginine and Proline Metabolism,10,0.195,2,0.0144,0.239,-10.256410256410255
+MISAME-III,14-21 days,BEP/BEP,down,Pantothenate and CoA Biosynthesis,1,0.0146,1,0.0146,0.205,-68.4931506849315
+MISAME-III,14-21 days,BEP/BEP,down,Threonine and 2-Oxobutanoate Degradation,1,0.0146,1,0.0146,0.205,-68.4931506849315
+MISAME-III,3-4 mo.,BEP/IFA,up,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,0.0146,1,0.0146,0.237,68.4931506849315
+ELICIT,1 mo.,Az.,up,Homocysteine Degradation,3,0.0146,1,0.0146,0.634,68.4931506849315
+MISAME-III,1-2 mo.,IFA/BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.203,2,0.0147,0.722,-9.852216748768472
+MISAME-III,14-21 days,BEP/IFA,up,Pyrimidine Metabolism,2,0.0163,1,0.0162,0.297,61.34969325153375
+MISAME-III,14-21 days,BEP/IFA,up,Fatty acid Metabolism,2,0.0163,1,0.0162,0.297,61.34969325153375
+MISAME-III,14-21 days,BEP/IFA,up,Steroidogenesis,2,0.0163,1,0.0162,0.297,61.34969325153375
+MISAME-III,14-21 days,BEP/IFA,up,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,0.0163,1,0.0162,0.297,61.34969325153375
+MISAME-III,1-2 mo.,BEP/IFA,up,Taurine and Hypotaurine Metabolism,2,0.0163,1,0.0162,0.318,61.34969325153375
+MISAME-III,1-2 mo.,BEP/IFA,up,Pyrimidine Metabolism,2,0.0163,1,0.0162,0.318,61.34969325153375
+MISAME-III,1-2 mo.,BEP/IFA,up,Methylhistidine Metabolism,2,0.0163,1,0.0162,0.318,61.34969325153375
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Aspartate Metabolism,8,0.208,2,0.0162,0.318,9.615384615384615
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Glutamate Metabolism,8,0.208,2,0.0162,0.318,9.615384615384615
+ELICIT,5 mo.,Az.,up,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.0163,1,0.0162,0.397,61.34969325153375
+ELICIT,5 mo.,Az.,up,Galactose Metabolism,5,0.0163,1,0.0162,0.397,61.34969325153375
+ELICIT,5 mo.,Az.,down,Porphyrin Metabolism,1,0.0163,1,0.0163,0.184,-61.34969325153375
+ELICIT,5 mo.,Az.,down,Glycine and Serine Metabolism,13,0.211,2,0.0169,0.184,-9.47867298578199
+ELICIT,1 mo.,Az.,down,Methionine Metabolism,11,0.215,2,0.0174,0.239,-9.30232558139535
+MISAME-III,1-2 mo.,BEP/IFA,down,Glutamate Metabolism,8,0.221,2,0.0183,0.31,-9.049773755656108
+MISAME-III,14-21 days,IFA/BEP,down,Ammonia Recycling,7,0.228,2,0.0191,0.199,-8.771929824561402
+MISAME-III,3-4 mo.,BEP/IFA,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0195,1,0.0194,0.634,-51.282051282051285
+MISAME-III,3-4 mo.,BEP/IFA,down,Fatty Acid Biosynthesis,3,0.0195,1,0.0194,0.634,-51.282051282051285
+MISAME-III,3-4 mo.,BEP/IFA,up,Oxidation of Branched Chain Fatty Acids,4,0.0195,1,0.0194,0.237,51.282051282051285
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Pyruvate Metabolism,2,0.0195,1,0.0194,0.756,-51.282051282051285
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Gluconeogenesis,2,0.0195,1,0.0194,0.756,-51.282051282051285
+ELICIT,1 mo.,Az.,up,Catecholamine Biosynthesis,4,0.0195,1,0.0194,0.634,51.282051282051285
+ELICIT,1 mo.,Az.,up,Betaine Metabolism,4,0.0195,1,0.0194,0.634,51.282051282051285
+ELICIT,5 mo.,Nico+Az.,down,Glycerolipid Metabolism,3,0.0195,1,0.0194,0.381,-51.282051282051285
+ELICIT,5 mo.,Nico+Az.,down,Fatty Acid Biosynthesis,3,0.0195,1,0.0194,0.381,-51.282051282051285
+ELICIT,1 mo.,Az.,down,Ketone Body Metabolism,1,0.0195,1,0.0195,0.239,-51.282051282051285
+ELICIT,1 mo.,Az.,down,Butyrate Metabolism,1,0.0195,1,0.0195,0.239,-51.282051282051285
+ELICIT,1 mo.,Az.,down,Mitochondrial Electron Transport Chain,1,0.0195,1,0.0195,0.239,-51.282051282051285
+ELICIT,1 mo.,Az.,down,Phytanic Acid Peroxisomal Oxidation,1,0.0195,1,0.0195,0.239,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Porphyrin Metabolism,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Pantothenate and CoA Biosynthesis,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Ketone Body Metabolism,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Butyrate Metabolism,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Mitochondrial Electron Transport Chain,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Phytanic Acid Peroxisomal Oxidation,1,0.0195,1,0.0195,0.12,-51.282051282051285
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylcholine Biosynthesis,1,0.0195,1,0.0195,0.12,-51.282051282051285
+MISAME-III,3-4 mo.,IFA/BEP,down,Pantothenate and CoA Biosynthesis,1,0.0211,1,0.0211,0.345,-47.39336492890995
+MISAME-III,3-4 mo.,IFA/BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0211,1,0.0211,0.345,-47.39336492890995
+ELICIT,5 mo.,Az.,down,Bile Acid Biosynthesis,15,0.244,2,0.0223,0.219,-8.19672131147541
+MISAME-III,1-2 mo.,BEP/BEP,up,Taurine and Hypotaurine Metabolism,2,0.0228,1,0.0227,0.37,43.859649122807014
+MISAME-III,1-2 mo.,BEP/BEP,up,Pyrimidine Metabolism,2,0.0228,1,0.0227,0.37,43.859649122807014
+MISAME-III,1-2 mo.,BEP/BEP,up,Methylhistidine Metabolism,2,0.0228,1,0.0227,0.37,43.859649122807014
+Mumta-LW,2 mo.,BEP+ExBf,up,Selenoamino Acid Metabolism,2,0.0228,1,0.0227,0.628,43.859649122807014
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Selenoamino Acid Metabolism,2,0.0228,1,0.0227,0.816,43.859649122807014
+ELICIT,5 mo.,Az.,up,Sphingolipid Metabolism,7,0.0228,1,0.0227,0.444,43.859649122807014
+ELICIT,5 mo.,Nico,down,Taurine and Hypotaurine Metabolism,2,0.0228,1,0.0227,1,-43.859649122807014
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Steroid Biosynthesis,1,0.0228,1,0.0228,0.446,-43.859649122807014
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Fatty Acid Elongation In Mitochondria,1,0.0228,1,0.0228,0.446,-43.859649122807014
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0228,1,0.0228,0.446,-43.859649122807014
+MISAME-III,14-21 days,BEP/IFA,up,Propanoate Metabolism,3,0.0244,1,0.0242,0.297,40.983606557377044
+MISAME-III,14-21 days,BEP/IFA,up,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0244,1,0.0242,0.297,40.983606557377044
+MISAME-III,14-21 days,BEP/IFA,up,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,0.0244,1,0.0242,0.297,40.983606557377044
+MISAME-III,1-2 mo.,BEP/IFA,up,Propanoate Metabolism,3,0.0244,1,0.0242,0.396,40.983606557377044
+MISAME-III,3-4 mo.,BEP/IFA,up,"Valine, Leucine and Isoleucine Degradation",5,0.0244,1,0.0242,0.237,40.983606557377044
+MISAME-III,3-4 mo.,BEP/IFA,up,Carnitine Synthesis,5,0.0244,1,0.0242,0.237,40.983606557377044
+MISAME-III,3-4 mo.,BEP/IFA,up,Warburg Effect,5,0.0244,1,0.0242,0.237,40.983606557377044
+Mumta-LW,1.5 mo.,BEP+ExBf,down,Homocysteine Degradation,3,0.0244,1,0.0242,0.631,-40.983606557377044
+ELICIT,1 mo.,Az.,down,Glycine and Serine Metabolism,13,0.254,2,0.0242,0.253,-7.874015748031496
+MISAME-III,14-21 days,BEP/IFA,down,Oxidation of Branched Chain Fatty Acids,4,0.026,1,0.0258,0.281,-38.46153846153846
+ELICIT,1 mo.,Nico,down,Citric Acid Cycle,2,0.026,1,0.0259,0.423,-38.46153846153846
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Phenylacetate Metabolism,1,0.026,1,0.026,0.425,38.46153846153846
+MISAME-III,1-2 mo.,BEP/IFA,down,Ketone Body Metabolism,1,0.0276,1,0.0276,0.31,-36.231884057971016
+MISAME-III,1-2 mo.,BEP/IFA,down,Butyrate Metabolism,1,0.0276,1,0.0276,0.31,-36.231884057971016
+MISAME-III,1-2 mo.,BEP/IFA,down,Mitochondrial Electron Transport Chain,1,0.0276,1,0.0276,0.31,-36.231884057971016
+MISAME-III,1-2 mo.,BEP/IFA,down,Phytanic Acid Peroxisomal Oxidation,1,0.0276,1,0.0276,0.31,-36.231884057971016
+MISAME-III,1-2 mo.,BEP/IFA,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0276,1,0.0276,0.31,-36.231884057971016
+MISAME-III,1-2 mo.,BEP/IFA,down,Arginine and Proline Metabolism,10,0.276,2,0.0284,0.31,-7.246376811594202
+MISAME-III,3-4 mo.,BEP/IFA,up,Tryptophan Metabolism,6,0.0293,1,0.029,0.259,34.129692832764505
+Mumta-LW,2 mo.,BEP+ExBf,down,Homocysteine Degradation,3,0.0293,1,0.029,0.944,-34.129692832764505
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Homocysteine Degradation,3,0.0293,1,0.029,0.756,-34.129692832764505
+ELICIT,1 mo.,Nico,up,Homocysteine Degradation,3,0.0293,1,0.029,1,34.129692832764505
+MISAME-III,14-21 days,BEP/BEP,down,Cysteine Metabolism,2,0.0293,1,0.0291,0.237,-34.129692832764505
+MISAME-III,14-21 days,BEP/BEP,down,Taurine and Hypotaurine Metabolism,2,0.0293,1,0.0291,0.237,-34.129692832764505
+MISAME-III,14-21 days,BEP/BEP,down,Pyruvate Metabolism,2,0.0293,1,0.0291,0.237,-34.129692832764505
+MISAME-III,14-21 days,BEP/BEP,down,Gluconeogenesis,2,0.0293,1,0.0291,0.237,-34.129692832764505
+MISAME-III,14-21 days,BEP/BEP,down,Methylhistidine Metabolism,2,0.0293,1,0.0291,0.237,-34.129692832764505
+ELICIT,1 mo.,Az.,down,Bile Acid Biosynthesis,15,0.293,2,0.0318,0.253,-6.825938566552901
+MISAME-III,14-21 days,BEP/IFA,down,"Valine, Leucine and Isoleucine Degradation",5,0.0325,1,0.0322,0.287,-30.769230769230766
+MISAME-III,14-21 days,BEP/IFA,down,Carnitine Synthesis,5,0.0325,1,0.0322,0.287,-30.769230769230766
+MISAME-III,14-21 days,BEP/IFA,up,Oxidation of Branched Chain Fatty Acids,4,0.0325,1,0.0322,0.351,30.769230769230766
+Mumta-LW,1.5 mo.,BEP+ExBf,down,Catecholamine Biosynthesis,4,0.0325,1,0.0322,0.631,-30.769230769230766
+Mumta-LW,1.5 mo.,BEP+ExBf,down,Betaine Metabolism,4,0.0325,1,0.0322,0.631,-30.769230769230766
+ELICIT,5 mo.,Az.,down,Taurine and Hypotaurine Metabolism,2,0.0325,1,0.0323,0.243,-30.769230769230766
+ELICIT,5 mo.,Az.,down,Pyrimidine Metabolism,2,0.0325,1,0.0323,0.243,-30.769230769230766
+ELICIT,5 mo.,Az.,down,Methylhistidine Metabolism,2,0.0325,1,0.0323,0.243,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Porphyrin Metabolism,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Pantothenate and CoA Biosynthesis,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Ketone Body Metabolism,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Butyrate Metabolism,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Mitochondrial Electron Transport Chain,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Phytanic Acid Peroxisomal Oxidation,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0325,1,0.0325,0.199,-30.769230769230766
+MISAME-III,14-21 days,IFA/BEP,down,Phosphatidylcholine Biosynthesis,1,0.0325,1,0.0325,0.199,-30.769230769230766
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Glycine and Serine Metabolism,13,0.296,2,0.0325,0.491,-6.756756756756757
+MISAME-III,1-2 mo.,BEP/BEP,up,Propanoate Metabolism,3,0.0341,1,0.0338,0.473,29.32551319648094
+Mumta-LW,2 mo.,BEP+ExBf,up,Alanine Metabolism,3,0.0341,1,0.0338,0.628,29.32551319648094
+Mumta-LW,2 mo.,BEP+ExBf,up,Glucose-Alanine Cycle,3,0.0341,1,0.0338,0.628,29.32551319648094
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Alanine Metabolism,3,0.0341,1,0.0338,0.816,29.32551319648094
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Glucose-Alanine Cycle,3,0.0341,1,0.0338,0.816,29.32551319648094
+ELICIT,5 mo.,Nico,down,Propanoate Metabolism,3,0.0341,1,0.0338,1,-29.32551319648094
+MISAME-III,1-2 mo.,BEP/BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0341,1,0.0341,1,-29.32551319648094
+Mumta-LW,2 mo.,BEP+ExBf,down,Catecholamine Biosynthesis,4,0.039,1,0.0385,0.944,-25.641025641025642
+Mumta-LW,2 mo.,BEP+ExBf,down,Betaine Metabolism,4,0.039,1,0.0385,0.944,-25.641025641025642
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Catecholamine Biosynthesis,4,0.039,1,0.0385,0.756,-25.641025641025642
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Betaine Metabolism,4,0.039,1,0.0385,0.756,-25.641025641025642
+ELICIT,1 mo.,Nico,up,Catecholamine Biosynthesis,4,0.039,1,0.0385,1,25.641025641025642
+ELICIT,1 mo.,Nico,up,Betaine Metabolism,4,0.039,1,0.0385,1,25.641025641025642
+MISAME-III,3-4 mo.,BEP/IFA,up,Glutamate Metabolism,8,0.039,1,0.0386,0.315,25.641025641025642
+ELICIT,1 mo.,Nico,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.039,1,0.0386,0.54,-25.641025641025642
+ELICIT,1 mo.,Az.,down,Taurine and Hypotaurine Metabolism,2,0.039,1,0.0387,0.253,-25.641025641025642
+ELICIT,1 mo.,Az.,down,Citric Acid Cycle,2,0.039,1,0.0387,0.253,-25.641025641025642
+ELICIT,1 mo.,Az.,down,Pyruvate Metabolism,2,0.039,1,0.0387,0.253,-25.641025641025642
+ELICIT,1 mo.,Az.,down,Gluconeogenesis,2,0.039,1,0.0387,0.253,-25.641025641025642
+ELICIT,1 mo.,Az.,down,Methylhistidine Metabolism,2,0.039,1,0.0387,0.253,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Cysteine Metabolism,2,0.039,1,0.0387,0.19,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Taurine and Hypotaurine Metabolism,2,0.039,1,0.0387,0.19,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Citric Acid Cycle,2,0.039,1,0.0387,0.19,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylethanolamine Biosynthesis,2,0.039,1,0.0387,0.19,-25.641025641025642
+MISAME-III,14-21 days,BEP/IFA,up,Carnitine Synthesis,5,0.0407,1,0.0401,0.393,24.57002457002457
+MISAME-III,1-2 mo.,IFA/BEP,down,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,1,0.0407,1,0.0407,0.957,-24.57002457002457
+MISAME-III,3-4 mo.,IFA/BEP,down,Cysteine Metabolism,2,0.0423,1,0.0419,0.513,-23.64066193853428
+MISAME-III,3-4 mo.,IFA/BEP,down,Taurine and Hypotaurine Metabolism,2,0.0423,1,0.0419,0.513,-23.64066193853428
+Mumta-LW,2 mo.,BEP+ExBf,up,Glutathione Metabolism,4,0.0455,1,0.0449,0.628,21.978021978021978
+Mumta-LW,2 mo.,BEP+ExBf,up,Arachidonic Acid Metabolism,4,0.0455,1,0.0449,0.628,21.978021978021978
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Glutathione Metabolism,4,0.0455,1,0.0449,0.816,21.978021978021978
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Arachidonic Acid Metabolism,4,0.0455,1,0.0449,0.816,21.978021978021978
+ELICIT,5 mo.,Nico+Az.,down,Ammonia Recycling,7,0.0455,1,0.0449,0.716,-21.978021978021978
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Fatty acid Metabolism,2,0.0455,1,0.045,0.491,-21.978021978021978
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Pyruvate Metabolism,2,0.0455,1,0.045,0.491,-21.978021978021978
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Gluconeogenesis,2,0.0455,1,0.045,0.491,-21.978021978021978
+MISAME-III,14-21 days,BEP/IFA,up,Tryptophan Metabolism,6,0.0488,1,0.048,0.421,20.491803278688522
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,up,Spermidine and Spermine Biosynthesis,5,0.0488,1,0.048,1,20.491803278688522
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Warburg Effect,5,0.0488,1,0.048,0.784,-20.491803278688522
+MISAME-III,3-4 mo.,BEP/IFA,up,Arginine and Proline Metabolism,10,0.0488,1,0.0481,0.362,20.491803278688522
+ELICIT,5 mo.,Az.,down,Alanine Metabolism,3,0.0488,1,0.0481,0.336,-20.491803278688522
+MISAME-III,14-21 days,BEP/IFA,down,Glutamate Metabolism,8,0.052,1,0.0511,0.418,-19.23076923076923
+ELICIT,5 mo.,Nico+Az.,down,Aspartate Metabolism,8,0.052,1,0.0511,0.716,-19.23076923076923
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Selenoamino Acid Metabolism,2,0.052,1,0.0514,0.504,19.23076923076923
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Pyrimidine Metabolism,2,0.052,1,0.0514,0.504,19.23076923076923
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Nicotinate and Nicotinamide Metabolism,2,0.052,1,0.0514,0.504,19.23076923076923
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Methylhistidine Metabolism,2,0.052,1,0.0514,0.504,19.23076923076923
+MISAME-III,3-4 mo.,BEP/BEP,down,Homocysteine Degradation,3,0.0537,1,0.0528,1,-18.6219739292365
+ELICIT,1 mo.,Az.,up,Methionine Metabolism,11,0.0537,1,0.0528,1,18.6219739292365
+MISAME-III,1-2 mo.,BEP/IFA,down,Citric Acid Cycle,2,0.0553,1,0.0546,0.411,-18.083182640144663
+MISAME-III,1-2 mo.,BEP/IFA,down,Pyruvate Metabolism,2,0.0553,1,0.0546,0.411,-18.083182640144663
+MISAME-III,1-2 mo.,BEP/IFA,down,Gluconeogenesis,2,0.0553,1,0.0546,0.411,-18.083182640144663
+MISAME-III,1-2 mo.,BEP/IFA,down,Malate-Aspartate Shuttle,2,0.0553,1,0.0546,0.411,-18.083182640144663
+MISAME-III,14-21 days,BEP/IFA,up,Beta-Alanine Metabolism,7,0.0569,1,0.0558,0.421,17.57469244288225
+MISAME-III,14-21 days,BEP/IFA,up,Ammonia Recycling,7,0.0569,1,0.0558,0.421,17.57469244288225
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.0569,1,0.0558,0.816,17.57469244288225
+ELICIT,5 mo.,Nico,down,"Valine, Leucine and Isoleucine Degradation",5,0.0569,1,0.0558,1,-17.57469244288225
+MISAME-III,14-21 days,BEP/BEP,down,Catecholamine Biosynthesis,4,0.0585,1,0.0574,0.352,-17.094017094017094
+MISAME-III,14-21 days,BEP/BEP,down,Glutathione Metabolism,4,0.0585,1,0.0574,0.352,-17.094017094017094
+MISAME-III,14-21 days,BEP/BEP,down,Arachidonic Acid Metabolism,4,0.0585,1,0.0574,0.352,-17.094017094017094
+MISAME-III,14-21 days,BEP/BEP,down,Betaine Metabolism,4,0.0585,1,0.0574,0.352,-17.094017094017094
+ELICIT,1 mo.,Nico,up,Purine Metabolism,6,0.0585,1,0.0574,1,17.094017094017094
+ELICIT,1 mo.,Az.,down,Propanoate Metabolism,3,0.0585,1,0.0575,0.352,-17.094017094017094
+ELICIT,1 mo.,Nico+Az.,down,Alanine Metabolism,3,0.0585,1,0.0575,0.256,-17.094017094017094
+ELICIT,1 mo.,Nico+Az.,down,Homocysteine Degradation,3,0.0585,1,0.0575,0.256,-17.094017094017094
+MISAME-III,1-2 mo.,IFA/BEP,down,Arginine and Proline Metabolism,10,0.407,2,0.0585,0.957,-4.914004914004915
+MISAME-III,3-4 mo.,IFA/BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0634,1,0.0622,0.575,-15.772870662460567
+MISAME-III,3-4 mo.,IFA/BEP,down,Fatty Acid Biosynthesis,3,0.0634,1,0.0622,0.575,-15.772870662460567
+ELICIT,1 mo.,Az.,up,Glycine and Serine Metabolism,13,0.0634,1,0.0622,1,15.772870662460567
+MISAME-III,14-21 days,IFA/BEP,down,Glycine and Serine Metabolism,13,0.423,2,0.0632,0.273,-4.7281323877068555
+MISAME-III,14-21 days,BEP/IFA,down,Arginine and Proline Metabolism,10,0.065,1,0.0636,0.48,-15.384615384615383
+MISAME-III,14-21 days,BEP/IFA,up,Histidine Metabolism,8,0.065,1,0.0636,0.445,15.384615384615383
+MISAME-III,1-2 mo.,BEP/IFA,up,Aspartate Metabolism,8,0.065,1,0.0636,0.89,15.384615384615383
+ELICIT,1 mo.,Nico,down,"Valine, Leucine and Isoleucine Degradation",5,0.065,1,0.0636,0.623,-15.384615384615383
+ELICIT,1 mo.,Nico,down,Carnitine Synthesis,5,0.065,1,0.0636,0.623,-15.384615384615383
+ELICIT,1 mo.,Nico,down,Warburg Effect,5,0.065,1,0.0636,0.623,-15.384615384615383
+ELICIT,5 mo.,Az.,down,Glutathione Metabolism,4,0.065,1,0.0636,0.416,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Cysteine Metabolism,2,0.065,1,0.064,0.273,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Taurine and Hypotaurine Metabolism,2,0.065,1,0.064,0.273,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Citric Acid Cycle,2,0.065,1,0.064,0.273,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Pyruvate Metabolism,2,0.065,1,0.064,0.273,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Gluconeogenesis,2,0.065,1,0.064,0.273,-15.384615384615383
+MISAME-III,14-21 days,IFA/BEP,down,Phosphatidylethanolamine Biosynthesis,2,0.065,1,0.064,0.273,-15.384615384615383
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Purine Metabolism,6,0.0683,1,0.0666,0.816,14.641288433382138
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Tryptophan Metabolism,6,0.0683,1,0.0666,0.816,14.641288433382138
+ELICIT,1 mo.,Nico,up,Urea Cycle,7,0.0683,1,0.0666,1,14.641288433382138
+ELICIT,5 mo.,Nico,down,Purine Metabolism,6,0.0683,1,0.0666,1,-14.641288433382138
+ELICIT,5 mo.,Nico,down,Tryptophan Metabolism,6,0.0683,1,0.0666,1,-14.641288433382138
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Glycerolipid Metabolism,3,0.0683,1,0.0669,0.546,-14.641288433382138
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0683,1,0.0669,0.546,-14.641288433382138
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Homocysteine Degradation,3,0.0683,1,0.0669,0.546,-14.641288433382138
+MISAME-III,1-2 mo.,BEP/BEP,down,Pyruvate Metabolism,2,0.0683,1,0.0672,1,-14.641288433382138
+MISAME-III,1-2 mo.,BEP/BEP,down,Gluconeogenesis,2,0.0683,1,0.0672,1,-14.641288433382138
+MISAME-III,1-2 mo.,IFA/BEP,down,Methionine Metabolism,11,0.447,2,0.0697,0.957,-4.47427293064877
+MISAME-III,3-4 mo.,BEP/BEP,down,Catecholamine Biosynthesis,4,0.0715,1,0.0698,1,-13.986013986013987
+MISAME-III,3-4 mo.,BEP/IFA,down,Methionine Metabolism,11,0.0715,1,0.0698,1,-13.986013986013987
+MISAME-III,14-21 days,BEP/BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.0732,1,0.0713,0.388,-13.66120218579235
+MISAME-III,14-21 days,BEP/BEP,down,Warburg Effect,5,0.0732,1,0.0713,0.388,-13.66120218579235
+ELICIT,1 mo.,Nico,up,Aspartate Metabolism,8,0.078,1,0.0759,1,12.820512820512821
+ELICIT,1 mo.,Az.,down,Oxidation of Branched Chain Fatty Acids,4,0.078,1,0.076,0.414,-12.820512820512821
+ELICIT,1 mo.,Az.,down,Betaine Metabolism,4,0.078,1,0.076,0.414,-12.820512820512821
+ELICIT,1 mo.,Nico+Az.,down,Phospholipid Biosynthesis,4,0.078,1,0.076,0.31,-12.820512820512821
+ELICIT,1 mo.,Nico+Az.,down,Oxidation of Branched Chain Fatty Acids,4,0.078,1,0.076,0.31,-12.820512820512821
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Propanoate Metabolism,3,0.078,1,0.0762,0.533,12.820512820512821
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Amino Sugar Metabolism,3,0.078,1,0.0762,0.533,12.820512820512821
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Alanine Metabolism,3,0.078,1,0.0762,0.533,12.820512820512821
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Glucose-Alanine Cycle,3,0.078,1,0.0762,0.533,12.820512820512821
+Mumta-LW,2 mo.,BEP+ExBf,up,Urea Cycle,7,0.0797,1,0.0774,0.948,12.547051442910917
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Urea Cycle,7,0.0797,1,0.0774,0.842,12.547051442910917
+ELICIT,5 mo.,Az.,down,"Valine, Leucine and Isoleucine Degradation",5,0.0813,1,0.0789,0.455,-12.300123001230013
+ELICIT,5 mo.,Az.,down,Carnitine Synthesis,5,0.0813,1,0.0789,0.455,-12.300123001230013
+MISAME-III,1-2 mo.,IFA/BEP,down,Pyruvate Metabolism,2,0.0813,1,0.0797,0.957,-12.300123001230013
+MISAME-III,1-2 mo.,IFA/BEP,down,Gluconeogenesis,2,0.0813,1,0.0797,0.957,-12.300123001230013
+MISAME-III,1-2 mo.,BEP/IFA,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0829,1,0.0808,0.528,-12.062726176115802
+MISAME-III,1-2 mo.,BEP/IFA,down,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,0.0829,1,0.0808,0.528,-12.062726176115802
+MISAME-III,14-21 days,IFA/BEP,down,Bile Acid Biosynthesis,15,0.488,2,0.0819,0.331,-4.098360655737705
+MISAME-III,3-4 mo.,BEP/IFA,down,Glycine and Serine Metabolism,13,0.0846,1,0.0821,1,-11.82033096926714
+MISAME-III,3-4 mo.,IFA/BEP,down,Catecholamine Biosynthesis,4,0.0846,1,0.0821,0.575,-11.82033096926714
+MISAME-III,3-4 mo.,IFA/BEP,down,Glutathione Metabolism,4,0.0846,1,0.0821,0.575,-11.82033096926714
+MISAME-III,3-4 mo.,IFA/BEP,down,Arachidonic Acid Metabolism,4,0.0846,1,0.0821,0.575,-11.82033096926714
+MISAME-III,3-4 mo.,IFA/BEP,down,Betaine Metabolism,4,0.0846,1,0.0821,0.575,-11.82033096926714
+MISAME-III,3-4 mo.,BEP/BEP,down,Spermidine and Spermine Biosynthesis,5,0.0894,1,0.0866,1,-11.185682326621924
+MISAME-III,1-2 mo.,BEP/BEP,up,Aspartate Metabolism,8,0.0911,1,0.088,0.958,10.97694840834248
+MISAME-III,1-2 mo.,BEP/BEP,up,Glutamate Metabolism,8,0.0911,1,0.088,0.958,10.97694840834248
+Mumta-LW,2 mo.,BEP+ExBf,up,Glutamate Metabolism,8,0.0911,1,0.088,0.958,10.97694840834248
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Glutamate Metabolism,8,0.0911,1,0.088,0.862,10.97694840834248
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Catecholamine Biosynthesis,4,0.0911,1,0.0882,0.617,-10.97694840834248
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Betaine Metabolism,4,0.0911,1,0.0882,0.617,-10.97694840834248
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Arginine and Proline Metabolism,10,0.0976,1,0.094,1,-10.245901639344261
+ELICIT,1 mo.,Nico,up,Arginine and Proline Metabolism,10,0.0976,1,0.094,1,10.245901639344261
+MISAME-III,1-2 mo.,IFA/BEP,down,Glycine and Serine Metabolism,13,0.528,2,0.0941,0.957,-3.7878787878787876
+ELICIT,1 mo.,Az.,down,Spermidine and Spermine Biosynthesis,5,0.0976,1,0.0941,0.461,-10.245901639344261
+ELICIT,1 mo.,Az.,down,Carnitine Synthesis,5,0.0976,1,0.0941,0.461,-10.245901639344261
+ELICIT,1 mo.,Nico+Az.,down,Warburg Effect,5,0.0976,1,0.0941,0.369,-10.245901639344261
+MISAME-III,14-21 days,BEP/IFA,down,Bile Acid Biosynthesis,15,0.0976,1,0.0943,0.66,-10.245901639344261
+ELICIT,5 mo.,Nico+Az.,down,Bile Acid Biosynthesis,15,0.0976,1,0.0943,1,-10.245901639344261
+MISAME-III,14-21 days,IFA/BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.0976,1,0.0946,0.331,-10.245901639344261
+MISAME-III,14-21 days,IFA/BEP,down,Alanine Metabolism,3,0.0976,1,0.0946,0.331,-10.245901639344261
+MISAME-III,14-21 days,IFA/BEP,down,Homocysteine Degradation,3,0.0976,1,0.0946,0.331,-10.245901639344261
+MISAME-III,14-21 days,IFA/BEP,down,Fatty Acid Biosynthesis,3,0.0976,1,0.0946,0.331,-10.245901639344261
+MISAME-III,14-21 days,BEP/BEP,down,Ammonia Recycling,7,0.102,1,0.0985,0.508,-9.803921568627452
+MISAME-III,1-2 mo.,BEP/BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.102,1,0.0991,1,-9.803921568627452
+MISAME-III,1-2 mo.,BEP/BEP,down,Homocysteine Degradation,3,0.102,1,0.0991,1,-9.803921568627452
+MISAME-III,1-2 mo.,BEP/BEP,down,Fatty Acid Biosynthesis,3,0.102,1,0.0991,1,-9.803921568627452
+MISAME-III,1-2 mo.,BEP/BEP,down,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,0.102,1,0.0991,1,-9.803921568627452
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Glutathione Metabolism,4,0.104,1,0.1,0.607,9.615384615384615
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Lysine Degradation,4,0.104,1,0.1,0.607,9.615384615384615
+ELICIT,1 mo.,Nico,down,Glutamate Metabolism,8,0.104,1,0.1,0.891,-9.615384615384615
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,up,Methionine Metabolism,11,0.107,1,0.103,1,9.345794392523365
+Mumta-LW,2 mo.,BEP+ExBf,down,Methionine Metabolism,11,0.107,1,0.103,1,-9.345794392523365
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Methionine Metabolism,11,0.107,1,0.103,1,-9.345794392523365
+ELICIT,1 mo.,Nico,up,Methionine Metabolism,11,0.107,1,0.103,1,9.345794392523365
+MISAME-III,1-2 mo.,BEP/IFA,down,Oxidation of Branched Chain Fatty Acids,4,0.111,1,0.106,0.584,-9.00900900900901
+MISAME-III,1-2 mo.,BEP/IFA,down,Arachidonic Acid Metabolism,4,0.111,1,0.106,0.584,-9.00900900900901
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Spermidine and Spermine Biosynthesis,5,0.114,1,0.109,0.668,-8.771929824561402
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Warburg Effect,5,0.114,1,0.109,0.668,-8.771929824561402
+MISAME-III,14-21 days,BEP/BEP,down,Aspartate Metabolism,8,0.117,1,0.112,0.522,-8.547008547008547
+MISAME-III,14-21 days,BEP/BEP,down,Glutamate Metabolism,8,0.117,1,0.112,0.522,-8.547008547008547
+ELICIT,1 mo.,Nico+Az.,down,Purine Metabolism,6,0.117,1,0.112,0.422,-8.547008547008547
+MISAME-III,1-2 mo.,BEP/IFA,up,Bile Acid Biosynthesis,15,0.122,1,0.117,1,8.19672131147541
+MISAME-III,1-2 mo.,IFA/BEP,down,Beta Oxidation of Very Long Chain Fatty Acids,3,0.122,1,0.117,0.957,-8.19672131147541
+MISAME-III,1-2 mo.,IFA/BEP,down,Homocysteine Degradation,3,0.122,1,0.117,0.957,-8.19672131147541
+MISAME-III,1-2 mo.,IFA/BEP,down,Fatty Acid Biosynthesis,3,0.122,1,0.117,0.957,-8.19672131147541
+MISAME-III,1-2 mo.,IFA/BEP,down,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,0.122,1,0.117,0.957,-8.19672131147541
+MISAME-III,3-4 mo.,BEP/BEP,down,Sphingolipid Metabolism,7,0.125,1,0.119,1,-8
+MISAME-III,3-4 mo.,BEP/BEP,down,Urea Cycle,7,0.125,1,0.119,1,-8
+ELICIT,5 mo.,Nico,down,Methionine Metabolism,11,0.125,1,0.119,1,-8
+Mumta-LW,2 mo.,BEP+ExBf,down,Glycine and Serine Metabolism,13,0.127,1,0.121,1,-7.874015748031496
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Glycine and Serine Metabolism,13,0.127,1,0.121,1,-7.874015748031496
+ELICIT,1 mo.,Nico,up,Glycine and Serine Metabolism,13,0.127,1,0.121,1,7.874015748031496
+MISAME-III,14-21 days,IFA/BEP,down,Phospholipid Biosynthesis,4,0.13,1,0.124,0.38,-7.692307692307692
+MISAME-III,14-21 days,IFA/BEP,down,Oxidation of Branched Chain Fatty Acids,4,0.13,1,0.124,0.38,-7.692307692307692
+MISAME-III,14-21 days,IFA/BEP,down,Arachidonic Acid Metabolism,4,0.13,1,0.124,0.38,-7.692307692307692
+MISAME-III,14-21 days,IFA/BEP,down,Betaine Metabolism,4,0.13,1,0.124,0.38,-7.692307692307692
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.13,1,0.124,0.607,7.692307692307692
+Mumta-LW,1.5 mo.,BEP+ExBf,up,"Valine, Leucine and Isoleucine Degradation",5,0.13,1,0.124,0.607,7.692307692307692
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Spermidine and Spermine Biosynthesis,5,0.13,1,0.124,0.607,7.692307692307692
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Warburg Effect,5,0.13,1,0.124,0.607,7.692307692307692
+ELICIT,1 mo.,Nico,down,Arginine and Proline Metabolism,10,0.13,1,0.124,1,-7.692307692307692
+ELICIT,5 mo.,Az.,down,Aspartate Metabolism,8,0.13,1,0.124,0.637,-7.692307692307692
+ELICIT,5 mo.,Az.,down,Glutamate Metabolism,8,0.13,1,0.124,0.637,-7.692307692307692
+ELICIT,1 mo.,Az.,down,Beta-Alanine Metabolism,7,0.137,1,0.129,0.577,-7.2992700729927
+ELICIT,1 mo.,Az.,down,Ammonia Recycling,7,0.137,1,0.129,0.577,-7.2992700729927
+ELICIT,1 mo.,Nico+Az.,down,Ammonia Recycling,7,0.137,1,0.129,0.47,-7.2992700729927
+MISAME-III,1-2 mo.,BEP/BEP,down,Catecholamine Biosynthesis,4,0.137,1,0.13,1,-7.2992700729927
+MISAME-III,1-2 mo.,BEP/BEP,down,Arachidonic Acid Metabolism,4,0.137,1,0.13,1,-7.2992700729927
+MISAME-III,1-2 mo.,BEP/BEP,down,Betaine Metabolism,4,0.137,1,0.13,1,-7.2992700729927
+MISAME-III,1-2 mo.,BEP/IFA,down,Tyrosine Metabolism,5,0.138,1,0.131,0.584,-7.246376811594202
+MISAME-III,1-2 mo.,BEP/IFA,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.138,1,0.131,0.584,-7.246376811594202
+MISAME-III,1-2 mo.,BEP/IFA,down,"Valine, Leucine and Isoleucine Degradation",5,0.138,1,0.131,0.584,-7.246376811594202
+MISAME-III,1-2 mo.,BEP/IFA,down,Spermidine and Spermine Biosynthesis,5,0.138,1,0.131,0.584,-7.246376811594202
+MISAME-III,1-2 mo.,BEP/IFA,down,Carnitine Synthesis,5,0.138,1,0.131,0.584,-7.246376811594202
+MISAME-III,3-4 mo.,BEP/BEP,down,Aspartate Metabolism,8,0.143,1,0.135,1,-6.993006993006993
+ELICIT,1 mo.,Nico,down,Methionine Metabolism,11,0.143,1,0.135,1,-6.993006993006993
+Mumta-LW,2 mo.,BEP+ExBf+AZT,down,Bile Acid Biosynthesis,15,0.146,1,0.138,1,-6.849315068493151
+Mumta-LW,2 mo.,BEP+ExBf,up,Glycine and Serine Metabolism,13,0.148,1,0.14,1,6.756756756756757
+Mumta-LW,2 mo.,BEP+ExBf+AZT,up,Glycine and Serine Metabolism,13,0.148,1,0.14,1,6.756756756756757
+ELICIT,5 mo.,Nico,down,Glycine and Serine Metabolism,13,0.148,1,0.14,1,-6.756756756756757
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Purine Metabolism,6,0.156,1,0.147,0.685,6.410256410256411
+ELICIT,1 mo.,Az.,down,Histidine Metabolism,8,0.156,1,0.147,0.599,-6.410256410256411
+ELICIT,1 mo.,Az.,down,Glutamate Metabolism,8,0.156,1,0.147,0.599,-6.410256410256411
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Urea Cycle,7,0.159,1,0.15,0.862,-6.289308176100628
+MISAME-III,14-21 days,IFA/BEP,down,"Valine, Leucine and Isoleucine Degradation",5,0.163,1,0.153,0.454,-6.134969325153374
+MISAME-III,1-2 mo.,IFA/BEP,down,Catecholamine Biosynthesis,4,0.163,1,0.153,1,-6.134969325153374
+MISAME-III,1-2 mo.,IFA/BEP,down,Arachidonic Acid Metabolism,4,0.163,1,0.153,1,-6.134969325153374
+MISAME-III,1-2 mo.,IFA/BEP,down,Betaine Metabolism,4,0.163,1,0.153,1,-6.134969325153374
+MISAME-III,1-2 mo.,BEP/IFA,down,Purine Metabolism,6,0.166,1,0.155,0.626,-6.024096385542168
+MISAME-III,1-2 mo.,BEP/IFA,down,Tryptophan Metabolism,6,0.166,1,0.155,0.626,-6.024096385542168
+MISAME-III,3-4 mo.,IFA/BEP,down,Glutamate Metabolism,8,0.169,1,0.158,1,-5.9171597633136095
+ELICIT,1 mo.,Nico,down,Glycine and Serine Metabolism,13,0.169,1,0.158,1,-5.9171597633136095
+MISAME-III,1-2 mo.,BEP/BEP,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.171,1,0.16,1,-5.847953216374268
+MISAME-III,1-2 mo.,BEP/BEP,down,Warburg Effect,5,0.171,1,0.16,1,-5.847953216374268
+MISAME-III,3-4 mo.,BEP/BEP,down,Arginine and Proline Metabolism,10,0.179,1,0.166,1,-5.58659217877095
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Beta-Alanine Metabolism,7,0.182,1,0.169,0.754,5.4945054945054945
+MISAME-III,1-2 mo.,BEP/IFA,down,Beta-Alanine Metabolism,7,0.193,1,0.179,0.626,-5.181347150259067
+MISAME-III,1-2 mo.,BEP/IFA,down,Ammonia Recycling,7,0.193,1,0.179,0.626,-5.181347150259067
+MISAME-III,1-2 mo.,BEP/IFA,down,Sphingolipid Metabolism,7,0.193,1,0.179,0.626,-5.181347150259067
+MISAME-III,1-2 mo.,BEP/IFA,down,Urea Cycle,7,0.193,1,0.179,0.626,-5.181347150259067
+MISAME-III,14-21 days,IFA/BEP,down,Purine Metabolism,6,0.195,1,0.181,0.521,-5.128205128205128
+MISAME-III,1-2 mo.,IFA/BEP,down,Warburg Effect,5,0.203,1,0.188,1,-4.926108374384236
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Histidine Metabolism,8,0.208,1,0.191,0.814,4.8076923076923075
+MISAME-III,3-4 mo.,IFA/BEP,down,Arginine and Proline Metabolism,10,0.211,1,0.194,1,-4.739336492890995
+MISAME-III,1-2 mo.,BEP/IFA,down,Aspartate Metabolism,8,0.221,1,0.202,0.682,-4.524886877828054
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Arginine and Proline Metabolism,10,0.228,1,0.207,1,-4.385964912280701
+MISAME-III,14-21 days,IFA/BEP,down,Sphingolipid Metabolism,7,0.228,1,0.208,0.581,-4.385964912280701
+MISAME-III,1-2 mo.,BEP/BEP,down,Sphingolipid Metabolism,7,0.239,1,0.217,1,-4.184100418410042
+MISAME-III,1-2 mo.,IFA/BEP,down,Tryptophan Metabolism,6,0.244,1,0.221,1,-4.098360655737705
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Methionine Metabolism,11,0.25,1,0.225,1,-4
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Arginine and Proline Metabolism,10,0.26,1,0.233,0.952,3.846153846153846
+MISAME-III,14-21 days,IFA/BEP,down,Aspartate Metabolism,8,0.26,1,0.234,0.636,-3.846153846153846
+MISAME-III,1-2 mo.,IFA/BEP,down,Sphingolipid Metabolism,7,0.285,1,0.253,1,-3.5087719298245617
+MISAME-III,1-2 mo.,IFA/BEP,down,Urea Cycle,7,0.285,1,0.253,1,-3.5087719298245617
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Methionine Metabolism,11,0.286,1,0.254,0.994,3.4965034965034967
+ELICIT,1 mo.,Nico+Az.,down,Bile Acid Biosynthesis,15,0.293,1,0.258,0.905,-3.4129692832764507
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Glycine and Serine Metabolism,13,0.338,1,0.293,1,2.9585798816568047
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Bile Acid Biosynthesis,15,0.341,1,0.295,1,-2.9325513196480935
+MISAME-III,1-2 mo.,BEP/IFA,down,Bile Acid Biosynthesis,15,0.415,1,0.346,1,-2.4096385542168677
+MISAME-III,1-2 mo.,BEP/BEP,down,Glycine and Serine Metabolism,13,0.444,1,0.366,1,-2.2522522522522523

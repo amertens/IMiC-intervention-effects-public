@@ -1,0 +1,10 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Nico","down","Lactose Degradation",2,1,0.0571,0.0571,1
+"Elicit (5 mo.)","Nico","down","Trehalose Degradation",2,1,0.0571,0.0571,1
+"Elicit (5 mo.)","Nico","down","Glycolysis",3,1,0.0857,0.0857,1
+"Elicit (5 mo.)","Nico","down","Spermidine and Spermine Biosynthesis",3,1,0.0857,0.0857,1
+"Elicit (5 mo.)","Nico","down","Betaine Metabolism",5,1,0.143,0.143,1
+"Elicit (5 mo.)","Nico","down","Methionine Metabolism",6,1,0.171,0.171,1
+"Elicit (5 mo.)","Nico","down","Purine Metabolism",7,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico","down","Warburg Effect",7,1,0.2,0.2,1
+"Elicit (5 mo.)","Nico","down","Pyruvate Metabolism",8,1,0.229,0.229,1

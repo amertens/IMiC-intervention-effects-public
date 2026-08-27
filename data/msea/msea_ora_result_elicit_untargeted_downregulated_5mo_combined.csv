@@ -1,0 +1,27 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Bile Acid Biosynthesis",5,0.614,2,0.115,1,1
+"Steroid Biosynthesis",1,0.123,1,0.123,1,1
+"Porphyrin Metabolism",1,0.123,1,0.123,1,1
+"Fatty Acid Elongation In Mitochondria",1,0.123,1,0.123,1,1
+"Taurine and Hypotaurine Metabolism",2,0.246,1,0.231,1,1
+"Selenoamino Acid Metabolism",2,0.246,1,0.231,1,1
+"Glycerolipid Metabolism",2,0.246,1,0.231,1,1
+"Fatty acid Metabolism",2,0.246,1,0.231,1,1
+"Phenylacetate Metabolism",2,0.246,1,0.231,1,1
+"Glutamate Metabolism",8,0.983,2,0.256,1,1
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,1.11,2,0.305,1,1
+"Purine Metabolism",9,1.11,2,0.305,1,1
+"Urea Cycle",10,1.23,2,0.354,1,1
+"Glutathione Metabolism",4,0.492,1,0.41,1,1
+"Alanine Metabolism",4,0.492,1,0.41,1,1
+"Tryptophan Metabolism",4,0.492,1,0.41,1,1
+"Malate-Aspartate Shuttle",4,0.492,1,0.41,1,1
+"Fatty Acid Biosynthesis",4,0.492,1,0.41,1,1
+"Glucose-Alanine Cycle",5,0.614,1,0.484,1,1
+"Tyrosine Metabolism",6,0.737,1,0.549,1,1
+"Beta-Alanine Metabolism",6,0.737,1,0.549,1,1
+"Arachidonic Acid Metabolism",6,0.737,1,0.549,1,1
+"Ammonia Recycling",8,0.983,1,0.656,1,1
+"Aspartate Metabolism",8,0.983,1,0.656,1,1
+"Glycine and Serine Metabolism",10,1.23,1,0.738,1,1
+"Arginine and Proline Metabolism",10,1.23,1,0.738,1,1

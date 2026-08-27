@@ -1,0 +1,47 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (3-4 mo.)","BEP/IFA","down","Nicotinate and Nicotinamide Metabolism",7,2,0.4,0.0353,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Pentose Phosphate Pathway",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Amino Sugar Metabolism",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Beta Oxidation of Very Long Chain Fatty Acids",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phenylacetate Metabolism",1,1,0.0571,0.0571,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Sulfate/Sulfite Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Inositol Phosphate Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","De Novo Triacylglycerol Biosynthesis",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Estrone Metabolism",2,1,0.114,0.113,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Steroid Biosynthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Oxidation of Branched Chain Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Glycolysis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Fatty acid Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Fructose and Mannose Degradation",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Butyrate Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Spermidine and Spermine Biosynthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Plasmalogen Synthesis",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.171,0.166,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Nucleotide Sugars Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Inositol Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Sphingolipid Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Galactose Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Starch and Sucrose Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Aspartate Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Arachidonic Acid Metabolism",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Gluconeogenesis",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.229,0.218,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Glycine and Serine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phenylalanine and Tyrosine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Ammonia Recycling",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Phospholipid Biosynthesis",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Pyrimidine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Folate Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Betaine Metabolism",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Lactose Synthesis",5,1,0.286,0.269,0.712
+"Misame (3-4 mo.)","BEP/IFA","down","Methionine Metabolism",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Citric Acid Cycle",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Glutamate Metabolism",6,1,0.343,0.318,0.778
+"Misame (3-4 mo.)","BEP/IFA","down","Purine Metabolism",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Riboflavin Metabolism",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Warburg Effect",7,1,0.4,0.365,0.831
+"Misame (3-4 mo.)","BEP/IFA","down","Tyrosine Metabolism",8,1,0.457,0.41,0.874
+"Misame (3-4 mo.)","BEP/IFA","down","Vitamin B6 Metabolism",8,1,0.457,0.41,0.874
+"Misame (3-4 mo.)","BEP/IFA","down","Pyruvate Metabolism",8,1,0.457,0.41,0.874

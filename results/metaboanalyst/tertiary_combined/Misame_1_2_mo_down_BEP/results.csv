@@ -1,0 +1,27 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP","down","Spermidine and Spermine Biosynthesis",5,3,0.179,0.000381,0.0373
+"Misame (1-2 mo.)","BEP","down","Methionine Metabolism",11,3,0.393,0.00546,0.225
+"Misame (1-2 mo.)","BEP","down","Glycine and Serine Metabolism",13,3,0.465,0.00902,0.225
+"Misame (1-2 mo.)","BEP","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,2,0.179,0.0115,0.225
+"Misame (1-2 mo.)","BEP","down","Warburg Effect",5,2,0.179,0.0115,0.225
+"Misame (1-2 mo.)","BEP","down","Ketone Body Metabolism",1,1,0.0358,0.0358,0.351
+"Misame (1-2 mo.)","BEP","down","Butyrate Metabolism",1,1,0.0358,0.0358,0.351
+"Misame (1-2 mo.)","BEP","down","Mitochondrial Electron Transport Chain",1,1,0.0358,0.0358,0.351
+"Misame (1-2 mo.)","BEP","down","Phytanic Acid Peroxisomal Oxidation",1,1,0.0358,0.0358,0.351
+"Misame (1-2 mo.)","BEP","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0358,0.0358,0.351
+"Misame (1-2 mo.)","BEP","down","Arginine and Proline Metabolism",10,2,0.358,0.0462,0.412
+"Misame (1-2 mo.)","BEP","down","Citric Acid Cycle",2,1,0.0715,0.0703,0.492
+"Misame (1-2 mo.)","BEP","down","Pyruvate Metabolism",2,1,0.0715,0.0703,0.492
+"Misame (1-2 mo.)","BEP","down","Gluconeogenesis",2,1,0.0715,0.0703,0.492
+"Misame (1-2 mo.)","BEP","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.107,0.104,0.598
+"Misame (1-2 mo.)","BEP","down","Homocysteine Degradation",3,1,0.107,0.104,0.598
+"Misame (1-2 mo.)","BEP","down","Fatty Acid Biosynthesis",3,1,0.107,0.104,0.598
+"Misame (1-2 mo.)","BEP","down","Catecholamine Biosynthesis",4,1,0.143,0.136,0.634
+"Misame (1-2 mo.)","BEP","down","Oxidation of Branched Chain Fatty Acids",4,1,0.143,0.136,0.634
+"Misame (1-2 mo.)","BEP","down","Arachidonic Acid Metabolism",4,1,0.143,0.136,0.634
+"Misame (1-2 mo.)","BEP","down","Betaine Metabolism",4,1,0.143,0.136,0.634
+"Misame (1-2 mo.)","BEP","down","Valine, Leucine and Isoleucine Degradation",5,1,0.179,0.167,0.712
+"Misame (1-2 mo.)","BEP","down","Carnitine Synthesis",5,1,0.179,0.167,0.712
+"Misame (1-2 mo.)","BEP","down","Sphingolipid Metabolism",7,1,0.25,0.226,0.886
+"Misame (1-2 mo.)","BEP","down","Urea Cycle",7,1,0.25,0.226,0.886
+"Misame (1-2 mo.)","BEP","down","Glutamate Metabolism",8,1,0.286,0.254,0.958

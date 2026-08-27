@@ -1,0 +1,69 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Retinol Metabolism",3,2,1.11,0.306,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty Acid Elongation In Mitochondria",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Biotin Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ketone Body Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Steroidogenesis",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Cardiolipin Biosynthesis",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Androstenedione Metabolism",1,1,0.371,0.371,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Valine, Leucine and Isoleucine Degradation",6,3,2.23,0.392,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Gluconeogenesis",4,2,1.49,0.478,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Transfer of Acetyl Groups into Mitochondria",4,2,1.49,0.478,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pterine Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Caffeine Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Selenoamino Acid Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycerolipid Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Androgen and Estrogen Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycerol Phosphate Shuttle",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glucose-Alanine Cycle",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Electron Transport Chain",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ethanol Degradation",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty Acid Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Inositol Phosphate Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Carnitine Synthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","De Novo Triacylglycerol Biosynthesis",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Estrone Metabolism",2,1,0.743,0.612,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Ammonia Recycling",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Arginine and Proline Metabolism",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Threonine and 2-Oxobutanoate Degradation",5,2,1.86,0.626,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Beta-Alanine Metabolism",8,3,2.97,0.645,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Vitamin B6 Metabolism",8,3,2.97,0.645,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Propanoate Metabolism",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Citric Acid Cycle",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glutamate Metabolism",6,2,2.23,0.743,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Cysteine Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Bile Acid Biosynthesis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycolysis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fatty acid Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Fructose and Mannose Degradation",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Butyrate Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Thiamine Metabolism",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Malate-Aspartate Shuttle",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Plasmalogen Synthesis",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,1.11,0.765,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Warburg Effect",7,2,2.6,0.83,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Nucleotide Sugars Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Inositol Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Lysine Degradation",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Galactose Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Alanine Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Starch and Sucrose Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Urea Cycle",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Tryptophan Metabolism",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Phytanic Acid Peroxisomal Oxidation",4,1,1.49,0.86,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pyruvate Metabolism",8,2,2.97,0.892,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Glycine and Serine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Porphyrin Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Phospholipid Biosynthesis",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Folate Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Betaine Metabolism",5,1,1.86,0.919,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Histidine Metabolism",7,1,2.6,0.975,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Purine Metabolism",7,1,2.6,0.975,1
+"Vital (2 mo.)","BEP+ExBf+AZT","up","Tyrosine Metabolism",8,1,2.97,0.986,1

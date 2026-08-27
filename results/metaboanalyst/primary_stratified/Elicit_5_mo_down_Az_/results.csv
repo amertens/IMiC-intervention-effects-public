@@ -1,0 +1,47 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Az.","down","Pentose Phosphate Pathway",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Amino Sugar Metabolism",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Beta Oxidation of Very Long Chain Fatty Acids",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Phenylacetate Metabolism",1,1,0.0286,0.0286,0.389
+"Elicit (5 mo.)","Az.","down","Sulfate/Sulfite Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Inositol Phosphate Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","De Novo Triacylglycerol Biosynthesis",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Estrone Metabolism",2,1,0.0571,0.0571,0.389
+"Elicit (5 mo.)","Az.","down","Steroid Biosynthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Oxidation of Branched Chain Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Glycolysis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Fatty acid Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Fructose and Mannose Degradation",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Butyrate Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Spermidine and Spermine Biosynthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Plasmalogen Synthesis",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.0857,0.0857,0.389
+"Elicit (5 mo.)","Az.","down","Nucleotide Sugars Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Inositol Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Sphingolipid Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Galactose Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Starch and Sucrose Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Aspartate Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Arachidonic Acid Metabolism",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Gluconeogenesis",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.114,0.114,0.389
+"Elicit (5 mo.)","Az.","down","Glycine and Serine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Phenylalanine and Tyrosine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Ammonia Recycling",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Phospholipid Biosynthesis",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Pyrimidine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Folate Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Betaine Metabolism",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Lactose Synthesis",5,1,0.143,0.143,0.389
+"Elicit (5 mo.)","Az.","down","Methionine Metabolism",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Citric Acid Cycle",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Glutamate Metabolism",6,1,0.171,0.171,0.431
+"Elicit (5 mo.)","Az.","down","Nicotinate and Nicotinamide Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Purine Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Riboflavin Metabolism",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Warburg Effect",7,1,0.2,0.2,0.456
+"Elicit (5 mo.)","Az.","down","Tyrosine Metabolism",8,1,0.229,0.229,0.487
+"Elicit (5 mo.)","Az.","down","Vitamin B6 Metabolism",8,1,0.229,0.229,0.487
+"Elicit (5 mo.)","Az.","down","Pyruvate Metabolism",8,1,0.229,0.229,0.487

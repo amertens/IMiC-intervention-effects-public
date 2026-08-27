@@ -1,0 +1,21 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP+ExBf","up","Nicotinate and Nicotinamide Metabolism",7,4,1.6,0.0335,1
+"Vital (2 mo.)","BEP+ExBf","up","Pantothenate and CoA Biosynthesis",3,2,0.686,0.124,1
+"Vital (2 mo.)","BEP+ExBf","up","Biotin Metabolism",1,1,0.229,0.229,1
+"Vital (2 mo.)","BEP+ExBf","up","Fatty Acid Biosynthesis",2,1,0.457,0.41,1
+"Vital (2 mo.)","BEP+ExBf","up","Riboflavin Metabolism",7,2,1.6,0.516,1
+"Vital (2 mo.)","BEP+ExBf","up","Beta-Alanine Metabolism",8,2,1.83,0.604,1
+"Vital (2 mo.)","BEP+ExBf","up","Alanine Metabolism",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Gluconeogenesis",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Transfer of Acetyl Groups into Mitochondria",4,1,0.914,0.665,1
+"Vital (2 mo.)","BEP+ExBf","up","Ammonia Recycling",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Arginine and Proline Metabolism",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Pyrimidine Metabolism",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.14,0.751,1
+"Vital (2 mo.)","BEP+ExBf","up","Propanoate Metabolism",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Valine, Leucine and Isoleucine Degradation",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Citric Acid Cycle",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Glutamate Metabolism",6,1,1.37,0.818,1
+"Vital (2 mo.)","BEP+ExBf","up","Warburg Effect",7,1,1.6,0.868,1
+"Vital (2 mo.)","BEP+ExBf","up","Vitamin B6 Metabolism",8,1,1.83,0.906,1
+"Vital (2 mo.)","BEP+ExBf","up","Pyruvate Metabolism",8,1,1.83,0.906,1

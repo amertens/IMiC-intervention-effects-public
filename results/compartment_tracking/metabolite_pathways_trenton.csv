@@ -1,0 +1,18 @@
+tracking_name,pathway,kegg_id,raw_p,fdr,impact
+4-Hydroxy-2-oxoglutarate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0041455,0.33164,0.2
+(R)-Glycerate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0041455,0.33164,0.2
+Citrate,Glyoxylate and dicarboxylate metabolism,hsa00630,0.0041455,0.33164,0.2
+CMP,Pyrimidine metabolism,hsa00240,0.0631,1,0.03511
+dCMP,Pyrimidine metabolism,hsa00240,0.0631,1,0.03511
+Pyridoxal,Vitamin B6 metabolism,hsa00750,0.092324,1,0.4902
+N1-Methyl-2-pyridone-5-carboxamide,Nicotinate and nicotinamide metabolism,hsa00760,0.14935,1,0
+(R)-Glycerate,Glycerolipid metabolism,hsa00561,0.15852,1,0.09346
+Citrate,Citrate cycle (TCA cycle),hsa00020,0.19428,1,0.09038
+(R)-Pantothenate,Pantothenate and CoA biosynthesis,hsa00770,0.19428,1,0.0068
+(R)-Glycerate,Pentose phosphate pathway,hsa00030,0.22015,1,0
+D-Lactate,Pyruvate metabolism,hsa00620,0.22015,1,0
+D-Lactate,Glycolysis or Gluconeogenesis,hsa00010,0.24524,1,0
+Citrate,"Alanine, aspartate and glutamate metabolism",hsa00250,0.26155,1,0
+(R)-Glycerate,"Glycine, serine and threonine metabolism",hsa00260,0.30087,1,0.02475
+"(6Z,9Z,12Z)-Octadecatrienoic acid",Biosynthesis of unsaturated fatty acids,hsa01040,0.3235,1,0
+N-Acetylserotonin,Tryptophan metabolism,hsa00380,0.3597,1,0.03901

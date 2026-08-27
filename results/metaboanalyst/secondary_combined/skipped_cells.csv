@@ -1,0 +1,8 @@
+"study","contrast","direction","n_query","reason"
+"Misame (14-21 days)","BEP","down",1,"object 'current.msg' not found"
+"Misame (14-21 days)","BEP","up",2,"object 'current.msg' not found"
+"Misame (3-4 mo.)","BEP","down",1,"object 'current.msg' not found"
+"Misame (3-4 mo.)","BEP","up",3,"object 'current.msg' not found"
+"Vital (1.5 mo.)","BEP","down",2,"object 'current.msg' not found"
+"Vital (1.5 mo.)","BEP","up",1,"pathway analysis: too few mappable metabolites for enrichment (object 'current.msg' not found)"
+"Vital (2 mo.)","BEP","up",3,"pathway analysis: too few mappable metabolites for enrichment (object 'current.msg' not found)"
