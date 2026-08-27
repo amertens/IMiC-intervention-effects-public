@@ -1,0 +1,197 @@
+compartment,direction,class,n_class,n_fg,OR,p,fdr
+MaternalPlasma,down,Acylcarnitines,19,10,4.90215434467637,0.000957461753798589,0.0287238526139577
+MaternalPlasma,down,Sphingomyelins,68,22,2.15713760891928,0.00627489482508716,0.0883725483169413
+MaternalPlasma,down,Very long chain dicarboxylic acids,11,6,5.20712227935222,0.00883725483169413,0.0883725483169413
+MaternalPlasma,down,Lysophosphocholines,24,10,3.13456068364814,0.0141128085046774,0.10584606378508
+MaternalPlasma,down,Oxylipins,64,5,0.342802096437124,0.0200249603292287,0.120149761975372
+MaternalPlasma,down,Dihydrofurans,18,0,0,0.0329383288554677,0.163313107521902
+MaternalPlasma,down,Phosphoethanolamines,142,18,0.576815835258907,0.0381063917551104,0.163313107521902
+MaternalPlasma,down,Benzenesulfonic acids and derivatives,15,6,2.88141191105562,0.0486374028427094,0.179547463334082
+MaternalPlasma,down,Bile acids and conjugates,12,5,3.07799751577788,0.059849154444694,0.179547463334082
+MaternalPlasma,down,Organic phosphoric acids and derivatives,12,5,3.07799751577788,0.059849154444694,0.179547463334082
+MaternalPlasma,down,Fatty acids and conjugates,90,11,0.566341256598464,0.0919928059341562,0.250889470729517
+MaternalPlasma,down,Phosphocholines,189,44,1.37009219329749,0.12355088238086,0.30887720595215
+MaternalPlasma,down,Indoles and derivatives,9,0,0,0.220623704862407,0.509131626605554
+MaternalPlasma,down,Carbohydrates and conjugates,37,4,0.504174483958657,0.284364060506707,0.60373106705167
+MaternalPlasma,down,Purines and purine derivatives,6,2,2.13022137936977,0.321989902427557,0.60373106705167
+MaternalPlasma,down,Triglycerides,6,2,2.13022137936977,0.321989902427557,0.60373106705167
+MaternalPlasma,down,Sterols and derivatives,8,0,0,0.365144695730168,0.644372992465002
+MaternalPlasma,down,Steroids and derivatives,13,1,0.350338017112902,0.481368946084445,0.748935306316284
+MaternalPlasma,down,Amino acids and derivatives,93,15,0.800383572873766,0.492062067800434,0.748935306316284
+MaternalPlasma,down,Carboxylic acids or derivatives,52,8,0.761495207256247,0.588710465658086,0.748935306316284
+MaternalPlasma,down,Ceramides,5,0,0,0.589916249139697,0.748935306316284
+MaternalPlasma,down,Phosphatidylinositols,5,0,0,0.589916249139697,0.748935306316284
+MaternalPlasma,down,Tocopherols,5,0,0,0.589916249139697,0.748935306316284
+MaternalPlasma,down,Fatty amides,7,2,1.70259159381948,0.62411275526357,0.748935306316284
+MaternalPlasma,down,Porphyrins and analogues,7,2,1.70259159381948,0.62411275526357,0.748935306316284
+MaternalPlasma,down,Phosphoinositols,9,2,1.21367156052539,0.683877745606112,0.778429791987395
+MaternalPlasma,down,Nucleotides and derivatives,11,1,0.42139776887265,0.700586812788655,0.778429791987395
+MaternalPlasma,down,Diglycerides,23,5,1.18250295940211,0.787700166010513,0.843964463582693
+MaternalPlasma,down,Fatty acid hydroxy fatty acids,19,3,0.792162369760175,1,1
+MaternalPlasma,down,Phenols,8,1,0.604088858850917,1,1
+MaternalPlasma,up,Oxylipins,64,23,2.94742801352601,0.000210404447504142,0.00519145802111541
+MaternalPlasma,up,Fatty acids and conjugates,90,29,2.53583259525756,0.000346097201407694,0.00519145802111541
+MaternalPlasma,up,Diglycerides,23,0,0,0.0221273459890487,0.17062095774333
+MaternalPlasma,up,Phosphoethanolamines,142,15,0.527733263162439,0.0227494610324441,0.17062095774333
+MaternalPlasma,up,Phosphocholines,189,25,0.688715563189955,0.110763591303062,0.482195628714348
+MaternalPlasma,up,Fatty acid hydroxy fatty acids,19,6,2.25926648445751,0.118344232367092,0.482195628714348
+MaternalPlasma,up,Carbohydrates and conjugates,37,10,1.82599709305355,0.119578954706688,0.482195628714348
+MaternalPlasma,up,Sphingomyelins,68,7,0.53331543958442,0.135306773410312,0.482195628714348
+MaternalPlasma,up,Phenols,8,3,2.91242361051901,0.144658688614304,0.482195628714348
+MaternalPlasma,up,Phosphoinositols,9,3,2.42503363670724,0.190689194391365,0.572067583174095
+MaternalPlasma,up,Fatty amides,7,2,1.93170768264283,0.345843744036457,0.833239399341599
+MaternalPlasma,up,Acylcarnitines,19,5,1.73656827273333,0.351135127041978,0.833239399341599
+MaternalPlasma,up,Lysophosphocholines,24,2,0.430776468218837,0.408481915193398,0.833239399341599
+MaternalPlasma,up,Steroids and derivatives,13,3,1.44911836124558,0.477712491306281,0.833239399341599
+MaternalPlasma,up,Benzenesulfonic acids and derivatives,15,1,0.339839533332131,0.489415583887631,0.833239399341599
+MaternalPlasma,up,Amino acids and derivatives,93,18,1.17097439037564,0.565197674926688,0.833239399341599
+MaternalPlasma,up,Ceramides,5,0,0,0.594602567609847,0.833239399341599
+MaternalPlasma,up,Phosphatidylinositols,5,0,0,0.594602567609847,0.833239399341599
+MaternalPlasma,up,Tocopherols,5,0,0,0.594602567609847,0.833239399341599
+MaternalPlasma,up,Purines and purine derivatives,6,0,0,0.597233465401169,0.833239399341599
+MaternalPlasma,up,Triglycerides,6,0,0,0.597233465401169,0.833239399341599
+MaternalPlasma,up,Porphyrins and analogues,7,0,0,0.611042226183839,0.833239399341599
+MaternalPlasma,up,Very long chain dicarboxylic acids,11,1,0.477988633188563,0.700638142835537,0.878240542364012
+MaternalPlasma,up,Organic phosphoric acids and derivatives,12,1,0.434030446794839,0.70259243389121,0.878240542364012
+MaternalPlasma,up,Sterols and derivatives,8,1,0.685123999959436,1,1
+MaternalPlasma,up,Bile acids and conjugates,12,2,0.960948474620609,1,1
+MaternalPlasma,up,Carboxylic acids or derivatives,52,9,1.00639963225769,1,1
+MaternalPlasma,up,Dihydrofurans,18,3,0.960722258914415,1,1
+MaternalPlasma,up,Indoles and derivatives,9,1,0.59882831070259,1,1
+MaternalPlasma,up,Nucleotides and derivatives,11,2,1.06890782488776,1,1
+VamsPostnatalInfant,down,Phosphocholines,56,12,2.9243332110732,0.00705598753975352,0.148175738334824
+VamsPostnatalInfant,down,Triglycerides,24,6,3.24359896421637,0.0255208428737023,0.267968850173874
+VamsPostnatalInfant,down,Acylcarnitines,14,3,2.51218722039843,0.160273074187985,0.979971183496263
+VamsPostnatalInfant,down,Lysophosphocholines,15,3,2.29773067529063,0.186661177808812,0.979971183496263
+VamsPostnatalInfant,down,Carboxylic acids or derivatives,18,0,0,0.238156925054852,1
+VamsPostnatalInfant,down,Carbohydrates and conjugates,14,0,0,0.379049170041376,1
+VamsPostnatalInfant,down,Oxylipins,25,1,0.355685235797361,0.495630739709998,1
+VamsPostnatalInfant,down,Sterol esters,9,0,0,0.607751013713966,1
+VamsPostnatalInfant,down,Fatty acid hydroxy fatty acids,10,0,0,0.608251970273718,1
+VamsPostnatalInfant,down,Diglycerides,13,2,1.6383890298161,0.630737900630633,1
+VamsPostnatalInfant,down,Amino acids and derivatives,41,3,0.679095105196589,0.785359532180286,1
+VamsPostnatalInfant,down,Bile acids and conjugates,6,0,0,1,1
+VamsPostnatalInfant,down,Ceramides,18,1,0.511299471701053,1,1
+VamsPostnatalInfant,down,Fatty acids and conjugates,36,3,0.792592662517279,1,1
+VamsPostnatalInfant,down,Fatty amides,6,0,0,1,1
+VamsPostnatalInfant,down,Organonitrogen compounds,5,0,0,1,1
+VamsPostnatalInfant,down,Perfluorochemicals,5,0,0,1,1
+VamsPostnatalInfant,down,Phosphoethanolamines,38,4,1.04724401050689,1,1
+VamsPostnatalInfant,down,Sphingomyelins,20,2,0.984530074431909,1,1
+VamsPostnatalInfant,down,Steroids and derivatives,7,0,0,1,1
+VamsPostnatalInfant,down,Very long chain dicarboxylic acids,7,0,0,1,1
+VamsPostnatalInfant,up,Phosphoethanolamines,38,8,2.50249725141404,0.0470910929495948,0.954878363897547
+VamsPostnatalInfant,up,Carbohydrates and conjugates,14,3,2.38610157178787,0.176277042959833,0.954878363897547
+VamsPostnatalInfant,up,Lysophosphocholines,15,3,2.18241440094127,0.204642190069565,0.954878363897547
+VamsPostnatalInfant,up,Ceramides,18,0,0,0.239023407295617,0.954878363897547
+VamsPostnatalInfant,up,Sphingomyelins,20,0,0,0.251538110071354,0.954878363897547
+VamsPostnatalInfant,up,Oxylipins,25,4,1.66327706227768,0.322373140373878,0.954878363897547
+VamsPostnatalInfant,up,Carboxylic acids or derivatives,18,3,1.73373816685726,0.422717672568854,0.954878363897547
+VamsPostnatalInfant,up,Organonitrogen compounds,5,1,2.13102995037545,0.430004628809094,0.954878363897547
+VamsPostnatalInfant,up,Perfluorochemicals,5,1,2.13102995037545,0.430004628809094,0.954878363897547
+VamsPostnatalInfant,up,Triglycerides,24,1,0.354068608497666,0.495278617232617,0.954878363897547
+VamsPostnatalInfant,up,Steroids and derivatives,7,1,1.41539311544529,0.545644779370027,0.954878363897547
+VamsPostnatalInfant,up,Very long chain dicarboxylic acids,7,1,1.41539311544529,0.545644779370027,0.954878363897547
+VamsPostnatalInfant,up,Fatty acid hydroxy fatty acids,10,0,0,0.609113739300878,0.97649385685439
+VamsPostnatalInfant,up,Acylcarnitines,14,2,1.42462363946364,0.650995904569593,0.97649385685439
+VamsPostnatalInfant,up,Fatty acids and conjugates,36,4,1.06091595264786,0.783545164121014,1
+VamsPostnatalInfant,up,Bile acids and conjugates,6,0,0,1,1
+VamsPostnatalInfant,up,Fatty amides,6,0,0,1,1
+VamsPostnatalInfant,up,Sterol esters,9,1,1.05694640937918,1,1
+VamsPostnatalInfant,up,Amino acids and derivatives,41,4,0.905311737993285,1,1
+VamsPostnatalInfant,up,Diglycerides,13,1,0.697958962344951,1,1
+VamsPostnatalInfant,up,Phosphocholines,56,6,1.01557505634386,1,1
+VamsPostnatalMaternal,down,Diglycerides,13,5,9.62170613545146,0.00103698750881042,0.0217767376850188
+VamsPostnatalMaternal,down,Acylcarnitines,14,3,3.89549017398136,0.0663372906336244,0.665529682898433
+VamsPostnatalMaternal,down,Sterol esters,9,2,3.97861826026598,0.124963491234444,0.665529682898433
+VamsPostnatalMaternal,down,Sphingomyelins,20,3,2.48842885604161,0.156259964148402,0.665529682898433
+VamsPostnatalMaternal,down,Fatty acids and conjugates,36,0,0,0.160435482266318,0.665529682898433
+VamsPostnatalMaternal,down,Amino acids and derivatives,41,5,2.00987188349897,0.190151337970981,0.665529682898433
+VamsPostnatalMaternal,down,Triglycerides,24,0,0,0.397743249280543,1
+VamsPostnatalMaternal,down,Carbohydrates and conjugates,14,0,0,0.612257182764762,1
+VamsPostnatalMaternal,down,Lysophosphocholines,15,0,0,0.613545364881822,1
+VamsPostnatalMaternal,down,Bile acids and conjugates,6,0,0,1,1
+VamsPostnatalMaternal,down,Carboxylic acids or derivatives,18,1,0.776841418969075,1,1
+VamsPostnatalMaternal,down,Ceramides,18,1,0.776841418969075,1,1
+VamsPostnatalMaternal,down,Fatty amides,6,0,0,1,1
+VamsPostnatalMaternal,down,Fatty acid hydroxy fatty acids,10,0,0,1,1
+VamsPostnatalMaternal,down,Organonitrogen compounds,5,0,0,1,1
+VamsPostnatalMaternal,down,Oxylipins,25,1,0.540870771461608,1,1
+VamsPostnatalMaternal,down,Perfluorochemicals,5,0,0,1,1
+VamsPostnatalMaternal,down,Phosphocholines,56,4,1.0284276139816,1,1
+VamsPostnatalMaternal,down,Phosphoethanolamines,38,2,0.722693779297824,1,1
+VamsPostnatalMaternal,down,Steroids and derivatives,7,0,0,1,1
+VamsPostnatalMaternal,down,Very long chain dicarboxylic acids,7,0,0,1,1
+VamsPostnatalMaternal,up,Phosphoethanolamines,38,7,5.84273424615728,0.00127099658421115,0.0266909282684341
+VamsPostnatalMaternal,up,Ceramides,18,2,2.52965574747378,0.222161811331828,1
+VamsPostnatalMaternal,up,Oxylipins,25,2,1.73210019347165,0.35544313318728,1
+VamsPostnatalMaternal,up,Fatty acid hydroxy fatty acids,10,1,2.17974912558796,0.401635290830497,1
+VamsPostnatalMaternal,up,Fatty acids and conjugates,36,3,1.85805662729641,0.408602021968476,1
+VamsPostnatalMaternal,up,Acylcarnitines,14,1,1.49653360107167,0.514405754814566,1
+VamsPostnatalMaternal,up,Carbohydrates and conjugates,14,1,1.49653360107167,0.514405754814566,1
+VamsPostnatalMaternal,up,Carboxylic acids or derivatives,18,1,1.1341135250184,0.606711028201486,1
+VamsPostnatalMaternal,up,Sphingomyelins,20,0,0,0.613857787202961,1
+VamsPostnatalMaternal,up,Triglycerides,24,0,0,0.622111896871957,1
+VamsPostnatalMaternal,up,Amino acids and derivatives,41,1,0.455364891237806,0.70914203048641,1
+VamsPostnatalMaternal,up,Phosphocholines,56,3,1.09909261378784,0.748964369063477,1
+VamsPostnatalMaternal,up,Bile acids and conjugates,6,0,0,1,1
+VamsPostnatalMaternal,up,Diglycerides,13,0,0,1,1
+VamsPostnatalMaternal,up,Fatty amides,6,0,0,1,1
+VamsPostnatalMaternal,up,Lysophosphocholines,15,0,0,1,1
+VamsPostnatalMaternal,up,Organonitrogen compounds,5,0,0,1,1
+VamsPostnatalMaternal,up,Perfluorochemicals,5,0,0,1,1
+VamsPostnatalMaternal,up,Steroids and derivatives,7,0,0,1,1
+VamsPostnatalMaternal,up,Sterol esters,9,0,0,1,1
+VamsPostnatalMaternal,up,Very long chain dicarboxylic acids,7,0,0,1,1
+VamsPrenatal,down,Acylcarnitines,19,6,3.86155067626378,0.0132851838740488,0.345414780725268
+VamsPrenatal,down,Purines and purine derivatives,5,2,5.39070154089968,0.0983479691926652,0.890941230838293
+VamsPrenatal,down,Amino acids and derivatives,58,10,1.74265200494403,0.130126452077602,0.890941230838293
+VamsPrenatal,down,Diglycerides,6,2,4.0411743654435,0.13706788166743,0.890941230838293
+VamsPrenatal,down,Oxylipins,53,9,1.6997277220086,0.173458581107807,0.901984621760597
+VamsPrenatal,down,Carboxylic acids or derivatives,42,2,0.384633705082449,0.215387770805841,0.933347006825309
+VamsPrenatal,down,Phosphocholines,113,9,0.654290231617673,0.331526737425218,1
+VamsPrenatal,down,Lysophosphocholines,11,2,1.78648002603983,0.35198831628928,1
+VamsPrenatal,down,Sphingomyelins,34,2,0.486536298023318,0.414812465989881,1
+VamsPrenatal,down,Sterols and derivatives,7,1,1.33087606714796,0.564460550296924,1
+VamsPrenatal,down,Phosphoinositols,9,0,0,0.608028615273885,1
+VamsPrenatal,down,Bile acids and conjugates,10,0,0,0.613053889437041,1
+VamsPrenatal,down,Fatty acid hydroxy fatty acids,10,0,0,0.613053889437041,1
+VamsPrenatal,down,Nucleotides and derivatives,12,2,1.60581602311084,0.633647787361469,1
+VamsPrenatal,down,Phosphoethanolamines,151,15,0.853813985836211,0.667969478018255,1
+VamsPrenatal,down,Dihydrofurans,15,2,1.23041859999312,0.679460806267537,1
+VamsPrenatal,down,Very long chain dicarboxylic acids,16,2,1.14097613149062,0.69652309926725,1
+VamsPrenatal,down,Fatty acids and conjugates,83,10,1.10280125576674,0.715517860060242,1
+VamsPrenatal,down,Carbohydrates and conjugates,25,3,1.0892133564987,0.752182024392169,1
+VamsPrenatal,down,Benzenesulfonic acids and derivatives,26,3,1.04036419288392,1,1
+VamsPrenatal,down,Ceramides,7,0,0,1,1
+VamsPrenatal,down,Fatty amides,7,0,0,1,1
+VamsPrenatal,down,Organic phosphoric acids and derivatives,11,1,0.794477726561951,1,1
+VamsPrenatal,down,Phenols,5,0,0,1,1
+VamsPrenatal,down,Steroids and derivatives,10,1,0.883894214849238,1,1
+VamsPrenatal,down,Triglycerides,10,1,0.883894214849238,1,1
+VamsPrenatal,up,Carbohydrates and conjugates,25,4,3.62870037193437,0.0388026773205879,0.649603296245414
+VamsPrenatal,up,Fatty acids and conjugates,83,8,2.10567005975479,0.0715887513980398,0.649603296245414
+VamsPrenatal,up,Acylcarnitines,19,3,3.50488676148617,0.0749542264898554,0.649603296245414
+VamsPrenatal,up,Oxylipins,53,0,0,0.104812886371287,0.681283761413365
+VamsPrenatal,up,Purines and purine derivatives,5,1,4.51363168893987,0.239836004985541,1
+VamsPrenatal,up,Diglycerides,6,1,3.60908110689825,0.28055907614703,1
+VamsPrenatal,up,Bile acids and conjugates,10,1,1.99762218333048,0.423191416721772,1
+VamsPrenatal,up,Steroids and derivatives,10,1,1.99762218333048,0.423191416721772,1
+VamsPrenatal,up,Lysophosphocholines,11,1,1.79582772337898,0.454290210685424,1
+VamsPrenatal,up,Carboxylic acids or derivatives,42,3,1.39576611716414,0.484191542149784,1
+VamsPrenatal,up,Phosphocholines,113,4,0.616454107002984,0.497513132014693,1
+VamsPrenatal,up,Very long chain dicarboxylic acids,16,1,1.18995954133817,0.586825972720055,1
+VamsPrenatal,up,Amino acids and derivatives,58,2,0.617278808647768,0.761623930086933,1
+VamsPrenatal,up,Phosphoethanolamines,151,7,0.837680818164243,0.840670939943586,1
+VamsPrenatal,up,Dihydrofurans,15,0,0,1,1
+VamsPrenatal,up,Fatty acid hydroxy fatty acids,10,0,0,1,1
+VamsPrenatal,up,Triglycerides,10,0,0,1,1
+VamsPrenatal,up,Benzenesulfonic acids and derivatives,26,1,0.704639915969621,1,1
+VamsPrenatal,up,Ceramides,7,0,0,1,1
+VamsPrenatal,up,Fatty amides,7,0,0,1,1
+VamsPrenatal,up,Nucleotides and derivatives,12,0,0,1,1
+VamsPrenatal,up,Organic phosphoric acids and derivatives,11,0,0,1,1
+VamsPrenatal,up,Phenols,5,0,0,1,1
+VamsPrenatal,up,Phosphoinositols,9,0,0,1,1
+VamsPrenatal,up,Sphingomyelins,34,1,0.52806352934869,1,1
+VamsPrenatal,up,Sterols and derivatives,7,0,0,1,1

@@ -1,0 +1,7 @@
+"study","contrast","direction","n_query","reason"
+"Misame (14-21 days)","BEP/BEP","up",52,"$ operator is invalid for atomic vectors"
+"Misame (14-21 days)","IFA/BEP","up",40,"ORA: too few mappable metabolites for enrichment (object 'current.msg' not found)"
+"Misame (1-2 mo.)","IFA/BEP","up",14,"ORA: too few mappable metabolites for enrichment (object 'current.msg' not found)"
+"Elicit (1 mo.)","Nico+Az.","up",93,"$ operator is invalid for atomic vectors"
+"Elicit (5 mo.)","Nico","up",6,"$ operator is invalid for atomic vectors"
+"Elicit (5 mo.)","Nico+Az.","up",45,"$ operator is invalid for atomic vectors"

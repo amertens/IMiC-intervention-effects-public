@@ -1,0 +1,1124 @@
+---
+title: "Exploratory Outcomes (Proteomics/UniProt)"
+output: html_document
+date: "2026-08-05"
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(clusterProfiler) # Gene Ontology enrichment analysis
+library(GO.db)           # Gene Ontology term descriptions
+library(org.Hs.eg.db)    # Human gene and protein annotations
+library(tidyverse)       # Data import, manipulation, and visualization
+library(writexl)         # Export dataframes to Excel
+
+```
+
+This analysis performs Gene Ontology Biological Process over-representation analysis directly with UniProt identifiers. Each measured UniProt identifier is counted once in the foreground and background. This avoids expanding one experimentally measured protein into multiple Entrez genes.
+
+If `GO.db` is not installed, run `BiocManager::install("GO.db")` once in the R console before knitting this document.
+
+# Import Data
+
+## combined_intervention_effects_results_combined_arms.RDS
+
+```{r}
+
+combined_intervention <-
+  readRDS(
+    "../1. Data/combined_intervention_effects_results_combined_arms.RDS"
+  )
+
+```
+
+## combined_intervention_effects_results_stratified_arms.RDS
+
+```{r}
+
+stratified_intervention <-
+  readRDS(
+    "../1. Data/combined_intervention_effects_results_stratified_arms.RDS"
+  )
+
+```
+
+# Verify Data
+
+```{r}
+
+proteomics_studies_timepoints <-
+  bind_rows(
+    combined_intervention %>%
+      filter(
+        description == "Proteomics"
+      ) %>%
+      distinct(
+        study,
+        studytime,
+        contrast,
+        measure
+      ) %>%
+      mutate(
+        analysis_type = "Combined"
+      ),
+
+    stratified_intervention %>%
+      filter(
+        description == "Proteomics"
+      ) %>%
+      distinct(
+        study,
+        studytime,
+        contrast,
+        measure
+      ) %>%
+      mutate(
+        analysis_type = "Stratified"
+      )
+  ) %>%
+  select(
+    analysis_type,
+    study,
+    studytime,
+    contrast,
+    measure
+  ) %>%
+  arrange(
+    analysis_type,
+    study,
+    studytime,
+    contrast,
+    measure
+  )
+
+proteomics_studies_timepoints
+
+```
+
+## Compare Combined and Stratified ATEs
+
+```{r}
+
+proteomics_ate_comparison <-
+  stratified_intervention %>%
+  filter(
+    description == "Proteomics",
+    studytime %in%
+      c(
+        "Misame (1-2 mo.)",
+        "Vital (2 mo.)"
+      ),
+    measure == "ATE"
+  ) %>%
+  select(
+    studytime,
+    biomarker,
+    stratified_contrast = contrast,
+    stratified_ate = est
+  ) %>%
+  inner_join(
+    combined_intervention %>%
+      filter(
+        description == "Proteomics",
+        studytime %in%
+          c(
+            "Misame (1-2 mo.)",
+            "Vital (2 mo.)"
+          ),
+        measure == "ATE"
+      ) %>%
+      select(
+        studytime,
+        biomarker,
+        combined_ate = est
+      ),
+    by =
+      c(
+        "studytime",
+        "biomarker"
+      )
+  ) %>%
+  mutate(
+    ate_difference =
+      stratified_ate - combined_ate,
+    same_effect =
+      near(
+        stratified_ate,
+        combined_ate
+      )
+  ) %>%
+  arrange(
+    studytime,
+    stratified_contrast,
+    biomarker
+  )
+
+proteomics_ate_comparison %>%
+  count(
+    studytime,
+    stratified_contrast,
+    same_effect
+  )
+
+```
+
+The combined-arm analysis is used for MISAME-III because its single BEP/BEP intervention contrast produces the same effect estimates as the combined analysis. Contrast-specific stratified analyses are used for Mumpta-LW to distinguish BEP+ExBf from BEP+ExBf+AZT.
+
+# Create UniProt-to-GO Mapping
+
+## Isolate all measured proteomics UniProt identifiers
+
+```{r}
+
+all_proteomics_uniprot <-
+  bind_rows(
+    combined_intervention,
+    stratified_intervention
+  ) %>%
+  filter(
+    description == "Proteomics",
+    measure == "ATE",
+    !is.na(label_f),
+    label_f != ""
+  ) %>%
+  distinct(label_f) %>%
+  pull(label_f)
+
+length(all_proteomics_uniprot)
+
+```
+
+## Create GO Biological Process to UniProt mapping
+
+```{r}
+
+uniprot_go_annotations <-
+  AnnotationDbi::select(
+    org.Hs.eg.db,
+    keys = all_proteomics_uniprot,
+    keytype = "UNIPROT",
+    columns =
+      c(
+        "GOALL",
+        "ONTOLOGYALL"
+      )
+  ) %>%
+  as_tibble() %>%
+  filter(
+    ONTOLOGYALL == "BP",
+    !is.na(GOALL),
+    GOALL != "",
+    !is.na(UNIPROT),
+    UNIPROT != ""
+  ) %>%
+  distinct(
+    GOALL,
+    UNIPROT
+  )
+
+uniprot_go_term2gene <-
+  uniprot_go_annotations %>%
+  transmute(
+    term = GOALL,
+    gene = UNIPROT
+  ) %>%
+  distinct(
+    term,
+    gene
+  )
+
+uniprot_go_term2name <-
+  AnnotationDbi::select(
+    GO.db,
+    keys =
+      uniprot_go_term2gene %>%
+      distinct(term) %>%
+      pull(term),
+    keytype = "GOID",
+    columns = "TERM"
+  ) %>%
+  as_tibble() %>%
+  transmute(
+    term = GOID,
+    name = TERM
+  ) %>%
+  filter(
+    !is.na(name),
+    name != ""
+  ) %>%
+  distinct(
+    term,
+    name
+  )
+
+```
+
+## Validate UniProt mapping coverage
+
+```{r}
+
+uniprot_mapping_summary <-
+  tibble(
+    UNIPROT = all_proteomics_uniprot
+  ) %>%
+  mutate(
+    mapped =
+      UNIPROT %in% uniprot_go_term2gene$gene
+  ) %>%
+  count(
+    mapped,
+    name = "number_of_proteins"
+  ) %>%
+  mutate(
+    percent =
+      100 *
+      number_of_proteins /
+      sum(number_of_proteins)
+  )
+
+uniprot_mapping_summary
+
+unmapped_proteomics_uniprot <-
+  tibble(
+    UNIPROT = all_proteomics_uniprot
+  ) %>%
+  filter(
+    !UNIPROT %in% uniprot_go_term2gene$gene
+  )
+
+unmapped_proteomics_uniprot
+
+```
+
+# UniProt Enrichment Function
+
+```{r}
+
+run_uniprot_go_enrichment <-
+  function(
+    data,
+    studytime_value,
+    contrast_value,
+    direction_value
+  ) {
+    analysis_background <-
+      data %>%
+      filter(
+        studytime == studytime_value,
+        contrast == contrast_value,
+        description == "Proteomics",
+        measure == "ATE",
+        !is.na(label_f),
+        label_f != ""
+      ) %>%
+      distinct(label_f) %>%
+      pull(label_f) %>%
+      intersect(
+        uniprot_go_term2gene$gene
+      )
+
+    analysis_foreground_data <-
+      data %>%
+      filter(
+        studytime == studytime_value,
+        contrast == contrast_value,
+        description == "Proteomics",
+        measure == "ATE",
+        sig == 1,
+        !is.na(label_f),
+        label_f != ""
+      ) %>%
+      filter(
+        case_when(
+          direction_value == "Downregulated" ~ est < 0,
+          direction_value == "Upregulated" ~ est > 0,
+          TRUE ~ FALSE
+        )
+      )
+
+    analysis_foreground <-
+      analysis_foreground_data %>%
+      distinct(label_f) %>%
+      pull(label_f) %>%
+      intersect(
+        analysis_background
+      )
+
+    enrichment <-
+      enricher(
+        gene = analysis_foreground,
+        universe = analysis_background,
+        pAdjustMethod = "BH",
+        pvalueCutoff = 0.05,
+        qvalueCutoff = 0.20,
+        minGSSize = 10,
+        maxGSSize = 500,
+        TERM2GENE = uniprot_go_term2gene,
+        TERM2NAME = uniprot_go_term2name
+      )
+
+    enrichment_results <-
+      case_when(
+        is.null(enrichment) ~
+          list(tibble()),
+        TRUE ~
+          list(
+            enrichment@result %>%
+              as_tibble()
+          )
+      ) %>%
+      pluck(1)
+
+    list(
+      foreground_data =
+        analysis_foreground_data,
+      foreground =
+        analysis_foreground,
+      background =
+        analysis_background,
+      enrichment =
+        enrichment,
+      results =
+        enrichment_results
+    )
+  }
+
+```
+
+# Combined Analysis
+
+## Misame
+
+### Downregulated
+
+#### 1-2 Months
+
+##### Misame · Downregulated · 1-2 months · (Combined)
+
+```{r}
+
+misame_pn12_downregulated_uniprot <-
+  run_uniprot_go_enrichment(
+    data = combined_intervention,
+    studytime_value = "Misame (1-2 mo.)",
+    contrast_value = "BEP",
+    direction_value = "Downregulated"
+  )
+
+misame3_pn12_downregulated_uniprot <-
+  misame_pn12_downregulated_uniprot$foreground_data
+
+protein_vector_misame3_pn12_downregulated_uniprot <-
+  misame_pn12_downregulated_uniprot$foreground
+
+results_misame3_pn12_downregulated_uniprot <-
+  misame_pn12_downregulated_uniprot$results %>%
+  mutate(
+    study = "Misame",
+    timepoint = "pn12",
+    direction = "Downregulated",
+    contrast = "BEP",
+    analysis_type = "Combined",
+    identifier_type = "UniProt"
+  )
+
+head(results_misame3_pn12_downregulated_uniprot)
+
+print(results_misame3_pn12_downregulated_uniprot)
+
+```
+
+### Upregulated
+
+#### 1-2 Months
+
+##### Misame · Upregulated · 1-2 months · (Combined)
+
+```{r}
+
+misame_pn12_upregulated_uniprot <-
+  run_uniprot_go_enrichment(
+    data = combined_intervention,
+    studytime_value = "Misame (1-2 mo.)",
+    contrast_value = "BEP",
+    direction_value = "Upregulated"
+  )
+
+misame3_pn12_upregulated_uniprot <-
+  misame_pn12_upregulated_uniprot$foreground_data
+
+protein_vector_misame3_pn12_upregulated_uniprot <-
+  misame_pn12_upregulated_uniprot$foreground
+
+results_misame3_pn12_upregulated_uniprot <-
+  misame_pn12_upregulated_uniprot$results %>%
+  mutate(
+    study = "Misame",
+    timepoint = "pn12",
+    direction = "Upregulated",
+    contrast = "BEP",
+    analysis_type = "Combined",
+    identifier_type = "UniProt"
+  )
+
+head(results_misame3_pn12_upregulated_uniprot)
+
+print(results_misame3_pn12_upregulated_uniprot)
+
+```
+
+# Stratified Analysis
+
+## Mumpta
+
+### Downregulated
+
+#### 2 Months
+
+##### Mumpta · Downregulated · 2 months · BEPExBf (Stratified)
+
+```{r}
+
+mumpta_pn2_downregulated_bepexbf_uniprot <-
+  run_uniprot_go_enrichment(
+    data = stratified_intervention,
+    studytime_value = "Vital (2 mo.)",
+    contrast_value = "BEP+ExBf",
+    direction_value = "Downregulated"
+  )
+
+mumpta_pn2_downregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbf_uniprot$foreground_data
+
+protein_vector_mumpta_pn2_downregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbf_uniprot$foreground
+
+results_mumpta_pn2_downregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbf_uniprot$results %>%
+  mutate(
+    study = "Mumpta",
+    timepoint = "pn2",
+    direction = "Downregulated",
+    contrast = "BEP+ExBf",
+    analysis_type = "Stratified",
+    identifier_type = "UniProt"
+  )
+
+head(results_mumpta_pn2_downregulated_bepexbf_stratified_uniprot)
+
+print(results_mumpta_pn2_downregulated_bepexbf_stratified_uniprot)
+
+```
+
+##### Mumpta · Downregulated · 2 months · BEPExBfAZT (Stratified)
+
+```{r}
+
+mumpta_pn2_downregulated_bepexbfazt_uniprot <-
+  run_uniprot_go_enrichment(
+    data = stratified_intervention,
+    studytime_value = "Vital (2 mo.)",
+    contrast_value = "BEP+ExBf+AZT",
+    direction_value = "Downregulated"
+  )
+
+mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbfazt_uniprot$foreground_data
+
+protein_vector_mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbfazt_uniprot$foreground
+
+results_mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_downregulated_bepexbfazt_uniprot$results %>%
+  mutate(
+    study = "Mumpta",
+    timepoint = "pn2",
+    direction = "Downregulated",
+    contrast = "BEP+ExBf+AZT",
+    analysis_type = "Stratified",
+    identifier_type = "UniProt"
+  )
+
+head(results_mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot)
+
+print(results_mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot)
+
+```
+
+### Upregulated
+
+#### 2 Months
+
+##### Mumpta · Upregulated · 2 months · BEPExBf (Stratified)
+
+```{r}
+
+mumpta_pn2_upregulated_bepexbf_uniprot <-
+  run_uniprot_go_enrichment(
+    data = stratified_intervention,
+    studytime_value = "Vital (2 mo.)",
+    contrast_value = "BEP+ExBf",
+    direction_value = "Upregulated"
+  )
+
+mumpta_pn2_upregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbf_uniprot$foreground_data
+
+protein_vector_mumpta_pn2_upregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbf_uniprot$foreground
+
+results_mumpta_pn2_upregulated_bepexbf_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbf_uniprot$results %>%
+  mutate(
+    study = "Mumpta",
+    timepoint = "pn2",
+    direction = "Upregulated",
+    contrast = "BEP+ExBf",
+    analysis_type = "Stratified",
+    identifier_type = "UniProt"
+  )
+
+head(results_mumpta_pn2_upregulated_bepexbf_stratified_uniprot)
+
+print(results_mumpta_pn2_upregulated_bepexbf_stratified_uniprot)
+
+```
+
+##### Mumpta · Upregulated · 2 months · BEPExBfAZT (Stratified)
+
+```{r}
+
+mumpta_pn2_upregulated_bepexbfazt_uniprot <-
+  run_uniprot_go_enrichment(
+    data = stratified_intervention,
+    studytime_value = "Vital (2 mo.)",
+    contrast_value = "BEP+ExBf+AZT",
+    direction_value = "Upregulated"
+  )
+
+mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbfazt_uniprot$foreground_data
+
+protein_vector_mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbfazt_uniprot$foreground
+
+results_mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot <-
+  mumpta_pn2_upregulated_bepexbfazt_uniprot$results %>%
+  mutate(
+    study = "Mumpta",
+    timepoint = "pn2",
+    direction = "Upregulated",
+    contrast = "BEP+ExBf+AZT",
+    analysis_type = "Stratified",
+    identifier_type = "UniProt"
+  )
+
+head(results_mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot)
+
+print(results_mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot)
+
+```
+
+# Combine GO Enrichment Results
+
+```{r}
+
+all_enrich_results_uniprot <-
+  bind_rows(
+    results_misame3_pn12_downregulated_uniprot %>%
+      mutate(
+        analysis_id =
+          "misame_pn12_downregulated_combined"
+      ),
+
+    results_misame3_pn12_upregulated_uniprot %>%
+      mutate(
+        analysis_id =
+          "misame_pn12_upregulated_combined"
+      ),
+
+    results_mumpta_pn2_downregulated_bepexbf_stratified_uniprot %>%
+      mutate(
+        analysis_id =
+          "mumpta_pn2_downregulated_bepexbf_stratified"
+      ),
+
+    results_mumpta_pn2_upregulated_bepexbf_stratified_uniprot %>%
+      mutate(
+        analysis_id =
+          "mumpta_pn2_upregulated_bepexbf_stratified"
+      ),
+
+    results_mumpta_pn2_downregulated_bepexbfazt_stratified_uniprot %>%
+      mutate(
+        analysis_id =
+          "mumpta_pn2_downregulated_bepexbfazt_stratified"
+      ),
+
+    results_mumpta_pn2_upregulated_bepexbfazt_stratified_uniprot %>%
+      mutate(
+        analysis_id =
+          "mumpta_pn2_upregulated_bepexbfazt_stratified"
+      )
+  ) %>%
+  mutate(
+    pathway_result_id =
+      row_number(),
+
+    signed_fold_enrichment =
+      case_when(
+        direction == "Downregulated" ~
+          -abs(FoldEnrichment),
+        direction == "Upregulated" ~
+          abs(FoldEnrichment),
+        TRUE ~ NA_real_
+      ),
+
+    uniprot_list =
+      geneID %>%
+      str_replace_all(
+        "/",
+        ", "
+      ),
+
+    uniprot_count =
+      case_when(
+        is.na(geneID) | geneID == "" ~ 0L,
+        TRUE ~
+          str_count(
+            geneID,
+            fixed("/")
+          ) + 1L
+      ),
+
+    count_match =
+      Count == uniprot_count
+  ) %>%
+  arrange(
+    study,
+    timepoint,
+    contrast,
+    direction,
+    pvalue
+  )
+
+all_enrich_results_uniprot
+
+```
+
+# Validate Foreground and Background Sizes
+
+```{r}
+
+uniprot_analysis_size_summary <-
+  bind_rows(
+    tibble(
+      analysis_id =
+        "misame_pn12_downregulated_combined",
+      foreground_proteins =
+        length(misame_pn12_downregulated_uniprot$foreground),
+      background_proteins =
+        length(misame_pn12_downregulated_uniprot$background)
+    ),
+
+    tibble(
+      analysis_id =
+        "misame_pn12_upregulated_combined",
+      foreground_proteins =
+        length(misame_pn12_upregulated_uniprot$foreground),
+      background_proteins =
+        length(misame_pn12_upregulated_uniprot$background)
+    ),
+
+    tibble(
+      analysis_id =
+        "mumpta_pn2_downregulated_bepexbf_stratified",
+      foreground_proteins =
+        length(mumpta_pn2_downregulated_bepexbf_uniprot$foreground),
+      background_proteins =
+        length(mumpta_pn2_downregulated_bepexbf_uniprot$background)
+    ),
+
+    tibble(
+      analysis_id =
+        "mumpta_pn2_upregulated_bepexbf_stratified",
+      foreground_proteins =
+        length(mumpta_pn2_upregulated_bepexbf_uniprot$foreground),
+      background_proteins =
+        length(mumpta_pn2_upregulated_bepexbf_uniprot$background)
+    ),
+
+    tibble(
+      analysis_id =
+        "mumpta_pn2_downregulated_bepexbfazt_stratified",
+      foreground_proteins =
+        length(mumpta_pn2_downregulated_bepexbfazt_uniprot$foreground),
+      background_proteins =
+        length(mumpta_pn2_downregulated_bepexbfazt_uniprot$background)
+    ),
+
+    tibble(
+      analysis_id =
+        "mumpta_pn2_upregulated_bepexbfazt_stratified",
+      foreground_proteins =
+        length(mumpta_pn2_upregulated_bepexbfazt_uniprot$foreground),
+      background_proteins =
+        length(mumpta_pn2_upregulated_bepexbfazt_uniprot$background)
+    )
+  )
+
+uniprot_analysis_size_summary
+
+```
+
+# Prepare Final Results Table
+
+```{r}
+
+proteomics_uniprot_results <-
+  all_enrich_results_uniprot %>%
+  mutate(
+    study =
+      recode(
+        study,
+        "Misame" = "MISAME-III",
+        "Mumpta" = "Mumpta-LW"
+      ),
+
+    timepoint =
+      recode(
+        timepoint,
+        "pn12" = "1-2 months",
+        "pn2" = "2 months"
+      )
+  ) %>%
+  transmute(
+    `Analysis ID` = analysis_id,
+    `Analysis Type` = analysis_type,
+    `Identifier Type` = identifier_type,
+    Study = study,
+    `Time Point` = timepoint,
+    Contrast = contrast,
+    Direction = direction,
+    `Gene Ontology ID` = ID,
+    `Gene Ontology Description` =
+      str_to_sentence(Description),
+    `Protein Ratio` = GeneRatio,
+    `Background Ratio` = BgRatio,
+    `Protein Count` = Count,
+    `Fold Enrichment` =
+      signed_fold_enrichment,
+    `P-Value` = pvalue,
+    FDR = p.adjust,
+    `Q-Value` = qvalue,
+    `UniProt ID List` =
+      uniprot_list,
+    `UniProt Count` =
+      uniprot_count,
+    `Count Match` =
+      count_match
+  ) %>%
+  arrange(
+    Study,
+    `Time Point`,
+    Contrast,
+    Direction,
+    `P-Value`
+  )
+
+proteomics_uniprot_results
+
+```
+
+# Summarize Corrected Analyses
+
+```{r}
+
+proteomics_uniprot_enrichment_summary <-
+  proteomics_uniprot_results %>%
+  group_by(
+    `Analysis Type`,
+    Study,
+    `Time Point`,
+    Contrast,
+    Direction
+  ) %>%
+  summarise(
+    tested_pathways =
+      n(),
+
+    nominally_significant_pathways =
+      sum(
+        `P-Value` < 0.05,
+        na.rm = TRUE
+      ),
+
+    fdr_significant_pathways =
+      sum(
+        FDR < 0.05,
+        na.rm = TRUE
+      ),
+
+    minimum_p =
+      min(
+        `P-Value`,
+        na.rm = TRUE
+      ),
+
+    minimum_fdr =
+      min(
+        FDR,
+        na.rm = TRUE
+      ),
+
+    .groups = "drop"
+  )
+
+proteomics_uniprot_enrichment_summary
+
+```
+
+# Audit Manuscript Pathways
+
+```{r}
+
+reported_pathway_audit_uniprot <-
+  proteomics_uniprot_results %>%
+  filter(
+    str_detect(
+      `Gene Ontology Description`,
+      regex(
+        paste(
+          c(
+            "RNA-templated DNA biosynthetic",
+            "telomere maintenance",
+            "chromatin organization",
+            "nucleosome",
+            "translation",
+            "negative regulation of endopeptidase",
+            "negative regulation of peptidase",
+            "negative regulation of proteolysis",
+            "humoral immune response",
+            "immunoglobulin",
+            "complement activation"
+          ),
+          collapse = "|"
+        ),
+        ignore_case = TRUE
+      )
+    )
+  ) %>%
+  arrange(
+    `Gene Ontology Description`,
+    Study,
+    Contrast,
+    Direction,
+    `P-Value`
+  )
+
+reported_pathway_audit_uniprot
+
+```
+
+# Create Protein Annotation Map
+
+```{r}
+
+uniprot_annotation_map <-
+  AnnotationDbi::select(
+    org.Hs.eg.db,
+    keys = all_proteomics_uniprot,
+    keytype = "UNIPROT",
+    columns =
+      c(
+        "SYMBOL",
+        "GENENAME"
+      )
+  ) %>%
+  as_tibble() %>%
+  filter(
+    !is.na(UNIPROT),
+    UNIPROT != ""
+  ) %>%
+  group_by(UNIPROT) %>%
+  summarise(
+    SYMBOL =
+      SYMBOL[!is.na(SYMBOL)] %>%
+      unique() %>%
+      sort() %>%
+      paste(
+        collapse = "; "
+      ),
+
+    GENENAME =
+      GENENAME[!is.na(GENENAME)] %>%
+      unique() %>%
+      sort() %>%
+      paste(
+        collapse = "; "
+      ),
+
+    .groups = "drop"
+  )
+
+uniprot_annotation_map
+
+```
+
+# Audit Manuscript Proteins
+
+```{r}
+
+reported_protein_audit_uniprot <-
+  all_enrich_results_uniprot %>%
+  transmute(
+    analysis_id,
+    study,
+    timepoint,
+    contrast,
+    direction,
+    analysis_type,
+    ID,
+    Description,
+    pvalue,
+    p.adjust,
+    UNIPROT = geneID
+  ) %>%
+  separate_rows(
+    UNIPROT,
+    sep = "/"
+  ) %>%
+  filter(
+    UNIPROT %in%
+      c(
+        "P16401",
+        "P62805",
+        "P05155",
+        "P29622",
+        "Q99727",
+        "P01024",
+        "P13671",
+        "P08603"
+      )
+  ) %>%
+  left_join(
+    uniprot_annotation_map,
+    by = "UNIPROT"
+  ) %>%
+  distinct() %>%
+  arrange(
+    UNIPROT,
+    study,
+    contrast,
+    direction,
+    pvalue
+  )
+
+reported_protein_audit_uniprot
+
+```
+
+# Verify Affected Protein Count
+
+```{r}
+
+proteomics_affected_summary <-
+  combined_intervention %>%
+  filter(
+    description == "Proteomics",
+    measure == "ATE",
+    !is.na(label_f),
+    label_f != ""
+  ) %>%
+  summarise(
+    total_proteins =
+      n_distinct(label_f),
+
+    affected_proteins =
+      n_distinct(
+        label_f[sig == 1]
+      ),
+
+    percent_affected =
+      100 *
+      affected_proteins /
+      total_proteins
+  )
+
+proteomics_affected_summary
+
+```
+
+# Export Final Workbook
+
+```{r}
+
+proteomics_uniprot_results_folder <-
+  "../3. Results/Exploratory Outcomes (Proteomics - UniProt)"
+
+dir.create(
+  proteomics_uniprot_results_folder,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+write_xlsx(
+  list(
+    "All GO Results" =
+      proteomics_uniprot_results,
+
+    "FDR Significant" =
+      proteomics_uniprot_results %>%
+      filter(
+        FDR < 0.05
+      ),
+
+    "Reported Pathway Audit" =
+      reported_pathway_audit_uniprot,
+
+    "Reported Protein Audit" =
+      reported_protein_audit_uniprot,
+
+    "Analysis Summary" =
+      proteomics_uniprot_enrichment_summary,
+
+    "Analysis Sizes" =
+      uniprot_analysis_size_summary,
+
+    "Mapping Summary" =
+      uniprot_mapping_summary,
+
+    "Unmapped UniProt" =
+      unmapped_proteomics_uniprot,
+
+    "UniProt Annotation Map" =
+      uniprot_annotation_map,
+
+    "Count Mismatches" =
+      proteomics_uniprot_results %>%
+      filter(
+        !`Count Match`
+      )
+  ),
+  path =
+    file.path(
+      proteomics_uniprot_results_folder,
+      "exploratory_proteomics_uniprot_go_enrichment_results.xlsx"
+    )
+)
+
+```
+
+# Session Information
+
+```{r}
+
+sessionInfo()
+
+```

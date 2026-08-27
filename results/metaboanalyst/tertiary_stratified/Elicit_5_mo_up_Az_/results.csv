@@ -1,0 +1,6 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Az.","up","Nucleotide Sugars Metabolism",1,1,0.00325,0.00325,0.318
+"Elicit (5 mo.)","Az.","up","Lactose Degradation",2,1,0.0065,0.0065,0.318
+"Elicit (5 mo.)","Az.","up","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,1,0.0163,0.0162,0.397
+"Elicit (5 mo.)","Az.","up","Galactose Metabolism",5,1,0.0163,0.0162,0.397
+"Elicit (5 mo.)","Az.","up","Sphingolipid Metabolism",7,1,0.0228,0.0227,0.444

@@ -1,0 +1,18 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Glutathione Metabolism",4,0.0191,2,0.000113,0.0111,0.0111
+"Glutamate Metabolism",8,0.0381,2,0.000524,0.0508,0.0257
+"Methionine Metabolism",11,0.0524,2,0.00102,0.0981,0.0334
+"Glycine and Serine Metabolism",13,0.062,2,0.00144,0.137,0.0354
+"Porphyrin Metabolism",1,0.00477,1,0.00477,0.448,0.0778
+"Pantothenate and CoA Biosynthesis",1,0.00477,1,0.00477,0.448,0.0778
+"Cysteine Metabolism",2,0.00953,1,0.00951,0.875,0.104
+"Taurine and Hypotaurine Metabolism",2,0.00953,1,0.00951,0.875,0.104
+"Steroidogenesis",2,0.00953,1,0.00951,0.875,0.104
+"Alanine Metabolism",3,0.0143,1,0.0142,1,0.127
+"Homocysteine Degradation",3,0.0143,1,0.0142,1,0.127
+"Carnitine Synthesis",5,0.0238,1,0.0236,1,0.193
+"Purine Metabolism",6,0.0286,1,0.0283,1,0.198
+"Tryptophan Metabolism",6,0.0286,1,0.0283,1,0.198
+"Ammonia Recycling",7,0.0334,1,0.033,1,0.215
+"Arginine and Proline Metabolism",10,0.0477,1,0.0468,1,0.287
+"Bile Acid Biosynthesis",15,0.0715,1,0.0695,1,0.401

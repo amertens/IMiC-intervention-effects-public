@@ -1,0 +1,25 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Az.","down","Valine, Leucine and Isoleucine Degradation",5,3,0.0976,5.58e-05,0.00547
+"Elicit (1 mo.)","Az.","down","Warburg Effect",5,2,0.0976,0.00338,0.166
+"Elicit (1 mo.)","Az.","down","Arginine and Proline Metabolism",10,2,0.195,0.0144,0.239
+"Elicit (1 mo.)","Az.","down","Methionine Metabolism",11,2,0.215,0.0174,0.239
+"Elicit (1 mo.)","Az.","down","Ketone Body Metabolism",1,1,0.0195,0.0195,0.239
+"Elicit (1 mo.)","Az.","down","Butyrate Metabolism",1,1,0.0195,0.0195,0.239
+"Elicit (1 mo.)","Az.","down","Mitochondrial Electron Transport Chain",1,1,0.0195,0.0195,0.239
+"Elicit (1 mo.)","Az.","down","Phytanic Acid Peroxisomal Oxidation",1,1,0.0195,0.0195,0.239
+"Elicit (1 mo.)","Az.","down","Glycine and Serine Metabolism",13,2,0.254,0.0242,0.253
+"Elicit (1 mo.)","Az.","down","Bile Acid Biosynthesis",15,2,0.293,0.0318,0.253
+"Elicit (1 mo.)","Az.","down","Taurine and Hypotaurine Metabolism",2,1,0.039,0.0387,0.253
+"Elicit (1 mo.)","Az.","down","Citric Acid Cycle",2,1,0.039,0.0387,0.253
+"Elicit (1 mo.)","Az.","down","Pyruvate Metabolism",2,1,0.039,0.0387,0.253
+"Elicit (1 mo.)","Az.","down","Gluconeogenesis",2,1,0.039,0.0387,0.253
+"Elicit (1 mo.)","Az.","down","Methylhistidine Metabolism",2,1,0.039,0.0387,0.253
+"Elicit (1 mo.)","Az.","down","Propanoate Metabolism",3,1,0.0585,0.0575,0.352
+"Elicit (1 mo.)","Az.","down","Oxidation of Branched Chain Fatty Acids",4,1,0.078,0.076,0.414
+"Elicit (1 mo.)","Az.","down","Betaine Metabolism",4,1,0.078,0.076,0.414
+"Elicit (1 mo.)","Az.","down","Spermidine and Spermine Biosynthesis",5,1,0.0976,0.0941,0.461
+"Elicit (1 mo.)","Az.","down","Carnitine Synthesis",5,1,0.0976,0.0941,0.461
+"Elicit (1 mo.)","Az.","down","Beta-Alanine Metabolism",7,1,0.137,0.129,0.577
+"Elicit (1 mo.)","Az.","down","Ammonia Recycling",7,1,0.137,0.129,0.577
+"Elicit (1 mo.)","Az.","down","Histidine Metabolism",8,1,0.156,0.147,0.599
+"Elicit (1 mo.)","Az.","down","Glutamate Metabolism",8,1,0.156,0.147,0.599

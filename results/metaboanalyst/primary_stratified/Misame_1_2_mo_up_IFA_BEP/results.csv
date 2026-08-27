@@ -1,0 +1,19 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","IFA/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (1-2 mo.)","IFA/BEP","up","Lactose Degradation",2,1,0.743,0.612,1
+"Misame (1-2 mo.)","IFA/BEP","up","Trehalose Degradation",2,1,0.743,0.612,1
+"Misame (1-2 mo.)","IFA/BEP","up","Vitamin B6 Metabolism",8,3,2.97,0.645,1
+"Misame (1-2 mo.)","IFA/BEP","up","Glycolysis",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Thiamine Metabolism",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Spermidine and Spermine Biosynthesis",3,1,1.11,0.765,1
+"Misame (1-2 mo.)","IFA/BEP","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Misame (1-2 mo.)","IFA/BEP","up","Beta-Alanine Metabolism",8,2,2.97,0.892,1
+"Misame (1-2 mo.)","IFA/BEP","up","Arginine and Proline Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Betaine Metabolism",5,1,1.86,0.919,1
+"Misame (1-2 mo.)","IFA/BEP","up","Valine, Leucine and Isoleucine Degradation",6,1,2.23,0.954,1
+"Misame (1-2 mo.)","IFA/BEP","up","Methionine Metabolism",6,1,2.23,0.954,1
+"Misame (1-2 mo.)","IFA/BEP","up","Purine Metabolism",7,1,2.6,0.975,1
+"Misame (1-2 mo.)","IFA/BEP","up","Warburg Effect",7,1,2.6,0.975,1
+"Misame (1-2 mo.)","IFA/BEP","up","Pyruvate Metabolism",8,1,2.97,0.986,1

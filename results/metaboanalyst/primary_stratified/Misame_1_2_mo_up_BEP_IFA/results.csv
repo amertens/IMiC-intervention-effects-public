@@ -1,0 +1,30 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP/IFA","up","Pantothenate and CoA Biosynthesis",3,2,0.257,0.0148,1
+"Misame (1-2 mo.)","BEP/IFA","up","Alpha Linolenic Acid and Linoleic Acid Metabolism",1,1,0.0857,0.0857,1
+"Misame (1-2 mo.)","BEP/IFA","up","Purine Metabolism",7,2,0.6,0.0952,1
+"Misame (1-2 mo.)","BEP/IFA","up","Beta-Alanine Metabolism",8,2,0.686,0.124,1
+"Misame (1-2 mo.)","BEP/IFA","up","Androgen and Estrogen Metabolism",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Lactose Degradation",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Trehalose Degradation",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP/IFA","up","Glycolysis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Malate-Aspartate Shuttle",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Spermidine and Spermine Biosynthesis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phosphatidylinositol Phosphate Metabolism",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Thyroid hormone synthesis",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP/IFA","up","Inositol Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Sphingolipid Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Starch and Sucrose Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Urea Cycle",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Arachidonic Acid Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phenylalanine and Tyrosine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Phospholipid Biosynthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Pyrimidine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Folate Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Betaine Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Lactose Synthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP/IFA","up","Methionine Metabolism",6,1,0.514,0.442,1
+"Misame (1-2 mo.)","BEP/IFA","up","Histidine Metabolism",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Riboflavin Metabolism",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Warburg Effect",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP/IFA","up","Tyrosine Metabolism",8,1,0.686,0.553,1
+"Misame (1-2 mo.)","BEP/IFA","up","Pyruvate Metabolism",8,1,0.686,0.553,1

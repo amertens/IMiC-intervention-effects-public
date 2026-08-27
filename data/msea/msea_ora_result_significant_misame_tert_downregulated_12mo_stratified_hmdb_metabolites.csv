@@ -1,0 +1,27 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Spermidine and Spermine Biosynthesis",5,0.0477,4,2.36e-08,2.32e-06,2.32e-06
+"Arginine and Proline Metabolism",10,0.0953,3,7.66e-05,0.00743,0.00272
+"Pyruvate Metabolism",2,0.0191,2,8.33e-05,0.008,0.00272
+"Warburg Effect",5,0.0477,2,0.00082,0.0779,0.0201
+"Urea Cycle",7,0.0667,2,0.0017,0.16,0.0316
+"Aspartate Metabolism",8,0.0763,2,0.00226,0.21,0.0316
+"Glutamate Metabolism",8,0.0763,2,0.00226,0.21,0.0316
+"Methionine Metabolism",11,0.105,2,0.00437,0.398,0.0535
+"Ketone Body Metabolism",1,0.00953,1,0.00953,0.858,0.0719
+"Butyrate Metabolism",1,0.00953,1,0.00953,0.858,0.0719
+"Mitochondrial Electron Transport Chain",1,0.00953,1,0.00953,0.858,0.0719
+"Phytanic Acid Peroxisomal Oxidation",1,0.00953,1,0.00953,0.858,0.0719
+"Pyruvaldehyde Degradation",1,0.00953,1,0.00953,0.858,0.0719
+"D-Arginine and D-Ornithine Metabolism",2,0.0191,1,0.019,1,0.109
+"Citric Acid Cycle",2,0.0191,1,0.019,1,0.109
+"Gluconeogenesis",2,0.0191,1,0.019,1,0.109
+"Malate-Aspartate Shuttle",2,0.0191,1,0.019,1,0.109
+"Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,0.0286,1,0.0283,1,0.154
+"Oxidation of Branched Chain Fatty Acids",4,0.0381,1,0.0376,1,0.194
+"Tyrosine Metabolism",5,0.0477,1,0.0468,1,0.209
+"Valine, Leucine and Isoleucine Degradation",5,0.0477,1,0.0468,1,0.209
+"Carnitine Synthesis",5,0.0477,1,0.0468,1,0.209
+"Purine Metabolism",6,0.0572,1,0.056,1,0.238
+"Beta-Alanine Metabolism",7,0.0667,1,0.065,1,0.255
+"Ammonia Recycling",7,0.0667,1,0.065,1,0.255
+"Glycine and Serine Metabolism",13,0.124,1,0.118,1,0.443

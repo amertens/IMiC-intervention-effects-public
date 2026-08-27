@@ -1,0 +1,3404 @@
+---
+title: "Compartment Tracking"
+output: html_document
+date: "2026-08-04"
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(ggrepel)
+library(readxl)
+library(tidyverse)
+library(writexl)
+
+```
+
+# Import Data
+
+## Blood intervention effects
+
+The blood workbook contains the adjusted, standardized average treatment effects used in `RESULTS_for_Trenton_blood_milk_analysis.docx`. FDR is recalculated within each compartment and timepoint, as described in that document.
+
+```{r}
+
+blood_file <-
+  "../1. Data/blood_mummichog_input_for_trenton.xlsx"
+
+blood_sheets <-
+  blood_file %>%
+  excel_sheets()
+
+blood_results <-
+  blood_sheets %>%
+  set_names() %>%
+  map_dfr(
+    ~ blood_file %>%
+      read_excel(
+        sheet = .x,
+        .name_repair = "unique_quiet"
+      ) %>%
+      mutate(modality = .x)
+  )
+
+```
+
+## Milk intervention effects
+
+```{r}
+
+milk_results_raw <-
+  readRDS(
+    "../1. Data/combined_intervention_effects_results_combined_arms.RDS"
+  )
+
+milk_alignment <-
+  read_csv(
+    paste0(
+      "/Users/trentondailey-chwalibog/My Drive/9 ugent/",
+      "imicPaper/results/IMiC_alignment.csv"
+    ),
+    show_col_types = FALSE,
+    name_repair = "unique_quiet"
+  )
+
+```
+
+## BEP supplement data
+
+```{r}
+
+supplement_results_raw <-
+  read_csv(
+    paste0(
+      "/Users/trentondailey-chwalibog/My Drive/9 ugent/imicPaper/",
+      "data/additional datasets/ProcessedDataMISAME3_VAMS.csv"
+    ),
+    show_col_types = FALSE,
+    name_repair = "unique_quiet"
+  )
+
+supplement_columns <-
+  supplement_results_raw %>%
+  names() %>%
+  str_subset("^supplement;APSE")
+
+length(supplement_columns)
+
+```
+
+## Inspect imported data
+
+```{r}
+
+blood_results
+
+glimpse(blood_results)
+
+blood_results %>%
+  count(
+    modality,
+    compartment,
+    timepoint,
+    name = "number_of_features"
+  ) %>%
+  arrange(
+    modality,
+    timepoint
+  ) %>%
+  print(n = Inf)
+
+```
+
+# Wrangle Data
+
+## Calculate FDR and classify effects
+
+```{r}
+
+fdr_threshold <- 0.05
+mass_tolerance_ppm <- 25
+
+blood_results <-
+  blood_results %>%
+  mutate(
+    fdr =
+      p.adjust(
+        raw_p,
+        method = "BH"
+      ),
+    .by =
+      c(
+        modality,
+        timepoint,
+        contrast
+      )
+  ) %>%
+  mutate(
+    compartment =
+      recode(
+        modality,
+        "MaternalPlasma" = "Maternal plasma",
+        "VamsPostnatalMaternal" = "Maternal VAMS",
+        "VamsPostnatalInfant" = "Infant VAMS"
+      ),
+    direction =
+      case_when(
+        effect_size < 0 ~ "Downregulated",
+        effect_size > 0 ~ "Upregulated",
+        TRUE ~ "No change"
+      ),
+    significant = fdr < fdr_threshold,
+    significance =
+      case_when(
+        significant ~ "FDR significant",
+        TRUE ~ "Not FDR significant"
+      ),
+    logp =
+      -log10(
+        pmax(
+          raw_p,
+          .Machine$double.xmin
+        )
+      ),
+    timepoint =
+      factor(
+        timepoint,
+        levels =
+          c(
+            "incl",
+            "tri3",
+            "acco",
+            "pn12",
+            "pn34",
+            "pn56"
+          )
+      )
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    raw_p,
+    feature
+  )
+
+```
+
+## Prepare milk results
+
+Only MISAME-III untargeted milk features are retained because the blood and APSE supplement data are from MISAME-III. The supplied milk `sigFDR` classification is preserved.
+
+```{r}
+
+milk_alignment <-
+  milk_alignment %>%
+  transmute(
+    feature_key =
+      str_to_lower(mtb_id_MISAME3),
+    mz = mz_MISAME3,
+    rt = rt_MISAME3
+  ) %>%
+  distinct(
+    feature_key,
+    .keep_all = TRUE
+  )
+
+milk_results <-
+  milk_results_raw %>%
+  filter(
+    study == "Misame",
+    contrast == "BEP",
+    measure == "ATE",
+    str_detect(
+      biomarker,
+      regex(
+        "^rlc_",
+        ignore_case = TRUE
+      )
+    )
+  ) %>%
+  mutate(
+    feature_key =
+      str_to_lower(biomarker)
+  ) %>%
+  left_join(
+    milk_alignment,
+    by = "feature_key"
+  ) %>%
+  transmute(
+    compartment = "Milk",
+    modality = "Milk",
+    timepoint =
+      recode(
+        visit,
+        "14-21 days" = "1421d",
+        "1-2 mo." = "pn12",
+        "3-4 mo." = "pn34"
+      ),
+    contrast,
+    feature = label_f,
+    mz,
+    rt,
+    ion_mode =
+      case_when(
+        str_detect(feature_key, "_pos_") ~ "positive",
+        str_detect(feature_key, "_neg_") ~ "negative",
+        TRUE ~ NA_character_
+      ),
+    effect_size = est,
+    direction =
+      case_when(
+        est < 0 ~ "Downregulated",
+        est > 0 ~ "Upregulated",
+        TRUE ~ "No change"
+      ),
+    raw_p = pval,
+    fdr = pval_adj,
+    significance =
+      case_when(
+        sigFDR == 1 ~ "FDR significant",
+        TRUE ~ "Not FDR significant"
+      ),
+    significant = sigFDR == 1,
+    logp =
+      -log10(
+        pmax(
+          raw_p,
+          .Machine$double.xmin
+        )
+      )
+  )
+
+```
+
+## Combine compartments
+
+```{r}
+
+compartment_results <-
+  bind_rows(
+    blood_results,
+    milk_results
+  ) %>%
+  mutate(
+    compartment =
+      factor(
+        compartment,
+        levels =
+          c(
+            "Maternal plasma",
+            "Maternal VAMS",
+            "Milk",
+            "Infant VAMS"
+          )
+      )
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    raw_p,
+    feature
+  )
+
+compartment_results
+
+glimpse(compartment_results)
+
+```
+
+## Prepare APSE supplement results
+
+The APSE data contain 18 supplement replicates. A feature is reliably detected when present in at least half of those replicates. Supplement-abundant features have mean abundance at least one standard deviation above the mean across supplement features.
+
+```{r}
+
+supplement_results <-
+  supplement_results_raw %>%
+  select(
+    MZ,
+    RT,
+    Metabolite_Feature_Label,
+    all_of(supplement_columns)
+  ) %>%
+  pivot_longer(
+    cols = all_of(supplement_columns),
+    names_to = "supplement_sample",
+    values_to = "supplement_abundance"
+  ) %>%
+  group_by(
+    MZ,
+    RT,
+    Metabolite_Feature_Label
+  ) %>%
+  summarise(
+    supplement_replicates = n(),
+    detected_replicates =
+      sum(
+        !is.na(supplement_abundance) &
+        supplement_abundance > 0
+      ),
+    mean_supplement_abundance =
+      mean(
+        supplement_abundance,
+        na.rm = TRUE
+      ),
+    median_supplement_abundance =
+      median(
+        supplement_abundance,
+        na.rm = TRUE
+      ),
+    sd_supplement_abundance =
+      sd(
+        supplement_abundance,
+        na.rm = TRUE
+      ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    across(
+      c(
+        mean_supplement_abundance,
+        median_supplement_abundance,
+        sd_supplement_abundance
+      ),
+      ~ replace(
+        .x,
+        is.nan(.x),
+        NA_real_
+      )
+    ),
+    supplement_feature = Metabolite_Feature_Label,
+    supplement_feature_key =
+      str_to_lower(supplement_feature),
+    supplement_mz = MZ,
+    supplement_rt = RT,
+    ion_mode =
+      case_when(
+        str_detect(supplement_feature_key, "_pos_") ~ "positive",
+        str_detect(supplement_feature_key, "_neg_") ~ "negative",
+        TRUE ~ NA_character_
+      ),
+    supplement_detected =
+      detected_replicates > 0,
+    supplement_reliably_detected =
+      detected_replicates >=
+      ceiling(supplement_replicates / 2)
+  )
+
+supplement_abundance_threshold <-
+  supplement_results %>%
+  summarise(
+    threshold =
+      mean(
+        mean_supplement_abundance,
+        na.rm = TRUE
+      ) +
+      sd(
+        mean_supplement_abundance,
+        na.rm = TRUE
+      )
+  ) %>%
+  pull(threshold)
+
+supplement_results <-
+  supplement_results %>%
+  mutate(
+    supplement_abundant =
+      supplement_reliably_detected &
+      mean_supplement_abundance >=
+      supplement_abundance_threshold
+  ) %>%
+  select(
+    supplement_feature,
+    supplement_feature_key,
+    supplement_mz,
+    supplement_rt,
+    ion_mode,
+    supplement_replicates,
+    detected_replicates,
+    mean_supplement_abundance,
+    median_supplement_abundance,
+    sd_supplement_abundance,
+    supplement_detected,
+    supplement_reliably_detected,
+    supplement_abundant
+  )
+
+supplement_results
+
+```
+
+## Isolate statistically significant effects
+
+```{r}
+
+significant_compartment_results <-
+  compartment_results %>%
+  filter(
+    significant,
+    direction %in%
+      c(
+        "Downregulated",
+        "Upregulated"
+      )
+  )
+
+significant_compartment_results
+
+significant_compartment_results %>%
+  count(
+    compartment,
+    timepoint,
+    direction,
+    name = "number_of_features"
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    direction
+  ) %>%
+  print(n = Inf)
+
+```
+
+## Validate results against the supplied document
+
+```{r}
+
+reported_significant_counts <-
+  tribble(
+    ~compartment, ~timepoint, ~reported_number,
+    "Maternal plasma", "incl", 17,
+    "Maternal plasma", "tri3", 10,
+    "Maternal plasma", "pn12", 593,
+    "Maternal VAMS", "tri3", 0,
+    "Maternal VAMS", "pn56", 18,
+    "Infant VAMS", "acco", 0,
+    "Infant VAMS", "pn12", 3,
+    "Infant VAMS", "pn34", 8,
+    "Infant VAMS", "pn56", 18
+  ) %>%
+  mutate(
+    timepoint =
+      factor(
+        timepoint,
+        levels = levels(blood_results$timepoint)
+      )
+  )
+
+significant_count_validation <-
+  blood_results %>%
+  summarise(
+    calculated_number =
+      sum(
+        fdr < fdr_threshold,
+        na.rm = TRUE
+      ),
+    .by =
+      c(
+        compartment,
+        timepoint
+      )
+  ) %>%
+  right_join(
+    reported_significant_counts,
+    by =
+      c(
+        "compartment",
+        "timepoint"
+      )
+  ) %>%
+  mutate(
+    calculated_number =
+      replace_na(
+        calculated_number,
+        0L
+      ),
+    matches_document =
+      calculated_number == reported_number
+  ) %>%
+  arrange(
+    compartment,
+    timepoint
+  )
+
+significant_count_validation
+
+stopifnot(
+  all(significant_count_validation$matches_document)
+)
+
+```
+
+## Validate milk and supplement data
+
+```{r}
+
+milk_count_validation <-
+  milk_results %>%
+  count(
+    timepoint,
+    direction,
+    significant,
+    name = "number_of_features"
+  ) %>%
+  arrange(
+    timepoint,
+    desc(significant),
+    direction
+  )
+
+milk_count_validation %>%
+  print(n = Inf)
+
+milk_alignment_validation <-
+  milk_results %>%
+  summarise(
+    number_of_features = n_distinct(feature),
+    features_missing_mz =
+      n_distinct(
+        feature[is.na(mz)]
+      ),
+    features_missing_rt =
+      n_distinct(
+        feature[is.na(rt)]
+      )
+  )
+
+milk_alignment_validation
+
+stopifnot(
+  n_distinct(milk_results$feature) == 37070,
+  length(supplement_columns) == 18
+)
+
+```
+
+# Analysis
+
+## Compare statistically significant and non-significant features
+
+```{r}
+
+significance_comparison <-
+  compartment_results %>%
+  filter(
+    direction %in%
+      c(
+        "Downregulated",
+        "Upregulated"
+      )
+  ) %>%
+  count(
+    compartment,
+    timepoint,
+    direction,
+    significance,
+    name = "number_of_features"
+  ) %>%
+  group_by(
+    compartment,
+    timepoint,
+    direction
+  ) %>%
+  mutate(
+    total_features =
+      sum(number_of_features),
+    percent_of_features =
+      100 * number_of_features / total_features
+  ) %>%
+  ungroup() %>%
+  arrange(
+    compartment,
+    timepoint,
+    direction,
+    desc(significance)
+  )
+
+significance_comparison %>%
+  print(n = Inf)
+
+```
+
+## Export statistically significant effects
+
+```{r}
+
+compartment_results_root <-
+  "../3. Results/Compartment Tracking"
+
+dir.create(
+  compartment_results_root,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+significant_compartment_results %>%
+  group_by(
+    compartment,
+    timepoint,
+    direction
+  ) %>%
+  group_walk(
+    ~ .x %>%
+      write_xlsx(
+        path =
+          file.path(
+            compartment_results_root,
+            paste0(
+              str_to_lower(.y$compartment) %>%
+                str_replace_all("[^a-z0-9]+", "_"),
+              "_",
+              .y$timepoint,
+              "_",
+              str_to_lower(.y$direction),
+              ".xlsx"
+            )
+          )
+      ),
+    .keep = TRUE
+  )
+
+write_xlsx(
+  list(
+    significant_features = significant_compartment_results,
+    significance_comparison = significance_comparison,
+    validation = significant_count_validation
+  ),
+  path =
+    file.path(
+      compartment_results_root,
+      "compartment_tracking_significant_features.xlsx"
+    )
+)
+
+```
+
+# Original Volcano Plots
+
+## Prepare volcano-plot data
+
+```{r}
+
+volcano_colors <-
+  c(
+    "FDR significant" = "#F2AE2E",
+    "Raw P < 0.05" = "#56B4E9",
+    "Not significant" = "black"
+  )
+
+volcano_plot_data <-
+  compartment_results %>%
+  mutate(
+    volcano_group =
+      case_when(
+        significant ~ "FDR significant",
+        raw_p < 0.05 ~ "Raw P < 0.05",
+        TRUE ~ "Not significant"
+      ),
+    original_label =
+      case_when(
+        significant ~ feature,
+        TRUE ~ NA_character_
+      )
+  )
+
+```
+
+## Maternal plasma
+
+```{r}
+
+maternal_plasma_volcano_plot <-
+  volcano_plot_data %>%
+  filter(compartment == "Maternal plasma") %>%
+  ggplot(
+    aes(
+      x = effect_size,
+      y = logp,
+      color = volcano_group
+    )
+  ) +
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed",
+    linewidth = 0.4
+  ) +
+  geom_point(
+    alpha = 0.65,
+    size = 1
+  ) +
+  geom_text_repel(
+    aes(label = original_label),
+    color = "grey45",
+    size = 2.5,
+    max.overlaps = 10,
+    na.rm = TRUE
+  ) +
+  facet_grid(
+    rows = vars(timepoint),
+    scales = "free_y"
+  ) +
+  scale_color_manual(values = volcano_colors) +
+  labs(
+    title = "Maternal plasma (combined arms, adjusted)",
+    x = "Average Treatment Effect",
+    y = expression(-log[10]("raw P-value")),
+    color = NULL
+  ) +
+  theme_bw(base_size = 8) +
+  theme(legend.position = "bottom")
+
+maternal_plasma_volcano_plot
+
+```
+
+## Postnatal maternal VAMS
+
+```{r}
+
+maternal_vams_volcano_plot <-
+  volcano_plot_data %>%
+  filter(compartment == "Maternal VAMS") %>%
+  ggplot(
+    aes(
+      x = effect_size,
+      y = logp,
+      color = volcano_group
+    )
+  ) +
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed",
+    linewidth = 0.4
+  ) +
+  geom_point(
+    alpha = 0.65,
+    size = 1
+  ) +
+  geom_text_repel(
+    aes(label = original_label),
+    color = "grey45",
+    size = 2.5,
+    max.overlaps = 18,
+    na.rm = TRUE
+  ) +
+  facet_grid(
+    rows = vars(timepoint),
+    scales = "free_y"
+  ) +
+  scale_color_manual(values = volcano_colors) +
+  labs(
+    title = "Postnatal maternal VAMS (combined arms, adjusted)",
+    x = "Average Treatment Effect",
+    y = expression(-log[10]("raw P-value")),
+    color = NULL
+  ) +
+  theme_bw(base_size = 8) +
+  theme(legend.position = "bottom")
+
+maternal_vams_volcano_plot
+
+```
+
+## Postnatal infant VAMS
+
+```{r}
+
+infant_vams_volcano_plot <-
+  volcano_plot_data %>%
+  filter(compartment == "Infant VAMS") %>%
+  ggplot(
+    aes(
+      x = effect_size,
+      y = logp,
+      color = volcano_group
+    )
+  ) +
+  geom_vline(
+    xintercept = 0,
+    linetype = "dashed",
+    linewidth = 0.4
+  ) +
+  geom_point(
+    alpha = 0.65,
+    size = 1
+  ) +
+  geom_text_repel(
+    aes(label = original_label),
+    color = "grey45",
+    size = 2.5,
+    max.overlaps = 18,
+    na.rm = TRUE
+  ) +
+  facet_grid(
+    rows = vars(timepoint),
+    scales = "free_y"
+  ) +
+  scale_color_manual(values = volcano_colors) +
+  labs(
+    title = "Postnatal infant VAMS (combined arms, adjusted)",
+    x = "Average Treatment Effect",
+    y = expression(-log[10]("raw P-value")),
+    color = NULL
+  ) +
+  theme_bw(base_size = 8) +
+  theme(legend.position = "bottom")
+
+infant_vams_volcano_plot
+
+```
+
+# Mummichog
+
+Mummichog is run separately for each compartment, timepoint, ionization mode, and direction. All measured features remain in the background. For a directional run, features pointing in the other direction are assigned a P-value of 1. The command follows the supplied analysis document: 10-ppm pathway matching, `human_mfn`, and a raw P-value cutoff of 0.05.
+
+## Set Mummichog paths
+
+```{r}
+
+mummichog_exec <-
+  "/Users/trentondailey-chwalibog/anaconda3/envs/biospe/bin/mummichog"
+
+mummichog_root <-
+  file.path(
+    compartment_results_root,
+    "Mummichog"
+  )
+
+dir.create(
+  mummichog_root,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+stopifnot(
+  file.exists(mummichog_exec)
+)
+
+```
+
+## Prepare Mummichog jobs
+
+```{r}
+
+mummichog_jobs <-
+  compartment_results %>%
+  filter(
+    !is.na(mz),
+    !is.na(rt),
+    !is.na(raw_p),
+    ion_mode %in%
+      c(
+        "positive",
+        "negative"
+      )
+  ) %>%
+  distinct(
+    compartment,
+    timepoint,
+    ion_mode
+  ) %>%
+  crossing(
+    analysis =
+      c(
+        "overall",
+        "upregulated",
+        "downregulated"
+      )
+  ) %>%
+  mutate(
+    job_id =
+      paste(
+        compartment,
+        timepoint,
+        ion_mode,
+        analysis,
+        sep = "_"
+      ) %>%
+      str_to_lower() %>%
+      str_replace_all("[^a-z0-9]+", "_")
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    ion_mode,
+    analysis
+  )
+
+mummichog_jobs
+
+```
+
+## Run Mummichog
+
+```{r}
+
+mummichog_jobs %>%
+  pwalk(
+    function(
+      compartment,
+      timepoint,
+      ion_mode,
+      analysis,
+      job_id
+    ) {
+      mummichog_input <-
+        compartment_results %>%
+        filter(
+          .data$compartment == .env$compartment,
+          .data$timepoint == .env$timepoint,
+          .data$ion_mode == .env$ion_mode,
+          !is.na(mz),
+          !is.na(rt),
+          !is.na(raw_p)
+        ) %>%
+        arrange(
+          raw_p,
+          feature
+        ) %>%
+        mutate(
+          input_row = row_number(),
+          mummichog_p =
+            case_when(
+              analysis == "upregulated" & effect_size < 0 ~ 1,
+              analysis == "downregulated" & effect_size > 0 ~ 1,
+              TRUE ~ pmax(
+                raw_p,
+                .Machine$double.xmin
+              )
+            ),
+          statistic =
+            -log10(mummichog_p)
+        )
+
+      mummichog_input %>%
+        select(
+          mz,
+          rt,
+          mummichog_p,
+          statistic
+        ) %>%
+        write_tsv(
+          file.path(
+            mummichog_root,
+            paste0(job_id, "_input.txt")
+          ),
+          col_names = FALSE
+        )
+
+      mummichog_input %>%
+        select(
+          input_row,
+          compartment,
+          timepoint,
+          ion_mode,
+          feature,
+          mz,
+          rt,
+          effect_size,
+          raw_p,
+          fdr,
+          direction
+        ) %>%
+        write_csv(
+          file.path(
+            mummichog_root,
+            paste0(job_id, "_input_key.csv")
+          )
+        )
+
+      existing_output <-
+        mummichog_root %>%
+        list.dirs(
+          recursive = FALSE,
+          full.names = TRUE
+        ) %>%
+        str_subset(
+          fixed(paste0(".", job_id))
+        )
+
+      if (length(existing_output) == 0) {
+        withr::with_dir(
+          mummichog_root,
+          system2(
+            command = mummichog_exec,
+            args =
+              c(
+                "-f",
+                paste0(job_id, "_input.txt"),
+                "-o",
+                job_id,
+                "-m",
+                ion_mode,
+                "-u",
+                "10",
+                "-n",
+                "human_mfn",
+                "-c",
+                "0.05"
+              )
+          )
+        )
+      }
+    }
+  )
+
+```
+
+## Import Mummichog pathway results
+
+```{r}
+
+mummichog_output_folders <-
+  mummichog_jobs %>%
+  mutate(
+    output_folder =
+      map_chr(
+        job_id,
+        ~ mummichog_root %>%
+          list.dirs(
+            recursive = FALSE,
+            full.names = TRUE
+          ) %>%
+          str_subset(
+            fixed(paste0(".", .x))
+          ) %>%
+          sort() %>%
+          last()
+      )
+  )
+
+mummichog_pathway_results <-
+  mummichog_output_folders %>%
+  mutate(
+    data =
+      map2(
+        output_folder,
+        job_id,
+        ~ file.path(
+          .x,
+          "tables",
+          paste0(
+            "mcg_pathwayanalysis_",
+            .y,
+            ".tsv"
+          )
+        ) %>%
+          read_tsv(
+            show_col_types = FALSE,
+            name_repair = "unique_quiet"
+          )
+      )
+  ) %>%
+  select(
+    compartment,
+    timepoint,
+    ion_mode,
+    analysis,
+    job_id,
+    data
+  ) %>%
+  unnest(cols = data) %>%
+  rename(raw_p = `p-value`) %>%
+  mutate(
+    fdr =
+      p.adjust(
+        raw_p,
+        method = "BH"
+      ),
+    .by = job_id
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    ion_mode,
+    analysis,
+    raw_p,
+    pathway
+  )
+
+mummichog_pathway_results
+
+```
+
+# Putative Feature Names
+
+Mummichog names are putative mass-to-compound candidates. A single feature can have several candidates, so the candidate count is retained and the first candidate is used only as a concise plotting label.
+
+## Import Mummichog candidate names
+
+```{r}
+
+## Import Mummichog candidate names
+
+mummichog_name_map <-
+  mummichog_output_folders %>%
+  filter(analysis == "overall") %>%
+  mutate(
+    candidate_file =
+      file.path(
+        output_folder,
+        "tables",
+        "userInput_to_EmpiricalCompounds.tsv"
+      ),
+    input_key_file =
+      file.path(
+        mummichog_root,
+        paste0(
+          job_id,
+          "_input_key.csv"
+        )
+      ),
+    candidates =
+      map(
+        candidate_file,
+        ~ read_tsv(
+          .x,
+          show_col_types = FALSE,
+          name_repair = "unique_quiet"
+        ) %>%
+          transmute(
+            input_row =
+              `input_row...1` %>%
+              str_remove("^row") %>%
+              as.integer(),
+            compound_ids = compounds,
+            putative_names = compound_names
+          ) %>%
+          filter(
+            !is.na(putative_names),
+            putative_names != ""
+          ) %>%
+          group_by(input_row) %>%
+          summarise(
+            compound_ids =
+              compound_ids %>%
+              unique() %>%
+              paste(collapse = ";"),
+            putative_names =
+              putative_names %>%
+              unique() %>%
+              paste(collapse = "$"),
+            .groups = "drop"
+          )
+      ),
+    input_key =
+      map(
+        input_key_file,
+        ~ read_csv(
+          .x,
+          show_col_types = FALSE,
+          col_types =
+            cols(
+              .default = col_guess(),
+              compartment = col_character(),
+              timepoint = col_character(),
+              ion_mode = col_character(),
+              feature = col_character(),
+              direction = col_character()
+            )
+        )
+      ),
+    data =
+      map2(
+        candidates,
+        input_key,
+        ~ .y %>%
+          left_join(
+            .x,
+            by = "input_row"
+          )
+      )
+  ) %>%
+  select(data) %>%
+  unnest(cols = data) %>%
+  filter(!is.na(putative_names)) %>%
+  mutate(
+    putative_name =
+      putative_names %>%
+      str_split_fixed(
+        "[$;]",
+        2
+      ) %>%
+      .[, 1] %>%
+      str_squish(),
+    candidate_count =
+      putative_names %>%
+      str_split("[$;]") %>%
+      map_int(
+        ~ .x %>%
+          str_squish() %>%
+          discard(~ .x == "") %>%
+          n_distinct()
+      )
+  ) %>%
+  distinct(
+    compartment,
+    timepoint,
+    ion_mode,
+    feature,
+    .keep_all = TRUE
+  )
+
+mummichog_name_map
+
+```
+
+## Add putative names to all results
+
+```{r}
+
+named_compartment_results <-
+  compartment_results %>%
+  left_join(
+    mummichog_name_map %>%
+      select(
+        compartment,
+        timepoint,
+        ion_mode,
+        feature,
+        compound_ids,
+        putative_names,
+        putative_name,
+        candidate_count
+      ),
+    by =
+      c(
+        "compartment",
+        "timepoint",
+        "ion_mode",
+        "feature"
+      )
+  ) %>%
+  mutate(
+    feature_name =
+      coalesce(
+        putative_name,
+        feature
+      ),
+    normalized_name =
+      putative_name %>%
+      str_to_lower() %>%
+      str_replace_all("[^a-z0-9]+", ""),
+    feature_label =
+      case_when(
+        significant & !is.na(putative_name) ~
+          paste0(
+            putative_name,
+            " (",
+            feature,
+            ")"
+          ),
+        significant ~ feature,
+        TRUE ~ NA_character_
+      )
+  )
+
+named_compartment_results %>%
+  filter(significant) %>%
+  arrange(
+    compartment,
+    timepoint,
+    raw_p
+  )
+
+```
+
+# Volcano Plots With Putative Names
+
+```{r}
+
+named_volcano_plots <-
+  named_compartment_results %>%
+  mutate(
+    volcano_group =
+      case_when(
+        significant ~ "FDR significant",
+        raw_p < 0.05 ~ "Raw P < 0.05",
+        TRUE ~ "Not significant"
+      )
+  ) %>%
+  group_split(compartment) %>%
+  set_names(
+    named_compartment_results %>%
+      distinct(compartment) %>%
+      pull(compartment)
+  ) %>%
+  map(
+    ~ .x %>%
+      ggplot(
+        aes(
+          x = effect_size,
+          y = logp,
+          color = volcano_group
+        )
+      ) +
+      geom_vline(
+        xintercept = 0,
+        linetype = "dashed",
+        linewidth = 0.4
+      ) +
+      geom_point(
+        alpha = 0.65,
+        size = 1
+      ) +
+      geom_text_repel(
+        aes(label = feature_label),
+        color = "grey35",
+        size = 2.3,
+        max.overlaps = 20,
+        na.rm = TRUE
+      ) +
+      facet_grid(
+        rows = vars(timepoint),
+        scales = "free_y"
+      ) +
+      scale_color_manual(values = volcano_colors) +
+      labs(
+        title =
+          paste0(
+            unique(.x$compartment),
+            " (combined arms, adjusted)"
+          ),
+        x = "Average Treatment Effect",
+        y = expression(-log[10]("raw P-value")),
+        color = NULL
+      ) +
+      theme_bw(base_size = 8) +
+      theme(legend.position = "bottom")
+  )
+
+named_volcano_plots
+
+```
+
+# Identify Features in the BEP Supplement
+
+Significant compartment features are matched to APSE supplement features by exact identifier where available, followed by same-ion-mode mass matching within 25 ppm. The closest reliably detected candidate is retained, while the number of possible candidates is reported.
+
+## Match significant features to the supplement
+
+```{r}
+
+significant_named_results <-
+  named_compartment_results %>%
+  filter(significant) %>%
+  mutate(
+    compartment = as.character(compartment),
+    timepoint = as.character(timepoint),
+    tracking_id =
+      paste(
+        compartment,
+        timepoint,
+        feature,
+        sep = "__"
+      ),
+    feature_key =
+      str_to_lower(feature),
+    mz_lower =
+      mz *
+      (1 - mass_tolerance_ppm / 1000000),
+    mz_upper =
+      mz *
+      (1 + mass_tolerance_ppm / 1000000)
+  )
+
+supplement_matches_all <-
+  significant_named_results %>%
+  left_join(
+    supplement_results,
+    by =
+      join_by(
+        ion_mode,
+        mz_lower <= supplement_mz,
+        mz_upper >= supplement_mz
+      ),
+    relationship = "many-to-many"
+  ) %>%
+  mutate(
+    supplement_ppm_difference =
+      abs(mz - supplement_mz) /
+      ((mz + supplement_mz) / 2) *
+      1000000,
+    supplement_rt_difference =
+      abs(rt - supplement_rt),
+    exact_supplement_feature_match =
+      feature_key == supplement_feature_key,
+    supplement_candidate_count =
+      sum(
+        !is.na(supplement_feature),
+        na.rm = TRUE
+      ),
+    .by = tracking_id
+  )
+
+supplement_matches <-
+  supplement_matches_all %>%
+  arrange(
+    tracking_id,
+    desc(exact_supplement_feature_match),
+    desc(supplement_reliably_detected),
+    supplement_ppm_difference,
+    supplement_rt_difference
+  ) %>%
+  distinct(
+    tracking_id,
+    .keep_all = TRUE
+  ) %>%
+  mutate(
+    supplement_match_type =
+      case_when(
+        is.na(supplement_feature) ~ "No match within 25 ppm",
+        exact_supplement_feature_match ~ "Exact feature identifier",
+        TRUE ~ "Mass within 25 ppm"
+      ),
+    supplement_status =
+      case_when(
+        is.na(supplement_feature) ~ "No matched supplement feature",
+        supplement_abundant ~ "Supplement-abundant",
+        supplement_reliably_detected ~ "Reliably detected",
+        supplement_detected ~ "Detected",
+        TRUE ~ "Not detected"
+      )
+  )
+
+supplement_matches %>%
+  count(
+    compartment,
+    timepoint,
+    direction,
+    supplement_status,
+    name = "number_of_features"
+  ) %>%
+  arrange(
+    compartment,
+    timepoint,
+    direction,
+    supplement_status
+  ) %>%
+  print(n = Inf)
+
+```
+
+## Add supplement results to named features
+
+```{r}
+
+named_compartment_results <-
+  named_compartment_results %>%
+  mutate(
+    tracking_id =
+      paste(
+        compartment,
+        timepoint,
+        feature,
+        sep = "__"
+      )
+  ) %>%
+  left_join(
+    supplement_matches %>%
+      select(
+        tracking_id,
+        supplement_feature,
+        supplement_mz,
+        supplement_rt,
+        supplement_ppm_difference,
+        supplement_rt_difference,
+        supplement_candidate_count,
+        supplement_match_type,
+        supplement_replicates,
+        detected_replicates,
+        mean_supplement_abundance,
+        median_supplement_abundance,
+        supplement_detected,
+        supplement_reliably_detected,
+        supplement_abundant,
+        supplement_status
+      ),
+    by = "tracking_id"
+  )
+
+```
+
+# Track Features Across Compartments
+
+Cross-compartment comparisons use direction only because absolute intensities are not comparable across platforms. Maternal and infant VAMS are first linked by exact feature identifier. Remaining features are linked by an identical normalized putative name or by ionization mode and mass within 25 ppm. Name-based matches remain putative and mass matches can include chance matches.
+
+## Identify matching features
+
+```{r}
+
+significant_named_results <-
+  named_compartment_results %>%
+  filter(significant) %>%
+  mutate(
+    compartment = as.character(compartment),
+    timepoint = as.character(timepoint),
+    tracking_id =
+      paste(
+        compartment,
+        timepoint,
+        feature,
+        sep = "__"
+      )
+  )
+
+compartment_pairs <-
+  significant_named_results %>%
+  select(
+    tracking_id,
+    compartment,
+    timepoint,
+    ion_mode,
+    feature,
+    mz,
+    rt,
+    effect_size,
+    direction,
+    fdr,
+    putative_name,
+    normalized_name
+  ) %>%
+  rename_with(
+    ~ paste0(.x, "_1")
+  ) %>%
+  crossing(
+    significant_named_results %>%
+      select(
+        tracking_id,
+        compartment,
+        timepoint,
+        ion_mode,
+        feature,
+        mz,
+        rt,
+        effect_size,
+        direction,
+        fdr,
+        putative_name,
+        normalized_name
+      ) %>%
+      rename_with(
+        ~ paste0(.x, "_2")
+      )
+  ) %>%
+  filter(
+    compartment_1 < compartment_2
+  ) %>%
+  mutate(
+    ppm_difference =
+      abs(mz_1 - mz_2) /
+      ((mz_1 + mz_2) / 2) *
+      1000000,
+    exact_feature_match =
+      feature_1 == feature_2,
+    mass_match =
+      ion_mode_1 == ion_mode_2 &
+      ppm_difference <= 25,
+    similar_name_match =
+      !is.na(normalized_name_1) &
+      !is.na(normalized_name_2) &
+      normalized_name_1 == normalized_name_2,
+    same_direction =
+      direction_1 == direction_2,
+    match_type =
+      case_when(
+        exact_feature_match ~ "Exact feature identifier",
+        similar_name_match ~ "Same putative name",
+        mass_match ~ "Mass within 25 ppm",
+        TRUE ~ NA_character_
+      )
+  ) %>%
+  filter(!is.na(match_type)) %>%
+  arrange(
+    desc(exact_feature_match),
+    ppm_difference,
+    fdr_1,
+    fdr_2
+  ) %>%
+  distinct(
+    tracking_id_1,
+    tracking_id_2,
+    .keep_all = TRUE
+  )
+
+compartment_pairs
+
+```
+
+## Summarise concordance
+
+```{r}
+
+compartment_concordance <-
+  compartment_pairs %>%
+  count(
+    compartment_1,
+    timepoint_1,
+    compartment_2,
+    timepoint_2,
+    match_type,
+    same_direction,
+    name = "number_of_matches"
+  ) %>%
+  group_by(
+    compartment_1,
+    timepoint_1,
+    compartment_2,
+    timepoint_2,
+    match_type
+  ) %>%
+  mutate(
+    percent_of_matches =
+      100 * number_of_matches / sum(number_of_matches)
+  ) %>%
+  ungroup() %>%
+  arrange(
+    compartment_1,
+    timepoint_1,
+    compartment_2,
+    timepoint_2,
+    match_type,
+    desc(same_direction)
+  )
+
+compartment_concordance %>%
+  print(n = Inf)
+
+```
+
+## Prepare compartment-tracking figure
+
+```{r}
+
+tracked_feature_ids <-
+  compartment_pairs %>%
+  filter(same_direction) %>%
+  select(
+    tracking_id_1,
+    tracking_id_2
+  ) %>%
+  pivot_longer(
+    cols = everything(),
+    values_to = "tracking_id"
+  ) %>%
+  distinct(tracking_id)
+
+compartment_tracking_plot_data <-
+  significant_named_results %>%
+  semi_join(
+    tracked_feature_ids,
+    by = "tracking_id"
+  ) %>%
+  mutate(
+    compartment_timepoint =
+      paste(
+        compartment,
+        timepoint,
+        sep = " · "
+      ),
+    compartment_timepoint =
+      factor(
+        compartment_timepoint,
+        levels =
+          c(
+            "Maternal plasma · incl",
+            "Maternal plasma · tri3",
+            "Maternal plasma · pn12",
+            "Maternal VAMS · tri3",
+            "Maternal VAMS · pn56",
+            "Milk · 1421d",
+            "Milk · pn12",
+            "Milk · pn34",
+            "Infant VAMS · acco",
+            "Infant VAMS · pn12",
+            "Infant VAMS · pn34",
+            "Infant VAMS · pn56"
+          ),
+        labels =
+          c(
+            "Maternal plasma · Enrollment",
+            "Maternal plasma · Third trimester",
+            "Maternal plasma · 1–2 months",
+            "Maternal VAMS · Third trimester",
+            "Maternal VAMS · 5–6 months",
+            "Milk · 14–21 days",
+            "Milk · 1–2 months",
+            "Milk · 3–4 months",
+            "Infant VAMS · Birth",
+            "Infant VAMS · 1–2 months",
+            "Infant VAMS · 3–4 months",
+            "Infant VAMS · 5–6 months"
+          )
+      ),
+    tracking_name =
+      coalesce(
+        putative_name,
+        paste0(
+          "m/z ",
+          round(mz, 4)
+        )
+      ),
+    supplement_label =
+      case_when(
+        supplement_abundant ~ "Supplement-abundant",
+        supplement_reliably_detected ~ "Detected in supplement",
+        TRUE ~ "Not reliably detected in supplement"
+      )
+  )
+
+```
+
+## Generate compartment-tracking figure
+
+```{r}
+
+compartment_tracking_plot <-
+  compartment_tracking_plot_data %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name,
+      color = direction
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey65",
+    alpha = 0.6,
+    linewidth = 0.5
+  ) +
+  geom_point(
+    size = 2,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    aes(label = tracking_name),
+    size = 2.3,
+    color = "grey30",
+    max.overlaps = 30,
+    show.legend = FALSE
+  ) +
+  scale_color_manual(
+    values =
+      c(
+        "Downregulated" = "#4E79A7",
+        "Upregulated" = "#E15759"
+      )
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    color = "Direction"
+  ) +
+  theme_bw(base_size = 8) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+compartment_tracking_plot
+
+```
+
+```{r}
+# -------------------------------------------------------------------
+# Upregulated features
+# -------------------------------------------------------------------
+
+compartment_tracking_upregulated_plot <-
+  compartment_tracking_plot_data %>%
+  filter(direction == "Upregulated") %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey65",
+    alpha = 0.6,
+    linewidth = 0.5
+  ) +
+  geom_point(
+    aes(shape = supplement_label),
+    color = "#E15759",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    aes(label = tracking_name),
+    size = 2.3,
+    color = "grey30",
+    box.padding = 0.5,
+    point.padding = 0.3,
+    segment.color = "grey60",
+    segment.size = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  scale_shape_manual(
+    values =
+      c(
+        "Supplement-abundant" = 17,
+        "Detected in supplement" = 15,
+        "Not reliably detected in supplement" = 16
+      )
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    title = "Upregulated Features",
+    shape = "BEP Supplement"
+  ) +
+  theme_bw(base_size = 8) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+compartment_tracking_upregulated_plot
+
+# -------------------------------------------------------------------
+# Downregulated features
+# -------------------------------------------------------------------
+
+compartment_tracking_downregulated_plot <-
+  compartment_tracking_plot_data %>%
+  filter(direction == "Downregulated") %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey65",
+    alpha = 0.6,
+    linewidth = 0.5
+  ) +
+  geom_point(
+    aes(shape = supplement_label),
+    color = "#4E79A7",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    aes(label = tracking_name),
+    size = 2.3,
+    color = "grey30",
+    box.padding = 0.5,
+    point.padding = 0.3,
+    segment.color = "grey60",
+    segment.size = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  scale_shape_manual(
+    values =
+      c(
+        "Supplement-abundant" = 17,
+        "Detected in supplement" = 15,
+        "Not reliably detected in supplement" = 16
+      )
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    title = "Downregulated Features",
+    shape = "BEP Supplement"
+  ) +
+  theme_bw(base_size = 8) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+compartment_tracking_downregulated_plot
+
+# -------------------------------------------------------------------
+# Export figures
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "compartment_tracking_upregulated_plot.png"
+    ),
+  plot = compartment_tracking_upregulated_plot,
+  width = 14,
+  height = 14,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "compartment_tracking_downregulated_plot.png"
+    ),
+  plot = compartment_tracking_downregulated_plot,
+  width = 14,
+  height = 14,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+```
+# Export Results
+
+```{r}
+
+write_xlsx(
+  list(
+    named_features = named_compartment_results,
+    significant_named_features =
+      named_compartment_results %>%
+      filter(significant),
+    significance_comparison = significance_comparison,
+    supplement_feature_summary = supplement_results,
+    supplement_matches = supplement_matches,
+    supplement_candidates = supplement_matches_all,
+    matched_features = compartment_pairs,
+    concordance = compartment_concordance,
+    mummichog_pathways = mummichog_pathway_results,
+    blood_validation = significant_count_validation,
+    milk_validation = milk_count_validation
+  ),
+  path =
+    file.path(
+      compartment_results_root,
+      "compartment_tracking_final_results.xlsx"
+    )
+)
+
+walk2(
+  named_volcano_plots,
+  names(named_volcano_plots),
+  ~ ggsave(
+    filename =
+      file.path(
+        compartment_results_root,
+        paste0(
+          str_to_lower(.y) %>%
+            str_replace_all("[^a-z0-9]+", "_"),
+          "_named_volcano_plot.png"
+        )
+      ),
+    plot = .x,
+    width = 9,
+    height = 12,
+    units = "in",
+    dpi = 600,
+    bg = "white"
+  )
+)
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "compartment_tracking_plot.png"
+    ),
+  plot = compartment_tracking_plot,
+  width = 12,
+  height = 6.75,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+# Linked Features Only
+
+## Upregulated Linked Features
+
+```{r}
+
+linked_upregulated_ids <-
+  compartment_pairs %>%
+  filter(
+    same_direction,
+    direction_1 == "Upregulated",
+    direction_2 == "Upregulated"
+  ) %>%
+  select(
+    tracking_id_1,
+    tracking_id_2
+  ) %>%
+  pivot_longer(
+    cols = everything(),
+    values_to = "tracking_id"
+  ) %>%
+  distinct(tracking_id)
+
+linked_upregulated_features <-
+  named_compartment_results %>%
+  semi_join(
+    linked_upregulated_ids,
+    by = "tracking_id"
+  ) %>%
+  filter(direction == "Upregulated") %>%
+  arrange(
+    compartment,
+    timepoint,
+    putative_name,
+    feature
+  )
+
+linked_upregulated_features
+
+linked_upregulated_features %>%
+  count(
+    compartment,
+    timepoint,
+    name = "linked_features"
+  ) %>%
+  arrange(
+    compartment,
+    timepoint
+  ) %>%
+  print(n = Inf)
+
+```
+## Downregulated Linked Features
+
+```{r}
+
+linked_downregulated_ids <-
+  compartment_pairs %>%
+  filter(
+    same_direction,
+    direction_1 == "Downregulated",
+    direction_2 == "Downregulated"
+  ) %>%
+  select(
+    tracking_id_1,
+    tracking_id_2
+  ) %>%
+  pivot_longer(
+    cols = everything(),
+    values_to = "tracking_id"
+  ) %>%
+  distinct(tracking_id)
+
+linked_downregulated_features <-
+  named_compartment_results %>%
+  semi_join(
+    linked_downregulated_ids,
+    by = "tracking_id"
+  ) %>%
+  filter(direction == "Downregulated") %>%
+  arrange(
+    compartment,
+    timepoint,
+    putative_name,
+    feature
+  )
+
+linked_downregulated_features
+
+linked_downregulated_features %>%
+  count(
+    compartment,
+    timepoint,
+    name = "linked_features"
+  ) %>%
+  arrange(
+    compartment,
+    timepoint
+  ) %>%
+  print(n = Inf)
+
+```
+
+## Plot Linked Features
+
+### Upregulated
+
+```{r}
+
+linked_upregulated_plot <-
+  compartment_tracking_plot_data %>%
+  semi_join(
+    linked_upregulated_ids,
+    by = "tracking_id"
+  ) %>%
+  filter(direction == "Upregulated") %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey65",
+    alpha = 0.6,
+    linewidth = 0.5
+  ) +
+  geom_point(
+    aes(shape = supplement_label),
+    color = "#E15759",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    aes(label = tracking_name),
+    size = 2.3,
+    color = "grey30",
+    box.padding = 0.5,
+    point.padding = 0.3,
+    segment.color = "grey60",
+    segment.size = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  scale_shape_manual(
+    values =
+      c(
+        "Supplement-abundant" = 17,
+        "Detected in supplement" = 15,
+        "Not reliably detected in supplement" = 16
+      )
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    title = "Linked Upregulated Features",
+    shape = "BEP Supplement"
+  ) +
+  theme_bw(base_size = 8) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+linked_upregulated_plot
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "linked_upregulated_features.png"
+    ),
+  plot = linked_upregulated_plot,
+  width = 14,
+  height = 14,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+### Downregulated
+
+```{r}
+
+linked_downregulated_plot <-
+  compartment_tracking_plot_data %>%
+  semi_join(
+    linked_downregulated_ids,
+    by = "tracking_id"
+  ) %>%
+  filter(direction == "Downregulated") %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey70",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey65",
+    alpha = 0.6,
+    linewidth = 0.5
+  ) +
+  geom_point(
+    aes(shape = supplement_label),
+    color = "#4E79A7",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    aes(label = tracking_name),
+    size = 2.3,
+    color = "grey30",
+    box.padding = 0.5,
+    point.padding = 0.3,
+    segment.color = "grey60",
+    segment.size = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  scale_shape_manual(
+    values =
+      c(
+        "Supplement-abundant" = 17,
+        "Detected in supplement" = 15,
+        "Not reliably detected in supplement" = 16
+      )
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    title = "Linked Downregulated Features",
+    shape = "BEP Supplement"
+  ) +
+  theme_bw(base_size = 8) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+linked_downregulated_plot
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "linked_downregulated_features.png"
+    ),
+  plot = linked_downregulated_plot,
+  width = 14,
+  height = 14,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+# In Supplement Bar Plot
+
+```{r}
+
+# -------------------------------------------------------------------
+# Prepare supplement-status plot data
+# -------------------------------------------------------------------
+
+supplement_status_plot_data <-
+  supplement_matches %>%
+  count(
+    compartment,
+    timepoint,
+    direction,
+    supplement_status,
+    name = "number_of_features"
+  ) %>%
+  group_by(
+    compartment,
+    timepoint,
+    direction
+  ) %>%
+  mutate(
+    total_features =
+      sum(number_of_features),
+    percent_features =
+      100 *
+      number_of_features /
+      total_features,
+    segment_label =
+      case_when(
+        percent_features >= 4 ~
+          paste0(
+            number_of_features,
+            "\n",
+            round(
+              percent_features,
+              1
+            ),
+            "%"
+          ),
+        TRUE ~ ""
+      )
+  ) %>%
+  ungroup() %>%
+  mutate(
+    compartment_timepoint =
+      paste(
+        compartment,
+        timepoint,
+        sep = " · "
+      ),
+    compartment_timepoint =
+      factor(
+        compartment_timepoint,
+        levels =
+          c(
+            "Maternal plasma · incl",
+            "Maternal plasma · tri3",
+            "Maternal plasma · pn12",
+            "Maternal VAMS · pn56",
+            "Milk · 1421d",
+            "Milk · pn12",
+            "Milk · pn34",
+            "Infant VAMS · pn12",
+            "Infant VAMS · pn34",
+            "Infant VAMS · pn56"
+          ),
+        labels =
+          c(
+            "Maternal plasma · Enrollment",
+            "Maternal plasma · Third trimester",
+            "Maternal plasma · 1–2 months",
+            "Maternal VAMS · 5–6 months",
+            "Milk · 14–21 days",
+            "Milk · 1–2 months",
+            "Milk · 3–4 months",
+            "Infant VAMS · 1–2 months",
+            "Infant VAMS · 3–4 months",
+            "Infant VAMS · 5–6 months"
+          )
+      ),
+    supplement_status =
+      factor(
+        supplement_status,
+        levels =
+          c(
+            "No matched supplement feature",
+            "Not detected",
+            "Detected",
+            "Reliably detected",
+            "Supplement-abundant"
+          )
+      ),
+    direction =
+      factor(
+        direction,
+        levels =
+          c(
+            "Upregulated",
+            "Downregulated"
+          )
+      )
+  )
+
+# -------------------------------------------------------------------
+# Colours
+# -------------------------------------------------------------------
+
+supplement_status_colors <-
+  c(
+    "No matched supplement feature" = "#D9D9D9",
+    "Not detected" = "#969696",
+    "Detected" = "#F2CC8F",
+    "Reliably detected" = "#59A89C",
+    "Supplement-abundant" = "#7B2CBF"
+  )
+
+# -------------------------------------------------------------------
+# Plot
+# -------------------------------------------------------------------
+
+supplement_status_plot <-
+  supplement_status_plot_data %>%
+  ggplot(
+    aes(
+      x = number_of_features,
+      y = compartment_timepoint,
+      fill = supplement_status
+    )
+  ) +
+  geom_col(
+    position = "fill",
+    width = 0.75,
+    color = "white",
+    linewidth = 0.25
+  ) +
+  geom_text(
+    aes(label = segment_label),
+    position =
+      position_fill(
+        vjust = 0.5
+      ),
+    size = 2.3,
+    color = "black"
+  ) +
+  facet_wrap(
+    vars(direction),
+    ncol = 1
+  ) +
+  scale_x_continuous(
+    labels = scales::percent,
+    expand =
+      expansion(
+        mult =
+          c(
+            0,
+            0.01
+          )
+      )
+  ) +
+  scale_fill_manual(
+    values = supplement_status_colors,
+    drop = FALSE
+  ) +
+  labs(
+    x = "Percentage of FDR-Significant Features",
+    y = NULL,
+    fill = "BEP Supplement Status"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    strip.text = element_text(
+      size = 8
+    ),
+    legend.position = "bottom",
+    legend.box = "vertical"
+  ) +
+  guides(
+    fill =
+      guide_legend(
+        nrow = 2,
+        byrow = TRUE
+      )
+  )
+
+supplement_status_plot
+
+# -------------------------------------------------------------------
+# Export
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "supplement_status_by_compartment.png"
+    ),
+  plot = supplement_status_plot,
+  width = 12,
+  height = 10,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+# Prepare cross-compartment plotting data
+
+```{r}
+
+# -------------------------------------------------------------------
+# Retain metabolites matched across at least two positions
+# -------------------------------------------------------------------
+
+linked_compartment_tracking_plot_data <-
+  compartment_tracking_plot_data %>%
+  filter(
+    !is.na(tracking_name),
+    tracking_name != ""
+  ) %>%
+  group_by(
+    direction,
+    tracking_name
+  ) %>%
+  filter(
+    n_distinct(compartment_timepoint) >= 2
+  ) %>%
+  arrange(
+    compartment_timepoint,
+    raw_p,
+    .by_group = TRUE
+  ) %>%
+  distinct(
+    direction,
+    tracking_name,
+    compartment_timepoint,
+    .keep_all = TRUE
+  ) %>%
+  ungroup()
+
+# Label only the first appearance from left to right
+
+linked_compartment_tracking_labels <-
+  linked_compartment_tracking_plot_data %>%
+  mutate(
+    compartment_position =
+      as.integer(compartment_timepoint)
+  ) %>%
+  arrange(
+    direction,
+    tracking_name,
+    compartment_position
+  ) %>%
+  group_by(
+    direction,
+    tracking_name
+  ) %>%
+  slice_head(n = 1) %>%
+  ungroup()
+
+
+```
+
+## Upregulated cross-compartment linkages
+
+```{r}
+
+# -------------------------------------------------------------------
+# Upregulated matched metabolites
+# -------------------------------------------------------------------
+
+upregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Upregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey70",
+    alpha = 0.7,
+    linewidth = 0.6
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    color = "#E15759",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Upregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    color = "#6A3D9A",
+    segment.color = "#6A3D9A",
+    size = 2.5,
+    box.padding = 0.4,
+    point.padding = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+upregulated_compartment_tracking_plot
+
+
+```
+
+## Downregulated cross-compartment linkages
+
+```{r}
+
+# -------------------------------------------------------------------
+# Downregulated matched metabolites
+# -------------------------------------------------------------------
+
+downregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Downregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey70",
+    alpha = 0.7,
+    linewidth = 0.6
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    color = "#4E79A7",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_text_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Downregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    color = "#6A3D9A",
+    segment.color = "#6A3D9A",
+    size = 2.5,
+    box.padding = 0.4,
+    point.padding = 0.3,
+    max.overlaps = Inf,
+    show.legend = FALSE
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom"
+  )
+
+downregulated_compartment_tracking_plot
+
+
+```
+
+## Export Plots
+
+```{r}
+
+# -------------------------------------------------------------------
+# Save plots at 16:9
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "upregulated_compartment_tracking_plot.png"
+    ),
+  plot = upregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "downregulated_compartment_tracking_plot.png"
+    ),
+  plot = downregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+# Cross-Compartment Tracking with gglabel Repel 
+
+## Upregulated plot
+
+```{r}
+
+
+upregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Upregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey70",
+    alpha = 0.7,
+    linewidth = 0.6
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    color = "#E15759",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_label_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Upregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    color = "#6A3D9A",
+    fill = "white",
+    segment.color = "#6A3D9A",
+    segment.size = 0.4,
+    size = 2.5,
+    label.size = 0.25,
+    label.padding = unit(
+      0.18,
+      "lines"
+    ),
+    box.padding = 1.2,
+    point.padding = 0.8,
+    force = 15,
+    force_pull = 0.05,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    max.iter = 100000,
+    max.time = 10,
+    seed = 123,
+    show.legend = FALSE
+  ) +
+  scale_y_continuous(
+    expand =
+      expansion(
+        mult =
+          c(
+            0.15,
+            0.35
+          )
+      )
+  ) +
+  coord_cartesian(
+    clip = "off"
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom",
+    plot.margin =
+      margin(
+        15,
+        35,
+        15,
+        35
+      )
+  )
+
+upregulated_compartment_tracking_plot
+
+
+```
+
+## Downregulated Plot
+
+```{r}
+
+
+downregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Downregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    color = "grey70",
+    alpha = 0.7,
+    linewidth = 0.6
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    color = "#4E79A7",
+    size = 2.5,
+    alpha = 0.9
+  ) +
+  geom_label_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Downregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    color = "#6A3D9A",
+    fill = "white",
+    segment.color = "#6A3D9A",
+    segment.size = 0.4,
+    size = 2.5,
+    label.size = 0.25,
+    label.padding = unit(
+      0.18,
+      "lines"
+    ),
+    box.padding = 1.2,
+    point.padding = 0.8,
+    force = 15,
+    force_pull = 0.05,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    max.iter = 100000,
+    max.time = 10,
+    seed = 123,
+    show.legend = FALSE
+  ) +
+  scale_y_continuous(
+    expand =
+      expansion(
+        mult =
+          c(
+            0.35,
+            0.15
+          )
+      )
+  ) +
+  coord_cartesian(
+    clip = "off"
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom",
+    plot.margin =
+      margin(
+        15,
+        35,
+        15,
+        35
+      )
+  )
+
+downregulated_compartment_tracking_plot
+
+```
+
+## Export Plots
+
+```{r}
+
+# -------------------------------------------------------------------
+# Export compartment-tracking plots at 16:9
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "upregulated_compartment_tracking_plot.png"
+    ),
+  plot = upregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "downregulated_compartment_tracking_plot.png"
+    ),
+  plot = downregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+# Distinct Colors
+
+```{r}
+
+# -------------------------------------------------------------------
+# Create a separate color for each linked metabolite
+# -------------------------------------------------------------------
+
+tracking_names <-
+  linked_compartment_tracking_plot_data %>%
+  distinct(tracking_name) %>%
+  arrange(tracking_name) %>%
+  pull(tracking_name)
+
+tracking_colors <-
+  scales::hue_pal(
+    h =
+      c(
+        15,
+        375
+      ),
+    c = 100,
+    l = 55
+  )(length(tracking_names)) %>%
+  set_names(tracking_names)
+
+```
+
+## Upregulated
+
+```{r}
+
+upregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Upregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name,
+      color = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    alpha = 0.8,
+    linewidth = 0.7
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    size = 2.5,
+    alpha = 0.95
+  ) +
+  geom_label_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Upregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    fill = "white",
+    segment.size = 0.4,
+    size = 2.5,
+    label.size = 0.3,
+    label.padding =
+      unit(
+        0.18,
+        "lines"
+      ),
+    box.padding = 1.2,
+    point.padding = 0.8,
+    force = 15,
+    force_pull = 0.05,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    max.iter = 100000,
+    max.time = 10,
+    seed = 123,
+    show.legend = FALSE
+  ) +
+  scale_color_manual(
+    values = tracking_colors
+  ) +
+  scale_y_continuous(
+    expand =
+      expansion(
+        mult =
+          c(
+            0.15,
+            0.35
+          )
+      )
+  ) +
+  coord_cartesian(
+    clip = "off"
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  guides(
+    color = "none"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom",
+    plot.margin =
+      margin(
+        15,
+        35,
+        15,
+        35
+      )
+  )
+
+upregulated_compartment_tracking_plot
+
+
+```
+
+## Downregulated
+
+```{r}
+
+downregulated_compartment_tracking_plot <-
+  linked_compartment_tracking_plot_data %>%
+  filter(
+    direction == "Downregulated"
+  ) %>%
+  ggplot(
+    aes(
+      x = compartment_timepoint,
+      y = effect_size,
+      group = tracking_name,
+      color = tracking_name
+    )
+  ) +
+  geom_hline(
+    yintercept = 0,
+    color = "grey80",
+    linewidth = 0.4
+  ) +
+  geom_line(
+    alpha = 0.8,
+    linewidth = 0.7
+  ) +
+  geom_point(
+    aes(
+      shape = supplement_label
+    ),
+    size = 2.5,
+    alpha = 0.95
+  ) +
+  geom_label_repel(
+    data =
+      linked_compartment_tracking_labels %>%
+      filter(
+        direction == "Downregulated"
+      ),
+    aes(
+      label = tracking_name
+    ),
+    fill = "white",
+    segment.size = 0.4,
+    size = 2.5,
+    label.size = 0.3,
+    label.padding =
+      unit(
+        0.18,
+        "lines"
+      ),
+    box.padding = 1.2,
+    point.padding = 0.8,
+    force = 15,
+    force_pull = 0.05,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    max.iter = 100000,
+    max.time = 10,
+    seed = 123,
+    show.legend = FALSE
+  ) +
+  scale_color_manual(
+    values = tracking_colors
+  ) +
+  scale_y_continuous(
+    expand =
+      expansion(
+        mult =
+          c(
+            0.35,
+            0.15
+          )
+      )
+  ) +
+  coord_cartesian(
+    clip = "off"
+  ) +
+  labs(
+    x = NULL,
+    y = "Average Treatment Effect",
+    shape = "BEP supplement"
+  ) +
+  guides(
+    color = "none"
+  ) +
+  theme_bw(
+    base_size = 8
+  ) +
+  theme(
+    axis.text.x =
+      element_text(
+        angle = 45,
+        hjust = 1
+      ),
+    legend.position = "bottom",
+    plot.margin =
+      margin(
+        15,
+        35,
+        15,
+        35
+      )
+  )
+
+downregulated_compartment_tracking_plot
+
+
+```
+
+## Export
+
+```{r}
+
+# -------------------------------------------------------------------
+# Export plots at 16:9
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "upregulated_compartment_tracking_plot.png"
+    ),
+  plot = upregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+ggsave(
+  filename =
+    file.path(
+      compartment_results_root,
+      "downregulated_compartment_tracking_plot.png"
+    ),
+  plot = downregulated_compartment_tracking_plot,
+  width = 16,
+  height = 9,
+  units = "in",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

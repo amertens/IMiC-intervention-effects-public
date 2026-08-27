@@ -1,0 +1,11 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Pyruvate Metabolism",2,1,0.0195,0.0194,0.756
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Gluconeogenesis",2,1,0.0195,0.0194,0.756
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Homocysteine Degradation",3,1,0.0293,0.029,0.756
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Catecholamine Biosynthesis",4,1,0.039,0.0385,0.756
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Betaine Metabolism",4,1,0.039,0.0385,0.756
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Warburg Effect",5,1,0.0488,0.048,0.784
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Arginine and Proline Metabolism",10,1,0.0976,0.094,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Methionine Metabolism",11,1,0.107,0.103,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Glycine and Serine Metabolism",13,1,0.127,0.121,1
+"Vital (2 mo.)","BEP+ExBf+AZT","down","Bile Acid Biosynthesis",15,1,0.146,0.138,1

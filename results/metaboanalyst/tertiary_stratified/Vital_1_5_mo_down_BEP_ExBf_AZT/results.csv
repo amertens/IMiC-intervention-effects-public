@@ -1,0 +1,21 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Fatty Acid Biosynthesis",3,3,0.0683,9.44e-06,0.000925
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,2,0.114,0.00463,0.227
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Steroid Biosynthesis",1,1,0.0228,0.0228,0.446
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Fatty Acid Elongation In Mitochondria",1,1,0.0228,0.0228,0.446
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0228,0.0228,0.446
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Glycine and Serine Metabolism",13,2,0.296,0.0325,0.491
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Fatty acid Metabolism",2,1,0.0455,0.045,0.491
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Pyruvate Metabolism",2,1,0.0455,0.045,0.491
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Gluconeogenesis",2,1,0.0455,0.045,0.491
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Glycerolipid Metabolism",3,1,0.0683,0.0669,0.546
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.0683,0.0669,0.546
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Homocysteine Degradation",3,1,0.0683,0.0669,0.546
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Catecholamine Biosynthesis",4,1,0.0911,0.0882,0.617
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Betaine Metabolism",4,1,0.0911,0.0882,0.617
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Spermidine and Spermine Biosynthesis",5,1,0.114,0.109,0.668
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Warburg Effect",5,1,0.114,0.109,0.668
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Urea Cycle",7,1,0.159,0.15,0.862
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Arginine and Proline Metabolism",10,1,0.228,0.207,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Methionine Metabolism",11,1,0.25,0.225,1
+"Vital (1.5 mo.)","BEP+ExBf+AZT","down","Bile Acid Biosynthesis",15,1,0.341,0.295,1

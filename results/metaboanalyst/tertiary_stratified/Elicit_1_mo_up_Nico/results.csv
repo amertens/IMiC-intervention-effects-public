@@ -1,0 +1,10 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Nico","up","Homocysteine Degradation",3,1,0.0293,0.029,1
+"Elicit (1 mo.)","Nico","up","Catecholamine Biosynthesis",4,1,0.039,0.0385,1
+"Elicit (1 mo.)","Nico","up","Betaine Metabolism",4,1,0.039,0.0385,1
+"Elicit (1 mo.)","Nico","up","Purine Metabolism",6,1,0.0585,0.0574,1
+"Elicit (1 mo.)","Nico","up","Urea Cycle",7,1,0.0683,0.0666,1
+"Elicit (1 mo.)","Nico","up","Aspartate Metabolism",8,1,0.078,0.0759,1
+"Elicit (1 mo.)","Nico","up","Arginine and Proline Metabolism",10,1,0.0976,0.094,1
+"Elicit (1 mo.)","Nico","up","Methionine Metabolism",11,1,0.107,0.103,1
+"Elicit (1 mo.)","Nico","up","Glycine and Serine Metabolism",13,1,0.127,0.121,1

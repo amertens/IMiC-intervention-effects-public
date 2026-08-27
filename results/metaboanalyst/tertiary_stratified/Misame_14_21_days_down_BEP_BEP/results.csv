@@ -1,0 +1,22 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/BEP","down","Homocysteine Degradation",3,2,0.0439,0.000568,0.0283
+"Misame (14-21 days)","BEP/BEP","down","Glycine and Serine Metabolism",13,3,0.19,0.000578,0.0283
+"Misame (14-21 days)","BEP/BEP","down","Beta-Alanine Metabolism",7,2,0.102,0.00385,0.125
+"Misame (14-21 days)","BEP/BEP","down","Histidine Metabolism",8,2,0.117,0.0051,0.125
+"Misame (14-21 days)","BEP/BEP","down","Methionine Metabolism",11,2,0.161,0.00979,0.192
+"Misame (14-21 days)","BEP/BEP","down","Pantothenate and CoA Biosynthesis",1,1,0.0146,0.0146,0.205
+"Misame (14-21 days)","BEP/BEP","down","Threonine and 2-Oxobutanoate Degradation",1,1,0.0146,0.0146,0.205
+"Misame (14-21 days)","BEP/BEP","down","Cysteine Metabolism",2,1,0.0293,0.0291,0.237
+"Misame (14-21 days)","BEP/BEP","down","Taurine and Hypotaurine Metabolism",2,1,0.0293,0.0291,0.237
+"Misame (14-21 days)","BEP/BEP","down","Pyruvate Metabolism",2,1,0.0293,0.0291,0.237
+"Misame (14-21 days)","BEP/BEP","down","Gluconeogenesis",2,1,0.0293,0.0291,0.237
+"Misame (14-21 days)","BEP/BEP","down","Methylhistidine Metabolism",2,1,0.0293,0.0291,0.237
+"Misame (14-21 days)","BEP/BEP","down","Catecholamine Biosynthesis",4,1,0.0585,0.0574,0.352
+"Misame (14-21 days)","BEP/BEP","down","Glutathione Metabolism",4,1,0.0585,0.0574,0.352
+"Misame (14-21 days)","BEP/BEP","down","Arachidonic Acid Metabolism",4,1,0.0585,0.0574,0.352
+"Misame (14-21 days)","BEP/BEP","down","Betaine Metabolism",4,1,0.0585,0.0574,0.352
+"Misame (14-21 days)","BEP/BEP","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,1,0.0732,0.0713,0.388
+"Misame (14-21 days)","BEP/BEP","down","Warburg Effect",5,1,0.0732,0.0713,0.388
+"Misame (14-21 days)","BEP/BEP","down","Ammonia Recycling",7,1,0.102,0.0985,0.508
+"Misame (14-21 days)","BEP/BEP","down","Aspartate Metabolism",8,1,0.117,0.112,0.522
+"Misame (14-21 days)","BEP/BEP","down","Glutamate Metabolism",8,1,0.117,0.112,0.522

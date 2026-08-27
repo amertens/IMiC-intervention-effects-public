@@ -1,0 +1,780 @@
+---
+title: "Primary Outcomes (Pathway Analysis)"
+output: html_document
+date: "2026-08-03"
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(knitr)
+library(readr)
+library(stringr)
+library(tidyr)
+library(tidyverse)
+library(writexl)
+
+```
+
+# Import Data
+
+## Combined intervention effects
+
+```{r}
+
+combined_intervention <-
+  readRDS("../1. Data/combined_intervention_effects_results_combined_arms.RDS")
+
+```
+
+# Wrangle Data
+
+## Generate labels for MetaboAnalyst
+
+```{r}
+
+combined_intervention <-
+  combined_intervention %>%
+  mutate(
+    metaboanalyst_label = label_f,
+    metaboanalyst_label = str_replace_all(
+      metaboanalyst_label,
+      c(
+        "nicotinamide mononucleotide" = "Nicotinic acid mononucleotide",
+        "vitamin B3 \\( expressed as NAM\\)" = "Niacinamide",
+        "nudifloramide \\(niacin catabolite\\)" = "Nudifloramide",
+        "free thiamin" = "Thiamine",
+        "total vitamin B1 \\(expressed as thiamin\\)" = "Thiamine",
+        "vitamin B2 \\(expressed as riboflavin\\)" = "Riboflavin",
+        "vitamin B12 \\(expressed as cyanocobalamin\\)" = "Cyanocobalamin",
+        "vitamin B6 \\(expressed as PL\\)" = "Pyridoxine",
+        "^a\\.tocopherol$|^A\\.tocopherol$" = "Alpha-tocopherol",
+        "^g\\.tocopherol$|^G\\.tocopherol$" = "Gamma-tocopherol",
+        "^vitamin\\.a$|^Vitamin\\.a$" = "Vitamin A"
+      )
+    )
+  )
+
+combined_intervention %>%
+  filter(outcome_group == "primary") %>%
+  distinct(metaboanalyst_label) %>%
+  arrange(metaboanalyst_label) %>%
+  print(n = Inf)
+
+```
+
+## Create Reference Metabolome
+
+The reference metabolome is not recreated here because it was generated previously in `Primary Outcomes (MSEA ORA).Rmd`. The same reference metabolome is used for all pathway analyses and is saved at:
+
+`/Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)/Primary Outcomes Reference Metabolome.txt`
+
+# Analysis
+
+All analyses use the combined intervention-effect estimates and retain primary outcomes with `sigFDR == 1`. Positive and negative estimates are analyzed together.
+
+## ELICIT
+
+### 1 month
+
+```{r}
+
+primary_pathanaly_elicit_1mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (1 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_elicit_1mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Elicit · 1 month (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_elicit_1mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Elicit · 1 month (Combined)/primary_pathanaly_elicit_1mo_combined.xlsx")
+
+```
+
+### 5 months
+
+```{r}
+
+primary_pathanaly_elicit_5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Elicit (5 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_elicit_5mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Elicit · 5 months (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_elicit_5mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Elicit · 5 months (Combined)/primary_pathanaly_elicit_5mo_combined.xlsx")
+
+```
+
+## MISAME-III
+
+### 14–21 days
+
+```{r}
+
+primary_pathanaly_misame_1421d_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Misame (14-21 days)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_misame_1421d_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 14-21 days (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_misame_1421d_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 14-21 days (Combined)/primary_pathanaly_misame_1421d_combined.xlsx")
+
+```
+
+### 1–2 months
+
+```{r}
+
+primary_pathanaly_misame_12mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Misame (1-2 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_misame_12mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 1-2 months (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_misame_12mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 1-2 months (Combined)/primary_pathanaly_misame_12mo_combined.xlsx")
+
+```
+
+### 3–4 months
+
+```{r}
+
+primary_pathanaly_misame_34mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Misame (3-4 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_misame_34mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 3-4 months (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_misame_34mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Misame · 3-4 months (Combined)/primary_pathanaly_misame_34mo_combined.xlsx")
+
+```
+
+## Mumpta-LW
+
+### 1.5 months
+
+```{r}
+
+primary_pathanaly_mumpta_1p5mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Vital (1.5 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_mumpta_1p5mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Mumpta · 1.5 months (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_mumpta_1p5mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Mumpta · 1.5 months (Combined)/primary_pathanaly_mumpta_1p5mo_combined.xlsx")
+
+```
+
+### 2 months
+
+```{r}
+
+primary_pathanaly_mumpta_2mo_combined <-
+  combined_intervention %>%
+  filter(
+    studytime == "Vital (2 mo.)",
+    outcome_group == "primary",
+    sigFDR == 1,
+    measure == "ATE",
+    !str_starts(metaboanalyst_label, "Total")
+  )
+
+primary_pathanaly_mumpta_2mo_combined
+
+```
+
+#### Export `.xlsx`
+
+```{r}
+
+dir.create(
+  "../3. Results/Primary Outcomes (Pathway Analysis)/Mumpta · 2 months (Combined)",
+  recursive = TRUE,
+  showWarnings = FALSE
+)
+
+# write_xlsx(
+#  primary_pathanaly_mumpta_2mo_combined,
+#  path = "../3. Results/Primary Outcomes (Pathway Analysis)/Mumpta · 2 months (Combined)/primary_pathanaly_mumpta_2mo_combined.xlsx")
+
+```
+
+# Import Results
+
+```{r}
+
+# Define the main results folder
+
+pathanaly_root <-
+  "../3. Results/Primary Outcomes (Pathway Analysis)"
+
+# Find every pathway_results.csv file
+
+pathanaly_files <-
+  pathanaly_root %>%
+  list.files(
+    pattern = "^pathway_results[.]csv$",
+    recursive = TRUE,
+    full.names = TRUE
+  )
+
+length(pathanaly_files)
+
+# Import and combine all pathway-analysis results
+
+primary_pathanaly_results <-
+  tibble(file = pathanaly_files) %>%
+  mutate(
+    source_folder =
+      file %>%
+      str_remove(fixed(paste0(pathanaly_root, "/"))) %>%
+      str_remove(fixed("/Download/pathway_results.csv")),
+    
+    study =
+      source_folder %>%
+      str_extract("^[^·]+") %>%
+      str_trim(),
+    
+    timepoint =
+      source_folder %>%
+      str_extract(
+        "[0-9.]+(?:-[0-9.]+)? (?:days?|months?)"
+      ),
+    
+    analysis_type =
+      source_folder %>%
+      str_extract(
+        "(?<=\\()(Combined|Stratified)(?=\\)$)"
+      ),
+    
+    data =
+      map(
+        file,
+        ~ read_csv(
+          .x,
+          show_col_types = FALSE,
+          name_repair = "unique_quiet"
+        ) %>%
+          rename(
+            pathway = 1,
+            total = Total,
+            expected = Expected,
+            hits = Hits,
+            raw_p = `Raw p`,
+            logp = `-log10(p)`,
+            holm_p = `Holm adjust`,
+            fdr = FDR,
+            impact = Impact
+          )
+      )
+  ) %>%
+  unnest(cols = data) %>%
+  select(
+    study,
+    timepoint,
+    analysis_type,
+    pathway,
+    total,
+    expected,
+    hits,
+    raw_p,
+    logp,
+    holm_p,
+    fdr,
+    impact,
+    source_folder,
+    file
+  ) %>%
+  arrange(
+    study,
+    timepoint,
+    raw_p,
+    pathway
+  )
+
+# Inspect final dataframe
+
+primary_pathanaly_results
+
+glimpse(primary_pathanaly_results)
+
+# Validate imported files and rows
+
+primary_pathanaly_results %>%
+  summarise(
+    number_of_files = n_distinct(file),
+    number_of_rows = n()
+  )
+
+primary_pathanaly_results %>%
+  count(
+    study,
+    timepoint,
+    analysis_type,
+    name = "pathway_rows"
+  ) %>%
+  arrange(
+    study,
+    timepoint
+  ) %>%
+  print(n = Inf)
+
+```
+
+# Generate Figure
+
+```{r}
+
+library(ggrepel)
+library(ggforce)
+
+# -------------------------------------------------------------------
+# Colours and thresholds
+# -------------------------------------------------------------------
+
+study_colors <-
+  c(
+    "ELICIT" = "#4E79A7",
+    "MISAME-III" = "#F28E2B",
+    "Mumpta-LW" = "#E15759"
+  )
+
+p_line_col <- "#BAB0AC"
+q_line_col <- "#59A14F"
+
+p_thr <- 0.05
+y_p_line <- -log10(p_thr)
+
+# Highest raw P-value that remains FDR significant
+
+fdr_p_thr <-
+  primary_pathanaly_results %>%
+  filter(fdr < 0.05) %>%
+  summarise(fdr_p_thr = max(raw_p, na.rm = TRUE)) %>%
+  pull(fdr_p_thr)
+
+y_fdr_line <- -log10(fdr_p_thr)
+
+# -------------------------------------------------------------------
+# Prepare plot data
+# -------------------------------------------------------------------
+
+primary_pathanaly_plot_df <-
+  primary_pathanaly_results %>%
+  filter(
+    !is.na(raw_p),
+    !is.na(impact)
+  ) %>%
+  mutate(
+    study =
+      recode(
+        study,
+        "Elicit" = "ELICIT",
+        "Misame" = "MISAME-III",
+        "Mumpta" = "Mumpta-LW"
+      ),
+    
+    study =
+      factor(
+        study,
+        levels = c(
+          "ELICIT",
+          "MISAME-III",
+          "Mumpta-LW"
+        )
+      ),
+    
+    timepoint_clean =
+      timepoint %>%
+      str_replace_all("days", "d") %>%
+      str_replace_all("months", "m") %>%
+      str_squish(),
+    
+    pathway_short =
+      recode(
+        pathway,
+        "Nicotinate and nicotinamide metabolism" = "NAD/NAM Met",
+        "Riboflavin metabolism" = "Riboflavin Met",
+        "Thiamine metabolism" = "Thiamine Met",
+        "Vitamin B6 metabolism" = "Vit B6 Met",
+        .default = pathway
+      ),
+    
+    pathway_label =
+      case_when(
+        raw_p < p_thr ~
+          paste0(
+            pathway_short,
+            " (",
+            timepoint_clean,
+            ")"
+          ),
+        TRUE ~ NA_character_
+      ),
+    
+    color_group =
+      case_when(
+        raw_p < p_thr ~ as.character(study),
+        TRUE ~ "Not significant"
+      )
+  )
+
+# -------------------------------------------------------------------
+# Identify repeated significant pathways
+# -------------------------------------------------------------------
+
+primary_pathanaly_ellipse_df <-
+  primary_pathanaly_plot_df %>%
+  filter(raw_p < p_thr) %>%
+  add_count(
+    pathway,
+    name = "pathway_count"
+  ) %>%
+  filter(pathway_count >= 2)
+
+# -------------------------------------------------------------------
+# Complete colour scale
+# -------------------------------------------------------------------
+
+full_colors <-
+  c(
+    "Not significant" = p_line_col,
+    study_colors
+  )
+
+# -------------------------------------------------------------------
+# Plot
+# -------------------------------------------------------------------
+
+primary_pathanaly_plot <-
+  ggplot(
+    primary_pathanaly_plot_df,
+    aes(
+      x = impact,
+      y = logp,
+      color = color_group
+    )
+  ) +
+  
+  geom_hline(
+    yintercept = y_p_line,
+    color = p_line_col,
+    linewidth = 0.5
+  ) +
+  
+  geom_hline(
+    yintercept = y_fdr_line,
+    color = q_line_col,
+    linewidth = 0.5
+  ) +
+  
+  annotate(
+    "text",
+    x = 0,
+    y = y_p_line + 0.12,
+    label = "italic(P)*\"-value\" < 0.05",
+    parse = TRUE,
+    hjust = 0,
+    size = 2,
+    color = p_line_col
+  ) +
+  
+  annotate(
+    "text",
+    x = 0,
+    y = y_fdr_line + 0.12,
+    label = "italic(Q)[FDR] < 0.05",
+    parse = TRUE,
+    hjust = 0,
+    size = 2,
+    color = q_line_col
+  ) +
+  
+  ggforce::geom_mark_ellipse(
+    data = primary_pathanaly_ellipse_df,
+    aes(group = pathway),
+    color = "black",
+    fill = NA,
+    linewidth = 0.35,
+    expand = grid::unit(2, "mm"),
+    inherit.aes = TRUE,
+    show.legend = FALSE
+  ) +
+  
+  geom_point(
+    size = 1.8,
+    alpha = 0.9
+  ) +
+  
+  geom_label_repel(
+    data = primary_pathanaly_ellipse_df,
+    aes(
+      label = pathway_label,
+      color = study
+    ),
+    size = 2,
+    fill = "white",
+    label.size = 0.2,
+    box.padding = 0.35,
+    point.padding = 0.3,
+    segment.size = 0.4,
+    min.segment.length = 0,
+    max.overlaps = Inf,
+    seed = 123,
+    show.legend = FALSE
+  ) +
+  
+  scale_color_manual(
+    values = full_colors
+  ) +
+  
+  scale_x_continuous(
+    breaks = seq(0, 1, 0.25),
+    limits = c(-0.05, 1.05)
+  ) +
+  
+  labs(
+    x = "Pathway Impact",
+    y = expression(-log[10](italic(P)*"-value")),
+    color = "Study"
+  ) +
+  
+  theme_bw(base_size = 7) +
+  
+  theme(
+    axis.text = element_text(size = 7),
+    axis.title = element_text(size = 7),
+    legend.text = element_text(size = 7),
+    legend.title = element_text(size = 7),
+    legend.position = "bottom",
+    legend.box = "horizontal",
+    plot.margin = margin(5, 5, 5, 5)
+  ) +
+  
+  guides(
+    color =
+      guide_legend(
+        override.aes = list(size = 3)
+      )
+  )
+
+primary_pathanaly_plot
+
+# -------------------------------------------------------------------
+# Save figure
+# -------------------------------------------------------------------
+
+ggsave(
+  filename =
+    "../3. Results/Primary Outcomes (Pathway Analysis)/primary_pathanaly_plot.png",
+  plot = primary_pathanaly_plot,
+  width = 240,
+  height = 135,
+  units = "mm",
+  dpi = 600,
+  bg = "white"
+)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

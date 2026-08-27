@@ -1,0 +1,35 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Arginine and Proline Metabolism",10,0.119,4,2.64e-06,0.000258,0.000258
+"Glutamate Metabolism",8,0.0953,3,7.41e-05,0.00719,0.00363
+"Pyruvate Metabolism",2,0.0238,2,0.000133,0.0127,0.00433
+"Methionine Metabolism",11,0.131,3,0.000214,0.0203,0.00523
+"Glycine and Serine Metabolism",13,0.155,3,0.000365,0.0343,0.00715
+"Glutathione Metabolism",4,0.0477,2,0.000785,0.073,0.0128
+"Carnitine Synthesis",5,0.0596,2,0.0013,0.119,0.0159
+"Warburg Effect",5,0.0596,2,0.0013,0.119,0.0159
+"Ammonia Recycling",7,0.0834,2,0.00269,0.242,0.0293
+"Porphyrin Metabolism",1,0.0119,1,0.0119,1,0.0649
+"Pantothenate and CoA Biosynthesis",1,0.0119,1,0.0119,1,0.0649
+"Ketone Body Metabolism",1,0.0119,1,0.0119,1,0.0649
+"Butyrate Metabolism",1,0.0119,1,0.0119,1,0.0649
+"Mitochondrial Electron Transport Chain",1,0.0119,1,0.0119,1,0.0649
+"Phytanic Acid Peroxisomal Oxidation",1,0.0119,1,0.0119,1,0.0649
+"Threonine and 2-Oxobutanoate Degradation",1,0.0119,1,0.0119,1,0.0649
+"Pyruvaldehyde Degradation",1,0.0119,1,0.0119,1,0.0649
+"Phosphatidylcholine Biosynthesis",1,0.0119,1,0.0119,1,0.0649
+"Cysteine Metabolism",2,0.0238,1,0.0237,1,0.101
+"Taurine and Hypotaurine Metabolism",2,0.0238,1,0.0237,1,0.101
+"Citric Acid Cycle",2,0.0238,1,0.0237,1,0.101
+"Gluconeogenesis",2,0.0238,1,0.0237,1,0.101
+"Phosphatidylethanolamine Biosynthesis",2,0.0238,1,0.0237,1,0.101
+"Alanine Metabolism",3,0.0357,1,0.0353,1,0.139
+"Homocysteine Degradation",3,0.0357,1,0.0353,1,0.139
+"Phospholipid Biosynthesis",4,0.0477,1,0.0469,1,0.164
+"Oxidation of Branched Chain Fatty Acids",4,0.0477,1,0.0469,1,0.164
+"Betaine Metabolism",4,0.0477,1,0.0469,1,0.164
+"Valine, Leucine and Isoleucine Degradation",5,0.0596,1,0.0583,1,0.197
+"Purine Metabolism",6,0.0715,1,0.0695,1,0.227
+"Beta-Alanine Metabolism",7,0.0834,1,0.0807,1,0.255
+"Histidine Metabolism",8,0.0953,1,0.0917,1,0.272
+"Aspartate Metabolism",8,0.0953,1,0.0917,1,0.272
+"Bile Acid Biosynthesis",15,0.179,1,0.165,1,0.477

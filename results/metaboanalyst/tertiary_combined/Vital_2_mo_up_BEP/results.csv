@@ -1,0 +1,18 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (2 mo.)","BEP","up","Purine Metabolism",6,2,0.0683,0.00163,0.0985
+"Vital (2 mo.)","BEP","up","Urea Cycle",7,2,0.0797,0.00227,0.0985
+"Vital (2 mo.)","BEP","up","Glutamate Metabolism",8,2,0.0911,0.00301,0.0985
+"Vital (2 mo.)","BEP","up","Phenylacetate Metabolism",1,1,0.0114,0.0114,0.279
+"Vital (2 mo.)","BEP","up","Selenoamino Acid Metabolism",2,1,0.0228,0.0227,0.317
+"Vital (2 mo.)","BEP","up","Pyrimidine Metabolism",2,1,0.0228,0.0227,0.317
+"Vital (2 mo.)","BEP","up","Nicotinate and Nicotinamide Metabolism",2,1,0.0228,0.0227,0.317
+"Vital (2 mo.)","BEP","up","Amino Sugar Metabolism",3,1,0.0341,0.0338,0.331
+"Vital (2 mo.)","BEP","up","Alanine Metabolism",3,1,0.0341,0.0338,0.331
+"Vital (2 mo.)","BEP","up","Glucose-Alanine Cycle",3,1,0.0341,0.0338,0.331
+"Vital (2 mo.)","BEP","up","Glutathione Metabolism",4,1,0.0455,0.0449,0.4
+"Vital (2 mo.)","BEP","up","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,1,0.0569,0.0558,0.421
+"Vital (2 mo.)","BEP","up","Warburg Effect",5,1,0.0569,0.0558,0.421
+"Vital (2 mo.)","BEP","up","Tryptophan Metabolism",6,1,0.0683,0.0666,0.466
+"Vital (2 mo.)","BEP","up","Ammonia Recycling",7,1,0.0797,0.0774,0.505
+"Vital (2 mo.)","BEP","up","Aspartate Metabolism",8,1,0.0911,0.088,0.539
+"Vital (2 mo.)","BEP","up","Glycine and Serine Metabolism",13,1,0.148,0.14,0.804

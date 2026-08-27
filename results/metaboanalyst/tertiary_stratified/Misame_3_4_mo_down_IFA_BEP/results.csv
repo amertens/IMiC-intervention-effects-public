@@ -1,0 +1,17 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (3-4 mo.)","IFA/BEP","down","Methionine Metabolism",11,3,0.233,0.00111,0.06
+"Misame (3-4 mo.)","IFA/BEP","down","Homocysteine Degradation",3,2,0.0634,0.00122,0.06
+"Misame (3-4 mo.)","IFA/BEP","down","Glycine and Serine Metabolism",13,3,0.275,0.00187,0.0612
+"Misame (3-4 mo.)","IFA/BEP","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,2,0.106,0.00398,0.0976
+"Misame (3-4 mo.)","IFA/BEP","down","Pantothenate and CoA Biosynthesis",1,1,0.0211,0.0211,0.345
+"Misame (3-4 mo.)","IFA/BEP","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0211,0.0211,0.345
+"Misame (3-4 mo.)","IFA/BEP","down","Cysteine Metabolism",2,1,0.0423,0.0419,0.513
+"Misame (3-4 mo.)","IFA/BEP","down","Taurine and Hypotaurine Metabolism",2,1,0.0423,0.0419,0.513
+"Misame (3-4 mo.)","IFA/BEP","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.0634,0.0622,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Fatty Acid Biosynthesis",3,1,0.0634,0.0622,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Catecholamine Biosynthesis",4,1,0.0846,0.0821,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Glutathione Metabolism",4,1,0.0846,0.0821,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Arachidonic Acid Metabolism",4,1,0.0846,0.0821,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Betaine Metabolism",4,1,0.0846,0.0821,0.575
+"Misame (3-4 mo.)","IFA/BEP","down","Glutamate Metabolism",8,1,0.169,0.158,1
+"Misame (3-4 mo.)","IFA/BEP","down","Arginine and Proline Metabolism",10,1,0.211,0.194,1

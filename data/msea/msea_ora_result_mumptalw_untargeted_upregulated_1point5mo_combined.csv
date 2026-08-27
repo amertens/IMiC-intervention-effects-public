@@ -1,0 +1,39 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Warburg Effect",9,0.725,4,0.00297,0.291,0.151
+"Citric Acid Cycle",5,0.403,3,0.00403,0.391,0.151
+"Urea Cycle",10,0.805,4,0.00469,0.451,0.151
+"Mitochondrial Electron Transport Chain",2,0.161,2,0.00617,0.586,0.151
+"Phytanic Acid Peroxisomal Oxidation",3,0.242,2,0.0176,1,0.236
+"Ammonia Recycling",8,0.644,3,0.0193,1,0.236
+"Aspartate Metabolism",8,0.644,3,0.0193,1,0.236
+"Glutamate Metabolism",8,0.644,3,0.0193,1,0.236
+"Purine Metabolism",9,0.725,3,0.0274,1,0.298
+"Arginine and Proline Metabolism",10,0.805,3,0.0371,1,0.364
+"Amino Sugar Metabolism",5,0.403,2,0.0532,1,0.394
+"Tyrosine Metabolism",6,0.483,2,0.0759,1,0.394
+"Beta-Alanine Metabolism",6,0.483,2,0.0759,1,0.394
+"Phenylalanine and Tyrosine Metabolism",6,0.483,2,0.0759,1,0.394
+"Oxidation of Branched Chain Fatty Acids",6,0.483,2,0.0759,1,0.394
+"Carnitine Synthesis",6,0.483,2,0.0759,1,0.394
+"Pyrimidine Metabolism",1,0.0805,1,0.0805,1,0.394
+"Ketone Body Metabolism",1,0.0805,1,0.0805,1,0.394
+"Butyrate Metabolism",1,0.0805,1,0.0805,1,0.394
+"Pyruvaldehyde Degradation",1,0.0805,1,0.0805,1,0.394
+"Catecholamine Biosynthesis",2,0.161,1,0.155,1,0.562
+"Taurine and Hypotaurine Metabolism",2,0.161,1,0.155,1,0.562
+"Pantothenate and CoA Biosynthesis",2,0.161,1,0.155,1,0.562
+"Glycolysis",2,0.161,1,0.155,1,0.562
+"Nicotinate and Nicotinamide Metabolism",2,0.161,1,0.155,1,0.562
+"Phenylacetate Metabolism",2,0.161,1,0.155,1,0.562
+"Methylhistidine Metabolism",2,0.161,1,0.155,1,0.562
+"Histidine Metabolism",3,0.242,1,0.223,1,0.73
+"Pyruvate Metabolism",3,0.242,1,0.223,1,0.73
+"Transfer of Acetyl Groups into Mitochondria",3,0.242,1,0.223,1,0.73
+"Cysteine Metabolism",4,0.322,1,0.287,1,0.878
+"Alanine Metabolism",4,0.322,1,0.287,1,0.878
+"Valine, Leucine and Isoleucine Degradation",5,0.403,1,0.345,1,0.94
+"Bile Acid Biosynthesis",5,0.403,1,0.345,1,0.94
+"Glucose-Alanine Cycle",5,0.403,1,0.345,1,0.94
+"Gluconeogenesis",5,0.403,1,0.345,1,0.94
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,0.725,1,0.537,1,1
+"Glycine and Serine Metabolism",10,0.805,1,0.575,1,1

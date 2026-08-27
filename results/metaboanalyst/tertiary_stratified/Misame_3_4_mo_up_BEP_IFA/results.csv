@@ -1,0 +1,14 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (3-4 mo.)","BEP/IFA","up","Ketone Body Metabolism",1,1,0.00488,0.00488,0.12
+"Misame (3-4 mo.)","BEP/IFA","up","Butyrate Metabolism",1,1,0.00488,0.00488,0.12
+"Misame (3-4 mo.)","BEP/IFA","up","Mitochondrial Electron Transport Chain",1,1,0.00488,0.00488,0.12
+"Misame (3-4 mo.)","BEP/IFA","up","Phytanic Acid Peroxisomal Oxidation",1,1,0.00488,0.00488,0.12
+"Misame (3-4 mo.)","BEP/IFA","up","Citric Acid Cycle",2,1,0.00976,0.00974,0.191
+"Misame (3-4 mo.)","BEP/IFA","up","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.0146,0.0146,0.237
+"Misame (3-4 mo.)","BEP/IFA","up","Oxidation of Branched Chain Fatty Acids",4,1,0.0195,0.0194,0.237
+"Misame (3-4 mo.)","BEP/IFA","up","Valine, Leucine and Isoleucine Degradation",5,1,0.0244,0.0242,0.237
+"Misame (3-4 mo.)","BEP/IFA","up","Carnitine Synthesis",5,1,0.0244,0.0242,0.237
+"Misame (3-4 mo.)","BEP/IFA","up","Warburg Effect",5,1,0.0244,0.0242,0.237
+"Misame (3-4 mo.)","BEP/IFA","up","Tryptophan Metabolism",6,1,0.0293,0.029,0.259
+"Misame (3-4 mo.)","BEP/IFA","up","Glutamate Metabolism",8,1,0.039,0.0386,0.315
+"Misame (3-4 mo.)","BEP/IFA","up","Arginine and Proline Metabolism",10,1,0.0488,0.0481,0.362

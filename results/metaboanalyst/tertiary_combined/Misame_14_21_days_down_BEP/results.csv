@@ -1,0 +1,27 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP","down","Glycine and Serine Metabolism",13,5,0.359,9.67e-06,0.000864
+"Misame (14-21 days)","BEP","down","Homocysteine Degradation",3,3,0.0829,1.76e-05,0.000864
+"Misame (14-21 days)","BEP","down","Arginine and Proline Metabolism",10,3,0.276,0.00187,0.0612
+"Misame (14-21 days)","BEP","down","Methionine Metabolism",11,3,0.304,0.00253,0.062
+"Misame (14-21 days)","BEP","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,2,0.138,0.00686,0.134
+"Misame (14-21 days)","BEP","down","Beta-Alanine Metabolism",7,2,0.193,0.0139,0.195
+"Misame (14-21 days)","BEP","down","Ammonia Recycling",7,2,0.193,0.0139,0.195
+"Misame (14-21 days)","BEP","down","Histidine Metabolism",8,2,0.221,0.0183,0.199
+"Misame (14-21 days)","BEP","down","Aspartate Metabolism",8,2,0.221,0.0183,0.199
+"Misame (14-21 days)","BEP","down","Pantothenate and CoA Biosynthesis",1,1,0.0276,0.0276,0.226
+"Misame (14-21 days)","BEP","down","Threonine and 2-Oxobutanoate Degradation",1,1,0.0276,0.0276,0.226
+"Misame (14-21 days)","BEP","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0276,0.0276,0.226
+"Misame (14-21 days)","BEP","down","Cysteine Metabolism",2,1,0.0553,0.0546,0.315
+"Misame (14-21 days)","BEP","down","Taurine and Hypotaurine Metabolism",2,1,0.0553,0.0546,0.315
+"Misame (14-21 days)","BEP","down","Selenoamino Acid Metabolism",2,1,0.0553,0.0546,0.315
+"Misame (14-21 days)","BEP","down","Methylhistidine Metabolism",2,1,0.0553,0.0546,0.315
+"Misame (14-21 days)","BEP","down","Phosphatidylethanolamine Biosynthesis",2,1,0.0553,0.0546,0.315
+"Misame (14-21 days)","BEP","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.0829,0.0808,0.417
+"Misame (14-21 days)","BEP","down","Fatty Acid Biosynthesis",3,1,0.0829,0.0808,0.417
+"Misame (14-21 days)","BEP","down","Catecholamine Biosynthesis",4,1,0.111,0.106,0.453
+"Misame (14-21 days)","BEP","down","Glutathione Metabolism",4,1,0.111,0.106,0.453
+"Misame (14-21 days)","BEP","down","Arachidonic Acid Metabolism",4,1,0.111,0.106,0.453
+"Misame (14-21 days)","BEP","down","Betaine Metabolism",4,1,0.111,0.106,0.453
+"Misame (14-21 days)","BEP","down","Sphingolipid Metabolism",7,1,0.193,0.179,0.702
+"Misame (14-21 days)","BEP","down","Urea Cycle",7,1,0.193,0.179,0.702
+"Misame (14-21 days)","BEP","down","Glutamate Metabolism",8,1,0.221,0.202,0.761

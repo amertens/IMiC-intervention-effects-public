@@ -1,0 +1,15 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Nico","down","Oxidation of Branched Chain Fatty Acids",4,2,0.052,0.000878,0.0861
+"Elicit (1 mo.)","Nico","down","Ketone Body Metabolism",1,1,0.013,0.013,0.255
+"Elicit (1 mo.)","Nico","down","Butyrate Metabolism",1,1,0.013,0.013,0.255
+"Elicit (1 mo.)","Nico","down","Mitochondrial Electron Transport Chain",1,1,0.013,0.013,0.255
+"Elicit (1 mo.)","Nico","down","Phytanic Acid Peroxisomal Oxidation",1,1,0.013,0.013,0.255
+"Elicit (1 mo.)","Nico","down","Citric Acid Cycle",2,1,0.026,0.0259,0.423
+"Elicit (1 mo.)","Nico","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.039,0.0386,0.54
+"Elicit (1 mo.)","Nico","down","Valine, Leucine and Isoleucine Degradation",5,1,0.065,0.0636,0.623
+"Elicit (1 mo.)","Nico","down","Carnitine Synthesis",5,1,0.065,0.0636,0.623
+"Elicit (1 mo.)","Nico","down","Warburg Effect",5,1,0.065,0.0636,0.623
+"Elicit (1 mo.)","Nico","down","Glutamate Metabolism",8,1,0.104,0.1,0.891
+"Elicit (1 mo.)","Nico","down","Arginine and Proline Metabolism",10,1,0.13,0.124,1
+"Elicit (1 mo.)","Nico","down","Methionine Metabolism",11,1,0.143,0.135,1
+"Elicit (1 mo.)","Nico","down","Glycine and Serine Metabolism",13,1,0.169,0.158,1

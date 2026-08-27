@@ -1,0 +1,9 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (5 mo.)","Nico","down","Bile Acid Biosynthesis",15,2,0.171,0.0109,1
+"Elicit (5 mo.)","Nico","down","Taurine and Hypotaurine Metabolism",2,1,0.0228,0.0227,1
+"Elicit (5 mo.)","Nico","down","Propanoate Metabolism",3,1,0.0341,0.0338,1
+"Elicit (5 mo.)","Nico","down","Valine, Leucine and Isoleucine Degradation",5,1,0.0569,0.0558,1
+"Elicit (5 mo.)","Nico","down","Purine Metabolism",6,1,0.0683,0.0666,1
+"Elicit (5 mo.)","Nico","down","Tryptophan Metabolism",6,1,0.0683,0.0666,1
+"Elicit (5 mo.)","Nico","down","Methionine Metabolism",11,1,0.125,0.119,1
+"Elicit (5 mo.)","Nico","down","Glycine and Serine Metabolism",13,1,0.148,0.14,1

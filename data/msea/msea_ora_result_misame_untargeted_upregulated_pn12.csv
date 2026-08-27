@@ -1,0 +1,34 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Citric Acid Cycle",5,0.213,2,0.0153,1,0.545
+"Tyrosine Metabolism",6,0.255,2,0.0224,1,0.545
+"Beta-Alanine Metabolism",6,0.255,2,0.0224,1,0.545
+"Ammonia Recycling",8,0.34,2,0.0399,1,0.545
+"Aspartate Metabolism",8,0.34,2,0.0399,1,0.545
+"Porphyrin Metabolism",1,0.0426,1,0.0426,1,0.545
+"Pyruvaldehyde Degradation",1,0.0426,1,0.0426,1,0.545
+"Warburg Effect",9,0.383,2,0.0501,1,0.545
+"Urea Cycle",10,0.426,2,0.0612,1,0.545
+"Catecholamine Biosynthesis",2,0.0851,1,0.0835,1,0.545
+"Taurine and Hypotaurine Metabolism",2,0.0851,1,0.0835,1,0.545
+"Pantothenate and CoA Biosynthesis",2,0.0851,1,0.0835,1,0.545
+"Glycolysis",2,0.0851,1,0.0835,1,0.545
+"Mitochondrial Electron Transport Chain",2,0.0851,1,0.0835,1,0.545
+"Methylhistidine Metabolism",2,0.0851,1,0.0835,1,0.545
+"Histidine Metabolism",3,0.128,1,0.123,1,0.602
+"Pyruvate Metabolism",3,0.128,1,0.123,1,0.602
+"Steroidogenesis",3,0.128,1,0.123,1,0.602
+"Phytanic Acid Peroxisomal Oxidation",3,0.128,1,0.123,1,0.602
+"Transfer of Acetyl Groups into Mitochondria",3,0.128,1,0.123,1,0.602
+"Cysteine Metabolism",4,0.17,1,0.161,1,0.715
+"Alanine Metabolism",4,0.17,1,0.161,1,0.715
+"Bile Acid Biosynthesis",5,0.213,1,0.197,1,0.742
+"Amino Sugar Metabolism",5,0.213,1,0.197,1,0.742
+"Glucose-Alanine Cycle",5,0.213,1,0.197,1,0.742
+"Gluconeogenesis",5,0.213,1,0.197,1,0.742
+"Phenylalanine and Tyrosine Metabolism",6,0.255,1,0.232,1,0.784
+"Oxidation of Branched Chain Fatty Acids",6,0.255,1,0.232,1,0.784
+"Carnitine Synthesis",6,0.255,1,0.232,1,0.784
+"Glutamate Metabolism",8,0.34,1,0.298,1,0.972
+"Purine Metabolism",9,0.383,1,0.329,1,1
+"Arginine and Proline Metabolism",10,0.426,1,0.358,1,1
+"Glycine and Serine Metabolism",11,0.468,1,0.387,1,1

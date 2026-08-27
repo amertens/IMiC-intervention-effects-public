@@ -1,0 +1,25 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Urea Cycle",7,0.05,3,8.73e-06,0.000856,0.000856
+"Ammonia Recycling",7,0.05,2,0.000937,0.0909,0.0305
+"Aspartate Metabolism",8,0.0572,2,0.00124,0.119,0.0305
+"Glutamate Metabolism",8,0.0572,2,0.00124,0.119,0.0305
+"Phenylacetate Metabolism",1,0.00715,1,0.00715,0.672,0.14
+"Selenoamino Acid Metabolism",2,0.0143,1,0.0143,1,0.155
+"Pyrimidine Metabolism",2,0.0143,1,0.0143,1,0.155
+"Nicotinate and Nicotinamide Metabolism",2,0.0143,1,0.0143,1,0.155
+"Methylhistidine Metabolism",2,0.0143,1,0.0143,1,0.155
+"Propanoate Metabolism",3,0.0214,1,0.0213,1,0.161
+"Amino Sugar Metabolism",3,0.0214,1,0.0213,1,0.161
+"Alanine Metabolism",3,0.0214,1,0.0213,1,0.161
+"Glucose-Alanine Cycle",3,0.0214,1,0.0213,1,0.161
+"Glutathione Metabolism",4,0.0286,1,0.0283,1,0.198
+"Valine, Leucine and Isoleucine Degradation",5,0.0357,1,0.0353,1,0.203
+"Spermidine and Spermine Biosynthesis",5,0.0357,1,0.0353,1,0.203
+"Warburg Effect",5,0.0357,1,0.0353,1,0.203
+"Purine Metabolism",6,0.0429,1,0.0422,1,0.218
+"Tryptophan Metabolism",6,0.0429,1,0.0422,1,0.218
+"Beta-Alanine Metabolism",7,0.05,1,0.0491,1,0.241
+"Histidine Metabolism",8,0.0572,1,0.0559,1,0.261
+"Arginine and Proline Metabolism",10,0.0715,1,0.0695,1,0.309
+"Methionine Metabolism",11,0.0786,1,0.0762,1,0.325
+"Glycine and Serine Metabolism",13,0.0929,1,0.0895,1,0.365

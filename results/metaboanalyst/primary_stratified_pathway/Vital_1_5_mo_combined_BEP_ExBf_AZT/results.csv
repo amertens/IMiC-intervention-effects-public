@@ -1,0 +1,11 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.28543,0.0021413,0.21199,0.19443
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Biotin Metabolism",7,1,0.062438,0.060969,1,0.25
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Thiamine Metabolism",9,1,0.080278,0.07777,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Phospholipid Biosynthesis",25,1,0.22299,0.20285,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Citric Acid Cycle",26,1,0.23191,0.21014,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Retinol Metabolism",30,1,0.26759,0.23872,1,0.33566
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Warburg Effect",49,1,0.43707,0.36229,1,0

@@ -1,0 +1,24 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Beta Oxidation of Very Long Chain Fatty Acids",5,0.636,2,0.122,1,1
+"Porphyrin Metabolism",1,0.127,1,0.127,1,1
+"Taurine and Hypotaurine Metabolism",2,0.254,1,0.239,1,1
+"Pantothenate and CoA Biosynthesis",2,0.254,1,0.239,1,1
+"Phenylacetate Metabolism",2,0.254,1,0.239,1,1
+"Mitochondrial Electron Transport Chain",2,0.254,1,0.239,1,1
+"Homocysteine Degradation",2,0.254,1,0.239,1,1
+"Cysteine Metabolism",4,0.508,1,0.422,1,1
+"Glutathione Metabolism",4,0.508,1,0.422,1,1
+"Methionine Metabolism",5,0.636,1,0.496,1,1
+"Sphingolipid Metabolism",5,0.636,1,0.496,1,1
+"Citric Acid Cycle",5,0.636,1,0.496,1,1
+"Tyrosine Metabolism",6,0.763,1,0.562,1,1
+"Phenylalanine and Tyrosine Metabolism",6,0.763,1,0.562,1,1
+"Oxidation of Branched Chain Fatty Acids",6,0.763,1,0.562,1,1
+"Aspartate Metabolism",8,1.02,1,0.669,1,1
+"Glutamate Metabolism",8,1.02,1,0.669,1,1
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,1.14,1,0.712,1,1
+"Purine Metabolism",9,1.14,1,0.712,1,1
+"Warburg Effect",9,1.14,1,0.712,1,1
+"Glycine and Serine Metabolism",10,1.27,1,0.75,1,1
+"Arginine and Proline Metabolism",10,1.27,1,0.75,1,1
+"Urea Cycle",10,1.27,1,0.75,1,1

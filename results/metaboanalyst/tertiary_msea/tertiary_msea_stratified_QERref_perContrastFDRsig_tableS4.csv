@@ -1,0 +1,22 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+ELICIT,1 mo.,Nico+Az.,down,Methionine Metabolism,8,0.0565,4,6.07e-8,5.95e-6,-70.79646017699115
+ELICIT,1 mo.,Nico+Az.,down,Glutamate Metabolism,5,0.0353,3,2.15e-6,1.05e-4,-84.98583569405099
+ELICIT,1 mo.,Nico+Az.,down,Glycine and Serine Metabolism,9,0.0636,3,1.79e-5,5.83e-4,-47.16981132075471
+ELICIT,5 mo.,Az.,down,Propanoate Metabolism,2,0.0182,2,7.34e-5,0.00719,-109.89010989010988
+ELICIT,1 mo.,Nico+Az.,down,Glutathione Metabolism,3,0.0212,2,1.28e-4,0.00314,-94.33962264150944
+ELICIT,1 mo.,Nico+Az.,down,Carnitine Synthesis,4,0.0283,2,2.55e-4,0.005,-70.6713780918728
+ELICIT,5 mo.,Az.,down,Purine Metabolism,4,0.0363,2,4.36e-4,0.0214,-55.09641873278237
+ELICIT,1 mo.,Nico+Az.,down,Arginine and Proline Metabolism,8,0.0565,2,0.00117,0.0192,-35.39823008849557
+ELICIT,5 mo.,Az.,down,Arginine and Proline Metabolism,8,0.0727,2,0.002,0.0489,-27.51031636863824
+ELICIT,5 mo.,Az.,down,Methionine Metabolism,8,0.0727,2,0.002,0.0489,-27.51031636863824
+ELICIT,1 mo.,Nico+Az.,down,Cysteine Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Porphyrin Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phospholipid Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Pantothenate and CoA Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Ketone Body Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Butyrate Metabolism,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Mitochondrial Electron Transport Chain,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phytanic Acid Peroxisomal Oxidation,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Homocysteine Degradation,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylcholine Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497
+ELICIT,1 mo.,Nico+Az.,down,Phosphatidylethanolamine Biosynthesis,1,0.00706,1,0.00706,0.0407,-141.64305949008497

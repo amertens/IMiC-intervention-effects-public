@@ -1,0 +1,32 @@
+"","total","expected","hits","Raw p","Holm p","FDR"
+"Purine Metabolism",9,1.07,3,0.0772,1,1
+"Nucleotide Sugars Metabolism",1,0.119,1,0.119,1,1
+"Pyrimidine Metabolism",1,0.119,1,0.119,1,1
+"Oxidation of Branched Chain Fatty Acids",6,0.712,2,0.151,1,1
+"Catecholamine Biosynthesis",2,0.237,1,0.224,1,1
+"Selenoamino Acid Metabolism",2,0.237,1,0.224,1,1
+"Galactose Metabolism",2,0.237,1,0.224,1,1
+"Nicotinate and Nicotinamide Metabolism",2,0.237,1,0.224,1,1
+"Phenylacetate Metabolism",2,0.237,1,0.224,1,1
+"Lactose Degradation",2,0.237,1,0.224,1,1
+"Glutamate Metabolism",8,0.949,2,0.243,1,1
+"Warburg Effect",9,1.07,2,0.29,1,1
+"Phospholipid Biosynthesis",3,0.356,1,0.317,1,1
+"Pyruvate Metabolism",3,0.356,1,0.317,1,1
+"Phytanic Acid Peroxisomal Oxidation",3,0.356,1,0.317,1,1
+"Urea Cycle",10,1.19,2,0.337,1,1
+"Glutathione Metabolism",4,0.475,1,0.399,1,1
+"Alanine Metabolism",4,0.475,1,0.399,1,1
+"Tryptophan Metabolism",4,0.475,1,0.399,1,1
+"Sphingolipid Metabolism",5,0.593,1,0.471,1,1
+"Amino Sugar Metabolism",5,0.593,1,0.471,1,1
+"Glucose-Alanine Cycle",5,0.593,1,0.471,1,1
+"Gluconeogenesis",5,0.593,1,0.471,1,1
+"Tyrosine Metabolism",6,0.712,1,0.535,1,1
+"Arachidonic Acid Metabolism",6,0.712,1,0.535,1,1
+"Carnitine Synthesis",6,0.712,1,0.535,1,1
+"Ammonia Recycling",8,0.949,1,0.642,1,1
+"Aspartate Metabolism",8,0.949,1,0.642,1,1
+"Alpha Linolenic Acid and Linoleic Acid Metabolism",9,1.07,1,0.686,1,1
+"Glycine and Serine Metabolism",10,1.19,1,0.725,1,1
+"Arginine and Proline Metabolism",10,1.19,1,0.725,1,1

@@ -1,0 +1,17 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP/BEP","down","Spermidine and Spermine Biosynthesis",5,3,0.171,0.00033,0.0323
+"Misame (1-2 mo.)","BEP/BEP","down","Methionine Metabolism",11,3,0.376,0.00476,0.233
+"Misame (1-2 mo.)","BEP/BEP","down","Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids",1,1,0.0341,0.0341,1
+"Misame (1-2 mo.)","BEP/BEP","down","Pyruvate Metabolism",2,1,0.0683,0.0672,1
+"Misame (1-2 mo.)","BEP/BEP","down","Gluconeogenesis",2,1,0.0683,0.0672,1
+"Misame (1-2 mo.)","BEP/BEP","down","Beta Oxidation of Very Long Chain Fatty Acids",3,1,0.102,0.0991,1
+"Misame (1-2 mo.)","BEP/BEP","down","Homocysteine Degradation",3,1,0.102,0.0991,1
+"Misame (1-2 mo.)","BEP/BEP","down","Fatty Acid Biosynthesis",3,1,0.102,0.0991,1
+"Misame (1-2 mo.)","BEP/BEP","down","Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids",3,1,0.102,0.0991,1
+"Misame (1-2 mo.)","BEP/BEP","down","Catecholamine Biosynthesis",4,1,0.137,0.13,1
+"Misame (1-2 mo.)","BEP/BEP","down","Arachidonic Acid Metabolism",4,1,0.137,0.13,1
+"Misame (1-2 mo.)","BEP/BEP","down","Betaine Metabolism",4,1,0.137,0.13,1
+"Misame (1-2 mo.)","BEP/BEP","down","Alpha Linolenic Acid and Linoleic Acid Metabolism",5,1,0.171,0.16,1
+"Misame (1-2 mo.)","BEP/BEP","down","Warburg Effect",5,1,0.171,0.16,1
+"Misame (1-2 mo.)","BEP/BEP","down","Sphingolipid Metabolism",7,1,0.239,0.217,1
+"Misame (1-2 mo.)","BEP/BEP","down","Glycine and Serine Metabolism",13,1,0.444,0.366,1

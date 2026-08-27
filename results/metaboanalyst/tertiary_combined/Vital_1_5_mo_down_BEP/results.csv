@@ -1,0 +1,6 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Vital (1.5 mo.)","BEP","down","Methionine Metabolism",11,2,0.125,0.00582,0.4
+"Vital (1.5 mo.)","BEP","down","Glycine and Serine Metabolism",13,2,0.148,0.00817,0.4
+"Vital (1.5 mo.)","BEP","down","Homocysteine Degradation",3,1,0.0341,0.0338,0.879
+"Vital (1.5 mo.)","BEP","down","Catecholamine Biosynthesis",4,1,0.0455,0.0449,0.879
+"Vital (1.5 mo.)","BEP","down","Betaine Metabolism",4,1,0.0455,0.0449,0.879

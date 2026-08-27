@@ -1,0 +1,3 @@
+outcome_group,arm_set,study,studytime,direction,contrast,module,pathway,total,hits,expected,raw_p,fdr_native,fdr_bh_pooled,significant,hit_features
+primary,combined,Elicit,1 mo.,up,Nico,ora,Nicotinate and Nicotinamide Metabolism,7,5,1.2,3.67e-4,0.0359,0.0801895,TRUE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,combined,Elicit,5 mo.,up,Nico,ora,Nicotinate and Nicotinamide Metabolism,7,5,1,6.47e-5,0.00634,0.0282739,TRUE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide

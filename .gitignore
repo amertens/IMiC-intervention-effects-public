@@ -1,0 +1,68 @@
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# --- Individual-level trial data: NEVER commit -------------------------------
+# IMiC participant data is governed by the consortium and the three trials'
+# data-access agreements. Nothing participant-level may enter this repository.
+# Everything under data/ is excluded, then the vetted aggregate inputs are
+# re-included explicitly.
+data/**
+!data/msea/
+!data/msea/**
+!data/untargeted_annotation/
+!data/untargeted_annotation/**
+!data/milq_age_specific_cutoffs_clean.RDS
+
+# Belt and braces: the harmonized analytic dataset, wherever it turns up.
+*merged_analysis_datasets*
+*analysis_datasets*
+
+# Saved ggplot objects embed their plot data, and several of these carry
+# per-participant rows. Regenerable from src/3 visualizations/ — never track.
+figure-data/
+
+# --- Generated outputs -------------------------------------------------------
+figures/
+large-file-results/
+output/
+logs/
+Rplots.pdf
+*.log
+
+# Large feature-level result families: aggregate, but 40–250 MB each. Regenerable.
+results/blood_compartment_*
+results/combined_intervention_effects_*
+results/*untargeted*
+results/*_ATE.RDS
+results/SL_vim_*
+results/*_blinded.RDS
+results/tables/
+
+# MetaboAnalystR writes rendered report junk beside its result CSVs.
+results/**/*.html
+results/**/*.js
+results/**/*.png
+results/**/*.pdf
+results/**/*.qs
+
+# --- Manuscript writing, session scratch, working trees ----------------------
+Manuscript/
+archive/
+.claude/
+_claude_audit/
+_archive_stale/
+.release/
+reports/
+shiny/
+
+# OS / Office junk
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# Release build marker (see .release/build_public_release.sh in the working repo)
+.release-marker

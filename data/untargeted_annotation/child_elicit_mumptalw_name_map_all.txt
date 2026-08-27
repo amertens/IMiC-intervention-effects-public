@@ -1,0 +1,234 @@
+Isobutyryl-L-carnitine
+1H-Indole-2,3-dione
+Valerylcarnitine
+Adrenic acid
+DG(16:0/18:2)
+N-Acetylglucosamine 6-phosphate
+LysoPE(P-16:0/0:0)
+5-KETE
+Pantothenic acid
+PE(P-16:0/20:4(5Z,8Z,11Z,14Z))
+2-Aminoadipic acid
+2-Hydroxy-3-methylbutyric acid
+Oxoadipic acid
+2,3-Dinor-TXB2
+SM(d18:1/14:0)
+3-Hydroxycapric acid
+3'-Sialyllactose
+4-hydroxysphinganine
+5-Aminoimidazole ribonucleotide
+L-Acetylcarnitine
+Aconitic acid
+Adenine
+L-Alanine
+Aldosterone
+Oxoglutaric acid
+alpha-Linolenic acid
+Dimethylglycine
+Arachidonic acid
+L-Arginine
+Ascorbic acid
+L-Asparagine
+L-Aspartic acid
+Biliverdin
+Caffeine
+L-Carnitine
+Cer(d24:1)
+Cer(d30:0)
+Cer(d32:0)
+Cer(d34:0)
+Cer(d40:6)
+Chenodeoxycholic acid
+Cholesterol sulfate
+Choline
+5-Aminoimidazole-4-carboxamide
+Citrulline
+Cortisol
+N-Methylhydantoin
+Creatinine
+L-Cysteine
+Cystine
+Capric acid
+Decenoic acid
+4-Trimethylammoniobutanoic acid
+DG(15:0/18:2(9Z,12Z)/0:0)
+DG(14:0/22:1(13Z)/0:0)
+DG(14:0/22:2(13Z,16Z)/0:0)
+DG(14:1(9Z)/22:2(13Z,16Z)/0:0)
+DG(14:0/22:4(7Z,10Z,13Z,16Z)/0:0)
+DG(16:1(9Z)/22:2(13Z,16Z)/0:0)
+DG(16:0/22:4(7Z,10Z,13Z,16Z)/0:0)
+DG(16:0/22:5(4Z,7Z,10Z,13Z,16Z)/0:0)
+DG(18:0/22:5(4Z,7Z,10Z,13Z,16Z)/0:0)
+DG(18:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z)/0:0)
+19,20-DiHDPA
+11,12-DiHETrE
+12,13-DHOME
+Dihomo-gamma-linolenic acid
+Behenic acid
+Docosahexaenoic acid
+Docosapentaenoic acid (22n-6)
+13-Docosenamide
+Eicosadienoic acid
+Eicosapentaenoic acid
+11Z-Eicosenoic acid
+19(20)-EpDPE
+12,13-EpOME
+Fumaric acid
+Galactonic acid
+D-Glucose
+Glutamic acid
+Glutamine
+Glycerol trihexanoate
+Glycerylphosphorylcholine
+Chenodeoxycholic acid glycine conjugate
+glycodeoxycholate sulfate
+12-HEPE
+Heptadecanoic acid
+15-HETE
+Hexanoylcarnitine
+D-Galactose
+Hippuric acid
+Histidine
+9(S)-HOTrE
+11-HpODE
+13(S)-Hydroperoxylinolenic acid
+3-hydroxyoctanoyl carnitine
+2-Hydroxyhexadecanoic acid
+4-Hydroxyproline
+Indoleacrylic acid
+Indoxyl sulfate
+Inosine
+Lactic acid
+Dodecanoic acid
+Leucine
+Tetracosanoic acid
+Linoleamide
+Linoleic acid
+CE(22:5(7Z,10Z,13Z,16Z,19Z))
+LysoPC(16:0/0:0)
+LysoPC(18:0/0:0)
+LysoPC(18:1/0:0)
+LysoPC(18:2/0:0)
+LysoPC(18:3(6Z,9Z,12Z)/0:0)
+LysoPC(20:0/0:0)
+LysoPC(20:3/0:0)
+LysoPC(20:4/0:0)
+LysoPC(20:5(5Z,8Z,11Z,14Z,17Z)/0:0)
+LysoPC(22:0/0:0)
+LysoPE(0:0/16:0)
+LysoPE(0:0/18:0)
+LysoPE(0:0/18:1(11Z))
+LysoPE(0:0/18:2(9Z,12Z))
+LysoPE(0:0/20:0)
+LysoPE(0:0/20:1(11Z))
+LysoPE(0:0/20:2(11Z,14Z))
+LysoPE(0:0/20:4(5Z,8Z,11Z,14Z))
+LysoPE(0:0/22:4(7Z,10Z,13Z,16Z))
+LysoPE(0:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+Lysine
+Malic acid
+Maresin 1
+5-Methylcytidine
+Methylhistidine
+Methylprednisolone hemisuccinate
+N-Methyl-L-proline
+1-Methyluric acid
+MG(0:0/16:0/0:0)
+MG(18:0/0:0/0:0)
+MG(0:0/20:3(5Z,8Z,11Z)/0:0)
+Myristic acid
+Myristoleic acid
+Nervonic acid
+Neuraminic acid
+Norvaline
+Oleamide
+Ornithine
+12(S)-HETrE
+Pyroglutamic acid
+p-Cresol sulfate
+Palmitic amide
+Palmitic acid
+Palmitoleic acid
+PC(24:0/P-16:0)
+PC(14:0/14:0)
+PC(30:0)
+PC(15:0/16:0)
+PC(32:0)
+PC(32:2)
+PC(15:0/18:1(11Z))
+PC(15:0/18:2(9Z,12Z))
+PC(15:0/18:4(6Z,9Z,12Z,15Z))
+PC(34:1)
+PC(34:2)
+PC(15:0/20:4(5Z,8Z,11Z,14Z))
+PC(15:0/20:5(5Z,8Z,11Z,14Z,17Z))
+PC(36:3)
+PC(36:4)
+PC(36:5)
+PC(15:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PE(31:2)
+PE(14:0/18:1(11Z))
+PE(14:0/20:1(11Z))
+PE(14:0/20:2(11Z,14Z))
+PE(14:0/22:2(13Z,16Z))
+PE(14:1(9Z)/22:2(13Z,16Z))
+PE(14:0/22:4(7Z,10Z,13Z,16Z))
+PE(14:0/22:5(4Z,7Z,10Z,13Z,16Z))
+PE(15:0/22:2(13Z,16Z))
+PE(16:0/22:4(7Z,10Z,13Z,16Z))
+PE(P-18:0/20:4(5Z,8Z,11Z,14Z))
+PE(16:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PE(39:3)
+PE(18:0/22:5(4Z,7Z,10Z,13Z,16Z))
+PE(18:0/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PE(18:1(11Z)/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PE(18:2(9Z,12Z)/22:6(4Z,7Z,10Z,13Z,16Z,19Z))
+PE(O-30:0)
+Pentadecanoic acid
+Prostaglandin A2
+PGA3
+4-Allylphenol sulfate
+Phenylacetylglutamine
+Phenylalanine
+Phenylpyruvic acid
+PI(16:0/18:1(11Z))
+PI(16:0/18:2(9Z,12Z))
+PI(16:0/20:2(11Z,14Z))
+PI(16:0/20:4(5Z,8Z,11Z,14Z))
+PI(16:0/22:3(10Z,13Z,16Z))
+PI(16:0/22:4(10Z,13Z,16Z,19Z))
+Eplerenone
+Proline
+Proline betaine
+Propionylcarnitine
+Troxerutin
+Lacto-N-fucoheptaose
+Uridine diphosphate-N-acetylglucosamine
+Pyruvic acid
+Resolvin E1
+all-trans-Retinoic acid
+Serine
+N-Acetylneuraminic acid
+SM(d18:1/16:1)
+SM(d18:1/24:2(5Z,9Z))
+Spermidine
+Spermine
+Stearic acid
+Stearidonic acid
+Succinic acid
+Sulfate
+Taurine
+Tetrahydrocortisol
+Taurocholic acid
+TG(42:4)
+TG(14:0/14:1(9Z)/20:5(5Z,8Z,11Z,14Z,17Z))
+L-Threonine
+Tricosanoic acid
+Lenticin
+L-Tryptophan
+L-Tyrosine
+Uric acid
+L-Valine
+13,14-dimethyloctacosanedioic acid
+Triacontanedioic acid

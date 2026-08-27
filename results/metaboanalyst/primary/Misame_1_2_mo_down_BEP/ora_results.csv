@@ -1,0 +1,21 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","BEP","down","Degradation of Superoxides",3,2,0.257,0.0148,1
+"Misame (1-2 mo.)","BEP","down","Histidine Metabolism",7,2,0.6,0.0952,1
+"Misame (1-2 mo.)","BEP","down","Catecholamine Biosynthesis",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP","down","Fatty Acid Biosynthesis",2,1,0.171,0.166,1
+"Misame (1-2 mo.)","BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.257,0.242,1
+"Misame (1-2 mo.)","BEP","down","Inositol Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP","down","Alanine Metabolism",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP","down","Urea Cycle",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP","down","Gluconeogenesis",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.343,0.313,1
+"Misame (1-2 mo.)","BEP","down","Arginine and Proline Metabolism",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP","down","Phospholipid Biosynthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP","down","Lactose Synthesis",5,1,0.429,0.38,1
+"Misame (1-2 mo.)","BEP","down","Propanoate Metabolism",6,1,0.514,0.442,1
+"Misame (1-2 mo.)","BEP","down","Citric Acid Cycle",6,1,0.514,0.442,1
+"Misame (1-2 mo.)","BEP","down","Riboflavin Metabolism",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP","down","Warburg Effect",7,1,0.6,0.499,1
+"Misame (1-2 mo.)","BEP","down","Tyrosine Metabolism",8,1,0.686,0.553,1
+"Misame (1-2 mo.)","BEP","down","Beta-Alanine Metabolism",8,1,0.686,0.553,1
+"Misame (1-2 mo.)","BEP","down","Pyruvate Metabolism",8,1,0.686,0.553,1

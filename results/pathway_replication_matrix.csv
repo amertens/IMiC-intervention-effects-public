@@ -1,0 +1,32 @@
+theme,label,study,domain,direction,fdr,neglog10fdr
+Amino-acid & nitrogen handling,Glutamate metabolism,Mumta,Untargeted Mummichog,Down (BEP lowers),0.0433296921827297,1.36321439621411
+Carnitine & fatty-acid oxidation,Beta Oxidation of Very Long Chain Fatty Acids,ELICIT,Targeted lipidome (tertiary),Down (BEP lowers),0.0347,1.45967052520913
+Carnitine & fatty-acid oxidation,Fatty acid activation,MISAME,Untargeted Mummichog,Down (BEP lowers),0.036663585693079,1.43576506336272
+Carnitine & fatty-acid oxidation,Oxidation of Branched Chain Fatty Acids,ELICIT,Targeted lipidome (tertiary),Down (BEP lowers),0.00121,2.91721462968355
+Carnitine & fatty-acid oxidation,Saturated fatty acids beta-oxidation,ELICIT,Untargeted Mummichog,Down (BEP lowers),0.00999915973447609,2.00003649380128
+De novo lipogenesis & PUFA,De novo fatty acid biosynthesis,MISAME,Untargeted Mummichog,Down (BEP lowers),0.00499957986723805,2.30106648946526
+De novo lipogenesis & PUFA,De novo fatty acid biosynthesis,Mumta,Untargeted Mummichog,Down (BEP lowers),0.0499957986723805,1.30106648946526
+De novo lipogenesis & PUFA,Fatty Acid Metabolism,MISAME,Untargeted Mummichog,Down (BEP lowers),0.00499957986723805,2.30106648946526
+De novo lipogenesis & PUFA,Linoleate metabolism,MISAME,Untargeted Mummichog,Down (BEP lowers),0.036663585693079,1.43576506336272
+Eicosanoid / inflammatory lipid,Arachidonic acid metabolism,MISAME,Untargeted Mummichog,Down (BEP lowers),0.00999915973447609,2.00003649380128
+Eicosanoid / inflammatory lipid,Leukotriene metabolism,MISAME,Untargeted Mummichog,Down (BEP lowers),0.0133322129793015,1.87509775719298
+Eicosanoid / inflammatory lipid,Prostaglandin formation from arachidonate,MISAME,Untargeted Mummichog,Up (BEP raises),0.0499957986723805,1.30106648946526
+Energy: TCA / glycolysis / ketone,Heparan sulfate degradation,MISAME,Untargeted Mummichog,Up (BEP raises),0.0299974792034283,1.52291523908162
+Energy: TCA / glycolysis / ketone,Pyruvate Metabolism,Mumta,Untargeted Mummichog,Up (BEP raises),0.00999915973447609,2.00003649380128
+NAD / nucleotide / PPP,Nicotinate & nicotinamide,ELICIT,Targeted primary (B-vit.),Up (BEP raises),0.00634,2.19791074211827
+NAD / nucleotide / PPP,Pentose phosphate pathway,ELICIT,Untargeted Mummichog,Up (BEP raises),0.00999915973447609,2.00003649380128
+NAD / nucleotide / PPP,nucleotide biosynthetic process,MISAME,Proteome GO (provisional),Down (BEP lowers),0.0369184374050755,1.43275668903059
+One-carbon / methyl donors,Glycine and Serine Metabolism,MISAME,Targeted lipidome (tertiary),Down (BEP lowers),0.000864,3.06348625752111
+One-carbon / methyl donors,Glycine and Serine Metabolism,Mumta,Targeted lipidome (tertiary),Down (BEP lowers),0.0191,1.71896663275227
+One-carbon / methyl donors,"Glycine, serine, alanine and threonine metabolism",MISAME,Untargeted Mummichog,Up (BEP raises),0.00999915973447609,2.00003649380128
+One-carbon / methyl donors,Homocysteine Degradation,MISAME,Targeted lipidome (tertiary),Down (BEP lowers),0.000864,3.06348625752111
+One-carbon / methyl donors,Methionine Metabolism,MISAME,Targeted lipidome (tertiary),Down (BEP lowers),0.04,1.39794000867204
+One-carbon / methyl donors,Methionine Metabolism,Mumta,Targeted lipidome (tertiary),Down (BEP lowers),0.0191,1.71896663275227
+Polyamine biosynthesis,Spermidine and Spermine Biosynthesis,MISAME,Targeted lipidome (tertiary),Down (BEP lowers),0.0373,1.42829116819131
+Proteome: genome/telomere/transln,DNA biosynthetic process,MISAME,Proteome GO (provisional),Down (BEP lowers),0.00279012049719102,2.55437704040557
+Proteome: genome/telomere/transln,RNA-templated DNA biosynthetic process,MISAME,Proteome GO (provisional),Down (BEP lowers),0.0009806623299834,3.00848050686021
+Proteome: genome/telomere/transln,response to starvation,MISAME,Proteome GO (provisional),Down (BEP lowers),0.0265485985342096,1.57595839981505
+Proteome: genome/telomere/transln,ribonucleoprotein complex biogenesis,MISAME,Proteome GO (provisional),Down (BEP lowers),0.0244781706432505,1.61122104196881
+Proteome: genome/telomere/transln,telomere maintenance,MISAME,Proteome GO (provisional),Down (BEP lowers),0.00128138903532992,2.89231899652653
+Proteome: genome/telomere/transln,translation,MISAME,Proteome GO (provisional),Down (BEP lowers),0.00681569362236137,2.16648994011759
+Vitamin A / retinol,Vitamin A (retinol) metabolism,ELICIT,Untargeted Mummichog,Down (BEP lowers),0.00999915973447609,2.00003649380128

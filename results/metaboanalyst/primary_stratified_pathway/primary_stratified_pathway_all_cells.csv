@@ -1,0 +1,104 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr","impact"
+"Misame (14-21 days)","BEP/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.28543,0.0021413,0.12211,0.20487
+"Misame (14-21 days)","BEP/BEP","combined","Thiamine Metabolism",9,2,0.080278,0.0024669,0.12211,0
+"Misame (14-21 days)","BEP/BEP","combined","Vitamin B6 Metabolism",15,2,0.1338,0.0069971,0.23091,0.095097
+"Misame (14-21 days)","BEP/BEP","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Misame (14-21 days)","BEP/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Misame (14-21 days)","BEP/BEP","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Misame (14-21 days)","IFA/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.28543,9.4295e-05,0.0093352,0.20487
+"Misame (14-21 days)","IFA/BEP","combined","Thiamine Metabolism",9,2,0.080278,0.0024669,0.12211,0
+"Misame (14-21 days)","IFA/BEP","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Misame (14-21 days)","IFA/BEP","combined","Vitamin B6 Metabolism",15,1,0.1338,0.12658,1,0.073587
+"Misame (14-21 days)","IFA/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Misame (14-21 days)","IFA/BEP","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Misame (1-2 mo.)","BEP/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.222,0.00093194,0.092262,0.20487
+"Misame (1-2 mo.)","BEP/BEP","combined","Vitamin B6 Metabolism",15,2,0.10406,0.0041527,0.20556,0.095097
+"Misame (1-2 mo.)","BEP/BEP","combined","Riboflavin Metabolism",14,1,0.097126,0.093442,1,0.044118
+"Misame (1-2 mo.)","BEP/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.13181,0.12495,1,0.068702
+"Misame (1-2 mo.)","BEP/BEP","combined","Beta-Alanine Metabolism",26,1,0.18038,0.16748,1,0
+"Misame (1-2 mo.)","BEP/IFA","combined","Thiamine Metabolism",9,1,0.026759,0.026547,1,0.95
+"Misame (1-2 mo.)","BEP/IFA","combined","Pantothenate and CoA Biosynthesis",19,1,0.056492,0.055488,1,0.068702
+"Misame (1-2 mo.)","BEP/IFA","combined","Beta-Alanine Metabolism",26,1,0.077304,0.075402,1,0
+"Misame (1-2 mo.)","BEP/IFA","combined","Valine, Leucine and Isoleucine Degradation",51,1,0.15164,0.14424,1,0.025039
+"Misame (1-2 mo.)","BEP/IFA","combined","Tryptophan Metabolism",55,1,0.16353,0.15492,1,0
+"Misame (1-2 mo.)","IFA/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.31715,0.00015366,0.015212,0.20487
+"Misame (1-2 mo.)","IFA/BEP","combined","Thiamine Metabolism",9,2,0.089197,0.0030693,0.15193,0.95
+"Misame (1-2 mo.)","IFA/BEP","combined","Vitamin B6 Metabolism",15,2,0.14866,0.0086713,0.28615,0.095097
+"Misame (1-2 mo.)","IFA/BEP","combined","Riboflavin Metabolism",14,1,0.13875,0.13095,1,0.044118
+"Misame (1-2 mo.)","IFA/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.18831,0.17384,1,0.068702
+"Misame (1-2 mo.)","IFA/BEP","combined","Beta-Alanine Metabolism",26,1,0.25768,0.23068,1,0
+"Misame (1-2 mo.)","IFA/BEP","combined","Valine, Leucine and Isoleucine Degradation",51,1,0.50545,0.40611,1,0.025039
+"Misame (3-4 mo.)","BEP/BEP","combined","Vitamin B6 Metabolism",15,2,0.089197,0.0029919,0.2962,0.095097
+"Misame (3-4 mo.)","BEP/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,2,0.19029,0.013505,0.6685,0.19443
+"Misame (3-4 mo.)","BEP/BEP","combined","Riboflavin Metabolism",14,1,0.083251,0.080609,1,0.044118
+"Misame (3-4 mo.)","BEP/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.11298,0.10805,1,0.068702
+"Misame (3-4 mo.)","BEP/BEP","combined","Beta-Alanine Metabolism",26,1,0.15461,0.14532,1,0
+"Misame (3-4 mo.)","IFA/BEP","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.28543,9.4295e-05,0.0093352,0.20487
+"Misame (3-4 mo.)","IFA/BEP","combined","Vitamin B6 Metabolism",15,2,0.1338,0.0069971,0.34636,0.095097
+"Misame (3-4 mo.)","IFA/BEP","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Misame (3-4 mo.)","IFA/BEP","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Misame (3-4 mo.)","IFA/BEP","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Misame (3-4 mo.)","IFA/BEP","combined","Tryptophan Metabolism",55,1,0.49058,0.39742,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.41229,0.000489,0.048411,0.20487
+"Vital (1.5 mo.)","BEP+ExBf","combined","Vitamin B6 Metabolism",15,2,0.19326,0.014647,0.72502,0.095097
+"Vital (1.5 mo.)","BEP+ExBf","combined","Biotin Metabolism",7,1,0.090188,0.087025,1,0.25
+"Vital (1.5 mo.)","BEP+ExBf","combined","Thiamine Metabolism",9,1,0.11596,0.11057,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Riboflavin Metabolism",14,1,0.18038,0.16701,1,0.044118
+"Vital (1.5 mo.)","BEP+ExBf","combined","Pantothenate and CoA Biosynthesis",19,1,0.2448,0.22013,1,0.068702
+"Vital (1.5 mo.)","BEP+ExBf","combined","Androstenedione Metabolism",23,1,0.29633,0.26035,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Phospholipid Biosynthesis",25,1,0.3221,0.27974,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Beta-Alanine Metabolism",26,1,0.33499,0.28925,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Citric Acid Cycle",26,1,0.33499,0.28925,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Androgen and Estrogen Metabolism",29,1,0.37364,0.31711,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Retinol Metabolism",30,1,0.38652,0.32617,1,0.33566
+"Vital (1.5 mo.)","BEP+ExBf","combined","Steroidogenesis",42,1,0.54113,0.42656,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Warburg Effect",49,1,0.63132,0.47855,1,0
+"Vital (1.5 mo.)","BEP+ExBf","combined","Glycine and Serine Metabolism",50,1,0.6442,0.48561,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.28543,0.0021413,0.21199,0.19443
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Biotin Metabolism",7,1,0.062438,0.060969,1,0.25
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Thiamine Metabolism",9,1,0.080278,0.07777,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Riboflavin Metabolism",14,1,0.12488,0.11861,1,0.044118
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Pantothenate and CoA Biosynthesis",19,1,0.16947,0.15784,1,0.068702
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Phospholipid Biosynthesis",25,1,0.22299,0.20285,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Beta-Alanine Metabolism",26,1,0.23191,0.21014,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Citric Acid Cycle",26,1,0.23191,0.21014,1,0
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Retinol Metabolism",30,1,0.26759,0.23872,1,0.33566
+"Vital (1.5 mo.)","BEP+ExBf+AZT","combined","Warburg Effect",49,1,0.43707,0.36229,1,0
+"Vital (2 mo.)","BEP+ExBf","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.19029,0.00054428,0.053884,0.20487
+"Vital (2 mo.)","BEP+ExBf","combined","Biotin Metabolism",7,1,0.041625,0.04101,1,0.25
+"Vital (2 mo.)","BEP+ExBf","combined","Riboflavin Metabolism",14,1,0.083251,0.080609,1,0.044118
+"Vital (2 mo.)","BEP+ExBf","combined","Pantothenate and CoA Biosynthesis",19,1,0.11298,0.10805,1,0.068702
+"Vital (2 mo.)","BEP+ExBf","combined","Beta-Alanine Metabolism",26,1,0.15461,0.14532,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.25372,0.001459,0.14444,0.19443
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Biotin Metabolism",7,1,0.0555,0.054356,1,0.25
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Thiamine Metabolism",9,1,0.071358,0.069403,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Riboflavin Metabolism",14,1,0.111,0.10611,1,0.044118
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Pantothenate and CoA Biosynthesis",19,1,0.15064,0.14154,1,0.068702
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Androstenedione Metabolism",23,1,0.18236,0.169,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Beta-Alanine Metabolism",26,1,0.20614,0.18908,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Androgen and Estrogen Metabolism",29,1,0.22993,0.20874,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Steroidogenesis",42,1,0.333,0.28919,1,0
+"Vital (2 mo.)","BEP+ExBf+AZT","combined","Glycine and Serine Metabolism",50,1,0.39643,0.33505,1,0
+"Elicit (1 mo.)","Nico","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.15857,4.0948e-06,0.00040538,0.20487
+"Elicit (1 mo.)","Nico","combined","Androstenedione Metabolism",23,1,0.11397,0.1091,1,0
+"Elicit (1 mo.)","Nico","combined","Androgen and Estrogen Metabolism",29,1,0.14371,0.13593,1,0
+"Elicit (1 mo.)","Nico","combined","Steroidogenesis",42,1,0.20813,0.19186,1,0
+"Elicit (1 mo.)","Nico","combined","Glycine and Serine Metabolism",50,1,0.24777,0.2248,1,0
+"Elicit (1 mo.)","Nico+Az.","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.19029,1.2011e-05,0.0011891,0.20487
+"Elicit (1 mo.)","Nico+Az.","combined","Thiamine Metabolism",9,1,0.053518,0.052466,1,0
+"Elicit (1 mo.)","Nico+Az.","combined","Androstenedione Metabolism",23,1,0.13677,0.12951,1,0
+"Elicit (1 mo.)","Nico+Az.","combined","Androgen and Estrogen Metabolism",29,1,0.17245,0.16089,1,0
+"Elicit (1 mo.)","Nico+Az.","combined","Steroidogenesis",42,1,0.24975,0.22566,1,0
+"Elicit (1 mo.)","Nico+Az.","combined","Glycine and Serine Metabolism",50,1,0.29732,0.26341,1,0
+"Elicit (5 mo.)","Nico","combined","Nicotinate and Nicotinamide Metabolism",32,3,0.15857,0.00027815,0.027536,0.20487
+"Elicit (5 mo.)","Nico","combined","Lactose Degradation",9,1,0.044599,0.043896,1,0
+"Elicit (5 mo.)","Nico","combined","Trehalose Degradation",11,1,0.054509,0.053438,1,0.078947
+"Elicit (5 mo.)","Nico","combined","Androstenedione Metabolism",23,1,0.11397,0.1091,1,0
+"Elicit (5 mo.)","Nico","combined","Androgen and Estrogen Metabolism",29,1,0.14371,0.13593,1,0
+"Elicit (5 mo.)","Nico","combined","Steroidogenesis",42,1,0.20813,0.19186,1,0
+"Elicit (5 mo.)","Nico","combined","Glycine and Serine Metabolism",50,1,0.24777,0.2248,1,0
+"Elicit (5 mo.)","Nico+Az.","combined","Nicotinate and Nicotinamide Metabolism",32,4,0.15857,4.0948e-06,0.00040538,0.20487
+"Elicit (5 mo.)","Nico+Az.","combined","Androstenedione Metabolism",23,1,0.11397,0.1091,1,0
+"Elicit (5 mo.)","Nico+Az.","combined","Androgen and Estrogen Metabolism",29,1,0.14371,0.13593,1,0
+"Elicit (5 mo.)","Nico+Az.","combined","Steroidogenesis",42,1,0.20813,0.19186,1,0
+"Elicit (5 mo.)","Nico+Az.","combined","Glycine and Serine Metabolism",50,1,0.24777,0.2248,1,0

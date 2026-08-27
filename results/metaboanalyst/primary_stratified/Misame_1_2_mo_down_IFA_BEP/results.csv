@@ -1,0 +1,27 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (1-2 mo.)","IFA/BEP","down","Degradation of Superoxides",3,2,0.343,0.029,1
+"Misame (1-2 mo.)","IFA/BEP","down","Transfer of Acetyl Groups into Mitochondria",4,2,0.457,0.0557,1
+"Misame (1-2 mo.)","IFA/BEP","down","Propanoate Metabolism",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","IFA/BEP","down","Citric Acid Cycle",6,2,0.686,0.128,1
+"Misame (1-2 mo.)","IFA/BEP","down","Histidine Metabolism",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","IFA/BEP","down","Warburg Effect",7,2,0.8,0.171,1
+"Misame (1-2 mo.)","IFA/BEP","down","Pyruvate Metabolism",8,2,0.914,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Catecholamine Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Fatty Acid Biosynthesis",2,1,0.229,0.218,1
+"Misame (1-2 mo.)","IFA/BEP","down","Oxidation of Branched Chain Fatty Acids",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Thiamine Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phosphatidylinositol Phosphate Metabolism",3,1,0.343,0.313,1
+"Misame (1-2 mo.)","IFA/BEP","down","Inositol Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Lysine Degradation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Alanine Metabolism",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Urea Cycle",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Gluconeogenesis",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.457,0.399,1
+"Misame (1-2 mo.)","IFA/BEP","down","Arginine and Proline Metabolism",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Phospholipid Biosynthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Lactose Synthesis",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.571,0.477,1
+"Misame (1-2 mo.)","IFA/BEP","down","Valine, Leucine and Isoleucine Degradation",6,1,0.686,0.546,1
+"Misame (1-2 mo.)","IFA/BEP","down","Riboflavin Metabolism",7,1,0.8,0.609,1
+"Misame (1-2 mo.)","IFA/BEP","down","Tyrosine Metabolism",8,1,0.914,0.665,1
+"Misame (1-2 mo.)","IFA/BEP","down","Beta-Alanine Metabolism",8,1,0.914,0.665,1

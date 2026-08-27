@@ -1,0 +1,12 @@
+outcome_group,arm_set,study,studytime,direction,contrast,module,pathway,total,hits,expected,raw_p,fdr_native,fdr_bh_pooled,significant,hit_features
+tertiary,combined,Elicit,1 mo.,down,Nico,ora,Oxidation of Branched Chain Fatty Acids,4,3,0.065,1.23e-5,0.00121,0.0010090666666666668,TRUE,L-Carnitine; L-Acetylcarnitine; Succinic acid
+tertiary,combined,Elicit,1 mo.,down,Nico,ora,Beta Oxidation of Very Long Chain Fatty Acids,3,2,0.0488,7.09e-4,0.0347,0.013549777777777777,TRUE,L-Carnitine; L-Acetylcarnitine
+tertiary,combined,Misame,1-2 mo.,down,BEP,ora,Spermidine and Spermine Biosynthesis,5,3,0.179,3.81e-4,0.0373,0.009582857142857143,TRUE,Ornithine; Spermine; Putrescine
+tertiary,combined,Misame,14-21 days,down,BEP,ora,Glycine and Serine Metabolism,13,5,0.359,9.67e-6,8.64e-4,0.0010090666666666668,TRUE,L-Threonine; Serine; L-Arginine; L-Cysteine; Homocysteine
+tertiary,combined,Misame,14-21 days,down,BEP,ora,Homocysteine Degradation,3,3,0.0829,1.76e-5,8.64e-4,0.0010090666666666668,TRUE,Serine; L-Cysteine; Homocysteine
+tertiary,combined,Misame,3-4 mo.,down,BEP,ora,Glycine and Serine Metabolism,13,4,0.275,7.78e-5,0.00763,0.0033453999999999997,TRUE,Ornithine; Sarcosine; L-Cysteine; Homocysteine
+tertiary,combined,Misame,3-4 mo.,down,BEP,ora,Methionine Metabolism,11,3,0.233,0.00111,0.04,0.019076363636363634,TRUE,Sarcosine; L-Cysteine; Homocysteine
+tertiary,combined,Misame,3-4 mo.,down,BEP,ora,Homocysteine Degradation,3,2,0.0634,0.00122,0.04,0.019076363636363634,TRUE,L-Cysteine; Homocysteine
+tertiary,combined,Vital,2 mo.,down,BEP,ora,Methionine Metabolism,11,3,0.143,2.28e-4,0.0191,0.0078432,TRUE,Glycine; Sarcosine; Homocysteine
+tertiary,combined,Vital,2 mo.,down,BEP,ora,Glycine and Serine Metabolism,13,3,0.169,3.9e-4,0.0191,0.009582857142857143,TRUE,Glycine; Sarcosine; Homocysteine
+tertiary,combined,Vital,2 mo.,down,BEP,ora,Bile Acid Biosynthesis,15,3,0.195,6.13e-4,0.02,0.0131795,TRUE,Taurocholic acid; Glycine; Chenodeoxycholic acid glycine conjugate

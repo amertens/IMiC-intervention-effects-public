@@ -1,0 +1,1030 @@
+outcome_group,arm_set,study,studytime,direction,contrast,module,pathway,total,hits,expected,raw_p,fdr_native,fdr_bh_pooled,significant,hit_features
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Oxidation of Branched Chain Fatty Acids,3,2,0.257,0.0148,0.726,0.6914879999999999,FALSE,Thiamine pyrophosphate; Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Thiamine Metabolism,3,2,0.257,0.0148,0.726,0.6914879999999999,FALSE,Thiamine; Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Phytanic Acid Peroxisomal Oxidation,4,2,0.343,0.029,0.948,0.8125024752475247,FALSE,Thiamine pyrophosphate; Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Ubiquinone Biosynthesis,1,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Az.,ora,Tryptophan Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,L-Tryptophan
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Taurine and Hypotaurine Metabolism,2,1,0.171,0.166,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Steroid Biosynthesis,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Bile Acid Biosynthesis,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Nucleotide Sugars Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Lysine Degradation,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Galactose Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Arachidonic Acid Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Porphyrin Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Lactose Synthesis,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Propanoate Metabolism,6,1,0.514,0.442,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,"Valine, Leucine and Isoleucine Degradation",6,1,0.514,0.442,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Citric Acid Cycle,6,1,0.514,0.442,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Purine Metabolism,7,1,0.6,0.499,1,0.8403780687397708,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Warburg Effect,7,1,0.6,0.499,1,0.8403780687397708,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Tyrosine Metabolism,8,1,0.686,0.553,1,0.8808622291021673,FALSE,Iron
+primary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Pyruvate Metabolism,8,1,0.686,0.553,1,0.8808622291021673,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Nicotinate and Nicotinamide Metabolism,7,5,1.2,3.67e-4,0.0359,0.18882149999999998,TRUE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Nicotinate and Nicotinamide Metabolism,7,5,1.2,3.67e-4,0.0359,0.18882149999999998,TRUE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Fatty Acid Elongation In Mitochondria,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Ketone Body Metabolism,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Steroidogenesis,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Cardiolipin Biosynthesis,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Androstenedione Metabolism,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Fatty Acid Elongation In Mitochondria,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Ketone Body Metabolism,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Steroidogenesis,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Cardiolipin Biosynthesis,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Androstenedione Metabolism,1,1,0.171,0.171,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Pterine Biosynthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Caffeine Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Selenoamino Acid Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glycerolipid Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Sulfate/Sulfite Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,Molybdenum
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Androgen and Estrogen Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glycerol Phosphate Shuttle,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glucose-Alanine Cycle,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Mitochondrial Electron Transport Chain,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Ethanol Degradation,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Inositol Phosphate Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Carnitine Synthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Estrone Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Pterine Biosynthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Caffeine Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Selenoamino Acid Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glycerolipid Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Androgen and Estrogen Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glycerol Phosphate Shuttle,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glucose-Alanine Cycle,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Mitochondrial Electron Transport Chain,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Ethanol Degradation,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Inositol Phosphate Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Carnitine Synthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Estrone Metabolism,2,1,0.343,0.318,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Cysteine Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Bile Acid Biosynthesis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glycolysis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Fatty acid Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Fructose and Mannose Degradation,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Butyrate Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Retinol Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Malate-Aspartate Shuttle,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Plasmalogen Synthesis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Cysteine Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Bile Acid Biosynthesis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glycolysis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Fatty acid Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Fructose and Mannose Degradation,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Butyrate Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Retinol Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Thiamine Metabolism,3,1,0.514,0.442,1,0.8206858638743456,FALSE,Thiamine monophosphate
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Malate-Aspartate Shuttle,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Plasmalogen Synthesis,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.514,0.442,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Nucleotide Sugars Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Inositol Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Lysine Degradation,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Galactose Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Starch and Sucrose Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Urea Cycle,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Tryptophan Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Gluconeogenesis,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Nucleotide Sugars Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Inositol Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Lysine Degradation,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Galactose Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Starch and Sucrose Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Urea Cycle,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Tryptophan Metabolism,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Gluconeogenesis,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.686,0.546,1,0.8792394366197184,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glycine and Serine Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Ammonia Recycling,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Arginine and Proline Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Porphyrin Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Phospholipid Biosynthesis,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Folate Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Betaine Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glycine and Serine Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Ammonia Recycling,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Arginine and Proline Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Porphyrin Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Phospholipid Biosynthesis,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Folate Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Betaine Metabolism,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.857,0.634,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Propanoate Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,"Valine, Leucine and Isoleucine Degradation",6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Methionine Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Citric Acid Cycle,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Glutamate Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Propanoate Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,"Valine, Leucine and Isoleucine Degradation",6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Methionine Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Citric Acid Cycle,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Glutamate Metabolism,6,1,1.03,0.707,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Histidine Metabolism,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Purine Metabolism,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Warburg Effect,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Histidine Metabolism,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Purine Metabolism,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Warburg Effect,7,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Tyrosine Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Beta-Alanine Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico,ora,Pyruvate Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Tyrosine Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Beta-Alanine Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,1 mo.,up,Nico+Az.,ora,Pyruvate Metabolism,8,1,1.37,0.818,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Pentose Phosphate Pathway,1,1,0.0286,0.0286,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Amino Sugar Metabolism,1,1,0.0286,0.0286,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Beta Oxidation of Very Long Chain Fatty Acids,1,1,0.0286,0.0286,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Phenylacetate Metabolism,1,1,0.0286,0.0286,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Sulfate/Sulfite Metabolism,2,1,0.0571,0.0571,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Inositol Phosphate Metabolism,2,1,0.0571,0.0571,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.0571,0.0571,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Estrone Metabolism,2,1,0.0571,0.0571,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Lactose Degradation,2,1,0.0571,0.0571,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Trehalose Degradation,2,1,0.0571,0.0571,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Steroid Biosynthesis,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Glycolysis,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Fatty acid Metabolism,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Fructose and Mannose Degradation,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Butyrate Metabolism,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Spermidine and Spermine Biosynthesis,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Plasmalogen Synthesis,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.0857,0.0857,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Glycolysis,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Spermidine and Spermine Biosynthesis,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Nucleotide Sugars Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Inositol Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Sphingolipid Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Galactose Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Starch and Sucrose Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Aspartate Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Arachidonic Acid Metabolism,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Gluconeogenesis,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.114,0.114,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Glycine and Serine Metabolism,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Ammonia Recycling,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Phospholipid Biosynthesis,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Pyrimidine Metabolism,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Folate Metabolism,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Betaine Metabolism,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Lactose Synthesis,5,1,0.143,0.143,0.389,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Betaine Metabolism,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Methionine Metabolism,6,1,0.171,0.171,0.431,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Citric Acid Cycle,6,1,0.171,0.171,0.431,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Glutamate Metabolism,6,1,0.171,0.171,0.431,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Methionine Metabolism,6,1,0.171,0.171,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Nicotinate and Nicotinamide Metabolism,7,1,0.2,0.2,0.456,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Purine Metabolism,7,1,0.2,0.2,0.456,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Riboflavin Metabolism,7,1,0.2,0.2,0.456,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Warburg Effect,7,1,0.2,0.2,0.456,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Purine Metabolism,7,1,0.2,0.2,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Warburg Effect,7,1,0.2,0.2,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Tyrosine Metabolism,8,1,0.229,0.229,0.487,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Vitamin B6 Metabolism,8,1,0.229,0.229,0.487,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Az.,ora,Pyruvate Metabolism,8,1,0.229,0.229,0.487,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Elicit,5 mo.,down,Nico,ora,Pyruvate Metabolism,8,1,0.229,0.229,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Nicotinate and Nicotinamide Metabolism,7,5,1.4,0.00121,0.119,0.279888,FALSE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Nicotinate and Nicotinamide Metabolism,7,5,1.8,0.00642,0.629,0.550515,FALSE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Transfer of Acetyl Groups into Mitochondria,4,3,1.03,0.0441,1,0.8125024752475247,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Az.,ora,Pantothenate and CoA Biosynthesis,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Pantothenic acid
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Retinol Metabolism,3,2,0.6,0.0952,1,0.8125024752475247,FALSE,Vitamin A; NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Propanoate Metabolism,6,3,1.54,0.162,1,0.8125024752475247,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Citric Acid Cycle,6,3,1.54,0.162,1,0.8125024752475247,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Lysine Degradation,4,2,0.8,0.171,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Phytanic Acid Peroxisomal Oxidation,4,2,0.8,0.171,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Transfer of Acetyl Groups into Mitochondria,4,2,0.8,0.171,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Fatty Acid Elongation In Mitochondria,1,1,0.2,0.2,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Ketone Body Metabolism,1,1,0.2,0.2,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Steroidogenesis,1,1,0.2,0.2,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Cardiolipin Biosynthesis,1,1,0.2,0.2,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Androstenedione Metabolism,1,1,0.2,0.2,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Az.,ora,Beta-Alanine Metabolism,8,1,0.229,0.229,1,0.8125024752475247,FALSE,Pantothenic acid
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Warburg Effect,7,3,1.8,0.242,1,0.8125024752475247,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Threonine and 2-Oxobutanoate Degradation,5,2,1,0.256,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Fatty Acid Elongation In Mitochondria,1,1,0.257,0.257,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Ketone Body Metabolism,1,1,0.257,0.257,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Steroidogenesis,1,1,0.257,0.257,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Cardiolipin Biosynthesis,1,1,0.257,0.257,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Androstenedione Metabolism,1,1,0.257,0.257,1,0.8125024752475247,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Inositol Metabolism,4,2,1.03,0.268,1,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Lysine Degradation,4,2,1.03,0.268,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Urea Cycle,4,2,1.03,0.268,1,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Gluconeogenesis,4,2,1.03,0.268,1,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Phytanic Acid Peroxisomal Oxidation,4,2,1.03,0.268,1,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Pyruvate Metabolism,8,3,2.06,0.33,1,0.8206858638743456,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Propanoate Metabolism,6,2,1.2,0.344,1,0.8206858638743456,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,"Valine, Leucine and Isoleucine Degradation",6,2,1.2,0.344,1,0.8206858638743456,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Citric Acid Cycle,6,2,1.2,0.344,1,0.8206858638743456,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Pterine Biosynthesis,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Caffeine Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Selenoamino Acid Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glycerolipid Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Androgen and Estrogen Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glycerol Phosphate Shuttle,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glucose-Alanine Cycle,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Mitochondrial Electron Transport Chain,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Ethanol Degradation,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Inositol Phosphate Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Carnitine Synthesis,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Estrone Metabolism,2,1,0.4,0.365,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Arginine and Proline Metabolism,5,2,1.29,0.383,1,0.8206858638743456,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Phospholipid Biosynthesis,5,2,1.29,0.383,1,0.8206858638743456,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Threonine and 2-Oxobutanoate Degradation,5,2,1.29,0.383,1,0.8206858638743456,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Warburg Effect,7,2,1.4,0.432,1,0.8206858638743456,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Pterine Biosynthesis,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Caffeine Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Selenoamino Acid Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glycerolipid Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Sulfate/Sulfite Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,Molybdenum
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Androgen and Estrogen Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glycerol Phosphate Shuttle,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glucose-Alanine Cycle,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Mitochondrial Electron Transport Chain,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Ethanol Degradation,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Fatty Acid Biosynthesis,2,1,0.514,0.454,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Inositol Phosphate Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Carnitine Synthesis,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Estrone Metabolism,2,1,0.514,0.454,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,"Valine, Leucine and Isoleucine Degradation",6,2,1.54,0.493,1,0.8403780687397708,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Cysteine Metabolism,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.6,0.499,1,0.8403780687397708,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Bile Acid Biosynthesis,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glycolysis,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Fatty acid Metabolism,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Fructose and Mannose Degradation,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Butyrate Metabolism,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Thiamine Metabolism,3,1,0.6,0.499,1,0.8403780687397708,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Malate-Aspartate Shuttle,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Plasmalogen Synthesis,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.6,0.499,1,0.8403780687397708,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Pyruvate Metabolism,8,2,1.6,0.516,1,0.8661729200652529,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Histidine Metabolism,7,2,1.8,0.594,1,0.8827956698240865,FALSE,NAD; Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Cysteine Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Pantothenate and CoA Biosynthesis,3,1,0.771,0.603,1,0.8827956698240865,FALSE,Pantothenic acid
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.771,0.603,1,0.8827956698240865,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Bile Acid Biosynthesis,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glycolysis,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Fatty acid Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Fructose and Mannose Degradation,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Butyrate Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Retinol Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Thiamine Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,Thiamine pyrophosphate
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Malate-Aspartate Shuttle,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.771,0.603,1,0.8827956698240865,FALSE,Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Degradation of Superoxides,3,1,0.771,0.603,1,0.8827956698240865,FALSE,Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Plasmalogen Synthesis,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.771,0.603,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Nucleotide Sugars Metabolism,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Inositol Metabolism,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Galactose Metabolism,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Starch and Sucrose Metabolism,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Urea Cycle,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Tryptophan Metabolism,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Gluconeogenesis,4,1,0.8,0.609,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Beta-Alanine Metabolism,8,2,2.06,0.682,1,0.9114000000000001,FALSE,Pantothenic acid; NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glycine and Serine Metabolism,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Ammonia Recycling,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Arginine and Proline Metabolism,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Porphyrin Metabolism,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Phospholipid Biosynthesis,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Folate Metabolism,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Betaine Metabolism,5,1,1,0.697,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Nucleotide Sugars Metabolism,4,1,1.03,0.714,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Galactose Metabolism,4,1,1.03,0.714,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Alanine Metabolism,4,1,1.03,0.714,1,0.9126782608695652,FALSE,Manganese
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Starch and Sucrose Metabolism,4,1,1.03,0.714,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Tryptophan Metabolism,4,1,1.03,0.714,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Methionine Metabolism,6,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Glutamate Metabolism,6,1,1.2,0.768,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glycine and Serine Metabolism,5,1,1.29,0.797,1,0.9404965596330275,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Ammonia Recycling,5,1,1.29,0.797,1,0.9404965596330275,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Porphyrin Metabolism,5,1,1.29,0.797,1,0.9404965596330275,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Folate Metabolism,5,1,1.29,0.797,1,0.9404965596330275,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Betaine Metabolism,5,1,1.29,0.797,1,0.9404965596330275,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Lactose Synthesis,5,1,1.29,0.797,1,0.9404965596330275,FALSE,Manganese
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Histidine Metabolism,7,1,1.4,0.824,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Purine Metabolism,7,1,1.4,0.824,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Methionine Metabolism,6,1,1.54,0.858,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Glutamate Metabolism,6,1,1.54,0.858,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Tyrosine Metabolism,8,1,1.6,0.868,1,0.9573118971061094,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico+Az.,ora,Beta-Alanine Metabolism,8,1,1.6,0.868,1,0.9573118971061094,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Purine Metabolism,7,1,1.8,0.902,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Elicit,5 mo.,up,Nico,ora,Tyrosine Metabolism,8,1,2.06,0.934,1,0.9659155778894473,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Propanoate Metabolism,6,4,0.857,0.00136,0.0666,0.279888,FALSE,NAD; FAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Citric Acid Cycle,6,4,0.857,0.00136,0.0666,0.279888,FALSE,NAD; FAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Warburg Effect,7,4,1,0.00308,0.0839,0.52822,FALSE,NAD; FAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Lysine Degradation,4,3,0.571,0.00583,0.0839,0.550515,FALSE,NAD; FAD; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Tryptophan Metabolism,4,3,0.571,0.00583,0.0839,0.550515,FALSE,NAD; L-Tryptophan; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Transfer of Acetyl Groups into Mitochondria,4,3,0.571,0.00583,0.0839,0.550515,FALSE,NAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Pyruvate Metabolism,8,4,1.14,0.00599,0.0839,0.550515,FALSE,NAD; FAD; Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Arginine and Proline Metabolism,5,3,0.714,0.0139,0.11,0.6914879999999999,FALSE,NAD; FAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Phospholipid Biosynthesis,5,3,0.714,0.0139,0.11,0.6914879999999999,FALSE,NAD; FAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Threonine and 2-Oxobutanoate Degradation,5,3,0.714,0.0139,0.11,0.6914879999999999,FALSE,NAD; FAD; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Caffeine Metabolism,2,2,0.286,0.0168,0.11,0.6914879999999999,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glycerolipid Metabolism,2,2,0.286,0.0168,0.11,0.6914879999999999,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glycerol Phosphate Shuttle,2,2,0.286,0.0168,0.11,0.6914879999999999,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Mitochondrial Electron Transport Chain,2,2,0.286,0.0168,0.11,0.6914879999999999,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,2,0.286,0.0168,0.11,0.6914879999999999,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,"Valine, Leucine and Isoleucine Degradation",6,3,0.857,0.0264,0.162,0.8125024752475247,FALSE,NAD; FAD; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Degradation of Superoxides,3,2,0.343,0.029,1,0.8125024752475247,FALSE,Copper; Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Degradation of Superoxides,3,2,0.343,0.029,1,0.8125024752475247,FALSE,Copper; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Histidine Metabolism,7,3,1,0.0438,0.202,0.8125024752475247,FALSE,NAD; FAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Bile Acid Biosynthesis,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Fatty acid Metabolism,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Butyrate Metabolism,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Plasmalogen Synthesis,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,2,0.429,0.0474,0.202,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Transfer of Acetyl Groups into Mitochondria,4,2,0.457,0.0557,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Transfer of Acetyl Groups into Mitochondria,4,2,0.457,0.0557,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Inositol Metabolism,4,2,0.571,0.0889,0.323,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Urea Cycle,4,2,0.571,0.0889,0.323,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Gluconeogenesis,4,2,0.571,0.0889,0.323,0.8125024752475247,FALSE,NAD; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Phytanic Acid Peroxisomal Oxidation,4,2,0.571,0.0889,0.323,0.8125024752475247,FALSE,NAD; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Propanoate Metabolism,6,2,0.686,0.128,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Citric Acid Cycle,6,2,0.686,0.128,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Propanoate Metabolism,6,2,0.686,0.128,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Citric Acid Cycle,6,2,0.686,0.128,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glycine and Serine Metabolism,5,2,0.714,0.139,0.359,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Ammonia Recycling,5,2,0.714,0.139,0.359,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Porphyrin Metabolism,5,2,0.714,0.139,0.359,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Folate Metabolism,5,2,0.714,0.139,0.359,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Betaine Metabolism,5,2,0.714,0.139,0.359,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,D-Arginine and D-Ornithine Metabolism,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Fatty Acid Elongation In Mitochondria,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Ketone Body Metabolism,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Steroidogenesis,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Vitamin K Metabolism,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Cardiolipin Biosynthesis,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Androstenedione Metabolism,1,1,0.143,0.143,0.359,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Histidine Metabolism,7,2,0.8,0.171,1,0.8125024752475247,FALSE,Copper; Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Warburg Effect,7,2,0.8,0.171,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Histidine Metabolism,7,2,0.8,0.171,1,0.8125024752475247,FALSE,Copper; Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Warburg Effect,7,2,0.8,0.171,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Methionine Metabolism,6,2,0.857,0.195,0.467,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glutamate Metabolism,6,2,0.857,0.195,0.467,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Pyruvate Metabolism,8,2,0.914,0.218,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Catecholamine Biosynthesis,2,1,0.229,0.218,1,0.8125024752475247,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Fatty Acid Biosynthesis,2,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Pyruvate Metabolism,8,2,0.914,0.218,1,0.8125024752475247,FALSE,Manganese; Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Catecholamine Biosynthesis,2,1,0.229,0.218,1,0.8125024752475247,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Fatty Acid Biosynthesis,2,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Nicotinate and Nicotinamide Metabolism,7,2,1,0.256,0.479,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Purine Metabolism,7,2,1,0.256,0.479,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Pterine Biosynthesis,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glutathione Metabolism,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Selenoamino Acid Metabolism,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Androgen and Estrogen Metabolism,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glucose-Alanine Cycle,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Ethanol Degradation,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Fatty Acid Biosynthesis,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Pyruvaldehyde Degradation,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Inositol Phosphate Metabolism,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Carnitine Synthesis,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Estrone Metabolism,2,1,0.286,0.269,0.479,0.8125024752475247,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Thiamine Metabolism,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Thiamine Metabolism,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.343,0.313,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Tyrosine Metabolism,8,2,1.14,0.319,0.547,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Beta-Alanine Metabolism,8,2,1.14,0.319,0.547,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Cysteine Metabolism,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Steroid Biosynthesis,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Glycolysis,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Fructose and Mannose Degradation,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Retinol Metabolism,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Thiamine Metabolism,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Malate-Aspartate Shuttle,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Degradation of Superoxides,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Thyroid hormone synthesis,3,1,0.429,0.38,0.547,0.8206858638743456,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Inositol Metabolism,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Lysine Degradation,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Alanine Metabolism,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Urea Cycle,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Gluconeogenesis,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Inositol Metabolism,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Lysine Degradation,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Alanine Metabolism,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Urea Cycle,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Gluconeogenesis,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.457,0.399,1,0.8206858638743456,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Arginine and Proline Metabolism,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Phospholipid Biosynthesis,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Lactose Synthesis,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Nucleotide Sugars Metabolism,4,1,0.571,0.477,0.64,0.8322538071065989,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Galactose Metabolism,4,1,0.571,0.477,0.64,0.8322538071065989,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Alanine Metabolism,4,1,0.571,0.477,0.64,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Starch and Sucrose Metabolism,4,1,0.571,0.477,0.64,0.8322538071065989,FALSE,NAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Aspartate Metabolism,4,1,0.571,0.477,0.64,0.8322538071065989,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Arginine and Proline Metabolism,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Phospholipid Biosynthesis,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Lactose Synthesis,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.571,0.477,1,0.8322538071065989,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,0.686,0.546,1,0.8792394366197184,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,0.686,0.546,1,0.8792394366197184,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.714,0.561,0.723,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Pyrimidine Metabolism,5,1,0.714,0.561,0.723,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Lactose Synthesis,5,1,0.714,0.561,0.723,0.8827956698240865,FALSE,Manganese
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Riboflavin Metabolism,7,1,0.8,0.609,1,0.8827956698240865,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Riboflavin Metabolism,7,1,0.8,0.609,1,0.8827956698240865,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Tyrosine Metabolism,8,1,0.914,0.665,1,0.9039431968295905,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Beta-Alanine Metabolism,8,1,0.914,0.665,1,0.9039431968295905,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Tyrosine Metabolism,8,1,0.914,0.665,1,0.9039431968295905,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,IFA/BEP,ora,Beta-Alanine Metabolism,8,1,0.914,0.665,1,0.9039431968295905,FALSE,Copper
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Riboflavin Metabolism,7,1,1,0.697,0.887,0.9126782608695652,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,down,BEP/IFA,ora,Vitamin B6 Metabolism,8,1,1.14,0.751,0.944,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Pantothenate and CoA Biosynthesis,3,2,0.257,0.0148,1,0.6914879999999999,FALSE,Pantothenic acid; Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Alpha Linolenic Acid and Linoleic Acid Metabolism,1,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Purine Metabolism,7,2,0.6,0.0952,1,0.8125024752475247,FALSE,Calcium; Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Beta-Alanine Metabolism,8,2,0.686,0.124,1,0.8125024752475247,FALSE,Pantothenic acid; Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Androgen and Estrogen Metabolism,2,1,0.171,0.166,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Lactose Degradation,2,1,0.171,0.166,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Trehalose Degradation,2,1,0.171,0.166,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,0.857,0.19,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,4,2.6,0.214,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Glycolysis,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Malate-Aspartate Shuttle,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Spermidine and Spermine Biosynthesis,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Thyroid hormone synthesis,3,1,0.257,0.242,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,3,2,0.31,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Nudifloramide
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Inositol Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Sphingolipid Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Starch and Sucrose Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Urea Cycle,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Arachidonic Acid Metabolism,4,1,0.343,0.313,1,0.8125024752475247,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Phospholipid Biosynthesis,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Pyrimidine Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Folate Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Betaine Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Lactose Synthesis,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Vitamin B6 Metabolism,8,3,2.29,0.411,1,0.8206858638743456,FALSE,Pyridoxine; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Methionine Metabolism,6,1,0.514,0.442,1,0.8206858638743456,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Lactose Degradation,2,1,0.571,0.496,1,0.8403780687397708,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Trehalose Degradation,2,1,0.571,0.496,1,0.8403780687397708,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Histidine Metabolism,7,1,0.6,0.499,1,0.8403780687397708,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Riboflavin Metabolism,7,1,0.6,0.499,1,0.8403780687397708,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Warburg Effect,7,1,0.6,0.499,1,0.8403780687397708,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Tyrosine Metabolism,8,1,0.686,0.553,1,0.8808622291021673,FALSE,Calcium
+primary,stratified,Misame,1-2 mo.,up,BEP/IFA,ora,Pyruvate Metabolism,8,1,0.686,0.553,1,0.8808622291021673,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Lactose Degradation,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Trehalose Degradation,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Vitamin B6 Metabolism,8,3,2.97,0.645,1,0.8920766129032258,FALSE,Pyridoxine; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Glycolysis,3,1,0.857,0.649,1,0.8940040160642571,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Thiamine Metabolism,3,1,0.857,0.649,1,0.8940040160642571,FALSE,Thiamine
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Spermidine and Spermine Biosynthesis,3,1,0.857,0.649,1,0.8940040160642571,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Riboflavin Metabolism,7,2,2,0.665,1,0.9039431968295905,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Beta-Alanine Metabolism,8,2,2.29,0.75,1,0.9195572254335259,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Glycolysis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Thiamine Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Thiamine
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Spermidine and Spermine Biosynthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Riboflavin Metabolism,7,2,2.6,0.83,1,0.9515483870967741,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Arginine and Proline Metabolism,5,1,1.43,0.836,1,0.9515483870967741,FALSE,Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Pyrimidine Metabolism,5,1,1.43,0.836,1,0.9515483870967741,FALSE,Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Betaine Metabolism,5,1,1.43,0.836,1,0.9515483870967741,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,1.71,0.891,1,0.9617112676056339,FALSE,Pyridoxal
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Methionine Metabolism,6,1,1.71,0.891,1,0.9617112676056339,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Beta-Alanine Metabolism,8,2,2.97,0.892,1,0.9617112676056339,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Arginine and Proline Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Pyrimidine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Betaine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Purine Metabolism,7,1,2,0.929,1,0.9617112676056339,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Warburg Effect,7,1,2,0.929,1,0.9617112676056339,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Pyruvate Metabolism,8,1,2.29,0.954,1,0.9700256916996047,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,2.23,0.954,1,0.9700256916996047,FALSE,Pyridoxal
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Methionine Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Purine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Warburg Effect,7,1,2.6,0.975,1,0.9807184750733138,FALSE,Potassium
+primary,stratified,Misame,1-2 mo.,up,IFA/BEP,ora,Pyruvate Metabolism,8,1,2.97,0.986,1,0.986,FALSE,Potassium
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Ubiquinone Biosynthesis,1,1,0.0286,0.0286,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Taurine and Hypotaurine Metabolism,2,1,0.0571,0.0571,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Steroid Biosynthesis,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Bile Acid Biosynthesis,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Nucleotide Sugars Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Galactose Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Arachidonic Acid Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Porphyrin Metabolism,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Lactose Synthesis,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Purine Metabolism,7,1,0.2,0.2,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Tyrosine Metabolism,8,1,0.229,0.229,1,0.8125024752475247,FALSE,Iron
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Pantothenate and CoA Biosynthesis,3,2,0.257,0.0148,1,0.6914879999999999,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Riboflavin Metabolism,7,2,0.6,0.0952,1,0.8125024752475247,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Vitamin B6 Metabolism,8,5,2.97,0.103,1,0.8125024752475247,FALSE,Pyridoxine; Pyridoxamine; Pyridoxal 5'-phosphate; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Beta-Alanine Metabolism,8,2,0.686,0.124,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,4,2.6,0.214,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,4,2.6,0.214,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Thiamine Metabolism,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Thiamine; Thiamine monophosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Thiamine Metabolism,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Thiamine; Thiamine monophosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Vitamin B6 Metabolism,8,4,2.97,0.325,1,0.8206858638743456,FALSE,Pyridoxine; Pyridoxamine; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Biotin Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Homocysteine Degradation,1,1,0.371,0.371,1,0.8206858638743456,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Arginine and Proline Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Pyrimidine Metabolism,5,1,0.429,0.38,1,0.8206858638743456,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/IFA,ora,Vitamin B6 Metabolism,8,1,0.686,0.553,1,0.8808622291021673,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Fatty Acid Biosynthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Catecholamine Biosynthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Taurine and Hypotaurine Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Selenoamino Acid Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Glucose-Alanine Cycle,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Carnitine Synthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Arginine and Proline Metabolism,5,2,1.86,0.626,1,0.8827956698240865,FALSE,Pyridoxal 5'-phosphate; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Beta-Alanine Metabolism,8,3,2.97,0.645,1,0.8920766129032258,FALSE,Pantothenic acid; Pyridoxal 5'-phosphate; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1,0.9195572254335259,FALSE,Biotin; Pyridoxal
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1,0.9195572254335259,FALSE,Pyridoxal 5'-phosphate; Pyridoxal
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Cysteine Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Malate-Aspartate Shuttle,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Spermidine and Spermine Biosynthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Riboflavin Metabolism,7,2,2.6,0.83,1,0.9515483870967741,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Riboflavin Metabolism,7,2,2.6,0.83,1,0.9515483870967741,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Alanine Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Gluconeogenesis,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Transfer of Acetyl Groups into Mitochondria,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Sphingolipid Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Lysine Degradation,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Alanine Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Starch and Sucrose Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Urea Cycle,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Tryptophan Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Aspartate Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Beta-Alanine Metabolism,8,2,2.97,0.892,1,0.9617112676056339,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Ammonia Recycling,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Arginine and Proline Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Pyrimidine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Glycine and Serine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Phenylalanine and Tyrosine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Ammonia Recycling,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Porphyrin Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Pyrimidine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Folate Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Propanoate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Citric Acid Cycle,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Glutamate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Propanoate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Methionine Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Glutamate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Warburg Effect,7,1,2.6,0.975,1,0.9807184750733138,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Histidine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,14-21 days,up,BEP/BEP,ora,Pyruvate Metabolism,8,1,2.97,0.986,1,0.986,FALSE,Biotin
+primary,stratified,Misame,14-21 days,up,IFA/BEP,ora,Tyrosine Metabolism,8,1,2.97,0.986,1,0.986,FALSE,Pyridoxal 5'-phosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Oxidation of Branched Chain Fatty Acids,3,2,0.171,0.00504,0.494,0.550515,FALSE,Magnesium; Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Phytanic Acid Peroxisomal Oxidation,4,2,0.229,0.0101,0.494,0.6914879999999999,FALSE,Magnesium; Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Citric Acid Cycle,6,2,0.343,0.0252,0.613,0.8125024752475247,FALSE,Magnesium; Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Warburg Effect,7,2,0.4,0.0353,0.613,0.8125024752475247,FALSE,Magnesium; Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Nicotinate and Nicotinamide Metabolism,7,2,0.4,0.0353,0.712,0.8125024752475247,FALSE,Magnesium; Niacinamide
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Pyruvate Metabolism,8,2,0.457,0.0471,0.613,0.8125024752475247,FALSE,Magnesium; Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Pentose Phosphate Pathway,1,1,0.0571,0.0571,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Amino Sugar Metabolism,1,1,0.0571,0.0571,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Beta Oxidation of Very Long Chain Fatty Acids,1,1,0.0571,0.0571,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Phenylacetate Metabolism,1,1,0.0571,0.0571,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Pentose Phosphate Pathway,1,1,0.0571,0.0571,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Amino Sugar Metabolism,1,1,0.0571,0.0571,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Beta Oxidation of Very Long Chain Fatty Acids,1,1,0.0571,0.0571,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Phenylacetate Metabolism,1,1,0.0571,0.0571,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Sulfate/Sulfite Metabolism,2,1,0.114,0.113,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Inositol Phosphate Metabolism,2,1,0.114,0.113,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.114,0.113,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Estrone Metabolism,2,1,0.114,0.113,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Sulfate/Sulfite Metabolism,2,1,0.114,0.113,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Inositol Phosphate Metabolism,2,1,0.114,0.113,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.114,0.113,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Estrone Metabolism,2,1,0.114,0.113,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Steroid Biosynthesis,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Glycolysis,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Fatty acid Metabolism,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Fructose and Mannose Degradation,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Butyrate Metabolism,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Thiamine Metabolism,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Spermidine and Spermine Biosynthesis,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Plasmalogen Synthesis,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.171,0.166,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Steroid Biosynthesis,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Oxidation of Branched Chain Fatty Acids,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Glycolysis,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Fatty acid Metabolism,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Fructose and Mannose Degradation,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Butyrate Metabolism,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Spermidine and Spermine Biosynthesis,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Plasmalogen Synthesis,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,0.171,0.166,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Nucleotide Sugars Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Inositol Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Sphingolipid Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Lysine Degradation,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Galactose Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Starch and Sucrose Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Aspartate Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Arachidonic Acid Metabolism,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Gluconeogenesis,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.229,0.218,0.613,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Nucleotide Sugars Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Inositol Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Sphingolipid Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Galactose Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Starch and Sucrose Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Aspartate Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Arachidonic Acid Metabolism,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Gluconeogenesis,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Phytanic Acid Peroxisomal Oxidation,4,1,0.229,0.218,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Glycine and Serine Metabolism,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Ammonia Recycling,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Phospholipid Biosynthesis,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Pyrimidine Metabolism,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Folate Metabolism,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Betaine Metabolism,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Lactose Synthesis,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,0.286,0.269,0.613,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Glycine and Serine Metabolism,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Phenylalanine and Tyrosine Metabolism,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Ammonia Recycling,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Phospholipid Biosynthesis,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Pyrimidine Metabolism,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Folate Metabolism,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Betaine Metabolism,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Lactose Synthesis,5,1,0.286,0.269,0.712,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Propanoate Metabolism,6,1,0.343,0.318,0.662,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,0.343,0.318,0.662,0.8125024752475247,FALSE,Thiamine pyrophosphate
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Methionine Metabolism,6,1,0.343,0.318,0.662,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Glutamate Metabolism,6,1,0.343,0.318,0.662,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Methionine Metabolism,6,1,0.343,0.318,0.778,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Citric Acid Cycle,6,1,0.343,0.318,0.778,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Glutamate Metabolism,6,1,0.343,0.318,0.778,0.8125024752475247,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,1,0.4,0.365,0.715,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Purine Metabolism,7,1,0.4,0.365,0.715,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Riboflavin Metabolism,7,1,0.4,0.365,0.715,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Purine Metabolism,7,1,0.4,0.365,0.831,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Riboflavin Metabolism,7,1,0.4,0.365,0.831,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Warburg Effect,7,1,0.4,0.365,0.831,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Tyrosine Metabolism,8,1,0.457,0.41,0.773,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Vitamin B6 Metabolism,8,1,0.457,0.41,0.773,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Tyrosine Metabolism,8,1,0.457,0.41,0.874,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Vitamin B6 Metabolism,8,1,0.457,0.41,0.874,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,down,BEP/IFA,ora,Pyruvate Metabolism,8,1,0.457,0.41,0.874,0.8206858638743456,FALSE,Magnesium
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,5,2.6,0.0501,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; FAD; Niacinamide; Nudifloramide
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Nicotinate and Nicotinamide Metabolism,7,4,2.4,0.163,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Vitamin B6 Metabolism,8,4,2.74,0.257,1,0.8125024752475247,FALSE,Pyridoxine; Pyridoxamine; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,1.03,0.266,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Pantothenate and CoA Biosynthesis,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Vitamin B6 Metabolism,8,4,2.97,0.325,1,0.8206858638743456,FALSE,Pyridoxine; FAD; Flavin mononucleotide; Pyridoxal
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,D-Arginine and D-Ornithine Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Vitamin K Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Tryptophan Metabolism,4,2,1.49,0.478,1,0.8322538071065989,FALSE,L-Tryptophan; FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Riboflavin Metabolism,7,3,2.6,0.525,1,0.8755672609400325,FALSE,Riboflavin; FAD; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Glutathione Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Caffeine Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Glycerolipid Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Glycerol Phosphate Shuttle,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Mitochondrial Electron Transport Chain,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Pyruvaldehyde Degradation,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.743,0.612,1,0.8827956698240865,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Arginine and Proline Metabolism,5,2,1.86,0.626,1,0.8827956698240865,FALSE,FAD; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Pyrimidine Metabolism,5,2,1.86,0.626,1,0.8827956698240865,FALSE,FAD; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Beta-Alanine Metabolism,8,3,2.97,0.645,1,0.8920766129032258,FALSE,Pantothenic acid; FAD; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1,0.9195572254335259,FALSE,FAD; Pyridoxal
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Steroid Biosynthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Bile Acid Biosynthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Fatty acid Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Butyrate Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Plasmalogen Synthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Thyroid hormone synthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Riboflavin Metabolism,7,2,2.4,0.783,1,0.930377598152425,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Beta-Alanine Metabolism,8,2,2.74,0.854,1,0.9515483870967741,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Lysine Degradation,4,1,1.49,0.86,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Aspartate Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Arginine and Proline Metabolism,5,1,1.71,0.896,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,Pyrimidine Metabolism,5,1,1.71,0.896,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Glycine and Serine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Phenylalanine and Tyrosine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Ammonia Recycling,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Porphyrin Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Phospholipid Biosynthesis,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Folate Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Betaine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Threonine and 2-Oxobutanoate Degradation,5,1,1.86,0.919,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,BEP/BEP,ora,"Valine, Leucine and Isoleucine Degradation",6,1,2.06,0.938,1,0.969078313253012,FALSE,Pyridoxal
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Propanoate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Methionine Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Citric Acid Cycle,6,1,2.23,0.954,1,0.9700256916996047,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Glutamate Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Histidine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Purine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Warburg Effect,7,1,2.6,0.975,1,0.9807184750733138,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Tyrosine Metabolism,8,1,2.97,0.986,1,0.986,FALSE,FAD
+primary,stratified,Misame,3-4 mo.,up,IFA/BEP,ora,Pyruvate Metabolism,8,1,2.97,0.986,1,0.986,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Nicotinate and Nicotinamide Metabolism,7,6,3.2,0.0243,1,0.8125024752475247,FALSE,Nicotinamide riboside; NAD; Nicotinic acid mononucleotide; FAD; Niacinamide; Nudifloramide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Nicotinate and Nicotinamide Metabolism,7,5,3,0.101,1,0.8125024752475247,FALSE,NAD; Nicotinic acid mononucleotide; FAD; Niacinamide; Nudifloramide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Caffeine Metabolism,2,2,0.857,0.176,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glycerolipid Metabolism,2,2,0.857,0.176,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glycerol Phosphate Shuttle,2,2,0.857,0.176,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Electron Transport Chain,2,2,0.857,0.176,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,2,0.857,0.176,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,"Valine, Leucine and Isoleucine Degradation",6,4,2.57,0.2,1,0.8125024752475247,FALSE,Biotin; NAD; FAD; Pyridoxal
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Caffeine Metabolism,2,2,0.914,0.202,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glycerolipid Metabolism,2,2,0.914,0.202,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glycerol Phosphate Shuttle,2,2,0.914,0.202,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Mitochondrial Electron Transport Chain,2,2,0.914,0.202,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,2,0.914,0.202,1,0.8125024752475247,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,"Valine, Leucine and Isoleucine Degradation",6,4,2.74,0.248,1,0.8125024752475247,FALSE,Biotin; NAD; FAD; Pyridoxal
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Ammonia Recycling,5,3,2.14,0.36,1,0.8206858638743456,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Arginine and Proline Metabolism,5,3,2.14,0.36,1,0.8206858638743456,FALSE,NAD; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Threonine and 2-Oxobutanoate Degradation,5,3,2.14,0.36,1,0.8206858638743456,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Pantothenate and CoA Biosynthesis,3,2,1.29,0.39,1,0.8206858638743456,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Bile Acid Biosynthesis,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Fatty acid Metabolism,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Butyrate Metabolism,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Retinol Metabolism,3,2,1.29,0.39,1,0.8206858638743456,FALSE,Vitamin A; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Thiamine Metabolism,3,2,1.29,0.39,1,0.8206858638743456,FALSE,Thiamine; Thiamine monophosphate
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Plasmalogen Synthesis,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,2,1.29,0.39,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Ammonia Recycling,5,3,2.29,0.415,1,0.8206858638743456,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Arginine and Proline Metabolism,5,3,2.29,0.415,1,0.8206858638743456,FALSE,NAD; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Threonine and 2-Oxobutanoate Degradation,5,3,2.29,0.415,1,0.8206858638743456,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,D-Arginine and D-Ornithine Metabolism,1,1,0.429,0.429,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Fatty Acid Elongation In Mitochondria,1,1,0.429,0.429,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Biotin Metabolism,1,1,0.429,0.429,1,0.8206858638743456,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Ketone Body Metabolism,1,1,0.429,0.429,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Steroidogenesis,1,1,0.429,0.429,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Vitamin K Metabolism,1,1,0.429,0.429,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Cardiolipin Biosynthesis,1,1,0.429,0.429,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Androstenedione Metabolism,1,1,0.429,0.429,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Pantothenate and CoA Biosynthesis,3,2,1.37,0.434,1,0.8206858638743456,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Bile Acid Biosynthesis,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Fatty acid Metabolism,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Butyrate Metabolism,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Retinol Metabolism,3,2,1.37,0.434,1,0.8206858638743456,FALSE,Vitamin A; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Thiamine Metabolism,3,2,1.37,0.434,1,0.8206858638743456,FALSE,Thiamine; Thiamine monophosphate
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Plasmalogen Synthesis,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,2,1.37,0.434,1,0.8206858638743456,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,D-Arginine and D-Ornithine Metabolism,1,1,0.457,0.457,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Fatty Acid Elongation In Mitochondria,1,1,0.457,0.457,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Biotin Metabolism,1,1,0.457,0.457,1,0.8206858638743456,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Ketone Body Metabolism,1,1,0.457,0.457,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Steroidogenesis,1,1,0.457,0.457,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Vitamin K Metabolism,1,1,0.457,0.457,1,0.8206858638743456,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Cardiolipin Biosynthesis,1,1,0.457,0.457,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Androstenedione Metabolism,1,1,0.457,0.457,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Beta-Alanine Metabolism,8,4,3.43,0.473,1,0.8322538071065989,FALSE,Pantothenic acid; NAD; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Vitamin B6 Metabolism,8,4,3.43,0.473,1,0.8322538071065989,FALSE,Pyridoxine; FAD; Flavin mononucleotide; Pyridoxal
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Propanoate Metabolism,6,3,2.57,0.519,1,0.8669659090909091,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Citric Acid Cycle,6,3,2.57,0.519,1,0.8669659090909091,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glutamate Metabolism,6,3,2.57,0.519,1,0.8669659090909091,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Beta-Alanine Metabolism,8,4,3.66,0.548,1,0.8797067082683309,FALSE,Pantothenic acid; NAD; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Vitamin B6 Metabolism,8,4,3.66,0.548,1,0.8797067082683309,FALSE,Pyridoxine; FAD; Flavin mononucleotide; Pyridoxal
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Lysine Degradation,4,2,1.71,0.581,1,0.8827956698240865,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Tryptophan Metabolism,4,2,1.71,0.581,1,0.8827956698240865,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Gluconeogenesis,4,2,1.71,0.581,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Transfer of Acetyl Groups into Mitochondria,4,2,1.71,0.581,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Propanoate Metabolism,6,3,2.74,0.582,1,0.8827956698240865,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Citric Acid Cycle,6,3,2.74,0.582,1,0.8827956698240865,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glutamate Metabolism,6,3,2.74,0.582,1,0.8827956698240865,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Lysine Degradation,4,2,1.83,0.63,1,0.8827956698240865,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Tryptophan Metabolism,4,2,1.83,0.63,1,0.8827956698240865,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Gluconeogenesis,4,2,1.83,0.63,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Transfer of Acetyl Groups into Mitochondria,4,2,1.83,0.63,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Riboflavin Metabolism,7,3,3,0.66,1,0.9039431968295905,FALSE,Riboflavin; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Warburg Effect,7,3,3,0.66,1,0.9039431968295905,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Pterine Biosynthesis,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glutathione Metabolism,2,1,0.857,0.681,1,0.9112470741222367,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Selenoamino Acid Metabolism,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Androgen and Estrogen Metabolism,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glucose-Alanine Cycle,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Ethanol Degradation,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Fatty Acid Biosynthesis,2,1,0.857,0.681,1,0.9112470741222367,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Pyruvaldehyde Degradation,2,1,0.857,0.681,1,0.9112470741222367,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Inositol Phosphate Metabolism,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Carnitine Synthesis,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Estrone Metabolism,2,1,0.857,0.681,1,0.9112470741222367,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Pterine Biosynthesis,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glutathione Metabolism,2,1,0.914,0.713,1,0.9126782608695652,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Selenoamino Acid Metabolism,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Androgen and Estrogen Metabolism,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glucose-Alanine Cycle,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Ethanol Degradation,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Fatty Acid Biosynthesis,2,1,0.914,0.713,1,0.9126782608695652,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Pyruvaldehyde Degradation,2,1,0.914,0.713,1,0.9126782608695652,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Inositol Phosphate Metabolism,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Carnitine Synthesis,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Estrone Metabolism,2,1,0.914,0.713,1,0.9126782608695652,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Riboflavin Metabolism,7,3,3.2,0.72,1,0.9180669144981413,FALSE,Riboflavin; FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Warburg Effect,7,3,3.2,0.72,1,0.9180669144981413,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glycine and Serine Metabolism,5,2,2.14,0.728,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Porphyrin Metabolism,5,2,2.14,0.728,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Phospholipid Biosynthesis,5,2,2.14,0.728,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Pyrimidine Metabolism,5,2,2.14,0.728,1,0.9195572254335259,FALSE,FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Folate Metabolism,5,2,2.14,0.728,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Betaine Metabolism,5,2,2.14,0.728,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Pyruvate Metabolism,8,3,3.43,0.772,1,0.9195572254335259,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glycine and Serine Metabolism,5,2,2.29,0.773,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Porphyrin Metabolism,5,2,2.29,0.773,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Phospholipid Biosynthesis,5,2,2.29,0.773,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Pyrimidine Metabolism,5,2,2.29,0.773,1,0.9195572254335259,FALSE,FAD; Flavin mononucleotide
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Folate Metabolism,5,2,2.29,0.773,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Betaine Metabolism,5,2,2.29,0.773,1,0.9195572254335259,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Pyruvate Metabolism,8,3,3.66,0.824,1,0.9515483870967741,FALSE,Biotin; NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Cysteine Metabolism,3,1,1.29,0.826,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Steroid Biosynthesis,3,1,1.29,0.826,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Glycolysis,3,1,1.29,0.826,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Fructose and Mannose Degradation,3,1,1.29,0.826,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Malate-Aspartate Shuttle,3,1,1.29,0.826,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Thyroid hormone synthesis,3,1,1.29,0.826,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Methionine Metabolism,6,2,2.57,0.833,1,0.9515483870967741,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Cysteine Metabolism,3,1,1.37,0.852,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Steroid Biosynthesis,3,1,1.37,0.852,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Glycolysis,3,1,1.37,0.852,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Fructose and Mannose Degradation,3,1,1.37,0.852,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Malate-Aspartate Shuttle,3,1,1.37,0.852,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Thyroid hormone synthesis,3,1,1.37,0.852,1,0.9515483870967741,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Methionine Metabolism,6,2,2.74,0.869,1,0.9573886509635975,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Histidine Metabolism,7,2,3,0.902,1,0.9617112676056339,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Purine Metabolism,7,2,3,0.902,1,0.9617112676056339,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Nucleotide Sugars Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Inositol Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Galactose Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Alanine Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Starch and Sucrose Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Urea Cycle,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Aspartate Metabolism,4,1,1.71,0.907,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Phytanic Acid Peroxisomal Oxidation,4,1,1.71,0.907,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Nucleotide Sugars Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Inositol Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Galactose Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Alanine Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,Biotin
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Starch and Sucrose Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Urea Cycle,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Aspartate Metabolism,4,1,1.83,0.926,1,0.9617112676056339,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Phytanic Acid Peroxisomal Oxidation,4,1,1.83,0.926,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Histidine Metabolism,7,2,3.2,0.928,1,0.9617112676056339,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Purine Metabolism,7,2,3.2,0.928,1,0.9617112676056339,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Tyrosine Metabolism,8,2,3.43,0.945,1,0.9700256916996047,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf+AZT,ora,Phenylalanine and Tyrosine Metabolism,5,1,2.14,0.952,1,0.9700256916996047,FALSE,FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Tyrosine Metabolism,8,2,3.66,0.963,1,0.9782102665350444,FALSE,NAD; FAD
+primary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Phenylalanine and Tyrosine Metabolism,5,1,2.29,0.964,1,0.9782603550295857,FALSE,FAD
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Fatty Acid Biosynthesis,2,1,0.0571,0.0571,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Degradation of Superoxides,3,1,0.0857,0.0857,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Fatty Acid Biosynthesis,2,1,0.114,0.113,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Inositol Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Alanine Metabolism,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Urea Cycle,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Gluconeogenesis,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.114,0.114,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Arginine and Proline Metabolism,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Phospholipid Biosynthesis,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Lactose Synthesis,5,1,0.143,0.143,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Phosphatidylinositol Phosphate Metabolism,3,1,0.171,0.166,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Degradation of Superoxides,3,1,0.171,0.166,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Propanoate Metabolism,6,1,0.171,0.171,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Citric Acid Cycle,6,1,0.171,0.171,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Histidine Metabolism,7,1,0.2,0.2,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Warburg Effect,7,1,0.2,0.2,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Inositol Metabolism,4,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Alanine Metabolism,4,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Urea Cycle,4,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Gluconeogenesis,4,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.229,0.218,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Pyruvate Metabolism,8,1,0.229,0.229,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Arginine and Proline Metabolism,5,1,0.286,0.269,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Phospholipid Biosynthesis,5,1,0.286,0.269,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Lactose Synthesis,5,1,0.286,0.269,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Propanoate Metabolism,6,1,0.343,0.318,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Citric Acid Cycle,6,1,0.343,0.318,1,0.8125024752475247,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Histidine Metabolism,7,1,0.4,0.365,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Warburg Effect,7,1,0.4,0.365,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Vital,2 mo.,down,BEP+ExBf+AZT,ora,Pyruvate Metabolism,8,1,0.457,0.41,1,0.8206858638743456,FALSE,Manganese
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Nicotinate and Nicotinamide Metabolism,7,4,1.6,0.0335,1,0.8125024752475247,FALSE,Nicotinamide riboside; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Pantothenate and CoA Biosynthesis,3,2,0.686,0.124,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Nicotinate and Nicotinamide Metabolism,7,4,2.6,0.214,1,0.8125024752475247,FALSE,NAD; Nicotinic acid mononucleotide; Niacinamide; Nudifloramide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Biotin Metabolism,1,1,0.229,0.229,1,0.8125024752475247,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Pantothenate and CoA Biosynthesis,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Retinol Metabolism,3,2,1.11,0.306,1,0.8125024752475247,FALSE,Vitamin A; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Fatty Acid Elongation In Mitochondria,1,1,0.371,0.371,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Biotin Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Ketone Body Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Steroidogenesis,1,1,0.371,0.371,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Cardiolipin Biosynthesis,1,1,0.371,0.371,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Androstenedione Metabolism,1,1,0.371,0.371,1,0.8206858638743456,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,"Valine, Leucine and Isoleucine Degradation",6,3,2.23,0.392,1,0.8206858638743456,FALSE,Biotin; NAD; Pyridoxal
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Fatty Acid Biosynthesis,2,1,0.457,0.41,1,0.8206858638743456,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Gluconeogenesis,4,2,1.49,0.478,1,0.8322538071065989,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Transfer of Acetyl Groups into Mitochondria,4,2,1.49,0.478,1,0.8322538071065989,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Riboflavin Metabolism,7,2,1.6,0.516,1,0.8661729200652529,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Beta-Alanine Metabolism,8,2,1.83,0.604,1,0.8827956698240865,FALSE,Pantothenic acid; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Pterine Biosynthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Caffeine Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Selenoamino Acid Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glycerolipid Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Androgen and Estrogen Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glycerol Phosphate Shuttle,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glucose-Alanine Cycle,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Electron Transport Chain,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Ethanol Degradation,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Fatty Acid Biosynthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Inositol Phosphate Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Carnitine Synthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Short Chain Saturated Fatty Acids,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,De Novo Triacylglycerol Biosynthesis,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Estrone Metabolism,2,1,0.743,0.612,1,0.8827956698240865,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Ammonia Recycling,5,2,1.86,0.626,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Arginine and Proline Metabolism,5,2,1.86,0.626,1,0.8827956698240865,FALSE,NAD; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Threonine and 2-Oxobutanoate Degradation,5,2,1.86,0.626,1,0.8827956698240865,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Beta-Alanine Metabolism,8,3,2.97,0.645,1,0.8920766129032258,FALSE,Pantothenic acid; NAD; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Vitamin B6 Metabolism,8,3,2.97,0.645,1,0.8920766129032258,FALSE,Pyridoxine; Flavin mononucleotide; Pyridoxal
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Alanine Metabolism,4,1,0.914,0.665,1,0.9039431968295905,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Gluconeogenesis,4,1,0.914,0.665,1,0.9039431968295905,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Transfer of Acetyl Groups into Mitochondria,4,1,0.914,0.665,1,0.9039431968295905,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Propanoate Metabolism,6,2,2.23,0.743,1,0.9195572254335259,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Citric Acid Cycle,6,2,2.23,0.743,1,0.9195572254335259,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glutamate Metabolism,6,2,2.23,0.743,1,0.9195572254335259,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Ammonia Recycling,5,1,1.14,0.751,1,0.9195572254335259,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Arginine and Proline Metabolism,5,1,1.14,0.751,1,0.9195572254335259,FALSE,Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Pyrimidine Metabolism,5,1,1.14,0.751,1,0.9195572254335259,FALSE,Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Threonine and 2-Oxobutanoate Degradation,5,1,1.14,0.751,1,0.9195572254335259,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Cysteine Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Bile Acid Biosynthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glycolysis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Fatty acid Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Fructose and Mannose Degradation,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Butyrate Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Thiamine Metabolism,3,1,1.11,0.765,1,0.9195572254335259,FALSE,Thiamine monophosphate
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Malate-Aspartate Shuttle,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Plasmalogen Synthesis,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Medium Chain Saturated Fatty Acids,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Mitochondrial Beta-Oxidation of Long Chain Saturated Fatty Acids,3,1,1.11,0.765,1,0.9195572254335259,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Propanoate Metabolism,6,1,1.37,0.818,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,"Valine, Leucine and Isoleucine Degradation",6,1,1.37,0.818,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Citric Acid Cycle,6,1,1.37,0.818,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Glutamate Metabolism,6,1,1.37,0.818,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Riboflavin Metabolism,7,2,2.6,0.83,1,0.9515483870967741,FALSE,Riboflavin; Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Warburg Effect,7,2,2.6,0.83,1,0.9515483870967741,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Nucleotide Sugars Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Inositol Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Lysine Degradation,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Galactose Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Alanine Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Starch and Sucrose Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Urea Cycle,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Tryptophan Metabolism,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Phytanic Acid Peroxisomal Oxidation,4,1,1.49,0.86,1,0.9515483870967741,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Warburg Effect,7,1,1.6,0.868,1,0.9573118971061094,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Pyruvate Metabolism,8,2,2.97,0.892,1,0.9617112676056339,FALSE,Biotin; NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Vitamin B6 Metabolism,8,1,1.83,0.906,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf,ora,Pyruvate Metabolism,8,1,1.83,0.906,1,0.9617112676056339,FALSE,Biotin
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Glycine and Serine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Porphyrin Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Phospholipid Biosynthesis,5,1,1.86,0.919,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Pyrimidine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,Flavin mononucleotide
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Folate Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Betaine Metabolism,5,1,1.86,0.919,1,0.9617112676056339,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Methionine Metabolism,6,1,2.23,0.954,1,0.9700256916996047,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Histidine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Purine Metabolism,7,1,2.6,0.975,1,0.9807184750733138,FALSE,NAD
+primary,stratified,Vital,2 mo.,up,BEP+ExBf+AZT,ora,Tyrosine Metabolism,8,1,2.97,0.986,1,0.986,FALSE,NAD

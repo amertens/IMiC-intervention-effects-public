@@ -1,0 +1,69 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+MISAME-III,1-2 mo.,BEP,down,Bile Acid Biosynthesis,15,0.707,7,1.22e-6,1.19e-4,-9.900990099009901
+Mumta-LW,1.5 mo.,BEP,down,Warburg Effect,5,0.138,4,1.98e-6,1.94e-4,-28.98550724637681
+ELICIT,1 mo.,Nico,down,Warburg Effect,5,0.154,4,3.22e-6,3.15e-4,-25.974025974025974
+Mumta-LW,2 mo.,BEP,up,Purine Metabolism,6,0.146,4,3.37e-6,2.53e-4,27.397260273972606
+MISAME-III,1-2 mo.,BEP,up,Glucose-Alanine Cycle,3,0.0634,3,7.41e-6,7.27e-4,47.31861198738171
+Mumta-LW,2 mo.,BEP,up,Ammonia Recycling,7,0.171,4,7.75e-6,2.53e-4,23.391812865497073
+Mumta-LW,2 mo.,BEP,up,Urea Cycle,7,0.171,4,7.75e-6,2.53e-4,23.391812865497073
+Mumta-LW,2 mo.,BEP,up,Glutamate Metabolism,8,0.195,4,1.53e-5,3.74e-4,20.51282051282051
+ELICIT,5 mo.,Nico,down,Glucose-Alanine Cycle,3,0.0829,3,1.76e-5,0.00173,-36.18817852834741
+MISAME-III,14-21 days,BEP,up,Beta-Alanine Metabolism,7,0.0683,3,1.79e-5,0.0014,43.92386530014641
+MISAME-III,3-4 mo.,BEP,up,Warburg Effect,5,0.0732,3,2.15e-5,0.0021,40.98360655737705
+MISAME-III,14-21 days,BEP,up,Histidine Metabolism,8,0.078,3,2.85e-5,0.0014,38.46153846153846
+MISAME-III,14-21 days,BEP,down,Warburg Effect,5,0.0894,3,4.19e-5,0.00411,-33.557046979865774
+MISAME-III,3-4 mo.,BEP,down,Bile Acid Biosynthesis,15,0.512,5,6.79e-5,0.00665,-9.765625
+MISAME-III,1-2 mo.,BEP,up,Warburg Effect,5,0.106,3,7.23e-5,0.00354,28.30188679245283
+MISAME-III,1-2 mo.,BEP,down,Fatty Acid Biosynthesis,3,0.141,3,9.47e-5,0.00464,-21.276595744680854
+Mumta-LW,1.5 mo.,BEP,up,Purine Metabolism,6,0.117,3,1.1e-4,0.0108,25.64102564102564
+Mumta-LW,2 mo.,BEP,up,Warburg Effect,5,0.122,3,1.14e-4,0.00224,24.59016393442623
+MISAME-III,1-2 mo.,BEP,up,Bile Acid Biosynthesis,15,0.317,4,1.45e-4,0.00474,12.618296529968454
+Mumta-LW,2 mo.,BEP,up,Glycine and Serine Metabolism,13,0.317,4,1.45e-4,0.00237,12.618296529968454
+ELICIT,5 mo.,Nico,down,Glycine and Serine Metabolism,13,0.359,4,2.47e-4,0.0109,-11.142061281337048
+ELICIT,5 mo.,Nico,down,Purine Metabolism,6,0.166,3,3.35e-4,0.0109,-18.072289156626503
+Mumta-LW,2 mo.,BEP,up,Beta-Alanine Metabolism,7,0.171,3,3.89e-4,0.00545,17.543859649122805
+MISAME-III,14-21 days,BEP,down,Arginine and Proline Metabolism,10,0.179,3,4.79e-4,0.0117,-16.75977653631285
+MISAME-III,3-4 mo.,BEP,up,Glucose-Alanine Cycle,3,0.0439,2,5.68e-4,0.0142,45.558086560364465
+Mumta-LW,1.5 mo.,BEP,down,Urea Cycle,7,0.193,3,5.76e-4,0.0176,-15.544041450777202
+ELICIT,5 mo.,Nico,down,Beta-Alanine Metabolism,7,0.193,3,5.76e-4,0.0113,-15.544041450777202
+ELICIT,5 mo.,Nico,down,Urea Cycle,7,0.193,3,5.76e-4,0.0113,-15.544041450777202
+MISAME-III,3-4 mo.,BEP,up,Glycine and Serine Metabolism,13,0.19,3,5.78e-4,0.0142,15.789473684210526
+Mumta-LW,2 mo.,BEP,up,Aspartate Metabolism,8,0.195,3,6.13e-4,0.00601,15.384615384615383
+ELICIT,1 mo.,Nico,down,Bile Acid Biosynthesis,15,0.463,4,7.2e-4,0.0127,-8.639308855291576
+MISAME-III,14-21 days,BEP,up,Warburg Effect,5,0.0488,2,7.84e-4,0.0256,40.983606557377044
+ELICIT,1 mo.,Nico,down,Urea Cycle,7,0.216,3,8.12e-4,0.0127,-13.88888888888889
+MISAME-III,14-21 days,BEP,down,Glucose-Alanine Cycle,3,0.0537,2,8.65e-4,0.017,-37.243947858473
+ELICIT,5 mo.,Nico,down,Glutamate Metabolism,8,0.221,3,9.05e-4,0.0127,-13.574660633484163
+MISAME-III,14-21 days,BEP,down,Glycine and Serine Metabolism,13,0.233,3,0.00111,0.0181,-12.875536480686694
+MISAME-III,3-4 mo.,BEP,up,Lysine Degradation,4,0.0585,2,0.00113,0.0221,34.18803418803419
+MISAME-III,14-21 days,BEP,up,Purine Metabolism,6,0.0585,2,0.00117,0.0287,34.18803418803419
+MISAME-III,1-2 mo.,BEP,up,Alanine Metabolism,3,0.0634,2,0.00122,0.024,31.545741324921135
+ELICIT,1 mo.,Nico,down,Glutamate Metabolism,8,0.247,3,0.00127,0.0156,-12.145748987854251
+Mumta-LW,2 mo.,BEP,up,Amino Sugar Metabolism,3,0.0732,2,0.00164,0.0124,27.3224043715847
+Mumta-LW,2 mo.,BEP,up,Alanine Metabolism,3,0.0732,2,0.00164,0.0124,27.3224043715847
+Mumta-LW,2 mo.,BEP,up,Glucose-Alanine Cycle,3,0.0732,2,0.00164,0.0124,27.3224043715847
+MISAME-III,14-21 days,BEP,down,Glutathione Metabolism,4,0.0715,2,0.00171,0.024,-27.972027972027973
+Mumta-LW,1.5 mo.,BEP,down,Amino Sugar Metabolism,3,0.0829,2,0.00213,0.0347,-24.125452352231605
+Mumta-LW,1.5 mo.,BEP,down,Glucose-Alanine Cycle,3,0.0829,2,0.00213,0.0347,-24.125452352231605
+ELICIT,5 mo.,Nico,down,Alanine Metabolism,3,0.0829,2,0.00213,0.026,-24.125452352231605
+MISAME-III,1-2 mo.,BEP,up,Glutathione Metabolism,4,0.0846,2,0.00242,0.0395,23.64066193853428
+ELICIT,1 mo.,Nico,down,Amino Sugar Metabolism,3,0.0927,2,0.00267,0.0261,-21.57497303128371
+ELICIT,1 mo.,Nico,down,Glucose-Alanine Cycle,3,0.0927,2,0.00267,0.0261,-21.57497303128371
+MISAME-III,3-4 mo.,BEP,up,Tryptophan Metabolism,6,0.0878,2,0.00277,0.042,22.779043280182233
+Mumta-LW,2 mo.,BEP,up,Glutathione Metabolism,4,0.0976,2,0.00324,0.0212,20.491803278688522
+Mumta-LW,2 mo.,BEP,up,Lysine Degradation,4,0.0976,2,0.00324,0.0212,20.491803278688522
+MISAME-III,3-4 mo.,BEP,up,Beta-Alanine Metabolism,7,0.102,2,0.00385,0.042,19.607843137254903
+MISAME-III,3-4 mo.,BEP,up,Ammonia Recycling,7,0.102,2,0.00385,0.042,19.607843137254903
+MISAME-III,3-4 mo.,BEP,up,Urea Cycle,7,0.102,2,0.00385,0.042,19.607843137254903
+ELICIT,5 mo.,Nico,down,Glutathione Metabolism,4,0.111,2,0.00418,0.041,-18.01801801801802
+ELICIT,5 mo.,Nico,down,Arachidonic Acid Metabolism,4,0.111,2,0.00418,0.041,-18.01801801801802
+ELICIT,1 mo.,Nico,down,Glutathione Metabolism,4,0.124,2,0.00524,0.0428,-16.129032258064516
+ELICIT,1 mo.,Nico,down,Arachidonic Acid Metabolism,4,0.124,2,0.00524,0.0428,-16.129032258064516
+Mumta-LW,2 mo.,BEP,up,Tyrosine Metabolism,5,0.122,2,0.00533,0.0307,16.39344262295082
+Mumta-LW,2 mo.,BEP,up,"Valine, Leucine and Isoleucine Degradation",5,0.122,2,0.00533,0.0307,16.39344262295082
+ELICIT,1 mo.,Nico,down,Glycine and Serine Metabolism,13,0.402,3,0.00589,0.0444,-7.462686567164178
+ELICIT,5 mo.,Nico,down,Bile Acid Biosynthesis,15,0.415,3,0.00652,0.048,-7.228915662650603
+ELICIT,5 mo.,Nico,down,Tyrosine Metabolism,5,0.138,2,0.00686,0.048,-14.492753623188404
+ELICIT,5 mo.,Nico,down,Alpha Linolenic Acid and Linoleic Acid Metabolism,5,0.138,2,0.00686,0.048,-14.492753623188404
+ELICIT,5 mo.,Nico,down,Warburg Effect,5,0.138,2,0.00686,0.048,-14.492753623188404
+Mumta-LW,2 mo.,BEP,up,Tryptophan Metabolism,6,0.146,2,0.00788,0.0429,13.698630136986303

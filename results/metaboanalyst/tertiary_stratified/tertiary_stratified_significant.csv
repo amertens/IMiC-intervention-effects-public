@@ -1,0 +1,22 @@
+outcome_group,arm_set,study,studytime,direction,contrast,module,pathway,total,hits,expected,raw_p,fdr_native,fdr_bh_pooled,significant,hit_features
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Methionine Metabolism,11,5,0.215,4.79e-7,4.69e-5,2.04533e-4,TRUE,Choline; Glycine; Sarcosine; L-Cysteine; Methionine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Glutamate Metabolism,8,4,0.156,5.63e-6,2.76e-4,0.0012020050000000001,TRUE,gamma-Aminobutyric acid; Glycine; Succinic acid; L-Cysteine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Glycine and Serine Metabolism,13,4,0.254,5.45e-5,0.00137,0.0034038000000000002,TRUE,Glycine; Sarcosine; L-Cysteine; Methionine
+tertiary,stratified,Elicit,1 mo.,down,Az.,ora,"Valine, Leucine and Isoleucine Degradation",5,3,0.0976,5.58e-5,0.00547,0.0034038000000000002,TRUE,Isoleucine; Succinic acid; L-Valine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,"Valine, Leucine and Isoleucine Degradation",5,3,0.0976,5.58e-5,0.00137,0.0034038000000000002,TRUE,Isoleucine; Succinic acid; Leucine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Arginine and Proline Metabolism,10,3,0.195,6.33e-4,0.0124,0.01546688888888889,TRUE,Glycine; Proline; Succinic acid
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Glutathione Metabolism,4,2,0.078,0.00205,0.0287,0.027354687500000002,TRUE,Glycine; L-Cysteine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Betaine Metabolism,4,2,0.078,0.00205,0.0287,0.027354687500000002,TRUE,Choline; Methionine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Spermidine and Spermine Biosynthesis,5,2,0.0976,0.00338,0.0368,0.035074999999999995,TRUE,Methionine; Spermine
+tertiary,stratified,Elicit,1 mo.,down,Nico+Az.,ora,Carnitine Synthesis,5,2,0.0976,0.00338,0.0368,0.035074999999999995,TRUE,Glycine; Succinic acid
+tertiary,stratified,Misame,1-2 mo.,down,BEP/BEP,ora,Spermidine and Spermine Biosynthesis,5,3,0.171,3.3e-4,0.0323,0.01281,TRUE,Spermine; Spermidine; Putrescine
+tertiary,stratified,Misame,1-2 mo.,up,BEP/BEP,ora,Bile Acid Biosynthesis,15,3,0.171,3.89e-4,0.0381,0.013841916666666669,TRUE,Taurine; Cholic acid; Deoxycholic acid
+tertiary,stratified,Misame,14-21 days,down,IFA/BEP,ora,Arginine and Proline Metabolism,10,4,0.325,1.52e-4,0.0149,0.008113,TRUE,Glycine; Proline; Succinic acid; 4-Hydroxyproline
+tertiary,stratified,Misame,14-21 days,down,BEP/IFA,ora,Warburg Effect,5,2,0.0325,3.16e-4,0.0309,0.01281,TRUE,Lactic acid; Succinic acid
+tertiary,stratified,Misame,14-21 days,down,BEP/BEP,ora,Homocysteine Degradation,3,2,0.0439,5.68e-4,0.0283,0.015425374999999998,TRUE,L-Cysteine; Homocysteine
+tertiary,stratified,Misame,14-21 days,down,BEP/BEP,ora,Glycine and Serine Metabolism,13,3,0.19,5.78e-4,0.0283,0.015425374999999998,TRUE,L-Threonine; L-Cysteine; Homocysteine
+tertiary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Glycine and Serine Metabolism,13,4,0.233,3.68e-5,0.0036,0.0034038000000000002,TRUE,Sarcosine; L-Arginine; Methionine; Homocysteine
+tertiary,stratified,Misame,3-4 mo.,down,BEP/BEP,ora,Methionine Metabolism,11,3,0.197,6.52e-4,0.032,0.01546688888888889,TRUE,Sarcosine; Methionine; Homocysteine
+tertiary,stratified,Vital,1.5 mo.,down,BEP+ExBf+AZT,ora,Fatty Acid Biosynthesis,3,3,0.0683,9.44e-6,9.25e-4,0.0013436266666666666,TRUE,Palmitic acid; Dodecanoic acid; Myristic acid
+tertiary,stratified,Vital,1.5 mo.,up,BEP+ExBf,ora,Urea Cycle,7,3,0.182,4.76e-4,0.0467,0.015425374999999998,TRUE,L-Alanine; Glutamine; Citrulline
+tertiary,stratified,Vital,2 mo.,down,BEP+ExBf,ora,Bile Acid Biosynthesis,15,3,0.146,2.26e-4,0.0221,0.010722444444444444,TRUE,Taurocholic acid; Glycocholic acid; Chenodeoxycholic acid glycine conjugate

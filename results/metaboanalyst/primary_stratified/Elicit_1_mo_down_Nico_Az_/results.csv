@@ -1,0 +1,24 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Elicit (1 mo.)","Nico+Az.","down","Oxidation of Branched Chain Fatty Acids",3,2,0.257,0.0148,0.726
+"Elicit (1 mo.)","Nico+Az.","down","Thiamine Metabolism",3,2,0.257,0.0148,0.726
+"Elicit (1 mo.)","Nico+Az.","down","Phytanic Acid Peroxisomal Oxidation",4,2,0.343,0.029,0.948
+"Elicit (1 mo.)","Nico+Az.","down","Ubiquinone Biosynthesis",1,1,0.0857,0.0857,1
+"Elicit (1 mo.)","Nico+Az.","down","Taurine and Hypotaurine Metabolism",2,1,0.171,0.166,1
+"Elicit (1 mo.)","Nico+Az.","down","Steroid Biosynthesis",3,1,0.257,0.242,1
+"Elicit (1 mo.)","Nico+Az.","down","Bile Acid Biosynthesis",3,1,0.257,0.242,1
+"Elicit (1 mo.)","Nico+Az.","down","Nucleotide Sugars Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Lysine Degradation",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Galactose Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Arachidonic Acid Metabolism",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Transfer of Acetyl Groups into Mitochondria",4,1,0.343,0.313,1
+"Elicit (1 mo.)","Nico+Az.","down","Phenylalanine and Tyrosine Metabolism",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Porphyrin Metabolism",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Lactose Synthesis",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Threonine and 2-Oxobutanoate Degradation",5,1,0.429,0.38,1
+"Elicit (1 mo.)","Nico+Az.","down","Propanoate Metabolism",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Valine, Leucine and Isoleucine Degradation",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Citric Acid Cycle",6,1,0.514,0.442,1
+"Elicit (1 mo.)","Nico+Az.","down","Purine Metabolism",7,1,0.6,0.499,1
+"Elicit (1 mo.)","Nico+Az.","down","Warburg Effect",7,1,0.6,0.499,1
+"Elicit (1 mo.)","Nico+Az.","down","Tyrosine Metabolism",8,1,0.686,0.553,1
+"Elicit (1 mo.)","Nico+Az.","down","Pyruvate Metabolism",8,1,0.686,0.553,1

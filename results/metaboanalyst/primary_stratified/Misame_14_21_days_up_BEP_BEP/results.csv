@@ -1,0 +1,22 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","BEP/BEP","up","Nicotinate and Nicotinamide Metabolism",7,4,2.6,0.214,1
+"Misame (14-21 days)","BEP/BEP","up","Pantothenate and CoA Biosynthesis",3,2,1.11,0.306,1
+"Misame (14-21 days)","BEP/BEP","up","Thiamine Metabolism",3,2,1.11,0.306,1
+"Misame (14-21 days)","BEP/BEP","up","Vitamin B6 Metabolism",8,4,2.97,0.325,1
+"Misame (14-21 days)","BEP/BEP","up","Biotin Metabolism",1,1,0.371,0.371,1
+"Misame (14-21 days)","BEP/BEP","up","Fatty Acid Biosynthesis",2,1,0.743,0.612,1
+"Misame (14-21 days)","BEP/BEP","up","Valine, Leucine and Isoleucine Degradation",6,2,2.23,0.743,1
+"Misame (14-21 days)","BEP/BEP","up","Riboflavin Metabolism",7,2,2.6,0.83,1
+"Misame (14-21 days)","BEP/BEP","up","Alanine Metabolism",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Gluconeogenesis",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Transfer of Acetyl Groups into Mitochondria",4,1,1.49,0.86,1
+"Misame (14-21 days)","BEP/BEP","up","Beta-Alanine Metabolism",8,2,2.97,0.892,1
+"Misame (14-21 days)","BEP/BEP","up","Ammonia Recycling",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Arginine and Proline Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Pyrimidine Metabolism",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Threonine and 2-Oxobutanoate Degradation",5,1,1.86,0.919,1
+"Misame (14-21 days)","BEP/BEP","up","Propanoate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Citric Acid Cycle",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Glutamate Metabolism",6,1,2.23,0.954,1
+"Misame (14-21 days)","BEP/BEP","up","Warburg Effect",7,1,2.6,0.975,1
+"Misame (14-21 days)","BEP/BEP","up","Pyruvate Metabolism",8,1,2.97,0.986,1

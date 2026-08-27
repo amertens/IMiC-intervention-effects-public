@@ -1,0 +1,22 @@
+study,timepoint,contrast,direction,pathway,total,expected,hits,raw_p,fdr_native,enrichment_ratio
+ELICIT,1 mo.,Nico+Az.,down,Methionine Metabolism,11,0.215,5,4.79e-7,4.69e-5,-23.25581395348837
+ELICIT,1 mo.,Nico+Az.,down,Glutamate Metabolism,8,0.156,4,5.63e-6,2.76e-4,-25.641025641025642
+Mumta-LW,1.5 mo.,BEP+ExBf+AZT,down,Fatty Acid Biosynthesis,3,0.0683,3,9.44e-6,9.25e-4,-43.92386530014641
+MISAME-III,3-4 mo.,BEP/BEP,down,Glycine and Serine Metabolism,13,0.233,4,3.68e-5,0.0036,-17.167381974248926
+ELICIT,1 mo.,Nico+Az.,down,Glycine and Serine Metabolism,13,0.254,4,5.45e-5,0.00137,-15.748031496062993
+ELICIT,1 mo.,Az.,down,"Valine, Leucine and Isoleucine Degradation",5,0.0976,3,5.58e-5,0.00547,-30.737704918032787
+ELICIT,1 mo.,Nico+Az.,down,"Valine, Leucine and Isoleucine Degradation",5,0.0976,3,5.58e-5,0.00137,-30.737704918032787
+MISAME-III,14-21 days,IFA/BEP,down,Arginine and Proline Metabolism,10,0.325,4,1.52e-4,0.0149,-12.307692307692307
+Mumta-LW,2 mo.,BEP+ExBf,down,Bile Acid Biosynthesis,15,0.146,3,2.26e-4,0.0221,-20.547945205479454
+MISAME-III,14-21 days,BEP/IFA,down,Warburg Effect,5,0.0325,2,3.16e-4,0.0309,-61.53846153846153
+MISAME-III,1-2 mo.,BEP/BEP,down,Spermidine and Spermine Biosynthesis,5,0.171,3,3.3e-4,0.0323,-17.543859649122805
+MISAME-III,1-2 mo.,BEP/BEP,up,Bile Acid Biosynthesis,15,0.171,3,3.89e-4,0.0381,17.543859649122805
+Mumta-LW,1.5 mo.,BEP+ExBf,up,Urea Cycle,7,0.182,3,4.76e-4,0.0467,16.483516483516485
+MISAME-III,14-21 days,BEP/BEP,down,Homocysteine Degradation,3,0.0439,2,5.68e-4,0.0283,-45.558086560364465
+MISAME-III,14-21 days,BEP/BEP,down,Glycine and Serine Metabolism,13,0.19,3,5.78e-4,0.0283,-15.789473684210526
+ELICIT,1 mo.,Nico+Az.,down,Arginine and Proline Metabolism,10,0.195,3,6.33e-4,0.0124,-15.384615384615383
+MISAME-III,3-4 mo.,BEP/BEP,down,Methionine Metabolism,11,0.197,3,6.52e-4,0.032,-15.228426395939085
+ELICIT,1 mo.,Nico+Az.,down,Glutathione Metabolism,4,0.078,2,0.00205,0.0287,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Betaine Metabolism,4,0.078,2,0.00205,0.0287,-25.641025641025642
+ELICIT,1 mo.,Nico+Az.,down,Spermidine and Spermine Biosynthesis,5,0.0976,2,0.00338,0.0368,-20.491803278688522
+ELICIT,1 mo.,Nico+Az.,down,Carnitine Synthesis,5,0.0976,2,0.00338,0.0368,-20.491803278688522

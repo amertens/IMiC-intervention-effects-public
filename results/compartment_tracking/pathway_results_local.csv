@@ -1,0 +1,14 @@
+pathway,kegg_id,total,expected,hits,raw_p,fdr,impact
+Glyoxylate and dicarboxylate metabolism,hsa00630,32,0.38191,3,0.0057478,0.45982,0.2
+Pyrimidine metabolism,hsa00240,39,0.46545,2,0.076956,1,0.03511
+Vitamin B6 metabolism,hsa00750,9,0.10741,1,0.10267,1,0.4902
+Histidine metabolism,hsa00340,16,0.19095,1,0.17553,1,0
+Glycerolipid metabolism,hsa00561,16,0.19095,1,0.17553,1,0.09346
+Pantothenate and CoA biosynthesis,hsa00770,20,0.23869,1,0.21462,1,0.0068
+Citrate cycle (TCA cycle),hsa00020,20,0.23869,1,0.21462,1,0.09038
+Pentose phosphate pathway,hsa00030,23,0.2745,1,0.24277,1,0
+"Alanine, aspartate and glutamate metabolism",hsa00250,28,0.33417,1,0.28758,1,0
+"Glycine, serine and threonine metabolism",hsa00260,33,0.39384,1,0.32986,1,0.02475
+Biosynthesis of unsaturated fatty acids,hsa01040,36,0.42965,1,0.35408,1,0
+Tryptophan metabolism,hsa00380,41,0.48932,1,0.39262,1,0.03901
+Purine metabolism,hsa00230,70,0.83543,1,0.57655,1,0.04405

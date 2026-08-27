@@ -1,0 +1,15 @@
+"study","contrast","direction","pathway","total","hits","expected","raw_p","fdr"
+"Misame (14-21 days)","IFA/BEP","down","Ubiquinone Biosynthesis",1,1,0.0286,0.0286,1
+"Misame (14-21 days)","IFA/BEP","down","Taurine and Hypotaurine Metabolism",2,1,0.0571,0.0571,1
+"Misame (14-21 days)","IFA/BEP","down","Steroid Biosynthesis",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Oxidation of Branched Chain Fatty Acids",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Bile Acid Biosynthesis",3,1,0.0857,0.0857,1
+"Misame (14-21 days)","IFA/BEP","down","Nucleotide Sugars Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Galactose Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Arachidonic Acid Metabolism",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Phytanic Acid Peroxisomal Oxidation",4,1,0.114,0.114,1
+"Misame (14-21 days)","IFA/BEP","down","Phenylalanine and Tyrosine Metabolism",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Porphyrin Metabolism",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Lactose Synthesis",5,1,0.143,0.143,1
+"Misame (14-21 days)","IFA/BEP","down","Purine Metabolism",7,1,0.2,0.2,1
+"Misame (14-21 days)","IFA/BEP","down","Tyrosine Metabolism",8,1,0.229,0.229,1
