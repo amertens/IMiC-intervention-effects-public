@@ -165,7 +165,8 @@ render_msea_panelB <- function(msea_csv, out_png,
       else geom_vline(xintercept = er_ref, linetype = "dashed", color = "blue") } +
     geom_label_repel(data = label_df, aes(label = plab, color = point_color),
                      size = label_size, label.padding = label_padding, box.padding = box_padding,
-                     min.segment.length = 0, max.overlaps = 200, show.legend = FALSE) +
+                     min.segment.length = 0, max.overlaps = 200, show.legend = FALSE,
+                     seed = 123) +   # draw-time placement; required for byte-reproducible Fig 5B
     scale_color_manual(values = color_vals, name = "Study",
                        breaks = col_breaks) +
     guides(colour = guide_legend(nrow = 2, byrow = TRUE)) +   # wrap so it fits the narrow half-page panel

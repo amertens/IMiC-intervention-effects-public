@@ -1,7 +1,7 @@
 # Pathway / enrichment pipeline (`src/metaboanalyst/`)
 
 A scripted, push-button **MetaboAnalystR** pipeline that reproduces the milk metabolome/proteome
-enrichment analyses for the IMiC intervention-effects paper — replacing the earlier manual
+enrichment analyses for the IMiC intervention-effects paper, replacing the earlier manual
 metaboanalyst.ca point-and-click workflow with code that runs the same analyses identically every
 time.
 
@@ -40,19 +40,19 @@ legitimately (a pathway needs ≥ 3 mappable metabolites) are caught and logged 
 | Script | What it produces | Manuscript output |
 |---|---|---|
 | `run-primary.R` | Primary ORA, **combined** and **stratified** arms | Table S1 (primary MSEA), Fig 3 enrichment |
-| `run-primary-pathway-compare.R` | Combined-arm primary via **pathway/impact** (for ORA-vs-pathway comparison) | — (comparison only) |
-| `run-secondary-tertiary.R` | Secondary + tertiary pathway analysis, both arm sets | — |
+| `run-primary-pathway-compare.R` | Combined-arm primary via **pathway/impact** (for ORA-vs-pathway comparison) | (comparison only) |
+| `run-secondary-tertiary.R` | Secondary + tertiary pathway analysis, both arm sets | n/a |
 | `run-tertiary-msea.R` | Tertiary targeted-metabolome ORA/MSEA, both arm sets | Table S2 |
 | `run-milk-mummichog-s5.R` | Directional Mummichog of the untargeted milk metabolome | Table S5 |
 | `run-proteomics-go.R` | GO-BP enrichment of the untargeted milk proteome | Table S6 |
-| `build-supplementary-table.R` | Consolidates a group×arm's cells into one supplementary table | — |
-| `validate-against-trenton.R` | Diffs our numbers against Trenton's downloaded ground-truth cell | — |
-| `R/build-cells.R` | Splits a result frame into per-cell query + reference lists | — |
-| `R/build-reference.R` | Builds the name-matched reference metabolome (MetaboAnalyst name-mapping) | — |
-| `R/run-ora.R` | `msetora` wrapper (+ documented 4.3.0 bug workarounds) | — |
-| `R/run-pathway.R` | `pathora` wrapper | — |
-| `R/harvest.R` | Pulls the results + membership tables out of an `mSet` | — |
-| `R/config-primary.R`, `R/config-pathway-groups.R`, `R/label-map.R` | Per-group configuration + label maps | — |
+| `build-supplementary-table.R` | Consolidates a group×arm's cells into one supplementary table | n/a |
+| `validate-against-trenton.R` | Diffs our numbers against Trenton's downloaded ground-truth cell | n/a |
+| `R/build-cells.R` | Splits a result frame into per-cell query + reference lists | n/a |
+| `R/build-reference.R` | Builds the name-matched reference metabolome (MetaboAnalyst name-mapping) | n/a |
+| `R/run-ora.R` | `msetora` wrapper (+ documented 4.3.0 bug workarounds) | n/a |
+| `R/run-pathway.R` | `pathora` wrapper | n/a |
+| `R/harvest.R` | Pulls the results + membership tables out of an `mSet` | n/a |
+| `R/config-primary.R`, `R/config-pathway-groups.R`, `R/label-map.R` | Per-group configuration + label maps | n/a |
 
 ## How to run (from the repo root)
 
@@ -76,10 +76,10 @@ Inputs are the combined-arm / stratified-arm intervention-effect result RDS
 ## Reproductions verified (so you can trust the swap)
 
 - **Primary ORA**, ELICIT · up · 1 mo: Nicotinate & Nicotinamide Metabolism **total 7 / hits 5**,
-  raw p = 3.74 × 10⁻⁴ — matches the manual run.
-- **Primary pathway/impact**, same cell: raw p = **1.2011 × 10⁻⁵**, impact 0.205 — matches Trenton's
-  downloaded pathway CSV exactly. (The pathway module uses the full SMPDB background — total 32 — so
-  it is more significant than ORA's restricted-reference background — total 7. This is the
+  raw p = 3.74 × 10⁻⁴, matches the manual run.
+- **Primary pathway/impact**, same cell: raw p = **1.2011 × 10⁻⁵**, impact 0.205: matches Trenton's
+  downloaded pathway CSV exactly. (The pathway module uses the full SMPDB background (total 32) so
+  it is more significant than ORA's restricted-reference background, total 7. This is the
   ORA-vs-pathway difference to discuss, not a discrepancy.)
 
 ## MetaboAnalystR gotchas (all patched in-session, none change the numbers)
@@ -101,6 +101,6 @@ header. In brief (MetaboAnalystR **4.3.0**):
 
 ## Related docs
 
-- `FIDELITY-REPORT.md` — cell-by-cell fidelity of the replication.
-- `PHASE3-SUMMARY.md` — secondary/tertiary milk pathway summary.
-- `investigate/FINDINGS-*.md` — deep dives (reference metabolome, Table S2/S5 re-derivation).
+- `FIDELITY-REPORT.md`: cell-by-cell fidelity of the replication.
+- `PHASE3-SUMMARY.md`: secondary/tertiary milk pathway summary.
+- `investigate/FINDINGS-*.md`: deep dives (reference metabolome, Table S2/S5 re-derivation).

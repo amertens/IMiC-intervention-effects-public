@@ -1,4 +1,4 @@
-# figS2-growth-outcomes.R
+# figS1-growth-outcomes.R
 # =============================================================================
 # Figure S2: intervention effects on child growth (LAZ, WLZ) within the IMiC
 # substudies of the three trials.
@@ -18,9 +18,9 @@
 # This script writes its own distinct filename so neither can clobber it.
 #
 # Input:  results/growth_intervention_effects_results.RDS
-# Output: figures/figureS2_growth_outcomes.{pdf,eps,png}
+# Output: figures/figureS1_growth_outcomes.{pdf,eps,png}
 #
-# Run from repo root: Rscript figure-scripts/manuscript_figures/figS2-growth-outcomes.R
+# Run from repo root: Rscript figure-scripts/manuscript_figures/figS1-growth-outcomes.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))   # brings in ci_to_pvalue(), theme/palette helpers
 
@@ -91,10 +91,10 @@ p <- ggplot(plotdf_primary,
         legend.position = "bottom") +
   xlab("Intervention arm\n(compared to Control)") + ylab("Z-score difference")
 
-saveRDS(plotdf_primary, file = paste0(here::here(), "/figure-data/figureS2_growth_plot_data.RDS"))
-save_figure_3way(p, "figureS2_growth_outcomes",
+saveRDS(plotdf_primary, file = paste0(here::here(), "/figure-data/figureS1_growth_plot_data.RDS"))
+save_figure_3way(p, "figureS1_growth_outcomes",
                  width  = science_dims$full_page$width,   # 7.25 in
                  height = 4.2,
                  dir    = paste0(here::here(), "/figures"))
 
-message("Wrote figures/figureS2_growth_outcomes.{pdf,eps,png}")
+message("Wrote figures/figureS1_growth_outcomes.{pdf,eps,png}")

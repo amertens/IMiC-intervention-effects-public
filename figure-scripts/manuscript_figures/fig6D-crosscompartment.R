@@ -41,8 +41,8 @@
 # Output: figures/figure6_panelD_crosscompartment.png
 #
 # Run from repo root: Rscript figure-scripts/manuscript_figures/fig6D-crosscompartment.R
-# (build order: figS10-compartment-tracking.R -> run-compartment-pathway-trenton.R
-#  -> figS10-compartment-tracking.R again -> this script; see the trenton script's header)
+# (build order: appendix-compartment-tracking.R -> run-compartment-pathway-trenton.R
+#  -> appendix-compartment-tracking.R again -> this script; see the trenton script's header)
 # =============================================================================
 suppressMessages({ library(dplyr); library(stringr); library(ggplot2); library(forcats); library(readr) })
 source("figure-scripts/0_figure-functions.R")   # theme_imic() = Science-submission theme (Helvetica, font floors)

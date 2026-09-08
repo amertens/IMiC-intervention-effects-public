@@ -1,5 +1,5 @@
 # =============================================================================
-# figS11-crosscompartment-volcanoes.R
+# appendix-crosscompartment-volcanoes.R
 #
 # Supplementary Figure S11: volcano plots of BEP intervention effects on the
 # metabolome across compartments and visits (MISAME-III).
@@ -30,10 +30,10 @@
 #   results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS
 #   results/supplement_status_fdr_features.csv        (putative names)
 # Output:
-#   figures/cross_compartment/figureS11_crosscompartment_volcanoes.png
+#   figures/cross_compartment/appendix_crosscompartment_volcanoes.png
 #
 # Run from repo root:
-#   Rscript figure-scripts/manuscript_figures/figS11-crosscompartment-volcanoes.R
+#   Rscript figure-scripts/manuscript_figures/appendix-crosscompartment-volcanoes.R
 # =============================================================================
 suppressMessages({ library(data.table); library(ggplot2); library(ggrepel)
                    library(patchwork) })
@@ -42,7 +42,7 @@ source("figure-scripts/0_figure-functions.R")   # theme_imic()
 BLOOD <- "results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS"
 MILK  <- "results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS"
 NAMES <- "results/supplement_status_fdr_features.csv"
-OUT   <- "figures/cross_compartment/figureS11_crosscompartment_volcanoes.png"
+OUT   <- "figures/cross_compartment/appendix_crosscompartment_volcanoes.png"
 
 # Labels are allocated PER DIRECTION, not per panel. Labelling only up-regulated
 # features (as the original figure did) misrepresents several panels: the

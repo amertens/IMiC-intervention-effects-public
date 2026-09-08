@@ -248,7 +248,11 @@ plot_imic_volcano_panel <- function(res,
     aes(label       = biomarker),
     max.overlaps    = getOption("ggrepel.max.overlaps", default = overlap_n),
     size            = 2.5,
-    alpha           = 0.5)
+    alpha           = 0.5,
+    # ggrepel resolves label positions at DRAW time, so set.seed() before the plot
+    # call does NOT fix them -- only this argument does. Without it, two runs of the
+    # same script give byte-different PNGs (labels nudged a few px). Added 2026-09-08.
+    seed            = 123)
 }
 
 

@@ -26,8 +26,9 @@
 #   This describes persistence and emergence of intervention-associated FEATURES
 #   over calendar time. It is NOT within-individual accumulation.
 #
-# NOTE ON A RELATED NUMBER: Fig. S7D reports 3 / 8 / 18 FDR-significant infant-blood
-#   features at 1-2 / 3-4 / 5-6 months. That count is BOTH directions; this table is
+# NOTE ON A RELATED NUMBER: the retired blood-transfer panel (Panel D of what was then
+#   Fig. S7, cut from the supplement 2026-08-26) reported 3 / 8 / 18 FDR-significant
+#   infant-blood features at 1-2 / 3-4 / 5-6 months. That count is BOTH directions; this table is
 #   up-regulated only, hence 3 / 8 / 17 (one down-regulated feature at 5-6 months).
 #   Both are correct; they answer different questions.
 #

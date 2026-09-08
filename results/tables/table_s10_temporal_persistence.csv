@@ -1,0 +1,8 @@
+compartment,dataset,visit_from,visit_to,visit_from_code,visit_to_code,n_sig_preceding,n_sig_current,n_retained,n_newly_sig,pct_retained
+Infant blood (VAMS),VamsPostnatalInfant,Birth,1-2 mo.,acco,pn12,0,3,0,3,
+Infant blood (VAMS),VamsPostnatalInfant,1-2 mo.,3-4 mo.,pn12,pn34,3,8,3,5,100
+Infant blood (VAMS),VamsPostnatalInfant,3-4 mo.,5-6 mo.,pn34,pn56,8,17,7,10,87.5
+Maternal VAMS,VamsPostnatalMaternal,Third trimester,5-6 mo.,tri3,pn56,0,12,0,12,
+Maternal plasma,MaternalPlasma,,Inclusion,,incl,,16,0,16,
+Maternal plasma,MaternalPlasma,Inclusion,Third trimester,incl,tri3,16,9,4,5,25
+Maternal plasma,MaternalPlasma,Third trimester,1-2 mo.,tri3,pn12,9,266,7,259,77.8

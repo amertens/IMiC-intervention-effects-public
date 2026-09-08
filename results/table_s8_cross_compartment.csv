@@ -1,0 +1,11 @@
+panel,Putative annotation,m/z,Mode,"Maternal blood, ΔSD (q)","Infant blood, ΔSD (q)"
+A,Octenoylcarnitine*,286.202,pos,+0.78 (<0.001),+1.04 (<0.001)
+A,4-Hydroxy-2-oxoglutarate,142.998,neg,+0.54 (0.0068),+0.97 (<0.001)
+A,Citrate / Isocitrate*,228.994,neg,+0.71 (<0.001),+0.93 (<0.001)
+A,Perillic acid*,165.092,neg,+0.59 (<0.001),+0.84 (<0.001)
+A,Aconitic acid,173.009,neg,+0.47 (0.088),+0.65 (<0.001)
+A,N-Acetylserotonin,220.118,pos,+0.26 (0.4),+0.63 (<0.001)
+A,Dehydroascorbate*,208.986,neg,+0.47 (0.058),+0.57 (<0.001)
+A,Methylmalonate,99.009,neg,+0.32 (0.33),+0.57 (<0.001)
+A,Threonic acid,135.030,neg,+0.68 (<0.001),+0.41 (0.58)
+A,N-Methylhistidine,153.066,pos,+0.61 (<0.001),+0.31 (0.91)

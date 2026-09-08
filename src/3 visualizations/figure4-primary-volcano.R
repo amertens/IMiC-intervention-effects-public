@@ -1,5 +1,12 @@
 # figure4-primary-volcano.R
 # =============================================================================
+# SUPERSEDED 2026-09-08 -- do not run for the manuscript.
+#   The live generator of Fig 3 is
+#   figure-scripts/manuscript_figures/fig3-primary-volcano-composite.R.
+#   This script still reads the legacy figures/figure4_panelB_msea.png name;
+#   kept for reference only.
+# =============================================================================
+# =============================================================================
 # Primary untargeted-metabolome volcano composite (manuscript Fig 3).
 #
 # Adapted from trenton scripts/old/figure_scripts/figure4.Rmd into a standalone,

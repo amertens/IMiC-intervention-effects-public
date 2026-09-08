@@ -1,10 +1,10 @@
-# Phase 3 summary — secondary & tertiary milk pathway analysis
+# Phase 3 summary: secondary & tertiary milk pathway analysis
 
 **Date:** 2026-07-22
 **Spec:** `docs/superpowers/specs/2026-07-22-metaboanalystr-phase3-secondary-tertiary-design.md`
 
 Extended the pipeline to the **secondary** and **tertiary** outcome groups across
-**combined and stratified** arms, using the **Pathway module** (`pathora`, filter OFF) —
+**combined and stratified** arms, using the **Pathway module** (`pathora`, filter OFF), 
 Trenton's rule. The Phase-0/1/2 machinery was generalized (`run_outcome_group`,
 `build_supplementary_table`) rather than duplicated; `run-primary.R` is now a thin wrapper
 over the general driver, and the primary nicotinate **7/5** result still reproduces
@@ -14,8 +14,8 @@ over the general driver, and the primary nicotinate **7/5** result still reprodu
 
 | group / arms | cells with results | skipped | significant pathways |
 |---|---|---|---|
-| secondary / combined | 0 | 7 | — |
-| secondary / stratified | 0 | 26 | — |
+| secondary / combined | 0 | 7 | n/a |
+| secondary / stratified | 0 | 26 | n/a |
 | tertiary / combined | 8 | 6 | 6 |
 | tertiary / stratified | 22 | 16 | 7 |
 
@@ -25,14 +25,14 @@ Outputs: `results/metaboanalyst/<group>_<arm>/` (per-cell `results.csv`/`members
 
 ## Findings
 
-- **Secondary produces no pathway results** — its features are HMOs and bioactives, which
+- **Secondary produces no pathway results**: its features are HMOs and bioactives, which
   are not in SMPDB metabolic-pathway sets. Every cell is skipped with "too few mappable
   metabolites for enrichment". This is a genuine data/database limitation, not a bug.
-- **Many tertiary cells skip for the same reason** — tertiary is dominated by lipids
-  (triglycerides, phosphatidylcholines, ceramides, …) that don't map to SMPDB pathways
+- **Many tertiary cells skip for the same reason**: tertiary is dominated by lipids
+  (triglycerides, phosphatidylcholines, ceramides, ...) that don't map to SMPDB pathways
   (even a 199-compound cell can leave < 3 mappable metabolites). The cells that DO map carry
   amino-acid / acylcarnitine / bile-acid signal.
-- **Significant tertiary pathways (fdr_native < 0.05) are coherent and directional** — all
+- **Significant tertiary pathways (fdr_native < 0.05) are coherent and directional**: all
   in DOWNregulated arms, concentrated in amino-acid and fatty-acid-oxidation metabolism:
   - combined: Homocysteine Degradation, Oxidation of Branched-Chain Fatty Acids, β-Oxidation
     of Very-Long-Chain Fatty Acids, Carnitine Synthesis, Methionine Metabolism (Misame BEP /

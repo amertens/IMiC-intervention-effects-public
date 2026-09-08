@@ -1,8 +1,8 @@
-# `results/` — aggregate effect estimates
+# `results/`: aggregate effect estimates
 
 These files are the output of `src/2 analysis/clean_results.R`. Each row is **one
 estimated intervention effect** for one outcome, in one study, at one visit. There are
-**no participant records here** — no IDs, no per-subject measurements.
+**no participant records here**, no IDs, no per-subject measurements.
 
 They are shipped so that everything downstream of estimation (FDR correction,
 enrichment/pathway analysis, figures, tables) can be re-run without the restricted
@@ -23,7 +23,7 @@ individual-level trial data.
 | `CHILD_nutrient_medians.csv`, `CHILD_nutrient_z_cutoffs.csv` | CHILD-cohort reference medians and z-score cutoffs used by the MILQ comparison figure. |
 
 **Pick the right frame.** The pooled (`combined_arms`) and arm-stratified files answer
-different questions and are both used in the paper — the proteomics results and the
+different questions and are both used in the paper, the proteomics results and the
 Fig. 5C triglyceride analysis come from the arm-stratified frame, most other panels from
 the pooled frame. Check which file a number came from before comparing across outputs.
 
@@ -50,11 +50,11 @@ Shared by the `*_results_clean` files (24 columns in the main file, 29,320 rows)
 | Directory | Contents |
 |---|---|
 | `metaboanalyst/` | Output of the scripted MetaboAnalystR pipeline (`src/metaboanalyst/`): ORA and pathway-impact cells per outcome group and direction, the mummichog run for Table S5, the proteome GO run for Table S6, and the assembled supplementary tables. Pathway- and compound-level. |
-| `compartment_tracking/` | Cross-compartment linkage tables behind Fig. 6D and Fig. S10 — matched features, linked up-regulated sets, and the pathway/compound lists. |
+| `compartment_tracking/` | Cross-compartment linkage tables behind Fig. 6D and Fig. S10, matched features, linked up-regulated sets, and the pathway/compound lists. |
 
 Together with the `*_clean` files above, these are what let the pathway and enrichment
 figures rebuild without the restricted data. Also present at the top level: a handful of
-aggregate intermediates the figure scripts read directly —
+aggregate intermediates the figure scripts read directly, 
 `pathway_replication_matrix.csv`, `proteomics_go_uniprot.csv`,
 `blood_chemical_class_enrichment_directional.csv`,
 `microbiome_diversity_intervention_effects_results.RDS`,
@@ -66,8 +66,8 @@ aggregate intermediates the figure scripts read directly —
 
 ## Not included
 
-Feature-level results — untargeted metabolomics and the blood-compartment /
-cross-compartment analyses — are the same kind of aggregate estimate but run to roughly
+Feature-level results, untargeted metabolomics and the blood-compartment /
+cross-compartment analyses, are the same kind of aggregate estimate but run to roughly
 **670 MB** across eight files (1–6.8 million rows each), which is too large for a code
 archive. Figures that depend on them (parts of Figs 3, 6, and S6–S7) will not rebuild
 from this repository alone. They are available from the authors on request.

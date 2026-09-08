@@ -1,4 +1,4 @@
-# figS6-microbiome-diversity.R
+# figS5-microbiome-diversity.R
 # =============================================================================
 # Figure S6: intervention effects on human milk microbiome alpha diversity
 # (observed richness and Shannon diversity), by study and visit.
@@ -17,9 +17,9 @@
 # published (coloured, shape-coded) variant under its own filename.
 #
 # Input:  results/microbiome_diversity_intervention_effects_results.RDS
-# Output: figures/figureS6_microbiome_diversity.{pdf,eps,png}
+# Output: figures/figureS5_microbiome_diversity.{pdf,eps,png}
 #
-# Run from repo root: Rscript figure-scripts/manuscript_figures/figS6-microbiome-diversity.R
+# Run from repo root: Rscript figure-scripts/manuscript_figures/figS5-microbiome-diversity.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))
 
@@ -80,8 +80,8 @@ p <- ggplot(res_diversity, aes(x = studytime, y = est,
         legend.position = "none") +
   xlab("Study and timepoint") + ylab("Z-score difference")
 
-save_figure_3way(p, "figureS6_microbiome_diversity",
+save_figure_3way(p, "figureS5_microbiome_diversity",
                  width = 9, height = 4,
                  dir   = paste0(here::here(), "/figures"))
 
-message("Wrote figures/figureS6_microbiome_diversity.{pdf,eps,png}")
+message("Wrote figures/figureS5_microbiome_diversity.{pdf,eps,png}")

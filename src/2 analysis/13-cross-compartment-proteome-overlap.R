@@ -74,7 +74,11 @@ analyze <- function(blood_label) {
     geom_abline(slope = 1, intercept = 0, linetype = "dotted", colour = "grey70") +
     geom_point(aes(colour = sig_class), alpha = 0.6) +
     geom_text_repel(data = filter(ov, either_sig | !is.na(gene)),
-                    aes(label = ifelse(!is.na(gene), gene, uniprot)), size = 3, max.overlaps = 20) +
+                    aes(label = ifelse(!is.na(gene), gene, uniprot)), size = 3, max.overlaps = 20,
+                    # ggrepel places labels at DRAW time, so set.seed() before the plot call
+                    # does not fix them -- only this argument does. Added 2026-09-08 to match
+                    # the manuscript figure scripts.
+                    seed = 123) +
     scale_colour_manual(values = c("FDR-sig in both" = "#E69F00", "FDR-sig in one" = "#56B4E9", "ns" = "grey75")) +
     labs(x = "Milk proteome ATE (BEP vs control)", y = paste0("Maternal blood ATE (", blood_label, ")"),
          colour = NULL,

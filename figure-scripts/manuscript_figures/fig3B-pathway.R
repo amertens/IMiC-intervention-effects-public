@@ -21,7 +21,7 @@ source("figure-scripts/manuscript_figures/study_colors.R")   # canonical study c
 source("figure-scripts/0_figure-functions.R")                # theme_imic() = Science-submission theme
 
 LOCAL_CSV <- "results/metaboanalyst/primary_pathway_local/primary_pathway_all_cells.csv"
-OUT_EMBED <- "figures/figure4_panelB_msea.png"
+OUT_EMBED <- "figures/figure3_panelB_msea.png"
 OUT_CMP   <- "Manuscript/figure_comparison/msea_compare/fig3B_replicated_pathway.png"
 
 # Shared 3B plot in the SUBMITTED style so the combined-arm MAIN panel and the

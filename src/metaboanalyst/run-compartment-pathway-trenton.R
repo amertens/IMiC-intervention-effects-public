@@ -21,21 +21,21 @@
 #   niacin nutrient link). run-compartment-pathway.R and its outputs
 #   (pathway_results_local.csv, linked_upregulated_plot_data.csv,
 #   metabolite_pathways_local.csv) are kept ONLY as an alternate sensitivity
-#   view (figS10-compartment-tracking.R's GROUPING = "union-find" switch) --
+#   view (appendix-compartment-tracking.R's GROUPING = "union-find" switch) --
 #   they no longer feed Table S11, Fig 6D, or Fig S10's primary rendering.
 #
 #   Trenton's rule (Compartment Tracking.Rmd 1743-1749, 2556-2562) groups by
 #   the feature's OWN putative name, ported as ct_trenton_track() in
 #   src/trenton-ports/compartment-tracking.R.
 #
-# BUILD ORDER (two-pass, see figS10-compartment-tracking.R's own header):
-#   1. figure-scripts/manuscript_figures/figS10-compartment-tracking.R (1st pass)
+# BUILD ORDER (two-pass, see appendix-compartment-tracking.R's own header):
+#   1. figure-scripts/manuscript_figures/appendix-compartment-tracking.R (1st pass)
 #        -> results/compartment_tracking/trenton_pathway_compound_list.csv
 #   2. this script
 #        -> results/compartment_tracking/trenton_linked_crosscompartment.csv
 #        -> results/compartment_tracking/metabolite_pathways_trenton.csv
 #        -> results/tables/table_s11_compartment_pathway.{csv,md}
-#   3. figS10-compartment-tracking.R again (2nd pass, picks up pathway labels)
+#   3. appendix-compartment-tracking.R again (2nd pass, picks up pathway labels)
 #   4. figure-scripts/manuscript_figures/fig6D-crosscompartment.R
 #
 # Run from repo root: Rscript src/metaboanalyst/run-compartment-pathway-trenton.R
@@ -49,7 +49,7 @@ QUERY <- "results/compartment_tracking/trenton_pathway_compound_list.csv"
 OUT   <- "results/compartment_tracking"
 TBL   <- "results/tables"
 if (!file.exists(QUERY))
-  stop("run figure-scripts/manuscript_figures/figS10-compartment-tracking.R first; missing ", QUERY)
+  stop("run figure-scripts/manuscript_figures/appendix-compartment-tracking.R first; missing ", QUERY)
 
 # non-informative putative name (a bare compound class, not an identity) that
 # must fall back to m/z rather than be treated as a compound -- see

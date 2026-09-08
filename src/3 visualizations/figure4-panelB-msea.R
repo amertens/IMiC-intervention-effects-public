@@ -1,5 +1,15 @@
 # figure4-panelB-msea.R
 # =============================================================================
+# SUPERSEDED 2026-09-08 -- do not run for the manuscript.
+#   The live generator of Fig 3 Panel B is
+#   figure-scripts/manuscript_figures/fig3B-pathway.R, which writes
+#   figures/figure3_panelB_msea.png (renamed from the legacy
+#   figure4_panelB_msea.png when the repo was aligned to the submitted
+#   figure numbers). This script still writes the OLD name on purpose: it is
+#   kept for reference only, and pointing it at the new name would give the
+#   live panel a second, competing writer.
+# =============================================================================
+# =============================================================================
 # Figure 4 / Panel B : "MSEA of B-vitamin pathways" (primary, combined arms).
 #
 # WHAT THIS IS

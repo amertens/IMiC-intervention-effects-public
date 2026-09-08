@@ -1,4 +1,4 @@
-# figS9-ora-by-direction.R
+# appendix-ora-by-direction.R
 # =============================================================================
 # SUPPLEMENT : direction-split over-representation (ORA) enrichment volcanoes.
 #
@@ -26,8 +26,8 @@
 #   (one row per cell x pathway; carries a `direction` (up/down) column.)
 #
 # OUTPUT
-#   figures/figureS_primary_ora_by_direction.png
-#   figures/figureS_tertiary_ora_by_direction.png
+#   figures/appendix_primary_ora_by_direction.png
+#   figures/appendix_tertiary_ora_by_direction.png
 #   results/metaboanalyst/primary_combined/primary_ora_upregulated.csv
 #   results/metaboanalyst/primary_combined/primary_ora_downregulated.csv
 #   results/metaboanalyst/tertiary_combined/tertiary_ora_upregulated.csv
@@ -36,7 +36,7 @@
 #    columns unchanged, written atomically.)
 #
 # Run from the repo root:
-#   Rscript "figure-scripts/manuscript_figures/figS9-ora-by-direction.R"
+#   Rscript "figure-scripts/manuscript_figures/appendix-ora-by-direction.R"
 # =============================================================================
 
 suppressMessages({
@@ -155,7 +155,13 @@ build_direction_figure <- function(supp, out_png, title) {
     geom_label_repel(
       data = label_df, aes(label = pathway, color = point_color),
       size = 1.9, label.padding = 0.12, box.padding = 0.4,
-      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE) +
+      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE,
+      # seed alone was NOT enough here (2026-09-08): ggrepel's max.time is a WALL-CLOCK
+      # budget (default 0.5 s), so on the label-dense tertiary panel the optimizer stopped
+      # at a different iteration run to run and the PNG differed. Inf hands the bound back
+      # to max.iter, which is deterministic. The primary panel converged inside 0.5 s and
+      # was already stable; both are online-appendix panels, not submitted exhibits.
+      seed = 123, max.time = Inf) +
     scale_color_manual(values = color_vals, name = "Study") +
     facet_wrap(~ direction_f, nrow = 1, scales = "free") +
     labs(x = "Enrichment Ratio (hits / expected)",
@@ -200,7 +206,7 @@ primary <- read.csv(
 
 split_direction_csvs(primary, "results/metaboanalyst/primary_combined", "primary")
 build_direction_figure(primary,
-                       "figures/figureS_primary_ora_by_direction.png",
+                       "figures/appendix_primary_ora_by_direction.png",
                        "Primary ORA by direction (combined arms)")
 
 # ===========================================================================
@@ -213,7 +219,7 @@ tertiary <- read.csv(
 
 split_direction_csvs(tertiary, "results/metaboanalyst/tertiary_combined", "tertiary")
 build_direction_figure(tertiary,
-                       "figures/figureS_tertiary_ora_by_direction.png",
+                       "figures/appendix_tertiary_ora_by_direction.png",
                        "Tertiary ORA by direction (combined arms)")
 
 # ---------------------------------------------------------------------------

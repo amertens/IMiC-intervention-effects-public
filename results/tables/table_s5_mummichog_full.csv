@@ -1,0 +1,506 @@
+Pathway,Overlap Size,Pathway Size,Enrichment Ratio,P-value,FDR,Study,Time Point,Contrast,Regulation,Ionization Mode
+Arachidonic acid metabolism,13,22,-0.591,8.40265523905554e-05,0.00999915973447609,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+"Glycine, serine, alanine and threonine metabolism",31,111,0.279,8.40265523905554e-05,0.00999915973447609,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+De novo fatty acid biosynthesis,31,68,-0.456,8.40265523905554e-05,0.00999915973447609,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+De novo fatty acid biosynthesis,28,73,-0.384,8.40265523905554e-05,0.00499957986723805,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Fatty Acid Metabolism,19,41,-0.463,8.40265523905554e-05,0.00499957986723805,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Saturated fatty acids beta-oxidation,8,12,-0.667,8.40265523905554e-05,0.00999915973447609,ELICIT,5 mo.,Az.,Downregulated,Positive
+Vitamin A (retinol) metabolism,12,21,-0.571,8.40265523905554e-05,0.00999915973447609,ELICIT,5 mo.,Nico,Downregulated,Negative
+Pentose phosphate pathway,19,56,0.339,8.40265523905554e-05,0.00999915973447609,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Pyruvate Metabolism,26,62,0.419,8.40265523905554e-05,0.00999915973447609,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Negative
+De novo fatty acid biosynthesis,30,77,-0.39,0.000168053104781111,0.0199983194689522,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Butanoate metabolism,10,21,-0.476,0.000168053104781111,0.0199983194689522,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Heparan sulfate degradation,5,6,0.833,0.000252079657171666,0.0299974792034283,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Linoleate metabolism,9,12,-0.75,0.000336106209562222,0.036663585693079,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Leukotriene metabolism,15,31,-0.484,0.000336106209562222,0.0133322129793015,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Prostaglandin formation from arachidonate,19,45,0.422,0.000420132761952777,0.0499957986723805,MISAME,1-2 mo.,IFA/BEP,Upregulated,Negative
+De novo fatty acid biosynthesis,26,61,-0.426,0.000420132761952777,0.0499957986723805,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+TCA cycle,9,19,-0.474,0.000588185866733888,0.0699941181413327,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,7,9,0.778,0.000672212419124443,0.0799932778758088,Mumta-LW,1.5 mo.,BEP+ExBf,Upregulated,Positive
+Starch and Sucrose Metabolism,11,24,-0.458,0.000672212419124443,0.0799932778758088,Mumta-LW,1.5 mo.,BEP,Downregulated,Negative
+Fatty acid activation,9,14,-0.643,0.000756238971514999,0.036663585693079,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+De novo fatty acid biosynthesis,13,22,-0.591,0.000756238971514999,0.0899924376102849,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Carnitine shuttle,4,8,-0.5,0.000840265523905554,0.0999915973447609,ELICIT,1 mo.,Az.,Downregulated,Positive
+De novo fatty acid biosynthesis,10,17,-0.588,0.000924292076296109,0.0549953785396185,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+De novo fatty acid biosynthesis,10,17,-0.588,0.000924292076296109,0.036663585693079,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Propanoate metabolism,24,65,-0.369,0.00109234518107722,0.129989076548189,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+"Valine, leucine and isoleucine degradation",8,18,-0.444,0.00109234518107722,0.0433296921827297,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Glutamate metabolism,5,8,-0.625,0.00109234518107722,0.0433296921827297,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Vitamin D3 (cholecalciferol) metabolism,8,11,-0.727,0.00126039828585833,0.149987396017141,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+Dimethyl-branched-chain fatty acid mitochondrial beta-oxidation,4,5,-0.8,0.00126039828585833,0.0749936980085707,ELICIT,5 mo.,Az.,Downregulated,Positive
+N-Glycan Degradation,8,16,0.5,0.00134442483824889,0.0533288519172058,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Fatty acid activation,20,47,-0.426,0.00134442483824889,0.0799932778758088,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Pyruvate Metabolism,17,50,-0.34,0.00134442483824889,0.159986555751618,ELICIT,5 mo.,Az.,Downregulated,Negative
+Carbon fixation,15,27,0.556,0.00134442483824889,0.159986555751618,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+Carnitine shuttle,8,19,-0.421,0.00142845139063944,0.169985715486094,MISAME,3-4 mo.,BEP/IFA,Downregulated,Positive
+Methionine and cysteine metabolism,17,52,-0.327,0.00142845139063944,0.0949920174775229,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,5,9,0.556,0.00159650449542055,0.189984034955046,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,6,12,0.5,0.00159650449542055,0.189984034955046,ELICIT,5 mo.,Nico,Upregulated,Positive
+D4&E4-neuroprostanes formation,4,5,0.8,0.00168053104781111,0.0533288519172058,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Fructose and mannose metabolism,11,28,0.393,0.00168053104781111,0.0999915973447609,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Vitamin E metabolism,8,12,-0.667,0.00168053104781111,0.0999915973447609,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Vitamin D3 (cholecalciferol) metabolism,5,6,-0.833,0.00176455760020166,0.104991177211999,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,5,8,0.625,0.00184858415259222,0.219981514158474,MISAME,14-21 days,BEP/BEP,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,6,12,0.5,0.00193261070498277,0.22998067389295,MISAME,1-2 mo.,IFA/BEP,Upregulated,Positive
+Vitamin B3 (nicotinate and nicotinamide) metabolism,4,8,0.5,0.00210066380976389,0.249978993361902,ELICIT,1 mo.,Nico,Upregulated,Positive
+Carbon fixation,15,28,0.536,0.00210066380976389,0.249978993361902,Mumta-LW,1.5 mo.,BEP+ExBf,Upregulated,Negative
+Androgen and estrogen biosynthesis and metabolism,10,18,-0.556,0.00218469036215444,0.0824930678094278,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Fructose and mannose metabolism,18,41,-0.439,0.00235274346693555,0.174985295353332,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Pentose phosphate pathway,19,48,0.396,0.00235274346693555,0.279976472565331,ELICIT,1 mo.,Nico+Az.,Upregulated,Negative
+N-Glycan biosynthesis,10,24,-0.417,0.00243677001932611,0.0949920174775229,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Starch and Sucrose Metabolism,10,24,-0.417,0.00243677001932611,0.0949920174775229,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+"Valine, leucine and isoleucine degradation",21,79,0.266,0.00252079657171666,0.147987564070246,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+C5-Branched dibasic acid metabolism,12,24,0.5,0.00252079657171666,0.299974792034283,MISAME,3-4 mo.,IFA/BEP,Upregulated,Negative
+"Fatty acid oxidation, peroxisome",11,20,-0.55,0.00260482312410722,0.309973951768759,MISAME,1-2 mo.,BEP/IFA,Downregulated,Negative
+Keratan sulfate degradation,6,11,0.545,0.00260482312410722,0.0533288519172058,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Arachidonic acid metabolism,19,50,-0.38,0.00260482312410722,0.0699941181413327,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Chondroitin sulfate degradation,3,3,1,0.00268884967649777,0.0533288519172058,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,5,8,0.625,0.00268884967649777,0.0533288519172058,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Fatty Acid Metabolism,15,33,-0.455,0.00277287622888833,0.0824930678094278,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,37,74,0.5,0.00277287622888833,0.329972271237711,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Sphingolipid metabolism,3,3,-1,0.00285690278127888,0.339971430972187,MISAME,14-21 days,BEP/IFA,Downregulated,Positive
+Glycerophospholipid metabolism,34,110,-0.309,0.00294092933366944,0.116656863568888,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Squalene and cholesterol biosynthesis,13,26,-0.5,0.00294092933366944,0.174985295353332,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Vitamin A (retinol) metabolism,13,30,-0.433,0.00294092933366944,0.0699941181413327,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Pyruvate Metabolism,21,59,-0.356,0.00319300899084111,0.133322129793015,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Glycosphingolipid biosynthesis - globoseries,9,21,-0.429,0.00319300899084111,0.0949920174775229,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Carbon fixation,12,25,0.48,0.00319300899084111,0.189984034955046,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Prostaglandin formation from arachidonate,9,17,-0.529,0.00336106209562222,0.133322129793015,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+Squalene and cholesterol biosynthesis,12,27,-0.444,0.00336106209562222,0.133322129793015,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Glycerophospholipid metabolism,14,33,-0.424,0.00378119485757499,0.0949920174775229,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Androgen and estrogen biosynthesis and metabolism,9,18,-0.5,0.00386522140996555,0.0766602246309834,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Starch and Sucrose Metabolism,11,25,-0.44,0.00403327451474666,0.479959667254853,ELICIT,1 mo.,Nico,Downregulated,Negative
+Fatty acid activation,11,21,-0.524,0.00403327451474666,0.159986555751618,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Biopterin metabolism,4,6,0.667,0.00411730106713722,0.489958826989329,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+Arachidonic acid metabolism,12,36,-0.333,0.00420132761952777,0.192483824888665,ELICIT,5 mo.,Nico,Downregulated,Negative
+Prostaglandin formation from arachidonate,6,13,-0.462,0.00428535417191833,0.169985715486094,ELICIT,5 mo.,Az.,Downregulated,Positive
+C21-steroid hormone biosynthesis and metabolism,5,10,0.5,0.00445340727669944,0.460381480547853,ELICIT,5 mo.,Az.,Upregulated,Positive
+Fatty Acid Metabolism,7,12,-0.583,0.00462146038148055,0.0949920174775229,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Propanoate metabolism,20,78,0.256,0.0047054869338711,0.147987564070246,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Tyrosine metabolism,25,98,-0.255,0.0047054869338711,0.111990589026132,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Vitamin A (retinol) metabolism,8,15,-0.533,0.00478951348626166,0.0949920174775229,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+C5-Branched dibasic acid metabolism,10,23,0.435,0.00487354003865221,0.579951264599614,MISAME,14-21 days,IFA/BEP,Upregulated,Negative
+Prostaglandin formation from arachidonate,12,37,-0.324,0.00495756659104277,0.192483824888665,ELICIT,5 mo.,Nico,Downregulated,Negative
+Vitamin B5 - CoA biosynthesis from pantothenate,5,9,0.556,0.00504159314343333,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Dynorphin metabolism,3,3,1,0.00504159314343333,0.53256028905134,ELICIT,1 mo.,Az.,Upregulated,Positive
+Butanoate metabolism,22,89,0.247,0.00512561969582388,0.147987564070246,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Starch and Sucrose Metabolism,11,31,0.355,0.00512561969582388,0.203316247934347,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Fatty acid activation,9,18,-0.5,0.00529367280060499,0.157486765817999,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+Bile acid biosynthesis,16,43,-0.372,0.0054617259053861,0.155986891857827,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Bile acid biosynthesis,6,10,-0.6,0.00562977901016721,0.619947903537518,MISAME,1-2 mo.,IFA/BEP,Downregulated,Positive
+Porphyrin metabolism,6,15,0.4,0.00562977901016721,0.334971851104949,MISAME,1-2 mo.,IFA/BEP,Upregulated,Positive
+Biopterin metabolism,5,9,0.556,0.00562977901016721,0.498361482228384,MISAME,3-4 mo.,IFA/BEP,Upregulated,Positive
+Methionine and cysteine metabolism,21,57,-0.368,0.00562977901016721,0.299974792034283,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Butanoate metabolism,7,16,-0.438,0.00562977901016721,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+De novo fatty acid biosynthesis,22,57,-0.386,0.00588185866733888,0.329972271237711,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+Drug metabolism - cytochrome P450,10,23,0.435,0.00596588521972944,0.709940341147803,MISAME,14-21 days,BEP/BEP,Upregulated,Negative
+N-Glycan biosynthesis,15,38,0.395,0.00596588521972944,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Vitamin A (retinol) metabolism,4,7,-0.571,0.00613393832451055,0.182484665154189,ELICIT,5 mo.,Az.,Downregulated,Positive
+TCA cycle,15,54,0.278,0.0062179648769011,0.147987564070246,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Phytanic acid peroxisomal oxidation,12,25,-0.48,0.00630199142929166,0.374968490042854,MISAME,1-2 mo.,BEP/IFA,Downregulated,Negative
+Fatty acid oxidation,4,5,0.8,0.00638601798168221,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Prostaglandin formation from arachidonate,16,43,-0.372,0.00638601798168221,0.108562305688598,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Tryptophan metabolism,5,18,-0.278,0.00638601798168221,0.379968069910092,ELICIT,1 mo.,Az.,Downregulated,Positive
+Selenoamino acid metabolism,11,23,-0.478,0.00638601798168221,0.751811822535921,ELICIT,1 mo.,Az.,Downregulated,Negative
+Leukotriene metabolism,9,25,-0.36,0.00647004453407277,0.192483824888665,ELICIT,5 mo.,Nico,Downregulated,Negative
+Carbon fixation,12,29,0.414,0.00647004453407277,0.553953449289976,Mumta-LW,1.5 mo.,BEP,Upregulated,Negative
+Vitamin D3 (cholecalciferol) metabolism,5,8,-0.625,0.00655407108646332,0.327972439290816,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Aspartate and asparagine metabolism,13,34,-0.382,0.00655407108646332,0.449962188051424,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Vitamin A (retinol) metabolism,13,33,-0.394,0.00655407108646332,0.155986891857827,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Beta-Alanine metabolism,5,12,0.417,0.00655407108646332,0.389967229644568,ELICIT,5 mo.,Nico,Upregulated,Positive
+Vitamin E metabolism,8,18,-0.444,0.00680615074363499,0.327972439290816,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Starch and Sucrose Metabolism,6,17,0.353,0.0069742038484161,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Propanoate metabolism,11,53,-0.208,0.00722628350558777,0.653222418284178,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Pentose phosphate pathway,15,46,0.326,0.00747836316275943,0.534955045794471,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Vitamin B3 (nicotinate and nicotinamide) metabolism,4,8,0.5,0.00756238971514999,0.269977312830855,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Propanoate metabolism,19,51,-0.373,0.00756238971514999,0.299974792034283,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Galactose metabolism,5,15,0.333,0.00764641626754054,0.535837324594572,ELICIT,5 mo.,Nico+Az.,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,5,11,-0.455,0.0077304428199311,0.199983194689522,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,23,61,0.377,0.00781446937232165,0.592450214267709,ELICIT,1 mo.,Nico,Upregulated,Negative
+Carnitine shuttle,11,22,-0.5,0.00781446937232165,0.232480463826569,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Androgen and estrogen biosynthesis and metabolism,9,17,-0.529,0.00831862868666499,0.329972271237711,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+Glycerophospholipid metabolism,13,33,-0.394,0.00840265523905554,0.4599613477859,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Porphyrin metabolism,5,10,0.5,0.00840265523905554,0.142845139063944,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Beta-Alanine metabolism,6,11,-0.545,0.00857070834383665,0.449962188051424,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+C5-Branched dibasic acid metabolism,10,21,0.476,0.00857070834383665,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Drug metabolism - cytochrome P450,6,13,-0.462,0.00873876144861776,0.15427275018906,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Linoleate metabolism,5,11,0.455,0.00882278800100832,0.496933030837745,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+"Glycine, serine, alanine and threonine metabolism",9,28,-0.321,0.00899084110578943,0.199983194689522,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Carbon fixation,2,2,1,0.00907486765817998,0.269977312830855,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Nucleotide Sugar Metabolism,2,2,1,0.00907486765817998,0.269977312830855,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Glycosphingolipid metabolism,9,25,-0.36,0.00907486765817998,0.15427275018906,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+N-Glycan Degradation,7,17,0.412,0.00915889421057054,0.272477102764474,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Saturated fatty acids beta-oxidation,4,7,-0.571,0.00915889421057054,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,10,0.4,0.00915889421057054,0.294345013024116,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Linoleate metabolism,5,9,-0.556,0.00949500042013276,0.530375598689186,MISAME,3-4 mo.,BEP/BEP,Downregulated,Positive
+Vitamin B1 (thiamin) metabolism,4,8,-0.5,0.00957902697252332,0.613477859003445,ELICIT,5 mo.,Nico,Downregulated,Positive
+Glycerophospholipid metabolism,12,36,-0.333,0.00957902697252332,0.58995042433409,Mumta-LW,1.5 mo.,BEP,Downregulated,Positive
+Beta-Alanine metabolism,4,8,-0.5,0.0100831862868667,0.199983194689522,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Fatty acid activation,20,62,-0.323,0.0102512393916478,0.203316247934347,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+"Glycine, serine, alanine and threonine metabolism",32,102,-0.314,0.0102512393916478,0.299974792034283,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+De novo fatty acid biosynthesis,10,23,-0.435,0.0104192924964289,0.619947903537518,MISAME,1-2 mo.,IFA/BEP,Downregulated,Positive
+Glyoxylate and Dicarboxylate Metabolism,14,38,0.368,0.0105033190488194,0.553953449289976,Mumta-LW,1.5 mo.,BEP,Upregulated,Negative
+Glutamate metabolism,14,52,0.269,0.0106713721536005,0.192483824888665,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Xenobiotics metabolism,5,8,-0.625,0.0107553987059911,0.4599613477859,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Chondroitin sulfate degradation,2,2,1,0.0108394252583817,0.429963868582472,MISAME,1-2 mo.,IFA/BEP,Upregulated,Positive
+N-Glycan biosynthesis,10,29,-0.345,0.0108394252583817,0.644945802873708,Mumta-LW,1.5 mo.,BEP,Downregulated,Negative
+Putative anti-Inflammatory metabolites formation from EPA,3,5,-0.6,0.0110074783631628,0.598605159230317,MISAME,14-21 days,BEP/BEP,Downregulated,Positive
+Vitamin D3 (cholecalciferol) metabolism,4,6,-0.667,0.011343584572725,0.449962188051424,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,24,85,0.282,0.011343584572725,0.674943282077136,MISAME,1-2 mo.,IFA/BEP,Upregulated,Negative
+Prostaglandin formation from dihomo gama-linoleic acid,3,3,-1,0.0114276111251155,0.27197714477775,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Prostaglandin formation from arachidonate,12,38,-0.316,0.0114276111251155,0.679942861944375,ELICIT,5 mo.,Az.,Downregulated,Negative
+Arachidonic acid metabolism,8,17,-0.471,0.0115956642298966,0.4599613477859,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Di-unsaturated fatty acid beta-oxidation,7,16,-0.438,0.0115956642298966,0.327972439290816,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+3-oxo-10R-octadecatrienoate beta-oxidation,2,2,-1,0.0118477438870683,0.25569279892446,ELICIT,5 mo.,Az.,Downregulated,Positive
+Prostaglandin formation from arachidonate,19,50,-0.38,0.0120157969918494,0.35746996050752,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+C5-Branched dibasic acid metabolism,7,13,-0.538,0.0121838500966305,0.299974792034283,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Galactose metabolism,16,48,-0.333,0.0124359297538022,0.493291880234154,ELICIT,1 mo.,Nico,Downregulated,Negative
+Pentose phosphate pathway,14,40,-0.35,0.0124359297538022,0.493291880234154,ELICIT,1 mo.,Nico,Downregulated,Negative
+Pyruvate Metabolism,18,50,-0.36,0.0126039828585833,0.299974792034283,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Leukotriene metabolism,12,32,-0.375,0.0126880094109739,0.215696159986556,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Carbon fixation,9,18,0.5,0.0126880094109739,0.592450214267709,ELICIT,1 mo.,Nico,Upregulated,Negative
+R Group Synthesis,2,2,-1,0.0127720359633644,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Mono-unsaturated fatty acid beta-oxidation,2,2,-1,0.0127720359633644,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Prostaglandin formation from dihomo gama-linoleic acid,2,2,-1,0.0127720359633644,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Vitamin B6 (pyridoxine) metabolism,6,7,0.857,0.012856062515755,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Vitamin H (biotin) metabolism,4,7,0.571,0.012856062515755,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Bile acid biosynthesis,12,43,0.279,0.0129400890681455,0.192483824888665,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Beta-Alanine metabolism,12,43,0.279,0.0129400890681455,0.192483824888665,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Glycosphingolipid biosynthesis - globoseries,11,27,0.407,0.0131081421729266,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Arachidonic acid metabolism,7,14,-0.5,0.0131081421729266,0.222838416939753,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Fatty acid activation,18,54,-0.333,0.0131081421729266,0.194983614822284,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Tryptophan metabolism,10,32,0.312,0.0131921687253172,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Glycolysis and Gluconeogenesis,25,83,-0.301,0.0131921687253172,0.385681875472649,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Purine metabolism,7,29,0.241,0.0132761952777078,0.535837324594572,ELICIT,5 mo.,Nico+Az.,Upregulated,Positive
+Leukotriene metabolism,12,28,-0.429,0.0132761952777078,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Pyruvate Metabolism,15,50,0.3,0.0133602218300983,0.771783883707252,ELICIT,1 mo.,Az.,Upregulated,Negative
+Prostaglandin formation from arachidonate,14,46,-0.304,0.0135282749348794,0.327972439290816,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Aspartate and asparagine metabolism,8,25,-0.32,0.0135282749348794,0.22998067389295,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Chondroitin sulfate degradation,2,2,1,0.01361230148727,0.496933030837745,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+Arachidonic acid metabolism,5,12,-0.417,0.01361230148727,0.25569279892446,ELICIT,5 mo.,Az.,Downregulated,Positive
+D4&E4-neuroprostanes formation,2,2,-1,0.01361230148727,0.489958826989329,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Positive
+Alkaloid biosynthesis II,6,13,-0.462,0.0137803545920511,0.327972439290816,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Ubiquinone Biosynthesis,8,20,0.4,0.0137803545920511,0.534955045794471,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Vitamin B9 (folate) metabolism,6,14,-0.429,0.0137803545920511,0.58995042433409,Mumta-LW,1.5 mo.,BEP,Downregulated,Positive
+Omega-6 fatty acid metabolism,5,8,-0.625,0.0142845139063944,0.279976472565331,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Vitamin D3 (cholecalciferol) metabolism,3,4,0.75,0.014368540458785,0.53256028905134,ELICIT,1 mo.,Az.,Upregulated,Positive
+Chondroitin sulfate degradation,2,2,1,0.0144525670111755,0.520796571716662,MISAME,14-21 days,BEP/BEP,Upregulated,Positive
+Prostaglandin formation from arachidonate,6,20,0.3,0.0145365935635661,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+C21-steroid hormone biosynthesis and metabolism,8,16,-0.5,0.0147046466683472,0.279976472565331,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Aminosugars metabolism,7,23,-0.304,0.0147886732207378,0.598605159230317,MISAME,14-21 days,BEP/BEP,Downregulated,Positive
+Glycosphingolipid biosynthesis - globoseries,9,27,0.333,0.0148726997731283,0.31664005825841,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Glycosylphosphatidylinositol(GPI)-anchor biosynthesis,5,7,0.714,0.0148726997731283,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+C5-Branched dibasic acid metabolism,9,23,0.391,0.0150407528779094,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Polyunsaturated fatty acid biosynthesis,3,5,-0.6,0.0150407528779094,0.25569279892446,ELICIT,5 mo.,Az.,Downregulated,Positive
+Propanoate metabolism,22,66,0.333,0.0151247794303,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Prostaglandin formation from arachidonate,17,52,-0.327,0.0152088059826905,0.226230988992522,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Pyrimidine metabolism,15,56,-0.268,0.0152088059826905,0.212204389920548,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Androgen and estrogen biosynthesis and metabolism,10,22,-0.455,0.0152088059826905,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Chondroitin sulfate degradation,2,2,1,0.0153768590874716,0.498361482228384,MISAME,3-4 mo.,IFA/BEP,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,8,-0.5,0.0155449121922528,0.489958826989329,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Positive
+Arginine and Proline Metabolism,7,21,-0.333,0.0155449121922528,0.23123056885976,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Hyaluronan Metabolism,4,8,0.5,0.0156289387446433,0.232480463826569,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Selenoamino acid metabolism,5,18,-0.278,0.0156289387446433,0.653222418284178,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Glycosphingolipid metabolism,12,41,0.293,0.0159650449542055,0.31664005825841,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Xenobiotics metabolism,4,6,-0.667,0.0160490715065961,0.238729938660617,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Hexose phosphorylation,10,32,-0.312,0.0160490715065961,0.212204389920548,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+De novo fatty acid biosynthesis,26,77,-0.338,0.0161330980589866,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,11,0.364,0.0163851777161583,0.488530375598689,MISAME,1-2 mo.,BEP/BEP,Upregulated,Positive
+Nucleotide Sugar Metabolism,4,5,0.8,0.0163851777161583,0.780942777917822,Mumta-LW,1.5 mo.,BEP+ExBf,Upregulated,Negative
+Arachidonic acid metabolism,10,22,-0.455,0.0164692042685489,0.279976472565331,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,5,11,0.455,0.0164692042685489,0.371397361566255,Mumta-LW,1.5 mo.,BEP,Upregulated,Positive
+Pentose phosphate pathway,14,39,0.359,0.01663725737333,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Vitamin B3 (nicotinate and nicotinamide) metabolism,3,7,0.429,0.01663725737333,0.535837324594572,ELICIT,5 mo.,Nico+Az.,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,22,67,0.328,0.0168893370305016,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Bile acid biosynthesis,14,40,-0.35,0.0171414166876733,0.214981934291236,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Drug metabolism - other enzymes,5,12,0.417,0.0172254432400639,0.2277586383964,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Xenobiotics metabolism,10,26,-0.385,0.0172254432400639,0.2277586383964,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Vitamin B3 (nicotinate and nicotinamide) metabolism,5,16,0.312,0.0177296025544072,0.488530375598689,MISAME,1-2 mo.,BEP/BEP,Upregulated,Positive
+C21-steroid hormone biosynthesis and metabolism,16,43,-0.372,0.0178976556591883,0.329972271237711,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Chondroitin sulfate degradation,3,4,0.75,0.0179816822115789,0.534955045794471,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Heparan sulfate degradation,3,4,0.75,0.0179816822115789,0.534955045794471,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+C21-steroid hormone biosynthesis and metabolism,15,44,-0.341,0.0180657087639694,0.214981934291236,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Tyrosine metabolism,34,116,-0.293,0.0180657087639694,0.358303223818727,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Pentose phosphate pathway,19,52,0.365,0.0184858415259222,0.592450214267709,ELICIT,1 mo.,Nico,Upregulated,Negative
+Galactose metabolism,6,15,-0.4,0.0186538946307033,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+"Valine, leucine and isoleucine degradation",6,15,-0.4,0.0186538946307033,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Bile acid biosynthesis,6,12,-0.5,0.0188219477354844,0.248867975613627,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Glycosphingolipid biosynthesis - lactoseries,8,18,0.444,0.018905974287875,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Blood Group Biosynthesis,8,18,0.444,0.018905974287875,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Glycosphingolipid biosynthesis - neolactoseries,8,18,0.444,0.018905974287875,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Keratan sulfate biosynthesis,8,18,0.444,0.018905974287875,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+O-Glycan biosynthesis,8,18,0.444,0.018905974287875,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Pyrimidine metabolism,27,103,0.262,0.0189900008402655,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Carbon fixation,9,26,0.346,0.0189900008402655,0.771783883707252,ELICIT,1 mo.,Az.,Upregulated,Negative
+Prostaglandin formation from arachidonate,16,46,0.348,0.0189900008402655,0.749012688009411,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Leukotriene metabolism,13,33,-0.394,0.0194101336022183,0.329972271237711,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+CoA Catabolism,4,8,0.5,0.01966221325939,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Selenoamino acid metabolism,4,8,0.5,0.01966221325939,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Glycolysis and Gluconeogenesis,4,11,0.364,0.0197462398117805,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Propanoate metabolism,20,71,0.282,0.0199142929165616,0.738761448617763,MISAME,1-2 mo.,IFA/BEP,Upregulated,Negative
+TCA cycle,18,49,0.367,0.0199142929165616,0.592450214267709,ELICIT,1 mo.,Nico,Upregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,17,53,-0.321,0.0199142929165616,0.385681875472649,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+N-Glycan Degradation,7,16,-0.438,0.0199983194689522,0.549953785396185,ELICIT,1 mo.,Nico,Downregulated,Negative
+Squalene and cholesterol biosynthesis,3,5,-0.6,0.0199983194689522,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Xenobiotics metabolism,5,9,-0.556,0.0202503991261239,0.406632495868695,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+Fatty Acid Metabolism,7,15,-0.467,0.0205024787832955,0.406632495868695,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+Glycerophospholipid metabolism,15,38,-0.395,0.0205024787832955,0.304974371901521,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Sialic acid metabolism,14,52,0.269,0.0207545584404672,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Galactose metabolism,9,29,0.31,0.0208385849928577,0.27553240157223,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Vitamin A (retinol) metabolism,10,23,-0.435,0.0208385849928577,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Tryptophan metabolism,16,48,0.333,0.0210066380976389,0.27775443706878,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Glycosphingolipid metabolism,5,15,-0.333,0.0214267708595916,0.543819847071675,MISAME,3-4 mo.,BEP/IFA,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,25,65,0.385,0.0215948239643727,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+N-Glycan biosynthesis,3,7,0.429,0.0218469036215444,0.401058734560121,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Propanoate metabolism,3,7,0.429,0.0218469036215444,0.401058734560121,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Galactose metabolism,6,22,0.273,0.021930930173935,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Glutamate metabolism,4,11,0.364,0.021930930173935,0.45844886984287,ELICIT,5 mo.,Nico,Upregulated,Positive
+Chondroitin sulfate degradation,3,4,0.75,0.021930930173935,0.553953449289976,Mumta-LW,1.5 mo.,BEP,Upregulated,Negative
+Heparan sulfate degradation,3,4,0.75,0.021930930173935,0.553953449289976,Mumta-LW,1.5 mo.,BEP,Upregulated,Negative
+Glutamate metabolism,16,54,0.296,0.0220989832787161,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Selenoamino acid metabolism,11,30,-0.367,0.0223510629358877,0.385681875472649,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Starch and Sucrose Metabolism,10,32,-0.312,0.0224350894882783,0.772708175783548,MISAME,14-21 days,BEP/BEP,Downregulated,Negative
+"Glycine, serine, alanine and threonine metabolism",32,118,-0.271,0.02268716914545,0.385681875472649,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Vitamin B9 (folate) metabolism,5,12,-0.417,0.02268716914545,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Fatty Acid Metabolism,4,9,-0.444,0.0227711956978405,0.281976304512226,ELICIT,5 mo.,Az.,Downregulated,Positive
+Galactose metabolism,11,38,0.289,0.0228552222502311,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+N-Glycan Degradation,13,23,0.565,0.0231913284597933,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Pentose and Glucuronate Interconversions,6,13,0.462,0.0232753550121838,0.553953449289976,Mumta-LW,1.5 mo.,BEP,Upregulated,Negative
+Glycosphingolipid biosynthesis - lactoseries,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Blood Group Biosynthesis,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Biopterin metabolism,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Glycosphingolipid biosynthesis - neolactoseries,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Keratan sulfate biosynthesis,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+O-Glycan biosynthesis,3,5,0.6,0.023443408116965,0.278976556591883,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Bile acid biosynthesis,3,8,0.375,0.023443408116965,0.42660280648685,MISAME,1-2 mo.,BEP/IFA,Upregulated,Positive
+Sphingolipid metabolism,2,3,-0.667,0.0236114612217461,0.543819847071675,MISAME,3-4 mo.,BEP/IFA,Downregulated,Positive
+Porphyrin metabolism,5,13,-0.385,0.0236954877741366,0.281976304512226,ELICIT,5 mo.,Az.,Downregulated,Positive
+Leukotriene metabolism,5,13,-0.385,0.0236954877741366,0.281976304512226,ELICIT,5 mo.,Az.,Downregulated,Positive
+Fructose and mannose metabolism,10,32,0.312,0.0238635408789177,0.76102848500126,MISAME,1-2 mo.,BEP/BEP,Upregulated,Negative
+Pentose phosphate pathway,4,9,-0.444,0.0239475674313083,0.61423409797496,MISAME,14-21 days,BEP/IFA,Downregulated,Positive
+Selenoamino acid metabolism,10,25,-0.4,0.0244517267456516,0.415679354676078,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Sphingolipid metabolism,2,2,-1,0.0245357532980422,0.583950928493404,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Nitrogen metabolism,2,2,-1,0.0245357532980422,0.583950928493404,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Tryptophan metabolism,6,16,-0.375,0.0247038064028233,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Vitamin B1 (thiamin) metabolism,4,8,-0.5,0.0248718595076044,0.48113603898832,ELICIT,1 mo.,Nico+Az.,Downregulated,Positive
+"Glycine, serine, alanine and threonine metabolism",8,24,-0.333,0.0250399126123855,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Fructose and mannose metabolism,3,7,0.429,0.0252079657171666,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Arachidonic acid metabolism,6,17,-0.353,0.0254600453743383,0.61423409797496,MISAME,14-21 days,BEP/IFA,Downregulated,Positive
+Glycerophospholipid metabolism,35,114,-0.307,0.02571212503151,0.611948575749937,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+Polyunsaturated fatty acid biosynthesis,3,4,-0.75,0.0257961515839005,0.341082448720462,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Vitamin A (retinol) metabolism,6,27,-0.222,0.0260482312410722,0.653222418284178,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Saturated fatty acids beta-oxidation,6,13,-0.462,0.0268884967649777,0.290884646821123,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Tyrosine metabolism,10,46,0.217,0.0269725233173683,0.451138559784892,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Bile acid biosynthesis,16,44,-0.364,0.0270565498697588,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Sialic acid metabolism,4,14,0.286,0.0271405764221494,0.535837324594572,ELICIT,5 mo.,Nico+Az.,Upregulated,Positive
+Prostaglandin formation from dihomo gama-linoleic acid,2,3,-0.667,0.02722460297454,0.359969750441139,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+N-Glycan Degradation,2,5,0.4,0.0273086295269305,0.410721788085035,ELICIT,1 mo.,Nico,Upregulated,Positive
+Ubiquinone Biosynthesis,8,24,0.333,0.0273926560793211,0.76102848500126,MISAME,1-2 mo.,BEP/BEP,Upregulated,Negative
+Pentose and Glucuronate Interconversions,6,14,0.429,0.0274766826317116,0.800857070834384,MISAME,14-21 days,BEP/BEP,Upregulated,Negative
+Aminosugars metabolism,8,26,0.308,0.027980841946055,0.332972019158054,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Androgen and estrogen biosynthesis and metabolism,4,11,0.364,0.0282329216032266,0.460381480547853,ELICIT,5 mo.,Az.,Upregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,11,0.364,0.0282329216032266,0.460381480547853,ELICIT,5 mo.,Az.,Upregulated,Positive
+C21-steroid hormone biosynthesis and metabolism,14,38,-0.368,0.0282329216032266,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Drug metabolism - other enzymes,3,6,-0.5,0.0282329216032266,0.489958826989329,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Positive
+Fatty Acid Metabolism,14,43,-0.326,0.0286530543651794,0.340971346945635,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Di-unsaturated fatty acid beta-oxidation,2,2,-1,0.0286530543651794,0.284142789121362,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Omega-3 fatty acid metabolism,2,2,-1,0.0286530543651794,0.284142789121362,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Ubiquinone Biosynthesis,2,2,-1,0.0286530543651794,0.284142789121362,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+Pyruvate Metabolism,20,63,0.317,0.02873708091757,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Aspartate and asparagine metabolism,23,75,0.307,0.0288211074699605,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Prostaglandin formation from arachidonate,17,49,-0.347,0.0288211074699605,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+N-Glycan Degradation,6,16,-0.375,0.0289051340223511,0.75649105117217,Mumta-LW,1.5 mo.,BEP,Downregulated,Negative
+Histidine metabolism,4,9,-0.444,0.0289891605747416,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Lysine metabolism,4,9,-0.444,0.0289891605747416,0.265362316030327,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Propanoate metabolism,19,60,0.317,0.0290731871271322,0.749012688009411,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Negative
+R Group Synthesis,4,6,-0.667,0.0292412402319133,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Propanoate metabolism,14,56,-0.25,0.0292412402319133,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Sphingolipid metabolism,2,2,-1,0.0295773464414755,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+R Group Synthesis,3,4,-0.75,0.0298294260986472,0.808503487101924,MISAME,14-21 days,BEP/IFA,Downregulated,Negative
+Phosphatidylinositol phosphate metabolism,21,71,-0.296,0.0298294260986472,0.295808475478251,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Squalene and cholesterol biosynthesis,6,19,-0.316,0.0299134526510377,0.735820519284094,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Negative
+Methionine and cysteine metabolism,5,16,-0.312,0.0299974792034283,0.598605159230317,MISAME,14-21 days,BEP/BEP,Downregulated,Positive
+Leukotriene metabolism,9,28,-0.321,0.0300815057558188,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Pyruvate Metabolism,33,75,0.44,0.0300815057558188,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Squalene and cholesterol biosynthesis,9,22,0.409,0.0300815057558188,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Pyruvate Metabolism,2,4,0.5,0.0302495588606,0.42660280648685,MISAME,1-2 mo.,BEP/IFA,Upregulated,Positive
+Alkaloid biosynthesis II,3,6,-0.5,0.0304176119653811,0.613477859003445,ELICIT,5 mo.,Nico,Downregulated,Positive
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,10,0.4,0.0305016385177716,0.496933030837745,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+Purine metabolism,14,58,-0.241,0.0306696916225527,0.727837996806991,ELICIT,5 mo.,Nico,Downregulated,Negative
+Propanoate metabolism,18,63,-0.286,0.0307537181749433,0.549953785396185,ELICIT,1 mo.,Nico,Downregulated,Negative
+"Valine, leucine and isoleucine degradation",20,72,-0.278,0.031005797832115,0.549953785396185,ELICIT,1 mo.,Nico,Downregulated,Negative
+Fatty acid activation,16,61,-0.262,0.0310898243845055,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Linoleate metabolism,4,13,0.308,0.0310898243845055,0.401058734560121,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Glycosphingolipid biosynthesis - lactoseries,4,9,-0.444,0.0310898243845055,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Blood Group Biosynthesis,4,9,-0.444,0.0310898243845055,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Glycosphingolipid biosynthesis - neolactoseries,4,9,-0.444,0.0310898243845055,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Tyrosine metabolism,28,140,0.2,0.0311738509368961,0.370968826149063,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+"Valine, leucine and isoleucine degradation",20,64,-0.312,0.0312578774892866,0.417742673351446,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+Drug metabolism - cytochrome P450,3,8,0.375,0.0313419040416772,0.488530375598689,MISAME,1-2 mo.,BEP/BEP,Upregulated,Positive
+Aminosugars metabolism,15,60,0.25,0.0314259305940677,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Vitamin B9 (folate) metabolism,4,10,-0.4,0.0314259305940677,0.489958826989329,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Positive
+Propanoate metabolism,18,51,0.353,0.0315099571464583,0.731188555583564,ELICIT,1 mo.,Nico,Upregulated,Negative
+Fatty Acid Metabolism,13,35,-0.371,0.0315099571464583,0.535669271489791,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Butanoate metabolism,21,68,-0.309,0.0315939836988488,0.417742673351446,ELICIT,5 mo.,Nico+Az.,Downregulated,Negative
+"Glycine, serine, alanine and threonine metabolism",22,93,-0.237,0.0319300899084111,0.74439122762793,ELICIT,5 mo.,Az.,Downregulated,Negative
+Phosphatidylinositol phosphate metabolism,13,50,0.26,0.0320981430131922,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Tryptophan metabolism,5,18,0.278,0.0321821695655827,0.451138559784892,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Omega-6 fatty acid metabolism,8,24,-0.333,0.0323502226703638,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Fatty Acid Metabolism,5,10,-0.5,0.0323502226703638,0.63532476262499,MISAME,1-2 mo.,IFA/BEP,Downregulated,Positive
+Beta-Alanine metabolism,5,10,-0.5,0.0323502226703638,0.63532476262499,MISAME,1-2 mo.,IFA/BEP,Downregulated,Positive
+Pyruvate Metabolism,17,59,-0.288,0.0323502226703638,0.549953785396185,ELICIT,1 mo.,Nico,Downregulated,Negative
+Vitamin E metabolism,3,9,0.333,0.0324342492227544,0.42660280648685,MISAME,1-2 mo.,BEP/IFA,Upregulated,Positive
+Butanoate metabolism,24,80,0.3,0.032518275775145,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Glycerophospholipid metabolism,36,121,-0.298,0.0326863288799261,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Caffeine metabolism,10,17,0.588,0.0327703554323166,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Arachidonic acid metabolism,16,52,-0.308,0.0330224350894883,0.357242706877191,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Pentose phosphate pathway,21,55,0.382,0.0336106209562222,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+Butanoate metabolism,20,85,-0.235,0.0336946475086127,0.772708175783548,MISAME,14-21 days,BEP/BEP,Downregulated,Negative
+Ascorbate (Vitamin C) and Aldarate Metabolism,4,10,0.4,0.0336946475086127,0.498361482228384,MISAME,3-4 mo.,IFA/BEP,Upregulated,Positive
+Hexose phosphorylation,12,36,-0.333,0.0337786740610033,0.502457776657424,ELICIT,1 mo.,Nico+Az.,Downregulated,Negative
+Squalene and cholesterol biosynthesis,7,22,-0.318,0.0337786740610033,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Selenoamino acid metabolism,7,22,-0.318,0.0337786740610033,0.267977480883959,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Bile acid biosynthesis,6,15,-0.4,0.0338627006133938,0.638517771615831,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Glutathione Metabolism,2,2,-1,0.0339467271657844,0.625409629442904,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Fatty acid activation,8,20,-0.4,0.0341988068229561,0.63532476262499,MISAME,1-2 mo.,IFA/BEP,Downregulated,Positive
+Alkaloid biosynthesis II,3,6,-0.5,0.0341988068229561,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+Biopterin metabolism,2,2,-1,0.0342828333753466,0.313819782435865,MISAME,3-4 mo.,IFA/BEP,Downregulated,Negative
+Glutamate metabolism,14,41,0.341,0.0345349130325183,0.513706831358709,ELICIT,5 mo.,Nico,Upregulated,Negative
+Prostaglandin formation from arachidonate,6,20,-0.3,0.0347029661372994,0.396633336134218,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Vitamin B3 (nicotinate and nicotinamide) metabolism,3,6,-0.5,0.0352071254516427,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Fatty Acid Metabolism,2,3,0.667,0.0352911520040333,0.496933030837745,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+Pentose and Glucuronate Interconversions,2,3,0.667,0.0352911520040333,0.496933030837745,MISAME,14-21 days,IFA/BEP,Upregulated,Positive
+CoA Catabolism,3,6,0.5,0.0352911520040333,0.381786098952724,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+N-Glycan Degradation,4,10,-0.4,0.0353751785564238,0.61423409797496,MISAME,14-21 days,BEP/IFA,Downregulated,Positive
+Leukotriene metabolism,5,14,-0.357,0.0353751785564238,0.61423409797496,MISAME,14-21 days,BEP/IFA,Downregulated,Positive
+Polyunsaturated fatty acid biosynthesis,6,16,-0.375,0.0353751785564238,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Vitamin B1 (thiamin) metabolism,9,24,0.375,0.0354592051088144,0.421964540794891,MISAME,3-4 mo.,BEP/IFA,Upregulated,Negative
+Lysine metabolism,5,14,-0.357,0.0354592051088144,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+Mono-unsaturated fatty acid beta-oxidation,6,15,0.4,0.0357112847659861,0.800857070834384,MISAME,14-21 days,BEP/BEP,Upregulated,Negative
+Nucleotide Sugar Metabolism,4,6,0.667,0.0360473909755483,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+Chondroitin sulfate degradation,4,8,0.5,0.0363834971851105,0.800857070834384,MISAME,14-21 days,BEP/BEP,Upregulated,Negative
+Prostaglandin formation from arachidonate,12,50,0.24,0.0363834971851105,0.38353919838669,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Fatty acid activation,15,43,-0.349,0.0364675237375011,0.542454415595328,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Vitamin B5 - CoA biosynthesis from pantothenate,3,5,0.6,0.0364675237375011,0.643727417864045,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Positive
+Vitamin B1 (thiamin) metabolism,3,8,0.375,0.0367196033946727,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Tryptophan metabolism,8,25,-0.32,0.0367196033946727,0.48113603898832,ELICIT,1 mo.,Nico+Az.,Downregulated,Positive
+Purine metabolism,8,25,-0.32,0.0367196033946727,0.48113603898832,ELICIT,1 mo.,Nico+Az.,Downregulated,Positive
+Glycolysis and Gluconeogenesis,19,82,0.232,0.0372237627090161,0.632803966053273,ELICIT,5 mo.,Nico+Az.,Upregulated,Negative
+Glycosphingolipid metabolism,4,10,-0.4,0.0373077892614066,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+Urea cycle/amino group metabolism,8,30,-0.267,0.0373077892614066,0.396633336134218,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Linoleate metabolism,7,17,-0.412,0.0373918158137972,0.635660868834552,MISAME,14-21 days,IFA/BEP,Downregulated,Positive
+Urea cycle/amino group metabolism,10,31,-0.323,0.0375598689185783,0.638517771615831,MISAME,1-2 mo.,BEP/IFA,Downregulated,Positive
+Tyrosine metabolism,35,149,0.235,0.0376438954709688,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Pyruvate Metabolism,2,3,0.667,0.0377279220233594,0.520796571716662,MISAME,14-21 days,BEP/BEP,Upregulated,Positive
+Prostaglandin formation from dihomo gama-linoleic acid,2,2,1,0.0377279220233594,0.738761448617763,MISAME,1-2 mo.,IFA/BEP,Upregulated,Negative
+C5-Branched dibasic acid metabolism,12,22,0.545,0.0377279220233594,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Vitamin A (retinol) metabolism,5,19,0.263,0.0378119485757499,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+N-Glycan Degradation,6,18,-0.333,0.0378119485757499,0.281087490313606,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Glycosphingolipid biosynthesis - ganglioseries,3,6,0.5,0.0382320813377027,0.342114108058146,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Vitamin B2 (riboflavin) metabolism,3,6,0.5,0.0382320813377027,0.342114108058146,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Heparan sulfate degradation,3,4,0.75,0.0383161078900933,0.731188555583564,ELICIT,1 mo.,Nico,Upregulated,Negative
+Glycosphingolipid biosynthesis - globoseries,2,3,-0.667,0.0383161078900933,0.613477859003445,ELICIT,5 mo.,Nico,Downregulated,Positive
+Tyrosine metabolism,36,156,0.231,0.0384001344424838,0.738761448617763,MISAME,1-2 mo.,IFA/BEP,Upregulated,Negative
+Fatty acid oxidation,4,7,-0.571,0.0384841609948744,0.457961515839005,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Pyrimidine metabolism,7,23,0.304,0.0385681875472649,0.342114108058146,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Squalene and cholesterol biosynthesis,3,6,-0.5,0.0385681875472649,0.58995042433409,Mumta-LW,1.5 mo.,BEP,Downregulated,Positive
+Biopterin metabolism,3,6,-0.5,0.0385681875472649,0.58995042433409,Mumta-LW,1.5 mo.,BEP,Downregulated,Positive
+Hexose phosphorylation,20,42,0.476,0.0387362406520461,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+TCA cycle,4,14,0.286,0.0387362406520461,0.401058734560121,ELICIT,1 mo.,Nico+Az.,Upregulated,Positive
+Glycosphingolipid biosynthesis - globoseries,7,25,-0.28,0.0387362406520461,0.735820519284094,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Negative
+Polyunsaturated fatty acid biosynthesis,2,3,-0.667,0.0393244265187799,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Glycosphingolipid biosynthesis - lactoseries,8,23,0.348,0.0394924796235611,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Blood Group Biosynthesis,8,23,0.348,0.0394924796235611,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Glycosphingolipid biosynthesis - neolactoseries,8,23,0.348,0.0394924796235611,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Keratan sulfate biosynthesis,8,23,0.348,0.0394924796235611,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+O-Glycan biosynthesis,8,23,0.348,0.0394924796235611,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Bile acid biosynthesis,12,33,-0.364,0.0399126123855138,0.561063962878937,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+C21-steroid hormone biosynthesis and metabolism,5,11,-0.455,0.0399966389379044,0.366123079508509,MISAME,3-4 mo.,IFA/BEP,Downregulated,Positive
+TCA cycle,5,16,-0.312,0.0399966389379044,0.396633336134218,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Purine metabolism,8,28,0.286,0.040248718595076,0.342114108058146,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Fructose and mannose metabolism,7,23,-0.304,0.040248718595076,0.281087490313606,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Vitamin B3 (nicotinate and nicotinamide) metabolism,4,10,0.4,0.040248718595076,0.371397361566255,Mumta-LW,1.5 mo.,BEP,Upregulated,Positive
+Arachidonic acid metabolism,5,13,-0.385,0.0403327451474666,0.530375598689186,MISAME,3-4 mo.,BEP/BEP,Downregulated,Positive
+Biopterin metabolism,2,4,0.5,0.0403327451474666,0.45844886984287,ELICIT,5 mo.,Nico,Upregulated,Positive
+Galactose metabolism,11,40,-0.275,0.0403327451474666,0.75649105117217,Mumta-LW,1.5 mo.,BEP,Downregulated,Negative
+Propanoate metabolism,17,71,-0.239,0.0404167716998572,0.772708175783548,MISAME,14-21 days,BEP/BEP,Downregulated,Negative
+Drug metabolism - cytochrome P450,2,4,0.5,0.0404167716998572,0.451138559784892,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Positive
+N-Glycan biosynthesis,23,50,0.46,0.0406688513570288,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+Methionine and cysteine metabolism,16,73,0.219,0.041004957566591,0.38353919838669,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Arginine and Proline Metabolism,5,19,0.263,0.041004957566591,0.451138559784892,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Methionine and cysteine metabolism,19,62,0.306,0.0411730106713722,0.54439869665481,ELICIT,5 mo.,Nico,Upregulated,Negative
+Squalene and cholesterol biosynthesis,9,23,-0.391,0.0414250903285438,0.751811822535921,ELICIT,1 mo.,Az.,Downregulated,Negative
+Sphingolipid metabolism,2,2,-1,0.0415091168809344,0.808503487101924,MISAME,14-21 days,BEP/IFA,Downregulated,Negative
+Vitamin B2 (riboflavin) metabolism,1,1,1,0.0415091168809344,0.294345013024116,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Lipoate metabolism,1,1,1,0.0415091168809344,0.294345013024116,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Positive
+Vitamin B6 (pyridoxine) metabolism,1,1,1,0.0415091168809344,0.294345013024116,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Positive
+C5-Branched dibasic acid metabolism,7,17,0.412,0.0416771699857155,0.749012688009411,Mumta-LW,2 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Tyrosine metabolism,26,112,0.232,0.041761196538106,0.695739853793799,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Bile acid biosynthesis,11,39,-0.282,0.0419292496428872,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Bile acid biosynthesis,5,13,0.385,0.0421813293000588,0.53256028905134,ELICIT,1 mo.,Az.,Upregulated,Positive
+Fatty acid oxidation,5,10,-0.5,0.0424334089572305,0.561063962878937,MISAME,3-4 mo.,BEP/BEP,Downregulated,Negative
+Tryptophan metabolism,9,33,-0.273,0.042517435509621,0.281087490313606,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+"Valine, leucine and isoleucine degradation",7,23,0.304,0.0429375682715738,0.42579755202644,MISAME,3-4 mo.,BEP/BEP,Upregulated,Positive
+Glycosphingolipid biosynthesis - ganglioseries,2,3,-0.667,0.0430215948239644,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+C5-Branched dibasic acid metabolism,2,3,-0.667,0.0430215948239644,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+CoA Catabolism,2,3,-0.667,0.0430215948239644,0.319973111503235,ELICIT,5 mo.,Az.,Downregulated,Positive
+Tyrosine metabolism,31,150,-0.207,0.0431056213763549,0.772708175783548,MISAME,14-21 days,BEP/BEP,Downregulated,Negative
+Fatty acid activation,17,50,-0.34,0.0431056213763549,0.747437190152088,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+N-Glycan biosynthesis,4,10,-0.4,0.0431896479287455,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Glycosphingolipid metabolism,4,10,-0.4,0.0431896479287455,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+R Group Synthesis,2,3,-0.667,0.0431896479287455,0.58995042433409,Mumta-LW,1.5 mo.,BEP,Downregulated,Positive
+Aspartate and asparagine metabolism,8,35,0.229,0.0433577010335266,0.45844886984287,ELICIT,5 mo.,Nico,Upregulated,Positive
+Bile acid biosynthesis,3,9,-0.333,0.0433577010335266,0.527686749012688,ELICIT,5 mo.,Nico+Az.,Downregulated,Positive
+Purine metabolism,17,67,0.254,0.0433577010335266,0.695739853793799,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Negative
+Starch and Sucrose Metabolism,11,29,-0.379,0.0437778337954794,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Androgen and estrogen biosynthesis and metabolism,4,9,0.444,0.0437778337954794,0.771783883707252,ELICIT,1 mo.,Az.,Upregulated,Negative
+Glycosphingolipid biosynthesis - ganglioseries,2,4,-0.5,0.0439458869002605,0.543819847071675,MISAME,3-4 mo.,BEP/IFA,Downregulated,Positive
+Hexose phosphorylation,11,32,0.344,0.044029913452651,0.7927064952525,MISAME,3-4 mo.,IFA/BEP,Upregulated,Negative
+Omega-3 fatty acid metabolism,5,10,-0.5,0.0442819931098227,0.464960927653138,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Bile acid biosynthesis,4,13,-0.308,0.0444500462146038,0.543819847071675,MISAME,3-4 mo.,BEP/IFA,Downregulated,Positive
+Glycosylphosphatidylinositol(GPI)-anchor biosynthesis,2,4,0.5,0.0444500462146038,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Pyruvate Metabolism,15,68,0.221,0.0445340727669944,0.38353919838669,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Aminosugars metabolism,6,19,0.316,0.044786152424166,0.355303475898384,MISAME,14-21 days,BEP/IFA,Upregulated,Positive
+Omega-6 fatty acid metabolism,9,22,0.409,0.0448701789765566,0.731188555583564,ELICIT,1 mo.,Nico,Upregulated,Negative
+Linoleate metabolism,7,18,-0.389,0.0449542055289472,0.625409629442904,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Vitamin B5 - CoA biosynthesis from pantothenate,4,9,-0.444,0.0449542055289472,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+CoA Catabolism,4,9,-0.444,0.0449542055289472,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Mono-unsaturated fatty acid beta-oxidation,4,9,-0.444,0.0449542055289472,0.382110746996051,MISAME,1-2 mo.,BEP/BEP,Downregulated,Negative
+Prostaglandin formation from arachidonate,18,55,-0.327,0.0449542055289472,0.830434417275859,MISAME,1-2 mo.,BEP/IFA,Downregulated,Negative
+Squalene and cholesterol biosynthesis,9,27,-0.333,0.0449542055289472,0.659944542475422,ELICIT,1 mo.,Nico,Downregulated,Negative
+Squalene and cholesterol biosynthesis,7,25,0.28,0.0451222586337283,0.38353919838669,MISAME,1-2 mo.,BEP/IFA,Upregulated,Negative
+Pyrimidine metabolism,6,18,-0.333,0.0452062851861188,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Proteoglycan biosynthesis,5,16,-0.312,0.045542391395681,0.735820519284094,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Negative
+Leukotriene metabolism,11,29,-0.379,0.0457104445004622,0.747437190152088,MISAME,14-21 days,IFA/BEP,Downregulated,Negative
+Methionine and cysteine metabolism,5,14,-0.357,0.0457104445004622,0.286291731345,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Positive
+Vitamin B2 (riboflavin) metabolism,3,6,0.5,0.0457944710528527,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+CoA Catabolism,3,6,0.5,0.0457944710528527,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Pentose and Glucuronate Interconversions,5,13,0.385,0.0458784976052433,0.771783883707252,ELICIT,1 mo.,Az.,Upregulated,Negative
+Glutamate metabolism,6,31,-0.194,0.046298630367196,0.653222418284178,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Negative
+Tryptophan metabolism,4,18,0.222,0.0463826569195866,0.294345013024116,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Upregulated,Positive
+TCA cycle,23,63,0.365,0.0464666834719772,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+Carnitine shuttle,5,12,0.417,0.0465507100243677,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Bile acid biosynthesis,13,37,-0.351,0.0465507100243677,0.579326317116209,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Negative
+TCA cycle,21,67,-0.313,0.0466347365767583,0.830434417275859,MISAME,1-2 mo.,BEP/IFA,Downregulated,Negative
+Dynorphin metabolism,3,4,0.75,0.0468027896815394,0.763685824720612,Mumta-LW,2 mo.,BEP+ExBf,Upregulated,Negative
+Phytanic acid peroxisomal oxidation,9,28,0.321,0.0468868162339299,0.457234304221952,MISAME,14-21 days,BEP/IFA,Upregulated,Negative
+Androgen and estrogen biosynthesis and metabolism,6,13,-0.462,0.0468868162339299,0.464960927653138,Mumta-LW,1.5 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Urea cycle/amino group metabolism,10,35,-0.286,0.047054869338711,0.48113603898832,ELICIT,1 mo.,Nico+Az.,Downregulated,Positive
+Omega-6 fatty acid metabolism,10,28,0.357,0.0472229224434922,0.561952777077557,ELICIT,5 mo.,Nico,Upregulated,Negative
+Di-unsaturated fatty acid beta-oxidation,6,15,-0.4,0.0480631879673977,0.439963028316948,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Polyunsaturated fatty acid biosynthesis,6,15,-0.4,0.0480631879673977,0.439963028316948,MISAME,1-2 mo.,IFA/BEP,Downregulated,Negative
+Bile acid biosynthesis,3,9,0.333,0.0481472145197883,0.513138697282887,MISAME,3-4 mo.,BEP/IFA,Upregulated,Positive
+Methionine and cysteine metabolism,13,59,-0.22,0.0483152676245694,0.735820519284094,Mumta-LW,2 mo.,BEP+ExBf,Downregulated,Negative
+Vitamin D3 (cholecalciferol) metabolism,3,5,-0.6,0.0484833207293505,0.625409629442904,MISAME,1-2 mo.,BEP/BEP,Downregulated,Positive
+Phytanic acid peroxisomal oxidation,3,8,-0.375,0.0489874800436938,0.416393580371397,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Pentose phosphate pathway,3,8,-0.375,0.0489874800436938,0.416393580371397,Mumta-LW,2 mo.,BEP+ExBf+AZT,Downregulated,Positive
+Linoleate metabolism,8,27,-0.296,0.0490715065960844,0.772708175783548,MISAME,14-21 days,BEP/BEP,Downregulated,Negative
+Bile acid biosynthesis,13,37,-0.351,0.0490715065960844,0.830434417275859,MISAME,1-2 mo.,BEP/IFA,Downregulated,Negative
+Glycosphingolipid biosynthesis - globoseries,18,38,0.474,0.0491555331484749,0.543031290195394,MISAME,3-4 mo.,BEP/BEP,Upregulated,Negative
+R Group Synthesis,2,2,1,0.0491555331484749,0.731188555583564,ELICIT,1 mo.,Nico,Upregulated,Negative
+Pyruvate Metabolism,14,58,0.241,0.0491555331484749,0.52715570120158,ELICIT,5 mo.,Az.,Upregulated,Negative
+Phosphatidylinositol phosphate metabolism,4,17,0.235,0.0492395597008655,0.535837324594572,ELICIT,5 mo.,Nico+Az.,Upregulated,Positive
+Galactose metabolism,10,39,-0.256,0.0492395597008655,0.298974876060835,Mumta-LW,1.5 mo.,BEP+ExBf,Downregulated,Negative
+Hexose phosphorylation,4,11,0.364,0.0494076128056466,0.498361482228384,MISAME,3-4 mo.,IFA/BEP,Upregulated,Positive
+Saturated fatty acids beta-oxidation,7,16,-0.438,0.0499117721199899,0.611198638769851,MISAME,3-4 mo.,BEP/IFA,Downregulated,Negative
+Hexose phosphorylation,11,36,-0.306,0.0499117721199899,0.659944542475422,ELICIT,1 mo.,Nico,Downregulated,Negative

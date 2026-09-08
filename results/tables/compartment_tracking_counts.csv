@@ -1,0 +1,8 @@
+metric,value
+grouping_rule,trenton
+n_rows_in_figure,27
+n_features_ge2_compartments,20
+n_reliably_supplement_matched,16
+pct_reliably_supplement_matched,80.0
+n_features_all3_compartments,2
+features_all3_compartments,4-Hydroxy-2-oxoglutarate; Citrate

@@ -10,7 +10,7 @@ All scripts assume the working directory is the repo root and that `0-config.R` 
 tlverse stack + `extract_res`, `ci_to_pvalue`, `Wvars`) is sourced first. Rscript lives
 at `C:/Program Files/R/R-4.4.2/bin/Rscript.exe` (not on PATH).
 
-## Shared helpers — read this first
+## Shared helpers: read this first
 
 **`src/2 analysis/_blood_helpers.R`** holds everything that used to be copy-pasted across
 scripts: the matching tolerances, the m/z–RT extractors, the cross-compartment matcher,
@@ -23,10 +23,10 @@ it **here**, once.
 | # | Script | Does | Key output |
 |---|--------|------|-----------|
 | 7 | `1 data prep/7-blood-compartment-prep.R` | Links lab samples → trial arms (+ milk-ID covariate bridge); builds the 4-level `arm` and period-aware binary `class`; splits postnatal VAMS into maternal/infant | `data/blood/merged_blood_datasets.RDS` |
-| 12 | `2 analysis/12-blood-compartment-intervention-effects.R` | bioTMLE ATEs, **arm-stratified** (4 cells vs Control) | `…intervention_effects_results.RDS` |
-| 12b | `2 analysis/12-…_combined_arms.R` | bioTMLE ATEs, **combined-arms** (period-aware binary = primary) | `…combined_arms…_results.RDS` |
-| — | `2 analysis/clean_blood_results.R` | Tidies raw bioTMLE → long; **FDR (BH) per visit × dataset** | `…_results_clean.RDS` |
-| — | `2 analysis/combine_blood_results.R` | Master table + slim FDR-sig CSV | `blood_compartment_all_*` |
+| 12 | `2 analysis/12-blood-compartment-intervention-effects.R` | bioTMLE ATEs, **arm-stratified** (4 cells vs Control) | `...intervention_effects_results.RDS` |
+| 12b | `2 analysis/12-..._combined_arms.R` | bioTMLE ATEs, **combined-arms** (period-aware binary = primary) | `...combined_arms..._results.RDS` |
+| n/a | `2 analysis/clean_blood_results.R` | Tidies raw bioTMLE → long; **FDR (BH) per visit × dataset** | `..._results_clean.RDS` |
+| n/a | `2 analysis/combine_blood_results.R` | Master table + slim FDR-sig CSV | `blood_compartment_all_*` |
 | 13 | `2 analysis/13-cross-compartment-proteome-overlap.R` | Milk ↔ maternal-blood proteins by **UniProt**; selenoproteins | `cross_compartment_proteome_*` |
 | 14 | `2 analysis/14-cross-compartment-metabolite-mzrt-match.R` | Milk↔blood metabolites by **m/z–RT (25 ppm)**; maternal↔infant by shared ID | `cross_compartment_metab_*` |
 | 15 | `2 analysis/15-blood-mummichog-pathway-analysis.R` | Mummichog pathway enrichment on blood, per compartment × ion mode | `blood_mummichog_pathways*` |
@@ -37,7 +37,7 @@ it **here**, once.
 | 19b | `2 analysis/19b-cross-compartment-fdr-first-lists.R` | **PRIMARY (FDR-first reorientation):** small per-arrow × per-contrast lists of features FDR-sig in BOTH, matched (25 ppm / id), **annotated** individually | `cross_compartment_fdr_first_lists.csv` |
 | 20 | `2 analysis/20-cross-compartment-threshold-free-panel.R` | **Threshold-free** panel (RRHO / GSEA / weighted-r / anchored) over the same arrows. Supporting (ppm-only) | `cross_compartment_threshold_free_panel.csv` |
 | 21 | `2 analysis/21-bep-supplement-to-infant-tracer.R` | **[cross-platform]** supplement (V1) → milk/plasma (V1↔V1 clean) + → infant (V1↔V3 isobaric) directional enrichment of supplement-abundant features among BEP-up features | `bep_supplement_tracer.csv` |
-| — | `3 visualizations/blood_compartment_volcano_plots.R` | Per-compartment volcano plots | `figures/blood_volcano/` |
+| n/a | `3 visualizations/blood_compartment_volcano_plots.R` | Per-compartment volcano plots | `figures/blood_volcano/` |
 
 ## Orchestrators (in `src/`)
 
@@ -64,4 +64,4 @@ the numbered scripts in order. They exist because the untargeted bioTMLE is the 
   (isobaric-limited); maternal↔infant VAMS share one V3 catalogue (exact-ID, the
   reviewer-proof comparison). See `Manuscript/cross_compartment_ANALYSIS_PLAN.md`.
 - **Measurement constraint (Kim).** Absolute intensities are not comparable across
-  datasets — every result is a within-dataset BEP-vs-control effect, compared by *direction*.
+  datasets, every result is a within-dataset BEP-vs-control effect, compared by *direction*.
