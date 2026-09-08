@@ -276,7 +276,8 @@ plot_imic_volcano_panel <- function(res,
     aes(label       = abbr_label(biomarker)),   # short forms so labels fit the narrow panels (Fig 3A)
     max.overlaps    = getOption("ggrepel.max.overlaps", default = overlap_n),
     size            = 2.5,
-    alpha           = 0.5)
+    alpha           = 0.5,
+    seed            = 123)   # draw-time label placement; without it Fig 3 is not byte-reproducible
   
     # combine volcano + inset. The inset's BOTTOM (y) is placed flush on the plot's
     # top border so the histogram caps the panel with no white gap; with the taller
@@ -472,9 +473,9 @@ plot_grid_top_labeled <- ggdraw(plot_grid_top) +
 # outcomes) from figure4-panelB-msea.R. This replaces the former grey placeholder
 # (final-figure-3-b.png) — the original artwork had a broken "$"-prefixed filename.
 # Panel B (KEGG pathway-impact, landscape, from fig3B-pathway.R):
-#   MAIN       = COMBINED-arm pathway impact   (figures/figure4_panelB_msea.png)
+#   MAIN       = COMBINED-arm pathway impact   (figures/figure3_panelB_msea.png)
 #   SUPPLEMENT = arm-STRATIFIED pathway impact (figures/figure3_panelB_stratified.png)
-p3b_comb_path  <- "../../figures/figure4_panelB_msea.png"
+p3b_comb_path  <- "../../figures/figure3_panelB_msea.png"
 p3b_strat_path <- "../../figures/figure3_panelB_stratified.png"
 p3b_comb  <- if (file.exists(p3b_comb_path))  png_to_ggdraw(p3b_comb_path)  else blank_plot
 p3b_strat <- if (file.exists(p3b_strat_path)) png_to_ggdraw(p3b_strat_path) else blank_plot

@@ -1,5 +1,5 @@
 # =============================================================================
-# figure-scripts/manuscript_figures/supporting/figS4-secondary-forest.R
+# figure-scripts/manuscript_figures/figS3-hmo-bioactives.R
 #
 # Reads:  results/subsetted results/secondary_bioactives.csv
 #         results/subsetted results/secondary_hmo.csv
@@ -142,7 +142,7 @@ forest_plot <- function(tab, arm_strat=F, tertiary=F, pos="none", y_limits=NULL)
 # This script produces supplement Fig S4 = SECONDARY outcomes (HMOs + bioactive
 # proteins), COMBINED-arm forest (arm_strat=FALSE, coloured by per-arm sigFDR).
 # NOTE: the primary-outcome combined forest is main-text Fig 3 (fig2-primary-forest.R),
-# and Fig S3 is the deficiency-RR forest (figS3-milq-deficiency.R) — neither
+# and Fig S3 is the deficiency-RR forest (figS2-milq-deficiency.R) — neither
 # is produced here.
 
 hmo_dat <- read.csv(here("results/subsetted results/secondary_hmo.csv")) %>%
@@ -203,6 +203,6 @@ fig_s4 <- ggdraw(stack_ab) +
 
 fig_s4
 
-save_figure_3way(fig_s4, name = "figureS4", width = 7.25, height = 10,
+save_figure_3way(fig_s4, name = "figureS3_hmo_bioactives", width = 7.25, height = 10,
                  dir = paste0(here::here(), "/figures"))
 

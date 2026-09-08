@@ -1,4 +1,4 @@
-# figS5-triglyceride-means.R
+# figS4-triglyceride-means.R
 # =============================================================================
 # Figure S5: treatment-specific means (95% CI) of MISAME-III milk triglycerides,
 # unadjusted and adjusted for total fat content.
@@ -14,9 +14,9 @@
 # Inputs:  results/adjusted_intervention_effects_results_clean.RDS       (unadjusted)
 #          results/fat_adjusted_metabolomics_intervention_effects_results.RDS
 #          data/merged_analysis_datasets.RDS  (to drop sparse binary-recoded TGs)
-# Output:  figures/figureS5_triglyceride_means.{pdf,eps,png}
+# Output:  figures/figureS4_triglyceride_means.{pdf,eps,png}
 #
-# Run from repo root: Rscript figure-scripts/manuscript_figures/figS5-triglyceride-means.R
+# Run from repo root: Rscript figure-scripts/manuscript_figures/figS4-triglyceride-means.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))
 load(file = paste0(here::here(), "/metadata/milk_component.Rdata"))
@@ -127,8 +127,8 @@ p <- ggplot(res, aes(x = ordered_biomarker, y = est,
         panel.border     = element_rect(colour = "black", fill = NA, linewidth = 0.3)) +
   ylab("Z-scored mean") + xlab("Milk component")
 
-save_figure_3way(p, "figureS5_triglyceride_means",
+save_figure_3way(p, "figureS4_triglyceride_means",
                  width = 9, height = 7,
                  dir   = paste0(here::here(), "/figures"))
 
-message("Wrote figures/figureS5_triglyceride_means.{pdf,eps,png}")
+message("Wrote figures/figureS4_triglyceride_means.{pdf,eps,png}")

@@ -39,7 +39,10 @@ results/*untargeted*
 results/*_ATE.RDS
 results/SL_vim_*
 results/*_blinded.RDS
-results/tables/
+# NOTE: results/tables/ used to be ignored here. It is NOT large (every file is
+# under 300 KB) and the submitted supplement names several of these files
+# explicitly as machine-readable downloads in the Online Appendix, which is this
+# deposit. Un-ignored 2026-09-08 so they actually reach the published archive.
 
 # MetaboAnalystR writes rendered report junk beside its result CSVs.
 results/**/*.html

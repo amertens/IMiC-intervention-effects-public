@@ -1,5 +1,5 @@
 # =============================================================================
-# figS10-compartment-tracking.R
+# appendix-compartment-tracking.R
 #
 # Supplementary Figure S10: cross-compartment tracking of BEP-associated
 # UP-REGULATED metabolite features and their BEP-supplement origin (MISAME-III).
@@ -39,20 +39,20 @@
 #       compartment. The printed caption's "linked across at least two of maternal
 #       blood, milk, and infant blood" describes a SUBSET of the rows, not the
 #       inclusion rule. The figure keeps his rule; the compartment-spanning counts the
-#       caption needs are written to results/tables/figS10_tracking_counts.csv.
+#       caption needs are written to results/tables/compartment_tracking_counts.csv.
 #
 #   Set GROUPING = "union-find" to render the alternative for comparison.
 #
 # Inputs : results/supplement_status_fdr_features.csv  (script 54)
 #          results/compartment_tracking/metabolite_pathways_local.csv  (pathway labels)
 #          src/trenton-ports/compartment-tracking.R    (his pairwise matcher, faithful)
-# Outputs: figures/cross_compartment/figureS10_compartment_tracking.png
-#          results/tables/figS10_tracking_counts.csv
+# Outputs: figures/cross_compartment/appendix_compartment_tracking.png
+#          results/tables/compartment_tracking_counts.csv
 #          results/compartment_tracking/trenton_linked_upregulated.csv  (row-level data)
 #          results/compartment_tracking/trenton_pathway_compound_list.csv (Table S11 query)
 #
 # Run from repo root:
-#   Rscript figure-scripts/manuscript_figures/figS10-compartment-tracking.R
+#   Rscript figure-scripts/manuscript_figures/appendix-compartment-tracking.R
 # =============================================================================
 suppressMessages({ library(dplyr); library(tidyr); library(stringr); library(ggplot2)
                    library(forcats); library(readr) })
@@ -67,8 +67,8 @@ SIGFEAT  <- "results/supplement_status_fdr_features.csv"
 # the labels always match whichever grouping produced the row's tracking_name.
 PATHS_TRENTON    <- "results/compartment_tracking/metabolite_pathways_trenton.csv"
 PATHS_UNIONFIND  <- "results/compartment_tracking/metabolite_pathways_local.csv"
-OUT      <- "figures/cross_compartment/figureS10_compartment_tracking.png"
-COUNTS   <- "results/tables/figS10_tracking_counts.csv"
+OUT      <- "figures/cross_compartment/appendix_compartment_tracking.png"
+COUNTS   <- "results/tables/compartment_tracking_counts.csv"
 ROWDATA  <- "results/compartment_tracking/trenton_linked_upregulated.csv"
 CMPDLIST <- "results/compartment_tracking/trenton_pathway_compound_list.csv"
 

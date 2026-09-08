@@ -1,10 +1,10 @@
 # =============================================================================
-# figure-scripts/manuscript_figures/figS3-milq-deficiency.R
+# figure-scripts/manuscript_figures/figS2-milq-deficiency.R
 #
 # Reads:  results/milq_deficiency_reduction_analysis_results.RDS
-# Writes: figure-data/fig-milq-deficiency-reduction-data.RDS
-#         figure-data/fig-milq-deficiency-reduction-data.xlsx
-#         figures/fig-milq-deficiency-reduction-forest-plot.png
+# Writes: figure-data/figureS2_milq_deficiency_data.RDS
+#         figure-data/figureS2_milq_deficiency_data.xlsx
+#         figures/figureS2_milq_deficiency.png
 #
 # Paths above were recovered from this script's syntax tree and are
 # repo-relative; they resolve from the repo root via here::here().
@@ -118,8 +118,8 @@ p
 
 # ragg::agg_png renders UTF-8 glyphs (α/γ tocopherol, B-vitamin subscripts); the default
 # Windows png device cannot (mbcsToSbcs conversion failure).
-ggsave(here("figures/fig-milq-deficiency-reduction-forest-plot.png"), p, width = 8, height = 6, dpi = 300, device = ragg::agg_png)
-saveRDS(plot_df, file= paste0(here::here(),"/figure-data/fig-milq-deficiency-reduction-data.RDS"))
-writexl::write_xlsx(plot_df, paste0(here::here(),"/figure-data/fig-milq-deficiency-reduction-data.xlsx"))
+ggsave(here("figures/figureS2_milq_deficiency.png"), p, width = 8, height = 6, dpi = 300, device = ragg::agg_png)
+saveRDS(plot_df, file= paste0(here::here(),"/figure-data/figureS2_milq_deficiency_data.RDS"))
+writexl::write_xlsx(plot_df, paste0(here::here(),"/figure-data/figureS2_milq_deficiency_data.xlsx"))
 
 

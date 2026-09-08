@@ -18,7 +18,7 @@
 #   C) Triglyceride -> fatty-acid composition. That analysis
 #      (fig5C-triglyceride.R) is blocked on an external
 #      Biocrates structure file, so Panel C here embeds the existing placeholder
-#      (figures/final-figure-4-c.png) until figures/figure4_panelC_tg_composition.png
+#      (figures/final-figure-4-c.png) until figures/figure5_panelC_tg_composition.png
 #      is produced.
 #
 # Composite layout: A on top, (B, C) side by side underneath -- matching the
@@ -194,7 +194,8 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
   p <- p + geom_text_repel(data = top_vars, aes(label = lab),
                            max.overlaps = getOption("ggrepel.max.overlaps", default = overlap_n),
                            size = 2.5, alpha = 0.5,
-                           ylim = c(NA, ymax_data * 1.12 * 0.85))
+                           ylim = c(NA, ymax_data * 1.12 * 0.85),
+                           seed = 123)   # draw-time placement; required for byte-reproducible Fig 5A
 
   ggdraw() + draw_plot(p, 0, 0, 1, 1) +
     # Inset height 0.16 (overlapped plotted points) -> 0.10 (left a gap below the
@@ -374,7 +375,8 @@ build_panelB <- function(msea_csv, out_png, show_legend = TRUE) {
     geom_label_repel(
       data = label_df, aes(label = pathway, color = point_color),
       size = 2, label.padding = 0.12, box.padding = 0.4,
-      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE) +
+      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE,
+      seed = 123) +
     scale_color_manual(values = color_vals, name = "Study") +
     scale_x_continuous(limits = c(x_lo, x_hi)) +
     scale_y_continuous(limits = c(0, y_hi)) +
@@ -506,10 +508,10 @@ build_panelB("results/metaboanalyst/tertiary_msea/tertiary_msea_dual.csv",
 # B+C instead); fall back to the legend-bearing version, then the committed
 # placeholder (the Fig 5C analysis is blocked on the external Biocrates
 # structure file).
-panel_c_png <- if (file.exists("figures/figure4_panelC_tg_composition_nolegend.png")) {
-  "figures/figure4_panelC_tg_composition_nolegend.png"
-} else if (file.exists("figures/figure4_panelC_tg_composition.png")) {
-  "figures/figure4_panelC_tg_composition.png"
+panel_c_png <- if (file.exists("figures/figure5_panelC_tg_composition_nolegend.png")) {
+  "figures/figure5_panelC_tg_composition_nolegend.png"
+} else if (file.exists("figures/figure5_panelC_tg_composition.png")) {
+  "figures/figure5_panelC_tg_composition.png"
 } else {
   "figures/final-figure-4-c.png"
 }

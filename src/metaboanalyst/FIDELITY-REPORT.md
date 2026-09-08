@@ -1,4 +1,4 @@
-# MetaboAnalystR pipeline — Phase 0/1 fidelity report
+# MetaboAnalystR pipeline: Phase 0/1 fidelity report
 
 **Date:** 2026-07-22
 **Scope:** Reproducing Trenton's manual metaboanalyst.ca enrichment/pathway analysis
@@ -9,9 +9,9 @@ for the **primary** outcome group, with a scripted MetaboAnalystR pipeline
 
 The scripted pipeline reproduces Trenton's one downloaded MetaboAnalyst result
 **exactly**, and reproduces the structure he described for the enrichment
-(ORA) analysis. Every step is now code — no manual clicking on metaboanalyst.ca.
+(ORA) analysis. Every step is now code, no manual clicking on metaboanalyst.ca.
 
-## Hard numeric gate — the golden pathway cell (PASSES)
+## Hard numeric gate: the golden pathway cell (PASSES)
 
 The only cell for which Trenton has a downloaded ground-truth file is the
 **Pathway Analysis** of *Elicit · Upregulated · 1 month (Combined)*
@@ -28,11 +28,11 @@ all six shared pathways:
 | Tryptophan Metabolism | 0.2862 | 0.2862 | 0 |
 
 Reproduced with `run_pathway()` (SMPDB / Homo sapiens, hypergeometric,
-relative-betweenness topology, metabolome filter OFF) — matching the exact call
+relative-betweenness topology, metabolome filter OFF), matching the exact call
 sequence in the downloaded `Rhistory.R`. (`src/metaboanalyst/validate-against-trenton.R`,
 `test-10`.)
 
-## Primary enrichment (ORA) — the actual deliverable
+## Primary enrichment (ORA): the actual deliverable
 
 Trenton's rule: primary uses **ORA (over-representation)**. The driver
 `run-primary.R` runs all **11 non-empty primary cells** (Misame×BEP, Vital×BEP,
@@ -44,7 +44,7 @@ Elicit×Nico; up/down), applying the reference metabolome. Results are written t
 - **Elicit · Upregulated · 1 mo · Nicotinate & Nicotinamide Metabolism:**
   total = **7**, hits = **5**, raw p = 3.67e-04, FDR = 0.036.
   The **total = 7 / hits = 5** structure matches exactly what Trenton described
-  on the call ("in our subset there's seven … we have five hits"). This is the
+  on the call ("in our subset there's seven ... we have five hits"). This is the
   strongest available corroboration of the ORA path, since no downloaded ORA
   result file exists to check the p-value against.
 
@@ -68,45 +68,45 @@ matched-name references for the other modalities is a Phase-3 task** (it means
 running each outcome group's measured compounds through MetaboAnalyst's name
 mapping, the scripted equivalent of Trenton's manual ID-conversion step).
 
-## Reference-metabolome question — resolved
+## Reference-metabolome question: resolved
 
 The apparent contradiction (his pathway `Rhistory.R` shows the filter OFF, yet
 he described uploading a reference) is resolved (`investigate/FINDINGS-reference-metabolome.md`):
 
 - **Pathway module: filter OFF.** Filter ON with the KEGG reference is not just
-  different but *broken* on the SMPDB library — `CalculateOraScore` filters
+  different but *broken* on the SMPDB library, `CalculateOraScore` filters
   against KEGG IDs while SMPDB set members are HMDB IDs (zero overlap), so it
   collapses to the package's "too few sets" error. Filter OFF reproduces his
   downloaded numbers.
 - **ORA module: reference ON**, via `Setup.HMDBReferenceMetabolome` +
-  `SetMetabolomeFilter(TRUE)` — matching his web procedure and reproducing the
+  `SetMetabolomeFilter(TRUE)`, matching his web procedure and reproducing the
   7/5 structure.
 
 ## MetaboAnalystR 4.3.0 bugs found and worked around
 
-1. **`InitDataObjects` self-referential default arg** — the 4th `dpi` argument
+1. **`InitDataObjects` self-referential default arg**, the 4th `dpi` argument
    must be passed explicitly (e.g. `150`), else "promise already under evaluation".
-2. **`CalculateHyperScore` crashes locally** — it calls two reporting-only
+2. **`CalculateHyperScore` crashes locally**, it calls two reporting-only
    helpers (`ExportOraMembershipJson`, `PlotORAMembership`) with an NA `mSetObj`
    off the public web, crashing *after* results are computed. Patched by
    no-op'ing those two side effects (`run-ora.R`; verified numerically identical).
 3. **`AddErrMsg` reads an uninitialized global** off-web, so error paths would
    hard-crash; seeded `current.msg` defensively.
 
-None affect any numeric result — they are all environment/reporting bugs in the
+None affect any numeric result, they are all environment/reporting bugs in the
 package's off-web code path.
 
 ## Known limitation & request to Trenton
 
 Our **hard numeric validation rests on a single downloaded cell** (the pathway
-result above). The primary **ORA** cells — the actual deliverable — have only
+result above). The primary **ORA** cells (the actual deliverable) have only
 query-list `.xlsx` files saved, no downloaded result folders, so they are
 validated by structure (total/hits) and internal consistency, not against
 downloaded numbers.
 
 **Request:** please share the downloaded `Download.zip` (or the
-`ora_results` / membership files) for a few primary **enrichment** cells —
-ideally *Elicit · Upregulated · 1 mo* and *5 mo* — so we can lock the ORA path
+`ora_results` / membership files) for a few primary **enrichment** cells, 
+ideally *Elicit · Upregulated · 1 mo* and *5 mo*, so we can lock the ORA path
 to exact numbers the same way we did for the pathway cell.
 
 ## What runs, and how
@@ -122,9 +122,9 @@ Rscript -e "testthat::test_dir('src/metaboanalyst/tests')"
 
 ## Next phases (separate plans)
 
-- **Phase 2 — critical evaluation:** native FDR vs Trenton's own BH on raw p;
+- **Phase 2: critical evaluation:** native FDR vs Trenton's own BH on raw p;
   ORA-vs-pathway choice; running both modules per cell; auto matched-name
   reference generation.
-- **Phase 3 — expansion:** secondary/tertiary/exploratory outcome groups and
+- **Phase 3: expansion:** secondary/tertiary/exploratory outcome groups and
   other milk/blood modalities via config rows (`build_cells` + a config like
-  `config-primary.R`), plus the stratified-arms cells (Misame BEP/BEP, BEP/IFA, …).
+  `config-primary.R`), plus the stratified-arms cells (Misame BEP/BEP, BEP/IFA, ...).

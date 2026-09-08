@@ -25,7 +25,7 @@
 #   4. Study-coloured volcano of the SIGNED enrichment ratio (positive = enriched
 #      among UP-regulated TGs, negative = enriched among DOWN-regulated TGs) vs
 #      -log10(p_value), matching Panel B's conventions
-#      -> figures/figure4_panelC_tg_composition.png.
+#      -> figures/figure5_panelC_tg_composition.png.
 #
 # CRITICAL: the Biocrates structure file is NOT in the repo. Without it there is
 # no way to map triglycerides to their fatty-acid chains, so this script HARD-
@@ -77,16 +77,16 @@ BIOCRATES_BIOIDS_PATH <- Sys.getenv(
 # ARM_FRAMING <- "stratified" (to refresh the Table S3 MISAME-III companion CSV)
 # must NOT overwrite it, so the stratified run writes to a distinctly-named PNG.
 OUT_PNG <- if (identical(ARM_FRAMING, "stratified")) {
-  "figures/figure4_panelC_tg_composition_stratified.png"
+  "figures/figure5_panelC_tg_composition_stratified.png"
 } else {
-  "figures/figure4_panelC_tg_composition.png"
+  "figures/figure5_panelC_tg_composition.png"
 }
 # No-legend twin, embedded by the Fig 5 composite (fig5-tertiary-composite.R),
 # which draws one shared Study legend under Panels B+C instead of a per-panel one.
 OUT_PNG_NOLEGEND <- if (identical(ARM_FRAMING, "stratified")) {
-  "figures/figure4_panelC_tg_composition_stratified_nolegend.png"
+  "figures/figure5_panelC_tg_composition_stratified_nolegend.png"
 } else {
-  "figures/figure4_panelC_tg_composition_nolegend.png"
+  "figures/figure5_panelC_tg_composition_nolegend.png"
 }
 
 # ---------------------------------------------------------------------------
@@ -371,7 +371,8 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
     geom_label_repel(data = lab_df, aes(label = lab, color = color_group), size = 2.5,
                      label.padding = 0.12, box.padding = 0.3,
                      max.overlaps = Inf, min.segment.length = 0,
-                     show.legend = FALSE) +
+                     show.legend = FALSE,
+                     seed = 123) +   # draw-time placement; required for byte-reproducible Panel C
     scale_color_manual(values = study_cols, name = "Study",
                        breaks = c("ELICIT", "MISAME-III", "Mumta-LW", "Not significant")) +
     guides(colour = guide_legend(nrow = 1)) +

@@ -7,7 +7,7 @@
 # Table S11) and src/trenton-ports/compartment-tracking.R's ct_trenton_track()
 # (Fig S10). This script and its outputs (pathway_results_local.csv,
 # linked_upregulated_plot_data.csv, metabolite_pathways_local.csv) are kept
-# ONLY so figS10-compartment-tracking.R's GROUPING = "union-find" switch has
+# ONLY so appendix-compartment-tracking.R's GROUPING = "union-find" switch has
 # something to render for comparison. Do not point any manuscript exhibit at
 # this script's outputs.
 #

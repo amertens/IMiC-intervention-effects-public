@@ -40,16 +40,16 @@ REGISTRY <- rbindlist(list(
   r("Fig 2",  "figure", "figures/figure2.png", paste0(FS, "fig2-primary-forest.R"),
     "figure-data/primary_forest_plots.RDS"),
   r("Fig 3",  "figure", "figures/figure3.png", paste0(FS, "fig3-primary-volcano-composite.R"),
-    "figures/figure4_panelB_msea.png"),
-  r("Fig 3B", "figure", "figures/figure4_panelB_msea.png", paste0(FS, "fig3B-pathway.R"),
+    "figures/figure3_panelB_msea.png"),
+  r("Fig 3B", "figure", "figures/figure3_panelB_msea.png", paste0(FS, "fig3B-pathway.R"),
     "results/metaboanalyst/primary_pathway_local/primary_pathway_all_cells.csv",
-    "legacy output name: fig3B writes figure4_panelB_msea.png"),
+    "Panel B of Fig 3; renamed from the legacy figure4_panelB_msea.png on 2026-09-08"),
   r("Fig 4",  "figure", "figures/figure4.jpeg", paste0(FS, "fig4-milq-boxplots.R")),
   r("Fig 5",  "figure", "figures/figure5.png", paste0(FS, "fig5-tertiary-composite.R"),
-    "figures/figure4_panelC_tg_composition.png"),
-  r("Fig 5C", "figure", "figures/figure4_panelC_tg_composition.png", paste0(FS, "fig5C-triglyceride.R"),
+    "figures/figure5_panelC_tg_composition.png"),
+  r("Fig 5C", "figure", "figures/figure5_panelC_tg_composition.png", paste0(FS, "fig5C-triglyceride.R"),
     "results/metaboanalyst/triglyceride_fa/triglyceride_fa_composition_combined.csv",
-    "legacy output name: fig5C writes figure4_panelC_*.png"),
+    "Panel C of Fig 5; renamed from the legacy figure4_panelC_* names on 2026-09-08"),
   r("Fig 6",  "figure", "figures/figure6.png", paste0(FS, "fig6-composite.R"),
     paste("figures/figure6_panelA_untargeted_msea.png",
           "figures/figure6_panelB_mummichog.png",
@@ -72,55 +72,66 @@ REGISTRY <- rbindlist(list(
   # archived to archive/figure-scripts/manuscript_figures/.
   r("(retired) Fig S1", "figure", "archive/figures/figureS1.png", "", "",
     "DELETED 2026-08-26, not renumbered. Was STATIC: the exact submitted schematic; deliberately not rebuilt"),
-  # renumbered 2026-08-26: was Fig S2, now Fig S1 (Fig S1-study-design deleted above)
-  r("Fig S1", "figure", "figures/figureS2_growth_outcomes.png",
-    paste0(FS, "figS2-growth-outcomes.R"), "results/growth_intervention_effects_results.RDS",
-    "Filename keeps its legacy S2 name. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image1.png): supplement_v2.qmd already embedded this reconstructed figure since 2026-08-20 -- this row previously disagreed with that and with build_all_manuscript_figures.R, which already treated it as live; corrected to match. Static original vs. reconstruction is compared side-by-side in Manuscript/figure_comparison/build_figure_comparison.R / figures_old_vs_new.html -- see Manuscript/CODE_AUDIT_2026-08-25.md #5"),
-  # renumbered 2026-08-26: was Fig S3, now Fig S2
-  r("Fig S2", "figure", "figures/fig-milq-deficiency-reduction-forest-plot.png",
-    paste0(FS, "figS3-milq-deficiency.R")),
-  # renumbered 2026-08-26: was Fig S4, now Fig S3
-  r("Fig S3", "figure", "figures/figureS4.png", paste0(FS, "supporting/figS4-secondary-forest.R"),
-    "", "Filename keeps its legacy S4 name."),
-  # renumbered 2026-08-26: was Fig S5, now Fig S4
-  r("Fig S4", "figure", "figures/figureS5_triglyceride_means.png",
-    paste0(FS, "figS5-triglyceride-means.R"),
+  # SUBMITTED Fig. S1 (was Fig S2 before the study-design schematic was cut)
+  r("Fig S1", "figure", "figures/figureS1_growth_outcomes.png",
+    paste0(FS, "figS1-growth-outcomes.R"), "results/growth_intervention_effects_results.RDS",
+    "SUBMITTED Fig. S1 (aee9284 v2). Renamed from figureS2_growth_outcomes on 2026-09-08. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image1.png): supplement_v2.qmd already embedded this reconstructed figure since 2026-08-20 -- this row previously disagreed with that and with build_all_manuscript_figures.R, which already treated it as live; corrected to match. Static original vs. reconstruction is compared side-by-side in Manuscript/figure_comparison/build_figure_comparison.R / figures_old_vs_new.html -- see Manuscript/CODE_AUDIT_2026-08-25.md #5"),
+  # SUBMITTED Fig. S2
+  r("Fig S2", "figure", "figures/figureS2_milq_deficiency.png",
+    paste0(FS, "figS2-milq-deficiency.R")),
+  # SUBMITTED Fig. S3
+  r("Fig S3", "figure", "figures/figureS3_hmo_bioactives.png", paste0(FS, "figS3-hmo-bioactives.R"),
+    "", "SUBMITTED Fig. S3 (aee9284 v2). Renamed from figureS4 on 2026-09-08; generator moved up out of supporting/."),
+  # SUBMITTED Fig. S4
+  r("Fig S4", "figure", "figures/figureS4_triglyceride_means.png",
+    paste0(FS, "figS4-triglyceride-means.R"),
     paste0("data/merged_analysis_datasets.RDS;",
            "results/adjusted_intervention_effects_results_clean.RDS;",
            "results/fat_adjusted_metabolomics_intervention_effects_results.RDS"),
-    "Filename keeps its legacy S5 name. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image5.png). Same situation as Fig S1 above -- comparison preserved in Manuscript/figure_comparison/"),
-  # renumbered 2026-08-26: was Fig S6, now Fig S5
-  r("Fig S5", "figure", "figures/figureS6_microbiome_diversity.png",
-    paste0(FS, "figS6-microbiome-diversity.R"), "results/microbiome_diversity_intervention_effects_results.RDS",
-    "Filename keeps its legacy S6 name. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image6.png). Same situation as Fig S1 above -- comparison preserved in Manuscript/figure_comparison/"),
+    "SUBMITTED Fig. S4 (aee9284 v2). Renamed from figureS5_triglyceride_means on 2026-09-08. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image5.png). Same situation as Fig S1 above -- comparison preserved in Manuscript/figure_comparison/"),
+  # SUBMITTED Fig. S5 (the last numbered supplementary figure)
+  r("Fig S5", "figure", "figures/figureS5_microbiome_diversity.png",
+    paste0(FS, "figS5-microbiome-diversity.R"), "results/microbiome_diversity_intervention_effects_results.RDS",
+    "SUBMITTED Fig. S5 (aee9284 v2). Renamed from figureS6_microbiome_diversity on 2026-09-08. PROMOTED 2026-08-25 (was STATIC, the submitted image at Manuscript/qmd/extracted/media_supplement/media/image6.png). Same situation as Fig S1 above -- comparison preserved in Manuscript/figure_comparison/"),
   # RETIRED 2026-08-26: deleted entirely (not renumbered) per author decision. Script +
   # PNG archived to archive/src/2 analysis/ and archive/figures/cross_compartment/.
   r("(retired) Fig S7", "figure", "archive/figures/cross_compartment/fig_blood_transfer_supplement.png",
     paste0(A2, "45-figure-blood-transfer-supplement.R"),
     "results/blood_compartment_all_FDRsig_ATE.csv",
     "DELETED 2026-08-26, not renumbered."),
-  r("(retired) Fig S8", "figure", "figures/figureS8_blood_class_enrichment.png",
-    paste0(FS, "figS8-blood-class-enrichment.R"),
+  r("(retired) Fig S8", "figure", "figures/appendix_blood_class_enrichment.png",
+    paste0(FS, "appendix-blood-class-enrichment.R"),
     "results/blood_chemical_class_enrichment_directional.csv"),
-  # renumbered: was Fig S8a/S9a, now Fig S6a (2026-08-26, after Fig S7's deletion)
-  r("Fig S6a", "figure", "figures/figureS_primary_ora_by_direction.png",
-    paste0(FS, "figS9-ora-by-direction.R"),
-    "results/metaboanalyst/primary_combined/primary_ora_upregulated.csv"),
-  r("Fig S6b", "figure", "figures/figureS_tertiary_ora_by_direction.png",
-    paste0(FS, "figS9-ora-by-direction.R"),
-    "results/metaboanalyst/tertiary_combined/tertiary_ora_upregulated.csv"),
-  r("(retired) Fig S10", "figure", "figures/cross_compartment/figureS10_compartment_tracking.png",
-    paste0(FS, "figS10-compartment-tracking.R"),
+  # NOT a numbered supplementary figure. The submitted supplement (aee9284 v2) lists
+  # "Figs. S1 to S5" on its title page and stops at S5; these two panels are the
+  # "up- and down-regulated pathways in the Online Appendix" the Results point to.
+  # Mislabelled "Fig S6a"/"Fig S6b" here until 2026-09-08 -- corrected, and the files
+  # renamed figureS_*_ora_by_direction -> appendix_*_ora_by_direction to match.
+  r("Online Appendix: primary ORA by direction", "figure",
+    "figures/appendix_primary_ora_by_direction.png",
+    paste0(FS, "appendix-ora-by-direction.R"),
+    "results/metaboanalyst/primary_combined/primary_ora_upregulated.csv",
+    "Not in the printed supplement; Zenodo online appendix only (10.5281/zenodo.22104233)"),
+  r("Online Appendix: tertiary ORA by direction", "figure",
+    "figures/appendix_tertiary_ora_by_direction.png",
+    paste0(FS, "appendix-ora-by-direction.R"),
+    "results/metaboanalyst/tertiary_combined/tertiary_ora_upregulated.csv",
+    "Not in the printed supplement; Zenodo online appendix only (10.5281/zenodo.22104233)"),
+  r("(retired) Fig S10", "figure", "figures/cross_compartment/appendix_compartment_tracking.png",
+    paste0(FS, "appendix-compartment-tracking.R"),
     paste("results/supplement_status_fdr_features.csv",
           "results/compartment_tracking/metabolite_pathways_trenton.csv", sep = ";"),
-    "Not cited in manuscript_v4.qmd or supplement_v2.qmd -- fully subsumed by Table S8 (feature list) + Table S11 (pathways) + figS10_tracking_counts.csv (Results-text counts). Still built (two-pass, see script header) because it emits the Table S11 query list; kept out of the manuscript's numbered figure set on purpose. Still shown as an online-only bonus figure in IMiC-intervention-effects-supplement's 10_cross_compartment_blood.Rmd (§10.5)"),
-  # renumbered: was Fig S11, then Fig S9 (2026-08-25), now Fig S7 (2026-08-26, after old Fig S7's deletion)
-  r("Fig S7", "figure", "figures/cross_compartment/figureS11_crosscompartment_volcanoes.png",
-    paste0(FS, "figS11-crosscompartment-volcanoes.R"),
+    "Not cited in manuscript_v4.qmd or supplement_v2.qmd -- fully subsumed by Table S8 (feature list) + Table S11 (pathways) + compartment_tracking_counts.csv (Results-text counts). Still built (two-pass, see script header) because it emits the Table S11 query list; kept out of the manuscript's numbered figure set on purpose. Still shown as an online-only bonus figure in IMiC-intervention-effects-supplement's 10_cross_compartment_blood.Rmd (§10.5)"),
+  # NOT a numbered supplementary figure -- see the note above; the submitted supplement
+  # ends at Fig. S5. The printed cross-compartment result is Table S8 (features) +
+  # Table S11 (pathways). Mislabelled "Fig S7" here until 2026-09-08.
+  r("Online Appendix: cross-compartment volcanoes", "figure",
+    "figures/cross_compartment/appendix_crosscompartment_volcanoes.png",
+    paste0(FS, "appendix-crosscompartment-volcanoes.R"),
     paste("results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS",
           "results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS",
           "results/supplement_status_fdr_features.csv", sep = ";"),
-    "Filename keeps its legacy S11 name."),
+    "Not in the printed supplement; Zenodo online appendix only (10.5281/zenodo.22104233). Renamed from figureS11_crosscompartment_volcanoes on 2026-09-08."),
   # RETIRED 2026-08-26: deleted entirely (not renumbered) per author decision. Script +
   # PNG archived to archive/figure-scripts/manuscript_figures/ and archive/figures/.
   r("(retired) Fig S10 individual-protein", "figure", "archive/figures/figureS10_proteomics_individual.png",
@@ -182,11 +193,11 @@ REGISTRY <- rbindlist(list(
     "results/compartment_tracking/trenton_pathway_compound_list.csv"),
 
   # ---- supporting data artifacts the supplement site also serves ----------
-  r("Table S11 support", "data", "results/tables/figS10_tracking_counts.csv",
-    paste0(FS, "figS10-compartment-tracking.R")),
+  r("Table S11 support", "data", "results/tables/compartment_tracking_counts.csv",
+    paste0(FS, "appendix-compartment-tracking.R")),
   r("Compartment tracking", "data", "results/compartment_tracking/trenton_linked_crosscompartment.csv",
     paste0(MA, "run-compartment-pathway-trenton.R"), "results/supplement_status_fdr_features.csv",
-    "Trenton's name-based grouping, >=2 compartments (Fig 6D's rule); the earlier union-find version (run-compartment-pathway.R, linked_upregulated_plot_data.csv) is superseded and kept only as figS10-compartment-tracking.R's GROUPING='union-find' sensitivity view, not a manuscript artifact"),
+    "Trenton's name-based grouping, >=2 compartments (Fig 6D's rule); the earlier union-find version (run-compartment-pathway.R, linked_upregulated_plot_data.csv) is superseded and kept only as appendix-compartment-tracking.R's GROUPING='union-find' sensitivity view, not a manuscript artifact"),
   r("Supplement detection", "data", "results/supplement_status_fdr_features.csv",
     paste0(A2, "54-supplement-detection-status.R"), "",
     "TOP-LEVEL SPRAWL: should move to results/compartment_tracking/")

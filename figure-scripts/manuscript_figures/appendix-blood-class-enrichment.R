@@ -1,5 +1,5 @@
 # =============================================================================
-# figS8-blood-class-enrichment.R
+# appendix-blood-class-enrichment.R
 # Direction-split chemical-class enrichment across the three blood compartments,
 # as a dot plot to sit alongside the milk Fig 6. compartment (x) x class (y),
 # faceted by direction (up/down); dot size = -log10(p), colour = direction,
@@ -39,6 +39,6 @@ p <- ggplot(d, aes(comp, class)) +
         panel.grid.minor = element_blank(), legend.position = "right")
 
 # Write the published supplementary-figure name (Fig S8) directly, plus a working copy in results/.
-ggsave(paste0(root, "figures/figureS8_blood_class_enrichment.png"), p, width = 10, height = 6.2, dpi = 200, bg = "white")
+ggsave(paste0(root, "figures/appendix_blood_class_enrichment.png"), p, width = 10, height = 6.2, dpi = 200, bg = "white")
 ggsave(paste0(root, "results/blood_class_enrichment_figure.png"),   p, width = 10, height = 6.2, dpi = 200, bg = "white")
-cat("saved figures/figureS8_blood_class_enrichment.png (published Fig S8) + results/ working copy (", length(keep), "classes)\n")
+cat("saved figures/appendix_blood_class_enrichment.png (published Fig S8) + results/ working copy (", length(keep), "classes)\n")

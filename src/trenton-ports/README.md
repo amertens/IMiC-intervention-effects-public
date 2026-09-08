@@ -1,9 +1,9 @@
-# Trenton-ports — faithful R conversions of Trenton's Rmd analyses
+# Trenton-ports: faithful R conversions of Trenton's Rmd analyses
 
 Each script here is a **faithful, top-to-bottom R port of one of Trenton's `.Rmd`
 notebooks** from `Dailey-Chwalibóg, Mertens et al. 2026 Science/2. Scripts/`. The
 goal is fidelity: same input data, same filters, same cell definitions, same test
-parameters, same order — *unless Trenton made a clear coding error*, which is
+parameters, same order, *unless Trenton made a clear coding error*, which is
 called out inline where it occurs.
 
 The only thing that changes versus the Rmd is that the **manual metaboanalyst.ca
@@ -50,7 +50,7 @@ lacked) was found in Trenton's older scripts and ported here:
 | **Fig 6C** proteome-GO | `imicPaperProteomics.Rmd` (`★Untargeted Proteomics Figure`) | `figure-6c-proteome-go-submitted.R` | Reproduces the **submitted** figure (global-universe gene-level enrichGO). **Fixes** his copy-paste bug (Mumpta-up filtered MISAME). This is the global-universe result that makes up-regulated terms survive FDR; the corrected per-cell/UniProt methods overturn it. |
 | **Fig 6A** untargeted MSEA | `imicPaperUntargetedMetabolomics.Rmd` (`★Untargeted Metabolites Figure`) | `figure-6a-untargeted-msea-submitted.R` | Exact figure code + reproducible cell logic + `run_ora` wiring. **Gated** on Trenton's untargeted annotation keys (not in-repo); runs 1:1 once supplied. |
 | **Fig 5C** fatty-acid enrichment | `imicPaperTriglycerides.Rmd` (`★ Fatty Acids Figure`) | already faithfully reproduced in-repo at `figure-scripts/manuscript_figures/fig5C-triglyceride.R` (needs the Biocrates Quant500 file, which IS present). No duplicate port needed. |
-| **Fig 6B** mummichog | `imicUntargetedMetabolomicsMummichog.Rmd` | mummichog **run** code present (conda, `-u 10 -n human_mfn -c 0.05`); the pathway-volcano **plot** code is incomplete in his file ("START OVER") — still pending. |
+| **Fig 6B** mummichog | `imicUntargetedMetabolomicsMummichog.Rmd` | mummichog **run** code present (conda, `-u 10 -n human_mfn -c 0.05`); the pathway-volcano **plot** code is incomplete in his file ("START OVER"), still pending. |
 
 Run any port from the repo root, e.g.:
 
