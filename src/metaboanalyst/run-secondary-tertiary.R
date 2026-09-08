@@ -1,4 +1,4 @@
-# run-secondary-tertiary.R — populate the secondary + tertiary outcome-group
+# run-secondary-tertiary.R, populate the secondary + tertiary outcome-group
 # directories (combined and stratified arms).
 #
 # MODULE PER GROUP (must match how each group is REPORTED):

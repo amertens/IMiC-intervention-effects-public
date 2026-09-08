@@ -37,7 +37,7 @@ test_that("run_outcome_group dispatches the pathway module (impact column presen
   res <- run_outcome_group(combined, "tertiary", module = "pathway", arm_set = "combined",
                            write = FALSE, max_cells = 6)
   # Either some cell produced pathway results (with an impact column) or all were
-  # too thin and got skipped — both are valid; if any results exist they must be
+  # too thin and got skipped, both are valid; if any results exist they must be
   # pathway-shaped.
   if (nrow(res$results) > 0) {
     expect_true("impact" %in% names(res$results))

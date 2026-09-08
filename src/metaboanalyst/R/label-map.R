@@ -1,4 +1,4 @@
-# label-map.R — curated compound-name synonyms -> MetaboAnalyst-recognized names.
+# label-map.R, curated compound-name synonyms -> MetaboAnalyst-recognized names.
 # Source of truth, extracted verbatim from "trenton scripts/2. Scripts/Primary Outcomes.Rmd".
 suppressMessages(library(stringr))
 

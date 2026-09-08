@@ -89,7 +89,7 @@ calc_velocity_measures <- function(d1, d2){
                                 birthweight_centile<91 & birthweight_centile>=9 & weight_centiles_crossed < (-1) |
                                 birthweight_centile>=91 & weight_centiles_crossed < (-2) |
                                 weight_centile < 2, 1, 0),
-      #“Thriving” Moving 2 centile spaces in a positive direction in the previous period regardless of anthropometric status
+      #"Thriving" Moving 2 centile spaces in a positive direction in the previous period regardless of anthropometric status
       thriving=ifelse(weight_centiles_crossed>=2,1,0),
       #Recovery: moving 2 centile spaces in a positive direction out of anthropometric deficit without relapse
       #Note: the relapse is not checked

@@ -471,7 +471,7 @@ plot_grid_top_labeled <- ggdraw(plot_grid_top) +
 
 # Panel B = reproduced primary/B-vitamin MSEA (figure6-untargeted style, primary
 # outcomes) from figure4-panelB-msea.R. This replaces the former grey placeholder
-# (final-figure-3-b.png) — the original artwork had a broken "$"-prefixed filename.
+# (final-figure-3-b.png), the original artwork had a broken "$"-prefixed filename.
 # Panel B (KEGG pathway-impact, landscape, from fig3B-pathway.R):
 #   MAIN       = COMBINED-arm pathway impact   (figures/figure3_panelB_msea.png)
 #   SUPPLEMENT = arm-STRATIFIED pathway impact (figures/figure3_panelB_stratified.png)

@@ -1,4 +1,4 @@
-# run-primary-pathway-stratified.R — arm-STRATIFIED primary via PATHWAY analysis.
+# run-primary-pathway-stratified.R, arm-STRATIFIED primary via PATHWAY analysis.
 #
 # Sibling of run-primary-pathway-compare.R (which runs the combined arms). This
 # runs the SAME pathway (impact) module on the arm-STRATIFIED contrasts so the

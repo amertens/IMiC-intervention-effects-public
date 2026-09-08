@@ -1,4 +1,4 @@
-# run-ora.R — thin wrapper around MetaboAnalystR's msetora (over-representation)
+# run-ora.R, thin wrapper around MetaboAnalystR's msetora (over-representation)
 # engine. Mirrors run-pathway.R's structure. Reproduces the sequence Task 5
 # verified against Trenton's golden 7-compound cell, including the required
 # session patch for CalculateHyperScore()'s off-public-web reporting-side-effect

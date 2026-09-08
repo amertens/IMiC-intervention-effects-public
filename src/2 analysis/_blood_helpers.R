@@ -1,5 +1,5 @@
 # =============================================================================
-# _blood_helpers.R  —  shared helpers for the blood / cross-compartment / mummichog pipeline
+# _blood_helpers.R,  shared helpers for the blood / cross-compartment / mummichog pipeline
 #
 # WHY THIS FILE EXISTS
 #   The m/z–RT extractors, the cross-compartment matcher, the threshold-free
@@ -46,17 +46,17 @@ MUM_CUTOFF <- 0.05
 ion_of <- function(x) ifelse(grepl("_POS", toupper(x)), "positive",
                       ifelse(grepl("_NEG", toupper(x)), "negative", NA_character_))
 
-# rLC catalogues — maternal plasma / prenatal VAMS — from the processed Sapient tables.
+# rLC catalogues (maternal plasma / prenatal VAMS) from the processed Sapient tables.
 mzrt_rlc <- function(file) {
   d <- fread(paste0(.bh_datadir(), file), select = c("MZ", "RT", "Metabolite_Feature_Label"))
   data.table(feature = toupper(d$Metabolite_Feature_Label), mz = d$MZ, rt = d$RT,
              mode = ion_of(d$Metabolite_Feature_Label))[!is.na(mz)]
 }
-# postnatal VAMS — maternal + infant share this one V3 `vam_` catalogue.
+# postnatal VAMS, maternal + infant share this one V3 `vam_` catalogue.
 # drop_v3_lipids=TRUE removes the di/triglyceride & cholesterol-ester features that the
 # V3 method captures but V1 does not (Kim's V1<->V3 false-positive trim). Only 37 of
 # 38,761 features carry such a class label, and none are in any current matched pair,
-# so this has no effect on present results — provided for completeness.
+# so this has no effect on present results, provided for completeness.
 mzrt_vams <- function(drop_v3_lipids = FALSE) {
   d <- fread(paste0(.bh_datadir(), "metabolite_description_vam_with_global_id.csv"))
   if (drop_v3_lipids)
@@ -65,7 +65,7 @@ mzrt_vams <- function(drop_v3_lipids = FALSE) {
   data.table(feature = toupper(d$feature_label), mz = d$mz, rt = d$rt_minute,
              mode = tolower(d$ionization_mode))[!is.na(mz) & !is.na(rt)]
 }
-# milk — IMiC cross-study alignment key. misame_only=TRUE keeps just the MISAME-3 ids
+# milk. IMiC cross-study alignment key. misame_only=TRUE keeps just the MISAME-3 ids
 # (for matching against MISAME-3 blood); FALSE also includes CHILD/ELICIT/VITAL.
 mzrt_milk <- function(misame_only = TRUE) {
   a <- fread(paste0(.bh_datadir(), "IMiC_alignment.csv"))
@@ -79,7 +79,7 @@ mzrt_milk <- function(misame_only = TRUE) {
 
 # -- 3. cross-compartment matcher ---------------------------------------------
 # PPM match = Kim's formula: |m_A − m_B| / m * 1e6 ≤ CC_PPM (±25 ppm), implemented as
-# the window m_A*(1 ± CC_PPM/1e6). RT is an OPTIONAL confidence filter — per the
+# the window m_A*(1 ± CC_PPM/1e6). RT is an OPTIONAL confidence filter, per the
 # 2026-06-24 meeting (Trenton: "wouldn't worry about retention time right now"),
 # the FIRST-PASS match is m/z + ionization mode only (use_rt = FALSE). Pass
 # use_rt = TRUE to add the method-aware RT window + Kim's early-elution trim for a
@@ -87,7 +87,7 @@ mzrt_milk <- function(misame_only = TRUE) {
 #
 # foverlaps note: foverlaps(x = B, y = A) returns A's columns UNPREFIXED and B's with
 # an `i.` prefix. So `feature` is A's, `i.feature` is B's. (Swapping these silently
-# produced zero matches once — keep it here, once.)
+# produced zero matches once, keep it here, once.)
 .mz_join <- function(A, B, rt_tol, same_mode = TRUE, use_rt = FALSE) {
   A <- copy(A); B <- copy(B)
   A[, `:=`(mz_lo = mz*(1 - CC_PPM/1e6), mz_hi = mz*(1 + CC_PPM/1e6))]
@@ -107,7 +107,7 @@ match_mzrt <- function(A, B, rt_tol = CC_RT_V1V3, same_mode = TRUE, use_rt = FAL
   if (!nrow(h)) return(data.table(feature_A = character(), feature_B = character()))
   unique(h[, .(feature_A = feature, feature_B = i.feature)])
 }
-# greedy 1:1 — each A feature -> its nearest-ppm B, then each B used once
+# greedy 1:1, each A feature -> its nearest-ppm B, then each B used once
 best_match <- function(A, B, rt_tol = CC_RT_V1V3, same_mode = TRUE, use_rt = FALSE) {
   h <- .mz_join(A, B, rt_tol, same_mode, use_rt)
   if (!nrow(h)) return(data.table(feature_A = character(), feature_B = character()))

@@ -24,7 +24,7 @@ res_pooled <- readRDS(file=paste0(here::here(),"/results/adjusted_combined_arms_
 res <- readRDS(file=paste0(here::here(),"/results/adjusted_combined_arms_intervention_effects_results_clean.RDS"))
 
 # The "and_visits" pooled file ships with chi_pval / chi_pval_adj only.
-# `plot_imic_volcano()` looks for pval / pval_adj — alias them so the pooled
+# `plot_imic_volcano()` looks for pval / pval_adj, alias them so the pooled
 # plots (lines 82-84) work with the same function signature.
 if (!"pval"     %in% colnames(res_pooled)) res_pooled$pval     <- res_pooled$chi_pval
 if (!"pval_adj" %in% colnames(res_pooled)) res_pooled$pval_adj <- res_pooled$chi_pval_adj

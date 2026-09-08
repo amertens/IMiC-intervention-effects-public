@@ -1,5 +1,5 @@
 # =============================================================================
-# 19-cross-compartment-arrow-contrast-summary.R   [SUPPORTING — demoted 2026-06-25]
+# 19-cross-compartment-arrow-contrast-summary.R   [SUPPORTING, demoted 2026-06-25]
 #
 # NOTE: superseded as the primary by 19b (FDR-first annotated lists). This bulk
 # %-concordance table is kept as supporting context. Matching is now ppm-only

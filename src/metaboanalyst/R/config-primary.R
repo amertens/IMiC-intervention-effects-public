@@ -1,4 +1,4 @@
-# config-primary.R — which cells to run for the primary outcome group.
+# config-primary.R, which cells to run for the primary outcome group.
 # Adding a modality later = add a config like this one (module: "ora" or "pathway").
 PRIMARY_CONFIG <- list(
   outcome_group = "primary",

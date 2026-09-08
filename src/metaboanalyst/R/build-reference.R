@@ -1,4 +1,4 @@
-# build-reference.R — generate a MetaboAnalyst-matched reference metabolome from
+# build-reference.R, generate a MetaboAnalyst-matched reference metabolome from
 # raw measured compound names. Automates Trenton's manual ID-conversion step
 # (paste names into MetaboAnalyst's Compound ID Conversion, keep the "Match"
 # column) so the ORA background is name-matched to the SMPDB/HMDB library.

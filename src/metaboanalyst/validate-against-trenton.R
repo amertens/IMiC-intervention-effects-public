@@ -1,9 +1,9 @@
-# validate-against-trenton.R — compare our scripted engine to Trenton's
+# validate-against-trenton.R, compare our scripted engine to Trenton's
 # downloaded MetaboAnalyst results. Two HARD numeric gates now exist, one per
 # module, both on the Elicit·Upregulated·1-month cell (the cell for which
 # Trenton committed downloaded ground-truth files):
-#   * validate_golden_pathway() — Pathway Analysis (pathway_results.csv), no ref
-#   * validate_golden_ora()     — Enrichment/ORA (msea_ora_result.csv), with the
+#   * validate_golden_pathway(). Pathway Analysis (pathway_results.csv), no ref
+#   * validate_golden_ora()    . Enrichment/ORA (msea_ora_result.csv), with the
 #                                 committed reference metabolome as background
 suppressMessages({ library(dplyr); library(tibble); library(MetaboAnalystR) })
 source("src/metaboanalyst/R/run-pathway.R")

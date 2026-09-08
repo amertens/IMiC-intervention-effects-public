@@ -1,4 +1,4 @@
-# run-pathway.R — thin wrapper around MetaboAnalystR's pathora engine.
+# run-pathway.R, thin wrapper around MetaboAnalystR's pathora engine.
 # Reproduces the sequence Task 2 verified against Trenton's golden pathway cell.
 # Runs filter OFF (no reference metabolome), matching the paper.
 

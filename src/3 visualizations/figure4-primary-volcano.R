@@ -249,7 +249,7 @@ save_figure <- function(fig, path) {
 # Fig 3. Trenton's old figure4.Rmd filtered outcome_group=="tertiary", but on the
 # current data that is the untargeted lipidome (Triglycerides/Ceramides/...), which
 # does NOT match the published B-vitamin figure. The nutrient data (Micronutrient,
-# B1/B2/B3/B6, Macronutrient) lives in outcome_group=="primary" — corrected here.
+# B1/B2/B3/B6, Macronutrient) lives in outcome_group=="primary", corrected here.
 combined_arms   <- readRDS("results/combined_intervention_effects_results_combined_arms.RDS") %>%
   filter(outcome_group == "primary", measure == "ATE")
 stratified_arms <- readRDS("results/combined_intervention_effects_results_stratified_arms.RDS") %>%

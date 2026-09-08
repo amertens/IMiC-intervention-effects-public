@@ -23,7 +23,7 @@ head(res)
 
 # Exploratory peek at vitamin A and E (tocopherol) results. Guarded so the
 # script doesn't crash if biomarker names don't match (e.g. after a label
-# refactor) — the facet would fail on empty data.
+# refactor), the facet would fail on empty data.
 temp<-res[grepl("toco",res$biomarker) | grepl("itamin.a",res$biomarker),] %>% filter(measure=="ATE")
 if (nrow(temp) > 0) {
   ggplot(temp, aes(x=biomarker, y=est)) + geom_point() +
@@ -45,10 +45,10 @@ if (nrow(temp) > 0) {
 
 imic_intervention_plot_function_pooled <- function(df, title="", legend=TRUE){
 
-  # Bail out early if no rows (e.g., no FDR-sig results to plot) — facet_grid
+  # Bail out early if no rows (e.g., no FDR-sig results to plot), facet_grid
   # would fail with "Faceting variables must have at least one value".
   if (nrow(df) == 0) {
-    warning("imic_intervention_plot_function_pooled: no rows — returning empty plot.")
+    warning("imic_intervention_plot_function_pooled: no rows: returning empty plot.")
     return(ggplot2::ggplot() + ggplot2::labs(title = title, subtitle = "(no FDR-significant results)"))
   }
 

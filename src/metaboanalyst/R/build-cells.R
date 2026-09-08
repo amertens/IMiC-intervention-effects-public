@@ -1,4 +1,4 @@
-# build-cells.R — turn an intervention-effects tibble into analysis "cells".
+# build-cells.R, turn an intervention-effects tibble into analysis "cells".
 #
 # A "cell" is one unit of enrichment analysis: a filtered list of query
 # compounds plus the reference metabolome (background) for its outcome group.
@@ -13,7 +13,7 @@ source("src/metaboanalyst/R/label-map.R")
 
 # The two directions we split each study/contrast into, paired with the sign of
 # the effect estimate that defines them. Kept in this order (down, then up) so
-# the resulting cell list — and therefore every downstream output file — is
+# the resulting cell list (and therefore every downstream output file) is
 # emitted in a stable, reproducible order.
 DIRECTION_SIGNS <- c(down = -1L, up = 1L)
 
@@ -143,7 +143,7 @@ build_cells <- function(dat, outcome_group, measure = "ATE", pval_cutoff = 0.05)
         labelled_dat, studytime_i, contrast_i,
         effect_sign = DIRECTION_SIGNS[[direction]], pval_cutoff = pval_cutoff)
 
-      # Skip directions with no significant compounds — nothing to enrich.
+      # Skip directions with no significant compounds, nothing to enrich.
       if (!length(query_names)) next
 
       cells[[length(cells) + 1]] <- list(

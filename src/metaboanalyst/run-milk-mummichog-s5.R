@@ -1,4 +1,4 @@
-# run-milk-mummichog-s5.R — reproduce Table S5: directional Mummichog pathway
+# run-milk-mummichog-s5.R, reproduce Table S5: directional Mummichog pathway
 # analysis of the untargeted milk metabolome.
 #
 # Follows the supplement Methods: stratified by study x collection time window x
