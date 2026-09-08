@@ -2,7 +2,7 @@
 # 25-supplement-mummichog.R
 #
 # Andrew x Trenton ask ("do the same Mummichog on the BEP"): characterise the BEP
-# product itself — which metabolic pathways are the supplement's own metabolites
+# product itself, which metabolic pathways are the supplement's own metabolites
 # enriched for? The supplement is on the V1 rLC catalogue (recovered, 27 samples);
 # we treat the features that are ABUNDANT in the product (high supp_mean) as the
 # "significant" set and run the same Mummichog pathway enrichment used elsewhere.
@@ -50,4 +50,4 @@ if (length(fs)) {
   fwrite(res, paste0(root, "results/supplement_mummichog_pathways.csv"))
   cat("\nTop supplement-composition pathways:\n"); print(head(unique(res[, .(pathway, p = signif(p,2), mode)]), 15))
   cat("\nSaved: results/supplement_mummichog_pathways.csv\n")
-} else cat("\nNo mummichog output produced — check conda env.\n")
+} else cat("\nNo mummichog output produced: check conda env.\n")

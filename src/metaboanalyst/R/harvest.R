@@ -1,4 +1,4 @@
-# harvest.R — tidy MetaboAnalystR mSet outputs into tibbles.
+# harvest.R, tidy MetaboAnalystR mSet outputs into tibbles.
 suppressMessages({ library(dplyr); library(tibble) })
 
 # apply_pathway_size_floor: drop pathways with fewer than `min_size` members
@@ -111,7 +111,7 @@ harvest_membership <- function(mSet) {
     stop("pathway_results.csv and ora.mat row counts differ; cannot align ID->name mapping")
   }
   # results_table is keyed by full pathway name, ora.mat by internal ID, and the
-  # two share row order — so zipping their rownames gives an ID -> name lookup.
+  # two share row order, so zipping their rownames gives an ID -> name lookup.
   pathway_id_to_name <- setNames(rownames(results_table), rownames(ora.mat))
 
   membership_rows <- lapply(names(hits), function(pathway_id) {

@@ -1,5 +1,5 @@
 # =============================================================================
-# 20-cross-compartment-threshold-free-panel.R   [SUPPORTING — ppm-only 2026-06-25]
+# 20-cross-compartment-threshold-free-panel.R   [SUPPORTING, ppm-only 2026-06-25]
 #
 # Supporting (not the primary; see 19b). Matching is ppm-only (25 ppm + mode, no RT).
 #

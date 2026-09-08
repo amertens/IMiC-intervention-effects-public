@@ -142,7 +142,7 @@ forest_plot <- function(tab, arm_strat=F, tertiary=F, pos="none", y_limits=NULL)
 # This script produces supplement Fig S4 = SECONDARY outcomes (HMOs + bioactive
 # proteins), COMBINED-arm forest (arm_strat=FALSE, coloured by per-arm sigFDR).
 # NOTE: the primary-outcome combined forest is main-text Fig 3 (fig2-primary-forest.R),
-# and Fig S3 is the deficiency-RR forest (figS2-milq-deficiency.R) — neither
+# and Fig S3 is the deficiency-RR forest (figS2-milq-deficiency.R), neither
 # is produced here.
 
 hmo_dat <- read.csv(here("results/subsetted results/secondary_hmo.csv")) %>%

@@ -106,6 +106,6 @@ p <- ggplot(d, aes(x = agedays/30.4167, y = studytime)) +
 p
 
 ggsave(here::here("figures/fig1c.png"), p, width = 20, height = 10, units="cm", dpi = 600)
-# (Removed Google Drive export — file is committed to repo at figures/fig1c.png)
+# (Removed Google Drive export, file is committed to repo at figures/fig1c.png)
 
 

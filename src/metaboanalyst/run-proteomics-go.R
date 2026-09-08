@@ -1,4 +1,4 @@
-# run-proteomics-go.R — build Table S6 (proteome GO-BP over-representation) from
+# run-proteomics-go.R, build Table S6 (proteome GO-BP over-representation) from
 # the UniProt-native result, so Table S6 and Fig 6C share ONE method.
 #
 # HISTORY / WHY THIS IS A THIN TRANSFORM NOW

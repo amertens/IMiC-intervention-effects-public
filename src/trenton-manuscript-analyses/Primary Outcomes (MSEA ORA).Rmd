@@ -147,7 +147,7 @@ primary_reference_metabolome_xlsx
 
 ```
 
-The reference metabolome was exported to Excel and uploaded to the MetaboAnalyst Metabolite ID Conversion tool using “Common Name” as the specified input type (https://www.metaboanalyst.ca/MetaboAnalyst/upload/ConvertView.xhtml). All compounds were successfully matched to MetaboAnalyst identifiers. The resulting name-mapping file was downloaded as “Primary Outcomes Reference Metabolome Name Map.csv” and saved in "Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome Name Map.csv".
+The reference metabolome was exported to Excel and uploaded to the MetaboAnalyst Metabolite ID Conversion tool using "Common Name" as the specified input type (https://www.metaboanalyst.ca/MetaboAnalyst/upload/ConvertView.xhtml). All compounds were successfully matched to MetaboAnalyst identifiers. The resulting name-mapping file was downloaded as "Primary Outcomes Reference Metabolome Name Map.csv" and saved in "Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome Name Map.csv".
 
 ### Import Results from Metabolite ID Conversion and Create Final .txt File
 
@@ -287,25 +287,25 @@ primary_elicit_upregulated_1mo_combined
 
 Instructions to Conduct an "Enrichment Analysis (Over Representation Analysis)"
 
-Open the .xlsx file above and copy the feature names from column Y, “metaboanalyst_label.” 
+Open the .xlsx file above and copy the feature names from column Y, "metaboanalyst_label." 
 
-Navigate to MetaboAnalyst.ca and select “Enrichment Analysis” under “Annotated Features.” Choose “Compound names” as the Input Type, leave Feature Type set to “General,” and click “Submit.”
+Navigate to MetaboAnalyst.ca and select "Enrichment Analysis" under "Annotated Features." Choose "Compound names" as the Input Type, leave Feature Type set to "General," and click "Submit."
 
-Verify that all, or nearly all, submitted queries have matching hits, then click “Proceed.” Retain the default pathway library: “Pathway-based SMPDB” (99 metabolite sets based on normal human metabolic pathways). Specify the reference metabolome by uploading:
+Verify that all, or nearly all, submitted queries have matching hits, then click "Proceed." Retain the default pathway library: "Pathway-based SMPDB" (99 metabolite sets based on normal human metabolic pathways). Specify the reference metabolome by uploading:
 
 "/Dailey-Chwalibóg, Mertens et al. 2026 Science/3. Results/Primary Outcomes (MSEA ORA)//Primary Outcomes Reference Metabolome.txt"
 
-Submit the file and confirm that the blue notification states: “A total of ## were successfully added to the library.” Continue by clicking “Submit.” Review the enrichment-analysis results, then select “Download.zip” and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
+Submit the file and confirm that the blue notification states: "A total of ## were successfully added to the library." Continue by clicking "Submit." Review the enrichment-analysis results, then select "Download.zip" and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
 
 Instructions to Conduct a Pathway Analysis:
 
-Open the .xlsx file above and copy the feature names from column Y, “metaboanalyst_label.” 
+Open the .xlsx file above and copy the feature names from column Y, "metaboanalyst_label." 
 
-Navigate to MetaboAnalyst.ca and select “Pathway Analysis” under “Annotated Features.” Leave the option as default "Compound List."
+Navigate to MetaboAnalyst.ca and select "Pathway Analysis" under "Annotated Features." Leave the option as default "Compound List."
 
-Choose “Compound names” as the Input Type, leave Feature Type set to “General,” and click “Submit.” 
+Choose "Compound names" as the Input Type, leave Feature Type set to "General," and click "Submit." 
 
-Verify that all, or nearly all, submitted queries have matching hits, then click “Proceed.” 
+Verify that all, or nearly all, submitted queries have matching hits, then click "Proceed." 
 
 Use the default parameters: Visualization method (Scatter plot (testing significant features); Enrichment method (Hypergeometric Test); Topology measure (Relative-betweeness Centrality).
 
@@ -315,7 +315,7 @@ Specify the reference metabolome by uploading:
 
 Select the pathway library Mammals [21] Homo sapiens (SMPDB) and click proceed. Sometimes this network will throw the following error, if few metabolite features are found (ErrorThere is something wrong with the pathway enrichment analysis: Possible causes of error (last one being the most relevant): Cannot perform enrichment analysis on a single metabolite set!). In this case, select the pathway library Mammals [21] Homo sapiens (SMPDB) and see if results are generated. 
 
-Review the enrichment-analysis results, then select “Download.zip” and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
+Review the enrichment-analysis results, then select "Download.zip" and save the archive in the appropriate folder. Finally, unzip the downloaded file and import the results.
 
 Note: A minimum of 3 features is required for the Pathway Analysis module, or the following message will appear "Less than 3 metabolites left - too few to perform meaningful enrichment analysis!"
 

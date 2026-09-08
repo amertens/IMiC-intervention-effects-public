@@ -1,4 +1,4 @@
-# run-outcome-group.R — general driver: run one outcome group through one module.
+# run-outcome-group.R, general driver: run one outcome group through one module.
 #
 # Dispatches ORA (msetora, with an optional reference metabolome) or Pathway
 # Analysis (pathora, filter OFF). Per Trenton's rule: primary -> ORA,

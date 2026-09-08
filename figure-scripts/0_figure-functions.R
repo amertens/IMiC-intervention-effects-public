@@ -21,7 +21,7 @@ imic_palette  <- c(
 )
 
 # ------------------------------------------------------------------------------
-# Canonical biomarker display labels — SINGLE source of truth so every figure uses
+# Canonical biomarker display labels. SINGLE source of truth so every figure uses
 # identical labels (Short, Title Case) with correct symbols: Greek tocopherols
 # (α/γ), IgA, FGF-21, and B-vitamin subscripts. Keyed by LOWER-CASED biomarker
 # code; codes not in the map fall back to the supplied label (HMOs / metabolites keep
@@ -84,7 +84,7 @@ abbr_label <- function(code) {
 }
 
 #-------------------------------------------------------------------------------
-# Aesthetics for the Science submission (Reviewer 2 §2.6 — font sizes too small):
+# Aesthetics for the Science submission (Reviewer 2 §2.6, font sizes too small):
 #   axis-tick      ≥ 7 pt
 #   axis-title     ≥ 8 pt
 #   panel/strip    ≥ 10 pt, bold, on a gray90 background
@@ -116,7 +116,7 @@ theme_imic <- function(base_size = 9, base_family = "Helvetica") {
 theme_set(theme_imic())
 
 #-------------------------------------------------------------------------------
-# Multi-format figure export (Editor §3.11 — no PowerPoint/MS Word figures)
+# Multi-format figure export (Editor §3.11, no PowerPoint/MS Word figures)
 # Saves the same plot as PDF (vector, for print), EPS (vector, for typesetters),
 # and PNG (raster, for online + reviewer convenience), each into `figures/`.
 #-------------------------------------------------------------------------------
@@ -179,7 +179,7 @@ plot_imic_volcano_panel <- function(res,
   res <- dplyr::ungroup(res)
   if (nrow(res) == 0 ||
       !all(c("pval", "pval_adj") %in% colnames(res))) {
-    warning("plot_imic_volcano: input has no rows or missing pval/pval_adj — returning empty plot.")
+    warning("plot_imic_volcano: input has no rows or missing pval/pval_adj: returning empty plot.")
     return(ggplot() + theme_imic() +
            labs(title = title, subtitle = "(no data)"))
   }

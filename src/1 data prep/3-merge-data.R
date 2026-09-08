@@ -77,7 +77,7 @@ misame_fsv <- misame_fsv %>% filter(!(bmid %in% c("pn34_428", "pn12-413")))
 
 
 #-------------------------------------------------------------------------------
-# secondary outcomes: HMO’s, targeted proteins/bioactives
+# secondary outcomes: HMO's, targeted proteins/bioactives
 #-------------------------------------------------------------------------------
 
 #HMO's

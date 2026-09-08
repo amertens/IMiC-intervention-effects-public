@@ -37,7 +37,7 @@ m <- rbindlist(list(
   grab(paste0(R,"results/metaboanalyst/mummichog_s5/milk_mummichog_tableS5.csv"),                     "Pathway","Study","Regulation","Untargeted\nMummichog")
 ), fill = TRUE)
 
-# provisional proteome GO — keep a curated, representative subset of the S6 terms
+# provisional proteome GO, keep a curated, representative subset of the S6 terms
 # so the (large) proteome block does not visually swamp the metabolite themes.
 pg <- fread(paste0(R,"results/metaboanalyst/proteomics_go/proteomics_go_tableS6.csv"))
 pg_keep <- c("telomere maintenance", "RNA-templated DNA biosynthetic process",

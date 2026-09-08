@@ -155,8 +155,8 @@ saveRDS(res_untargeted_metabolomics,file=paste0(here::here(), "/results/adjusted
 # line re-saved the *combined-arms* object (`res_untargeted_metabolomics`), so the
 # arm-strat filename was byte-identical to the combined-arms file above. The sole
 # consumer, 7-metabolomics_plots.R, filters measure=="ATE" and then collapses to
-# the max-|effect| row per (studytime, biomarker) — a dedup that is only
-# meaningful for arm-stratified data — so it was written for this object and is
+# the max-|effect| row per (studytime, biomarker), a dedup that is only
+# meaningful for arm-stratified data, so it was written for this object and is
 # corrected (not broken) by this change.
 saveRDS(res_untargeted_metabolomics_arm_strat,file=paste0(here::here(), "/results/adjusted_intervention_effects_res_untargeted_metabolomics_clean.RDS"))
 

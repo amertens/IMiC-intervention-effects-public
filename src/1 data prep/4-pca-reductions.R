@@ -116,7 +116,7 @@ table(misame_micro$visit, useNA = "ifany")
 table(elicit_micro$visit, useNA = "ifany")
 
 #-------------------------------------------------------------------------------
-# secondary outcomes: HMO’s, targeted proteins/bioactives
+# secondary outcomes: HMO's, targeted proteins/bioactives
 #-------------------------------------------------------------------------------
 
 #HMO's

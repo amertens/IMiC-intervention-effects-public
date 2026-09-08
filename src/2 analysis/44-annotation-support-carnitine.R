@@ -35,7 +35,7 @@ D13C   <- 1.0033548378                       # 13C - 12C mass gap (isotopologue 
 mono   <- function(f) sum(mapply(function(el, n) mE[[el]] * n, names(f), f))  # neutral monoisotopic
 mh     <- function(f) mono(f) + PROTON                                        # [M+H]+
 
-# octenoylcarnitine C15H27NO4 (the catalogue call) — the compound under test
+# octenoylcarnitine C15H27NO4 (the catalogue call), the compound under test
 oct1 <- c(C = 15, H = 27, N = 1, O = 4)
 TGT  <- mh(oct1)                                                              # 286.2013
 
@@ -111,7 +111,7 @@ for (pl in names(loaders)) {
     }
   }
 
-  # (3) homolog RT ladder — nearest-ppm feature per acylcarnitine [M+H]+
+  # (3) homolog RT ladder, nearest-ppm feature per acylcarnitine [M+H]+
   for (i in seq_len(nrow(acns))) {
     hit <- pos[within_ppm(mz, acns$exp_mh[i], 10)][order(abs(mz - acns$exp_mh[i]))]
     hom_rows[[length(hom_rows)+1]] <- data.table(

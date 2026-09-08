@@ -1,4 +1,4 @@
-# run-primary-pathway-compare.R — combined-arm primary via PATHWAY analysis.
+# run-primary-pathway-compare.R, combined-arm primary via PATHWAY analysis.
 #
 # Why this exists: the manuscript's automated primary enrichment (run-primary.R)
 # uses the Over-Representation Analysis (ORA) module. Trenton's ORIGINAL published

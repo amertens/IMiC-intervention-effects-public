@@ -103,7 +103,7 @@ temp <- res %>% filter(studytime=="Vital-")
 prop.table(table(temp$sigFDR)) * 100
 
 # Re-extract from the non-combined-arms RDS (raw list form) and build a second
-# volcano. `plot_imic_volcano` expects a tidy data.frame with pval_adj — extract
+# volcano. `plot_imic_volcano` expects a tidy data.frame with pval_adj, extract
 # from `d$res` first rather than passing the raw rowwise frame.
 d_raw <- readRDS(paste0(here::here(),"/results/proteomics_intervention_effects_results.RDS"))
 d_raw$visit <- ""

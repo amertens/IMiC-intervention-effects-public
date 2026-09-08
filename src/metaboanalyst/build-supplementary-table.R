@@ -1,4 +1,4 @@
-# build-supplementary-table.R — consolidate one outcome-group x arm-set's cells
+# build-supplementary-table.R, consolidate one outcome-group x arm-set's cells
 # into a tidy supplementary table.
 #
 # Works for any group directory written by run_outcome_group()
@@ -97,7 +97,7 @@ build_supplementary_table <- function(group_dir = DEFAULT_GROUP_DIR, write = TRU
   c(
     sprintf("# %s / %s enrichment supplementary table (%s module)", outcome_group, arm_set, module),
     "",
-    "`<group>_<arm>_supplementary_table.csv` — one row per (analysis cell x pathway).",
+    "`<group>_<arm>_supplementary_table.csv` holds one row per (analysis cell x pathway).",
     "`<group>_<arm>_significant.csv` is the `significant == TRUE` subset.",
     "",
     "## Columns",
@@ -106,8 +106,8 @@ build_supplementary_table <- function(group_dir = DEFAULT_GROUP_DIR, write = TRU
     "- total: pathway members in the background. hits: query compounds hitting it.",
     "- expected: hits expected by chance. raw_p: over-representation p-value.",
     "- **fdr_native**: MetaboAnalyst's own per-analysis FDR (Benjamini-Hochberg within the",
-    "  analysis) — the correction used for significance, matching Trenton's approach.",
-    "- fdr_bh_pooled: BH across ALL pathways x cells pooled — informational only.",
+    "  analysis): the correction used for significance, matching Trenton's approach.",
+    "- fdr_bh_pooled: BH across ALL pathways x cells pooled, informational only.",
     "- **significant**: fdr_native < 0.05.",
     sprintf("- Pathways with < %d members in the (reference-restricted) library are dropped", MIN_PATHWAY_SIZE),
     "  as noise (reporting filter applied after p-values; fdr_native left unchanged).",

@@ -1,4 +1,4 @@
-# run-tertiary-msea.R — reproduce the manuscript's Table S2 (tertiary MSEA) using
+# run-tertiary-msea.R, reproduce the manuscript's Table S2 (tertiary MSEA) using
 # the ORA / over-representation module + a name-matched reference metabolome
 # (the actual method behind Table S2, not the pathway module). Runs combined and
 # stratified arms; signs the enrichment ratio by direction (down = negative).

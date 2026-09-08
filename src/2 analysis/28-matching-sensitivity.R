@@ -45,7 +45,7 @@ get_blood <- function(dd, vv){
 mk_mz <- mzrt_milk(misame_only=FALSE); pl_mz <- mzrt_rlc("ProcessedDataMISAME3_plasma.csv"); vm_mz <- mzrt_vams()
 
 # unique-mass reciprocal subset: keep candidate pairs where feature_A and feature_B
-# each have exactly ONE partner within 25 ppm (+mode) — drops ambiguous collisions.
+# each have exactly ONE partner within 25 ppm (+mode), drops ambiguous collisions.
 unique_match <- function(A, B){
   h <- match_mzrt(A, B, same_mode=TRUE, use_rt=FALSE)
   if(!nrow(h)) return(h)

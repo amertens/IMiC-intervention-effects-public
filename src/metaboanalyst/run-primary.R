@@ -1,4 +1,4 @@
-# run-primary.R — reproduce Trenton's primary-outcome enrichment analysis.
+# run-primary.R, reproduce Trenton's primary-outcome enrichment analysis.
 # Thin wrapper over the general run_outcome_group() driver: primary uses the ORA
 # module with the curated matched-name reference metabolome (reproduces the
 # nicotinate total 7 / hits 5).

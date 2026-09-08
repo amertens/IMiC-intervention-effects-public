@@ -19,7 +19,7 @@ plot_imic_volcano <- function(res, title="", facet_type="study",
   # and bail out early if input is empty or lacks the required p-value columns.
   res <- dplyr::ungroup(res)
   if (nrow(res) == 0 || !all(c("pval", "pval_adj") %in% colnames(res))) {
-    warning("plot_imic_volcano: input has no rows or missing pval/pval_adj — returning empty plot.")
+    warning("plot_imic_volcano: input has no rows or missing pval/pval_adj: returning empty plot.")
     return(ggplot2::ggplot() + labs(title = title, subtitle = "(no data)"))
   }
 
