@@ -39,7 +39,8 @@ if (sys.nframe() == 0) {
   render_msea_panelB(MSEA_CSV, OUT_PNG, title = NULL, min_size = 1,
                      submitted_style = FALSE, upper_line = "fdr",
                      label_which = "fdr", label_max = 8, vline0 = TRUE,
-                     nominal_shape = 16,  # closed/filled circles for the nominal-only tier (was open circles)
+                     nominal_shape = 1,   # OPEN circles for the nominal-only tier: its light blue sat too close to
+                     # ELICIT blue for colourblind readers when both were filled circles (2026-09-23)
                      study_cols = imic_study_cols,  # canonical study colours (ELICIT blue / MISAME orange / Mumta green)
                      y_max = FIG6_Y_MAX,  # shared Fig 6 A/B/C y-axis height (matches submitted style)
                      x_margin_hi = 1.30,  # extra right-edge headroom so the "Glucose-Alanine Cycle" label

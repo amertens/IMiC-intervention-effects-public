@@ -18,6 +18,7 @@ library(ggrepel)
 # Science aesthetic: load shared palette (tableau10), theme_imic() floors, and
 # save_figure_3way() (PDF + EPS + PNG export for the typesetter).
 source(file.path(here::here(), "figure-scripts/0_figure-functions.R"))
+source(file.path(here::here(), "figure-scripts/manuscript_figures/study_colors.R"))  # CVD-safe palettes/shapes
 
 knitr::opts_chunk$set(
   echo       = FALSE,
@@ -188,6 +189,7 @@ plot_imic_volcano_panel <- function(res,
       ),
       color_var  = ifelse(sig_status == "Significant after FDR",
                           category, sig_status),
+      pt_size    = ifelse(sig_status == "Significant after FDR", 1.4, 1),
       label_f    = ifelse(sig_status == "Significant after FDR", label_f, "")
     )
 
@@ -230,12 +232,19 @@ plot_imic_volcano_panel <- function(res,
   q_line <- -log10(q_cut)
   
   p <- ggplot(tt_volcano, aes(x = ATE, y = logPval)) +
-    geom_point(aes(colour = color_var, shape=sig_status), size = 1, alpha = 0.75) +
+    # FDR-significant points: category colour AND category symbol (colourblind cue,
+    # 2026-09-23), drawn slightly larger; the other tiers keep circle (n.s.) / square
+    # (nominal only) in black. fill carries the colour for the filled shape 25.
+    geom_point(aes(colour = color_var, fill = color_var, shape = color_var, size = pt_size),
+               alpha = 0.75) +
     geom_vline(xintercept = 0,            linetype = "dashed") +
-    geom_hline(yintercept = p_line,       linetype = "dashed", colour = tableau10[2]) +
-    geom_hline(yintercept = q_line,       linetype = "dotted", colour = tableau10[3]) +
+    geom_hline(yintercept = p_line,       linetype = "dashed", colour = "grey55") +
+    geom_hline(yintercept = q_line,       linetype = "dotted", colour = "#59A14F") +
     xlab("") + ylab("") + ggtitle(title) +
     scale_color_manual(values = final_color_palette, na.value = "#999999") +
+    scale_fill_manual(values = final_color_palette, na.value = "#999999", guide = "none") +
+    scale_shape_manual(values = final_shape_palette, guide = "none") +
+    scale_size_identity() +
     guides(color = guide_legend(title = NULL)) +
     
     # scale_x_continuous(
@@ -317,24 +326,31 @@ table(res$study,  res$contrast)
 # Micronutrient swapped hues between the submission and the re-run, recolouring
 # ~250 points even though every point sat in the same place). Mapping by NAME
 # keeps colours identical across re-runs and matches the submitted figure
-# (Macronutrient = brown, Micronutrient = pink).
+# (the submitted figure used Macronutrient = brown, Micronutrient = pink; recoloured 2026-09-23, see below).
 category_color_palette <- c(
   "Not Significant"        = "#000000",
   "Significant before FDR" = "#000000"
 )
+# Colourblind-safe since 2026-09-23 (imic_cat_cols, study_colors.R), keeping each
+# category's hue family where possible (B1 red->vermillion, B2 orange, B3 green,
+# B6 purple->reddish purple, Other B blue, Macronutrient brown). Every category also
+# gets its own SYMBOL (category_shapes) so it is identifiable without colour.
 category_colors <- c(
-  "Other B vitamins" = tableau10[1],
-  "B2"               = tableau10[2],
-  "B3 or related"    = tableau10[3],
-  "B1"               = tableau10[4],
-  "B6"               = tableau10[5],
-  "Macronutrient"    = tableau10[6],
-  "Micronutrient"    = tableau10[7]
+  "Other B vitamins" = imic_cat_cols[1],   # blue
+  "B2"               = imic_cat_cols[2],   # orange
+  "B3 or related"    = imic_cat_cols[3],   # bluish green
+  "B1"               = imic_cat_cols[4],   # vermillion
+  "B6"               = imic_cat_cols[5],   # reddish purple
+  "Micronutrient"    = imic_cat_cols[6],   # sky blue
+  "Macronutrient"    = imic_cat_cols[7]    # brown
 )
+category_shapes <- setNames(imic_cat_shapes, names(category_colors))
 # defensive fallback for any category not in the fixed map
 .unmapped <- setdiff(unique(res$category[!is.na(res$category)]), names(category_colors))
 if (length(.unmapped)) category_colors <- c(category_colors, setNames(rainbow(length(.unmapped)), .unmapped))
 final_color_palette <- c(category_color_palette, category_colors)
+if (length(.unmapped)) category_shapes <- c(category_shapes, setNames(rep(1, length(.unmapped)), .unmapped))
+final_shape_palette <- c("Not Significant" = 16, "Significant before FDR" = 15, category_shapes)
 
 
 table(res$study, res$contrast)
@@ -391,21 +407,24 @@ blank_plot <- ggplot() + theme_void()
 create_category_legend <- function() {
   # Get only the category colors (excluding "Not Significant" and "Significant before FDR")
   legend_colors <- final_color_palette[!names(final_color_palette) %in% c("Not Significant", "Significant before FDR")]
-  
-  # Create a data frame for the legend
+  cats <- sort(names(legend_colors))   # = factor(category) order = inset bar order (left to right)
+
+  # Top-to-bottom in inset order, evenly spaced over the same band as before (y 2..4)
   legend_data <- data.frame(
-    category = names(legend_colors),
-    y = c(2,2.66,3.33,4,2.33,3,3.66),
-    x = c(1,1,1,1,1,1,1)
+    category = cats,
+    y = seq(4, 2, length.out = length(cats)),
+    x = 1
   )
-  
-  # Create the legend plot
-  legend_plot <- ggplot(legend_data, aes(x = x, y = y, fill = category)) +
-    geom_point(size = 3, shape = 21, color = "black") +
+
+  # Create the legend plot: each category's colour AND symbol
+  legend_plot <- ggplot(legend_data, aes(x = x, y = y, colour = category, fill = category, shape = category)) +
+    geom_point(size = 3) +
+    scale_colour_manual(values = legend_colors) +
     scale_fill_manual(values = legend_colors) +
-    geom_text(aes(label = category), hjust = 0, nudge_x = 0.2, size = 2.5) +
+    scale_shape_manual(values = final_shape_palette) +
+    geom_text(aes(label = category), colour = "black", hjust = 0, nudge_x = 0.2, size = 2.5) +
     xlim(0.5, 3) +
-    ylim(1.5, 4) +
+    ylim(1.5, 4.3) +
     theme_void() +
     theme(legend.position = "none") +
     ggtitle("Significant Categories") +

@@ -148,7 +148,10 @@ render_msea_panelB <- function(msea_csv, out_png,
                   "Not Significant")
 
   p <- ggplot(plot_df, aes(x = jitter_x, y = jitter_y)) +
-    geom_point(aes(color = point_color, shape = pt_shape), size = point_size, alpha = 0.85) +
+    # shape = point_color: study symbol (circle/triangle/square) is a redundant, colour-
+    # independent study cue (colourblind accessibility, 2026-09-23); the nominal-only tier
+    # keeps nominal_shape and non-significant points a plain circle.
+    geom_point(aes(color = point_color, shape = point_color), size = point_size, alpha = 0.85) +
     geom_hline(yintercept = -log10(alpha), linetype = "dashed", color = "grey55") +  # P < 0.05
     { if (is.finite(y_hi_line)) geom_hline(yintercept = y_hi_line, linetype = "dashed", color = "#59A14F") } +
     { if (isTRUE(submitted_style)) annotate("text", x = -Inf, y = -log10(alpha), label = "P < 0.05", hjust = -0.05, vjust = -0.4, size = 2.4, color = "grey45") } +
@@ -169,8 +172,11 @@ render_msea_panelB <- function(msea_csv, out_png,
                      seed = 123) +   # draw-time placement; required for byte-reproducible Fig 5B
     scale_color_manual(values = color_vals, name = "Study",
                        breaks = col_breaks) +
-    guides(colour = guide_legend(nrow = 2, byrow = TRUE)) +   # wrap so it fits the narrow half-page panel
-    scale_shape_manual(values = c("Sig before FDR" = nominal_shape, "other" = 16), guide = "none") +
+    scale_shape_manual(values = c(imic_shapes_for(studies_present),
+                                  "Sig before FDR" = nominal_shape, "Not Significant" = 16),
+                       name = "Study", breaks = col_breaks) +   # same name/breaks -> merges with colour legend
+    guides(colour = guide_legend(nrow = 2, byrow = TRUE),    # wrap so it fits the narrow half-page panel
+           shape  = guide_legend(nrow = 2, byrow = TRUE)) +
     scale_x_continuous(limits = c(x_lo, x_hi)) +
     scale_y_continuous(limits = c(0, y_hi),
                        breaks = if (!is.null(y_max)) seq(0, floor(y_max), 1) else waiver()) +

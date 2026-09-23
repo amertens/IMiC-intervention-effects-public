@@ -366,7 +366,7 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
                                    hjust = -0.05, vjust = -0.4, size = 2.4, color = "#3C8C3C") } +
     annotate("text", x = -Inf, y = -log10(0.05), label = "P < 0.05",
              hjust = -0.05, vjust = -0.4, size = 2.4, color = "grey45") +
-    geom_point(aes(color = color_group), size = 2, alpha = 0.9) +
+    geom_point(aes(color = color_group, shape = color_group), size = 2, alpha = 0.9) +  # study symbol = CVD cue
     # Boxed labels (white fill + coloured border) matching Panel B's geom_label_repel.
     geom_label_repel(data = lab_df, aes(label = lab, color = color_group), size = 2.5,
                      label.padding = 0.12, box.padding = 0.3,
@@ -375,7 +375,9 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
                      seed = 123) +   # draw-time placement; required for byte-reproducible Panel C
     scale_color_manual(values = study_cols, name = "Study",
                        breaks = c("ELICIT", "MISAME-III", "Mumta-LW", "Not significant")) +
-    guides(colour = guide_legend(nrow = 1)) +
+    scale_shape_manual(values = imic_shapes_for(names(study_cols)), name = "Study",
+                       breaks = c("ELICIT", "MISAME-III", "Mumta-LW", "Not significant")) +
+    guides(colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1)) +
     labs(x = "Enrichment Ratio", y = expression(-log[10] * "(P-value)")) +
     theme_imic(base_size = 9) +   # Science-submission theme (Helvetica, font floors)
     theme(legend.position = if (isTRUE(show_legend)) "bottom" else "none",

@@ -22,6 +22,7 @@
 # Run from repo root: Rscript figure-scripts/manuscript_figures/figS5-microbiome-diversity.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))
+source(paste0(here::here(), "/figure-scripts/manuscript_figures/study_colors.R"))  # canonical study colours
 
 d_diversity <- readRDS(paste0(here::here(),
   "/results/microbiome_diversity_intervention_effects_results.RDS"))
@@ -67,7 +68,9 @@ p <- ggplot(res_diversity, aes(x = studytime, y = est,
   geom_point() +
   geom_linerange(aes(ymin = cil, ymax = ciu)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  scale_color_manual(values = tableau10[c(1, 3, 2)]) +
+  # canonical study colours BY NAME (was tableau10[c(1,3,2)], which reversed MISAME-III/
+  # Mumta-LW relative to every other figure). Study is also named on the axis.
+  scale_color_manual(values = unname(imic_study_cols[c("ELICIT", "MISAME-III", "Mumta-LW")])) +
   coord_flip() +
   facet_wrap(~ label_f, scale = "free") +
   ggtitle("Intervention effect\n(BEP or Nicotinamide)") +

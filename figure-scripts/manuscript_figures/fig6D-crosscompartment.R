@@ -57,10 +57,17 @@ MILK_ATE <- "results/adjusted_combined_arms_intervention_effects_untargeted_resu
 TP2VISIT <- c("1421d" = "14-21 days", "pn12" = "1-2 mo.", "pn34" = "3-4 mo.",
               "pn56" = "5-6 mo.", "1mo" = "1 mo.", "5mo" = "5 mo.")
 
-# Trenton's compartment palette + ordering (Compartment Tracking.Rmd).
+# Compartment ordering from Trenton's Compartment Tracking.Rmd. Palette is
+# colourblind-safe since 2026-09-23: his tableau map put Maternal VAMS (green) and
+# Infant VAMS (red) at CIEDE2000 dE 0.7 under simulated deuteranopia. The new colours
+# stay >= 27.9 apart under protan/deutan/tritan simulation, and each compartment also
+# gets its own CI LINETYPE (plus a fixed dodge order within every row) as a
+# colour-independent cue; shape stays reserved for supplement detection.
 COMP_LEVELS <- c("Maternal plasma", "Maternal VAMS", "Milk", "Infant VAMS")
-COMP_COLS   <- c("Maternal plasma" = "#4E79A7", "Maternal VAMS" = "#59A14F",
-                 "Milk" = "#F28E2B", "Infant VAMS" = "#E15759")
+COMP_COLS   <- c("Maternal plasma" = "#004488", "Maternal VAMS" = "#56B4E9",
+                 "Milk" = "#E69F00", "Infant VAMS" = "#000000")
+COMP_LTY    <- c("Maternal plasma" = "solid", "Maternal VAMS" = "dashed",
+                 "Milk" = "dotted", "Infant VAMS" = "twodash")
 # Supplement-detection tiers (his `supplement_label`); fixed order -> fixed shapes.
 SUPP_LEVELS <- c("Supplement-abundant", "Detected in supplement",
                  "Not reliably detected in supplement")
@@ -143,10 +150,11 @@ build_panelD <- function(linked_path = LINKED, paths_path = PATHS, out_png = OUT
   p <- ggplot(d, aes(x = effect_size, y = feature_pathway_label,
                      color = compartment, group = compartment)) +
     geom_vline(xintercept = 0, color = "grey70", linewidth = 0.4) +
-    geom_errorbarh(aes(xmin = cil, xmax = ciu), position = pd, height = 0,
+    geom_errorbarh(aes(xmin = cil, xmax = ciu, linetype = compartment), position = pd, height = 0,
                    linewidth = 0.4, alpha = 0.9) +
     geom_point(aes(shape = supplement_label), size = 2.4, alpha = 0.95, position = pd) +
     scale_color_manual(values = COMP_COLS, drop = FALSE) +
+    scale_linetype_manual(values = COMP_LTY, drop = FALSE) +   # merges with the colour legend
     # shorten the long supplement labels so the legend fits on a single line
     # drop = TRUE: only show shape-legend keys actually present in the plotted
     # data (this panel's current data never uses "Supplement-abundant", so it
@@ -156,12 +164,13 @@ build_panelD <- function(linked_path = LINKED, paths_path = PATHS, out_png = OUT
                                   "Detected in supplement" = "Detected",
                                   "Not reliably detected in supplement" = "Not detected")) +
     labs(x = "Average Treatment Effect (95% CI)", y = NULL,
-         color = "Compartment", shape = "BEP supplement") +
+         color = "Compartment", linetype = "Compartment", shape = "BEP supplement") +
     # The 3-key shape legend fits on one row; the 4-key compartment legend does NOT
     # at this panel width -- on one row its last key ("Infant VAMS") is clipped by
     # the right edge. Wrap it to two rows (2x2) so every key stays inside the canvas.
     guides(shape = guide_legend(order = 1, nrow = 1, override.aes = list(size = 2)),
-           color = guide_legend(order = 2, nrow = 2, override.aes = list(size = 2))) +
+           color = guide_legend(order = 2, nrow = 2, override.aes = list(size = 2, linewidth = 0.6)),
+           linetype = guide_legend(order = 2, nrow = 2)) +
     theme_imic(base_size = 9) +   # Science-submission theme (Helvetica, font floors)
     theme(# 29 wrapped, multi-line rows: 6 pt y label keeps the tall panel legible
           axis.text.y = element_text(size = 6, lineheight = 0.8, hjust = 0),

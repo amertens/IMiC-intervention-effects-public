@@ -63,7 +63,7 @@ p <- ggplot(d, aes(fe, y)) +
            hjust = 0, vjust = -0.5, size = 2.1, colour = "#7A7A73") +
   annotate("text", x = min(d$fe), y = q_line, label = "Q-value < 0.05",
            hjust = 0, vjust = -0.5, size = 2.1, colour = "#3C8C3C") +
-  geom_point(aes(colour = study_col), size = 2, alpha = 0.85) +
+  geom_point(aes(colour = study_col, shape = study_col), size = 2, alpha = 0.85) +  # study symbol = colourblind cue
   # size/label.padding trimmed 2026-08-26 (was 2.5/0.12), matching fig6B-mummichog.R's
   # rationale -- Fig 3A/5A's smaller, boxless repel labels; base_size dropped 9->8 below.
   geom_label_repel(data = labs, aes(label = lab, colour = study), size = 2.2,
@@ -73,11 +73,14 @@ p <- ggplot(d, aes(fe, y)) +
   scale_colour_manual(values = pal,
                       breaks = c("MISAME-III", "Mumta-LW", "Not significant"),
                       name = "Study") +
+  scale_shape_manual(values = imic_shapes_for(names(pal)),
+                     breaks = c("MISAME-III", "Mumta-LW", "Not significant"),
+                     name = "Study") +
   scale_y_continuous(limits = c(0, FIG6_Y_MAX), breaks = seq(0, FIG6_Y_MAX, 1)) +  # shared Fig 6 A/B/C height
   labs(x = "Fold Enrichment (signed by direction)",
        y = expression("–Log"[10]*"("*italic(P)*"-value)")) +
   theme_imic(base_size = 8) +   # Science-submission theme (Helvetica, font floors); matches Fig 3A/5A
-  guides(colour = guide_legend(nrow = 1)) +
+  guides(colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1)) +
   theme(legend.position = "bottom", legend.key.size = unit(0.35, "cm"),
         panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3),
         plot.margin = margin(4, 6, 4, 4))
