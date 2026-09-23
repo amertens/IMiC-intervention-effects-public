@@ -176,13 +176,13 @@ cat("wrote", XLSX, "\n  backup:", backup, "\n  sheet order:", paste(sheets(wb), 
 appdir <- paste0(root, "results/tables/")
 # S2: full tertiary MSEA (all 463 rows, sorted by raw P) -- same source as the sheet
 s2raw <- fread(paste0(root, "results/metaboanalyst/tertiary_msea/tertiary_msea_dual.csv"))
-fwrite(s2raw[order(raw_p)], paste0(appdir, "table_s2_tertiary_msea_full.csv"))
+fwrite(s2raw[order(raw_p)], paste0(appdir, "table_s3_tertiary_msea_full.csv"))
 # S5: milk mummichog, raw P < 0.05, sorted by P (505 rows) -- same filter as the printed block
 s5raw <- fread(paste0(root, "results/metaboanalyst/mummichog_s5/milk_mummichog_tableS5.csv"))
-fwrite(s5raw[`P-value` < 0.05][order(`P-value`)], paste0(appdir, "table_s5_mummichog_full.csv"))
+fwrite(s5raw[`P-value` < 0.05][order(`P-value`)], paste0(appdir, "table_s6_mummichog_full.csv"))
 # S6: proteomics GO enrichment -- the current scripted source of truth (run-proteomics-go.R)
 s6raw <- fread(paste0(root, "results/metaboanalyst/proteomics_go/proteomics_go_tableS6.csv"))
-fwrite(s6raw, paste0(appdir, "table_s6_proteomics_go_full.csv"))
-cat("wrote Online-Appendix CSVs: table_s2_tertiary_msea_full.csv (", nrow(s2raw), " rows), ",
-    "table_s5_mummichog_full.csv (", nrow(s5raw[`P-value` < 0.05]), " rows), ",
-    "table_s6_proteomics_go_full.csv (", nrow(s6raw), " rows)\n", sep = "")
+fwrite(s6raw, paste0(appdir, "table_s7_proteomics_go_full.csv"))
+cat("wrote Online-Appendix CSVs: table_s3_tertiary_msea_full.csv (", nrow(s2raw), " rows), ",
+    "table_s6_mummichog_full.csv (", nrow(s5raw[`P-value` < 0.05]), " rows), ",
+    "table_s7_proteomics_go_full.csv (", nrow(s6raw), " rows)\n", sep = "")
