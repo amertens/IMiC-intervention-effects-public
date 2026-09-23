@@ -54,7 +54,7 @@ p <- ggplot(d, aes(fe, y, colour = study_col)) +
            hjust = 0, vjust = -0.5, size = 2.1, colour = "#7A7A73") +
   annotate("text", x = min(d$fe), y = q_line, label = "Q-value < 0.05",
            hjust = 0, vjust = -0.5, size = 2.1, colour = "#3C8C3C") +
-  geom_point(size = 2, alpha = 0.85) +
+  geom_point(aes(shape = study_col), size = 2, alpha = 0.85) +   # study symbol = colourblind cue
   # size/label.padding trimmed 2026-08-26 (was 2.5/0.12) to better match Fig 3A/5A's
   # smaller, boxless repel-label text; base_size dropped 9->8 below for the same reason
   # (reported: Fig 6 labels read large next to the other figures).
@@ -67,10 +67,15 @@ p <- ggplot(d, aes(fe, y, colour = study_col)) +
                       breaks = c("ELICIT", "MISAME-III", "Mumta-LW",
                                  "Not significant"),
                       name = "Study") +
+  scale_shape_manual(values = imic_shapes_for(names(studycols)),
+                     breaks = c("ELICIT", "MISAME-III", "Mumta-LW",
+                                "Not significant"),
+                     name = "Study") +
   scale_y_continuous(limits = c(0, FIG6_Y_MAX), breaks = seq(0, FIG6_Y_MAX, 1)) +
   labs(x = "Fold Enrichment", y = expression("–Log"[10]*"("*italic(P)*"-value)")) +
   theme_imic(base_size = 8) +   # Science-submission theme (Helvetica, font floors); matches Fig 3A/5A
-  guides(colour = guide_legend(nrow = 2, byrow = TRUE)) +
+  guides(colour = guide_legend(nrow = 2, byrow = TRUE),
+         shape  = guide_legend(nrow = 2, byrow = TRUE)) +
   theme(legend.position = "bottom", legend.key.size = unit(0.35, "cm"),
         panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3),
         plot.margin = margin(3, 6, 3, 3))

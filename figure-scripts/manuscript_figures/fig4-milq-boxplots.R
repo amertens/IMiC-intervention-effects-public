@@ -298,10 +298,13 @@ plot_biomarker <- function(biomarker_name,
     filter(label != "") %>% distinct()
   
   ## study-specific axis tick colors
+  ## (canonical study colours from study_colors.R since 2026-09-23; this map had
+  ## MISAME-III green / Mumta-LW orange, the reverse of every other figure. The study
+  ## code is part of each tick label, so colour here is a redundant cue.)
   study_colors <- c(
-    "Mi" = "#2ca02c",  # MISAME
-    "Mu" = "#fe7f01",  # VITAL
-    "El" = "#1f77b5"   # ELICIT
+    "Mi" = "#E69F00",  # MISAME-III (Okabe-Ito orange)
+    "Mu" = "#009E73",  # Mumta-LW / VITAL (Okabe-Ito bluish green)
+    "El" = "#0072B2"   # ELICIT (Okabe-Ito blue)
   )
   
   ## enforce fixed ordering of study_visit (adjust as needed)

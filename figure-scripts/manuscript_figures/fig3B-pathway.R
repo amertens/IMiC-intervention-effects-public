@@ -29,8 +29,8 @@ OUT_CMP   <- "Manuscript/figure_comparison/msea_compare/fig3B_replicated_pathway
 # (src/trenton-ports/figure-3b-pathway-submitted.R): theme_bw FULL grid, SOLID P<0.05
 # (grey) + Q<0.05 (green) reference lines with LEFT-anchored "P-value < ..." text,
 # white boxed labels + ellipses, integer y ticks, x breaks at 0.25, and a bottom-LEFT
-# legend. Only difference from the submission is the study palette (we keep Mumta-LW
-# green, not red) -- per Andrew's "minus the color change".
+# legend. Differences from the submission: the study palette (Okabe-Ito since 2026-09-23)
+# and a redundant study SHAPE (circle/triangle/square) for colourblind readers.
 .plot_3b <- function(tab, ellipse_df, label_df, cols, fdr_p_thr, y_fdr_line) {
   ggplot(tab, aes(impact, logP)) +
     geom_hline(yintercept = -log10(0.05), color = "#BAB0AC", linewidth = 0.4) +   # solid P<0.05
@@ -42,12 +42,13 @@ OUT_CMP   <- "Manuscript/figure_comparison/msea_compare/fig3B_replicated_pathway
              label = paste0("italic(P)*\"-value\" < ", signif(fdr_p_thr, 2))) } +
     { if (nrow(ellipse_df) >= 2) ggforce::geom_mark_ellipse(data = ellipse_df, aes(group = pathway),
              expand = unit(2, "mm"), colour = "black", linewidth = 0.3) } +
-    geom_point(aes(color = point_color), size = 1.6, alpha = 0.9) +
+    geom_point(aes(color = point_color, shape = point_color), size = 1.6, alpha = 0.9) +
     geom_label_repel(data = label_df, aes(label = lab, color = point_color),
              size = 2.2, fill = "white", label.size = 0.2, box.padding = 0.35,
              point.padding = 0.3, segment.size = 0.35, max.overlaps = Inf,
              show.legend = FALSE, min.segment.length = 0, seed = 123) +
     scale_color_manual(values = cols, name = "Study") +
+    scale_shape_manual(values = imic_shapes_for(names(cols)), name = "Study") +   # redundant CVD cue
     scale_x_continuous(breaks = seq(0, 1, 0.25), limits = c(-0.05, 1.05)) +
     scale_y_continuous(breaks = seq(0, ceiling(max(tab$logP, na.rm = TRUE)), 1)) +
     labs(x = "Pathway Impact", y = expression(-log[10](italic(P)*"-value"))) +
@@ -64,7 +65,7 @@ OUT_CMP   <- "Manuscript/figure_comparison/msea_compare/fig3B_replicated_pathway
           legend.text      = element_text(size = 7),
           legend.title     = element_text(size = 8),
           legend.position = "bottom", legend.justification = "left", legend.box = "horizontal") +
-    guides(color = guide_legend(override.aes = list(size = 2.5)))
+    guides(color = guide_legend(override.aes = list(size = 2.5)))   # shape legend merges into this one
 }
 
 build <- function() {

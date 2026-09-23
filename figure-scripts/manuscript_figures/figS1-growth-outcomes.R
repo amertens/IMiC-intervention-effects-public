@@ -74,12 +74,15 @@ p <- ggplot(plotdf_primary,
             aes(x = contrast, y = est, group = Measure,
                 color = Measure, shape = sig, alpha = sig)) +
   geom_point(position = position_dodge(width = 0.5), size = 2) +
-  geom_linerange(aes(ymin = cil, ymax = ciu), position = position_dodge(width = 0.5)) +
+  geom_linerange(aes(ymin = cil, ymax = ciu, linetype = Measure), position = position_dodge(width = 0.5)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   coord_flip() +
   facet_grid(study ~ age, scale = "free_y") +
   scale_alpha_manual(values = c(0.7, 1)) + guides(alpha = "none") +
-  scale_color_manual(values = tableau10[c(3, 2, 1, 5)]) +
+  # colourblind-safe (2026-09-23): was tableau green/orange (LAZ vs WLZ; CIEDE2000 dE 1.4
+  # under simulated protanopia). Okabe-Ito blue/orange + a CI linetype per measure.
+  scale_color_manual(values = c("#0072B2", "#E69F00", "#009E73", "#CC79A7")) +
+  scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash")) +
   scale_shape_manual(values = c(1, 19), name = "Significant") +
   # theme_imic (Helvetica, Reviewer-2 font floors) harmonized 2026-08-26 (was bare
   # theme_bw() with an explicit axis.text=6, BELOW the 7pt floor). theme_imic's own

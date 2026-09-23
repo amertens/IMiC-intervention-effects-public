@@ -127,6 +127,7 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
         TRUE          ~ "Not Significant"),
       color_var  = ifelse(sig_status == "Significant after FDR",
                           as.character(category), sig_status),
+      pt_size    = ifelse(sig_status == "Significant after FDR", 1.4, 1),
       # tertiary panels label with the short biomarker code (e.g. "Tg.18.3_30.0.")
       # to match the placeholder; label_f collapses every TG to "Triacylglyceride".
       lab_src    = ifelse(sig_status == "Significant after FDR", biomarker, ""))
@@ -158,12 +159,19 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
   ymax_data <- max(tt_volcano$logPval[is.finite(tt_volcano$logPval)], na.rm = TRUE)
 
   p <- ggplot(tt_volcano, aes(x = ATE, y = logPval)) +
-    geom_point(aes(colour = color_var, shape = sig_status), size = 1, alpha = 0.75) +
+    # FDR-significant points: category colour AND category symbol (colourblind cue,
+    # 2026-09-23), drawn slightly larger; the other tiers keep circle (n.s.) / square
+    # (nominal only) in black. fill carries the colour for the filled shape 25.
+    geom_point(aes(colour = color_var, fill = color_var, shape = color_var, size = pt_size),
+               alpha = 0.75) +
     geom_vline(xintercept = 0, linetype = "dashed") +
-    geom_hline(yintercept = p_line, linetype = "dashed", colour = tableau10[2]) +
-    geom_hline(yintercept = q_line, linetype = "dotted", colour = tableau10[3]) +
+    geom_hline(yintercept = p_line, linetype = "dashed", colour = "grey55") +     # P < 0.05 (was orange)
+    geom_hline(yintercept = q_line, linetype = "dotted", colour = "#59A14F") +    # Q < 0.05
     xlab("") + ylab("") + ggtitle(title) +
     scale_color_manual(values = final_color_palette, na.value = "#999999") +
+    scale_fill_manual(values = final_color_palette, na.value = "#999999", guide = "none") +
+    scale_shape_manual(values = final_shape_palette, guide = "none") +
+    scale_size_identity() +
     guides(color = guide_legend(title = NULL)) +
     # x fixed to the shared tertiary effect range (breaks at -1/0/1); y gets
     # ~12% headroom so top-feature labels are not jammed against the ceiling.
@@ -233,7 +241,9 @@ build_palette <- function(categories) {
   ordered <- c(intersect("Triglycerides", categories),
                sort(setdiff(categories, "Triglycerides")))
   fixed <- c("Not Significant" = "#000000", "Significant before FDR" = "#000000")
-  cat_colors <- tableau10[seq_len(min(length(ordered), length(tableau10)))]
+  # colourblind-safe set (2026-09-23); Triglycerides stays blue. Paired 1:1 with
+  # imic_cat_shapes -- see build_shape_palette() below.
+  cat_colors <- imic_cat_cols[seq_len(min(length(ordered), length(imic_cat_cols)))]
   names(cat_colors) <- ordered[seq_along(cat_colors)]
   if (length(ordered) > length(cat_colors)) {
     extra <- grDevices::rainbow(length(ordered) - length(cat_colors))
@@ -243,16 +253,27 @@ build_palette <- function(categories) {
   c(fixed, cat_colors)
 }
 
-# Standalone colour legend (categories only) shown in the last grid cell.
+# Symbol for each category, in the same order build_palette() hands out colours, so
+# colour i and shape i always travel together (non-significant tiers: circle / square).
+build_shape_palette <- function(palette) {
+  cats <- setdiff(names(palette), c("Not Significant", "Significant before FDR"))
+  shp  <- rep_len(imic_cat_shapes, length(cats))
+  c("Not Significant" = 16, "Significant before FDR" = 15, stats::setNames(shp, cats))
+}
+
+# Standalone legend (categories only) shown in the last grid cell: colour AND symbol,
+# listed top-to-bottom in the inset bars' left-to-right (alphabetical) order.
 create_category_legend <- function() {
   legend_colors <- final_color_palette[
     !names(final_color_palette) %in% c("Not Significant", "Significant before FDR")]
-  legend_data <- data.frame(category = names(legend_colors),
-                            y = seq_along(legend_colors), x = 1)
-  ggplot(legend_data, aes(x = x, y = y, fill = category)) +
-    geom_point(size = 3, shape = 21, color = "black") +
+  cats <- sort(names(legend_colors))
+  legend_data <- data.frame(category = cats, y = rev(seq_along(cats)), x = 1)
+  ggplot(legend_data, aes(x = x, y = y, colour = category, fill = category, shape = category)) +
+    geom_point(size = 3) +
+    scale_colour_manual(values = legend_colors) +
     scale_fill_manual(values = legend_colors) +
-    geom_text(aes(label = category), hjust = 0, nudge_x = 0.2, size = 2.5) +
+    scale_shape_manual(values = final_shape_palette) +
+    geom_text(aes(label = category), colour = "black", hjust = 0, nudge_x = 0.2, size = 2.5) +
     xlim(0.8, 3) + ylim(0.5, length(legend_colors)) +
     theme_void() + theme(legend.position = "none") +
     ggtitle("Significant Categories") +
@@ -412,10 +433,11 @@ create_study_legend <- function() {
   study_cols_all <- c(imic_study_cols, "Not Significant" = "grey75")
   legend_df <- data.frame(x = 1, y = seq_along(study_cols_all),
                           grp = factor(names(study_cols_all), levels = names(study_cols_all)))
-  p <- ggplot(legend_df, aes(x, y, color = grp)) +
+  p <- ggplot(legend_df, aes(x, y, color = grp, shape = grp)) +
     geom_point(size = 2) +
     scale_color_manual(values = study_cols_all, name = "Study") +
-    guides(colour = guide_legend(nrow = 1)) +
+    scale_shape_manual(values = imic_shapes_for(names(study_cols_all)), name = "Study") +  # study symbols (CVD cue)
+    guides(colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1)) +
     theme_void(base_size = 9) +
     theme(legend.position = "bottom", legend.key.size = unit(0.35, "cm"))
   # cowplot::get_legend() can grab an empty guide-box when a theme_void() plot
@@ -478,6 +500,7 @@ res_stratified$category <- collapse_small_categories(res_stratified$category)
 # main and supplement versions.
 final_color_palette <- build_palette(c(as.character(res_combined$category),
                                        as.character(res_stratified$category)))
+final_shape_palette <- build_shape_palette(final_color_palette)   # symbol per category (CVD cue)
 
 # One shared x-scale for every volcano panel, from the tertiary effect range.
 .est_all <- c(res_combined$est, res_stratified$est)
