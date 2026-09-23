@@ -6,7 +6,7 @@
 # Output: results/tables/targeted_metabolites_native_units.csv
 #
 # Why: round-2 Reviewer 1 (point 4e) asked where the native-unit triglyceride-species
-# estimates are. Table S1 (formerly S7; build_table_s7.R) covers primary + secondary
+# estimates are. Table S1 (formerly S7; build_table_s1.R) covers primary + secondary
 # outcomes only, so this exports the same combined-arm, covariate-adjusted TMLE effects
 # for the tertiary panel from the same upstream unscaled-effects run.
 #

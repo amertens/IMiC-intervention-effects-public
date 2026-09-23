@@ -1,9 +1,9 @@
 #-------------------------------------------------------------------------------
-# Build Table S7: native-unit means (± SD) + ATEs for primary + secondary outcomes
+# Build Table S1 (formerly Table S7): native-unit means (± SD) + ATEs for primary + secondary outcomes
 # per intervention arm × visit × trial.
 #
-# Output: results/tables/table_s7_primary_secondary_native_units.csv (long)
-#         results/tables/table_s7_primary_secondary_native_units_wide.csv (wide)
+# Output: results/tables/table_s1_primary_secondary_native_units.csv (long)
+#         results/tables/table_s1_primary_secondary_native_units_wide.csv (wide)
 #
 # Reviewer 2 §2.4 requested absolute concentrations alongside the z-scored ATEs in
 # Fig. 3. This script consumes the pre-existing per-arm-and-visit unscaled effect
@@ -236,13 +236,13 @@ wide <- means_with_n %>%
   arrange(outcome_class, category, label, study, visit)
 
 #-- 8. Write outputs --------------------------------------------------------
-write.csv(means_with_n, file.path(OUT, "table_s7_primary_secondary_native_units.csv"),
+write.csv(means_with_n, file.path(OUT, "table_s1_primary_secondary_native_units.csv"),
           row.names = FALSE)
-write.csv(wide, file.path(OUT, "table_s7_primary_secondary_native_units_wide.csv"),
+write.csv(wide, file.path(OUT, "table_s1_primary_secondary_native_units_wide.csv"),
           row.names = FALSE)
 
-cat("\nWrote:\n  ", file.path(OUT, "table_s7_primary_secondary_native_units.csv"), "\n",
-    "  ", file.path(OUT, "table_s7_primary_secondary_native_units_wide.csv"), "\n", sep="")
+cat("\nWrote:\n  ", file.path(OUT, "table_s1_primary_secondary_native_units.csv"), "\n",
+    "  ", file.path(OUT, "table_s1_primary_secondary_native_units_wide.csv"), "\n", sep="")
 cat("\nLong rows: ", nrow(means_with_n), "\n",
     "Wide rows: ", nrow(wide), "\n", sep="")
 
