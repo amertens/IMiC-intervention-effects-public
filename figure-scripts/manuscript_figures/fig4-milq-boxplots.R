@@ -303,7 +303,7 @@ plot_biomarker <- function(biomarker_name,
   ## code is part of each tick label, so colour here is a redundant cue.)
   study_colors <- c(
     "Mi" = "#E69F00",  # MISAME-III (Okabe-Ito orange)
-    "Mu" = "#009E73",  # Mumta-LW / VITAL (Okabe-Ito bluish green)
+    "Mu" = "#CC79A7",  # Mumta-LW / VITAL (Okabe-Ito reddish purple, since 2026-09-24)
     "El" = "#0072B2"   # ELICIT (Okabe-Ito blue)
   )
   

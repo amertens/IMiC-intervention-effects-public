@@ -282,7 +282,8 @@ plot_imic_volcano_panel <- function(res,
   
   p <- p + geom_text_repel(
     data            = top_vars,
-    aes(label       = abbr_label(biomarker)),   # short forms so labels fit the narrow panels (Fig 3A)
+    aes(label       = plotmath_label(abbr_label(biomarker))),   # short forms so labels fit the narrow panels (Fig 3A)
+    parse           = TRUE,   # B-vitamin subscripts via plotmath (Arial has no subscript-digit glyphs for PDF/EPS)
     max.overlaps    = getOption("ggrepel.max.overlaps", default = overlap_n),
     size            = 2.5,
     alpha           = 0.5,
@@ -333,7 +334,7 @@ category_color_palette <- c(
 )
 # Colourblind-safe since 2026-09-23 (imic_cat_cols, study_colors.R), keeping each
 # category's hue family where possible (B1 red->vermillion, B2 orange, B3 green,
-# B6 purple->reddish purple, Other B blue, Macronutrient brown). Every category also
+# B6 purple->reddish purple, Other B blue; Macronutrient brown->wine). Every category also
 # gets its own SYMBOL (category_shapes) so it is identifiable without colour.
 category_colors <- c(
   "Other B vitamins" = imic_cat_cols[1],   # blue
@@ -342,7 +343,7 @@ category_colors <- c(
   "B1"               = imic_cat_cols[4],   # vermillion
   "B6"               = imic_cat_cols[5],   # reddish purple
   "Micronutrient"    = imic_cat_cols[6],   # sky blue
-  "Macronutrient"    = imic_cat_cols[7]    # brown
+  "Macronutrient"    = imic_cat_cols[7]    # wine
 )
 category_shapes <- setNames(imic_cat_shapes, names(category_colors))
 # defensive fallback for any category not in the fixed map
