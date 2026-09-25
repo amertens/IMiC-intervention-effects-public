@@ -97,6 +97,7 @@ forest_plot <- function(tab, arm_strat=F, tertiary=F){
         scale_color_manual(values = c("Not Significant"="grey60",
                                       "Sig before FDR"=tableau10[1],
                                       "Sig"=tableau10[2]), drop = FALSE) +
+        scale_x_discrete(labels = plotmath_expr) +   # B-vitamin subscripts via plotmath (Arial has no subscript-digit glyphs for PDF/EPS)
         facet_wrap(ncol=4, study~visit, labeller = labeller(.multi_line = FALSE)) +
         labs(#title = "Forest Plot of Estimates",
           x = "",

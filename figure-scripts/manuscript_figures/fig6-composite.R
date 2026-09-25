@@ -3,6 +3,7 @@
 #   LEFT column (stacked, half-width): A = untargeted MSEA (fig6A-untargeted-msea.R)
 #                                      B = Mummichog volcano (fig6B-mummichog.R)
 #                                      C = milk proteome GO ORA (fig6C-proteomics.R)
+#                                      + one shared A-C key under C (2026-09-25)
 #   RIGHT column (full height):        D = cross-compartment transfer (fig6D-crosscompartment.R)
 # A single-column stack was legible but ~51 cm tall (over a print page); two columns
 # keep it page-sized. Panel B/A/C labels were reduced/abbreviated for the narrow
@@ -25,6 +26,7 @@ left_panels <- list(A, B)
 if (haveC) left_panels <- c(left_panels, list(prep("figure6_panelC_proteomics_go.png")))
 
 WL <- max(vapply(left_panels, function(x) image_info(x)$width, numeric(1)))
+last_w <- image_info(left_panels[[length(left_panels)]])$width   # bottom panel, pre-resize
 left_panels <- lapply(left_panels, function(x) image_resize(x, paste0(WL, "x")))
 
 strip <- round(WL * 0.020)
@@ -35,6 +37,19 @@ addlab <- function(img, L, w) {
 }
 left_panels <- Map(function(img, L) addlab(img, L, WL), left_panels,
                    c("A", "B", "C")[seq_along(left_panels)])
+# One shared key for A-C (Panel A's legend: 3 studies + Sig before FDR + Not
+# Significant; written by fig6A-untargeted-msea.R) under the bottom panel. The panels
+# carry no legends of their own, so all three plot areas are the same size. The key is
+# scaled by the same factor as the panel above it (so its text matches the panels'),
+# then centred on the column width -- never stretched to fill it.
+leg_file <- "figure6_legend_ABC.png"
+if (file.exists(file.path(FIG, leg_file))) {
+  key <- prep(leg_file)
+  key <- image_resize(key, paste0(round(image_info(key)$width * WL / last_w), "x"))
+  key <- image_extent(key, paste0(WL, "x", image_info(key)$height + 2 * strip),
+                      gravity = "center", color = "white")
+  left_panels <- c(left_panels, list(key))
+}
 left_col <- image_append(image_join(left_panels), stack = TRUE)
 # A/B/C-only stack (used by the comparison doc's "new A/B/C" slot).
 image_write(left_col, file.path(FIG, "figure6_leftcol_ABC.png"))
@@ -44,12 +59,14 @@ haveD <- file.exists(file.path(FIG, "figure6_panelD_crosscompartment.png"))
 if (haveD) {
   D <- prep("figure6_panelD_crosscompartment.png")
   D <- image_border(D, "white", "45x6")
-  D <- addlab(D, "D", image_info(D)$width)
   # Panel D fills the ENTIRE right column: scale it to the exact height of the stacked
   # A/B/C left column (preserving D's aspect), so there is no whitespace beside the
-  # tall slope plot. The left column keeps its native height.
+  # tall slope plot. The left column keeps its native height. D is scaled BEFORE its
+  # label is drawn, and the label uses the left column's width (WL), so "D" is the same
+  # size as "A"-"C" (labelling first, at D's own width, made it larger; fixed 2026-09-25).
   H <- image_info(left_col)$height
-  D <- image_resize(D, paste0("x", H))
+  D <- image_resize(D, paste0("x", H - 2 * strip))   # addlab() adds a strip top and bottom
+  D <- addlab(D, "D", WL)
   fig <- image_append(image_join(list(left_col, D)), stack = FALSE)
 } else {
   fig <- left_col

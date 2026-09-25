@@ -83,6 +83,37 @@ abbr_label <- function(code) {
   lab
 }
 
+# plotmath_label(): Arial (what "Helvetica" resolves to on Windows) has no glyphs for
+# the Unicode subscript digits U+2080-2089, so "Vitamin B₁₂" drew as "Vitamin B" plus
+# an empty box in the cairo PDF/EPS files (ragg PNGs hid this by borrowing the digits
+# from a fallback font). This rewrites a label as plotmath source that draws each
+# subscript run as a real subscript in the plot's own font:
+#   "Vitamin B₁₂" -> "Vitamin B"[12]      "Vitamin B₁ (mg/L)" -> "Vitamin B"[1]*" (mg/L)"
+# Labels without subscripts come back as quoted strings, so a whole label column can
+# be parsed. Draw with geom_text(_repel)(parse = TRUE), or with plotmath_expr() as a
+# scale's `labels` for axis text. Added 2026-09-24.
+plotmath_label <- function(x) {
+  x <- as.character(x)
+  vapply(x, function(s) {
+    if (is.na(s)) return(NA_character_)
+    if (!nzchar(s)) return('""')
+    runs <- regmatches(s, gregexpr("[₀-₉]+|[^₀-₉]+", s, perl = TRUE))[[1]]
+    out <- ""
+    for (r in runs) {
+      if (grepl("^[₀-₉]+$", r, perl = TRUE)) {
+        digits <- chartr("₀₁₂₃₄₅₆₇₈₉",
+                         "0123456789", r)
+        out <- paste0(if (nzchar(out)) out else '""', "[", digits, "]")
+      } else {
+        q <- paste0('"', gsub('(["\\\\])', "\\\\\\1", r), '"')
+        out <- if (nzchar(out)) paste0(out, "*", q) else q
+      }
+    }
+    out
+  }, character(1), USE.NAMES = FALSE)
+}
+plotmath_expr <- function(x) parse(text = plotmath_label(x), keep.source = FALSE)
+
 #-------------------------------------------------------------------------------
 # Aesthetics for the Science submission (Reviewer 2 §2.6, font sizes too small):
 #   axis-tick      ≥ 7 pt
@@ -138,8 +169,9 @@ science_dims <- list(
 save_figure_3way <- function(plot, name, width = 7.25, height = 9.5, dpi = 300,
                               dir = "figures") {
   if (!dir.exists(dir)) dir.create(dir, recursive = TRUE)
-  # UTF-8-capable devices so α/γ-tocopherol + B-vitamin subscripts render (the default
-  # Windows png/postscript devices fail with an mbcsToSbcs conversion error).
+  # UTF-8-capable devices so α/γ-tocopherol render (the default Windows png/postscript
+  # devices fail with an mbcsToSbcs conversion error). Cairo does NOT fall back to another
+  # font for glyphs Arial lacks, so B-vitamin subscripts must go through plotmath_label().
   devices <- list(pdf = grDevices::cairo_pdf,
                   eps = grDevices::cairo_ps,
                   png = ragg::agg_png)
