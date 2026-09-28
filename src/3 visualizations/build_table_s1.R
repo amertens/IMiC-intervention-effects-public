@@ -133,8 +133,10 @@ arm_to_contrast <- function(arm_raw, study) {
   arm_raw <- as.character(arm_raw)
   # Control levels
   if (arm_raw == "Control") return("Control")
-  if (study == "Misame" && arm_raw == "IFA/BEP")     return("Control")  # no postnatal BEP
-  if (study == "Misame" && arm_raw == "BEP/IFA")     return("BEP")      # postnatal BEP only
+  # MISAME-III arms are prenatal/postnatal: postnatal BEP (BEP/BEP, IFA/BEP) vs none
+  # (BEP/IFA, IFA/IFA = "Control"), as in 2_adjusted_analysis_combined_arms.R.
+  if (study == "Misame" && arm_raw == "IFA/BEP")     return("BEP")      # postnatal BEP only
+  if (study == "Misame" && arm_raw == "BEP/IFA")     return("Control")  # prenatal BEP only
   if (study == "Misame" && arm_raw == "BEP/BEP")     return("BEP")      # postnatal BEP (combined)
   if (study == "Vital"  && arm_raw %in% c("BEP+ExBf", "BEP+ExBf+AZT")) return("BEP")
   if (study == "Elicit" && arm_raw == "Az.")         return("Control")  # azithromycin-only
