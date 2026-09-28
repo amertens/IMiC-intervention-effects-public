@@ -10,8 +10,9 @@
 #
 # Inputs:  results/adjusted_combined_arms_intervention_effects_unscaled_results_clean.RDS
 #          data/merged_analysis_datasets.RDS
-# Outputs: results/tables/table_s1_primary_secondary_native_units.csv (long)
-#          results/tables/table_s1_primary_secondary_native_units_wide.csv (wide)
+# Outputs: results/tables/table_s1_primary_secondary_native_units.csv (one row per
+#          trial x visit x outcome: per-arm N and raw statistics side by side, and
+#          the native-unit ATE, 95% CI, P and q)
 # [needs restricted data]
 # =============================================================================
 
@@ -236,15 +237,12 @@ wide <- means_with_n %>%
   arrange(outcome_class, category, label, study, visit)
 
 #-- 8. Write outputs --------------------------------------------------------
-write.csv(means_with_n, file.path(OUT, "table_s1_primary_secondary_native_units.csv"),
-          row.names = FALSE)
-write.csv(wide, file.path(OUT, "table_s1_primary_secondary_native_units_wide.csv"),
+## Table S1 is the wide table only (the per-arm long form is not published).
+write.csv(wide, file.path(OUT, "table_s1_primary_secondary_native_units.csv"),
           row.names = FALSE)
 
-cat("\nWrote:\n  ", file.path(OUT, "table_s1_primary_secondary_native_units.csv"), "\n",
-    "  ", file.path(OUT, "table_s1_primary_secondary_native_units_wide.csv"), "\n", sep="")
-cat("\nLong rows: ", nrow(means_with_n), "\n",
-    "Wide rows: ", nrow(wide), "\n", sep="")
+cat("\nWrote:\n  ", file.path(OUT, "table_s1_primary_secondary_native_units.csv"), "\n", sep="")
+cat("\nRows: ", nrow(wide), "\n", sep="")
 
 #-- 9. Quick QC: how many biomarkers got matched? ---------------------------
 cat("\nWide-form preview (head 8):\n")
