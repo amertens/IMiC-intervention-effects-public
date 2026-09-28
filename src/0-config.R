@@ -1,22 +1,20 @@
 # =============================================================================
 # src/0-config.R
 #
-# Reads:  metadata/milk_component.Rdata
+# Shared setup sourced by every analysis and figure script: loads the R
+# packages, sources the helper functions in functions/ and
+# figure-scripts/0_figure-functions.R, loads the milk-component lists by panel
+# (all_milk_components: primary macro/micro/bvit, secondary hmo/protein,
+# tertiary metabolomics), and defines Wvars, the adjustment set used in every
+# adjusted model ("arm" first, then the baseline covariates).
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  metadata/milk_component.Rdata (shipped)
+# Outputs: none (objects in the calling session)
 # =============================================================================
-
-
 
 library(washb)
 library(knitr)
 library(biotmle)
-#library(biotmleData)
 library(BiocParallel)
 library(SuperLearner)
 library(caret)
@@ -34,7 +32,6 @@ library(ggrepel)
 library(ggthemes)
 library(here)
 
-
 #-------------------------------------------------------------------------------
 # Functions
 #-------------------------------------------------------------------------------
@@ -45,7 +42,6 @@ source(paste0(here(),"/functions/bioTMLE_functions.R"))
 source(paste0(here(),"/functions/data_cleaning_functions.R"))
 
 source(paste0(here::here(),"/figure-scripts/0_figure-functions.R"))
-
 
 #components by primary/secondary/tertiary
 load(file=paste0(here(),"/metadata/milk_component.Rdata"))
@@ -61,5 +57,5 @@ Wvars = c("arm","sex","mage", "meducyrs",
           "dvseason", "dlvloc","hhwealth", "hhfoodsecure",
           "nperson_miss","parity_miss","meducyrs_miss","hhfoodsecure_miss")
 
-#dont adjust for gestational age at birth or maternal anthro because prenatal interventions may affect these
-#"mbmi","mmuaccm" ,gagebrth
+# Gestational age at birth (gagebrth), maternal BMI (mbmi) and maternal MUAC
+# (mmuaccm) are not adjusted for because the prenatal interventions may affect them.

@@ -1,16 +1,19 @@
 # =============================================================================
 # functions/bioTMLE_functions.R
 #
-# This script's input/output paths are assembled at runtime, so they
-# cannot be listed here without executing it.
+# Adjusted intervention-effect estimation used by every milk and blood analysis
+# script. run_bioTMLE() takes a study x visit data subset, drops near-zero-
+# variance covariates and outcomes, expands factors to indicators, optionally
+# standardizes the outcomes, and calls biomarkertmle_imic(), a version of
+# biotmle::biomarkertmle() that fits drtmle for each outcome
+# (exp_biomarkertmle_imic) and returns per-arm means (MN) and intervention-vs-
+# control contrasts (ATE) with 95% CIs, plus a chi-square test of heterogeneity
+# across arms (imic_drtmle_summary) with BH-adjusted p-values (p.adjust_chi_p).
+# Sourced by src/0-config.R.
 #
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  none (functions only)
+# Outputs: none
 # =============================================================================
-
-
-
 
 biomarkertmle_imic <- function(adjust_biomarker=FALSE, include_biomarkers_in_W=FALSE, se, varInt, 
                                normalized = TRUE, ngscounts = FALSE, bppar_type = BiocParallel::MulticoreParam(),
@@ -28,18 +31,12 @@ biomarkertmle_imic <- function(adjust_biomarker=FALSE, include_biomarkers_in_W=F
   BiocParallel::register(bppar_type, default = TRUE)
   
 
-  #Note: scaling now done outside of this function
-  #if(!normalized){
-  #   exp_normed <- limma::normalizeBetweenArrays(as.matrix(assay(se)),
-  #                                               method = "scale")
-  #   Y <- tibble::as_tibble(t(exp_normed), .name_repair = "minimal")
-  # }else{
-     Y <- tibble::as_tibble(t(as.matrix(assay(se))), .name_repair = "minimal")
-   #}
+  # Outcomes are standardized (when requested) in run_bioTMLE() before this call,
+  # so biotmle's own normalization step is not used.
+  Y <- tibble::as_tibble(t(as.matrix(assay(se))), .name_repair = "minimal")
   if(!all(apply(Y, 2, class) == "numeric")){
     stop("Warning - values in Y do not appear to be numeric.")
   }
-  #A <- as.numeric(SummarizedExperiment::colData(se)[, varInt])
   A <- (SummarizedExperiment::colData(se)[, varInt])
   
   W <- tibble::as_tibble(SummarizedExperiment::colData(se)[, -varInt], .name_repair = "minimal")
@@ -124,7 +121,6 @@ biomarkertmle_imic <- function(adjust_biomarker=FALSE, include_biomarkers_in_W=F
   rownames(biomarkertmle_res) = NULL
   #pvalue correct heterogeneity test Pval
   
-  #try(biomarkertmle_res <- p.adjust_QEp(biomarkertmle_res))
   try(biomarkertmle_res <- p.adjust_chi_p(biomarkertmle_res))
   
   
@@ -134,16 +130,13 @@ biomarkertmle_imic <- function(adjust_biomarker=FALSE, include_biomarkers_in_W=F
 }
 
 
-# Yfull=Y
-# Y=Yfull[,17]
-
 exp_biomarkertmle_imic <- function(Y, A, W, g_lib, Q_lib, cv_folds, ...){
   
   if(any(class(Y) == "data.frame")){
     Y <- as.numeric(unlist(Y[, 1]))
   } 
   if(any(class(A) == "data.frame")){
-    A <- as.numeric(unlist(A[, 1])) #convert to factor?
+    A <- as.numeric(unlist(A[, 1]))
   }
   
   missingY <- is.na(Y)
@@ -189,10 +182,10 @@ exp_biomarkertmle_imic <- function(Y, A, W, g_lib, Q_lib, cv_folds, ...){
     
     #add missingness back into the eif vector so they can be merged across outcomes
     if(sum(missingY)>0){
-      # Step 3: Create a new vector of the same length as the original, filled with NAs
+      # Create a new vector of the same length as the original, filled with NAs
       eif_NA_vector <- rep(NA, length(missingY))
       
-      # Step 4: Insert calculated values back into their original positions
+      # Insert calculated values back into their original positions
       eif_NA_vector[!missingY] <- eif_out
       eif_out <- eif_NA_vector
     }else{
@@ -206,8 +199,6 @@ exp_biomarkertmle_imic <- function(Y, A, W, g_lib, Q_lib, cv_folds, ...){
   }
   return(out)
 }
-
-
 
 
 #function to get global p-val from test of heterogeneity, and summarize means and treatment contrasts
@@ -225,24 +216,18 @@ imic_drtmle_summary <- function(fit, a_0){
       ate[i] = fit$drtmle$est[i+1]-fit$drtmle$est[1]
     }
   
-  # Step 4: Compute the empirical variance-covariance matrix
+  # Compute the empirical variance-covariance matrix
   vmat <- var(IC)/nrow(IC)
   
   # Calculate the inverse of the variance-covariance matrix
   inv_vmat <- solve(vmat)
   
   # Calculate the square root of the inverse matrix
-  # Note: You might need to install the `Matrix` package for sqrtm function
-  # install.packages("Matrix")
-  #library(Matrix)
   require(pracma)
   sdIC <- sqrtm(inv_vmat)$B
   
-  # Assuming that Zvec is already in the form where each row corresponds to a transformed IC component,
-  # you can then compute the chi-square test statistic as the sum of the squared Z components
-  # This step might vary depending on your specific transformation and data structure
-  
-  # Calculate the chi-square test statistic
+  # Wald chi-square statistic (K df) for the null that every arm-vs-control
+  # contrast is 0: the sum of the squared whitened ATEs, ate' V^-1 ate.
   zstats <- ((sdIC%*%ate)^2)
   chi_square_statistic <- sum(zstats)
   
@@ -278,7 +263,6 @@ imic_drtmle_summary <- function(fit, a_0){
     res_ATE$contrast=as.character(res_ATE$contrast)
   res_tab <- bind_rows(res_tab, res_ATE)
   rownames(res_tab)=NULL
-  #res_tab$QEp <- QEp
   res_tab$chi_pval <- chi_pval
   
   #clean up intervention labels
@@ -288,20 +272,16 @@ imic_drtmle_summary <- function(fit, a_0){
 }
 
 
-
 p.adjust_chi_p <- function(res){
   resP <- res %>% distinct(chi_pval , biomarker)
   resP$chi_pval_adj <- p.adjust(resP$chi_pval , method="BH") 
-  #resP[resP$QEp_adj<0.05,]
   res <- left_join(res, resP, by = c("chi_pval", "biomarker"))
-  #res[res$QEp_adj<0.05,] 
   res <- res %>% arrange(chi_pval_adj)
   res$sig <- ifelse(res$chi_pval<0.05, 1, 0)
   res$sigFDR <- ifelse(res$chi_pval_adj<0.05, 1, 0)
   
   return(res)
 }
-
 
 
 run_bioTMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
@@ -321,7 +301,6 @@ run_bioTMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
   
   #drop NZV columns
   if(colnames(confounderData)[2]!="dummy"){ #skip if unadjusted analysis
-    #confounderData <- predict(preProcess(confounderData, method = c("nzv")),confounderData)
     
     if(length(nearZeroVar(confounderData))>0){
       confounderData<-confounderData[,-nearZeroVar(confounderData)]
@@ -329,7 +308,6 @@ run_bioTMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
     ARM <- confounderData[,1]
     confounderData <- cbind(ARM, design_matrix(as.data.frame(confounderData[,-1])))
   }
-  #biomarkerData <- predict(preProcess(biomarkerData, method = c("nzv")),biomarkerData)   %>% as.matrix()
   if(length(nearZeroVar(biomarkerData))>0){
     biomarkerData<-biomarkerData[,-nearZeroVar(biomarkerData)]
   }
@@ -347,72 +325,9 @@ run_bioTMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
                                     normalized=scale,
                                     g_lib = g_lib,
                                     Q_lib = Q_lib,
-                                    cv_folds = cv.folds, #temp
+                                    cv_folds = cv.folds,
                                     bppar_debug=bppar.debug,
-                                    #bppar_type = BiocParallel::MulticoreParam())
-                                    #bppar_type = BiocParallel::SnowParam())
                                     bppar_type = bppar.type)  
   
   return(biotmle_out)
 }
-
-
-optWeight_imic <- function (Y, X, SL.library, family = "gaussian", CV.SuperLearner.V = 10, 
-                            seed = 12345, whichAlgorithm = "SuperLearner", return.SuperLearner = TRUE, 
-                            return.CV.SuperLearner = FALSE, return.IC = TRUE, parallel = FALSE, 
-                            n.cores = parallel::detectCores(), ...) 
-{
-  n <- length(Y[, 1])
-  J <- ncol(Y)
-  Ymat <- data.matrix(Y)
-  if (is.null(colnames(Ymat))) {
-    colnames(Ymat) <- paste0("Y", 1:J)
-  }
-  CV.SuperLearner.list <- apply(Ymat, 2, function(y) {
-    set.seed(seed)
-    if (parallel) {
-      options(mc.cores = n.cores)
-    }
-    fit <- SuperLearner::CV.SuperLearner(Y = y, X = X, SL.library = SL.library, 
-                                         family = family, V = CV.SuperLearner.V, parallel = ifelse(parallel, 
-                                                                                                   "multicore", "seq"), method = "method.NNLS")
-  })
-  psiHat.Pnv0 <- r2weight:::getPredictionsOnValidation(out = CV.SuperLearner.list, 
-                                                       whichAlgorithm = whichAlgorithm)
-  if (!is.matrix(psiHat.Pnv0)) {
-    psiHat.Pnv0 <- matrix(psiHat.Pnv0, ncol = J)
-  }
-  univariateResults <- r2weight:::getUnivariateR2(Y = Ymat, psiHat.Pnv0 = psiHat.Pnv0, 
-                                                  return.IC = return.IC)
-  alpha_n <- r2weight:::alphaHat(Y = Ymat, psiHat.Pnv0 = psiHat.Pnv0)
-  SuperLearner.list <- apply(Ymat, 2, function(y) {
-    set.seed(seed)
-    fit <- SuperLearner::SuperLearner(Y = y, X = X, SL.library = SL.library, 
-                                      family = family, method = "method.NNLS")
-  })
-  out <- vector(mode = "list")
-  out$SL.fits <- NULL
-  if (return.SuperLearner) {
-    out$SL.fits <- SuperLearner.list
-  }
-  out$SL.weights <- alpha_n
-  out$SL.library <- SL.library
-  out$CV.SL.fits <- NULL
-  out$whichAlgorithm <- whichAlgorithm
-  out$CV.SuperLearner.V <- CV.SuperLearner.V
-  out$family <- family
-  if (return.CV.SuperLearner) {
-    out$CV.SL.fits <- CV.SuperLearner.list
-  }
-  out$univariateR2 <- univariateResults[colnames(Ymat)]
-  out$IC <- NULL
-  if (return.IC) {
-    out$IC <- univariateResults[["IC"]]
-  }
-  out$MSE <- univariateResults[["MSE"]]
-  out$Var <- univariateResults[["Var"]]
-  out$Ynames <- colnames(Ymat)
-  class(out) <- "optWeight"
-  return(out)
-}
-

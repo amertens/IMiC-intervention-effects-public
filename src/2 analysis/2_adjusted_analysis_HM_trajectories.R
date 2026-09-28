@@ -1,14 +1,29 @@
+# =============================================================================
+# src/2 analysis/2_adjusted_analysis_HM_trajectories.R
+#
+# Arm-stratified adjusted intervention effects on milk-component trajectories:
+# each outcome is replaced by its change from the participant's previous visit,
+# the first visit of each study (1 and 40) is dropped, and biotmle (GLM-only
+# library) is fit by study and visit for the primary, secondary and tertiary
+# targeted panels. No printed exhibit uses these estimates; the script is kept
+# because clean_results.R reads its output and writes
+# results/adjusted_intervention_effects_traj_results_clean.RDS.
+#
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/adjusted_HMtraj_{primary,secondary,tertiary}_intervention_effects_results.RDS
+#          results/adjusted_HMtraj_intervention_effects_results.RDS
+# [needs restricted data]
+# =============================================================================
 
-
-#https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
-#https://joss.theoj.org/papers/10.21105/joss.00295
+# Method references: biotmle vignette
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
+# and https://joss.theoj.org/papers/10.21105/joss.00295
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
 
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
-
 
 #Check for missingness in adjustment covariates.
 missing_W <- d %>% select(all_of(Wvars)) %>% summarise_all(funs(sum(is.na(.))))
@@ -20,7 +35,7 @@ d %>% group_by(study, visit, arm) %>%
   summarise(mean(protein, na.rm=T))
 
 
-#mutate all- transform the outcomes to a trajectory by subtracting the prior observation
+# Transform each outcome to a trajectory: subtract the participant's previous observation.
 unique(d$visit)
 d$visit <- factor(d$visit, levels=c("1",  "2",  "3",  "5",  "40", "56"))
 levels(d$visit)
@@ -31,32 +46,12 @@ d <- d %>% filter(!(visit %in% c("1", "40")))
 d %>% group_by(study, visit, arm) %>%
   summarise(mean(protein, na.rm=T))
 
-
-head(df)
-
-
 summary(d$protein)
 
 #check the transformation
 table(d$visit, is.na(d$protein))
-d$protein[d$studyid=="MISAME-3"& d$subjid=="1001"& d$subjido=="1001"]
 
-
-# SL.lib  = c("SL.mean","SL.glm","SL.biglasso")
- SL.lib  = c("SL.glm")
-#SL.lib  = c("SL.mean","SL.glm","SL.glmnet","SL.xgboost")
-
- d %>% group_by(study, visit, arm) %>%
-   summarise(mean(nr, na.rm=T))
-   
- 
- res_primary <- d %>% group_by(study, visit) %>% droplevels() %>%
-   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T, g_lib = SL.lib, Q_lib = SL.lib,
-                      Yvars=c(all_milk_components$bvit),
-                      scale = TRUE,
-                      bppar.type = BiocParallel::SnowParam()))
- res_primary$res[1]
-
+SL.lib  = c("SL.glm")
 
 res_primary <- d %>% group_by(study, visit) %>% droplevels() %>%
   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T, g_lib = SL.lib, Q_lib = SL.lib,
@@ -75,7 +70,6 @@ res_secondary <- d %>% group_by(study, visit) %>%
 names(res_secondary$res) <- paste0(res_secondary$study, "-", res_secondary$visit)
 saveRDS(res_secondary, file=paste0(here::here(),"/results/adjusted_HMtraj_secondary_intervention_effects_results.RDS"))
 
-#simpler library
 SL.lib  = c("SL.glm")
 
 res_tertiary <- d %>% group_by(study, visit) %>%
@@ -90,4 +84,3 @@ saveRDS(list(res_primary=res_primary,
              res_secondary=res_secondary,
              res_tertiary=res_tertiary),
         file=paste0(here::here(),"/results/adjusted_HMtraj_intervention_effects_results.RDS"))
-

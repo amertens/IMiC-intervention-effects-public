@@ -1,22 +1,26 @@
 # =============================================================================
 # 55-proteomics-go-uniprot.R
 #
-# Milk-proteome GO Biological-Process over-representation, UniProt-native.
-# Reproducible port of Trenton's FINISHED rerun
-#   ("Exploratory Outcomes (Proteomics - UniProt).Rmd", 2026-08-05), pointed at
-# our repo's shared results RDS instead of his "1. Data/" copies.
+# Gene Ontology Biological-Process over-representation of the BEP-responsive milk
+# proteins, run on UniProt identifiers; the enrichment behind Fig. 6C and Table S7
+# (src/metaboanalyst/run-proteomics-go.R reads this output). Reproduces the
+# UniProt-based proteomics GO analysis of the original R Markdown workflow from the
+# shared milk results.
 #
-# KEY METHOD (why this replaces 53-proteomics-go-ora-rerun.R): enrichment runs on
-# a custom UniProt -> GO(BP) TERM2GENE map built from org.Hs.eg.db, so each measured
-# protein is counted ONCE in fore/background. clusterProfiler::enrichGO expands one
-# UniProt into several Entrez genes and inflates the hypergeometric counts; enricher()
-# with a UniProt term2gene avoids that. Foreground = per-arm significant proteins
-# (sig==1) split by direction (est sign); background = all measured proteins in that
-# study x contrast cell. MISAME uses the combined BEP contrast; Mumta-LW uses the two
-# stratified contrasts (BEP+ExBf, BEP+ExBf+AZT). No ELICIT proteomics.
+# Method: enricher() on a custom UniProt -> GO(BP) TERM2GENE map built from
+# org.Hs.eg.db, so each measured protein is counted once in foreground and
+# background (clusterProfiler::enrichGO expands one UniProt id into several Entrez
+# genes and inflates the hypergeometric counts). Foreground = nominally significant
+# proteins (sig == 1) split by effect direction; background = all measured proteins in
+# that study x contrast cell; BH-adjusted p-values. MISAME-III uses the combined BEP
+# contrast; Mumta-LW the two stratified contrasts (BEP+ExBf, BEP+ExBf+AZT). ELICIT has
+# no proteomics. Fold enrichment is signed negative for down-regulated results.
 #
-# Out: results/proteomics_go_uniprot.csv         (all GO-BP results, signed FE)
-#      results/proteomics_go_uniprot_fdrsig.csv   (FDR < 0.05 subset)
+# Inputs : results/combined_intervention_effects_results_combined_arms.RDS
+#          results/combined_intervention_effects_results_stratified_arms.RDS
+# Outputs: results/proteomics_go_uniprot.csv         (all GO-BP results, signed fold enrichment)
+#          results/proteomics_go_uniprot_fdrsig.csv  (FDR < 0.05 subset)
+# [needs restricted data] (feature-level result files, not shipped)
 # =============================================================================
 suppressMessages({
   library(clusterProfiler); library(org.Hs.eg.db); library(GO.db)

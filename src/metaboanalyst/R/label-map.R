@@ -1,5 +1,15 @@
-# label-map.R, curated compound-name synonyms -> MetaboAnalyst-recognized names.
-# Source of truth, extracted verbatim from "trenton scripts/2. Scripts/Primary Outcomes.Rmd".
+# =============================================================================
+# label-map.R
+#
+# Curated map from the targeted-assay compound labels to names MetaboAnalyst
+# recognises (e.g. "vitamin B3 ( expressed as NAM)" -> "Niacinamide"), copied
+# verbatim from the original R Markdown primary-outcomes analysis.
+# apply_label_map() is called by build-cells.R for the primary (Fig 3B,
+# Table S2) and tertiary (Fig 5B, Table S3) queries.
+#
+# Inputs : none
+# Outputs: none (defines LABEL_MAP and apply_label_map())
+# =============================================================================
 suppressMessages(library(stringr))
 
 LABEL_MAP <- c(

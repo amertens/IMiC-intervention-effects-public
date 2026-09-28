@@ -1,6 +1,19 @@
+# =============================================================================
 # 00-setup-metaboanalystr.R
-# One-time environment setup for the MetaboAnalystR pipeline.
-# Safe to re-run: every install step is guarded by requireNamespace().
+#
+# One-time environment setup for the scripts in src/metaboanalyst/: installs the
+# CRAN and Bioconductor dependencies, then MetaboAnalystR from GitHub
+# (xia-lab/MetaboAnalystR). The published results were produced with
+# MetaboAnalystR 4.3.0 under R 4.4.2; this installs the current GitHub version, so
+# compare against the recorded session information if results differ. On Windows,
+# MetaboAnalystR needs Rtools44 to compile. Safe to re-run: every install step is
+# guarded by requireNamespace().
+#
+# Inputs : none
+# Outputs: src/metaboanalyst/env/sessionInfo.txt  (R and package versions)
+#
+# Run from repo root: Rscript src/metaboanalyst/00-setup-metaboanalystr.R
+# =============================================================================
 
 message("R version: ", getRversion())
 if (.Platform$OS.type == "windows" && !pkgbuild::has_rtools(debug = FALSE)) {

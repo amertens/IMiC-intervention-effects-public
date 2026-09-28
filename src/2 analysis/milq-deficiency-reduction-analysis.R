@@ -1,18 +1,17 @@
 # =============================================================================
 # src/2 analysis/milq-deficiency-reduction-analysis.R
 #
-# Reads:  data/milk_component_adequacy_MILQ.RDS
-# Writes: results/milq_deficiency_reduction_analysis_results.RDS
+# Effect of the interventions on the prevalence of milk nutrient concentrations
+# below the MILQ age-specific 10th percentile (def10). For each study, visit and
+# nutrient with at least 5 below-P10 samples, fits an adjusted TMLE (tmle
+# package, SuperLearner library) of each pooled intervention arm vs Control and
+# reports the risk ratio with its 95% CI; p-values are BH-adjusted within study
+# and visit. Feeds Fig S2.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  data/milk_component_adequacy_MILQ.RDS (from 1 data prep/6-milq-adequecy.R)
+# Outputs: results/milq_deficiency_reduction_analysis_results.RDS
+# [needs restricted data]
 # =============================================================================
-
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -23,45 +22,18 @@ table(df$nutrient)
 knitr::kable(table(df$nutrient, df$def10))
 table(df$nutrient, df$def5)
 
-
 table(df$nutrient, df$unit)
-
-# #convert units of variunits#convert units of variables
-# df <- df %>%
-#   mutate(var=case_when(
-#     #ug/L to (mg/L niacin eq)
-#     nutrient %in% c("b3") ~ var/1000,
-#     nutrient %in% c("cu") ~ var/1000, #check
-#     nutrient %in% c("fe") ~ var/1000, #check
-#     nutrient %in% c("pa") ~ var/1000, #check
-#     nutrient %in% c("zn") ~ var/1000, #check
-#     TRUE ~ var
-#   ))
 
 df %>% group_by(nutrient) %>% summarize(mn=mean(var, na.rm=T), med=median(var, na.rm=T), min=min(var, na.rm=T), P05=mean(P05), P10=mean(P10), P90=mean(P90)) %>% 
   mutate(flag=1*(P90 < med)) %>% arrange(-flag) %>% as.data.frame()
 
-
-ggplot(df, aes(x=nutrient, fill=factor(def10))) + geom_bar(position="fill") + coord_flip() + ylab("proportion")
-ggplot(df, aes(x=nutrient, fill=factor(def10))) + geom_bar(position="fill") + coord_flip() + ylab("proportion") +
-  facet_wrap(study~visit)
-
-# plotdf <- df %>% filter(nutrient=="b3")
-# ggplot(plotdf, aes(x=var)) + geom_boxplot()
-# 
-# def10
-#   xlab("niacin (mg/L niacin eq)") +
-#   facet_wrap(study~visit, scales="free_y")
-
-
-
-#drop variables with low prevalence of deficiency
+# Drop study/visit/nutrient cells with fewer than 5 samples below P10
 all_nutrients <- unique(df$nutrient)
 df <- df %>% group_by(studyid, visit, nutrient) %>% filter(sum(def10, na.rm=T) >= 5) %>% ungroup()
 all_nutrients[!(all_nutrients %in% unique(df$nutrient))]
 
-
-
+# TMLE risk ratio of the binary outcome (Yvars) for each arm vs the first
+# (Control) level, adjusted for the near-zero-variance-screened Wvars
 run_TMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
                      Yvars=c(all_milk_components$macro, all_milk_components$micro, all_milk_components$bvit),
                      scale=FALSE, cv.folds=1, adjust_biomarker=FALSE){
@@ -76,7 +48,6 @@ run_TMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
   
   #drop NZV columns
   if(colnames(confounderData)[2]!="dummy"){ #skip if unadjusted analysis
-    #confounderData <- predict(preProcess(confounderData, method = c("nzv")),confounderData)
     
     if(length(nearZeroVar(confounderData))>0){
       confounderData<-confounderData[,-nearZeroVar(confounderData)]
@@ -84,7 +55,6 @@ run_TMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
     ARM <- confounderData[,1]
     confounderData <- cbind(ARM, design_matrix(as.data.frame(confounderData[,-1])))
   }
-  #biomarkerData <- predict(preProcess(biomarkerData, method = c("nzv")),biomarkerData)   %>% as.matrix()
   if(length(nearZeroVar(biomarkerData))>0){
     biomarkerData<-biomarkerData[,-nearZeroVar(biomarkerData)]
   }
@@ -129,14 +99,6 @@ run_TMLE <- function(d, Wvars, g_lib = c("SL.glm"),Q_lib = c("SL.glm"),
   return(fullres)
 }
 
-# SL.lib  = c("SL.glm")
-# df2 <- df %>% filter(study=="Elicit",visit=="1",nutrient=="na")
-# res=run_TMLE(d=df2,  Wvars = Wvars,  g_lib = SL.lib, Q_lib = SL.lib,
-#              Yvars="def10",
-#              scale = FALSE)
-
-
-
 SL.lib  = c("SL.mean","SL.glm","SL.glmnet","SL.xgboost")
 
 res <- df %>% group_by(study, visit, nutrient) %>%
@@ -146,7 +108,6 @@ res <- df %>% group_by(study, visit, nutrient) %>%
 res
 names(res$res) <- paste0(res$study, "-", res$visit, "_", res$nutrient)
 
-
 res_df <- NULL
 for(i in 1:length(res$res)){
   if(!is.null(res$res[[i]])){
@@ -155,8 +116,6 @@ for(i in 1:length(res$res)){
     }
   }
 }
-
-
 
 res_df$studytime <- str_split_i(res_df$studytime_hm, "_", 1)
 res_df$study <- str_split_i(res_df$studytime, "-", 1)
@@ -171,4 +130,3 @@ res_df$sigFDR = 1*(res_df$pval_adj < 0.05)
 
 #save results
 saveRDS(res_df, file=paste0(here::here(),"/results/milq_deficiency_reduction_analysis_results.RDS"))
-

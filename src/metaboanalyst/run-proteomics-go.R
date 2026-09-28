@@ -1,36 +1,30 @@
-# run-proteomics-go.R, build Table S6 (proteome GO-BP over-representation) from
-# the UniProt-native result, so Table S6 and Fig 6C share ONE method.
+# =============================================================================
+# run-proteomics-go.R
 #
-# HISTORY / WHY THIS IS A THIN TRANSFORM NOW
-#   This script used to run its own gene-level `enrichGO` after mapping UniProt ->
-#   Entrez. That path is statistically inferior for this assay: bitr() expands one
-#   measured protein into several Entrez genes and inflates the hypergeometric
-#   counts, and it pooled a single global universe across studies. Fig 6C is drawn
-#   from the correct UniProt-native rerun (`src/2 analysis/55-proteomics-go-uniprot.R`,
-#   each protein counted once, per-cell measured background). To keep the table and
-#   its own figure consistent, Table S6 is now DERIVED from that same UniProt output
-#   rather than recomputed by a divergent method. The Entrez path is retired.
+# Builds Table S7 (Gene Ontology biological-process over-representation of the
+# untargeted milk proteome) by filtering the UniProt-level enrichment written by
+# src/2 analysis/55-proteomics-go-uniprot.R (clusterProfiler::enricher with a
+# UniProt-to-GO map; each protein counted once, per-cell measured background).
+# Fig 6C reads that same file, so the table and figure share one method.
+# Inclusion follows the enrichGO defaults (nominal P < 0.05 and Storey q < 0.20);
+# the `fdr` column is the BH-adjusted P used as the significance threshold
+# (fdr < 0.05) in Fig 6C.
 #
-# INPUT   results/proteomics_go_uniprot.csv        (from 55-proteomics-go-uniprot.R)
-# OUTPUT  results/metaboanalyst/proteomics_go/proteomics_go_tableS6.csv
-#         (same filename + column schema downstream consumers already expect:
-#          figure-pathway-replication-matrix.R and the manuscript Table S6.)
+# Inputs : results/proteomics_go_uniprot.csv  (src/2 analysis/55-proteomics-go-uniprot.R)
+# Outputs: results/metaboanalyst/proteomics_go/proteomics_go_pathways.csv  (Table S7)
 #
-# Table S6 inclusion mirrors the submitted table's breadth (the enrichGO default:
-# nominal p < 0.05 AND Storey q < 0.20) but computed with the correct protein-level
-# test. The `fdr` column carries MetaboAnalyst/clusterProfiler's BH p.adjust so the
-# significance frontier (fdr < 0.05) used by Fig 6C and the replication matrix is
-# transparent in the table.
+# Run from repo root: Rscript src/metaboanalyst/run-proteomics-go.R
+# =============================================================================
 suppressMessages({ library(dplyr); library(readr) })
 
 UNIPROT_CSV <- "results/proteomics_go_uniprot.csv"
 OUT_DIR     <- "results/metaboanalyst/proteomics_go"
-OUT_CSV     <- file.path(OUT_DIR, "proteomics_go_tableS6.csv")
+OUT_CSV     <- file.path(OUT_DIR, "proteomics_go_pathways.csv")
 
 P_CUTOFF <- 0.05    # nominal p (enrichGO default)
 Q_CUTOFF <- 0.20    # Storey q (enrichGO default qvalueCutoff)
 
-build_tableS6 <- function(uniprot_csv = UNIPROT_CSV, write = TRUE) {
+build_go_table <- function(uniprot_csv = UNIPROT_CSV, write = TRUE) {
   if (!file.exists(uniprot_csv)) {
     stop("UniProt-native proteomics result not found at '", uniprot_csv, "'. ",
          "Run src/2 analysis/55-proteomics-go-uniprot.R first (it writes this file).",
@@ -69,4 +63,4 @@ build_tableS6 <- function(uniprot_csv = UNIPROT_CSV, write = TRUE) {
   tab
 }
 
-if (sys.nframe() == 0) invisible(build_tableS6(write = TRUE))
+if (sys.nframe() == 0) invisible(build_go_table(write = TRUE))

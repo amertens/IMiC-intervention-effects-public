@@ -1,26 +1,27 @@
 # =============================================================================
 # 23-annotate-fdr-features.R
 #
-# Putative annotation of the FDR-significant intervention-effect features, using
-# the best available source per feature:
-#   1. Sapient catalogue name  (V3 VAMS only; the ~444/38,761 named features in
-#      metabolite_description_vam_with_global_id.csv) -> higher confidence
-#   2. else Mummichog EmpiricalCompound candidates (m/z -> KEGG compounds via the
-#      human_mfn network, MUM_PPM, adduct-aware) -> PUTATIVE, often AMBIGUOUS
-#      (n_candidates column = how many distinct compounds share that mass).
+# Putative annotation of the FDR-significant blood features (MISAME-III, covariate-
+# adjusted combined arms) in the compartment x visit cells that have a Mummichog run
+# (maternal plasma 1-2 mo; maternal postnatal VAMS 5-6 mo; infant VAMS 1-2, 3-4,
+# 5-6 mo). Best available source per feature:
+#   1. the annotation provider's (Sapient) catalogue name: V3 VAMS only, about 444
+#      of 38,761 features in metabolite_description_vam_with_global_id.csv;
+#   2. otherwise Mummichog EmpiricalCompound candidates from script 15's adjusted
+#      runs (m/z -> KEGG compounds via human_mfn, adduct-aware), matched within
+#      0.003 m/z; putative and often ambiguous (n_candidates = number of distinct
+#      compounds sharing that mass).
+# Mummichog is a pathway tool, not an identifier: these candidates are MSI level ~3
+# (mass only), often several per m/z, and some names come through truncated from
+# the mummichog output. Confident identities need authentic standards or tandem MS.
+# The output supplies the putative names used by script 54 (supplement matching and
+# name-based cross-compartment linkage behind Fig. 6D, Tables S8 and S11).
 #
-# Mummichog is a PATHWAY tool, not an identifier: these per-feature candidates are
-# MSI level ~3 (mass-only), frequently multiple per m/z, and include some
-# malformed/partial names straight from the mummichog output. Confident IDs
-# (MSI 1-2) still require Kim/Sapient MS/MS. The carnitine sibling vam_1005524 is
-# an example that no source can place.
-#
-# Inputs : results/blood_compartment_adjusted_combined_arms_..._clean.RDS (FDR-sig ATEs)
-#          results/mummichog_output_adjusted/<comp>_<visit>_<mode>/tables/userInput_to_EmpiricalCompounds.tsv
-#          data/additional datasets/metabolite_description_vam_with_global_id.csv (Sapient names)
+# Inputs : results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          results/mummichog_output_adjusted/<run>/tables/userInput_to_EmpiricalCompounds.tsv (script 15)
+#          data/additional datasets/metabolite_description_vam_with_global_id.csv
 # Output : results/fdr_sig_putative_annotation.csv
-# Scope  : combined-arms primary, MISAME-III, the compartments that have a mummichog
-#          run (MaternalPlasma pn12; VamsPostnatalInfant pn12/pn34/pn56; VamsPostnatalMaternal pn56).
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(data.table)})

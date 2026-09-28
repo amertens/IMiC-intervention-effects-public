@@ -1,28 +1,18 @@
-# figS5-microbiome-diversity.R
 # =============================================================================
-# Figure S6: intervention effects on human milk microbiome alpha diversity
-# (observed richness and Shannon diversity), by study and visit.
+# figS5-microbiome-diversity.R
 #
-# IN-REPO RECONSTRUCTION of a panel that the supplement previously embedded as an
-# extracted image (Manuscript/qmd/extracted/media_supplement/media/image6.png),
-# which had no generator under version control.
+# Builds Fig S5: intervention effects (Z-score difference vs control, 95% CI) on
+# human milk microbiome alpha diversity (observed richness and Shannon diversity), by
+# study and visit, coloured by study and shaped by FDR significance. The results
+# carry no p-value, so it is derived from the CI and BH-corrected here.
 #
-# Ported from src/3 visualizations/7-microbiome_plots.R.
-#
-# NOTE ON THE COLLISION: that script builds the diversity forest TWICE -- first
-# the published variant (coloured by study, point shape by FDR significance), then
-# a plain monochrome variant -- and BOTH write figures/forest_plot_microbiome_
-# diversity.png. The monochrome one runs second, so the checked-in file is the
-# variant that does NOT match the published figure. This script reproduces the
-# published (coloured, shape-coded) variant under its own filename.
-#
-# Input:  results/microbiome_diversity_intervention_effects_results.RDS
-# Output: figures/figureS5_microbiome_diversity.{pdf,eps,png}
-#
+# Inputs:  results/microbiome_diversity_intervention_effects_results.RDS
+#            (src/2 analysis/3_adjusted_analysis_microbiome.R)
+# Outputs: figures/figureS5_microbiome_diversity.{pdf,eps,png}
 # Run from repo root: Rscript figure-scripts/manuscript_figures/figS5-microbiome-diversity.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))
-source(paste0(here::here(), "/figure-scripts/manuscript_figures/study_colors.R"))  # canonical study colours
+source(paste0(here::here(), "/figure-scripts/manuscript_figures/study_colors.R"))  # shared study colours
 
 d_diversity <- readRDS(paste0(here::here(),
   "/results/microbiome_diversity_intervention_effects_results.RDS"))
@@ -68,19 +58,21 @@ p <- ggplot(res_diversity, aes(x = studytime, y = est,
   geom_point() +
   geom_linerange(aes(ymin = cil, ymax = ciu)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
-  # canonical study colours BY NAME (was tableau10[c(1,3,2)], which reversed MISAME-III/
-  # Mumta-LW relative to every other figure). Study is also named on the axis.
-  scale_color_manual(values = unname(imic_study_cols[c("ELICIT", "MISAME-III", "Mumta-LW")])) +
+  # shared study colours, indexed by name. Study is also named on the axis.
+  scale_color_manual(values = unname(imic_study_cols[c("ELICIT", "MISAME-III", "Mumta-LW")]),
+                     guide = "none") +
+  # key worded as in Fig 2; drop = FALSE keeps the FDR-significant (triangle) key
+  scale_shape_manual(values = c("0" = 16, "1" = 17), labels = c("Not significant", "FDR-significant"),
+                     name = "Statistical Significance", drop = FALSE) +
   coord_flip() +
   facet_wrap(~ label_f, scale = "free") +
   ggtitle("Intervention effect\n(BEP or Nicotinamide)") +
-  # theme_imic (Helvetica, Reviewer-2 font floors) is already this session's global
-  # default (theme_set() in 0_figure-functions.R) -- the explicit overrides removed
-  # here had been defeating it (axis.text=6 below the 7pt floor; strip.background
-  # blanked + strip.text=8, below the 10pt/bold/grey90 spec). panel.border re-added
-  # to match the other harmonized figures (harmonized 2026-08-26).
+  # theme_imic() is the session default (theme_set() in 0_figure-functions.R); add a
+  # panel border and plain (unbolded) titles, as in the main figures
   theme(panel.border    = element_rect(colour = "black", fill = NA, linewidth = 0.3),
-        legend.position = "none") +
+        plot.title      = element_text(face = "plain", hjust = 0.5),
+        strip.text      = element_text(face = "plain"),
+        legend.position = "bottom") +
   xlab("Study and timepoint") + ylab("Z-score difference")
 
 save_figure_3way(p, "figureS5_microbiome_diversity",

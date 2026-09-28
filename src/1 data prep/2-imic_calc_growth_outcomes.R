@@ -1,13 +1,33 @@
+# =============================================================================
+# src/1 data prep/2-imic_calc_growth_outcomes.R
+#
+# Derives child growth outcomes from the harmonized anthropometry of the three
+# trials (and CHILD): stunting/wasting/underweight flags, removal of
+# biologically implausible z-scores, flags for length or head-circumference
+# losses beyond the WHO technical error of measurement, centile changes,
+# measures at birth, 3, 6, 12, 18 and 24 months, growth velocity and growth
+# faltering, WHO length/weight velocity z-scores, and small-vulnerable-newborn
+# status. The wide outcome dataset is the input of
+# src/2 analysis/5-growth-outcomes.R (Fig S1).
+#
+# Inputs:  data/imic_harmonized/{MISAME_3,VITAL_Lactation,vital_mamta,ELICIT,CHILD}_IMiC_analysis.csv
+#          metadata/growth standards/combined_{length,weight}_vel_standards.csv
+#          (written when functions/growth_outcome_functions.R is sourced)
+# Outputs: data/imic_full_growth_outcomes_dataset.csv
+#          results/imic_all_growth_measures_combined.csv, results/imic_growth_outcomes_dataset.csv
+#          results/growth_{outlier_exclusions_tab,impl_length_loss_trajectories,
+#            impl_headcir_loss_trajectories,summary_tab}.RDS, results/imic_growth_outcomes_dataset_long.RDS
+# [needs restricted data]
+# =============================================================================
 
 rm(list=ls())
 library(tidyverse)
 
-#https://github.com/nutriverse/  for intergrowth and zscorer
+# https://github.com/nutriverse/ for intergrowth and zscorer
 library(zscorer)
 library(growthstandards)
 
 source(paste0(here::here(),"/functions/growth_outcome_functions.R"))
-
 
 #-------------------------------------------------------------------------------
 #load IMIC harmonized datasets
@@ -17,27 +37,23 @@ misame <- read.csv(paste0(here::here(),"/data/imic_harmonized/MISAME_3_IMiC_anal
 vital <- read.csv(paste0(here::here(),"/data/imic_harmonized/VITAL_Lactation_IMiC_analysis.csv")) 
 vital_mamta <- read.csv(paste0(here::here(),"/data/imic_harmonized/vital_mamta_IMiC_analysis.csv"))
 
-
 elicit <- read.csv(paste0(here::here(),"/data/imic_harmonized/ELICIT_IMiC_analysis.csv"))
 child <- read.csv(paste0(here::here(),"/data/imic_harmonized/CHILD_IMiC_analysis.csv"))
 
-
 #growth velocity standards
-who_data_length <- read.csv(file=paste0(here::here(),"/data/metadata/growth standards/combined_length_vel_standards.csv"))
-who_data_weight <- read.csv(file=paste0(here::here(),"/data/metadata/growth standards/combined_weight_vel_standards.csv"))
+who_data_length <- read.csv(file=paste0(here::here(),"/metadata/growth standards/combined_length_vel_standards.csv"))
+who_data_weight <- read.csv(file=paste0(here::here(),"/metadata/growth standards/combined_weight_vel_standards.csv"))
 
 summary(misame$HCAZ)
 summary(elicit$HCAZ)
 summary(child$HCAZ)
 summary(vital$HCAZ)
 
-
 #-------------------------------------------------------------------------------
 #save just growth data
 #-------------------------------------------------------------------------------
 
 dput( colnames(child ))
-
 
 dfull <- bind_rows(elicit %>% mutate(SUBJIDO=as.character(SUBJIDO)) %>% 
                      select("STUDYID", "SUBJID",  "SUBJIDO", "VISITNUM", "VISIT", "AGEDAYS","SEX", "WTKG",    "LENCM",     "HCIRCM",  "MUACCM",  "WAZ",     "HAZ",     "WHZ",         "HCAZ",    "MUAZ"), 
@@ -48,13 +64,12 @@ dfull <- bind_rows(elicit %>% mutate(SUBJIDO=as.character(SUBJIDO)) %>%
                          child  %>% mutate(SUBJIDO=as.character(SUBJIDO)) %>% 
                      select("STUDYID", "SUBJID",  "SUBJIDO", "VISITNUM", "VISIT", "AGEDAYS","SEX","GAGEBRTH",  'BIRTHWT',   "WTKG",    "LENCM","HCIRCM", "WAZ",     "HAZ",     "WHZ",         "HCAZ"))
 
-#Make dataset for first 6 months with just antho measures for April
+# Anthropometric z-scores from the first 6 months (all studies)
 dfull_6mo <- dfull %>% filter(AGEDAYS < 30.4167*7) %>% select(STUDYID, SUBJID, SUBJIDO, VISITNUM, VISIT, AGEDAYS, WAZ, HAZ, WHZ,MUAZ, HCAZ) %>% 
   filter(!is.na(WAZ) | !is.na(HAZ) | !is.na(WHZ)) %>% arrange(STUDYID, SUBJID, AGEDAYS)
 head(dfull_6mo)
 
 write.csv(dfull_6mo, file=paste0(here::here(),"/results/imic_all_growth_measures_combined.csv"))
-
 
 #-------------------------------------------------------------------------------
 # calculate static growth measures
@@ -80,8 +95,6 @@ d <- dfull %>% filter(!is.na(wtkg) |
 
 table(!is.na(d$hcircm),!is.na(d$hcaz ), d$studyid)
 
-#note! need to look up hcz and muac outliers
-
 #count and drop outliers
 outlier_tab <- d %>% group_by(studyid) %>%
   summarise(laz_outlier = sum(haz < -6 | haz > 6, na.rm=T),
@@ -91,7 +104,7 @@ outlier_tab <- d %>% group_by(studyid) %>%
             muaz_outlier = sum(muaz < -5 | muaz > 5, na.rm=T))
 outlier_tab
 
-#save for growth report
+# Outlier counts by study
 saveRDS(outlier_tab, file=paste0(here::here(),"/results/growth_outlier_exclusions_tab.RDS"))
 
 #drop biologically implausible values
@@ -130,14 +143,12 @@ prop.table(table(impl_loss$length_loss_flag))*100
 prop.table(table(impl_loss$headcirc_loss_flag))*100
 impl_length_loss_trajectories <- impl_loss[impl_loss$length_traj_flag==1,] %>% filter(!is.na(subjido)) %>% as.data.frame()
 
-
 impl_length_loss_trajectories <- impl_loss[impl_loss$length_traj_flag==1,] %>% filter(!is.na(subjido)) %>% 
   select(studyid, subjid, subjido,  agedays, haz, whz, length_loss_flag, lencm) %>% 
   group_by(studyid, subjid,  subjido) %>%
   mutate(haz_deviation=abs(mean(haz, na.rm=T)-haz), drop_flag=ifelse((length_loss_flag ==1 & haz_deviation > lag(haz_deviation) |
          lead(length_loss_flag) ==1 & haz_deviation >= lead(haz_deviation)), 1,NA)) %>%
   as.data.frame() 
-
 
 impl_headcir_loss_trajectories <- impl_loss[impl_loss$headcirc_traj_flag==1,] %>% filter(!is.na(subjido)) %>% 
   select(studyid, subjid, subjido,  agedays, hcaz, headcirc_loss_flag, hcircm) %>% 
@@ -150,26 +161,16 @@ impl_headcir_loss_trajectories <- impl_loss[impl_loss$headcirc_traj_flag==1,] %>
 saveRDS(impl_length_loss_trajectories, file=paste0(here::here(),"/results/growth_impl_length_loss_trajectories.RDS"))
 saveRDS(impl_headcir_loss_trajectories, file=paste0(here::here(),"/results/growth_impl_headcir_loss_trajectories.RDS"))
 
-
-#consider also using this package for data cleaning:
-#https://carriedaymont.github.io/growthcleanr/articles/usage.html
-
-#check the data for repeated observations and remove
+# Drop exact duplicate rows present in the harmonized data
 dim(d)
 d <- d %>% distinct()
 dim(d)
-#need to figure out why these are repeated in the raw data
 
 #save birth weight centile for growth faltering definition
 d <- d %>% group_by(studyid, subjid, subjido) %>% 
   arrange(agedays, .by_group = TRUE) %>%
   mutate(birthweight_centile = first(weight_centile),
          birthweight_centile = ifelse(first(agedays)>14,NA,birthweight_centile)) %>% ungroup()
-
-#make a plot of the birthweight centile density by study
-d %>% ggplot(aes(x=birthweight_centile)) + geom_density() + facet_wrap(~studyid)
-#update plot to add pretty colors
-d %>% ggplot(aes(x=birthweight_centile, fill=studyid)) + geom_density(alpha=.5) + theme_minimal() + theme(legend.position="none")
 
 #-------------------------------------------------------------------------------
 # calculate centile delta (highest minus lowest in a period)
@@ -194,7 +195,6 @@ summary(d$height_centile_delta_12mo)
 summary(d$height_centile_delta_18mo)
 summary(d$height_centile_delta_24mo)
 
-
 #-------------------------------------------------------------------------------
 # age specific data for primary outcomes
 #-------------------------------------------------------------------------------
@@ -207,7 +207,6 @@ df <- child%>% group_by(studyid, subjid) %>%
   ungroup()
 plot(hist(df$agedays))
 length(unique(df$subjid))
-
 
 d_birth = get_age_specific_measures(d, agem=0)
 d3 = get_age_specific_measures(d, agem=3, window=30.4167)
@@ -222,8 +221,6 @@ table(d6$studyid)
 #for misame: use 10 month measurements as there aren't 12 month measurements
 d10 = get_age_specific_measures(d, agem=10, window=30.4167) %>% filter(studyid=='MISAME-3')
 d12 = bind_rows(d10, d12)
-
-
 
 #examine total unique children versus age-specific measures
 d %>% group_by(studyid) %>% distinct(subjido) %>% summarize(n())
@@ -249,9 +246,6 @@ prop.table(table(d_6_12$recovery))*100
 #do birth to 6 months to get faltering measure and velocity measures
 d_birth_6 <- calc_velocity_measures(d_birth, d6)
 
-d1=d_birth
-d2=d6
-
 table(d_birth_6$growth_faltering)
 prop.table(table(d_birth_6$growth_faltering))
 table(d_birth_6$studyid, d_birth_6$growth_faltering)
@@ -272,14 +266,10 @@ d18 <- left_join(d18, d_12_18, by=c('studyid', 'subjid', 'subjido'))
 summary(d_3_6$laz_delta)
 summary(d6$laz_delta)
 
-
-
 d_birth_6 <- left_join(d3 %>% select(studyid,subjid,subjido,sex,gagebrth,birthwt,height_centile_delta_3mo,  height_centile_delta_6mo,  
                                      height_centile_delta_12mo, height_centile_delta_18mo, height_centile_delta_24mo, weight_centile_delta_3mo,
                                      weight_centile_delta_6mo,  weight_centile_delta_12mo, weight_centile_delta_18mo, weight_centile_delta_24mo),
                        d_birth_6, by=c('studyid', 'subjid', 'subjido'))
-
-
 
 #-------------------------------------------------------------------------------
 # make single growth outcomes dataset for analysis
@@ -311,12 +301,9 @@ table(d_age_sub$agegroup,  is.na(d_age_sub$growth_faltering1_lbw))
 
 #reshape to wide form
 static_variables = c('studyid', 'subjid', 'subjido',"sex","gagebrth","birthwt",
-                     # "growth_faltering1_lbw",  "growth_faltering2_1crossed",
-                     # "growth_faltering3_2crossed",  "growth_faltering4_low_weight",
                      "height_centile_delta_3mo",  "height_centile_delta_6mo",  
                      "height_centile_delta_12mo", "height_centile_delta_18mo", "height_centile_delta_24mo", "weight_centile_delta_3mo",
                      "weight_centile_delta_6mo",  "weight_centile_delta_12mo", "weight_centile_delta_18mo", "weight_centile_delta_24mo")
-
 
 colnames(d_age_sub)
 d_wide<- d_age_sub %>%
@@ -333,7 +320,6 @@ d_wide <- d_wide %>% subset(., select = -c(agedays_birth_6mo,
 
 #drop columns where all values are NA
 d_wide <- d_wide[,colSums(is.na(d_wide))<nrow(d_wide)]
-
 
 dim(d_wide)
 dim(d_wide %>% distinct(studyid, subjido))
@@ -412,14 +398,12 @@ d_wide <- d_wide %>% select(-matches("_delta_birth"),-matches("_delta_24mo"),
          matches('centile'), -matches("waz_GA"),
          everything())
 
-
 #tabulate variables
 growth_tab = customSummary(df=d_wide, group_var='studyid')
 
 #save dataset and table
 saveRDS(growth_tab, file=paste0(here::here(),"/results/growth_summary_tab.RDS"))
 write.csv(d_wide, file=paste0(here::here(),"/data/imic_full_growth_outcomes_dataset.csv"))
-
 
 #subset to just outcome variables (and ages)
 colnames(d_wide)
@@ -434,31 +418,18 @@ growth_faltering_components <- c("growth_faltering1_lbw_birth_6mo",  "growth_fal
 
 analysis_df_vars <- c("studyid", "subjid", "subjido", "agedays_3mo", "agedays_6mo", "waz_birth", primary_outcomes, secondary_outcomes, growth_faltering_components, "svn")
 
-#growth_faltering_components= ("growth_faltering1_lbw", "growth_faltering2_1crossed" , "growth_faltering3_2crossed", "growth_faltering4_low_weight")
-
-
 dY <- d_wide %>% select(all_of(analysis_df_vars))
 
 # double check for duplicates, should be 0
 sum(duplicated(dY$subjido)) 
 
-#save outcomes for Nolans analysis
+# Save the outcome subset
 write.csv(dY, file=paste0(here::here(),"/results/imic_growth_outcomes_dataset.csv"))
 
-
-#now summarize with TEM exclusions
-
-# saveRDS(impl_length_loss_trajectories, file=paste0(here::here(),"/results/growth_impl_length_loss_trajectories.RDS"))
-# saveRDS(impl_headcir_loss_trajectories, file=paste0(here::here(),"/results/growth_impl_headcir_loss_trajectories.RDS"))
+# Z-score summaries with and without the TEM-flagged measurements
 
 summary(impl_length_loss_trajectories$haz)
 summary(impl_length_loss_trajectories$haz[is.na(impl_length_loss_trajectories$drop_flag)])
 
-
 summary(impl_headcir_loss_trajectories$hcaz)
 summary(impl_headcir_loss_trajectories$hcaz[is.na(impl_headcir_loss_trajectories$drop_flag)])
-
-
-
-
-

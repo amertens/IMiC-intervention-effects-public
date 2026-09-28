@@ -1,19 +1,30 @@
 # =============================================================================
 # 52-blood-class-enrichment-direction-sensitivity.R
 #
-# Two refinements of 50-blood-chemical-class-enrichment.R:
-#  (a) DIRECTION-SPLIT foregrounds: enrich up-responsive (ATE>0, p<0.05) and
-#      down-responsive (ATE<0, p<0.05) features separately, per compartment.
-#  (b) PLASMA MATCHING-STRINGENCY LADDER: plasma class is borrowed from the V3
-#      VAMS table by m/z (V1->V3, isobaric). Re-run the plasma enrichment under
-#      progressively stricter matching to see whether the acylcarnitine hit
-#      survives or is an artifact of promiscuous matching:
-#        25 ppm  ->  10 ppm  ->  10 ppm + unique class  ->  + RT window.
-#      NOTE: V1 (plasma) and V3 (VAMS) run different LC gradients, so their RT is
-#      NOT linearly comparable (Kim). The RT filter is therefore an OVER-STRICT
-#      stress test, not a correct matcher: if the signal survives even it, the
-#      result is not purely a loose-match artifact; if it collapses, the plasma
-#      class result cannot be verified from mass alone.
+# Chemical-class enrichment of BEP-responsive blood metabolite features, split by
+# direction (Table S9). MISAME-III, covariate-adjusted combined arms, contrast BEP.
+#  (a) Direction-split foregrounds: up-responsive (ATE > 0, p < 0.05) and
+#      down-responsive (ATE < 0, p < 0.05) features are tested separately per
+#      compartment with Fisher's exact test against all classed features, for
+#      classes with at least five measured features; BH FDR within compartment x
+#      direction. Postnatal VAMS take their class from the annotated V3 catalogue by
+#      feature id; maternal plasma and prenatal VAMS (V1) borrow it by m/z (25 ppm,
+#      same ionization mode). Prenatal VAMS is a negative control (prenatal-BEP
+#      contrast).
+#  (b) Plasma matching-stringency ladder: the plasma enrichment is re-run under
+#      progressively stricter class borrowing
+#        25 ppm  ->  10 ppm  ->  10 ppm + unique class  ->  + RT window,
+#      the check behind the Table S9 statement that plasma class assignments were
+#      stable under stricter matching. V1 (plasma) and V3 (VAMS) run different LC
+#      gradients, so their RTs are not linearly comparable; the RT filter is an
+#      over-strict stress test rather than a correct matcher.
+#
+# Inputs : results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          data/additional datasets/{metabolite_description_vam_with_global_id.csv,
+#          ProcessedDataMISAME3_plasma.csv, ProcessedDataMISAME3_VAMS.csv}
+# Outputs: results/blood_chemical_class_enrichment_directional.csv  (Table S9)
+#          results/blood_plasma_class_match_sensitivity.csv         (stringency ladder)
+# [needs restricted data]
 # =============================================================================
 suppressMessages({library(data.table); library(biotmle)})
 root <- paste0(here::here(), "/")
@@ -49,9 +60,8 @@ enrich_dir <- function(f, ds, dir) {
   }))
 }
 
-# =============================================================================
-# (a) DIRECTION-SPLIT enrichment (VAMS = direct V3 id; plasma = 25 ppm borrow)
-# =============================================================================
+# ---- (a) direction-split enrichment (VAMS = direct V3 id; plasma = 25 ppm borrow) ----
+# Class of one V1 feature borrowed from the V3 catalogue by m/z (and optionally RT).
 classify_plasma <- function(q_mz, q_rt, q_mode, ppm, uniq, rt_win) {
   cand <- vam_cls[mode == q_mode]
   cand <- cand[abs(mz - q_mz) <= q_mz * ppm * 1e-6]
@@ -63,9 +73,9 @@ classify_plasma <- function(q_mz, q_rt, q_mode, ppm, uniq, rt_win) {
   cand[which.min(abs(mz - q_mz))]$class                  # nearest-mass class
 }
 
-# V1 (rLC catalogue) m/z sources for the borrow path. BOTH plasma and PRENATAL
-# VAMS are V1, so their class must be borrowed from the V3 table by m/z (isobaric).
-# (Only the two POSTNATAL VAMS compartments are V3 and join class by direct id.)
+# V1 (rLC catalogue) m/z sources for the borrow path. Both plasma and prenatal VAMS
+# are V1, so their class is borrowed from the V3 table by m/z (isobaric). Only the
+# two postnatal VAMS compartments are V3 and join class by direct id.
 load_v1 <- function(file) {
   x <- fread(paste0(add, file), select = c("MZ","RT","Metabolite_Feature_Label"))
   setnames(x, c("mz","rt","biomarker"))
@@ -87,8 +97,8 @@ attach_class <- function(ds, ppm = 25, uniq = FALSE, rt_win = NA) {
   f[!is.na(class)]
 }
 
-# VamsPrenatal = NEGATIVE CONTROL (V1; reflects the prenatal-BEP contrast, where
-# the postnatal lipid remodeling is not expected and was empirically ~null).
+# VamsPrenatal is the negative control (V1; prenatal-BEP contrast, where the
+# postnatal lipid remodelling is not expected and was empirically about null).
 comps <- c("VamsPostnatalInfant","VamsPostnatalMaternal","MaternalPlasma","VamsPrenatal")
 dir_res <- rbindlist(lapply(comps, function(ds) {
   f <- attach_class(ds)
@@ -106,9 +116,9 @@ for (ds in comps) for (dr in c("up","down")) {
   print(head(x[, .(class, n_class, n_fg, OR = round(OR,2), p = signif(p,2), fdr = signif(fdr,2))], 5), row.names = FALSE)
 }
 
-# =============================================================================
-# (b) PLASMA matching-stringency ladder (focus: Acylcarnitines)
-# =============================================================================
+# ---- (b) plasma matching-stringency ladder ---------------------------------
+# Re-test the FDR-significant plasma (borrowed-class) hits from (a) under stricter
+# class borrowing; prenatal VAMS is run alongside as the negative control.
 cat("\n\n==== (b) PLASMA class enrichment vs matching stringency (per direction) ====\n")
 configs <- list(
   list(lab = "25 ppm (base)",            ppm = 25, uniq = FALSE, rt = NA),

@@ -1,18 +1,13 @@
-# fig5C-triglyceride.R
 # =============================================================================
-# Figure 4, Panel C: triglyceride -> fatty-acid composition volcano.
+# fig5C-triglyceride.R
 #
-# Reproduces, as a single push-button R script, Trenton's VALIDATED rebuild
-#   trenton scripts/... imicPaperTriglycerides Rebuilt.Rmd
-# (which supersedes the order-dependent old imicPaperTriglycerides.Rmd). Andrew
-# embeds the output as Panel C of the tertiary lipidome composite Fig 5
-# (see figure-scripts/manuscript_figures/fig5-tertiary-composite.R).
-#
-# What it does (numerics match the Rebuilt.Rmd analyze_triglyceride_comparison):
+# Builds Fig 5C, the triglyceride -> fatty-acid composition volcano, and writes the
+# fatty-acid composition table behind Table S4. The PNG is embedded as Panel C by
+# fig5-tertiary-composite.R. The numerics follow the original R Markdown
+# triglyceride analysis (its analyze_triglyceride_comparison step):
 #   1. Read the intervention-effect results (Triglycerides, ATE only) -> sigTgs.
-#      Default = COMBINED-arm framing (one contrast per study x visit), for
-#      consistency with the main-text figure. Set ARM_FRAMING <- "stratified"
-#      for the per-arm contrasts (supplement option).
+#      Default = combined-arm framing (one contrast per study x visit), as in the
+#      figure. Set IMIC_TG_ARM_FRAMING=stratified for the per-arm contrasts.
 #   2. Read the Biocrates Quant500 structure file to map each triglyceride
 #      Short Name -> its LSSN molecular formula, split the LSSN into the three
 #      fatty-acyl chains (sn1/sn2/sn3, with the exact string cleanups),
@@ -24,15 +19,21 @@
 #      Accumulate into trig_all.
 #   4. Study-coloured volcano of the SIGNED enrichment ratio (positive = enriched
 #      among UP-regulated TGs, negative = enriched among DOWN-regulated TGs) vs
-#      -log10(p_value), matching Panel B's conventions
-#      -> figures/figure5_panelC_tg_composition.png.
+#      -log10(p_value), matching Panel B's conventions.
 #
-# CRITICAL: the Biocrates structure file is NOT in the repo. Without it there is
-# no way to map triglycerides to their fatty-acid chains, so this script HARD-
-# FAILS with a clear message (mirroring src/metaboanalyst/run-primary.R's
-# .primary_reference() pattern). That failure is EXPECTED until Trenton provides
-# the file at the path named in the stop() message below.
-#
+# Inputs:  results/combined_intervention_effects_results_combined_arms.RDS
+#            (or ..._stratified_arms.RDS; src/2 analysis/clean_results.R)
+#          data/additional datasets/Copy of Quant 500_BioIDs_20191031.xlsx, the
+#            Biocrates Quant 500 "BioIDs" structure file (sheet "FIA Part"), or the
+#            path in IMIC_BIOCRATES_BIOIDS
+# Outputs: figures/figure5_panelC_tg_composition{,_nolegend}.png
+#            (_stratified{,_nolegend} for the stratified framing)
+#          results/metaboanalyst/triglyceride_fa/triglyceride_fa_composition_{combined,stratified}.csv
+#            (Table S4)
+# [needs an on-request file] the combined-results RDS is not shipped (size).
+# The BioIDs structure file is a Biocrates vendor annotation file that cannot be
+# redistributed; without it the triglycerides cannot be mapped to their fatty-acid
+# chains, so the script stops with a message naming the expected path.
 # Run from the repo root:
 #   Rscript "figure-scripts/manuscript_figures/fig5C-triglyceride.R"
 # =============================================================================
@@ -45,19 +46,17 @@ suppressMessages({
   library(readxl)
   library(ggplot2)
   library(ggrepel)
-  library(RColorBrewer)
 })
-source("figure-scripts/manuscript_figures/study_colors.R")   # canonical study colours (match graphical abstract)
-source("figure-scripts/0_figure-functions.R")                # theme_imic() = Science-submission theme
+source("figure-scripts/manuscript_figures/study_colors.R")   # shared study colours and shapes
+source("figure-scripts/0_figure-functions.R")                # theme_imic(), imic_logp_title
 
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
 
-# Main panel uses the combined-arm framing; "stratified" is the supplement option
-# (used to rebuild the MISAME-III half of Table S3 -- see src/pipeline/
-# rebuild-submission-tables.R). Override via env var so it can be re-run without
-# editing this file: IMIC_TG_ARM_FRAMING=stratified Rscript ...fig5C-triglyceride.R
+# The figure uses the combined-arm framing; "stratified" gives the per-arm contrasts
+# used for the MISAME-III rows of Table S4. Set via env var so it can be re-run
+# without editing this file: IMIC_TG_ARM_FRAMING=stratified Rscript ...fig5C-triglyceride.R
 ARM_FRAMING <- Sys.getenv("IMIC_TG_ARM_FRAMING", "combined")   # "combined" | "stratified"
 
 RESULTS_RDS <- if (identical(ARM_FRAMING, "stratified")) {
@@ -66,16 +65,15 @@ RESULTS_RDS <- if (identical(ARM_FRAMING, "stratified")) {
   "results/combined_intervention_effects_results_combined_arms.RDS"
 }
 
-# Biocrates Quant500 structure file. Expected in-repo location plus an override
-# (env var) so Trenton can point at a copy elsewhere without editing the script.
+# Biocrates Quant 500 structure file. Expected location plus an env-var override
+# for a copy elsewhere.
 BIOCRATES_BIOIDS_PATH <- Sys.getenv(
   "IMIC_BIOCRATES_BIOIDS",
   "data/additional datasets/Copy of Quant 500_BioIDs_20191031.xlsx"
 )
 
-# The submitted main-text panel is always the combined-arm framing; running with
-# ARM_FRAMING <- "stratified" (to refresh the Table S3 MISAME-III companion CSV)
-# must NOT overwrite it, so the stratified run writes to a distinctly-named PNG.
+# The printed panel is the combined-arm framing; a stratified run (for the Table S4
+# MISAME-III rows) must not overwrite it, so it writes to a distinctly named PNG.
 OUT_PNG <- if (identical(ARM_FRAMING, "stratified")) {
   "figures/figure5_panelC_tg_composition_stratified.png"
 } else {
@@ -90,18 +88,18 @@ OUT_PNG_NOLEGEND <- if (identical(ARM_FRAMING, "stratified")) {
 }
 
 # ---------------------------------------------------------------------------
-# Hard-fail guard for the (external, not-in-repo) Biocrates structure file.
-# Mirrors src/metaboanalyst/run-primary.R's .primary_reference().
+# Stop with a clear message if the Biocrates structure file (a vendor file that
+# is not in the repository) is missing.
 # ---------------------------------------------------------------------------
 .biocrates_reference <- function(path = BIOCRATES_BIOIDS_PATH) {
   if (is.null(path) || !file.exists(path)) {
     stop(
       "Biocrates Quant500 BioIDs structure file not found at '", path, "'.\n",
       "This file ('Copy of Quant 500_BioIDs_20191031.xlsx', sheet 'FIA Part') ",
-      "is REQUIRED to map each triglyceride to its constituent fatty-acid ",
+      "is required to map each triglyceride to its constituent fatty-acid ",
       "chains; without it the fatty-acid composition volcano cannot be built. ",
-      "It is a Biocrates-derived external reference and is NOT stored in the ",
-      "repository -- it must be provided by Trenton. Place it at the path above, ",
+      "It is a Biocrates vendor annotation file that cannot be redistributed, ",
+      "so it is not stored in the repository. Place it at the path above, ",
       "or set the IMIC_BIOCRATES_BIOIDS environment variable to its location.",
       call. = FALSE
     )
@@ -119,7 +117,7 @@ load_sig_tgs <- function(rds_path = RESULTS_RDS) {
 
 # ---------------------------------------------------------------------------
 # Step 2. Biocrates structure -> fatty-acid proportions within each TG.
-#   Verbatim from Trenton's Rmd (all sn1/sn2/sn3 str_replace cleanups kept).
+#   As in the original R Markdown analysis (all sn1/sn2/sn3 str_replace cleanups kept).
 # ---------------------------------------------------------------------------
 build_proportional_data <- function(bioids_path) {
   # Read the "FIA Part" sheet (guard already checked the file exists).
@@ -185,21 +183,17 @@ build_proportional_data <- function(bioids_path) {
 }
 
 # ---------------------------------------------------------------------------
-# Step 3. Per-cell fatty-acid composition test (Trenton's REBUILT logic).
+# Step 3. Per-cell fatty-acid composition test.
 #
-# One helper applied over the study x collection-time x contrast x DIRECTION grid.
-# This replaces the old "significant UP-regulated vs all-background" cell (the
-# manual pipeline Trenton flagged as order-dependent and inconsistent) with the
-# validated rebuild:
-#   * BOTH directions are analysed as explicit, separate comparisons.
+# One helper applied over the study x collection-time x contrast x DIRECTION grid:
+#   * Both directions are analysed as explicit, separate comparisons.
 #   * The non-significant REFERENCE group is DIRECTION-MATCHED: significant vs
 #     non-significant TGs are compared only within the same effect direction (all
 #     TGs in the cell already share est>0 for "up" / est<0 for "down").
 #   * mean_diff = mean(proportion | FDR-significant) - mean(proportion | non-sig);
 #     p_value from wilcox.test(proportion ~ sigFDR) per fatty acid, only where BOTH
 #     groups are present.
-# Numeric definitions match imicPaperTriglycerides Rebuilt.Rmd
-# (analyze_triglyceride_comparison).
+# Numeric definitions match the original analysis (analyze_triglyceride_comparison).
 # ---------------------------------------------------------------------------
 analyze_cell <- function(studytime_val, contrast_val, direction_val,
                          sigTgs, proportionalData) {
@@ -265,7 +259,7 @@ analyze_cell <- function(studytime_val, contrast_val, direction_val,
 }
 
 # ---------------------------------------------------------------------------
-# Full-name / abbreviation lookup for fatty-acid labels (verbatim from Rmd).
+# Full-name / abbreviation lookup for fatty-acid labels (from the original analysis).
 # ---------------------------------------------------------------------------
 annotate_fatty_acids <- function(trig_all) {
   trig_all %>%
@@ -314,10 +308,10 @@ annotate_fatty_acids <- function(trig_all) {
 }
 
 # ---------------------------------------------------------------------------
-# Step 4. The fatty-acid composition volcano ("volcano2" in Trenton's Rmd).
+# Step 4. The fatty-acid composition volcano ("volcano2" in the original analysis).
 # ---------------------------------------------------------------------------
 build_volcano <- function(trig_all, show_legend = TRUE) {
-  # The manuscript Fig 5C panel: a STUDY-COLOURED fatty-acid volcano.
+  # Fig 5C: a study-coloured fatty-acid volcano.
   #   x = SIGNED enrichment ratio. mean_diff is the proportion difference
   #       (FDR-significant minus non-significant) WITHIN a direction; we sign it so
   #       positive = fatty acids enriched among UP-regulated TGs and negative =
@@ -360,12 +354,15 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
 
   ggplot(df, aes(x = enrichment_ratio, y = -log10(p_value))) +
     geom_vline(xintercept = 0, color = "black", linewidth = 0.4) +
-    geom_hline(yintercept = -log10(0.05), color = "grey60") +
-    { if (is.finite(y_q)) geom_hline(yintercept = y_q, color = "#3C8C3C") } +
-    { if (is.finite(y_q)) annotate("text", x = -Inf, y = y_q, label = "Q < 0.05",
-                                   hjust = -0.05, vjust = -0.4, size = 2.4, color = "#3C8C3C") } +
-    annotate("text", x = -Inf, y = -log10(0.05), label = "P < 0.05",
-             hjust = -0.05, vjust = -0.4, size = 2.4, color = "grey45") +
+    # line colours/weights and captions as in Figs 3B and 5B
+    geom_hline(yintercept = -log10(0.05), color = "#BAB0AC", linewidth = 0.4) +
+    { if (is.finite(y_q)) geom_hline(yintercept = y_q, color = "#59A14F", linewidth = 0.4) } +
+    # captions at the right edge (the left holds the Myristic Acid labels), as in 5B
+    { if (is.finite(y_q)) annotate("text", x = Inf, y = y_q, parse = TRUE,
+                                   label = 'italic(Q)*"-value" < 0.05',
+                                   hjust = 1.05, vjust = -0.4, size = 2.4, color = "#3C8C3C") } +
+    annotate("text", x = Inf, y = -log10(0.05), parse = TRUE, label = 'italic(P)*"-value" < 0.05',
+             hjust = 1.05, vjust = -0.4, size = 2.4, color = "#8A8580") +
     geom_point(aes(color = color_group, shape = color_group), size = 2, alpha = 0.9) +  # study symbol = CVD cue
     # Boxed labels (white fill + coloured border) matching Panel B's geom_label_repel.
     geom_label_repel(data = lab_df, aes(label = lab, color = color_group), size = 2.5,
@@ -378,8 +375,8 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
     scale_shape_manual(values = imic_shapes_for(names(study_cols)), name = "Study",
                        breaks = c("ELICIT", "MISAME-III", "Mumta-LW", "Not significant")) +
     guides(colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1)) +
-    labs(x = "Enrichment Ratio", y = expression(-log[10] * "(P-value)")) +
-    theme_imic(base_size = 9) +   # Science-submission theme (Helvetica, font floors)
+    labs(x = "Enrichment Ratio", y = imic_logp_title) +
+    theme_imic(base_size = 9) +   # shared theme (Helvetica, font-size floors)
     theme(legend.position = if (isTRUE(show_legend)) "bottom" else "none",
           plot.title = element_blank(),
           panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3)) +
@@ -387,33 +384,25 @@ build_volcano <- function(trig_all, show_legend = TRUE) {
 }
 
 # ---------------------------------------------------------------------------
-# Table S3 companion export for the online supplement.
+# Table S4 export.
 #
-# Writes trig_all (this script's own computed columns) to a companion CSV, named
-# by ARM_FRAMING so both variants can coexist. Behavior-preserving: a pure data
-# dump of the already-computed table -- it does NOT touch the Wilcoxon test, any
-# parameter, or the figure. Atomic (temp file + rename) so a partial write never
-# lands.
+# Writes trig_all (this script's own computed columns) to a CSV named by
+# ARM_FRAMING so both variants can coexist. A pure data dump of the computed
+# table; it does not affect the test or the figure. Atomic (temp file + rename)
+# so a partial write never lands.
 #
-# 2026-08-26: the printed Table S3 mixes ELICIT/Mumta-LW rows (combined-arm) with
-# MISAME-III rows (stratified-arm) -- this was previously undocumented, and the
-# stratified half had never been (re)built from this script, so the printed
-# MISAME-III rows had drifted from current data (see src/pipeline/
-# rebuild-submission-tables.R). Both variants now export from the same place:
-# run with ARM_FRAMING <- "combined" for ELICIT/Mumta-LW and ARM_FRAMING <-
-# "stratified" for MISAME-III, then union the two by study (see
-# src/pipeline/rebuild-submission-tables.R for the exact recipe used to build
-# the printed table and the S3 workbook sheet).
+# The printed Table S4 combines ELICIT and Mumta-LW rows from the combined-arm run
+# with MISAME-III rows from the stratified run: run once with each framing and
+# union the two CSVs by study.
 # ---------------------------------------------------------------------------
 TRIG_FA_COMBINED_CSV <- paste0(
   "results/metaboanalyst/triglyceride_fa/triglyceride_fa_composition_",
   ARM_FRAMING, ".csv")
 
 export_trig_all <- function(trig_all, path = TRIG_FA_COMBINED_CSV) {
-  # Column schema mirrors the stratified companion (Table S3) so both variants
-  # render identically in the online supplement: enrichment_ratio is the RAW
-  # (unsigned) mean_diff and the `direction` column carries up/down, exactly as
-  # Table S3 pairs an "Enrichment Ratio" with a separate "Regulation" column.
+  # Both framings share one column schema: enrichment_ratio is the raw
+  # (unsigned) mean_diff and the `direction` column carries up/down, as
+  # Table S4 pairs an "Enrichment Ratio" with a separate "Regulation" column.
   # (The figure's negative-signing of down comparisons is a plot-axis transform
   # only; the tabulated enrichment ratio stays unsigned.)
   out <- data.frame(
@@ -428,7 +417,7 @@ export_trig_all <- function(trig_all, path = TRIG_FA_COMBINED_CSV) {
     stringsAsFactors = FALSE
   )
   # BH-adjusted p per analysis unit = study x timepoint x contrast x direction
-  # (each comparison independently adjusted, matching the Rebuilt.Rmd fdr).
+  # (each comparison independently adjusted, as in the original analysis).
   out$fdr_native <- stats::ave(out$raw_p, out$study, out$timepoint, out$contrast,
                                out$direction,
                                FUN = function(p) p.adjust(p, method = "BH"))
@@ -444,8 +433,8 @@ export_trig_all <- function(trig_all, path = TRIG_FA_COMBINED_CSV) {
 # Driver
 # ---------------------------------------------------------------------------
 run_panel_c <- function(write = TRUE) {
-  # Fail loudly and clearly if the external Biocrates file is missing. Do this
-  # FIRST so the expected "missing file" message is what the user sees.
+  # Stop first if the Biocrates structure file is missing, so that message is
+  # what the user sees.
   bioids_path <- .biocrates_reference()
 
   sigTgs           <- load_sig_tgs()
@@ -466,15 +455,14 @@ run_panel_c <- function(write = TRUE) {
     arrange(is.na(p_value), p_value) %>%
     annotate_fatty_acids()
 
-  # Emit the combined-arm fatty-acid composition table for the online supplement.
+  # Fatty-acid composition table for Table S4 (named by ARM_FRAMING).
   export_trig_all(trig_all)
 
   volcano <- build_volcano(trig_all)
 
   if (write) {
-    # SUBMITTED panel size: 105 x 99 mm (210/2 x 297/3), Trenton's universal panel
-    # convention (imicPaperTriglycerides.Rmd). Keeps theme_imic fonts but anchors the
-    # physical size to the submission so B & C read as ~square in the Fig 5 bottom row.
+    # Panel size 105 x 99 mm (210/2 x 297/3), as submitted, so B and C read as
+    # roughly square in the Fig 5 bottom row.
     ggsave(
       filename = OUT_PNG,
       plot     = volcano,

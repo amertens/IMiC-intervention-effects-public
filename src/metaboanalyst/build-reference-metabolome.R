@@ -1,26 +1,21 @@
-# build-reference-metabolome.R -- reproducibly derive the reference metabolome
-# used as the enrichment background for the manuscript's tertiary (Fig 5B) and
-# optional primary (Fig 3B) MSEA panels.
+# =============================================================================
+# build-reference-metabolome.R
 #
-# NOTE ON NAMING: this file was previously (mis)named "whole-metabolome". It is
-# NOT the whole human metabolome -- it is the author's saved reference metabolome
-# (metabolites + lipids). The larger submission-matching variant is the QER
-# reference metabolome (src/metaboanalyst/reference/refMetabolomeForQER.csv, 1,268
-# names), which reproduces the submitted Fig 5B; this 1,593-HMDB variant is the
-# smaller relative used by run-tertiary-msea.R's default background.
+# Documents how the 615-name reference metabolome was built. That list is the
+# enrichment background for the untargeted milk ORA (run-untargeted-msea.R;
+# Fig 6A, Table S5). The source is the study reference metabolome: 1,593 HMDB
+# accession IDs (1,273 unique). MetaboAnalyst's metabolite-set library is keyed
+# by compound name, so the HMDB IDs are cross-referenced to library names; 615
+# resolve to a named compound. The other 658 have no member in any named
+# metabolite set and cannot contribute to name-based enrichment. (The tertiary
+# ORA uses a different, 1,268-name reference: reference/refMetabolomeForQER.csv.)
 #
-# Source of truth: the author's reference_metabolome.xlsx, a single column of
-# 1,593 HMDB accession IDs (1,273 unique). MetaboAnalyst's metabolite-set library
-# is keyed by compound NAME, so we cross-reference the HMDB IDs to library names;
-# 615 of the 1,273 resolve to a named compound the SMPDB library recognises. The
-# unmatched 658 are HMDB entries with no member in any named metabolite set -- they
-# cannot contribute to name-based enrichment, so the effective background is these
-# 615 names.
+# Inputs : src/metaboanalyst/reference/reference_metabolome_1593_hmdb.txt
+# Outputs: src/metaboanalyst/reference/reference_metabolome_1593_matched_names.txt
 #
-# Inputs (committed):  src/metaboanalyst/reference/reference_metabolome_1593_hmdb.txt
-# Output (committed):   src/metaboanalyst/reference/reference_metabolome_1593_matched_names.txt
-#
-# Run from repo root:  Rscript src/metaboanalyst/build-reference-metabolome.R
+# MetaboAnalystR downloads its compound library from metaboanalyst.ca at run time.
+# Run from repo root: Rscript src/metaboanalyst/build-reference-metabolome.R
+# =============================================================================
 suppressMessages({ library(MetaboAnalystR) })
 
 HMDB_IN   <- "src/metaboanalyst/reference/reference_metabolome_1593_hmdb.txt"

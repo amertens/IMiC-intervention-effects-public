@@ -1,25 +1,28 @@
-
 # =============================================================================
 # clean_blood_results.R
 #
-# Tidies raw bioTMLE output from the blood-compartment ATE scripts (stratified +
-# combined-arms) into the long format the milk results use.
+# Tidies the raw bioTMLE output of both script-12 variants (arm-stratified and
+# combined-arms) into the long format the milk results use, with Benjamini-Hochberg
+# FDR per dataset x visit, as stated in the Methods for the blood analyses. Each
+# results object is a named list of per-compartment bioTMLE outputs (MaternalPlasma,
+# VamsPrenatal, VamsPostnatalMaternal, VamsPostnatalInfant, ProteomicsDepleted,
+# ProteomicsNaive); each run inside it is named "<dataset>-<visit>" (= studytime),
+# so grouping by studytime and measure gives FDR per dataset x visit.
+# pval_adj_global is pooled across visits within a dataset.
 #
-# FDR: BH GROUPED BY VISIT x DATASET (x measure). Each run is named
-# "<DatasetLabel>-<visit>" (= studytime), so group_by(studytime, measure) ==
-# per dataset x visit. pval_adj_global is pooled across visits within a dataset.
+# The milk tidier extract_bioTMLE_results() (functions/data_cleaning_functions.R) is
+# not used because it relabels milk study times; extract_blood_results()
+# (_blood_helpers.R) reuses the same FDR core.
 #
-# Results objects are now a NAMED LIST of per-compartment bioTMLE outputs
-# (MaternalPlasma, VamsPrenatal, VamsPostnatalMaternal, VamsPostnatalInfant,
-# ProteomicsDepleted, ProteomicsNaive). We do NOT use extract_bioTMLE_results()
-# (it hardcodes milk studytime relabeling); extract_blood_results() reuses the
-# same FDR core.
+# Inputs : results/blood_compartment_[adjusted_]intervention_effects_results.RDS
+#          results/blood_compartment_[adjusted_]combined_arms_intervention_effects_results.RDS
+# Outputs: the same file names with a _clean suffix (read by combine_blood_results.R
+#          and the downstream blood scripts).
+# [needs restricted data]
 # =============================================================================
 
+# 0-config.R loads extract_res(), ci_to_pvalue() and data.table, which the helper needs.
 if (!exists("BLOOD_ORCHESTRATED")) { rm(list = ls()); source(paste0(here::here(), "/src/0-config.R")) }
-# 0-config.R provides extract_res, ci_to_pvalue, data.table.
-# extract_blood_results() (raw bioTMLE list -> long, FDR per visit x dataset) is the
-# canonical version in the shared helpers.
 source(paste0(here::here(), "/src/2 analysis/_blood_helpers.R"))
 
 clean_blood_set <- function(results) {
@@ -40,7 +43,3 @@ res_comb <- readRDS(paste0(here::here(),
   "/results/blood_compartment_", .tag, "combined_arms_intervention_effects_results.RDS"))
 saveRDS(clean_blood_set(res_comb), file = paste0(here::here(),
   "/results/blood_compartment_", .tag, "combined_arms_intervention_effects_results_clean.RDS"))
-
-# Next: join cleaned blood ATEs to cleaned milk results on aligned features
-# (IMiC_alignment.csv for metabolomics; shared UniProt for proteomics) and
-# compare ATE direction/significance across milk / maternal blood / infant blood.

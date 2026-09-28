@@ -1,83 +1,52 @@
 # =============================================================================
 # src/2 analysis/clean_results.R
 #
-# Reads:  metadata/milk_component.Rdata
-#         results/adjusted_combined_arms_HMtraj_intervention_effects_results.RDS
-#         results/adjusted_combined_arms_intervention_effects_results.RDS
-#         results/adjusted_combined_arms_intervention_effects_results_unscaled.RDS
-#         results/adjusted_combined_arms_tertiary_intervention_effects_results_unscaled.RDS
-#         results/adjusted_HMtraj_intervention_effects_results.RDS
-#         results/adjusted_intervention_effects_results.RDS
-#         results/adjusted_intervention_effects_results_unscaled.RDS
-#         results/microbiome_intervention_effects_results.RDS
-#         results/microbiome_intervention_effects_results_arm_strat.RDS
-#         results/proteomics_intervention_effects_results.RDS
-#         results/proteomics_intervention_effects_results_combined_arms.RDS
-#         results/temp_vital_adjusted_combined_arms_tertiary_intervention_effects_results.RDS
-#         results/unadjusted_intervention_effects_results.RDS
-# Writes: results/adjusted_combined_arms_intervention_effects_proteomics_results_clean.RDS
-#         results/adjusted_combined_arms_intervention_effects_results_clean.csv
-#         results/adjusted_combined_arms_intervention_effects_results_clean.RDS
-#         results/adjusted_combined_arms_intervention_effects_traj_results_clean.RDS
-#         results/adjusted_combined_arms_intervention_effects_unscaled_results_clean.RDS
-#         results/adjusted_combined_arms_intervention_effects_untargeted_results_clean.RDS
-#         results/adjusted_intervention_effects_res_untargeted_metabolomics_clean.RDS
-#         results/adjusted_intervention_effects_results_clean.RDS
-#         results/adjusted_intervention_effects_traj_results_clean.RDS
-#         results/adjusted_intervention_effects_unscaled_results_clean.RDS
-#         results/combined_intervention_effects_results_combined_arms.RDS
-#         results/combined_intervention_effects_results_combined_arms_ATE_sharing.csv
-#         results/combined_intervention_effects_results_combined_arms_ATE_sharing.RDS
-#         results/combined_intervention_effects_results_combined_arms_ATE_sharing_trenton.csv
-#         results/combined_intervention_effects_results_combined_arms_ATE_sharing_trenton.RDS
-#         results/combined_intervention_effects_results_stratified_arms.RDS
-#         results/combined_intervention_effects_results_stratified_arms_ATE_sharing.csv
-#         results/combined_intervention_effects_results_stratified_arms_ATE_sharing.RDS
-#         results/combined_intervention_effects_results_stratified_arms_ATE_sharing_trenton.csv
-#         results/combined_intervention_effects_results_stratified_arms_ATE_sharing_trenton.RDS
-#         results/results_subset.csv
-#         results/subsetted results/primary_bvit.csv
-#         results/subsetted results/primary_bvit_arm_strat.csv
-#         results/subsetted results/primary_macro.csv
-#         results/subsetted results/primary_macro_arm_strat.csv
-#         results/subsetted results/primary_micro.csv
-#         results/subsetted results/primary_micro_arm_strat.csv
-#         results/subsetted results/secondary_bioactives.csv
-#         results/subsetted results/secondary_bioactives_arm_strat.csv
-#         results/subsetted results/secondary_hmo.csv
-#         results/subsetted results/secondary_hmo_arm_strat.csv
-#         results/subsetted results/tertiary_targeted_metabolomics.csv
-#         results/subsetted results/tertiary_targeted_metabolomics_arm_strat.csv
-#         results/unadjusted_intervention_effects_results_clean.RDS
+# Collects the raw bioTMLE result objects written by the milk analysis scripts
+# (1-unadjusted, 2_adjusted*, 3_adjusted*), flattens each into a tidy data frame
+# with extract_bioTMLE_results(), and saves the clean tables the figures and
+# downstream scripts read. Its outputs feed Fig 2 (subsetted results/primary_*),
+# Fig S3 (subsetted results/secondary_*), Figs 3 and 5 and Tables S2-S4
+# (combined_intervention_effects_results_*_arms.RDS), Fig 4 and the blood
+# scripts (adjusted_combined_arms_..._results_clean.RDS), Fig S4
+# (adjusted_intervention_effects_results_clean.RDS), Table S1 (unscaled clean
+# RDS), Fig 6 and Tables S5-S8 (untargeted and proteomics clean RDS). It reads
+# the output of every 1-/2_/3_ milk analysis script, including the unadjusted
+# and trajectory variants that no printed exhibit uses, so all of those scripts
+# must run first; run the blood scripts (12 onward) after it.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  results/adjusted_combined_arms_intervention_effects_results.RDS
+#          results/temp_vital_adjusted_combined_arms_tertiary_intervention_effects_results.RDS
+#          results/adjusted_intervention_effects_results.RDS
+#          results/unadjusted_intervention_effects_results.RDS
+#          results/adjusted_{combined_arms_,}intervention_effects_results_unscaled.RDS
+#          results/adjusted_{combined_arms_,}HMtraj_intervention_effects_results.RDS
+#          results/microbiome_intervention_effects_results{,_arm_strat}.RDS
+#          results/proteomics_intervention_effects_results{,_combined_arms}.RDS
+#          large-file-results/metabalomics_intervention_effects_results{,_combined_arms}.RDS
+#          metadata/milk_component.Rdata
+# Outputs: results/{adjusted_combined_arms_,adjusted_,unadjusted_}intervention_effects_results_clean.RDS
+#          results/adjusted_combined_arms_intervention_effects_results_clean.csv
+#          results/adjusted_{combined_arms_,}intervention_effects_{traj,unscaled}_results_clean.RDS
+#          results/adjusted_combined_arms_intervention_effects_{proteomics,untargeted}_results_clean{,_ATE,_MN}.RDS
+#          results/adjusted_intervention_effects_res_untargeted_metabolomics_clean{,_ATE,_MN}.RDS
+#          results/combined_intervention_effects_results_{combined,stratified}_arms.RDS
+#          results/subsetted results/{primary_macro,primary_micro,primary_bvit,secondary_hmo,
+#            secondary_bioactives,tertiary_targeted_metabolomics}{,_arm_strat}.csv
+# [needs restricted data]
 # =============================================================================
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 
-
-
 res <- readRDS(file=paste0(here::here(),"/results/adjusted_combined_arms_intervention_effects_results.RDS"))
+# Vital tertiary (targeted metabolomics) results come from the rerun without
+# glmnet in 2_adjusted_analysis_combined_arms.R, because glmnet fails for some
+# Vital outcomes; slot them into the combined-arms object.
 res_vital_tertiary <- readRDS(file=paste0(here::here(),"/results/temp_vital_adjusted_combined_arms_tertiary_intervention_effects_results.RDS"))
 res$res_tertiary$res$`Vital-40`$res <- res_vital_tertiary$res[[1]]$res
 res$res_tertiary$res$`Vital-56`$res <- res_vital_tertiary$res[[2]]$res
 
-res_unscaled <- readRDS(file=paste0(here::here(),"/results/adjusted_combined_arms_tertiary_intervention_effects_results_unscaled.RDS"))
-res_traj <- readRDS(file=paste0(here::here(),"/results/adjusted_combined_arms_HMtraj_intervention_effects_results.RDS"))
-
-res_untargeted_metabolomics <- readRDS(paste0(here::here(),"/large-file-results/metabalomics_intervention_effects_results.RDS"))
-
-
-
-#res_unadjusted <- readRDS(file=paste0(here::here(),"/results/unadjusted_combined_arms_intervention_effects_results.RDS"))
 res_arm_strat <- readRDS(file=paste0(here::here(),"/results/adjusted_intervention_effects_results.RDS"))
 res_unadjusted_arm_strat <- readRDS(file=paste0(here::here(),"/results/unadjusted_intervention_effects_results.RDS"))
 res_unscaled_arm_strat <- readRDS(file=paste0(here::here(),"/results/adjusted_intervention_effects_results_unscaled.RDS"))
@@ -90,12 +59,10 @@ res_microbiome_arm_strat <- readRDS(paste0(here::here(),"/results/microbiome_int
 res_protien <- readRDS(paste0(here::here(),"/results/proteomics_intervention_effects_results_combined_arms.RDS"))
 res_protien_arm_strat <- readRDS(paste0(here::here(),"/results/proteomics_intervention_effects_results.RDS"))
 
-
 res_untargeted_metabolomics <- readRDS(paste0(here::here(),"/large-file-results/metabalomics_intervention_effects_results_combined_arms.RDS"))
 res_untargeted_metabolomics_arm_strat <- readRDS(paste0(here::here(),"/large-file-results/metabalomics_intervention_effects_results.RDS"))
 
 res <- extract_bioTMLE_results(res)
-#res_unadjusted <- extract_bioTMLE_results(res_unadjusted)
 res_arm_strat <- extract_bioTMLE_results(res_arm_strat)
 res_unadjusted_arm_strat <- extract_bioTMLE_results(res_unadjusted_arm_strat)
 res_unscaled <- extract_bioTMLE_results(res_unscaled)
@@ -111,65 +78,23 @@ res_microbiome_arm_strat <- extract_bioTMLE_results(res_microbiome_arm_strat, si
 res_protien <- extract_bioTMLE_results(res_protien, single_group = TRUE)
 res_protien_arm_strat <- extract_bioTMLE_results(res_protien_arm_strat, single_group = TRUE)
 res_protien$label <- res_protien_arm_strat$label <- res_protien$description <- res_protien_arm_strat$description <- res_protien$category  <- res_protien_arm_strat$category  <- res_protien$category_raw <- res_protien_arm_strat$category_raw <- "Proteomics"
-head(res_protien)
-
-#Check B status between misame and vital
-temp=res_unscaled %>% filter(study  !="Elicit", measure =="MN", contrast=="Control", outcome_group == "primary", grepl("B", biomarker)|biomarker=="Nufa"|biomarker=="Nam"|biomarker=="Ribo"|biomarker=="Pa") 
-dim(temp)
-table(temp$biomarker)
-temp %>% group_by(biomarker, study, visit) %>% summarize(mean_est=mean(est)) %>% as.data.frame()
-ggplot(temp, aes(x=visit , y=est, color=study)) + geom_point() + geom_line(aes(group=study)) + facet_wrap(~biomarker, scales="free") + theme_bw()
-
-temp=res_unscaled %>% filter(study  !="Elicit", measure !="MN", outcome_group == "primary", grepl("B", biomarker)|biomarker=="Nufa"|biomarker=="Nam"|biomarker=="Ribo"|biomarker=="Pa") 
-dim(temp)
-table(temp$biomarker)
-temp %>% group_by(biomarker, study, visit) %>% summarize(mean_est=mean(est)) %>% as.data.frame()
-ggplot(temp, aes(x=visit , y=est, color=study)) + geom_point() + geom_line(aes(group=study)) + facet_wrap(~biomarker, scales="free") + theme_bw()
-
-
-temp=res %>% filter(study  !="Elicit", measure !="MN", outcome_group == "primary", grepl("B", biomarker)|biomarker=="Nufa"|biomarker=="Nam"|biomarker=="Ribo"|biomarker=="Pa") 
-dim(temp)
-table(temp$biomarker)
-temp %>% group_by(biomarker, study, visit) %>% summarize(mean_est=mean(est)) %>% as.data.frame()
-ggplot(temp, aes(x=visit , y=est, color=study)) + geom_point() + geom_line(aes(group=study)) + facet_wrap(~biomarker, scales="free") + theme_bw()
-
-
-#res_traj <- extract_bioTMLE_results(res_traj)
-#res_untargeted_metabolomics <- extract_bioTMLE_results(res_untargeted_metabolomics, single_group = TRUE)
 
 saveRDS(res,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_results_clean.RDS"))
-#saveRDS(res_unadjusted,file=paste0(here::here(), "/results/unadjusted_combined_arms_intervention_effects_results_clean.RDS"))
 saveRDS(res_arm_strat,file=paste0(here::here(), "/results/adjusted_intervention_effects_results_clean.RDS"))
 saveRDS(res_unadjusted_arm_strat,file=paste0(here::here(), "/results/unadjusted_intervention_effects_results_clean.RDS"))
-saveRDS(res_traj_arm_strat,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_traj_results_clean.RDS"))
-saveRDS(res_traj,file=paste0(here::here(), "/results/adjusted_intervention_effects_traj_results_clean.RDS"))
+saveRDS(res_traj,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_traj_results_clean.RDS"))
+saveRDS(res_traj_arm_strat,file=paste0(here::here(), "/results/adjusted_intervention_effects_traj_results_clean.RDS"))
 saveRDS(res_unscaled,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_unscaled_results_clean.RDS"))
 saveRDS(res_unscaled_arm_strat,file=paste0(here::here(), "/results/adjusted_intervention_effects_unscaled_results_clean.RDS"))
 
 saveRDS(res_protien,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_proteomics_results_clean.RDS"))
 saveRDS(res_untargeted_metabolomics,file=paste0(here::here(), "/results/adjusted_combined_arms_intervention_effects_untargeted_results_clean.RDS"))
-
-
-
-# FIX: save the genuinely *arm-stratified* untargeted object here. Previously this
-# line re-saved the *combined-arms* object (`res_untargeted_metabolomics`), so the
-# arm-strat filename was byte-identical to the combined-arms file above. The sole
-# consumer, 7-metabolomics_plots.R, filters measure=="ATE" and then collapses to
-# the max-|effect| row per (studytime, biomarker), a dedup that is only
-# meaningful for arm-stratified data, so it was written for this object and is
-# corrected (not broken) by this change.
 saveRDS(res_untargeted_metabolomics_arm_strat,file=paste0(here::here(), "/results/adjusted_intervention_effects_res_untargeted_metabolomics_clean.RDS"))
 
-## ---- separate ATE (intervention-effect) vs MN (arm-mean) rows --------------
-## The high-dimensional clean frames above interleave each ATE estimate with two
-## MN (arm-mean) rows (one Control mean + one intervention mean). Any
-## "N of M estimates significant" count MUST be computed on ATE rows only:
-## counting significance over all rows inflates BOTH numerator and denominator
-## (e.g. the untargeted 2,098/1,060,968 and proteome 503/9,003 in-text counts
-## were all-row counts; the ATE-only values are 1,347/353,656 and 10/3,001).
-## Emit explicit *_ATE.RDS / *_MN.RDS companions so downstream count code never
-## has to remember to filter. Existing combined files are retained unchanged for
-## backward compatibility (all figure scripts already filter measure=="ATE").
+# The high-dimensional clean frames mix ATE rows (intervention effects) with MN
+# rows (arm means). Counts of significant intervention effects must use the ATE
+# rows only, so also save *_ATE.RDS and *_MN.RDS companions that downstream
+# scripts read directly.
 split_ate_mn <- function(obj, stem) {
   if (!"measure" %in% names(obj)) { warning("split_ate_mn: no 'measure' column in ", stem); return(invisible()) }
   ate <- obj[obj$measure == "ATE", , drop = FALSE]
@@ -182,20 +107,11 @@ split_ate_mn(res_protien,                           "adjusted_combined_arms_inte
 split_ate_mn(res_untargeted_metabolomics,           "adjusted_combined_arms_intervention_effects_untargeted_results_clean")
 split_ate_mn(res_untargeted_metabolomics_arm_strat, "adjusted_intervention_effects_res_untargeted_metabolomics_clean")
 
-
-saveRDS(res,file=paste0(here::here(),
-                        "/results/adjusted_combined_arms_intervention_effects_results_clean.RDS"))
 write.csv(res,file=paste0(here::here(),
                           "/results/adjusted_combined_arms_intervention_effects_results_clean.csv"))
 
-#subset for results comparison
-head(res)
-res_sub = res %>% filter()
-write.csv(res_sub,file=paste0(here::here(),
-                              "/results/results_subset.csv"))
-
-
-# save combined results 
+# Combined result tables across all milk modalities (targeted, untargeted
+# metabolomics, microbiome, proteomics), arm-stratified and combined-arms.
 res_combined_arm_strat <- bind_rows(res_arm_strat, res_untargeted_metabolomics_arm_strat, res_microbiome_arm_strat, res_protien_arm_strat)
 saveRDS(res_combined_arm_strat,file=paste0(here::here(),"/results/combined_intervention_effects_results_stratified_arms.RDS"))
 
@@ -203,86 +119,11 @@ res_combined_arm_combined <- bind_rows(res, res_untargeted_metabolomics,
                                        res_microbiome, res_protien)
 saveRDS(res_combined_arm_combined,file=paste0(here::here(),"/results/combined_intervention_effects_results_combined_arms.RDS"))
 
-
-## ---- ATE-only, sharing, modality-tagged merged datasets ---------------------
-## A leaner companion to the combined frames above, requested for downstream use:
-##   * ATE rows only (MN / arm-mean rows dropped)
-##   * uncorrected p-values only (pval / sig kept; all FDR and chi-square columns
-##     -- pval_adj, pval_adj_global, sigFDR, chi_pval, chi_pval_adj, chi_sig,
-##     chi_sigFDR -- dropped)
-##   * a `modality` column naming which assay each combined-modality result came from
-## Built in both arm-stratified and combined-arms (merged) versions.
-build_ate_sharing <- function(...) {
-  drop_cols <- c("pval_adj", "pval_adj_global", "sigFDR",
-                 "chi_pval", "chi_pval_adj", "chi_sig", "chi_sigFDR")
-  bind_rows(...) %>%
-    filter(measure == "ATE") %>%
-    select(-any_of(drop_cols))
-}
-
-# combined-arms (merged across intervention arms)
-res_ate_sharing_combined_arms <- build_ate_sharing(
-  res                          %>% mutate(modality = "Targeted milk components"),
-  res_untargeted_metabolomics  %>% mutate(modality = "Untargeted metabolomics"),
-  res_microbiome               %>% mutate(modality = "Microbiome"),
-  res_protien                  %>% mutate(modality = "Proteomics")
-)
-saveRDS(res_ate_sharing_combined_arms,
-        file=paste0(here::here(),"/results/combined_intervention_effects_results_combined_arms_ATE_sharing.RDS"))
-write.csv(res_ate_sharing_combined_arms,
-          file=paste0(here::here(),"/results/combined_intervention_effects_results_combined_arms_ATE_sharing.csv"), row.names=FALSE)
-
-## ---- Trenton export: minimal collaborator dataset --------------------------
-## A trimmed export requested for sharing: ATE point estimate + 95% CI, the raw
-## (uncorrected) p-value, the milk component (raw code AND readable label), and
-## its study / visit / intervention arm (contrast) / dataset (modality). It
-## deliberately drops every FDR column (pval_adj, pval_adj_global, sigFDR), every
-## chi-square column (chi_*), and the raw `sig` flag -- raw p-values only.
-## Derived from the combined-arms ATE-sharing frame above (already ATE-only,
-## uncorrected-p-only, modality-tagged), so it is byte-consistent with it.
-trenton_cols <- c("biomarker", "label_f", "study", "visit",
-                  "contrast", "modality", "est", "cil", "ciu", "pval")
-res_trenton <- res_ate_sharing_combined_arms[, trenton_cols, drop = FALSE]
-saveRDS(res_trenton,
-        file=paste0(here::here(),"/results/combined_intervention_effects_results_combined_arms_ATE_sharing_trenton.RDS"))
-write.csv(res_trenton,
-          file=paste0(here::here(),"/results/combined_intervention_effects_results_combined_arms_ATE_sharing_trenton.csv"), row.names=FALSE)
-cat(sprintf("[Trenton export] %d rows, cols: %s\n", nrow(res_trenton), paste(trenton_cols, collapse=", ")))
-
-# arm-stratified
-res_ate_sharing_arm_strat <- build_ate_sharing(
-  res_arm_strat                          %>% mutate(modality = "Targeted milk components"),
-  res_untargeted_metabolomics_arm_strat  %>% mutate(modality = "Untargeted metabolomics"),
-  res_microbiome_arm_strat               %>% mutate(modality = "Microbiome"),
-  res_protien_arm_strat                  %>% mutate(modality = "Proteomics")
-)
-saveRDS(res_ate_sharing_arm_strat,
-        file=paste0(here::here(),"/results/combined_intervention_effects_results_stratified_arms_ATE_sharing.RDS"))
-write.csv(res_ate_sharing_arm_strat,
-          file=paste0(here::here(),"/results/combined_intervention_effects_results_stratified_arms_ATE_sharing.csv"), row.names=FALSE)
-
-## Trenton export: arm-stratified twin of the trimmed dataset above (same 10 cols).
-res_trenton_strat <- res_ate_sharing_arm_strat[, trenton_cols, drop = FALSE]
-saveRDS(res_trenton_strat,
-        file=paste0(here::here(),"/results/combined_intervention_effects_results_stratified_arms_ATE_sharing_trenton.RDS"))
-write.csv(res_trenton_strat,
-          file=paste0(here::here(),"/results/combined_intervention_effects_results_stratified_arms_ATE_sharing_trenton.csv"), row.names=FALSE)
-cat(sprintf("[Trenton export] arm-strat: %d rows, cols: %s\n", nrow(res_trenton_strat), paste(trenton_cols, collapse=", ")))
-
-cat(sprintf("[ATE sharing] combined-arms: %d rows, %d modalities (%s)\n",
-            nrow(res_ate_sharing_combined_arms),
-            length(unique(res_ate_sharing_combined_arms$modality)),
-            paste(unique(res_ate_sharing_combined_arms$modality), collapse=", ")))
-cat(sprintf("[ATE sharing] arm-strat:    %d rows, %d modalities (%s)\n",
-            nrow(res_ate_sharing_arm_strat),
-            length(unique(res_ate_sharing_arm_strat$modality)),
-            paste(unique(res_ate_sharing_arm_strat$modality), collapse=", ")))
-cat(sprintf("[ATE sharing] measure levels kept -> combined: %s | arm-strat: %s\n",
-            paste(unique(res_ate_sharing_combined_arms$measure), collapse="/"),
-            paste(unique(res_ate_sharing_arm_strat$measure), collapse="/")))
-
-res_untargeted_metabolomics_unscaled=NULL #need to add
-res_untargeted_metabolomics_unscaled_arm_strat=NULL #need to add
+# Native-unit (unscaled) estimates exist only for the targeted panels. The
+# untargeted, microbiome and proteomics slots are NULL, so bind_rows() keeps the
+# targeted rows alone; they are joined onto the scaled results below.
+res_untargeted_metabolomics_unscaled=NULL
+res_untargeted_metabolomics_unscaled_arm_strat=NULL
 res_microbiome_unscaled=NULL
 res_microbiome_unscaled_arm_strat=NULL
 res_unscaled_protien=NULL
@@ -305,26 +146,20 @@ res_combined_arm_strat_unscaled <- bind_rows(res_unscaled_arm_strat, res_untarge
          pval_unscaled=pval, 
          pval_adj_unscaled=pval_adj)
 
-
-
-
-#get relative improvements
+# Percent difference in the arm-stratified native-unit arm means:
+# (intervention mean - Control mean) / Control mean * 100.
 per_imp_df <- res_combined_arm_strat_unscaled %>% filter(measure!="ATE") %>% group_by(studytime, biomarker) %>%
   mutate(contrast=factor(contrast, levels=c("Control","Nico","BEP"))) %>% arrange(studytime, biomarker, contrast) %>%
   mutate(perc_imp=(last(est_unscaled)-first(est_unscaled))/first(est_unscaled) * 100) %>% 
   filter(contrast!="Control") %>%
   select(studytime, biomarker, contrast, perc_imp)
 
-
-
-
-
-#save subsets for paper
+# Combined-arms ATE subsets by outcome panel: primary_* feed Fig 2,
+# secondary_* feed Fig S3.
 head(res_combined_arm_combined)
 res_combined_arm_combined <- res_combined_arm_combined %>% filter(measure=="ATE")
 res_combined_arm_combined <- left_join(res_combined_arm_combined,res_combined_arm_combined_unscaled %>% filter(measure=="ATE"), by=c("studytime", "contrast","biomarker","measure"))
 res_combined_arm_combined <- left_join(res_combined_arm_combined,per_imp_df, by=c("studytime", "contrast","biomarker"))
-
 
 res = res_combined_arm_combined %>% select(study, visit, contrast, category , biomarker, label_f,  est, cil, ciu, pval, pval_adj, sig, sigFDR, est_unscaled, cil_unscaled, ciu_unscaled, pval_adj_unscaled, perc_imp )
 res$biomarker = str_to_lower(res$biomarker)
@@ -360,11 +195,7 @@ length(unique(res_metabolomics$biomarker))==length(all_milk_components$metabolom
 
 write.csv(res_metabolomics,file=paste0(here::here(),"/results/subsetted results/tertiary_targeted_metabolomics.csv"))
 
-
-
-#Arm strat
-
-#save subsets for paper
+# Same subsets from the arm-stratified results.
 head(res_combined_arm_strat)
 res_combined_arm_strat <- res_combined_arm_strat %>% filter(measure=="ATE")
 res_combined_arm_strat <- left_join(res_combined_arm_strat,res_combined_arm_strat_unscaled, by=c("studytime","contrast","biomarker"))
@@ -402,9 +233,3 @@ res_metabolomics = res %>% filter(biomarker %in% c(all_milk_components$metabolom
 length(unique(res_metabolomics$biomarker))==length(all_milk_components$metabolomics)
 
 write.csv(res_metabolomics,file=paste0(here::here(),"/results/subsetted results/tertiary_targeted_metabolomics_arm_strat.csv"))
-
-
-
-
-
-

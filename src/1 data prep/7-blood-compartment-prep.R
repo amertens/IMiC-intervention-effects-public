@@ -1,25 +1,27 @@
-
 # =============================================================================
-# 7-blood-compartment-prep.R
+# src/1 data prep/7-blood-compartment-prep.R
 #
-# Builds blood-side analysis datasets for the Science-revision cross-compartment
-# ATE, following Lishi's authoritative prep (metabolomProteomicsDataPath.Rmd).
-# Linkage validated on real data (idBiospe match 93-100% per compartment).
+# Builds the Misame blood-compartment analysis datasets for the cross-compartment
+# analyses, following the consortium's blood data preparation. Each compartment
+# file is parsed into sample ID, time point and feature values and linked to the
+# trial arm through the biospecimen crosswalk (idBiospe match 93-100% per
+# compartment). The code_bep_n label encodes the 2x2 factorial
+# ("pre:..; post:.."), parsed into bep_prenatal / bep_postpartum. These datasets
+# are the input of the blood scripts (src/2 analysis/12-* onward) behind Fig 6D
+# and Tables S8-S11.
 #
-# Compartments built:
+# Compartments:
 #   maternal_plasma     prenatalPlasmaImputedCappedScaled.csv     (samples x feat)
 #   vams_prenatal       prenatalVamsImputedCappedScaled.csv       (samples x feat, maternal)
 #   vams_postnatal      postnatalVamsImputedCappedScaled.csv      (feat x samples -> t(); mother+infant)
 #   proteomics_depleted ProteomicsDepletedMSStatsAndRFImputed.csv (samples x feat)  [primary]
 #   proteomics_naive    proteomicsNaiveMSStatsAndRFImputed.csv    (samples x feat)  [supplementary]
 #
-# Treatment crosswalk: parsed idBiospe -> metadata_for_sharing.dta (idbs). The
-# `code_bep_n` label encodes the full 2x2 factorial ("pre:..; post:.."), parsed
-# into bep_prenatal / bep_postpartum.
-#
-# Output:
-#   data/blood/merged_blood_datasets.RDS
-#   metadata/blood_component.Rdata   (blood_components)
+# Inputs:  data/additional datasets/{the five files above, metadata_for_sharing.dta}
+#          data/merged_analysis_datasets.RDS, data/clean_baseline_covariates.RDS (adjusted runs only)
+# Outputs: data/blood/merged_blood_datasets.RDS
+#          metadata/blood_component.Rdata (blood_components)
+# [needs restricted data]
 # =============================================================================
 
 if (!exists("BLOOD_ORCHESTRATED")) { rm(list = ls()); source(paste0(here::here(), "/src/0-config.R")) }
@@ -29,18 +31,19 @@ dir_add  <- paste0(here::here(), "/data/additional datasets/")
 meta_dta <- paste0(dir_add, "metadata_for_sharing.dta")
 
 # ----------------------------------------------------------------------------
-# CONFIG
+# Settings
 # ----------------------------------------------------------------------------
-# Feed the Imputed/Capped/Scaled prep files. run_bioTMLE(scale = TRUE) re-standardizes
-# within each per-visit analysis subset, so ATEs are in WITHIN-VISIT SD units, not global
-# SD (re-scaling a globally-scaled vector on a subset is NOT idempotent). This is fine for
-# direction-only cross-compartment comparisons; do not compare SD magnitudes across
-# datasets. scale=TRUE is kept to match the milk pipeline convention.
+# Inputs are the imputed/capped/scaled prep files. run_bioTMLE(scale = TRUE)
+# re-standardizes within each per-visit analysis subset, so ATEs are in
+# within-visit SD units, not global SD (re-scaling a globally scaled vector on a
+# subset changes it). This is fine for direction-only cross-compartment
+# comparisons; do not compare SD magnitudes across datasets. scale = TRUE matches
+# the milk pipeline.
 #
-# Adjustment: UNADJUSTED (Wvars = c("arm","dummy")) by default. Set BLOOD_ADJUST=TRUE
-# (the run_blood_full_adjusted.R orchestrator does this) to attach the milk-pipeline
-# Wvars via the milk-ID bridge: blood idBiospe == milk BMID number -> subjid (1:1,
-# verified) -> clean_baseline_covariates.RDS. (Override-aware so orchestrators preset it.)
+# Adjustment: unadjusted (Wvars = c("arm","dummy")) by default. Set BLOOD_ADJUST=TRUE
+# (src/run_blood_full_adjusted.R does this) to attach the milk-pipeline Wvars via
+# the milk-ID bridge: blood idBiospe == milk BMID number -> subjid (1:1, verified)
+# -> clean_baseline_covariates.RDS. An orchestrator can preset the flag.
 if (!exists("BLOOD_ADJUST")) BLOOD_ADJUST <- FALSE
 
 # Feature subset: NULL = ALL features (default; correct, though the ~38k-feature VAMS
@@ -48,9 +51,9 @@ if (!exists("BLOOD_ADJUST")) BLOOD_ADJUST <- FALSE
 # setup/test pass. Default is NULL so a standalone run never silently truncates features.
 if (!exists("SETUP_N_FEATURES")) SETUP_N_FEATURES <- NULL
 
-# In-utero exposure visits (class = prenatal BEP): enrollment, trimester 3, and BIRTH.
-# Infant blood at delivery (acco) reflects PRENATAL exposure, not postpartum BEP (which
-# has not started), so acco must key `class` on bep_prenatal, not bep_postpartum.
+# In-utero exposure visits (class = prenatal BEP): enrollment, trimester 3, and birth.
+# Infant blood at delivery (acco) reflects prenatal exposure, not postpartum BEP (which
+# has not started), so acco keys `class` on bep_prenatal, not bep_postpartum.
 PRENATAL_TOKENS <- c("incl", "tri3", "acco")
 
 # ----------------------------------------------------------------------------
@@ -102,11 +105,10 @@ if (BLOOD_ADJUST) {
 attach_covariates <- function(df) {
   df$dummy <- 1L                       # always present so unadjusted models still run
   if (!BLOOD_ADJUST) return(df)
-  # idBiospe -> subjid -> Wvars. NOTE: adjusted models are RESTRICTED to milk-linked dyads
+  # idBiospe -> subjid -> Wvars. Adjusted models are restricted to milk-linked dyads
   # (samples whose mother has a milk sample); samples without a milk/baseline match have no
-  # covariate link and are dropped here. This is a selected subset (milk availability is a
-  # post-randomization characteristic) -- log how many are dropped so the restriction is
-  # visible, and report it alongside the adjusted results.
+  # covariate link and are dropped here. Milk availability is a post-randomization
+  # characteristic, so log how many are dropped and report it with the adjusted results.
   out <- df %>%
     left_join(idbiospe_to_subjid, by = "idBiospe") %>%
     left_join(baseline_cov, by = "subjid")

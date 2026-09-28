@@ -1,23 +1,26 @@
-# run-primary-pathway-local.R -- web-independent Figure 3B (primary KEGG pathway-impact).
+# =============================================================================
+# run-primary-pathway-local.R
 #
-# Figure 3B plots pathway Impact (x) vs -log10(Raw p) (y) per study x timepoint.
-# It was pinned to Trenton's DOWNLOADED MetaboAnalyst pathway_results.csv exports
-# (results/metaboanalyst/primary_pathway_trenton/) because an earlier local run used
-# the SMPDB library (larger sets) which COMPRESSED the impact axis.
+# KEGG pathway analysis of the primary milk outcomes for Fig 3B and Table S2.
+# One non-directional cell per study x time point x contrast: the query is the
+# combined-arm primary metabolites with FDR < 0.05 (up- and down-regulated
+# together, build_cells_combined_sigfdr()), run through MetaboAnalystR's pathway
+# module with the KEGG (metpa) library, hypergeometric test and
+# relative-betweenness topology, no reference-metabolome filter
+# (R/run-pathway.R). Fig 3B plots pathway impact against -log10(raw P).
+# The KEGG library matches the web tool's; on the ELICIT 1-month cell this run
+# reproduced the saved web export (nicotinate and nicotinamide metabolism:
+# total 15, hits 5, raw P 3.5461e-11, impact 0.61974).
 #
-# This runner reproduces the submitted exports LOCALLY by running the SAME KEGG
-# library the web tool uses (SetKEGG.PathLib "metpa"; src/metaboanalyst/R/run-pathway.R
-# with pathlib="kegg"). Verified byte-identical to Trenton's export on the Elicit
-# 1-month cell: Nicotinate and nicotinamide metabolism Total=15, Hits=5,
-# Raw p=3.5461e-11, Impact=0.61974 -- so 3B no longer needs any web download.
+# Inputs : [needs restricted data] results/combined_intervention_effects_results_combined_arms.RDS
+#          src/metaboanalyst/reference/kegg_hsa_pathway_names.csv  (via R/run-pathway.R)
+# Outputs: results/metaboanalyst/primary_pathway_local/primary_pathway_all_cells.csv   (Fig 3B, Table S2)
+#          results/metaboanalyst/primary_pathway_local/primary_pathway_hits_all_cells.csv (compound -> pathway hits)
 #
-# Cells = Trenton's Fig 3B construction: one non-directional cell per study x
-# timepoint, query = combined-arm sigFDR==1 primary metabolites (pos + neg together),
-# via build_cells_combined_sigfdr() -- identical to run-primary-pathway-compare.R.
-#
-# Output: results/metaboanalyst/primary_pathway_local/primary_pathway_all_cells.csv
-#         (study, tp, pathway, total, expected, hits, impact, raw_p, fdr)
-# Run from repo root:  Rscript src/metaboanalyst/run-primary-pathway-local.R
+# MetaboAnalystR downloads its compound and KEGG libraries from metaboanalyst.ca
+# at run time.
+# Run from repo root: Rscript src/metaboanalyst/run-primary-pathway-local.R
+# =============================================================================
 suppressMessages({ library(dplyr); library(stringr); library(readr); library(MetaboAnalystR) })
 source("src/metaboanalyst/R/build-cells.R")
 source("src/metaboanalyst/R/run-pathway.R")

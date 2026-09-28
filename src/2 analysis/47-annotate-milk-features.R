@@ -1,46 +1,47 @@
 # =============================================================================
 # 47-annotate-milk-features.R
 #
-# Putative annotation of the FDR-significant intervention-effect features of the
-# UNTARGETED MILK metabolome (the features shown in the milk volcano). Mirrors
-# the BLOOD version (23-annotate-fdr-features.R): for each FDR-sig milk feature
-# it uses the best available source:
-#   1. CURATED compound-ID name  (the `ID` column of the per-study
-#      compound_ID CSVs, e.g. "(Iso)Butyrylcarnitine_[M+H]+"; blank when
-#      unknown) -> higher confidence.
-#   2. else Mummichog EmpiricalCompound candidates (m/z -> KEGG compounds via
-#      the human_mfn network, adduct-aware) from the DIRECTIONAL milk runs,
-#      matched by |mz - feature_mz| <= 0.003 -> PUTATIVE, often AMBIGUOUS
-#      (n_candidates = how many distinct compounds share that mass).
-#
-# Mummichog is a PATHWAY tool, not an identifier: per-feature candidates are
-# MSI level ~3 (mass-only), frequently multiple per m/z. Confident IDs still
-# require MS/MS. Unresolved features are left "- none -".
+# Putative names for the untargeted milk metabolite features with a BEP effect
+# (covariate-adjusted combined arms, all studies), in two foregrounds: nominal
+# P < 0.05, the enrichment query behind Fig. 6A and Table S5
+# (src/metaboanalyst/run-untargeted-msea.R), and FDR-significant, used by script 54
+# for supplement matching and cross-compartment linkage. Mirrors the blood version
+# (23-annotate-fdr-features.R). Best available source per feature:
+#   1. the reconciled `name_final` from
+#      data/untargeted_annotation/untargeted_to_annotate_manually_annotated.xlsx;
+#   2. otherwise the curated compound-ID name (`ID` column of the per-study
+#      compound_ID tables, e.g. "(Iso)Butyrylcarnitine_[M+H]+");
+#   3. otherwise Mummichog EmpiricalCompound candidates from the directional milk
+#      runs of script 18, matched within 0.003 m/z; putative and often ambiguous
+#      (n_candidates = number of distinct compounds sharing that mass).
+# Mummichog candidates are MSI level ~3 (mass only); confident identities need
+# tandem MS. Unresolved features are labelled "- none -". Reads existing Mummichog
+# output only; it does not run Mummichog.
 #
 # Inputs : results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS
-#              (milk untargeted combined-arms ATEs; biomarker = rLC_*_mtb_* label)
-#          data/additional datasets/MISAME3_metabolite_description_compound_ID_combined_20250731.csv   (Misame curated ID + MZ)
-#          data/additional datasets/CHILD_ELICIT_VITAL_metabolite_description_compound_ID_FINAL_20250730.csv (Elicit/Vital curated ID + MZ)
-#          results/mummichog_output_directional/Milk_{positive,negative}_{up,down}/tables/userInput_to_EmpiricalCompounds.tsv
-# Output : results/milk_fdr_sig_putative_annotation.csv  (one row per FDR-sig milk feature)
-# Note   : reads existing mummichog output only; does NOT run mummichog/conda.
+#          data/untargeted_annotation/untargeted_to_annotate_manually_annotated.xlsx
+#          data/additional datasets/MISAME3_metabolite_description_compound_ID_combined_20250731.csv
+#          data/additional datasets/CHILD_ELICIT_VITAL_metabolite_description_compound_ID_FINAL_20250730.csv
+#          results/mummichog_output_directional/<run>.Milk_{positive,negative}_{up,down}/tables/
+#            userInput_to_EmpiricalCompounds.tsv (script 18)
+# Outputs: results/milk_nominal_putative_annotation.csv  (nominal P < 0.05 foreground)
+#          results/milk_fdr_sig_putative_annotation.csv  (FDR-significant foreground)
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(data.table); library(readxl)})
 root <- paste0(here::here(), "/")
 mcgroot <- paste0(root, "results/mummichog_output_directional/")
 
-# --- AUTHORITATIVE feature annotation: Trenton's reconciled `name_final` ----------
-# data/untargeted_annotation/untargeted_to_annotate_manually_annotated.xlsx integrates
-# the identifier pipelines (MS2-verified, "global" library IDs, MetID, Sapient) into a
-# single reconciled `name_final` per feature -- this IS the annotation key the submitted
-# Fig 6A MSEA foreground was named with (Methods: "mapped to matched metabolite names
-# using the corresponding annotation keys"). It is a committed file from
-# instrument/software pipelines (NOT the MetaboAnalyst web tool), so it keeps 6A
-# web-independent while matching the submission's feature identities. Only ~506 of
-# 36,853 features carry a confident name_final (untargeted annotation is inherently
-# sparse); we take it as the PRIMARY identity, the per-study lab compound-ID `ID` as the
-# next tier, and local mummichog candidates only as a last-resort fallback.
+# --- primary feature annotation: the reconciled `name_final` ------------------------
+# untargeted_to_annotate_manually_annotated.xlsx combines the identifier pipelines
+# (MS2-verified, "global" library IDs, MetID, and the annotation provider, Sapient) into
+# one reconciled `name_final` per feature. It is the annotation key the Fig. 6A MSEA
+# foreground is named with (Methods: metabolites "mapped to matched metabolite names
+# using the corresponding annotation keys"), and it comes from instrument/software
+# pipelines, not the MetaboAnalyst web tool. Only about 506 of 36,853 features carry a
+# confident name_final (untargeted annotation is sparse), so the per-study compound-ID
+# `ID` is the next tier and local Mummichog candidates the last resort.
 name_final_lookup <- {
   nf <- as.data.table(readxl::read_excel(
     paste0(root, "data/untargeted_annotation/untargeted_to_annotate_manually_annotated.xlsx"),
@@ -93,7 +94,7 @@ for (md in c("positive", "negative")) for (dr in c("up", "down"))
 
 # --- build one annotation table: features with `pcol` < 0.05, named locally ------
 # pcol = "pval_adj" -> FDR-significant foreground; "pval" -> nominal P<0.05 foreground
-# (the ORA foreground the submitted Fig 6A method uses: "unadjusted P < 0.05").
+# (the Fig. 6A over-representation foreground: "unadjusted P < 0.05").
 build_annotation <- function(pcol, outfile, label) {
   ca <- ca_all[measure == "ATE" & !is.na(get(pcol)) & get(pcol) < 0.05 & !is.na(est)]
   ca[, feature := toupper(biomarker)]
@@ -110,10 +111,10 @@ build_annotation <- function(pcol, outfile, label) {
        cid_mis[.SD, .(curated_name, mz), on = "feature"], .SDcols = "feature"]
   fe[study != "Misame", c("curated_name", "mz") :=
        cid_cev[.SD, .(curated_name, mz), on = "feature"], .SDcols = "feature"]
-  # name_final (Trenton's reconciled MS2/global/MetID/Sapient identity) OVERRIDES the
-  # per-study lab ID where both exist: it is the submission's authoritative annotation
-  # key, and on the 33 features where the two disagree, name_final is the one the paper
-  # used. Features name_final does not cover keep the lab ID (then mummichog fallback).
+  # name_final (the reconciled MS2/global/MetID/Sapient identity) overrides the per-study
+  # lab ID where both exist: it is the paper's annotation key, and on the 33 features
+  # where the two disagree, name_final is the one the paper used. Features name_final
+  # does not cover keep the lab ID (then the Mummichog fallback).
   fe[name_final_lookup, name_final := i.name_final, on = "feature"]
   fe[!is.na(name_final), curated_name := name_final]
   fe[, name_final := NULL]
@@ -141,7 +142,7 @@ build_annotation <- function(pcol, outfile, label) {
   invisible(fe)
 }
 
-# FDR-significant foreground -> supplement matching / Fig 6D use (unchanged output).
+# FDR-significant foreground -> script 54 (supplement matching, Fig. 6D linkage).
 build_annotation("pval_adj", "results/milk_fdr_sig_putative_annotation.csv", "FDR-sig")
-# Nominal P<0.05 foreground -> the Fig 6A ORA query (matches the submitted method).
+# Nominal P < 0.05 foreground -> the Fig. 6A / Table S5 enrichment query.
 build_annotation("pval",     "results/milk_nominal_putative_annotation.csv", "nominal P<0.05")

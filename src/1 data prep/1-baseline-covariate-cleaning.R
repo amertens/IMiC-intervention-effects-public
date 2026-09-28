@@ -1,3 +1,22 @@
+# =============================================================================
+# src/1 data prep/1-baseline-covariate-cleaning.R
+#
+# Builds the adjustment covariates. From the harmonized IMiC files and the raw
+# trial baseline data it derives household wealth (asset-index PCA, or z-scored
+# income for CHILD), food security, improved water source and floor, and the
+# other baseline covariates; keeps one baseline record per participant; for the
+# three intervention trials adds missingness indicators and median-imputes
+# continuous covariates within study. It also writes the sample-level key
+# (BMID, numeric visit code, exclusive breastfeeding at collection) that links
+# milk samples to participants.
+#
+# Inputs:  data/imic_harmonized/{MISAME_3,VITAL_Lactation,ELICIT,CHILD}_IMiC_analysis.csv
+#          data/raw study data/{misame,elicit,vital}/*.sas7bdat
+# Outputs: data/raw_imic_risk_factors.RDS, data/clean_imic_risk_factors.RDS
+#          data/clean_baseline_covariates.{RDS,csv}, data/clean_timevar_covariates.RDS
+#          metadata/{misame,elicit}_raw_codebook.csv
+# [needs restricted data]
+# =============================================================================
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -17,7 +36,6 @@ colnames(misame) <- tolower(colnames(misame))
 colnames(vital) <- tolower(colnames(vital))
 colnames(elicit) <- tolower(colnames(elicit))
 colnames(child) <- tolower(colnames(child))
-
 
 #-------------------------------------------------------------------------------
 # Extract household wealth and food security from raw data
@@ -46,11 +64,9 @@ summary(misame_raw$gwg_rate)
 #merge with main data
 misame <- left_join(misame, misame_raw, by="subjido")
 
-
 #elicit
 elicit_codebook <- makeVlist(elicit_raw)
 write.csv(elicit_codebook, file=paste0(here::here(),"/metadata/elicit_raw_codebook.csv"))
-
 
 elicit_asset <- elicit_raw %>% 
   select(PID, CEF_HAVE_MATTRESS:CEF_AVG_MTHLY_INCOME) %>% 
@@ -59,7 +75,6 @@ elicit_raw=assetPCA(elicit_asset)
 
 #merge with main data
 elicit <- left_join(elicit, elicit_raw, by="subjido")
-
 
 #vital
 vital_codebook <- makeVlist(vital_raw)
@@ -80,13 +95,10 @@ table(vital_asset$nhh)
 table(vital_asset$nrooms)
 table(vital_asset$cookroom)
 
-ret=vital_asset
-reorder=T
 vital_raw=assetPCA(vital_asset, reorder=T)
 
 #merge with main data
 vital <- left_join(vital, vital_raw, by="subjido")
-
 
 #Z-score income as measure of wealth
 child$hhwealth <- as.numeric(scale(child$inctot))
@@ -123,16 +135,16 @@ table(elicit$visit, elicit$ageimpfl)
 elicit %>% filter(visit=="Enrolment Visit") %>% select(subjido, agedays, visit, mbmi)
 #elicit appears to be a birth visit (post-pregancy BMI)
 
-
 head(child)
 child <- child %>% arrange(subjido, agedays)
 table(child$visit, !is.na(child$mbmi))
 table(child$visit, child$ageimpfl)
 
-#NOTE! Dropping children here, make sure none are dropped, use later visits if necessary
+# Not every CHILD participant has a prenatal (R00) record, so the baseline
+# dataset below takes each CHILD participant's first record instead.
 child %>% filter(visit=="Prenatal R00") %>% select(subjido, agedays, visit, mbmi)
 
-#try just picking first measure:
+# First record per CHILD participant
 temp <- child %>% group_by(subjido) %>%
   arrange(agedays) %>% slice(1)
 table(temp$visit)
@@ -162,7 +174,6 @@ d <- bind_rows(misame %>% filter(visit=="Baseline / Enrolment"),
 d %>% group_by(studyid) %>% summarise(n=n_distinct(subjid), mean(agedays), min(agedays), max(agedays)) #check number of subjects per study
 
 saveRDS(d, file=paste0(here::here(),"/data/raw_imic_risk_factors.RDS"))
-
 
 #-------------------------------------------------------------------------------
 # clean covariates
@@ -201,31 +212,13 @@ clean_water_levels <- function(d, all_imp=F){
 d <- clean_water_levels(d)
 table(d$studyid, d$imp_water_src)
 
-
 d <- d %>% mutate(impfloor=case_when(floor %in% c("Cement","Linoleum (plastic)","Tiles","Tiles, parquet","Wood") ~ 1,
                                      floor %in% c("Clay","Natural/mud") ~ 0))
 d$impfloor[d$studyid=="CHILD"] <- 1
 
 table(d$studyid, d$impfloor)
 
-#------------------------------------------------------------------------------
-#
-
-#Child sex, month of data collection, exclusive breastfeeding, 
-#maternal age, maternal education, maternal BMI, parity, number of household members, 
-#income, household size, construction, and WASH conditions (roof and wall materials, 
-#cooking place, water source
-
-#trenton: Maternal age, body mass index, height, hemoglobin level, gestational age, 
-#mid-upper arm circumference and parity at inclusion
-
-# month of data collection, exclusive breastfeeding, 
-#maternal age, maternal education, maternal BMI, parity, number of household members, 
-#income, household size, construction, and WASH conditions (roof and wall materials, 
-#cooking place, water source
-
-
-
+# Candidate baseline covariates; Wvars in src/0-config.R is the adjustment subset.
 colnames(d)
 
 baseline_covars <- c("sex", "gagebrth", "gagecm", "brthyr","birthwt", "birthlen", "mage",  "parity","primparity" ,  
@@ -239,8 +232,6 @@ d <- d %>% select("studyid", "siteid", "subjid","subjido",  "arm", "armcd", !!(b
 #Misame: siteid (make factor)
 #Vital lactation: gagecm (method of gagebirth), mmuaccm as alternative to mbmi
 
-
-
 #-------------------------------------------------------------------------------
 # Save baseline data for risk factor analysis:
 #-------------------------------------------------------------------------------
@@ -250,8 +241,6 @@ table(is.na(d))
 
 #save all for risk factor analysis:
 saveRDS(d, file=paste0(here::here(),"/data/clean_imic_risk_factors.RDS"))
-
-
 
 #-------------------------------------------------------------------------------
 # Impute missingness for intervention effects analysis
@@ -271,7 +260,6 @@ d <- d %>% subset(., select = c("studyid", "subjid" ,"subjido" , "arm","armcd","
 head(d)
 for(i in 6:ncol(d)){
   cat(colnames(d)[i],"\n")
-  #print(table(d$studyid, is.na(d[,i])))
   print(prop.table(table(d$studyid, !is.na(d[,i])),1)*100)
   print(class((d[,i])))
 }
@@ -294,7 +282,8 @@ d <- d %>% group_by(studyid) %>%
          meducyrs=case_when(is.na(meducyrs)~median(meducyrs, na.rm=T),meducyrs==meducyrs~meducyrs)) %>%
   ungroup()
 
-#impute  ELICIT and VITAL-Lactation hh food security with 0 (will get dropped in the analysis)
+# ELICIT and VITAL-Lactation have no food-security data: set it to 0, a constant
+# that the near-zero-variance screen in run_bioTMLE() drops.
 table(d$studyid[is.na(d$hhfoodsecure)])
 d$hhfoodsecure[is.na(d$hhfoodsecure)] <- 0
 
@@ -318,12 +307,8 @@ dim(d)
 d %>% distinct(studyid, subjid, subjido) %>% dim()
 d %>% distinct() %>% dim()
 
-
 saveRDS(d, file=paste0(here::here(),"/data/clean_baseline_covariates.RDS"))
 write.csv(d, file=paste0(here::here(),"/data/clean_baseline_covariates.csv"))
-
-
-
 
 #-------------------------------------------------------------------------------
 # Make a merge key dataset to merge milk with baseline
@@ -343,7 +328,7 @@ table(misame$visit)
 table(elicit$visit)
 table(vital$visit)
 
-#recode visit to match the numeric visit from Nolans lab datasets
+# Recode visit to the numeric visit codes used in the milk laboratory datasets
 #misame: 1, 2, 3
 misame <- misame %>% mutate(visit = case_when( 
   visit == "BM Collection 14-21D" ~ 1,
@@ -364,11 +349,5 @@ d_timevar <- bind_rows(misame, elicit, vital)
 d_timevar$ebf <- 1*(d_timevar$dur_ebf >= d_timevar$agedays)
 
 d_timevar <- d_timevar %>% select("studyid", "subjid", "subjido", "bmid", "visit", "agedays", "ebf") %>% distinct()
-# need to add milk collection date
-
 
 saveRDS(d_timevar, file=paste0(here::here(),"/data/clean_timevar_covariates.RDS"))
-
-
-
-

@@ -1,50 +1,29 @@
 # =============================================================================
 # src/1 data prep/4-pca-reductions.R
 #
-# Reads:  data/clean milk data/ELICIT/E_HMO.csv
-#         data/clean milk data/ELICIT/E_ICP.csv
-#         data/clean milk data/ELICIT/E_macronutrient.csv
-#         data/clean milk data/ELICIT/E_metabolite_b.csv
-#         data/clean milk data/ELICIT/E_MSDprotein.csv
-#         data/clean milk data/ELICIT/E_nutrient.csv
-#         data/clean milk data/merged_analysis_datasets_microbiome.RDS
-#         data/clean milk data/MISAME/M_HMO.csv
-#         data/clean milk data/MISAME/M_ICP.csv
-#         data/clean milk data/MISAME/M_macronutrient.csv
-#         data/clean milk data/MISAME/M_metabolite_b.csv
-#         data/clean milk data/MISAME/M_MSDprotein.csv
-#         data/clean milk data/MISAME/M_nutrient.csv
-#         data/clean milk data/VITAL/V_HMO.csv
-#         data/clean milk data/VITAL/V_ICP.csv
-#         data/clean milk data/VITAL/V_macronutrient.csv
-#         data/clean milk data/VITAL/V_metabolite_b.csv
-#         data/clean milk data/VITAL/V_MSDprotein.csv
-#         data/clean milk data/VITAL/V_nutrient.csv
-#         data/clean_baseline_covariates.RDS
-#         data/clean_timevar_covariates.RDS
-#         data/elicit_untarget_metabolomics_pca.RDS
-#         data/merged_analysis_datasets.RDS
-#         data/milk/Allen_FSV_ELICIT.csv
-#         data/milk/Allen_FSV_MISAME.csv
-#         data/milk/Allen_FSV_VITAL.csv
-#         data/misame_untarget_metabolomics_pca.RDS
-#         data/vital_untarget_metabolomics_pca.RDS
-#         metadata/milk_component.Rdata
-# Writes: data/pca_analysis_datasets.RDS
+# Reduces each milk panel to one score per sample for Fig 1B: the first
+# principal component of the panel's features (missing values median-imputed,
+# near-zero-variance features dropped, features scaled), computed separately by
+# study and visit and signed to correlate positively with the mean of the scaled
+# features. Panels: macronutrients, micronutrients (ICP + fat-soluble vitamins),
+# B-vitamins, HMOs, bioactive proteins, targeted metabolomics, microbiome (CLR
+# ASVs) and untargeted metabolomics. Merges the scores with the covariates for
+# src/2 analysis/3_adjusted_analysis_pca.R. Run it after
+# 3_adjusted_analysis_microbiome.R, which writes the microbiome merge read here.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  data/clean milk data/{ELICIT,VITAL,MISAME}/*_{macronutrient,nutrient,ICP,HMO,MSDprotein,metabolite_b}.csv
+#          data/milk/Allen_FSV_{ELICIT,VITAL,MISAME}.csv
+#          data/clean milk data/merged_analysis_datasets_microbiome.RDS
+#          data/{elicit,vital,misame}_untarget_metabolomics_pca.RDS (see the untargeted block below)
+#          data/clean_baseline_covariates.RDS, data/clean_timevar_covariates.RDS
+#          data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: data/pca_analysis_datasets.RDS
+# [needs restricted data]
 # =============================================================================
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
 library(caret)
-
 
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
@@ -55,7 +34,6 @@ names(all_milk_components)
 
 baseline <- readRDS(file=paste0(here::here(),"/data/clean_baseline_covariates.RDS"))
 d_bmid <- readRDS(file=paste0(here::here(),"/data/clean_timevar_covariates.RDS")) #%>% distinct(bmid, visit)
-
 
 #-------------------------------------------------------------------------------
 # primary outcomes:  Macro- and micro-nutrients
@@ -75,12 +53,11 @@ elicit_micro <- read.csv(paste0(here::here(),"/data/clean milk data/ELICIT/E_ICP
 vital_micro <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/V_ICP.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 misame_micro <- read.csv(paste0(here::here(),"/data/clean milk data/MISAME/M_ICP.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 
-
-#merge in Vit-A data added later
+# Fat-soluble vitamins (vitamin A, tocopherols), delivered as separate files;
+# merged into the micronutrient panel below.
 elicit_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_ELICIT.csv")) %>% rename(bmid=X) 
 vital_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_VITAL.csv")) %>% rename(bmid=X) 
 misame_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_MISAME.csv")) %>% rename(bmid=X) 
-
 
 misame_fsv$bmid[!(misame_fsv$bmid %in% misame_micro$bmid)]
 misame_micro$bmid[!(misame_micro$bmid %in% misame_fsv$bmid)]
@@ -93,19 +70,16 @@ elicit_fsv <- left_join(elicit_fsv, d_bmid %>% select(c("bmid", "visit","subjid"
 vital_fsv <- left_join(vital_fsv, d_bmid %>% select(c("bmid", "visit","subjid")), by=c("bmid"))
 misame_fsv <- left_join(misame_fsv, d_bmid %>% select(c("bmid", "visit","subjid")), by=c("bmid"))
 
-
-#temp drop misame_fsv with missing BMIDs from other datasets
+# Drop two Misame FSV samples whose BMIDs match no sample in the other Misame
+# milk panels (checked above; pn12-413 is a separate entry from pn12_413).
 misame_fsv <- misame_fsv %>% filter(!(bmid %in% c("pn34_428", "pn12-413")))
-
 
 elicit_micro <- full_join(elicit_micro, elicit_fsv, by=c("bmid", "visit","subjid")) 
 vital_micro <- full_join(vital_micro, vital_fsv, by=c("bmid", "visit","subjid"))
 misame_micro <- full_join(misame_micro, misame_fsv, by=c("bmid", "visit","subjid"))
 
-#add visit to one missing
+# One Vital sample (A20010-LW) has no visit after the join; set it to visit 56.
 vital_micro$visit[vital_micro$bmid=="A20010-LW"] <- 56
-
-
 
 misame_micro[is.na(misame_micro$visit),]
 
@@ -138,14 +112,12 @@ elicit_metabolomics <- read.csv(paste0(here::here(),"/data/clean milk data/ELICI
 vital_metabolomics <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/V_metabolite_b.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid, ca_bio=CA, trp_bio=Trp) %>% rename_with(tolower)
 misame_metabolomics <- read.csv(paste0(here::here(),"/data/clean milk data/MISAME/M_metabolite_b.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid, ca_bio=CA, trp_bio=Trp) %>% rename_with(tolower)
 
-
-
-
 #-------------------------------------------------------------------------------
 # run PCAs
 #-------------------------------------------------------------------------------
 
-
+# First PC of one panel within one study/visit, signed so it correlates
+# positively with the row mean of the scaled features.
 run_pca <- function(df, modality, PC_num=1) {
   cat(df$visit[1],"\n")
   
@@ -169,12 +141,6 @@ run_pca <- function(df, modality, PC_num=1) {
   colnames(df_pca)[5] <- paste0(modality, "_pca")
   return(df_pca)
 }
-
-
-#trying to get 2nd components
-#elicit_macro2<-elicit_macro %>% group_by(visit) %>% do(run_pca(., "macro", PC_num=2))
-
-
 
 elicit_macro<-elicit_macro %>% group_by(visit) %>% do(run_pca(., "macro"))
 vital_macro<-vital_macro %>% group_by(visit) %>% do(run_pca(., "macro"))
@@ -204,16 +170,10 @@ misame_metabolomics<-misame_metabolomics %>% group_by(visit) %>% do(run_pca(., "
 # exploratory outcomes: microbiome and untargeted metabolomics
 #-------------------------------------------------------------------------------
 
-
-# load(here("data/clean milk data/untargeted_metabolites.RData"))
-# dim(d_metabolomics)
-# Yvars 
-
 d_microbiome <- readRDS(paste0(here::here(),"/data/clean milk data/merged_analysis_datasets_microbiome.RDS"))
 head(d_microbiome)
 
 colnames(d_microbiome)
-
 
 d_microbiome <- d_microbiome %>% subset(., select=-c(subjido, sex,                 mage,               
                                                      meducyrs,            mhtcm,               parity,              nperson,            
@@ -230,8 +190,17 @@ elicit_microbiome<-elicit_microbiome %>% group_by(visit) %>% do(run_pca(., "micr
 vital_microbiome<-vital_microbiome %>% group_by(visit) %>% do(run_pca(., "microbiome"))
 misame_microbiome<-misame_microbiome %>% group_by(visit) %>% do(run_pca(., "microbiome"))
 
-
-
+# Untargeted-metabolomics PCs. The commented block below produces
+# data/{elicit,vital,misame}_untarget_metabolomics_pca.RDS (first PC of the
+# untargeted features by study and visit), which are read right after it. It is
+# kept commented out because it needs the full untargeted dataset loaded
+# (d_metabolomics and Yvars from data/clean milk data/untargeted_metabolites.RData,
+# written by src/2 analysis/3_adjusted_analysis_untargeted_metabolites.R) and is
+# slow. To regenerate the three files, uncomment and run it once with that
+# dataset loaded.
+# load(here("data/clean milk data/untargeted_metabolites.RData"))
+# dim(d_metabolomics)
+# Yvars 
 # d_metabolomics <- d_metabolomics %>% subset(., select=-c(subjido, sex,                 mage,               
 #                                                          meducyrs,            mhtcm,               parity,              nperson,            
 #                                                          nrooms,              imp_water_src,       impfloor,            cookplac,           
@@ -251,11 +220,10 @@ misame_microbiome<-misame_microbiome %>% group_by(visit) %>% do(run_pca(., "micr
 # colnames(misame_untarget_metabolomics)[5] <- "untarget_metabolomics_pca"
 # 
 # 
-# #save these datasets for computation time
+# #save these datasets so later runs can skip this step
 # saveRDS(elicit_untarget_metabolomics, file=paste0(here::here(),"/data/elicit_untarget_metabolomics_pca.RDS"))
 # saveRDS(vital_untarget_metabolomics, file=paste0(here::here(),"/data/vital_untarget_metabolomics_pca.RDS"))
 # saveRDS(misame_untarget_metabolomics, file=paste0(here::here(),"/data/misame_untarget_metabolomics_pca.RDS"))
-
 
 elicit_untarget_metabolomics = readRDS(file=paste0(here::here(),"/data/elicit_untarget_metabolomics_pca.RDS")) %>% droplevels()
 vital_untarget_metabolomics = readRDS(file=paste0(here::here(),"/data/vital_untarget_metabolomics_pca.RDS")) %>% droplevels()
@@ -265,12 +233,9 @@ misame_untarget_metabolomics <- misame_untarget_metabolomics %>% mutate(subjid=a
                                                                         arm=factor(arm, levels = c( "Control","IFA/BEP", "BEP/IFA",  "BEP/BEP" )),
                                                                         arm=as.numeric(arm), visit=as.numeric(visit))
 
-
-
 #-------------------------------------------------------------------------------
 # Merge datasets
 #-------------------------------------------------------------------------------
-
 
 #merge misame
 misame <- left_join(misame_macro, misame_micro, by=c("bmid","subjid","arm","visit"))
@@ -281,14 +246,12 @@ misame <- left_join(misame, misame_metabolomics, by=c("bmid","subjid","arm","vis
 misame <- left_join(misame, misame_microbiome %>% mutate(subjid=as.numeric(subjid), arm=as.numeric(arm), visit=as.numeric(visit)), by=c("bmid","subjid","arm","visit"))
 misame <- left_join(misame, misame_untarget_metabolomics, by=c("bmid","subjid","arm","visit"))
 
-
 unique(misame$subjid)
 unique(misame_untarget_metabolomics$subjid)
 unique(misame$arm)
 unique(misame_untarget_metabolomics$arm)
 class(misame$arm)
 class(misame_untarget_metabolomics$arm)
-
 
 head(misame)
 
@@ -302,7 +265,6 @@ elicit <- left_join(elicit, elicit_microbiome %>% mutate(subjid=as.numeric(subji
 elicit <- left_join(elicit, elicit_untarget_metabolomics %>% mutate(subjid=as.numeric(subjid), arm=as.numeric(arm), visit=as.numeric(visit)), by=c("bmid","subjid","arm","visit"))
 head(elicit)
 
-
 #merge vital
 vital <- left_join(vital_macro, vital_micro, by=c("bmid","subjid","arm","visit"))
 vital <- left_join(vital, vital_bvit, by=c("bmid","subjid","arm","visit"))
@@ -311,8 +273,6 @@ vital <- left_join(vital, vital_protein, by=c("bmid","subjid","arm","visit"))
 vital <- left_join(vital, vital_metabolomics, by=c("bmid","subjid","arm","visit"))
 vital <- left_join(vital, vital_microbiome %>% mutate(subjid=as.numeric(subjid), arm=as.numeric(arm), visit=as.numeric(visit)), by=c("bmid","subjid","arm","visit"))
 vital <- left_join(vital, vital_untarget_metabolomics %>% mutate(subjid=as.numeric(subjid), arm=as.numeric(arm), visit=as.numeric(visit)), by=c("bmid","subjid","arm","visit"))
-
-
 
 #-------------------------------------------------------------------------------
 # Combine and save datasets and names
@@ -354,9 +314,7 @@ dim(d_bmid)
 dim(baseline)
 d_bmid <- left_join(d_bmid, baseline, by = c("studyid","subjid","subjido"))
 
-
-#save bmids not in the milk data
-#d_bmid <- d_bmid %>% mutate(subjid=as.character(subjid), visit=as.character(visit), armcd=as.character(armcd))
+# Harmonize key types before joining with the milk scores
 d_bmid <- d_bmid %>% mutate(subjid=as.numeric(subjid), armcd=as.numeric(armcd), visit=as.numeric(visit))
 
 #create independent ID variable

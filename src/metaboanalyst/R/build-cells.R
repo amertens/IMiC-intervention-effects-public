@@ -1,13 +1,18 @@
-# build-cells.R, turn an intervention-effects tibble into analysis "cells".
+# =============================================================================
+# build-cells.R
 #
-# A "cell" is one unit of enrichment analysis: a filtered list of query
-# compounds plus the reference metabolome (background) for its outcome group.
-# We split each study-time x contrast combination into two directional cells so
-# that up- and down-regulated compounds are enriched separately:
-#   - "down": compounds whose intervention effect estimate is negative (est < 0)
-#   - "up":   compounds whose intervention effect estimate is positive (est > 0)
-# Downstream (run-outcome-group.R) feeds each cell's query + reference into
-# MetaboAnalystR.
+# Helpers that turn a targeted intervention-effects table into analysis "cells".
+# A cell is one unit of enrichment analysis: a list of query compounds plus the
+# outcome group's measured compounds (reference_names). build_cells() makes two
+# directional cells per study-time x contrast (P < 0.05; "down" = est < 0,
+# "up" = est > 0) and is used by run-tertiary-msea-dual.R (Fig 5B, Table S3).
+# build_cells_combined_sigfdr() makes one non-directional cell of FDR-significant
+# compounds and is used by run-primary-pathway-local.R (Fig 3B, Table S2).
+# Labels are mapped to MetaboAnalyst names with apply_label_map() (label-map.R).
+#
+# Inputs : none (takes a data frame)
+# Outputs: none (returns a list of cells)
+# =============================================================================
 suppressMessages({ library(dplyr); library(stringr) })
 source("src/metaboanalyst/R/label-map.R")
 
@@ -54,14 +59,13 @@ build_query_names <- function(labelled_dat, studytime_i, contrast_i,
     pull(metaboanalyst_label)
 }
 
-# Pathway-analysis cells (Trenton's Fig 3B "Primary Outcomes (Pathway Analysis)"
-# construction): ONE non-directional cell per study-time x contrast, query =
-# FDR-significant features (sigFDR == 1) with positive AND negative estimates
-# analysed together (excluding "Total *" roll-ups). This deliberately differs
-# from the directional pval<0.05 ORA cells below: pathway impact is a topology-
-# based, direction-agnostic analysis ("which pathways are perturbed"), not an
-# up/down over-representation test. Matches the query in
-# "Primary Outcomes (Pathway Analysis).Rmd" (filter on studytime + sigFDR == 1).
+# Pathway-analysis cells (the Fig 3B construction): one non-directional cell per
+# study-time x contrast, query = FDR-significant features (sigFDR == 1) with
+# positive and negative estimates analysed together (excluding "Total *"
+# roll-ups). This differs on purpose from the directional pval < 0.05 ORA cells
+# below: pathway impact is a topology-based, direction-agnostic analysis ("which
+# pathways are perturbed"), not an up/down over-representation test. Matches the
+# query in the original R Markdown pathway analysis (studytime + sigFDR == 1).
 build_cells_combined_sigfdr <- function(dat, outcome_group, measure = "ATE") {
   target_group   <- outcome_group
   target_measure <- measure
@@ -69,7 +73,7 @@ build_cells_combined_sigfdr <- function(dat, outcome_group, measure = "ATE") {
   labelled_dat <- dat %>%
     filter(outcome_group == target_group, measure == target_measure) %>%
     # Exclude "Total *" roll-up features (composite quantities, not individual
-    # metabolites) on the RAW label BEFORE the synonym map runs. Doing it here is
+    # metabolites) on the raw label before the synonym map runs. Doing it here is
     # required because the map renames "total vitamin B1 (expressed as thiamin)"
     # -> "Thiamine", which would otherwise slip past the later
     # `!str_starts(metaboanalyst_label, "Total")` guard (and that guard is also
@@ -118,7 +122,7 @@ build_cells <- function(dat, outcome_group, measure = "ATE", pval_cutoff = 0.05)
   labelled_dat <- dat %>%
     filter(outcome_group == target_group, measure == target_measure) %>%
     # Exclude "Total *" roll-up features (composite quantities, not individual
-    # metabolites) on the RAW label BEFORE the synonym map runs. Doing it here is
+    # metabolites) on the raw label before the synonym map runs. Doing it here is
     # required because the map renames "total vitamin B1 (expressed as thiamin)"
     # -> "Thiamine", which would otherwise slip past the later
     # `!str_starts(metaboanalyst_label, "Total")` guard (and that guard is also

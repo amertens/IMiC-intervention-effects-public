@@ -1,32 +1,26 @@
 # =============================================================================
 # src/3 visualizations/5-SL_VIM_plots.R
 #
-# Reads:  results/SL_individual_lab_vim_res.RDS
-# Writes: figure-data/SL_vim_plot_data.RDS
-#         figures/SLvim_lab_plot.png
-#         figures/SLvim_lab_plot_elicit.jpeg
-#         figures/SLvim_lab_plot_misame.jpeg
-#         figures/SLvim_lab_plot_neg_control.jpeg
-#         figures/SLvim_lab_plot_vital.jpeg
-#         results/SLvim_lab_plots.RDS
+# Formats the arm-classification AUC table from
+# src/2 analysis/3b-SL_vim_individual_lab.R for plotting (visit and arm labels,
+# predictor-group names, a blank Mumta-LW facet) and saves it as
+# figure-data/SL_vim_plot_data.RDS, the input of
+# figure-scripts/manuscript_figures/fig1-ml-vim-classifier.R (Fig 1A). It also
+# draws working versions of the plot, per study and for the Elicit
+# infant-azithromycin negative control; these are not printed exhibits.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  results/SL_individual_lab_vim_res.RDS
+# Outputs: figure-data/SL_vim_plot_data.RDS
+#          results/SLvim_lab_plots.RDS
+#          figures/SLvim_lab_plot.png
+#          figures/SLvim_lab_plot_{elicit,vital,misame,neg_control}.jpeg
 # =============================================================================
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
 library(cowplot)
 
-
-#vim <- readRDS(paste0(here::here(),"/results/SL_vim_res.RDS"))
 vim_lab <- readRDS(paste0(here::here(),"/results/SL_individual_lab_vim_res.RDS"))
-
 
 vim_lab <- vim_lab %>% mutate(visit=case_when(
   studyid=="ELICIT" & visit=="1"   ~ "1 month",
@@ -53,7 +47,6 @@ unique(vim_lab$visit_f)
 
 #add blank row to vital for blank facet
 d <- data.frame(studyid="VITAL-Lactation",arm="blank",group="All",cvAUC=NA,ci.lb=0.5,ci.ub=0.5,visit="1.5 months",visit_f="1-2 months")
-#d2 <- data.frame(studyid="ELICIT",arm="blank",group="All",cvAUC=NA,ci.lb=0.5,ci.ub=0.5,visit="1.5 months",visit_f="1-2 months")
 d2<-NULL
 vim_lab <- bind_rows(vim_lab,d,d2)
 
@@ -85,19 +78,14 @@ vim_lab <- vim_lab %>% mutate(group=str_to_title(group),
                               group=factor(group, levels=rev(c("All","Macronutrients","Micronutrients","B-vitamins","HMOs","Targeted proteins","Targeted metabolomics"))))
 unique(vim_lab$group)
 
-vim_lab_neg_control <- vim_lab %>% filter((studyid =="ELICIT" & arm == "Az."))
-#vim_lab <- vim_lab %>% filter(!(studyid =="ELICIT" & arm == "Az."))
-
 #save plot data
 saveRDS(vim_lab, file=paste0(here::here(),"/figure-data/SL_vim_plot_data.RDS"))
 unique(vim_lab$group)
 
 vim_lab_neg_control <- vim_lab %>% filter((studyid =="ELICIT" & arm == "Az."))
-# Keep the ELICIT infant-azithromycin arm in the plot as an EXPLICIT NEGATIVE
-# CONTROL (azithromycin was given to infants only after milk collection, so it
-# cannot affect milk -> the classifier should be at chance, cvAUC ~ 0.5).
-# vim_lab <- vim_lab %>% filter(!(studyid =="ELICIT" & arm == "Az."))
-
+# The ELICIT infant-azithromycin arm stays in the plot data as a negative
+# control: azithromycin was given to infants only after milk collection, so it
+# cannot affect milk and the classifier should be at chance (cvAUC ~ 0.5).
 
 #------------------------------------------------------------------------------
 # By group of predictors
@@ -111,7 +99,6 @@ SLvim_lab_plot3 <- plot_SLvim(vim_lab %>% filter(studyid=="Misame-III"), legend_
 SLvim_lab_plot <- plot_grid(SLvim_lab_plot1, SLvim_lab_plot2, SLvim_lab_plot3, ncol=1, rel_heights=c(1,1,1.2))
 SLvim_lab_plot
 
-
 saveRDS(list(SLvim_lab_plot_elicit=SLvim_lab_plot1,
              SLvim_lab_plot_vital=SLvim_lab_plot2,
              SLvim_lab_plot_misame=SLvim_lab_plot3), 
@@ -119,48 +106,13 @@ saveRDS(list(SLvim_lab_plot_elicit=SLvim_lab_plot1,
   
 ggsave(SLvim_lab_plot, file=paste0(here::here(),"/figures/SLvim_lab_plot.png"), width=9, height=7)
 
-
-# #-------------------------------------------------------------------------------
-# # Presentation plots
-# #-------------------------------------------------------------------------------
-# 
-# p_elicit <- plot_SLvim(vim_lab %>% filter(studyid=="ELICIT", arm!="blank"), legend_pos="bottom")
-# p_vital <- plot_SLvim(vim_lab %>% filter(studyid=="Mumta-LW", arm!="blank"), legend_pos="bottom")
-# p_misame <- plot_SLvim(vim_lab %>% filter(studyid=="MISAME-3", arm!="blank"), legend_pos="bottom")
-# 
-# 
-# 
-# SLvim_lab_plot_neg_control <- ggplot(vim_lab_neg_control, aes(x=group, y=cvAUC, group=visit_f, color=visit_f)) +
-#   geom_point(position = position_dodge(width = 0.5)) +
-#   geom_linerange(aes(ymin=ci.lb, ymax=ci.ub), position = position_dodge(width = 0.5)) +
-#   geom_hline(yintercept = 0.5, linetype="dashed") +
-#   coord_flip() +
-#   facet_grid(studyid~arm_f) +
-#   scale_color_manual(values=tableau10[-1]) +
-#   #theme_ki() +
-#   labs(color = "Collection time") +
-#   theme(strip.background = element_blank(),
-#         axis.text = element_text(size = 6),
-#         legend.position="bottom")  +
-#   xlab("Group of predictors added") + ylab("CV-AUC") # + 
-#   #ggtitle("Predicting Azithromycin arm\nfrom breastmilk samples in Elicit")
-# 
-# 
-# saveRDS(SLvim_lab_plot_neg_control, file=paste0(here::here(),"/results/SLvim_lab_plot_neg_control.RDS"))
-# 
-# ggsave(p_elicit, file=paste0(here::here(),"/figures/SLvim_lab_plot_elicit.jpeg"), width=6, height=4)
-# ggsave(p_vital, file=paste0(here::here(),"/figures/SLvim_lab_plot_vital.jpeg"), width=6, height=4)
-# ggsave(p_misame, file=paste0(here::here(),"/figures/SLvim_lab_plot_misame.jpeg"), width=6, height=4)
-# ggsave(SLvim_lab_plot_neg_control, file=paste0(here::here(),"/figures/SLvim_lab_plot_neg_control.jpeg"), width=5, height=3)
 #-------------------------------------------------------------------------------
-# Presentation plots
+# Per-study and negative-control plots (working figures, not printed exhibits)
 #-------------------------------------------------------------------------------
 
 p_elicit <- plot_SLvim(vim_lab %>% filter(studyid=="ELICIT", arm!="blank"), legend_pos="bottom")
 p_vital <- plot_SLvim(vim_lab %>% filter(studyid=="Mumta-LW", arm!="blank"), legend_pos="bottom")
 p_misame <- plot_SLvim(vim_lab %>% filter(studyid=="Misame-III", arm!="blank"), legend_pos="bottom")
-
-
 
 SLvim_lab_plot_neg_control <- ggplot(vim_lab_neg_control, aes(x=group, y=cvAUC, group=visit_f, color=visit_f)) +
   geom_point(position = position_dodge(width = 0.5)) +
@@ -181,4 +133,3 @@ ggsave(p_elicit, file=paste0(here::here(),"/figures/SLvim_lab_plot_elicit.jpeg")
 ggsave(p_vital, file=paste0(here::here(),"/figures/SLvim_lab_plot_vital.jpeg"), width=6, height=4)
 ggsave(p_misame, file=paste0(here::here(),"/figures/SLvim_lab_plot_misame.jpeg"), width=6, height=4)
 ggsave(SLvim_lab_plot_neg_control, file=paste0(here::here(),"/figures/SLvim_lab_plot_neg_control.jpeg"), width=5, height=3)
-

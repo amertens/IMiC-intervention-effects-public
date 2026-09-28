@@ -1,8 +1,19 @@
-# run-ora.R, thin wrapper around MetaboAnalystR's msetora (over-representation)
-# engine. Mirrors run-pathway.R's structure. Reproduces the sequence Task 5
-# verified against Trenton's golden 7-compound cell, including the required
-# session patch for CalculateHyperScore()'s off-public-web reporting-side-effect
-# crash (see patch_msetora_export_bug() below).
+# =============================================================================
+# run-ora.R
+#
+# Helper: run_ora() wraps MetaboAnalystR's over-representation module (msetora)
+# for one query list: name matching (compound or lipid database), an optional
+# reference metabolome as the background (metabolome filter on), then the
+# hypergeometric test against a metabolite-set library (default SMPDB pathways).
+# It includes the session patch for a MetaboAnalystR 4.3.0 crash in
+# CalculateHyperScore() off the public web (patch_msetora_export_bug() below).
+# Sourced by run-tertiary-msea-dual.R (Fig 5B, Table S3) and
+# run-untargeted-msea.R (Fig 6A, Table S5).
+#
+# Inputs : none (takes character vectors)
+# Outputs: none (returns an mSet); MetaboAnalystR downloads its libraries from
+#          metaboanalyst.ca and they are cached per R session
+# =============================================================================
 
 # ---------------------------------------------------------------------------
 # Known off-public-web bug in CalculateHyperScore() (msetora path only): it
@@ -11,16 +22,17 @@
 # public web (instead of falling back to a global mSetObj), so the very next
 # line in each helper (`mSetObj$analSet$ora.mat`) throws "$ operator is
 # invalid for atomic vectors". This happens unconditionally, even in the
-# plain filter-OFF/no-reference case. Both helpers are reporting/plotting
-# side effects only (a JSON membership dump and a PNG heatmap) that run AFTER
-# ora.mat is already computed and stored -- no-op'ing them is numerically
-# harmless (empirically verified in Task 5).
+# plain filter-off/no-reference case. Both helpers are reporting/plotting
+# side effects only (a JSON membership dump and a PNG heatmap) that run after
+# ora.mat is already computed and stored, so no-op'ing them does not change
+# the numbers (ora.mat is identical with and without the patch).
 #
 # AddErrMsg() also reads an uninitialized `current.msg` global off the public
-# web. We do NOT seed it: seeding lets the too-few-metabolites error path
-# proceed into C code that SEGFAULTS the process (same failure fixed in
-# run_pathway). Instead we un-seed current.msg before CalculateHyperScore so the
-# error path raises a catchable R error, which we convert to a clean skip reason.
+# web. It is not seeded before scoring: a seeded value lets the
+# too-few-metabolites error path proceed into C code that segfaults the process
+# (same failure handled in run_pathway). Removing current.msg before
+# CalculateHyperScore makes that path raise a catchable R error, which is
+# converted to a clean skip reason.
 # ---------------------------------------------------------------------------
 
 # Replace the two crashing reporting helpers with harmless no-ops in the
@@ -58,6 +70,19 @@ run_ora <- function(cmpd.vec,
   workdir <- tempfile("ora_"); dir.create(workdir)
   original_wd <- setwd(workdir); on.exit(setwd(original_wd), add = TRUE)
 
+  # MetaboAnalystR downloads its libraries from metaboanalyst.ca into the working
+  # directory and reuses them only if they are already there, so a fresh workdir per
+  # call would re-download ~6 MB on every call, plus the 12.5 MB master_compound_db.qs
+  # whenever a reference metabolome is set (slow, and a failed download drops the
+  # cell). Seed each workdir from a per-session cache and save new downloads back
+  # once the run succeeds. Whitelisted names only: current.msetlib.qs is per-run state.
+  lib_files <- c("compound_db.qs", "syn_nms.qs", "lipid_compound_db.qs", "lipid_syn_nms.qs",
+                 "master_compound_db.qs", paste0(mset_lib, ".qs"))
+  lib_cache <- file.path(tempdir(), "metaboanalyst_libs", "ora")
+  dir.create(lib_cache, recursive = TRUE, showWarnings = FALSE)
+  cached <- intersect(list.files(lib_cache), lib_files)
+  file.copy(file.path(lib_cache, cached), workdir, copy.date = TRUE)
+
   # dpi arg is mandatory in MetaboAnalystR 4.3.0 (self-referential default bug).
   mSet <- InitDataObjects("conc", "msetora", FALSE, dpi)
   mSet <- Setup.MapData(mSet, cmpd.vec)
@@ -91,6 +116,9 @@ run_ora <- function(cmpd.vec,
   if (!is.list(mSet)) {
     stop("ORA: too few mappable metabolites for enrichment", call. = FALSE)
   }
+
+  new_libs <- setdiff(intersect(list.files(workdir), lib_files), cached)
+  file.copy(file.path(workdir, new_libs), lib_cache, copy.date = TRUE)
 
   # Expose the dir where CalculateHyperScore wrote msea_ora_result.csv (name-keyed).
   mSet$imic_workdir <- workdir

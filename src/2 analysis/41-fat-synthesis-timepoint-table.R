@@ -1,21 +1,20 @@
 # =============================================================================
 # 41-fat-synthesis-timepoint-table.R
 #
-# Action item (2026-06-30 IMiC meeting): "add first and third timepoint columns to
-# the fat-synthesis analysis." The cross-compartment work was matched at the second
-# milk timepoint (1-2 mo, when all sample types were taken), and Andrew flagged the
-# risk of over-interpreting a single-timepoint fat-synthesis result (possible milk-
-# volume dilution at 1-2 mo). This builds the robustness table: for each lipid /
-# fat-synthesis milk pathway, the signed direction at ALL THREE milk timepoints
-# (14-21 d, 1-2 mo, 3-4 mo) side by side, so the reader can see whether the
-# second-timepoint direction holds at the first and third.
+# Tabulates the signed direction of each milk lipid / fat-synthesis Mummichog
+# pathway at all three MISAME-III milk visits (14-21 d, 1-2 mo, 3-4 mo) side by side.
+# The cross-compartment comparison uses the 1-2 mo milk visit (when all sample types
+# were collected), so this checks that a direction seen there also holds at the
+# first and third visits rather than reflecting one timepoint (for example, milk
+# volume dilution at 1-2 mo). It backs the Discussion statement that de novo
+# fatty-acid biosynthesis was decreased in milk. The direction measure is the
+# per-visit binomial sign test from script 33 (Mummichog enrichment alone is
+# direction-agnostic); this script only pivots that long table to one row per
+# pathway with timepoint columns.
 #
-# Source = the per-visit signed sign-test already produced by
-# 33-signed-pathway-direction-milk.R (the defensible DIRECTIONAL measure -- mummichog
-# enrichment alone is direction-agnostic, see response-to-reviewers 2.4). This script
-# just pivots that long table to one row per pathway with timepoint columns.
-#
-# Out: results/fat_synthesis_timepoint_table.csv
+# Input  : results/signed_pathway_direction_milk.csv (script 33)
+# Output : results/fat_synthesis_timepoint_table.csv
+# [needs restricted data] (upstream inputs of script 33)
 # =============================================================================
 suppressMessages({library(data.table)})
 root <- paste0(here::here(), "/")
@@ -24,8 +23,8 @@ inf <- paste0(root, "results/signed_pathway_direction_milk.csv")
 if (!file.exists(inf)) stop("Run 33-signed-pathway-direction-milk.R first to create: ", inf)
 d <- fread(inf)
 
-# lipid / fat-synthesis pathways (de novo synthesis is the headline; the related
-# lipid pathways are included so the table shows whether the direction is coherent).
+# lipid / fat-synthesis pathways (de novo synthesis is the pathway of interest; the
+# related lipid pathways show whether the direction is coherent).
 # Keyword OR-match on the pathway name; require >=4 members so a direction is meaningful.
 LIPID <- paste0("fatty acid|arachidon|leukotriene|carnitine|linole|omega|",
                 "glycerophospho|unsaturated|prostaglandin|sphingolipid|lipid")
@@ -47,7 +46,7 @@ fwrite(wide, paste0(root, "results/fat_synthesis_timepoint_table.csv"))
 # console: compact direction matrix + the de novo FA biosynthesis detail
 cat("=== Fat-synthesis / lipid milk pathways: signed direction across timepoints ===\n")
 print(dcast(fs, pathway ~ visit, value.var = "direction"))
-cat("\nDe novo fatty acid biosynthesis (the headline fat-synthesis pathway):\n")
+cat("\nDe novo fatty acid biosynthesis:\n")
 print(fs[grepl("de novo fatty acid", pathway, ignore.case = TRUE),
          .(visit, n_members, frac_up, mean_signed, direction, sign_test_p)][order(visit)])
 cat("\nRead: a pathway 'down' at 1-2 mo that is also 'down' at 14-21 d and 3-4 mo is\n",

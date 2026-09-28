@@ -1,21 +1,18 @@
-# figS4-triglyceride-means.R
 # =============================================================================
-# Figure S5: treatment-specific means (95% CI) of MISAME-III milk triglycerides,
-# unadjusted and adjusted for total fat content.
+# figS4-triglyceride-means.R
 #
-# IN-REPO RECONSTRUCTION of a panel that the supplement previously embedded as an
-# extracted image (Manuscript/qmd/extracted/media_supplement/media/image5.png),
-# which had no generator under version control.
-#
-# Ported verbatim from figure-scripts/archive/fig_s4_triglyc_forest-plot_combined.R
-# (debug/dput lines dropped, export switched to save_figure_3way). Layout is a
-# 4 x 6 grid: intervention arm (rows) x visit-and-adjustment (columns), panels a-x.
+# Builds Fig S4: treatment-specific means (Z-scored, 95% CI) of the MISAME-III milk
+# triglycerides, unadjusted and adjusted for total fat, coloured by the significance
+# of the arm's effect. Layout is a 4 x 6 grid: arm (rows) x visit and adjustment
+# (columns), panels a-x. Triglycerides recoded to binary under sparse detection are
+# excluded.
 #
 # Inputs:  results/adjusted_intervention_effects_results_clean.RDS       (unadjusted)
 #          results/fat_adjusted_metabolomics_intervention_effects_results.RDS
-#          data/merged_analysis_datasets.RDS  (to drop sparse binary-recoded TGs)
-# Output:  figures/figureS4_triglyceride_means.{pdf,eps,png}
-#
+#          data/merged_analysis_datasets.RDS  (participant-level; to find the sparse TGs)
+#          metadata/milk_component.Rdata
+# Outputs: figures/figureS4_triglyceride_means.{pdf,eps,png}
+# [needs restricted data] merged_analysis_datasets.RDS is participant-level data.
 # Run from repo root: Rscript figure-scripts/manuscript_figures/figS4-triglyceride-means.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))
@@ -39,7 +36,7 @@ sigcat_of <- function(ate) {
 }
 
 ARM_LEVELS <- c("Control", "BEP/IFA", "IFA/BEP", "BEP/BEP")
-ARM_LABELS <- c("Control", "Prenatal BEP", "Postnatal BEP", "Pre+Postnatal BEP")
+ARM_LABELS <- c("Control", "Prenatal BEP", "Postnatal BEP", "Pre + Postnatal BEP")   # spaced "+" as in Fig 1
 
 # ---- unadjusted --------------------------------------------------------------
 res_full <- readRDS(paste0(here::here(), "/results/adjusted_intervention_effects_results_clean.RDS")) %>%
@@ -86,9 +83,8 @@ res <- bind_rows(res_misame %>% mutate(adjustment = "Unadjusted"),
                  res_fat    %>% mutate(adjustment = "Fat-adjusted"))
 
 # "MISAME-III" dropped from the strip text (every facet is MISAME-III, per the
-# caption) and "Unadjusted"/"Fat-adjusted" shortened, so the now-larger/bold
-# theme_imic() strip text (10pt floor, up from the previous unfloored 8pt) still
-# fits this dense 6-column grid without clipping (harmonized 2026-08-26).
+# caption) and "Unadjusted"/"Fat-adjusted" shortened, so theme_imic()'s strip text
+# (10 pt floor) fits this dense 6-column grid without clipping.
 res$facet <- gsub("Unadjusted", "Unadj.",
                   gsub("Fat-adjusted", "Fat-adj.",
                        gsub("Misame\\s*", "", paste0(res$studytime, "\n", res$adjustment))))
@@ -111,17 +107,19 @@ p <- ggplot(res, aes(x = ordered_biomarker, y = est,
             color = "black", alpha = 1,
             x = res$ordered_biomarker[1], y = 0.9,
             hjust = -1, size = 4, fontface = "bold") +
-  scale_alpha_manual(values = c(0.3, 0.5, 0.8)) +
-  scale_color_manual(values = c("grey50", tableau10)) +
-  # theme_imic (Helvetica, Reviewer-2 font floors) harmonized 2026-08-26 (was bare
-  # theme_bw() with axis.text=6, BELOW the 7pt floor, and a blanked/undersized strip).
-  # panel.border/grid overrides kept: this is a dense 4x6 grid with an unlabelled
-  # x-axis (too many biomarkers to show text), so the default theme_imic() grid would
-  # just add clutter.
+  # key worded as in Fig 2 (levels: not significant, before FDR, after FDR)
+  scale_alpha_manual(values = c(0.3, 0.5, 0.8), name = "Statistical Significance",
+                     labels = c("Not significant", "Nominally significant", "FDR-significant")) +
+  scale_color_manual(values = c("grey50", tableau10), name = "Statistical Significance",
+                     labels = c("Not significant", "Nominally significant", "FDR-significant")) +
+  # theme_imic() (Helvetica, font-size floors). No gridlines: this is a dense 4x6 grid
+  # with an unlabelled x-axis (too many biomarkers to show text), so gridlines would
+  # only add clutter.
   theme_imic(base_size = 8) +
   theme(axis.text.x      = element_blank(),
+        axis.ticks.x     = element_blank(),   # 235 unlabelled ticks drew a solid black bar
+        strip.text       = element_text(face = "plain"),   # unbolded titles, as in the main figures
         legend.position  = "bottom",
-        legend.title     = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.border     = element_rect(colour = "black", fill = NA, linewidth = 0.3)) +

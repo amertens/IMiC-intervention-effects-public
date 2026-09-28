@@ -1,7 +1,20 @@
+# =============================================================================
+# src/2 analysis/2_adjusted_analysis_unscaled.R
+#
+# Arm-stratified version of 2_adjusted_analysis.R fit on outcomes in native
+# units (scale = FALSE) rather than standardized. clean_results.R reads the
+# output: it supplies the arm-stratified native-unit estimates and the arm means
+# used for the percent-difference column (perc_imp) in results/subsetted results/.
+#
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/adjusted_{primary,secondary}_intervention_effects_results_unscaled.RDS
+#          results/adjusted_intervention_effects_results_unscaled.RDS
+# [needs restricted data]
+# =============================================================================
 
-
-#https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
-#https://joss.theoj.org/papers/10.21105/joss.00295
+# Method references: biotmle vignette
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
+# and https://joss.theoj.org/papers/10.21105/joss.00295
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -10,14 +23,11 @@ load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 table(d$study, d$arm)
 
-
 #Check for missingness in adjustment covariates.
 missing_W <- d %>% select(all_of(Wvars)) %>% summarise_all(funs(sum(is.na(.))))
 missing_W      
 
 SL.lib  = c("SL.mean","SL.glm","SL.glmnet","SL.xgboost")
-
-
 
 res_primary <- d %>% group_by(study, visit) %>%
   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T, g_lib = SL.lib, Q_lib = SL.lib,
@@ -37,7 +47,8 @@ names(res_secondary$res) <- paste0(res_secondary$study, "-", res_secondary$visit
 saveRDS(res_secondary, file=paste0(here::here(),"/results/adjusted_secondary_intervention_effects_results_unscaled.RDS"))
 res_secondary <- readRDS(paste0(here::here(),"/results/adjusted_secondary_intervention_effects_results_unscaled.RDS"))
 
-#temp simplify library
+# Tertiary (targeted metabolomics) native-unit fits use a GLM-only library;
+# these estimates are not reported in a printed exhibit.
 SL.lib  = c("SL.glm")
 res_tertiary <- d %>% group_by(study, visit) %>%
   do(res=try(run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T,  g_lib = SL.lib, Q_lib = SL.lib,
@@ -51,5 +62,3 @@ saveRDS(list(res_primary=res_primary,
              res_secondary=res_secondary,
              res_tertiary=res_tertiary),
         file=paste0(here::here(),"/results/adjusted_intervention_effects_results_unscaled.RDS"))
-
-

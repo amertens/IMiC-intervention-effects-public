@@ -1,16 +1,19 @@
-#-------------------------------------------------------------------------------
-# Build Table S1 (formerly Table S7): native-unit means (± SD) + ATEs for primary + secondary outcomes
-# per intervention arm × visit × trial.
+# =============================================================================
+# src/3 visualizations/build_table_s1.R
 #
-# Output: results/tables/table_s1_primary_secondary_native_units.csv (long)
-#         results/tables/table_s1_primary_secondary_native_units_wide.csv (wide)
+# Builds Table S1: native-unit arm means and adjusted intervention effects (ATE,
+# 95% CI, p-values) for the primary and secondary outcomes by trial, visit and
+# pooled arm, alongside per-arm N, mean, SD, median and IQR computed from the
+# merged dataset. The estimates come from
+# src/2 analysis/2_adjusted_analysis_combined_arms_unscaled.R via clean_results.R;
+# they give absolute concentrations for the standardized effects in Fig 2.
 #
-# Reviewer 2 §2.4 requested absolute concentrations alongside the z-scored ATEs in
-# Fig. 3. This script consumes the pre-existing per-arm-and-visit unscaled effect
-# estimates and joins them with N + SD computed from the raw merged dataset.
-#
-# Owner: Andrew. Effort: ~10 min once the source files are confirmed.
-#-------------------------------------------------------------------------------
+# Inputs:  results/adjusted_combined_arms_intervention_effects_unscaled_results_clean.RDS
+#          data/merged_analysis_datasets.RDS
+# Outputs: results/tables/table_s1_primary_secondary_native_units.csv (long)
+#          results/tables/table_s1_primary_secondary_native_units_wide.csv (wide)
+# [needs restricted data]
+# =============================================================================
 
 suppressPackageStartupMessages({
   library(dplyr)
@@ -45,22 +48,17 @@ secondary_cats <- c(
 )
 keep_cats <- c(primary_cats, secondary_cats)
 
-# Vitamin A and the tocopherols come through `unscaled` with category/label == NA
-# (a biomarker-name-casing miss against the upstream category lookup, same failure
-# mode as the known "vitamin.a" join gotcha), which silently dropped them from every
-# prior version of this table even though they are primary micronutrient outcomes
-# reported in the main text. Patch category/label for these three by name before
-# filtering rather than dropping them.
-# Fgf.21/Iga come through as category "Other individual HMO" (an upstream placeholder-
-# category recode), contradicting the manuscript's own Methods text, which names both as
-# example "selected bioactive proteins" alongside secretory IgA, calprotectin, leptin,
-# insulin. Fsh/Lh/Diversity/Evenness come through tagged "Bioactive" even though FSH/LH
-# are never described as an outcome anywhere in the manuscript and Diversity/Evenness are
-# the microbiome alpha-diversity indices the manuscript explicitly calls "exploratory," not
-# secondary. Re-categorize all six to match the manuscript text (see
-# functions/data_cleaning_functions.R for the same fix at the source; patched again here
-# because this RDS was generated before that fix and a full pipeline rebuild is out of
-# scope for this table alone).
+# Set categories and labels by biomarker name before filtering, matching the
+# outcome definitions in the manuscript Methods:
+#   - vitamin A and the tocopherols can arrive with category/label NA (a
+#     biomarker-name casing mismatch in the category lookup); they are primary
+#     micronutrient outcomes;
+#   - Fgf.21 and Iga are bioactive proteins, not HMOs;
+#   - Fsh and Lh are not outcomes (category NA drops them);
+#   - Diversity and Evenness are the exploratory microbiome alpha-diversity
+#     indices, not secondary outcomes.
+# clean_biomarker_labels() in functions/data_cleaning_functions.R applies the
+# Fgf.21/Iga and Fsh/Lh/Diversity/Evenness rules at the source as well.
 unscaled <- unscaled %>%
   mutate(
     category = case_when(
@@ -205,7 +203,7 @@ raw_desc_df <- bind_rows(raw_descriptives)
 cat("Biomarkers matched to raw data columns: ", length(raw_descriptives),
     " / ", length(biomarker_codes), "\n", sep="")
 
-#-- 6. Build the long-form Table S7 -----------------------------------------
+#-- 6. Build the long-form Table S1 -----------------------------------------
 # Join means (per-arm) with raw descriptives (N, SD, median, IQR)
 means_with_n <- means %>%
   left_join(raw_desc_df, by = c("study", "visit" = "visit_label", "biomarker", "arm" = "arm_grouped"))
@@ -217,7 +215,7 @@ ates_n <- ates %>%
   left_join(raw_desc_df %>% select(study, visit_label, biomarker, arm_grouped),
             by = c("study", "visit" = "visit_label", "biomarker", "arm" = "arm_grouped"))
 
-#-- 7. Build the wide-form Table S7 (one row per biomarker × study × visit) -
+#-- 7. Build the wide-form Table S1 (one row per biomarker × study × visit) -
 wide <- means_with_n %>%
   select(outcome_class, category, label, biomarker, study, visit, arm,
          N, raw_mean, raw_sd, raw_median, raw_q25, raw_q75) %>%

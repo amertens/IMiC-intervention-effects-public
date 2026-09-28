@@ -1,20 +1,19 @@
 # =============================================================================
 # src/1 data prep/6-milq-adequecy.R
 #
-# Reads:  data/merged_analysis_datasets.RDS
-#         data/MILQ standards/milq_age_specific_cutoffs_p05_p10_p90.csv
-#         metadata/milk_component.Rdata
-# Writes: data/milk_component_adequacy_MILQ.RDS
-#         data/milq_age_specific_cutoffs_clean.RDS
+# Compares milk nutrient concentrations with the MILQ age-specific reference
+# values. Renames the MILQ nutrients to IMiC component names, converts IMiC
+# values to the MILQ units, assigns each sample a MILQ age band, and flags
+# values below the reference 10th (def10) and 5th (def5) percentiles for each
+# nutrient. The cleaned cutoffs are used by Fig 4; the adequacy dataset is the
+# input of src/2 analysis/milq-deficiency-reduction-analysis.R (Fig S2).
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  data/MILQ standards/milq_age_specific_cutoffs_p05_p10_p90.csv
+#          data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: data/milq_age_specific_cutoffs_clean.RDS (shipped)
+#          data/milk_component_adequacy_MILQ.RDS
+# [needs restricted data]
 # =============================================================================
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -30,14 +29,12 @@ knitr::kable(milq %>% filter(age_band=="3-4 m") %>% select(-age_band))
 dfull <- readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 head(dfull)
 
-
 unique(milq$nutrient)
 colnames(dfull)
 all_milk_components$macro
 all_milk_components$micro
 all_milk_components$bvit
-#Find in IMiC data:
-# "25(OH)D3"            "Vitamin D (ARA)"    
+# MILQ nutrients with no IMiC counterpart: "25(OH)D3", "Vitamin D (ARA)"
 
 #rename to match imic component names
 milq <- milq %>% mutate(
@@ -74,23 +71,16 @@ milq[milq$nutrient_f=="Protein",]
 
 saveRDS(milq, file=paste0(here::here(),"/data/milq_age_specific_cutoffs_clean.RDS"))
 
-
-
-
 imic_milq_nutrients <- c("na","k","mg","p","ca","cu","fe","zn","se","a.tocopherol","g.tocopherol","vitamin.a",
                          "b1","b2","b3","pa","b6","bio","b12","choline",
                          "protein","fat","carbohydrate","kcal.l")
 
 colnames(dfull)
 
-
-
 unique(milq$nutrient)
-# Normalise vitamin A casing: the merged data column is `vitamin.A` (capital A) but
-# imic_milq_nutrients + the MILQ rename (nutrient=="Vitamin A (retinol)" -> "vitamin.a")
-# use lowercase. Without this, all_of("vitamin.a") errors and the pipeline can't run;
-# and a naive fix that switched the select to `vitamin.A` would silently drop vitamin A
-# at the `by="nutrient"` join (MILQ side is lowercase). Rename once so BOTH match.
+# Vitamin A may be named `vitamin.A` in the merged data, while imic_milq_nutrients
+# and the renamed MILQ table use `vitamin.a`; rename so both the select below and
+# the join by nutrient match. No-op if the column is already lowercase.
 dfull <- dfull %>% rename_with(~ "vitamin.a", any_of("vitamin.A"))
 d <- dfull %>% select(study,studyid, arm, visit, sex, agedays, !!(Wvars), all_of(imic_milq_nutrients))
 head(d)
@@ -100,7 +90,7 @@ summary(d$fat)
 milq[milq$nutrient=="protein",]
 summary(d$protein)
 
-#convert units of variables
+# Convert IMiC values to the MILQ reference units
 d <- d %>%
   mutate(
     b12 = b12 * 1355 / 1e6,   # pmol/L  → µg/L
@@ -109,15 +99,16 @@ d <- d %>%
     fe  = fe / 1000,   # µg/L → mg/L
     pa  = pa / 1000,   # µg/L → mg/L
     zn  = zn / 1000,   # µg/L → mg/L
-    protein = protein * 10,
-    fat = fat * 10,
-    carbohydrate = carbohydrate * 10
+    protein = protein * 10,          # g/dL → g/L
+    fat = fat * 10,                  # g/dL → g/L
+    carbohydrate = carbohydrate * 10 # g/dL → g/L
   )
 
+# Check the conversions: share of values outside plausible human-milk ranges
+# (inspection only)
 flag_out_of_range <- function(x, lo, hi) {
   ifelse(x < lo | x > hi, TRUE, FALSE)
 }
-
 
 d_milk <- d %>%
   mutate(
@@ -143,9 +134,9 @@ summary(d$pa)
 summary(d$b3)
 table(d$b3[d$b3>10])
 
-#check reasonable ranges after conversion to check correct conversion
-
-#combine arms
+# Pool trial arms by the nutritional supplement received during lactation:
+# Misame BEP/BEP and IFA/BEP -> BEP, BEP/IFA (prenatal BEP only) -> Control;
+# Vital BEP arms -> BEP; Elicit Nico+Az. -> Nico, Az. (azithromycin only) -> Control.
 table(d$arm)
 d <- d %>% mutate(
   arm = case_when(
@@ -175,9 +166,7 @@ d <- d %>% mutate(age_band=case_when(
 
 head(d)
 
-
-hm_component="fat"
-
+# One nutrient's values joined to its MILQ cutoffs, with below-P10 and below-P05 flags
 milq_def_calc <- function(d, hm_component="na"){
   df <- d %>% select(study, studyid, arm, visit, sex, agedays, age_band,  !!(Wvars), !!(hm_component)) 
   colnames(df)[length(colnames(df))] <- "var" 
@@ -190,8 +179,6 @@ milq_def_calc <- function(d, hm_component="na"){
   df$def5 <- ifelse(df$var < df$P05, 1, 0)
   return(df)
 }
-
-
 
 df = NULL
 for(i in imic_milq_nutrients){

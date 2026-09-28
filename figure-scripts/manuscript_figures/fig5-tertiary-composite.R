@@ -1,34 +1,25 @@
-# fig5-tertiary-composite.R
 # =============================================================================
-# Tertiary targeted-lipidome figure (manuscript Fig 5), rebuilt from the
-# reproducible results/ + results/metaboanalyst/ outputs.
+# fig5-tertiary-composite.R
 #
-# Mirrors the Figure 3 scripts (src/3 visualizations/figure4-*.R) but for the
-# TERTIARY outcome group (targeted Biocrates lipids: triglycerides, ceramides,
-# diglycerides, phosphatidylcholines, acylcarnitines, ...). It is deliberately
-# SELF-CONTAINED: the volcano-panel machinery and the MSEA-panel logic are
-# copied here (not sourced) so this script never edits the Fig 3 originals.
+# Builds Fig 5 (tertiary outcomes, the targeted Biocrates metabolites and lipids).
+# Panel A: volcano grid of the combined-arm intervention effects, one panel per
+# study x visit; FDR-significant features are coloured and shaped by chemical
+# category, the top 5 are labelled, and an inset bar chart shows the per-category
+# share of features tested (light) and FDR-significant (dark). Panel B: MSEA
+# signed enrichment-ratio volcano, drawn here by render_msea_panelB(). Panel C:
+# triglyceride fatty-acid composition, the PNG written by fig5C-triglyceride.R.
+# Layout: A on top, B and C side by side underneath with one shared study legend.
 #
-# Fig 5 has THREE panels (see the placeholder figures/figure5.png for layout):
-#   A) Volcano grid of tertiary lipids, coloured by lipid CATEGORY, with the
-#      per-category inset bars and top-feature labels. Combined-arm MAIN
-#      (one contrast per study x visit) + arm-stratified SUPPLEMENT.
-#   B) Tertiary MSEA: signed enrichment-ratio volcano
-#      (results/metaboanalyst/tertiary_msea/tertiary_msea_{combined,stratified}.csv).
-#   C) Triglyceride -> fatty-acid composition. That analysis
-#      (fig5C-triglyceride.R) is blocked on an external
-#      Biocrates structure file, so Panel C here embeds the existing placeholder
-#      (figures/final-figure-4-c.png) until figures/figure5_panelC_tg_composition.png
-#      is produced.
-#
-# Composite layout: A on top, (B, C) side by side underneath -- matching the
-# A-over-(B,C) arrangement in the figure5.png placeholder.
-#
-# Outputs:
-#   figures/figure5_panelB_msea.png        (tertiary MSEA, standalone)
-#   figures/figure5_combined_arms.png      (MAIN: combined-arm A + B + C)
-#   figures/figure5_stratified_supplement.png (SUPPLEMENT: stratified A + B + C)
-#
+# Inputs:  results/combined_intervention_effects_results_{combined,stratified}_arms.RDS
+#            (src/2 analysis/clean_results.R; the stratified file is used only for the
+#            shared category palette and x-range, so the panels match the submitted figure)
+#          results/metaboanalyst/tertiary_msea/tertiary_msea_dual.csv
+#            (src/metaboanalyst/run-tertiary-msea-dual.R; also Table S3)
+#          figures/figure5_panelC_tg_composition_nolegend.png (fig5C-triglyceride.R)
+# Outputs: figures/figure5_panelB_msea.png, figures/figure5.{png,pdf,eps}
+# [needs an on-request file] the combined-results RDS files are feature-level result
+# files that are not shipped (size). Panel C also needs the Biocrates structure file
+# (see fig5C-triglyceride.R).
 # Run from the repo root:
 #   Rscript "figure-scripts/manuscript_figures/fig5-tertiary-composite.R"
 # =============================================================================
@@ -38,12 +29,9 @@ suppressMessages({
   library(ggrepel); library(cowplot); library(magick)
 })
 
-# A4 page minus 0.5in margins (same geometry as the Fig 3 composite).
+# A4 page minus 0.5 in margins.
 PAGE_W <- 8.27 - 2 * 0.5   # 7.27 in
 PAGE_H <- 11.69 - 2 * 0.5  # 10.69 in
-
-tableau10 <- c("#1F77B4", "#FF7F0E", "#2CA02C", "#D62728",
-               "#9467BD", "#8C564B", "#E377C2", "#7F7F7F", "#BCBD22", "#17BECF")
 
 # Assigned once, after the data / category set is known; read by the panel,
 # inset and legend builders below.
@@ -53,17 +41,14 @@ final_color_palette <- NULL
 # range so every panel shares one scale (breaks fixed at -1/0/1).
 VOLCANO_XLIM <- NULL
 
-# render_msea_panelB.R (Panel B) is sourced HERE, BEFORE this file's local
-# plot_imic_volcano_panel definition below. render_msea_panelB.R pulls in
-# 0_figure-functions.R (for theme_imic), which also carries a stale
-# plot_imic_volcano_panel; sourcing it first lets our local theme_imic version win.
+# render_msea_panelB.R (Panel B) also pulls in 0_figure-functions.R (theme_imic(),
+# get_bh_cutoff(), imic_logp_title) and study_colors.R.
 source("figure-scripts/manuscript_figures/render_msea_panelB.R")
 
 # ===========================================================================
-# PANEL A -- volcano machinery (copied from figure4-primary-volcano.R, then
-# adapted for the tertiary lipidome: labels use the `biomarker` short code
-# rather than `label_f`, and the x-scale is widened to the tertiary effect
-# range). Behaviour otherwise preserved.
+# PANEL A -- volcano panels, as in Fig 3A but for the tertiary features: labels
+# use the `biomarker` code rather than `label_f`, and the x-scale is widened to
+# the tertiary effect range.
 # ===========================================================================
 
 png_to_ggdraw <- function(path) ggdraw() + draw_image(image_read(path))
@@ -76,19 +61,11 @@ short_label <- function(x) {
   ifelse(nchar(x) > 22, paste0(substr(x, 1, 21), "…"), x)
 }
 
-# BH critical raw-p: the largest raw p whose BH q is still <= alpha.
-get_bh_cutoff <- function(df, p_col = "pval", q_col = "qval", alpha = 0.05,
-                          return = c("log10", "raw", "both")) {
-  return <- match.arg(return)
-  if (!all(c(p_col, q_col) %in% names(df)))
-    stop("Specified p_col / q_col not found in the data frame.")
-  is_sig <- df[[q_col]] <= alpha & !is.na(df[[q_col]]) & !is.na(df[[p_col]])
-  if (!any(is_sig)) { warning("No q-values <= alpha; returning NA."); p_crit <- NA_real_ }
-  else               p_crit <- max(df[[p_col]][is_sig])
-  switch(return,
-         log10 = -log10(p_crit),
-         raw   =  p_crit,
-         both  =  list(raw = p_crit, log10 = -log10(p_crit)))
+# Readable names for the Biocrates column codes the panel labels: "Tg.18.3_32.1." ->
+# "TG 18:3_32:1", "Dg.18.3_18.3." -> "DG 18:3_18:3", "Hipacid" -> "Hippuric acid".
+pretty_feature <- function(x) {
+  x <- sub("^(Tg|Dg)[.](\\d+)[.](\\d+)_(\\d+)[.](\\d+)[.]$", "\\U\\1\\E \\2:\\3_\\4:\\5", x, perl = TRUE)
+  dplyr::recode(x, "Hipacid" = "Hippuric acid")
 }
 
 # Small stacked-bar inset: per chemical category, total features (faint) vs
@@ -112,7 +89,9 @@ make_inset_with_labels <- function(df_sum, df_long2) {
 
 # One volcano panel (scaled ATE vs -log10 p) for a single study/visit/contrast,
 # with the category inset and repel-labelled top FDR-significant features.
-plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n = 20) {
+plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n = 20,
+                                    title_size = 8) {
+  # BH critical raw p (0_figure-functions.R): the largest raw p whose q is <= 0.05
   q_cut <- get_bh_cutoff(res, p_col = "pval", q_col = "pval_adj",
                          alpha = 0.05, return = "raw")
 
@@ -128,8 +107,8 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
       color_var  = ifelse(sig_status == "Significant after FDR",
                           as.character(category), sig_status),
       pt_size    = ifelse(sig_status == "Significant after FDR", 1.4, 1),
-      # tertiary panels label with the short biomarker code (e.g. "Tg.18.3_30.0.")
-      # to match the placeholder; label_f collapses every TG to "Triacylglyceride".
+      # tertiary panels label with the biomarker code (e.g. "Tg.18.3_30.0.", printed as
+      # "TG 18:3_30:0" by pretty_feature()); label_f collapses every TG to "Triacylglyceride".
       lab_src    = ifelse(sig_status == "Significant after FDR", biomarker, ""))
 
   category_summary <- tt_volcano %>%
@@ -159,14 +138,15 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
   ymax_data <- max(tt_volcano$logPval[is.finite(tt_volcano$logPval)], na.rm = TRUE)
 
   p <- ggplot(tt_volcano, aes(x = ATE, y = logPval)) +
-    # FDR-significant points: category colour AND category symbol (colourblind cue,
-    # 2026-09-23), drawn slightly larger; the other tiers keep circle (n.s.) / square
+    # FDR-significant points: category colour and category symbol (colour-independent
+    # cue), drawn slightly larger; the other tiers keep circle (n.s.) / square
     # (nominal only) in black. fill carries the colour for the filled shape 25.
     geom_point(aes(colour = color_var, fill = color_var, shape = color_var, size = pt_size),
                alpha = 0.75) +
     geom_vline(xintercept = 0, linetype = "dashed") +
-    geom_hline(yintercept = p_line, linetype = "dashed", colour = "grey55") +     # P < 0.05 (was orange)
-    geom_hline(yintercept = q_line, linetype = "dotted", colour = "#59A14F") +    # Q < 0.05
+    # P < 0.05 (grey) and Q < 0.05 (green) solid, as in Fig 3
+    geom_hline(yintercept = p_line, colour = "#BAB0AC", linewidth = 0.4) +
+    geom_hline(yintercept = q_line, colour = "#59A14F", linewidth = 0.4) +
     xlab("") + ylab("") + ggtitle(title) +
     scale_color_manual(values = final_color_palette, na.value = "#999999") +
     scale_fill_manual(values = final_color_palette, na.value = "#999999", guide = "none") +
@@ -178,47 +158,34 @@ plot_imic_volcano_panel <- function(res, title = "", n_top_vars = 5, overlap_n =
     scale_x_continuous(breaks = c(-1, 0, 1), limits = VOLCANO_XLIM) +
     scale_y_continuous(breaks = seq(0, ceiling(ymax_data), by = 2),
                        limits = c(0, ymax_data * 1.12)) +
-    theme_imic(base_size = 8) +   # Science-submission theme (Helvetica, font floors)
+    theme_imic(base_size = 8) +   # shared theme (Helvetica, font-size floors)
     theme(legend.position = "none",
           # keep a light border so the 8 volcano facets stay delineated (theme_imic drops it)
-          panel.border = element_rect(colour = "grey75", fill = NA, linewidth = 0.3),
+          panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3),
           # left-justified so the 3-line facet title sits top-LEFT, clear of the
           # top-right inset bar chart (they collided when centered + bold).
-          plot.title = element_text(size = 8, face = "bold", hjust = 0, lineheight = 0.9,
+          plot.title = element_text(size = title_size, face = "plain", hjust = 0, lineheight = 0.9,
                                     margin = margin(b = 1)),
           plot.margin = margin(t = 1, r = 3, b = -4, l = 0),
           panel.spacing = unit(0, "pt"))
 
   top_vars <- tt_volcano %>% filter(pval_adj < q_cut) %>%
     arrange(-logPval) %>% head(n = n_top_vars) %>%
-    mutate(lab = short_label(lab_src))
-  # ylim caps repelled labels below the top ~15% of the panel's own plot area -- that
-  # band is reserved for the top-right category-histogram inset (drawn separately via
-  # draw_plot() below, so ggrepel has no way to know about it / avoid it on its own).
-  # Without this, a label attached to a near-ceiling point can get pushed up into the
-  # inset's footprint in panels with a smaller y-range (reported 2026-08-26: e.g.
-  # "Dg.18.1_18.3." in MISAME-III 1-2m collided with the inset even though the
-  # tallest-range panel, MISAME-III 14-21d, looked fine).
+    mutate(lab = short_label(pretty_feature(lab_src)))
+  # No ylim cap on the labels: a cap pins the label of any point above it to the cap,
+  # where ggrepel cannot separate it from its neighbours. The inset sits above the
+  # panel border, and ggrepel keeps labels inside the panel.
   p <- p + geom_text_repel(data = top_vars, aes(label = lab),
                            max.overlaps = getOption("ggrepel.max.overlaps", default = overlap_n),
                            size = 2.5, alpha = 0.5,
-                           ylim = c(NA, ymax_data * 1.12 * 0.85),
-                           seed = 123)   # draw-time placement; required for byte-reproducible Fig 5A
+                           seed = 123,   # draw-time placement; required for byte-reproducible Fig 5A
+                           # max.time = Inf stops on the iteration count alone, so placement
+                           # cannot depend on machine speed (as in Fig 3B)
+                           box.padding = 0.3, max.time = Inf, max.iter = 1e5)
 
+  # Inset in the top-right corner of the panel's canvas. y = 1 in this [0, 1] canvas
+  # is the top of the whole grob including the title band, not the panel border.
   ggdraw() + draw_plot(p, 0, 0, 1, 1) +
-    # Inset height 0.16 (overlapped plotted points) -> 0.10 (left a gap below the
-    # panel's title band, since y=1 in this [0,1] canvas is the top of the whole
-    # grob including the 2-line title, not the panel border) -> 0.13 (still left a
-    # visible gap BELOW the inset, above the panel's top border -- growing height
-    # upward from a fixed bottom never touches that gap) -> 0.20 with bottom lowered
-    # to y = 0.79 (closed the gap, but then collided with the top-right data label in
-    # the tallest-range facet, e.g. "Tg.18.3_30.0.") -> y = 0.82 / height = 0.17
-    # (reported still too tall) -> y = 0.87 / height = 0.12 (reported STILL colliding
-    # with a repelled label in a DIFFERENT, smaller-range facet, MISAME-III 1-2m --
-    # a fixed local-canvas position can't account for where ggrepel happens to place a
-    # label in any given panel). Real fix: geom_text_repel's ylim above now keeps every
-    # label out of the inset's footprint regardless of panel, so the inset position
-    # itself just needs to look right -- y = 0.88 / height = 0.11, close to the panel border.
     draw_plot(inset, x = 0.72, y = 0.83, width = 0.265, height = 0.16)
 }
 
@@ -231,18 +198,15 @@ collapse_small_categories <- function(x, threshold = 0.04) {
 }
 
 # Category -> colour map: the two "not/before FDR" states are black; each real
-# category gets a tableau10 colour (rainbow fallback beyond 10 categories).
+# category gets an imic_cat_cols colour (study_colors.R; rainbow fallback beyond 7).
 build_palette <- function(categories) {
   categories <- unique(categories[!is.na(categories)])
-  # Triglycerides FIRST so it gets tableau10[1] = blue (matches the submitted
-  # figure, whose legend lists Triglycerides against the blue dot); the rest are
-  # sorted so the mapping is STABLE across re-runs (previously a plain alphabetical
-  # sort pushed Triglycerides to brown).
+  # Triglycerides first so it gets imic_cat_cols[1] = blue, as in the submitted
+  # figure; the rest are sorted so the mapping is stable across re-runs.
   ordered <- c(intersect("Triglycerides", categories),
                sort(setdiff(categories, "Triglycerides")))
   fixed <- c("Not Significant" = "#000000", "Significant before FDR" = "#000000")
-  # colourblind-safe set (2026-09-23); Triglycerides stays blue. Paired 1:1 with
-  # imic_cat_shapes -- see build_shape_palette() below.
+  # colourblind-safe set, paired 1:1 with imic_cat_shapes (build_shape_palette())
   cat_colors <- imic_cat_cols[seq_len(min(length(ordered), length(imic_cat_cols)))]
   names(cat_colors) <- ordered[seq_along(cat_colors)]
   if (length(ordered) > length(cat_colors)) {
@@ -261,37 +225,34 @@ build_shape_palette <- function(palette) {
   c("Not Significant" = 16, "Significant before FDR" = 15, stats::setNames(shp, cats))
 }
 
-# Standalone legend (categories only) shown in the last grid cell: colour AND symbol,
+# Standalone legend (categories only) shown in an empty grid cell: colour and symbol,
 # listed top-to-bottom in the inset bars' left-to-right (alphabetical) order.
 create_category_legend <- function() {
   legend_colors <- final_color_palette[
     !names(final_color_palette) %in% c("Not Significant", "Significant before FDR")]
   cats <- sort(names(legend_colors))
-  legend_data <- data.frame(category = cats, y = rev(seq_along(cats)), x = 1)
+  # fixed 1-unit key pitch in a fixed 10-unit band, title just above the first key
+  # (same geometry as Fig 3A's legend)
+  legend_data <- data.frame(category = cats, y = -(seq_along(cats) - 1), x = 1)
   ggplot(legend_data, aes(x = x, y = y, colour = category, fill = category, shape = category)) +
     geom_point(size = 3) +
     scale_colour_manual(values = legend_colors) +
     scale_fill_manual(values = legend_colors) +
     scale_shape_manual(values = final_shape_palette) +
     geom_text(aes(label = category), colour = "black", hjust = 0, nudge_x = 0.2, size = 2.5) +
-    xlim(0.8, 3) + ylim(0.5, length(legend_colors)) +
+    xlim(0.8, 3) + ylim(-9, 0.35) +
     theme_void() + theme(legend.position = "none") +
     ggtitle("Significant Categories") +
-    theme(plot.title = element_text(size = 8, hjust = 0.5))
+    theme(plot.title = element_text(size = 8, hjust = 0.5, margin = margin(b = 0)),
+          plot.margin = margin(t = 6, b = 0))
 }
 
 # ===========================================================================
-# PANEL B -- tertiary MSEA signed-enrichment-ratio volcano (adapted from
-# figure4-panelB-msea.R). Input columns differ from the primary table:
+# PANEL B -- tertiary MSEA signed-enrichment-ratio volcano. Input columns:
 #   study, timepoint, contrast, direction, pathway, total, expected, hits,
 #   raw_p, fdr_native, enrichment_ratio
-# where `enrichment_ratio` is ALREADY signed by direction (negative = down),
-# so no hits/expected recomputation is needed. No `significant`/FDR-flag column
-# exists and (as of this data) NO pathway is FDR-significant, so -- exactly as
-# the Fig 3 panel-B template does -- we label the NOMINALLY significant
-# (raw_p < 0.05) pathways and colour points by study.
+# where `enrichment_ratio` is already signed by direction (negative = down).
 # ===========================================================================
-# (render_msea_panelB.R is sourced near the top so our local plot_imic_volcano_panel wins.)
 # Pathway-name abbreviations matching the submitted 5B labels.
 abbr_5b <- function(x) {
   x <- dplyr::recode(x,
@@ -311,23 +272,16 @@ abbr_5b <- function(x) {
   gsub(" Metabolism", " Met", x)
 }
 build_panelB <- function(msea_csv, out_png, show_legend = TRUE) {
-  # Delegates to the shared renderer so Fig 5B and Fig 6A are drawn by ONE code
-  # path with identical conventions (size floor >= 3, FDR labelling, P/Q lines).
-  # The original in-script implementation below is now UNREACHABLE (kept only for
-  # reference); render_msea_panelB.R is the single source of truth.
-  # Submitted 5B style: colour ALL nominally-significant pathways by study (no
-  # "Sig before FDR" open tier), P<0.05 grey + Q<0.05 green lines, black vline at 0,
-  # label every nominally-significant pathway.
-  # min_size = 1: the submitted 5B (from Trenton's downloaded tables) applied no set-
-  # size floor, so 1-2 member lipid pathways (Ketone Body, Phytanic Ox, ...) are shown.
-  # theme_imic (Helvetica, base_size 9); Fig 5 panel B, sized as a half-page sub-panel
-  # of the full-page (7.25 in) Fig 5 composite. label_max trimmed for legibility at the
-  # larger submission font sizes.
-  # Restrict the repel labels to ONLY the pathways discussed in the Results (every
-  # point is still plotted; only the TEXT LABELS are limited). Exact data-column names
-  # (note "Mitochondrial Electron Transport Chain" for the 3-4-month up-reversal);
-  # this drops the previously-labelled-but-undiscussed Spermidine & Spermine Biosynthesis,
-  # Valine/Leucine/Isoleucine Degradation, Propanoate Metabolism, and Tryptophan Metabolism.
+  # Drawn by the shared renderer, so Fig 5B and Fig 6A follow the same conventions.
+  # Submitted 5B style: colour all nominally significant pathways by study (no
+  # "Sig before FDR" open tier), P<0.05 grey + Q<0.05 green lines, black vline at 0.
+  # min_size = 1: the submitted 5B applied no set-size floor, so 1-2 member lipid
+  # pathways (Ketone Body, Phytanic Ox, ...) are shown. Sized as a half-page
+  # sub-panel (105 x 99 mm) of the full-page Fig 5 composite.
+  # Labels are restricted to the pathways discussed in the Results (every point is
+  # still plotted; only the text labels are limited). Names are exact data-column
+  # names (note "Mitochondrial Electron Transport Chain" for the 3-4-month
+  # up-reversal).
   label_allow_5b <- c(
     "Methionine Metabolism", "Glutamate Metabolism", "Glycine and Serine Metabolism",
     "Arginine and Proline Metabolism", "Fatty Acid Biosynthesis", "Bile Acid Biosynthesis",
@@ -337,93 +291,9 @@ build_panelB <- function(msea_csv, out_png, show_legend = TRUE) {
   return(render_msea_panelB(msea_csv, out_png, title = NULL, min_size = 1,
                             submitted_style = TRUE, upper_line = "fdr",
                             label_which = "nominal", label_allow = label_allow_5b, vline0 = TRUE,
-                            abbr_fun = abbr_5b, xlab = "Enrichment ratio",
+                            abbr_fun = abbr_5b, xlab = "Enrichment Ratio",
                             width_in = 210/25.4/2, height_in = 297/25.4/3,
                             show_legend = show_legend))
-  supp <- read.csv(msea_csv, check.names = FALSE, stringsAsFactors = FALSE)
-
-  tableau20 <- c(
-    "#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F",
-    "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC",
-    "#86BCD6", "#FFBE7D", "#FF5850", "#A0CBE8", "#8CD17D",
-    "#B6992D", "#499894", "#FABFD2", "#D37295", "#B7B7B7")
-
-  ALPHA  <- 0.05   # nominal significance threshold
-  ER_REF <- 2      # enrichment-ratio reference (blue dashed line)
-
-  set.seed(123)    # reproducible jitter for overlapping non-significant points
-
-  plot_df <- supp %>%
-    mutate(
-      # study is already recoded in these CSVs; recode() leaves matches unchanged.
-      study_label = recode(study,
-                           Elicit = "ELICIT",
-                           Misame = "MISAME-III",
-                           Vital  = "Mumta-LW",
-                           .default = study),
-      enrichment_signed = enrichment_ratio,   # already signed by direction
-      logP        = -log10(raw_p),
-      is_sig      = raw_p < ALPHA,
-      point_color = if_else(is_sig, study_label, "Not Significant"),
-      jitter_x = if_else(is_sig, enrichment_signed,
-                         enrichment_signed + runif(n(), -0.6, 0.6)),
-      jitter_y = if_else(is_sig, logP,
-                         pmax(0, logP + runif(n(), -0.15, 0.15)))
-    )
-
-  studies_present <- sort(unique(plot_df$study_label[plot_df$is_sig]))
-  color_vals <- setNames(tableau20[seq_along(studies_present)], studies_present)
-  color_vals <- c("Not Significant" = "grey75", color_vals)
-
-  x_hi <- max(c(plot_df$jitter_x, ER_REF + 1), na.rm = TRUE) * 1.05
-  x_lo <- min(c(plot_df$jitter_x, 0), na.rm = TRUE)
-  x_lo <- if (x_lo < 0) x_lo * 1.1 - 0.5 else -0.5
-  y_hi <- max(plot_df$logP, na.rm = TRUE) * 1.12
-
-  # One label per pathway x study (a pathway can recur across visits). Label only
-  # FDR-significant pathways (matches the submitted panel's key set); nominally-
-  # significant-but-not-FDR points stay coloured but unlabelled for legibility.
-  label_df <- plot_df %>%
-    filter(fdr_native < ALPHA, hits >= 1) %>%
-    group_by(study_label, pathway) %>%
-    slice_max(logP, n = 1, with_ties = FALSE) %>%
-    ungroup()
-
-  panelB <- ggplot(plot_df, aes(x = jitter_x, y = jitter_y)) +
-    geom_point(aes(color = point_color), size = 1.6, alpha = 0.85) +
-    geom_hline(yintercept = -log10(ALPHA), linetype = "dashed", color = "red") +
-    geom_vline(xintercept = ER_REF, linetype = "dashed", color = "blue") +
-    geom_label_repel(
-      data = label_df, aes(label = pathway, color = point_color),
-      size = 2, label.padding = 0.12, box.padding = 0.4,
-      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE,
-      seed = 123) +
-    scale_color_manual(values = color_vals, name = "Study") +
-    scale_x_continuous(limits = c(x_lo, x_hi)) +
-    scale_y_continuous(limits = c(0, y_hi)) +
-    labs(x = "Enrichment Ratio (signed by direction)",
-         y = expression(-Log[10]*"(Raw P)")) +
-    theme_classic(base_size = 7) +
-    theme(
-      axis.title   = element_text(size = 7),
-      axis.text    = element_text(size = 7),
-      legend.title = element_text(size = 7),
-      legend.text  = element_text(size = 7),
-      legend.position = "bottom",
-      legend.key.size = unit(0.3, "cm"),
-      plot.margin  = margin(4, 6, 2, 4))
-
-  ggsave(filename = out_png, plot = panelB,
-         width = 210 / 2, height = 297 / 3, units = "mm",
-         dpi = 600, device = ragg::agg_png)
-
-  cat("wrote", out_png, "\n")
-  cat("  pathways plotted:", nrow(plot_df),
-      "| nominally significant (raw p <", ALPHA, "):", sum(plot_df$is_sig),
-      "| FDR-significant:", sum(plot_df$fdr_native < ALPHA, na.rm = TRUE), "\n")
-  cat("  studies with significant pathways:",
-      paste(studies_present, collapse = ", "), "\n")
-  invisible(panelB)
 }
 
 # One shared "Study" legend for Panels B+C (both coloured by the same canonical
@@ -455,11 +325,13 @@ create_study_legend <- function() {
 # ===========================================================================
 compose_figure <- function(volcano_grid, panel_b_png, panel_c_png,
                             rel_a = 2.1) {
-  grid_labeled <- ggdraw(volcano_grid) +
-    draw_label("Scaled Average Treatment Effect", x = 0.5, y = 0.0025,
-               hjust = 0.5, vjust = 0, size = 8) +
-    draw_label("-log10(P-value)", x = 0.0025, y = 0.5, angle = 90,
-               hjust = 0.5, vjust = 1, size = 8)
+  # x title in its own strip below the grid so it cannot sit on the bottom row's ticks
+  grid_labeled <- plot_grid(
+    ggdraw(volcano_grid) +
+      draw_label(imic_logp_title, x = 0.0025, y = 0.5, angle = 90,
+                 hjust = 0.5, vjust = 1, size = 8),
+    ggdraw() + draw_label("Scaled Average Treatment Effect", x = 0.5, y = 0.5, size = 8),
+    ncol = 1, rel_heights = c(1, 0.028))
 
   bottom_row <- plot_grid(
     png_to_ggdraw(panel_b_png), png_to_ggdraw(panel_c_png),
@@ -473,31 +345,25 @@ compose_figure <- function(volcano_grid, panel_b_png, panel_c_png,
             rel_heights = c(rel_a, 1))
 }
 
-save_figure <- function(fig, path) {
-  ggsave(filename = path, plot = fig, width = PAGE_W, height = PAGE_H,
-         units = "in", dpi = 300, device = ragg::agg_png, bg = "white")
-  cat("wrote", path, "\n")
-}
-
 # ===========================================================================
-# DATA (tertiary targeted lipidome)
+# DATA (tertiary targeted metabolites and lipids)
 # ===========================================================================
 combined_arms   <- readRDS("results/combined_intervention_effects_results_combined_arms.RDS") %>%
   filter(outcome_group == "tertiary", measure == "ATE")
 stratified_arms <- readRDS("results/combined_intervention_effects_results_stratified_arms.RDS") %>%
   filter(outcome_group == "tertiary", measure == "ATE")
 
-# MAIN: every study in its combined-arm framing (one contrast per study x visit).
+# Plotted: every study in its combined-arm framing (one contrast per study x visit).
 res_combined <- combined_arms
-# SUPPLEMENT: Misame/Vital stratified per arm; Elicit uses its combined-arm rows.
+# Arm-stratified results (Misame/Vital per arm; Elicit uses its combined-arm rows).
+# Not plotted; they enter only the shared category palette and x-range below, which
+# span both framings.
 res_stratified <- bind_rows(stratified_arms %>% filter(study != "Elicit"),
                             combined_arms  %>% filter(study == "Elicit"))
 
 res_combined$category   <- collapse_small_categories(res_combined$category)
 res_stratified$category <- collapse_small_categories(res_stratified$category)
 
-# One shared palette across both figures so a category is the same colour in the
-# main and supplement versions.
 final_color_palette <- build_palette(c(as.character(res_combined$category),
                                        as.character(res_stratified$category)))
 final_shape_palette <- build_shape_palette(final_color_palette)   # symbol per category (CVD cue)
@@ -510,49 +376,46 @@ VOLCANO_XLIM <- c(floor(min(.est_all, na.rm = TRUE) * 10) / 10 - 0.1,
 category_legend <- create_category_legend()
 blank_plot <- ggplot() + theme_void()
 
-panel <- function(res, study, visit, contrast, title)
+panel <- function(res, study, visit, contrast, title, title_size = 8)
   plot_imic_volcano_panel(res %>% filter(study == !!study, visit == !!visit,
-                                         contrast == !!contrast), title = title)
+                                         contrast == !!contrast), title = title,
+                          title_size = title_size)
 
 # ===========================================================================
-# PANEL B (standalone) -- rendered once, embedded in both composites.
+# PANEL B (standalone PNG, embedded in the composite)
 # ===========================================================================
-# Fig 5B source (2026-08-13, web-independence): the LOCAL dual runner
-# (src/metaboanalyst/run-tertiary-msea-dual.R) reproduces the submitted panel from
-# raw ATE with no web tool -- metabolite + LIPID-MAPS-converted lipid ORA passes
-# against the QER reference metabolome, combined+stratified arms. Recovers 16/20
-# submitted pathways (+4 borderline). Was: tertiary_msea_fromTables.csv (built from
-# hand-downloaded MetaboAnalyst web ORA tables in data/msea/).
+# tertiary_msea_dual.csv comes from the local MetaboAnalystR runner
+# (src/metaboanalyst/run-tertiary-msea-dual.R): a metabolite pass plus a
+# LIPID MAPS-converted lipid pass of ORA against the reference metabolome, for
+# combined and stratified arms, computed from the ATEs without the web tool.
 build_panelB("results/metaboanalyst/tertiary_msea/tertiary_msea_dual.csv",
              "figures/figure5_panelB_msea.png", show_legend = FALSE)
 
-# Panel C: prefer the no-legend twin of the real triglyceride->fatty-acid
-# composition volcano (compose_figure() below draws ONE shared Study legend for
-# B+C instead); fall back to the legend-bearing version, then the committed
-# placeholder (the Fig 5C analysis is blocked on the external Biocrates
-# structure file).
+# Panel C: prefer the no-legend version of the triglyceride fatty-acid composition
+# panel (compose_figure() draws one shared Study legend for B+C instead); fall back
+# to the legend-bearing version.
 panel_c_png <- if (file.exists("figures/figure5_panelC_tg_composition_nolegend.png")) {
   "figures/figure5_panelC_tg_composition_nolegend.png"
 } else if (file.exists("figures/figure5_panelC_tg_composition.png")) {
   "figures/figure5_panelC_tg_composition.png"
 } else {
-  "figures/final-figure-4-c.png"
+  stop("Panel C PNG not found: run figure-scripts/manuscript_figures/fig5C-triglyceride.R first")
 }
 
 # ===========================================================================
-# MAIN figure -- combined arms (7 volcano panels + legend, 4x2)
+# Fig 5 -- combined arms (7 volcano panels + legend, 3x3)
 # ===========================================================================
-# Facet titles: study + visit on ONE visible row, no arm label (all combined-arm here).
-# Two LEADING blank rows ("\n\n<title>") put the facet title on the BOTTOM row of the
-# 3-line title band, so the white space is ABOVE the title (under the top-of-panel
+# Facet titles: study + visit on one visible row, no arm label (all combined-arm here).
+# Two leading blank rows ("\n\n<title>") put the facet title on the bottom row of the
+# 3-line title band, so the white space is above the title (under the top-of-panel
 # histogram) rather than below it; the band height is unchanged.
-c_e1 <- panel(res_combined, "Elicit", "1 mo.",      "Nico", "\n\nELICIT 1m")
-c_m1 <- panel(res_combined, "Misame", "14-21 days", "BEP",  "\n\nMISAME-III 14-21d")
-c_v1 <- panel(res_combined, "Vital",  "1.5 mo.",    "BEP",  "\n\nMumta-LW 1.5m")
-c_m2 <- panel(res_combined, "Misame", "1-2 mo.",    "BEP",  "\n\nMISAME-III 1-2m")
-c_v2 <- panel(res_combined, "Vital",  "2 mo.",      "BEP",  "\n\nMumta-LW 2m")
-c_e2 <- panel(res_combined, "Elicit", "5 mo.",      "Nico", "\n\nELICIT 5m")
-c_m3 <- panel(res_combined, "Misame", "3-4 mo.",    "BEP",  "\n\nMISAME-III 3-4m")
+c_e1 <- panel(res_combined, "Elicit", "1 mo.",      "Nico", "\n\nELICIT (1 mo.)")
+c_m1 <- panel(res_combined, "Misame", "14-21 days", "BEP",  "\n\nMISAME-III (14-21 days)")
+c_v1 <- panel(res_combined, "Vital",  "1.5 mo.",    "BEP",  "\n\nMumta-LW (1.5 mo.)")
+c_m2 <- panel(res_combined, "Misame", "1-2 mo.",    "BEP",  "\n\nMISAME-III (1-2 mo.)")
+c_v2 <- panel(res_combined, "Vital",  "2 mo.",      "BEP",  "\n\nMumta-LW (2 mo.)")
+c_e2 <- panel(res_combined, "Elicit", "5 mo.",      "Nico", "\n\nELICIT (5 mo.)")
+c_m3 <- panel(res_combined, "Misame", "3-4 mo.",    "BEP",  "\n\nMISAME-III (3-4 mo.)")
 
 # Study-major layout: one study per row, ordered MISAME-III -> Mumta-LW -> ELICIT.
 # Legend on the 2nd row (Mumta has only 2 visits, so its 3rd cell holds the legend);
@@ -565,41 +428,8 @@ combined_grid <- plot_grid(
 
 fig5_main <- compose_figure(combined_grid, "figures/figure5_panelB_msea.png",
                             panel_c_png, rel_a = 2.1)
-# 3-way export (PDF + EPS + PNG) via the shared save_figure_3way() (0_figure-functions.R):
-# name="figure5" writes figures/figure5.{pdf,eps,png} directly. Panel A is real ggplot
-# vector; panels B/C are embedded raster (draw_image), which cairo keeps as raster while
-# leaving A vector -> reasonable file size. The .qmd embeds figure5.png.
+# 3-way export (PDF + EPS + PNG) via save_figure_3way() (0_figure-functions.R). Panel A
+# is ggplot vector; panels B/C are embedded raster (draw_image), which cairo keeps as
+# raster while leaving A vector.
 save_figure_3way(fig5_main, "figure5", width = PAGE_W, height = PAGE_H)
-# keep the _combined_arms alias in sync (some docs reference it).
-file.copy("figures/figure5.png", "figures/figure5_combined_arms.png", overwrite = TRUE)
-cat("wrote figures/figure5.{png,pdf,eps} (+ figure5_combined_arms.png alias)\n")
-
-# ===========================================================================
-# SUPPLEMENT figure -- arm-stratified (6x3 layout, 15 volcano panels + legend)
-# ===========================================================================
-s1  <- panel(res_stratified, "Elicit", "1 mo.",      "Nico",         "ELICIT\n1m\nNico.")
-s2  <- panel(res_stratified, "Misame", "14-21 days", "BEP/BEP",      "MISAME-III\n14-21d\nBEP/BEP")
-s3  <- panel(res_stratified, "Misame", "14-21 days", "BEP/IFA",      "MISAME-III\n14-21d\nBEP/IFA")
-s4  <- panel(res_stratified, "Misame", "14-21 days", "IFA/BEP",      "MISAME-III\n14-21d\nIFA/BEP")
-s5  <- panel(res_stratified, "Vital",  "1.5 mo.",    "BEP+ExBf",     "Mumta-LW\n1.5m\nBEP")
-s6  <- panel(res_stratified, "Vital",  "1.5 mo.",    "BEP+ExBf+AZT", "Mumta-LW\n1.5m\nBEP+AZT")
-s7  <- panel(res_stratified, "Misame", "1-2 mo.",    "BEP/BEP",      "MISAME-III\n1-2m\nBEP/BEP")
-s8  <- panel(res_stratified, "Misame", "1-2 mo.",    "BEP/IFA",      "MISAME-III\n1-2m\nBEP/IFA")
-s9  <- panel(res_stratified, "Misame", "1-2 mo.",    "IFA/BEP",      "MISAME-III\n1-2m\nIFA/BEP")
-s10 <- panel(res_stratified, "Vital",  "2 mo.",      "BEP+ExBf",     "Mumta-LW\n2m\nBEP")
-s11 <- panel(res_stratified, "Vital",  "2 mo.",      "BEP+ExBf+AZT", "Mumta-LW\n2m\nBEP+AZT")
-s12 <- panel(res_stratified, "Elicit", "5 mo.",      "Nico",         "ELICIT\n5m\nNico.")
-s13 <- panel(res_stratified, "Misame", "3-4 mo.",    "BEP/BEP",      "MISAME-III\n3-4m\nBEP/BEP")
-s14 <- panel(res_stratified, "Misame", "3-4 mo.",    "BEP/IFA",      "MISAME-III\n3-4m\nBEP/IFA")
-s15 <- panel(res_stratified, "Misame", "3-4 mo.",    "IFA/BEP",      "MISAME-III\n3-4m\nIFA/BEP")
-
-stratified_grid <- plot_grid(
-  s1,  s2,  s3,  s4,  s5,  s6,
-  blank_plot, s7, s8, s9, s10, s11,
-  s12, s13, s14, s15, blank_plot, category_legend,
-  ncol = 6, nrow = 3, align = "hv", axis = "lrtb")
-
-save_figure(
-  compose_figure(stratified_grid, "figures/figure5_panelB_msea.png", panel_c_png,
-                 rel_a = 2.1),
-  "figures/figure5_stratified_supplement.png")
+cat("wrote figures/figure5.{png,pdf,eps}\n")

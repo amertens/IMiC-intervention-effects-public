@@ -1,30 +1,41 @@
 # =============================================================================
 # 18-directional-mummichog.R
 #
-# Directional Mummichog: runs the UP and DOWN feature sets separately so each
-# pathway's DIRECTION can be stated per compartment (mummichog enrichment is
-# otherwise direction-agnostic). For each compartment x ion mode we run:
-#   UP   : only features with est>0 are "significant" (p kept; others set to p=1)
-#   DOWN : only features with est<0 are "significant"
-# the full m/z list is the background in both cases.
+# Directional Mummichog: runs up- and down-regulated feature sets separately (the
+# enrichment itself is direction-agnostic). For each compartment x ion mode:
+#   up   : only features with est > 0 keep their p-value; all others get p = 1
+#   down : only features with est < 0 keep their p-value
+# with the full m/z list as the background in both runs. Compartments: MISAME-III
+# milk, maternal plasma (1-2 mo), maternal postnatal VAMS (5-6 mo) and infant VAMS
+# (1-2, 3-4, 5-6 mo), using covariate-adjusted combined-arm ATEs; where several visits
+# are pooled, each feature keeps its smallest-p row. Script 47 reads the milk runs'
+# per-feature compound candidates as the last-resort names for milk features, which
+# enter the Fig. 6A / Table S5 enrichment foreground. directional_pathways.csv itself
+# is not a printed exhibit; pathway direction is reported from the sign tests in
+# scripts 32 and 33.
 #
-# Compartments: Milk (adjusted-published, pooled visits), MaternalPlasma (pn12),
-# MaternalVAMS (pn56), InfantVAMS (pooled postnatal). Adjusted blood.
-#
-# Output: results/mummichog_output_directional/, results/directional_pathways.csv
+# Inputs : results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS
+#          data/additional datasets/{ProcessedDataMISAME3_plasma.csv,
+#          metabolite_description_vam_with_global_id.csv, IMiC_alignment.csv}
+# Outputs: results/mummichog_input_directional/, results/mummichog_output_directional/,
+#          results/directional_pathways.csv
+# Requires the mummichog Python package in the conda environment "mummichog"; the
+# conda executable is taken from IMIC_CONDA_CMD (default "conda").
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(dplyr); library(data.table)})
 root <- paste0(here::here(), "/"); add <- paste0(root, "data/additional datasets/")
 indir <- paste0(root, "results/mummichog_input_directional");  dir.create(indir, showWarnings = FALSE, recursive = TRUE)
 outroot <- paste0(root, "results/mummichog_output_directional"); dir.create(outroot, showWarnings = FALSE, recursive = TRUE)
-CONDA_CMD <- Sys.getenv("IMIC_CONDA_CMD", "C:/Users/andre/miniconda3/Scripts/conda.exe"); CONDA_ENV <- "mummichog"
+CONDA_CMD <- Sys.getenv("IMIC_CONDA_CMD", "conda"); CONDA_ENV <- "mummichog"
 MZ_PPM <- 10; NET_LIB <- "human_mfn"; P_CUTOFF <- 0.05   # = MUM_PPM/MUM_NET/MUM_CUTOFF in _blood_helpers.R
 
 # --- m/z-RT references ----------------------------------------------------------
-# NOTE: these feat_meta_* extractors are kept LOCAL (not the helper mzrt_* ones) on
-# purpose: the directional join needs ionization mode carried as a separate column
-# derived from the result feature name, so the helper's auto `mode` column would clash.
+# These feat_meta_* extractors are kept local rather than using the helper mzrt_*
+# versions: the directional join carries ionization mode as a separate column derived
+# from the result feature name, which would clash with the helper's `mode` column.
 feat_meta_rlc <- function(file) {
   d <- fread(paste0(add, file), select = c("MZ","RT","Metabolite_Feature_Label"))
   lab <- toupper(d$Metabolite_Feature_Label)
@@ -50,6 +61,7 @@ META  <- list(MaternalPlasma = feat_meta_rlc("ProcessedDataMISAME3_plasma.csv"),
               VamsPostnatalMaternal = feat_meta_vam(), VamsPostnatalInfant = feat_meta_vam())
 ALIGN <- align_milk()
 
+# one row per feature: its smallest-p row across the visits supplied
 rep_feat <- function(df) df %>% group_by(feature) %>% slice_min(pval, n = 1, with_ties = FALSE) %>% ungroup()
 build_blood <- function(ds, visits) {
   r <- blood %>% filter(dataset == ds, visit %in% visits, measure == "ATE") %>%
@@ -63,7 +75,7 @@ build_milk <- function() {
   inner_join(r, ALIGN, by = "feature")
 }
 
-# --- prep + run UP/DOWN for one compartment ------------------------------------
+# --- prep + run up/down for one compartment ------------------------------------
 run_dir <- function(label, df) {
   for (ion in c("positive", "negative")) for (dir in c("up", "down")) {
     sub <- df %>% filter(mode == ion, !is.na(mz), !is.na(rt), !is.na(pval), pval > 0)

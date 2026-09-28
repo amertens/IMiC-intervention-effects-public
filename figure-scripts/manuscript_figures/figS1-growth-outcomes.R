@@ -1,25 +1,13 @@
-# figS1-growth-outcomes.R
 # =============================================================================
-# Figure S2: intervention effects on child growth (LAZ, WLZ) within the IMiC
-# substudies of the three trials.
+# figS1-growth-outcomes.R
 #
-# IN-REPO RECONSTRUCTION of a panel that the supplement previously embedded as an
-# extracted image (Manuscript/qmd/extracted/media_supplement/media/image1.png),
-# which had no generator under version control.
+# Builds Fig S1: intervention effects on child growth (LAZ, WLZ; Z-score difference
+# vs control, 95% CI) at birth, 3 and 6 months within the IMiC substudies of the
+# three trials, one row per study and arm. Birth rows are dropped for ELICIT and
+# Mumta-LW, whose arms all start after birth. Significance is derived from the CI.
 #
-# Ported verbatim from figure-scripts/archive/figure-s1-intervention-effects.R,
-# which is the variant that matches the published figure: full arm labels and the
-# Birth rows dropped for ELICIT and Mumta-LW (all their arms start after birth).
-#
-# NOTE ON THE ARCHIVE COLLISION: that script and src/3 visualizations/6-growth-
-# outcomes-plots.R BOTH wrote figures/primary_growth_plot.png, and 6-growth-
-# outcomes-plots.R does NOT apply the Birth filter or the full arm labels. Last
-# writer won, so the checked-in primary_growth_plot.png is the wrong variant.
-# This script writes its own distinct filename so neither can clobber it.
-#
-# Input:  results/growth_intervention_effects_results.RDS
-# Output: figures/figureS1_growth_outcomes.{pdf,eps,png}
-#
+# Inputs:  results/growth_intervention_effects_results.RDS (src/2 analysis/5-growth-outcomes.R)
+# Outputs: figures/figureS1_growth_outcomes.{pdf,eps,png}
 # Run from repo root: Rscript figure-scripts/manuscript_figures/figS1-growth-outcomes.R
 # =============================================================================
 source(paste0(here::here(), "/src/0-config.R"))   # brings in ci_to_pvalue(), theme/palette helpers
@@ -39,7 +27,8 @@ plotdf_primary <- plotdf %>%
   mutate(sig      = factor(sig),
          Measure  = str_to_upper(str_split_i(biomarker, "_", 1)),
          age      = str_to_title(str_split_i(biomarker, "_", 2)),
-         age      = factor(age, levels = c("Birth", "3mo", "6mo")),
+         age      = factor(age, levels = c("Birth", "3mo", "6mo"),
+                           labels = c("Birth", "3 mo.", "6 mo.")),   # "mo." as in the main figures
          contrast = gsub("AZT", "Az.", contrast))
 
 # significance from the CI (the results object carries no p-value for these)
@@ -62,9 +51,10 @@ plotdf_primary$contrast <- factor(
   plotdf_primary$contrast,
   levels = rev(c("IFA/BEP", "BEP/IFA", "BEP/BEP", "Azithromycin", "Nicotinamide",
                  "Nicotinamide+\nAzithromycin", "BEP+\nExBf", "BEP+\nExBf+\nAzithromycin")),
-  labels = rev(c("Postnatal BEP", "Prenatal BEP", "Pre+Postnatal BEP", "Azithromycin",
-                 "Nicotinamide", "Nicotinamide+\nAzithromycin", "Postnatal BEP",
-                 "Postnatal BEP\nAzithromycin")))
+  # spaced "+" as in Fig 1 (and the "+" the Mumta-LW BEP+azithromycin label was missing)
+  labels = rev(c("Postnatal BEP", "Prenatal BEP", "Pre + Postnatal BEP", "Azithromycin",
+                 "Nicotinamide", "Nicotinamide +\nAzithromycin", "Postnatal BEP",
+                 "Postnatal BEP +\nAzithromycin")))
 
 # ELICIT and Mumta-LW randomized after birth, so their Birth rows are not estimable
 plotdf_primary <- plotdf_primary %>%
@@ -79,22 +69,18 @@ p <- ggplot(plotdf_primary,
   coord_flip() +
   facet_grid(study ~ age, scale = "free_y") +
   scale_alpha_manual(values = c(0.7, 1)) + guides(alpha = "none") +
-  # colourblind-safe (2026-09-23): was tableau green/orange (LAZ vs WLZ; CIEDE2000 dE 1.4
-  # under simulated protanopia). Okabe-Ito blue/orange + a CI linetype per measure.
+  # colourblind-safe: Okabe-Ito blue/orange plus a CI linetype per measure
   scale_color_manual(values = c("#0072B2", "#E69F00", "#009E73", "#CC79A7")) +
   scale_linetype_manual(values = c("solid", "dashed", "dotted", "dotdash")) +
   scale_shape_manual(values = c(1, 19), name = "Significant") +
-  # theme_imic (Helvetica, Reviewer-2 font floors) harmonized 2026-08-26 (was bare
-  # theme_bw() with an explicit axis.text=6, BELOW the 7pt floor). theme_imic's own
-  # bold grey90 strip style (dormant everywhere else in this repo, since no other
-  # theme_imic figure uses a real facet_grid with strips) now applies here for the
-  # first time -- matches the "panel/strip >= 10pt, bold, gray90" spec verbatim.
+  # theme_imic() (Helvetica, font-size floors), with a panel border and plain
+  # (unbolded) strip titles as in the main figures
   theme_imic(base_size = 8) +
   theme(panel.border    = element_rect(colour = "black", fill = NA, linewidth = 0.3),
+        strip.text      = element_text(face = "plain"),
         legend.position = "bottom") +
   xlab("Intervention arm\n(compared to Control)") + ylab("Z-score difference")
 
-saveRDS(plotdf_primary, file = paste0(here::here(), "/figure-data/figureS1_growth_plot_data.RDS"))
 save_figure_3way(p, "figureS1_growth_outcomes",
                  width  = science_dims$full_page$width,   # 7.25 in
                  height = 4.2,

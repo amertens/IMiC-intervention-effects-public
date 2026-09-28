@@ -1,18 +1,24 @@
-# render_msea_panelB.R -- reusable signed-enrichment-ratio MSEA volcano renderer.
+# =============================================================================
+# render_msea_panelB.R
 #
-# One function for the tertiary Fig 5B and untargeted Fig 6A. Draws the full
-# pathway table: non-significant pathways form the grey cloud; significant ones
-# are coloured by study and labelled. The submitted panels colour by NOMINAL
-# significance (raw p < 0.05), all points filled, with a P<0.05 (grey) line and an
-# upper green line (Q<0.05 for 5B, P<0.01 for 6A), and a black vertical line at 0.
+# Defines render_msea_panelB(), the shared signed-enrichment-ratio MSEA volcano
+# used for Fig 5B (sourced by fig5-tertiary-composite.R) and Fig 6A (sourced by
+# fig6A-untargeted-msea.R). It draws the full pathway table: non-significant
+# pathways form the grey cloud; significant ones are coloured and shaped by study
+# and labelled. The submitted panels colour by nominal significance (raw p < 0.05),
+# all points filled, with a P < 0.05 (grey) line, an upper green line (Q < 0.05
+# for 5B, P < 0.01 for 6A), and a black vertical line at 0.
 #
-# Input CSV columns (the full, unfiltered pathway table from run-*-msea):
-#   study, timepoint, contrast, direction, pathway, total, expected, hits,
-#   raw_p, fdr_native, enrichment_ratio   (enrichment_ratio already signed)
+# Inputs:  the pathway CSV passed as msea_csv (the full, unfiltered table from
+#          src/metaboanalyst/run-tertiary-msea-dual.R or run-untargeted-msea.R), with
+#          columns study, timepoint, contrast, direction, pathway, total, expected,
+#          hits, raw_p, fdr_native, enrichment_ratio (already signed by direction)
+# Outputs: the PNG passed as out_png
+# Sourced, not run; paths are relative to the repo root.
+# =============================================================================
 suppressMessages({ library(dplyr); library(ggplot2); library(ggrepel) })
-source("figure-scripts/manuscript_figures/study_colors.R")   # canonical study colours (match graphical abstract)
-source("figure-scripts/0_figure-functions.R")                # theme_imic() = the Science-submission theme
-                                                             # (Helvetica, base_size 9, Reviewer-2 font floors)
+source("figure-scripts/manuscript_figures/study_colors.R")   # shared study colours and shapes
+source("figure-scripts/0_figure-functions.R")                # theme_imic() (Helvetica, base_size 9, font-size floors)
 
 render_msea_panelB <- function(msea_csv, out_png,
                                title      = NULL,
@@ -45,19 +51,18 @@ render_msea_panelB <- function(msea_csv, out_png,
                                x_margin_hi = 1.05,  # right-edge headroom multiplier on x_hi; bump this if a
                                #   labelled point near the right edge gets its label box clipped by the panel
                                y_max = NULL,  # caller override for the y-axis ceiling (-log10 P scale), with
-                               #   integer breaks 0:floor(y_max); NULL (default) keeps the old per-panel
+                               #   integer breaks 0:floor(y_max); NULL (default) keeps the per-panel
                                #   auto-scaled range (max(logP)*1.08). Set for Fig 6A so it shares a common
-                               #   y-axis height with Panels B/C, matching the submitted figure (2026-08-26).
+                               #   y-axis height with Panels B/C, as in the submitted figure.
                                # Science figure sizing (0_figure-functions.R): numbered figures are
                                # 2-column/full-page (7.25 in); these MSEA volcanoes are half-page
                                # sub-panels, so default ~3.6 x 3.5 in. Callers override per composite slot.
-                               width_in = 3.6, height_in = 3.5) {
+                               width_in = 3.6, height_in = 3.5,
+                               # optional explicit axis text / title sizes (pt), e.g. Fig 6A's
+                               # print-scale-corrected sizes (fig6_layout.R); NULL = theme_imic's
+                               axis_text_size = NULL, axis_title_size = NULL) {
   supp <- read.csv(msea_csv, check.names = FALSE, stringsAsFactors = FALSE)
   supp <- supp[!is.na(supp$total) & supp$total >= min_size, , drop = FALSE]
-
-  tableau20 <- c(
-    "#4E79A7", "#F28E2B", "#E15759", "#76B7B2", "#59A14F",
-    "#EDC948", "#B07AA1", "#FF9DA7", "#9C755F", "#BAB0AC")
 
   set.seed(123)  # reproducible jitter for overlapping non-significant points
   plot_df <- supp %>%
@@ -85,7 +90,7 @@ render_msea_panelB <- function(msea_csv, out_png,
 
   sig_mask <- if (isTRUE(submitted_style)) plot_df$is_sig else plot_df$fdr_sig
   studies_present <- sort(unique(plot_df$study_label[sig_mask]))
-  # Colour each study by the CANONICAL named map (never by presence order), so a
+  # Colour each study by the named study map (never by presence order), so a
   # study keeps the same colour across panels / regardless of which studies appear.
   color_vals <- c(study_cols[studies_present],
                   "Sig before FDR" = "#6BAED6", "Not Significant" = "grey75")
@@ -129,19 +134,20 @@ render_msea_panelB <- function(msea_csv, out_png,
     if (is.finite(label_max) && nrow(label_df) > label_max)
       label_df <- label_df %>% arrange(desc(fdr_sig), desc(logP)) %>% slice_head(n = label_max)
   }
-  # Submitted panels append an abbreviated timepoint, e.g. "Warburg Effect (1.5 m)".
-  .abbr_tp <- function(tp) trimws(gsub("\\s*days?", " d", gsub("\\s*mo\\.?", " m", tp)))
+  # Submitted panels append the timepoint, e.g. "Warburg Effect (1.5 mo.)": days written
+  # out and "mo." for months, as in every other figure.
+  .abbr_tp <- function(tp) trimws(tp)
   label_df$plab <- if (isTRUE(submitted_style))
     paste0(abbr_fun(label_df$pathway), " (", .abbr_tp(label_df$timepoint), ")") else abbr_fun(label_df$pathway)
 
   # Upper (green) reference line: FDR frontier (Q<alpha) or a fixed P<p_hi line.
   if (identical(upper_line, "phi")) {
     y_hi_line <- -log10(p_hi)
-    upper_lab <- paste0("P < ", p_hi)
+    upper_lab <- paste0('italic(P)*"-value" < ', p_hi)
   } else {
     fdr_p_thr <- suppressWarnings(max(supp$raw_p[supp$fdr_native < alpha], na.rm = TRUE))
     y_hi_line <- if (is.finite(fdr_p_thr)) -log10(fdr_p_thr) else NA_real_
-    upper_lab <- "Q < 0.05"
+    upper_lab <- 'italic(Q)*"-value" < 0.05'
   }
   col_breaks <- c(studies_present,
                   if (!isTRUE(submitted_style)) "Sig before FDR",
@@ -149,27 +155,31 @@ render_msea_panelB <- function(msea_csv, out_png,
 
   p <- ggplot(plot_df, aes(x = jitter_x, y = jitter_y)) +
     # shape = point_color: study symbol (circle/triangle/square) is a redundant, colour-
-    # independent study cue (colourblind accessibility, 2026-09-23); the nominal-only tier
-    # keeps nominal_shape and non-significant points a plain circle.
+    # independent study cue; the nominal-only tier keeps nominal_shape and
+    # non-significant points a plain circle.
     geom_point(aes(color = point_color, shape = point_color), size = point_size, alpha = 0.85) +
-    geom_hline(yintercept = -log10(alpha), linetype = "dashed", color = "grey55") +  # P < 0.05
-    { if (is.finite(y_hi_line)) geom_hline(yintercept = y_hi_line, linetype = "dashed", color = "#59A14F") } +
-    { if (isTRUE(submitted_style)) annotate("text", x = -Inf, y = -log10(alpha), label = "P < 0.05", hjust = -0.05, vjust = -0.4, size = 2.4, color = "grey45") } +
+    # solid P < 0.05 (grey) and upper (green) lines, same colours/weight as Fig 3
+    geom_hline(yintercept = -log10(alpha), color = "#BAB0AC", linewidth = 0.4) +  # P < 0.05
+    { if (is.finite(y_hi_line)) geom_hline(yintercept = y_hi_line, color = "#59A14F", linewidth = 0.4) } +
+    # Both line captions sit at the RIGHT edge: the significant points and their labels
+    # crowd the left/centre of every panel that uses this renderer (5B, 6A).
+    { if (isTRUE(submitted_style)) annotate("text", x = Inf, y = -log10(alpha), parse = TRUE,
+                                            label = 'italic(P)*"-value" < 0.05', hjust = 1.05,
+                                            vjust = -0.4, size = 2.4, color = "#8A8580") } +
     { if (isTRUE(submitted_style) && is.finite(y_hi_line)) {
-        # Fig 6A (upper_line = "phi") clusters its labels at the LEFT on this line,
-        # so anchor the threshold label at the RIGHT edge to keep it clear; Fig 5B
-        # ("fdr") keeps the original left placement.
-        .up_x  <- if (identical(upper_line, "phi")) Inf  else -Inf
-        .up_hj <- if (identical(upper_line, "phi")) 1.05 else -0.05
-        annotate("text", x = .up_x, y = y_hi_line, label = upper_lab,
-                 hjust = .up_hj, vjust = -0.4, size = 2.4, color = "#3C8C3C")
+        annotate("text", x = Inf, y = y_hi_line, label = upper_lab, parse = TRUE,
+                 hjust = 1.05, vjust = -0.4, size = 2.4, color = "#3C8C3C")
       } } +
     { if (isTRUE(vline0)) geom_vline(xintercept = 0, color = "black", linewidth = 0.4)
       else geom_vline(xintercept = er_ref, linetype = "dashed", color = "blue") } +
     geom_label_repel(data = label_df, aes(label = plab, color = point_color),
                      size = label_size, label.padding = label_padding, box.padding = box_padding,
                      min.segment.length = 0, max.overlaps = 200, show.legend = FALSE,
-                     seed = 123) +   # draw-time placement; required for byte-reproducible Fig 5B
+                     seed = 123,   # draw-time placement; required for byte-reproducible Fig 5B
+                     # the default 0.5 s time limit left labels overlapping; max.time = Inf
+                     # stops on the iteration count alone, so placement cannot depend on
+                     # machine speed
+                     max.time = Inf, max.iter = 1e5, force = 2) +
     scale_color_manual(values = color_vals, name = "Study",
                        breaks = col_breaks) +
     scale_shape_manual(values = c(imic_shapes_for(studies_present),
@@ -181,13 +191,17 @@ render_msea_panelB <- function(msea_csv, out_png,
     scale_y_continuous(limits = c(0, y_hi),
                        breaks = if (!is.null(y_max)) seq(0, floor(y_max), 1) else waiver()) +
     labs(x = xlab,
-         y = expression(-Log[10]*"(Raw P)"), title = title) +
-    theme_imic(base_size = base_size) +   # Science-submission theme (Helvetica, font floors)
+         y = imic_logp_title, title = title) +
+    theme_imic(base_size = base_size) +   # shared theme (Helvetica, font-size floors)
     theme(legend.position = if (isTRUE(show_legend)) "bottom" else "none",
           legend.key.size = unit(0.35, "cm"),
           # the volcano needs its L-shaped axes back (theme_imic drops the theme_bw border)
           panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3),
-          plot.margin = margin(4, 6, 2, 4))
+          plot.margin = margin(4, 6, 2, 4)) +
+    # .x/.y, not axis.text: theme_imic() sizes both children, which would override the parent
+    { if (!is.null(axis_text_size))  theme(axis.text.x = element_text(size = axis_text_size),
+                                           axis.text.y = element_text(size = axis_text_size)) } +
+    { if (!is.null(axis_title_size)) theme(axis.title = element_text(size = axis_title_size)) }
 
   ggsave(filename = out_png, plot = p, width = width_in, height = height_in,
          units = "in", dpi = 300, device = ragg::agg_png)

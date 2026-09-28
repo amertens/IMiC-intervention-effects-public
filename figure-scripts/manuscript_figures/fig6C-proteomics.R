@@ -1,34 +1,35 @@
+# =============================================================================
 # fig6C-proteomics.R
-# Fig 6 Panel C: milk-proteome GO Biological-Process over-representation, VOLCANO.
-# Style matches the SUBMITTED Fig 6C and Panels A/B (x = signed fold enrichment,
-# y = -log10(P), colour = study, P<0.05 + Q<0.05 threshold lines, extremes labelled).
-# Data = UniProt-native rerun (results/proteomics_go_uniprot.csv, from
-# src/2 analysis/55-proteomics-go-uniprot.R), Trenton's finished method: each protein
-# counted once. NOTE vs submitted: under this stricter method the up-regulated
-# anti-proteolysis / immune terms no longer clear FDR; only down-regulated terms
-# survive (MISAME telomere/DNA, Mumta nucleotide/NAD/energy).
-# Out: figures/figure6_panelC_proteomics_go.png
+#
+# Builds Fig 6C, the GO Biological-Process over-representation of the milk proteome
+# as a volcano in the style of Panels A and B: x = signed fold enrichment,
+# y = -log10(P), colour and shape = study when P < 0.05 (grey otherwise), P < 0.05
+# and Q < 0.05 threshold lines, and the top 3 FDR-significant terms per study x
+# direction labelled. The GO run counts each UniProt protein once; under it only
+# down-regulated terms reach FDR significance (MISAME-III telomere/DNA, Mumta-LW
+# nucleotide/NAD/energy terms).
+#
+# Inputs:  results/proteomics_go_uniprot.csv (src/2 analysis/55-proteomics-go-uniprot.R;
+#            also the source of Table S7)
+# Outputs: figures/figure6_panelC_proteomics_go.png
+# =============================================================================
 suppressMessages({library(data.table); library(ggplot2); library(ggrepel)})
 root <- here::here()
-source(file.path(root, "figure-scripts/manuscript_figures/study_colors.R"))  # canonical study colours
-source(file.path(root, "figure-scripts/0_figure-functions.R"))               # theme_imic() = Science-submission theme
+source(file.path(root, "figure-scripts/manuscript_figures/study_colors.R"))  # shared study colours and shapes
+source(file.path(root, "figure-scripts/0_figure-functions.R"))               # theme_imic(), imic_logp_title
+source(file.path(root, "figure-scripts/manuscript_figures/fig6_layout.R"))    # FIG6_* geometry + print-scale text sizes
 
 d <- fread(file.path(root, "results/proteomics_go_uniprot.csv"))
 d[, `:=`(fe = signed_fold_enrichment, y = -log10(pvalue), sig = p.adjust < 0.05)]
-# study colours: canonical map (match graphical abstract). Only MISAME-III + Mumta-LW
-# appear here; index BY NAME so each keeps its colour (orange / purple), never by order.
-studycols <- imic_study_cols[c("MISAME-III", "Mumta-LW")]  # canonical map (ELICIT absent from proteomics)
-# SAME THREE TIERS AS PANEL A (2026-09-25, per Andrew), so the one shared key under
-# Panel C is exactly right for A-C: FDR-significant (Q < 0.05) -> study colour + study
-# symbol; significant before FDR only (P < 0.05) -> open light-blue circle; otherwise grey.
-# (Until then every P < 0.05 point was filled in study colour, per Andrew 2026-08-10, to
-# match the submitted panel -- which the shared Panel A key would have misdescribed.)
-d[, study_col := fcase(sig, study, pvalue < 0.05, "Sig before FDR", default = "Not Significant")]
-setorder(d[, draw := fcase(study_col == "Not Significant", 0L,
-                           study_col == "Sig before FDR", 1L, default = 2L)], draw)  # filled on top
+# Only MISAME-III and Mumta-LW have proteomics; index the shared study map by name so
+# each keeps its colour (orange / purple), never by order.
+studycols <- imic_study_cols[c("MISAME-III", "Mumta-LW")]
+# Same tiers as Panel A and Figs 3B/5B: every P < 0.05 term filled in its study colour
+# and symbol, the rest grey. The green line marks the FDR frontier.
+d[, study_col := fifelse(pvalue < 0.05, study, "Not Significant")]
+setorder(d[, draw := fifelse(study_col == "Not Significant", 0L, 1L)], draw)  # coloured on top
 q_line <- suppressWarnings(min(d[sig == TRUE, y]))     # -log10(P) at the BH-FDR 0.05 frontier
-# Trenton's abbr_proteomics() (from Exploratory Outcomes (Proteomics - UniProt).Rmd),
-# ported verbatim so the GO labels read as his current panel.
+# GO-term abbreviations, as in the original R Markdown proteomics analysis.
 abbr_proteomics <- function(x) {
   reps <- c(
     "nicotinamide nucleotide metabolism" = "Nicotinamide nt metab",
@@ -50,53 +51,62 @@ abbr_proteomics <- function(x) {
   x <- gsub("\\bAdp\\b", "ADP", x); x <- gsub("\\bDp\\b", "DP", x); gsub("\\bRnp\\b", "RNP", x)
 }
 d[, lab := abbr_proteomics(description_sentence)]
-# Label FDR-significant terms: top 3 per study x direction by |fold enrichment| (fewer
-# than his standalone's 10/direction, since this is the half-column composite panel).
+# Label FDR-significant terms: top 3 per study x direction by |fold enrichment| (a
+# half-column panel has room for few labels).
 labs <- d[sig == TRUE][order(-abs(fe))][, .SD[!duplicated(lab)], by = .(study, direction)][
   , head(.SD, 3), by = .(study, direction)]
+p_cap_x <- fig6_caption_x(d$fe, d$y, -log10(0.05))
+q_cap_x <- fig6_caption_x(d$fe, d$y, q_line)
+cap_obst <- rbind(fig6_caption_obstacles(p_cap_x, -log10(0.05), d$fe),
+                  fig6_caption_obstacles(q_cap_x, q_line, d$fe))   # empty labels: repel only
+lab_rep <- rbind(labs, data.table(cap_obst, lab = "", study = "Not Significant"), fill = TRUE)
 
-# Shared y-axis ceiling across Fig 6 Panels A/B/C, matching the submitted figure's style
-# (all three panels share one -log10(P) height); see fig6A-untargeted-msea.R / fig6B-mummichog.R.
-FIG6_Y_MAX <- 9
-# No legend of its own: one shared Fig 6 A-C key (Panel A's) sits under this panel, and
-# A/B/C share one panel size; see fig6A-untargeted-msea.R (2026-09-25).
-FIG6_PANEL_H_MM <- 95
-pal <- c(studycols, "Sig before FDR" = "#6BAED6", "Not Significant" = "grey75")
+# FIG6_Y_MAX / FIG6_PANEL_*: fig6_layout.R. No legend of its own: one shared Fig 6 A-C
+# key (Panel A's) sits under this panel, and A/B/C share one panel size.
+pal <- c(studycols, "Not Significant" = "grey75")
 tier_shapes <- imic_shapes_for(names(pal))
-tier_shapes["Sig before FDR"] <- 1   # open circle, as in Panel A
 p <- ggplot(d, aes(fe, y)) +
   geom_vline(xintercept = 0, colour = "black", linewidth = 0.4) +
-  geom_hline(yintercept = -log10(0.05), linetype = "solid", colour = "#9A9A93") +
-  geom_hline(yintercept = q_line, linetype = "solid", colour = "#3C8C3C") +
-  annotate("text", x = min(d$fe), y = -log10(0.05), label = "P-value < 0.05",
-           hjust = 0, vjust = -0.5, size = 2.1, colour = "#7A7A73") +
-  annotate("text", x = min(d$fe), y = q_line, label = "Q-value < 0.05",
-           hjust = 0, vjust = -0.5, size = 2.1, colour = "#3C8C3C") +
+  # line colours/weights and captions as in Figs 3B and 5B
+  geom_hline(yintercept = -log10(0.05), colour = "#BAB0AC", linewidth = 0.4) +
+  geom_hline(yintercept = q_line, colour = "#59A14F", linewidth = 0.4) +
   geom_point(aes(colour = study_col, shape = study_col), size = 2, alpha = 0.85) +  # study symbol = colourblind cue
-  # size/label.padding trimmed 2026-08-26 (was 2.5/0.12), matching fig6B-mummichog.R's
-  # rationale -- Fig 3A/5A's smaller, boxless repel labels; base_size dropped 9->8 below.
-  geom_label_repel(data = labs, aes(label = lab, colour = study), size = 2.2,
+  # captions on the emptiest stretch of each line (fig6_caption_x(), fig6_layout.R), on a
+  # borderless white box above the points: if no stretch of a line is empty, the box
+  # hides the few points under the caption
+  annotate("label", x = p_cap_x, y = -log10(0.05), label = 'italic(P)*"-value" < 0.05', parse = TRUE,
+           hjust = 0, vjust = -0.3, size = 2.4, colour = "#8A8580", fill = "white",
+           border.colour = NA, label.padding = unit(0.4, "mm")) +
+  annotate("label", x = q_cap_x, y = q_line, label = 'italic(Q)*"-value" < 0.05', parse = TRUE,
+           hjust = 0, vjust = -0.3, size = 2.4, colour = "#3C8C3C", fill = "white",
+           border.colour = NA, label.padding = unit(0.4, "mm")) +
+  # size 2.2 / label.padding 0.1 (and base_size 8 below), as in fig6B-mummichog.R
+  geom_label_repel(data = lab_rep, aes(label = lab, colour = study), size = 2.2,
                   max.overlaps = Inf, min.segment.length = 0, box.padding = 0.3,
                   label.padding = 0.1, label.size = 0.15, fill = "white",  # white box (matches Fig 6A)
                   seed = 1, show.legend = FALSE) +
   scale_colour_manual(values = pal,
-                      breaks = c("MISAME-III", "Mumta-LW", "Sig before FDR", "Not Significant"),
+                      breaks = c("MISAME-III", "Mumta-LW", "Not Significant"),
                       name = "Study") +
   scale_shape_manual(values = tier_shapes,
-                     breaks = c("MISAME-III", "Mumta-LW", "Sig before FDR", "Not Significant"),
+                     breaks = c("MISAME-III", "Mumta-LW", "Not Significant"),
                      name = "Study") +
   scale_y_continuous(limits = c(0, FIG6_Y_MAX), breaks = seq(0, FIG6_Y_MAX, 1)) +  # shared Fig 6 A/B/C height
   labs(x = "Fold Enrichment (signed by direction)",
-       y = expression("–Log"[10]*"("*italic(P)*"-value)")) +
-  theme_imic(base_size = 8) +   # Science-submission theme (Helvetica, font floors); matches Fig 3A/5A
+       y = imic_logp_title) +
+  theme_imic(base_size = 8) +   # shared theme (Helvetica, font-size floors); matches Fig 3A/5A
   guides(colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1)) +
   theme(legend.position = "none", legend.key.size = unit(0.35, "cm"),
+        # print at Figs 3/5 sizes; .x/.y because theme_imic() sizes both children explicitly
+        axis.text.x = element_text(size = fig6_pt(FIG6_TICK_PT, FIG6_ABC_SCALE)),
+        axis.text.y = element_text(size = fig6_pt(FIG6_TICK_PT, FIG6_ABC_SCALE)),
+        axis.title = element_text(size = fig6_pt(FIG6_TITLE_PT, FIG6_ABC_SCALE)),
         panel.border = element_rect(colour = "black", fill = NA, linewidth = 0.3),
         plot.margin = margin(4, 6, 4, 4))
 
 # Left-column half-page sub-panel of the full-page (7.25 in) Fig 6 (A/B/C left, D right).
 ggsave(file.path(root, "figures/figure6_panelC_proteomics_go.png"),
-       p, width = 210/2, height = FIG6_PANEL_H_MM, units = "mm", dpi = 300, bg = "white",  # 105 mm wide, shared A/B/C height
+       p, width = FIG6_PANEL_W_MM, height = FIG6_PANEL_H_MM, units = "mm", dpi = 300, bg = "white",  # 105 mm wide, shared A/B/C height
        device = ragg::agg_png)
 cat("wrote figures/figure6_panelC_proteomics_go.png |", nrow(d), "terms,",
     sum(d$sig), "FDR-sig,", nrow(labs), "labelled | up FDR-sig:",

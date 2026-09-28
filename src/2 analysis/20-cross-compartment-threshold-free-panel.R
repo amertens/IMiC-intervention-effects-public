@@ -1,25 +1,26 @@
 # =============================================================================
-# 20-cross-compartment-threshold-free-panel.R   [SUPPORTING, ppm-only 2026-06-25]
+# 20-cross-compartment-threshold-free-panel.R
 #
-# Supporting (not the primary; see 19b). Matching is ppm-only (25 ppm + mode, no RT).
+# The rank-based, threshold-free agreement check in the Methods: whether BEP effects
+# agree in direction across compartments over all matched features, not only the
+# significant ones. For each compartment pair ("arrow": contemporaneous or
+# forward-lag, e.g. maternal plasma 1-2 mo -> milk 1-2 mo) and each arm-stratified
+# contrast (BEP/BEP, IFA/BEP, BEP/IFA), over the matched feature pairs:
+#   - inverse-variance weighted Pearson r (+ Deming slope)
+#   - RRHO directional: concordant vs discordant peak (-log10 hypergeometric p)
+#   - GSEA: A's nominal-up signature (p < 0.05, est > 0) in B's signed ranking
+#     (permutation p, NES)
+#   - anchored sign test among A's p < 0.05 features
+# Pairs: maternal and infant postnatal VAMS share one catalogue and are matched by
+# feature id; other pairs by greedy 1:1 nearest accurate mass within 25 ppm and the
+# same ionization mode (RT is not used, as in the Methods). The output is not a
+# printed exhibit.
 #
-# Threshold-free concordance (RRHO + GSEA + weighted r + anchored) across the
-# SAME forward-temporality arrows x contrasts as the crude table (script 19),
-# so Trenton sees noise-robust numbers next to the crude % concordant.
-#
-# Per arrow x contrast, over matched feature PAIRS (id = shared vam_ catalogue;
-# cross-platform = best 1:1 m/z-RT match at 25 ppm + mode + RT), using the FULL
-# ranked effect distributions (no FDR threshold needed):
-#   - weighted Pearson r (+ Deming slope)
-#   - RRHO directional: concordant vs discordant peak (-log10 hypergeom p)
-#   - GSEA: A's nominal-up signature enriched in B's signed ranking (perm p/NES)
-#   - anchored sign test among A's p<0.05 features
-#
-# Out: results/cross_compartment_threshold_free_panel.csv
-#
-# NOTE (2026-06-25): supporting (demoted) full-distribution panel; the FDR-FIRST
-# per-contrast annotated lists (primary deliverable) are in 19b-...-fdr-first-lists.R.
-# Matching is ppm-only (use_rt=FALSE in _blood_helpers) per Trenton's RT steer.
+# Inputs : results/adjusted_intervention_effects_res_untargeted_metabolomics_clean.RDS (milk, stratified)
+#          results/blood_compartment_adjusted_intervention_effects_results_clean.RDS (blood, stratified)
+#          data/additional datasets/ m/z-RT catalogues (via _blood_helpers.R)
+# Output : results/cross_compartment_threshold_free_panel.csv
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(data.table)})
@@ -28,7 +29,9 @@ root <- paste0(here::here(), "/"); add <- paste0(root, "data/additional datasets
 # (signed_stat, gsea_es, perm_gsea_p, rrho_directional, weighted_cor, deming_slope)
 # all come from the shared helpers.
 source(paste0(root, "src/2 analysis/_blood_helpers.R"))
-RT_V1V1 <- CC_RT_V1V1; RT_V1V3 <- CC_RT_V1V3   # local aliases used in the arrow loop
+# RT windows are passed to best_match() but only apply when use_rt = TRUE; the
+# default (use_rt = FALSE) matches on m/z and ionization mode only.
+RT_V1V1 <- CC_RT_V1V1; RT_V1V3 <- CC_RT_V1V3
 set.seed(20240624)                              # reproducible GSEA permutation p-values
 
 # threshold-free method panel for one paired table (est/pval/se per side)
@@ -80,13 +83,13 @@ get_blood <- function(dd,vv,cc){
 mk_mz<-mzrt_milk(misame_only=FALSE); pl_mz<-mzrt_rlc("ProcessedDataMISAME3_plasma.csv"); vm_mz<-mzrt_vams()
 
 arrows <- list(
-  # ---- CONTEMPORANEOUS (same window) ----
+  # ---- contemporaneous (same window) ----
   list(name="Plasma pn12 -> Milk 1-2mo",     temp="contemporaneous", A=list("blood","MaternalPlasma","pn12",pl_mz),        B=list("milk",NA,"1-2 mo.",mk_mz),                  match="v1v1"),
   list(name="Milk 1-2mo -> Infant pn12",     temp="contemporaneous", A=list("milk",NA,"1-2 mo.",mk_mz),                   B=list("blood","VamsPostnatalInfant","pn12",vm_mz), match="v1v3"),
   list(name="Plasma pn12 -> Infant pn12",    temp="contemporaneous", A=list("blood","MaternalPlasma","pn12",pl_mz),        B=list("blood","VamsPostnatalInfant","pn12",vm_mz), match="v1v3"),
   list(name="Milk 3-4mo -> Infant pn34",     temp="contemporaneous", A=list("milk",NA,"3-4 mo.",mk_mz),                   B=list("blood","VamsPostnatalInfant","pn34",vm_mz), match="v1v3"),
   list(name="MatVAMS pn56 <-> Infant pn56",  temp="contemporaneous", A=list("blood","VamsPostnatalMaternal","pn56",vm_mz), B=list("blood","VamsPostnatalInfant","pn56",vm_mz), match="id"),
-  # ---- FORWARD-LAG (upstream earlier than downstream) ----
+  # ---- forward-lag (upstream earlier than downstream) ----
   list(name="Plasma pn12 -> Milk 3-4mo",     temp="forward-lag",     A=list("blood","MaternalPlasma","pn12",pl_mz),        B=list("milk",NA,"3-4 mo.",mk_mz),                  match="v1v1"),
   list(name="Milk 1-2mo -> Infant pn34",     temp="forward-lag",     A=list("milk",NA,"1-2 mo.",mk_mz),                   B=list("blood","VamsPostnatalInfant","pn34",vm_mz), match="v1v3"),
   list(name="Milk 3-4mo -> Infant pn56",     temp="forward-lag",     A=list("milk",NA,"3-4 mo.",mk_mz),                   B=list("blood","VamsPostnatalInfant","pn56",vm_mz), match="v1v3"),
@@ -98,8 +101,8 @@ gf <- function(spec,cc) if(spec[[1]]=="milk") get_milk(cc,spec[[3]]) else get_bl
 
 out <- list()
 for (ar in arrows) {
-  # Build the matched-pair skeleton ONCE per arrow (matching is contrast-independent):
-  # id arrows share the vam_ catalogue; cross-platform arrows use a 1:1 m/z-RT match.
+  # Build the matched-pair skeleton once per arrow (matching is contrast-independent):
+  # id arrows share the vam_ catalogue; cross-platform arrows use a 1:1 mass match.
   fa0 <- gf(ar$A, CONTRASTS[1]); fb0 <- gf(ar$B, CONTRASTS[1])
   if (ar$match == "id") {
     skel <- data.table(feature_A = intersect(fa0$feature, fb0$feature))[, feature_B := feature_A]

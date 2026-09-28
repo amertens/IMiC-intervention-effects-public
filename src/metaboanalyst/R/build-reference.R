@@ -1,9 +1,16 @@
-# build-reference.R, generate a MetaboAnalyst-matched reference metabolome from
-# raw measured compound names. Automates Trenton's manual ID-conversion step
-# (paste names into MetaboAnalyst's Compound ID Conversion, keep the "Match"
-# column) so the ORA background is name-matched to the SMPDB/HMDB library.
+# =============================================================================
+# build-reference.R
 #
-# Returns the vector of matched compound names; optionally caches to a file.
+# Helper: build_matched_reference() turns raw measured compound names into
+# MetaboAnalyst-matched names, the scripted form of the web tool's Compound ID
+# Conversion step (keep the "Match" column), so an ORA background is
+# name-matched to the SMPDB/HMDB library. Returns the matched names and can
+# cache them to a file. Sourced by run-tertiary-msea-dual.R; the published runs
+# use the saved reference lists in src/metaboanalyst/reference/ instead.
+#
+# Inputs : none (takes a character vector)
+# Outputs: optional cache file given by `cache_path`
+# =============================================================================
 suppressMessages({ library(MetaboAnalystR) })
 
 build_matched_reference <- function(raw_names, cache_path = NULL, refresh = FALSE, lipid = FALSE) {

@@ -1,3 +1,22 @@
+# =============================================================================
+# src/1 data prep/3-merge-data.R
+#
+# Builds the milk analysis dataset. Reads each trial's targeted milk panels
+# (macronutrients, ICP minerals, B-vitamins, fat-soluble vitamins, HMOs, MSD
+# bioactive proteins, Biocrates targeted metabolomics), records the component
+# names of each panel, merges the panels by sample (BMID) with the baseline and
+# time-varying covariates, and harmonizes the arm labels. Every milk analysis
+# script reads the merged dataset; metadata/milk_component.Rdata (the panel
+# lists, shipped) defines the primary, secondary and tertiary outcome sets.
+#
+# Inputs:  data/imic_harmonized/{MISAME_3,VITAL_Lactation,ELICIT}_IMiC_analysis.csv
+#          data/clean_baseline_covariates.RDS, data/clean_timevar_covariates.RDS
+#          data/clean milk data/{ELICIT,VITAL,MISAME,CHILD}/*.csv
+#          data/milk/Allen_FSV_{ELICIT,VITAL,MISAME}.csv
+# Outputs: data/merged_analysis_datasets.RDS
+#          metadata/milk_component.Rdata
+# [needs restricted data]
+# =============================================================================
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -35,12 +54,6 @@ median(vital_macro$protein)
 median(misame_macro$protein)
 median(child_macro$protein)
 
-elicit_macro_pca <- prcomp(elicit_macro[,-1] %>% mutate(across(where(is.numeric), ~ if_else(is.na(.), median(., na.rm = TRUE), .))), scale. = TRUE)$x[, 1]
-
-elicit_macro_pca <- prcomp(elicit_macro[,-1] %>% mutate(across(where(is.numeric), ~ if_else(is.na(.), median(., na.rm = TRUE), .))), scale. = TRUE)$x[, 1]
-
-elicit_macro_pca <- prcomp(elicit_macro[,-1] %>% mutate(across(where(is.numeric), ~ if_else(is.na(.), median(., na.rm = TRUE), .))), scale. = TRUE)$x[, 1]
-
 #micro-nutrients, b vitamins
 elicit_bvit <- read.csv(paste0(here::here(),"/data/clean milk data/ELICIT/E_nutrient.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 vital_bvit <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/V_nutrient.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
@@ -50,12 +63,7 @@ elicit_micro <- read.csv(paste0(here::here(),"/data/clean milk data/ELICIT/E_ICP
 vital_micro <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/V_ICP.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 misame_micro <- read.csv(paste0(here::here(),"/data/clean milk data/MISAME/M_ICP.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 
-# #merge in Vit-A data added later
-# d_visit <- d_bmid %>% distinct(bmid, visit)
-# 
-# d_visit[d_visit$bmid %in% c("pn34_428", "pn12-413"),]
-
-
+# Fat-soluble vitamins (vitamin A, tocopherols), delivered as separate files
 elicit_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_ELICIT.csv")) %>% rename(bmid=X) 
 vital_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_VITAL.csv")) %>% rename(bmid=X) 
 misame_fsv <- read.csv(paste0(here::here(),"/data/milk/Allen_FSV_MISAME.csv")) %>% rename(bmid=X) 
@@ -69,12 +77,9 @@ head(elicit_fsv)
 head(vital_fsv)
 head(misame_fsv)
 
-#TEMPORARY
-#Drop IDs missing from other datasets
+# Drop two Misame FSV samples whose BMIDs match no sample in the other Misame
+# milk panels (pn12-413 is a separate entry from pn12_413, which does match).
 misame_fsv <- misame_fsv %>% filter(!(bmid %in% c("pn34_428", "pn12-413")))
-
-
-
 
 #-------------------------------------------------------------------------------
 # secondary outcomes: HMO's, targeted proteins/bioactives
@@ -90,8 +95,6 @@ elicit_protein <- read.csv(paste0(here::here(),"/data/clean milk data/ELICIT/E_M
 vital_protein <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/V_MSDprotein.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 misame_protein <- read.csv(paste0(here::here(),"/data/clean milk data/MISAME/M_MSDprotein.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid) %>% rename_with(tolower)
 
-
-
 #-------------------------------------------------------------------------------
 # tertiary outcomes: Targeted Metabolomics
 #-------------------------------------------------------------------------------
@@ -102,17 +105,12 @@ vital_metabolomics <- read.csv(paste0(here::here(),"/data/clean milk data/VITAL/
 misame_metabolomics <- read.csv(paste0(here::here(),"/data/clean milk data/MISAME/M_metabolite_b.csv")) %>% rename(BMID=Unnamed..0, SUBJID=pid, ca_bio=CA, trp_bio=Trp) %>% rename_with(tolower)
 #note ca and trp are renamed because they are variable names in other datasets too
 
-
-
-
-
 #-------------------------------------------------------------------------------
 # Save milk names by lab dataset
 #-------------------------------------------------------------------------------
 
 ls()
 
-#get_milk_names <- function(x){colnames(x)[colnames(x)!="bmid"]}
 get_milk_names <- function(x){colnames(x)[!(colnames(x) %in% c("bmid","subjid","arm","visit"))]}
 
 all_milk_components <-elicit_milk_components <- misame_milk_components <- vital_milk_components <- list()
@@ -148,9 +146,6 @@ all_milk_components$metabolomics <- unique(c(elicit_milk_components$metabolomics
 #-------------------------------------------------------------------------------
 # Merge datasets
 #-------------------------------------------------------------------------------
-
-
-
 
 #merge misame
 misame <- full_join(misame_macro, misame_micro, by=c("bmid","subjid","arm","visit"))
@@ -192,7 +187,8 @@ table(is.na(vital$arm))
 temp <- misame %>% filter(is.na(visit))
 
 misame[is.na(misame$arm),]
-misame$arm[misame$bmid=="pn34_107"] <- 1 #one bmid only
+# One Misame sample (pn34_107) has no arm code after the joins; set it to arm code 1.
+misame$arm[misame$bmid=="pn34_107"] <- 1
 
 #-------------------------------------------------------------------------------
 # Combine and save datasets and names
@@ -222,8 +218,6 @@ bind_rows_auto_convert <- function(df1, df2) {
 d <- bind_rows_auto_convert(elicit, misame)
 d <- bind_rows_auto_convert(d, vital)
 
-
-
 d <- d %>% 
   mutate(milk_flag=1) %>% #use to mark presence of any data
   select(c("study","subjid", "arm", "visit", "bmid","milk_flag", everything())) %>%
@@ -249,7 +243,7 @@ dim(baseline)
 d_bmid <- left_join(d_bmid, baseline, by = c("studyid","subjid","subjido"))
 
 
-#save bmids not in the milk data
+# Covariate records (BMIDs) with no milk data (inspection only)
 d_bmid <- d_bmid %>% mutate(subjid=as.character(subjid), visit=as.numeric(visit), armcd=as.character(armcd))
 d_unmerged_ids <- anti_join(d_bmid, d[,1:5], by = c("subjid", "armcd", "visit", "bmid"))
 head(d_unmerged_ids)
@@ -295,7 +289,6 @@ d$arm <- relevel(factor(d$arm), ref="Control")
 
 table( d$arm, d$study)
 
-
 table(d$arm)
 table(d$armcd,d$arm)
 colnames(d)
@@ -309,4 +302,3 @@ save(all_milk_components, elicit_milk_components, misame_milk_components, vital_
 d <- d %>% dplyr::rename_with(~ "vitamin.a", dplyr::any_of("vitamin.A"))
 
 saveRDS(d, file=paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
-

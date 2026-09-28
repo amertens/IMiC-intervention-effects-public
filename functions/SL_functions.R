@@ -1,44 +1,38 @@
+# =============================================================================
+# functions/SL_functions.R
+#
+# sl3 SuperLearner helpers for the arm-classification variable-importance
+# analysis (src/2 analysis/3b-SL_vim_individual_lab.R, Fig 1A). Defines the
+# learner library `sl` (mean, fast GLM, glmnet, ranger and xgboost stacked with
+# an NNLS metalearner), fit_SuperLearner(), which fits a cross-validated
+# classifier of arm per study x visit x contrast, and extract_AUC(), which
+# returns the cross-validated AUC and its 95% CI. Sourced by src/0-config.R.
+#
+# Inputs:  none (functions only)
+# Outputs: none
+# =============================================================================
 
-
-#Set up SL components
+# SuperLearner library
 lrnr_mean <- make_learner(Lrnr_mean)
-
 lrnr_glmnet <- Lrnr_glmnet$new()
-random_forest <- Lrnr_randomForest$new()
 glm_fast <- Lrnr_glm_fast$new()
-nnls_lrnr <- Lrnr_nnls$new()
-
 xgboost_lrnr <- Lrnr_xgboost$new()
 ranger_lrnr <- Lrnr_ranger$new()
-earth_lrnr <- Lrnr_earth$new()
-hal_lrnr <- Lrnr_hal9001$new()
-polyspline<-Lrnr_polspline$new()
-screen_glmnet <- Lrnr_pkg_SuperLearner_screener$new("screen.glmnet")
-screened_hal <- make_learner(Pipeline, screen_glmnet, hal_lrnr)
-
-
 
 stack <- make_learner(
   Stack,
   lrnr_mean,
   glm_fast,
-  #cor_glm,
   lrnr_glmnet,
   ranger_lrnr,
-  xgboost_lrnr#,
-  #cor_spline#,
-  #screened_hal
+  xgboost_lrnr
 )
-
 
 metalearner <- make_learner(Lrnr_nnls)
 
 sl <- make_learner(Lrnr_sl,
                    learners = stack,
                    metalearner = metalearner)
-
-
-
 
 #wrapper function to fit and clean SL
 fit_SuperLearner <- function(dat, outcome, covars, slmod=sl, CV=CV_setting, family="binomial"){
@@ -60,7 +54,6 @@ fit_SL_fun <- function(dat,
                        id="subjid",
                        family="gaussian",
                        covars,
-                       #fit_regression=T, 
                        slmod=sl,
                        CV=TRUE,
                        folds=5){
@@ -141,21 +134,16 @@ fit_SL_fun <- function(dat,
   #get cross validated fit
   if(CV){
     suppressMessages(cv_sl <- make_learner(Lrnr_cv, slmod, full_fit = TRUE))
-    #cv_glm <- make_learner(Lrnr_cv, glm_sl, full_fit = TRUE)
     suppressMessages(sl_fit <- cv_sl$train(SL_task))
-    #glm_fit <- cv_glm$train(SL_task)
   }else{
     suppressMessages(sl_fit <- slmod$train(SL_task))
-    #glm_fit <- glm_sl$train(SL_task)
   }
   
   #get outcome predictions
   yhat_full <- sl_fit$predict_fold(SL_task,"validation")
-  #yhat_glm <- glm_fit$predict_fold(SL_task,"validation")
   
   #save residuals
   SL_residuals <- y-yhat_full
-  #glm_residuals <- y-yhat_glm
   
   
   ##4. Fit the null model
@@ -163,6 +151,8 @@ fit_SL_fun <- function(dat,
   fit_null <- lrnr_cv_null$train(SL_task)
   yhat_null <- fit_null$predict_fold(SL_task,"validation")
   
+  # The gaussian branch is not used in this pipeline (every call is binomial)
+  # and refers to yhat_glm, which is not computed.
   if(family=="gaussian"){
     
     mse_full <- 1/n * sum((yhat_full-y)^2)
@@ -225,11 +215,9 @@ fit_SL_fun <- function(dat,
     
     auc.plotdf <- cvAUC(predictions=yhat_full, labels=outcome, folds=fold_index)
     auc.ci<-ci.cvAUC(predictions=yhat_full, labels=outcome, folds=fold_index, confidence=0.95)
-    #glm.auc.ci<-ci.cvAUC(predictions=yhat_glm, labels=outcome, folds=fold_index, confidence=0.95)
     
     perf_metrics <- list(auc.plotdf = auc.plotdf,
                          auc.ci = auc.ci,
-                         #glm.auc.ci = glm.auc.ci,
                          fold_index = fold_index)
   }
   
@@ -248,18 +236,15 @@ fit_SL_fun <- function(dat,
                     used_covars=covars),
       N_obs=n,
       yhat_full = yhat_full,
-      #yhat_glm = yhat_glm,
       Y= SL_task$Y,
       fold_index=fold_index,
       perf_metrics=perf_metrics,
       SL_residuals = SL_residuals,
-      #glm_residuals = glm_residuals,
       run_time=run_time,
       Y_miss=Y_miss,
       id=dat$subjid
     )
   )
-  #}
 }
 
 
@@ -281,21 +266,7 @@ clean_res <- function(res){
 
 extract_results = function(x) x[["result"]]
 extract_perf_metrics = function(x) x[["perf_metrics"]]
-extract_R2_full = function(x) x[["R2_full"]]
-extract_R2_glm = function(x) x[["R2_glm"]]
 extract_N_obs = function(x) x[["N_obs"]]
-
-extract_mse_full = function(x) x[["mse_full"]]
-extract_mse_null = function(x) x[["mse_null"]]
-extract_mse_ic = function(x) x[["mse_ic"]]
-extract_se_mse_full = function(x) x[["se_mse_full"]]
-extract_se_mse_null = function(x) x[["se_mse_null"]]
-
-extract_yhat_full = function(x) x[["yhat_full"]]
-extract_Y = function(x) x[["Y"]]
-extract_fold_index = function(x) x[["fold_index"]]
-extract_id = function(x) x[["id"]]
-
 extract_AUC_full = function(x) x[["auc.ci"]]
 extract_cvAUC = function(x) x[["cvAUC"]]
 extract_ci.AUC = function(x) x[["ci"]]
@@ -319,4 +290,3 @@ extract_AUC <- function(res){
   
   return(AUC_full)
 }
-

@@ -1,23 +1,31 @@
-# harvest.R, tidy MetaboAnalystR mSet outputs into tibbles.
+# =============================================================================
+# harvest.R
+#
+# Helpers that turn a MetaboAnalystR mSet from run_ora() or run_pathway() into
+# tidy tables: harvest_results() (one row per pathway: total, hits, expected,
+# raw P, FDR, and impact for pathway runs), harvest_membership() (pathway ->
+# hit compounds), and apply_pathway_size_floor() (reporting filter on pathway
+# size). Sourced by run-tertiary-msea-dual.R and run-untargeted-msea.R.
+#
+# Inputs : the results CSV MetaboAnalystR writes into the run's working directory
+# Outputs: none (returns tibbles)
+# =============================================================================
 suppressMessages({ library(dplyr); library(tibble) })
 
 # apply_pathway_size_floor: drop pathways with fewer than `min_size` members
-# (in the reference-restricted library) from the REPORTED table. 1-2 member sets
-# produce enrichment ratios in the hundreds/thousands (ER = N/query) that are
-# pure noise and blow out the axis.
+# (in the reference-restricted library) from the reported table. 1-2 member sets
+# give enrichment ratios in the hundreds or thousands that are noise.
 #
-# IMPORTANT: we keep MetaboAnalystR's own per-cell BH FDR (`fdr_native`)
-# unchanged. That FDR is computed over the full reference-restricted SMPDB
-# library (m ~= 89-99 sets per cell), which is the correct multiple-testing
-# family. We do NOT recompute BH over the surviving rows: the harvested table
-# only contains sets with >=1 hit (~26 of ~89), so re-running p.adjust() on it
-# would shrink the family and massively inflate significance. The size floor is
-# therefore a reporting/display filter; `fdr_native` stays MetaboAnalyst's value
-# (slightly conservative, since the dropped small sets still counted toward m).
-# Applied identically to the tertiary (5B) and untargeted (6A) panels.
+# MetaboAnalystR's own per-cell BH FDR (`fdr_native`) is kept unchanged. It is
+# computed over the full reference-restricted SMPDB library (about 89-99 sets per
+# cell), which is the right multiple-testing family. BH is not recomputed over
+# the surviving rows: the harvested table holds only sets with >= 1 hit (about 26
+# of 89), so re-running p.adjust() on it would shrink the family and inflate
+# significance. The floor is therefore a reporting filter, and `fdr_native` is
+# slightly conservative because the dropped small sets still count toward m.
+# Used by the tertiary (Fig 5B; min_size = 1) and untargeted (Fig 6A; min_size = 3) runs.
 #
-# (`group_cols` is retained for signature stability / possible future per-family
-# use but is not needed for a pure filter.)
+# `group_cols` is unused; it is kept so existing calls keep working.
 apply_pathway_size_floor <- function(tab, group_cols = NULL, min_size = 3) {
   dplyr::filter(tab, .data$total >= min_size)
 }
@@ -51,7 +59,7 @@ harvest_results <- function(mSet) {
   hits_col     <- first_present_col(c("Hits", "hits"))
   expected_col <- first_present_col(c("Expected", "expected"))
   raw_p_col    <- first_present_col(c("Raw p", "Raw.p", "RawP"))
-  # Accept ONLY BH/FDR column names. Do not fall back to a Holm column: Holm is a
+  # Accept only BH/FDR column names. Do not fall back to a Holm column: Holm is a
   # different (FWER) procedure, and storing a Holm-adjusted value as `fdr_native`
   # would silently change the significance definition downstream (significant =
   # fdr_native < 0.05). If no FDR column is present, `fdr` stays NA (surfaced), not
@@ -82,7 +90,7 @@ harvest_results <- function(mSet) {
 
 # harvest_membership: pathway -> hit-feature membership table.
 #
-# mSet$analSet$ora.hits is a list, one entry per pathway IN THE FULL LIBRARY
+# mSet$analSet$ora.hits is a list, one entry per pathway in the full library
 # (including pathways later dropped from the results table, e.g. by min/max-size
 # filtering). Pathways with no hits have a length-0 vector.
 #

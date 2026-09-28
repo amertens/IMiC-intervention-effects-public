@@ -1,4 +1,18 @@
-
+# =============================================================================
+# functions/data_cleaning_functions.R
+#
+# Shared data helpers, sourced by src/0-config.R: SAS variable labels
+# (makeVlist), the household asset-index PCA (assetPCA), factor-to-indicator
+# expansion (design_matrix), flattening of bioTMLE result objects into tidy
+# tables with CI-based p-values and BH adjustment by study x visit
+# (extract_bioTMLE_results, ci_to_pvalue), milk-component labels and categories
+# (clean_biomarker_labels), scaling of continuous columns (scale_continuous),
+# and conversion of mostly-missing features to detection indicators
+# (convert_high_missing_to_indicators).
+#
+# Inputs:  metadata/Milk_Component_Spec_IMiC_V02.csv (clean_biomarker_labels)
+# Outputs: none
+# =============================================================================
 
 #get labels from SAS file
 makeVlist <- function(dta) { 
@@ -8,7 +22,6 @@ makeVlist <- function(dta) {
   labs$label<- as.character(labs$label)
   return(labs)
 }
-
 
 
 assetPCA<-function(ret, reorder=F){
@@ -22,21 +35,13 @@ assetPCA<-function(ret, reorder=F){
   id<-id[rowSums(is.na(ret[,2:ncol(ret)])) != ncol(ret)-1,]  
   ret<-ret[rowSums(is.na(ret[,2:ncol(ret)])) != ncol(ret)-1,]  
   
-  #Drop assets with great missingness
+  #Print missingness and class of each asset variable
   for(i in 1:ncol(ret)){
     cat(colnames(ret)[i],"\n")
     print(table(is.na(ret[,i])))
     print(class((ret[,i])))
   }
   
-  # #Set missingness to zero
-  # table(is.na(ret))
-  # for(i in 1:ncol(ret)){
-  #   ret[,i]<-as.character(ret[,i])
-  #   ret[is.na(ret[,i]),i]<-"miss"
-  #   ret[,i]<-as.factor(ret[,i])
-  #   
-  #}
   table(is.na(ret))
   
   #if income is present, median impute
@@ -45,27 +50,14 @@ assetPCA<-function(ret, reorder=F){
     ret[["INCTOT"]][is.na( ret[["INCTOT"]])] <- median(ret[["INCTOT"]], na.rm=T)
   }
   
-  # #Remove columns with almost no variance
-  # if(length(nearZeroVar(ret))>0){
-  #   ret<-ret[,-nearZeroVar(ret)]
-  # }
-  # 
   #Convert factors into indicators
   ret<-droplevels(ret)
   ret<-design_matrix(ret)
-  # if(length(nearZeroVar(ret))>0){
-  #   ret<-ret[,-nearZeroVar(ret)]
-  # }
   
   #Set missingness to zero
   table(is.na(ret))
   ret[is.na(ret)]<-0
   table(is.na(ret))
-  
-  # #Remove columns with almost no variance
-  # if(length(nearZeroVar(ret))>0){
-  #   ret<-ret[,-nearZeroVar(ret)]
-  # }
   
   ## Convert the data into matrix ##
   ret<-as.matrix(ret)
@@ -118,14 +110,8 @@ assetPCA<-function(ret, reorder=F){
   #Save just the wealth data
   pca.wealth <- d %>% subset(select=c(id, hhwealth, hhwealth_quart)) %>% rename(subjido=id)
   pca.wealth$hhwealth<-as.numeric(pca.wealth$hhwealth)
-  #pca.wealth$SUBJID<-as.numeric(as.character(pca.wealth$SUBJID))
-  
-  # d <-dfull %>% subset(., select=c("subjido"))
-  # #d$SUBJID<-as.numeric(as.character(d$SUBJID))
-  # d<-left_join(d, pca.wealth, by=c("subjido"))
   return(pca.wealth)
 }
-
 
 
 #function to convert all asset variables to indicators
@@ -161,7 +147,6 @@ design_matrix <- function(W){
 }
 
 
-
 #Results extraction function
 
 extract_res = function(x) x[["res"]]
@@ -169,8 +154,8 @@ extract_res = function(x) x[["res"]]
 extract_bioTMLE_results <- function(res_list, single_group=FALSE){
   # FDR (pval_adj / sigFDR) is applied by study x visit (studytime) within each outcome
   # group, matching the pre-specified scheme reported in the manuscript Methods.
-  # pval_adj_global retains the more conservative correction pooled across study and visit
-  # within each outcome group (kept only for sensitivity / change-tracking; not the primary).
+  # pval_adj_global is the more conservative correction pooled across study and visit
+  # within each outcome group, kept for sensitivity checks; it is not the primary one.
 
   if(single_group){
     res <- Map(extract_res, res_list$res)
@@ -263,7 +248,6 @@ extract_bioTMLE_results <- function(res_list, single_group=FALSE){
 }
 
 
-
 # Function to calculate p-value from confidence interval to get individual intervention effects
 ci_to_pvalue <- function(cil, ciu, null_value = 0, conf_level = 0.95) {
   # Calculate the estimate (midpoint of the CI)
@@ -325,37 +309,26 @@ clean_biomarker_labels <- function(res){
   labels$category[labels$category %in% c("B12","B5","B7")] <- "Other B vitamins"
   labels$category[labels$category %in% c("trp_bio","Vitamins and Cofactors","Nucleobases and Related","Hormones and Related",
                                          "Alkaloids","Amine Oxides","Cresols","Carbohydrates and Related")] <- "Other metabolomics"
-  # fgf.21/iga: the manuscript's Methods text names both as example "selected bioactive
-  # proteins" alongside secretory IgA, calprotectin, leptin, insulin -- category them to
-  # match (they previously fell through to a placeholder self-named category "fgf.21"/"iga"
-  # from the extra_labels patch above, then got miscoded to "Other individual HMO", which
-  # contradicted the manuscript text).
+  # fgf.21 and iga are bioactive proteins: the manuscript Methods lists them among the
+  # selected bioactive proteins with secretory IgA, calprotectin, leptin and insulin.
   labels$category[labels$biomarker %in% c("secretor","sum_nmol.ml",  "sia_nmol.ml", "insulin",
                                           "leptin","calprotectin","fuc_nmol.ml", "fgf.21", "iga")] <- "Bioactive"
-  # fsh/lh (reproductive hormones) and evenness/diversity (microbiome alpha-diversity) are
-  # intentionally NOT bucketed into "Bioactive": FSH/LH are never described as an outcome
-  # anywhere in the manuscript, and diversity/evenness are explicitly "exploratory" outcomes
-  # in the manuscript's own outcome hierarchy, not secondary/bioactive. Leaving their
-  # category as whatever the source metadata gives (blank/NA for all four, since
-  # Milk_Component_Spec_IMiC_V02.csv doesn't classify them) correctly excludes them from
-  # any primary/secondary-outcomes table (e.g. Table S7) built by filtering on category.
+  # fsh/lh (reproductive hormones, not study outcomes) and evenness/diversity (microbiome
+  # alpha diversity, an exploratory outcome) are not put in "Bioactive". Their category
+  # stays as the component spec gives it (blank for all four), which keeps them out of
+  # tables built by filtering on category (e.g. Table S1).
   
   res <- left_join(res, labels, by="biomarker") %>% 
     mutate(label_f=ifelse(is.na(label), biomarker, label))
   
   #clean up biomarker labels for plotting
   res$biomarker <- str_to_sentence(res$biomarker)
-  #res$biomarker <- str_replace_all(res$biomarker, "\\_", " ")
-  #res$biomarker <- str_replace_all(res$biomarker, "\\.", " ")
-  #res$biomarker <- str_replace_all(res$biomarker, "\\-", " ")
   res$biomarker <- str_replace_all(res$biomarker, "nmol ml", "conc.")
   res$biomarker <- str_replace_all(res$biomarker, " pct", " %")
   
   return(res)
   
 }
-
-
 
 
 scale_continuous <- function(df) {
@@ -369,7 +342,6 @@ scale_continuous <- function(df) {
   
   return(df)
 }
-
 
 
 convert_high_missing_to_indicators <- function(df, threshold = 0.5) {

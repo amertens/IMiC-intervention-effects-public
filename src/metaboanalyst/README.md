@@ -1,106 +1,86 @@
-# Pathway / enrichment pipeline (`src/metaboanalyst/`)
+# Pathway and enrichment analyses (`src/metaboanalyst/`)
 
-A scripted, push-button **MetaboAnalystR** pipeline that reproduces the milk metabolome/proteome
-enrichment analyses for the IMiC intervention-effects paper, replacing the earlier manual
-metaboanalyst.ca point-and-click workflow with code that runs the same analyses identically every
-time.
+These scripts run the paper's metabolite pathway and enrichment analyses with
+MetaboAnalystR 4.3.0, replacing the point-and-click metaboanalyst.ca web workflow
+used during the analysis with code that gives the same result on every run. The
+same folder holds the Mummichog analysis of the untargeted milk metabolome, the
+proteome Gene Ontology table, and the cross-compartment pathway analysis.
 
-It mirrors the original methodological rule:
+## Runners
 
-| Outcome group | Module | MetaboAnalyst function |
-|---|---|---|
-| **Primary** (targeted B-vitamins / micronutrients) | Over-Representation Analysis (ORA) | `msetora`, with a name-matched reference metabolome |
-| **Secondary / tertiary** (HMOs, bioactives, targeted lipidome) | Pathway / impact analysis | `pathora` |
-| **Untargeted milk metabolome** | Mummichog | (directional, per ion mode) |
-| **Untargeted milk proteome** | GO Biological Process | `clusterProfiler::enrichGO` |
+Output paths are under `results/metaboanalyst/` unless a full path is given.
 
-## Architecture
+| Runner | Method | Exhibit | Output |
+|---|---|---|---|
+| `run-primary-pathway-local.R` | KEGG pathway analysis (hypergeometric test, relative-betweenness topology) of FDR-significant primary metabolites, one cell per study × time point | Fig 3B, Table S2 | `primary_pathway_local/primary_pathway_all_cells.csv` |
+| `run-tertiary-msea-dual.R` | Over-representation analysis (ORA) against SMPDB metabolite sets; separate metabolite and lipid passes, 1,268-name reference metabolome | Fig 5B, Table S3 | `tertiary_msea/tertiary_msea_dual.csv` |
+| `run-untargeted-msea.R` | ORA against SMPDB metabolite sets, nominal P < 0.05 foreground, 615-name reference metabolome | Fig 6A, Table S5 | `untargeted_msea/untargeted_msea_combined.csv` (Fig 6A), `untargeted_msea/untargeted_msea_combined_fdr_sig.csv` (Table S5) |
+| `run-milk-mummichog.R` | Mummichog (human_mfn network, 10 ppm), directional, per ionization mode | Fig 6B, Table S6 | `mummichog/milk_mummichog_pathways.csv` |
+| `run-proteomics-go.R` | Gene Ontology ORA of the milk proteome with `clusterProfiler::enricher` and a UniProt-to-GO map (computed by `src/2 analysis/55-proteomics-go-uniprot.R`; this runner builds the table) | Table S7 | `proteomics_go/proteomics_go_pathways.csv` |
+| `build-compartment-query-list.R` | Links FDR-significant features across maternal blood, milk and infant blood (MISAME-III) and builds the pathway query list | Table S11 (query) | `results/compartment_tracking/linked_upregulated.csv`, `results/compartment_tracking/pathway_compound_list.csv` |
+| `run-compartment-pathway.R` | KEGG pathway analysis of the cross-compartment query list | Fig 6D, Table S11 | `results/compartment_tracking/linked_crosscompartment.csv`, `results/compartment_tracking/metabolite_pathways.csv`, `results/tables/table_s11_compartment_pathway.csv` |
+| `build-reference-metabolome.R` | Maps the study reference metabolome (1,593 HMDB IDs) to MetaboAnalyst compound names | Background for Fig 6A, Table S5 | `reference/reference_metabolome_1593_matched_names.txt` |
+| `00-setup-metaboanalystr.R` | Installs MetaboAnalystR and its dependencies | n/a | `env/sessionInfo.txt` |
 
-```
- driver scripts                 core engine (R/)                        outputs
- --------------                 ----------------                        -------
- run-primary.R            ┐
- run-primary-pathway-...  │     run-outcome-group.R  ── build-cells.R   results/metaboanalyst/
- run-secondary-tertiary.R ├──►  (dispatch a group    ── run-ora.R          <group>_<arm>/
- run-tertiary-msea.R      │      through a module)   ── run-pathway.R         <cell>/results.csv
- run-milk-mummichog-s5.R  ┘                          ── harvest.R             <cell>/membership.csv
- run-proteomics-go.R  (standalone)                                           <group>_<arm>_all_cells.csv
-                                                                             skipped_cells.csv
- build-supplementary-table.R  ── consolidates a group's cells into one tidy table
-```
+## Helper files (`R/`)
 
-`run_outcome_group()` is the heart: it builds one "cell" per study × visit × contrast × direction
-(`build-cells.R`), runs each cell through the chosen module (`run-ora.R` / `run-pathway.R`), tags
-and harvests the results (`harvest.R`), and writes per-cell + consolidated CSVs. Cells that fail
-legitimately (a pathway needs ≥ 3 mappable metabolites) are caught and logged to
-`skipped_cells.csv`, never fatal.
+- `run-pathway.R`: `run_pathway()` (MetaboAnalystR pathway module) and `harvest_pathway()` (pathway table plus compound-to-pathway hits).
+- `run-ora.R`: `run_ora()` (MetaboAnalystR ORA module), including the session patch for a MetaboAnalystR 4.3.0 crash that happens after the results are computed.
+- `harvest.R`: reads ORA/pathway results into tables; `apply_pathway_size_floor()` for the reporting size filter.
+- `build-cells.R`: splits an intervention-effects table into per-cell query lists.
+- `label-map.R`: maps targeted-assay labels to MetaboAnalyst compound names.
+- `lipid-name-map.R`: converts Quant 500 lipid names to LIPID MAPS abbreviations for the lipid pass.
+- `build-reference.R`: scripted compound-name matching for building a reference metabolome.
+- `compartment-tracking.R`: cross-compartment linkage (`ct_compartment_pairs()`) and name-based grouping (`ct_name_track()`).
 
-## Scripts, at a glance
+`reference/` holds the reference metabolomes (`refMetabolomeForQER.csv`, the
+1,593-ID HMDB list and its 615 matched names) and the KEGG pathway-name map.
 
-| Script | What it produces | Manuscript output |
-|---|---|---|
-| `run-primary.R` | Primary ORA, **combined** and **stratified** arms | Table S1 (primary MSEA), Fig 3 enrichment |
-| `run-primary-pathway-compare.R` | Combined-arm primary via **pathway/impact** (for ORA-vs-pathway comparison) | (comparison only) |
-| `run-secondary-tertiary.R` | Secondary + tertiary pathway analysis, both arm sets | n/a |
-| `run-tertiary-msea.R` | Tertiary targeted-metabolome ORA/MSEA, both arm sets | Table S2 |
-| `run-milk-mummichog-s5.R` | Directional Mummichog of the untargeted milk metabolome | Table S5 |
-| `run-proteomics-go.R` | GO-BP enrichment of the untargeted milk proteome | Table S6 |
-| `build-supplementary-table.R` | Consolidates a group×arm's cells into one supplementary table | n/a |
-| `validate-against-trenton.R` | Diffs our numbers against Trenton's downloaded ground-truth cell | n/a |
-| `R/build-cells.R` | Splits a result frame into per-cell query + reference lists | n/a |
-| `R/build-reference.R` | Builds the name-matched reference metabolome (MetaboAnalyst name-mapping) | n/a |
-| `R/run-ora.R` | `msetora` wrapper (+ documented 4.3.0 bug workarounds) | n/a |
-| `R/run-pathway.R` | `pathora` wrapper | n/a |
-| `R/harvest.R` | Pulls the results + membership tables out of an `mSet` | n/a |
-| `R/config-primary.R`, `R/config-pathway-groups.R`, `R/label-map.R` | Per-group configuration + label maps | n/a |
+## Inputs
 
-## How to run (from the repo root)
+- On request (feature-level, too large to ship): `results/combined_intervention_effects_results_{combined,stratified}_arms.RDS`
+  (primary and tertiary runners). `run-milk-mummichog.R` also needs the untargeted
+  milk effect estimates and `data/additional datasets/IMiC_alignment.csv`, which are
+  likewise not shipped.
+- Shipped: `results/milk_nominal_putative_annotation.csv` (untargeted ORA),
+  `results/proteomics_go_uniprot.csv` (Table S7), `results/supplement_status_fdr_features.csv`
+  (cross-compartment analysis), and the files in `reference/`. The untargeted ORA,
+  proteome table, cross-compartment analysis and reference-metabolome build run from
+  shipped files alone.
+
+## How to run
+
+From the repository root:
 
 ```bash
-Rscript "src/metaboanalyst/run-primary.R"                 # primary ORA (combined + stratified)
-Rscript "src/metaboanalyst/run-primary-pathway-compare.R" # combined-arm pathway variant
-Rscript "src/metaboanalyst/run-secondary-tertiary.R"      # secondary + tertiary pathway
-Rscript "src/metaboanalyst/run-tertiary-msea.R"           # tertiary MSEA (Table S2)
-Rscript "src/metaboanalyst/run-milk-mummichog-s5.R"       # milk Mummichog (Table S5)  [needs conda mummichog env]
-Rscript "src/metaboanalyst/run-proteomics-go.R"           # proteome GO (Table S6)
+Rscript src/metaboanalyst/00-setup-metaboanalystr.R        # once
+Rscript src/metaboanalyst/run-primary-pathway-local.R      # Fig 3B, Table S2   [needs on-request file]
+Rscript src/metaboanalyst/run-tertiary-msea-dual.R         # Fig 5B, Table S3   [needs on-request file]
+Rscript src/metaboanalyst/run-untargeted-msea.R            # Fig 6A, Table S5
+Rscript src/metaboanalyst/run-milk-mummichog.R             # Fig 6B, Table S6   [needs on-request files and the mummichog conda env]
+Rscript src/metaboanalyst/run-proteomics-go.R              # Table S7
+Rscript src/metaboanalyst/build-compartment-query-list.R   # Table S11 query list
+Rscript src/metaboanalyst/run-compartment-pathway.R        # Fig 6D data, Table S11
 ```
 
-Outputs land in `results/metaboanalyst/<group>_<arm>/` (gitignored). `build-supplementary-table.R`
-turns any of those into a clean table.
+`build-compartment-query-list.R` must run before `run-compartment-pathway.R`.
+`run-milk-mummichog.R` calls the `mummichog` command-line tool in a conda
+environment named `mummichog`; set `IMIC_CONDA_CMD` if `conda` is not on the PATH.
 
-`results/metaboanalyst/untargeted_msea/` and `results/metaboanalyst/triglyceride_fa/` are the reproducible CSV exports of manuscript Table S4 (untargeted MSEA) and Table S3 (triglyceride fatty-acid composition) for the online supplement's §9.
+## Library downloads
 
-Inputs are the combined-arm / stratified-arm intervention-effect result RDS
-(`trenton scripts/1. Data/combined_intervention_effects_results_{combined,stratified}_arms.RDS`).
+MetaboAnalystR downloads its compound, metabolite-set and pathway libraries from
+metaboanalyst.ca when a run starts, so the MetaboAnalystR runners need internet
+access; the analyses themselves run locally. Downloads are cached for the rest of
+the R session. If the libraries on metaboanalyst.ca change, results can differ
+slightly from the shipped outputs.
 
-## Reproductions verified (so you can trust the swap)
+## Validation
 
-- **Primary ORA**, ELICIT · up · 1 mo: Nicotinate & Nicotinamide Metabolism **total 7 / hits 5**,
-  raw p = 3.74 × 10⁻⁴, matches the manual run.
-- **Primary pathway/impact**, same cell: raw p = **1.2011 × 10⁻⁵**, impact 0.205: matches Trenton's
-  downloaded pathway CSV exactly. (The pathway module uses the full SMPDB background (total 32) so
-  it is more significant than ORA's restricted-reference background, total 7. This is the
-  ORA-vs-pathway difference to discuss, not a discrepancy.)
-
-## MetaboAnalystR gotchas (all patched in-session, none change the numbers)
-
-The messy parts are isolated in `R/run-ora.R` / `R/run-pathway.R`, each with a full explanatory
-header. In brief (MetaboAnalystR **4.3.0**):
-- `CalculateHyperScore()` ends in two off-public-web reporting side effects
-  (`ExportOraMembershipJson`, `PlotORAMembership`) that crash after the numbers are already
-  computed → replaced with no-ops.
-- `AddErrMsg()` reads an uninitialized `current.msg`; a seeded value lets the too-few-metabolites
-  path **segfault**, so we un-seed it right before scoring to force a clean, catchable R error.
-- `InitDataObjects()` needs an explicit `dpi` argument (self-referential default bug).
-
-## Environment
-
-- MetaboAnalystR **4.3.0** (installed via `00-setup-metaboanalystr.R`; needs `qs2`, Rtools44).
-- `Rscript` at `C:/Program Files/R/R-4.4.2/bin/Rscript.exe` (not on PATH).
-- Milk Mummichog additionally needs the `mummichog` conda env.
-
-## Related docs
-
-- `FIDELITY-REPORT.md`: cell-by-cell fidelity of the replication.
-- `PHASE3-SUMMARY.md`: secondary/tertiary milk pathway summary.
-- `investigate/FINDINGS-*.md`: deep dives (reference metabolome, Table S2/S5 re-derivation).
+The scripted engines were checked against the metaboanalyst.ca results saved for
+the ELICIT 1-month up-regulated primary cell. The pathway engine reproduced the saved
+web pathway results exactly for all six pathways in that cell (e.g. nicotinate and
+nicotinamide metabolism, raw P = 1.2011 × 10⁻⁵, FDR = 1.19 × 10⁻³), and the ORA
+engine reproduced the set size and hit count reported for that pathway in the web
+ORA (7 and 5); no web ORA P-values were saved for that cell. The saved web results
+are not included in this repository.

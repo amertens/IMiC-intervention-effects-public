@@ -4,27 +4,38 @@
 .RData
 .Ruserdata
 
-# --- Individual-level trial data: NEVER commit -------------------------------
+# --- Individual-level trial data: never commit ---------------------------------
 # IMiC participant data is governed by the consortium and the three trials'
-# data-access agreements. Nothing participant-level may enter this repository.
-# Everything under data/ is excluded, then the vetted aggregate inputs are
-# re-included explicitly.
+# data-access agreements. Everything under data/ is excluded, then the vetted
+# aggregate inputs are re-included explicitly.
 data/**
-!data/msea/
-!data/msea/**
 !data/untargeted_annotation/
 !data/untargeted_annotation/**
 !data/milq_age_specific_cutoffs_clean.RDS
 
-# Belt and braces: the harmonized analytic dataset, wherever it turns up.
+# The harmonized analytic dataset, wherever it turns up.
 *merged_analysis_datasets*
 *analysis_datasets*
 
-# Saved ggplot objects embed their plot data, and several of these carry
-# per-participant rows. Regenerable from src/3 visualizations/ — never track.
-figure-data/
+# Saved ggplot objects embed their plot data, which can include per-participant rows.
+# Only Fig. 1A's classifier summary (cross-validated AUCs by study, visit and arm) ships.
+figure-data/*
+!figure-data/SL_vim_plot_data.RDS
 
-# --- Generated outputs -------------------------------------------------------
+# Pipeline outputs that hold participant-level rows or embedded model objects.
+# The raw run_bioTMLE() results carry each participant's covariates and outcomes;
+# only the cleaned estimate tables (*_clean.RDS) and the stripped files already
+# tracked here are safe to publish.
+results/imic_*
+results/*growth_outcomes_dataset*
+results/growth_impl_*
+results/growth_outlier_*
+results/SL_*
+results/temp_*
+results/*intervention_effects_results*.RDS
+!results/*_clean.RDS
+
+# --- Generated outputs ----------------------------------------------------------
 figures/
 large-file-results/
 output/
@@ -32,40 +43,27 @@ logs/
 Rplots.pdf
 *.log
 
-# Large feature-level result families: aggregate, but 40–250 MB each. Regenerable.
+# Large feature-level result families: aggregate, but 15–250 MB each.
 results/blood_compartment_*
 results/combined_intervention_effects_*
 results/*untargeted*
 results/*_ATE.RDS
-results/SL_vim_*
-results/*_blinded.RDS
-# NOTE: results/tables/ used to be ignored here. It is NOT large (every file is
-# under 300 KB) and the submitted supplement names several of these files
-# explicitly as machine-readable downloads in the Online Appendix, which is this
-# deposit. Un-ignored 2026-09-08 so they actually reach the published archive.
+results/*_MN.RDS
+results/mummichog_*/
 
-# MetaboAnalystR writes rendered report junk beside its result CSVs.
+# MetaboAnalystR writes rendered report files beside its result CSVs.
 results/**/*.html
 results/**/*.js
 results/**/*.png
 results/**/*.pdf
 results/**/*.qs
 
-# --- Manuscript writing, session scratch, working trees ----------------------
-Manuscript/
-archive/
+# Local tool files
 .claude/
-_claude_audit/
-_archive_stale/
-.release/
-reports/
-shiny/
+.release-marker
 
-# OS / Office junk
+# OS / Office files
 .DS_Store
 Thumbs.db
 desktop.ini
 ~$*
-
-# Release build marker (see .release/build_public_release.sh in the working repo)
-.release-marker

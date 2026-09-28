@@ -1,30 +1,21 @@
 # =============================================================================
 # src/2 analysis/3_adjusted_analysis_pca.R
 #
-# Reads:  data/pca_analysis_datasets.RDS
-#         metadata/milk_component.Rdata
-# Writes: results/pca_intervention_effects_results.RDS
+# Estimates adjusted intervention effects (biotmle TMLE; arms pooled into
+# Control, BEP and Nico as in the combined-arms analysis) on the first principal
+# component of each milk-component panel, by study and visit, using the scores
+# built in 1 data prep/4-pca-reductions.R. Feeds Fig 1B.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  data/pca_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/pca_intervention_effects_results.RDS
+# [needs restricted data]
 # =============================================================================
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
 
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/pca_analysis_datasets.RDS"))
-
-
-####XXXXXXXXXXX
-# TO DO: analyze the first 3 PC's, because Liat's work shows that that explains >95% of variability
-# Also predict growth (underweight, wasting, and WAZ) from PCA's and do variable importance
-####XXXXXXXXXXX
 
 table(d$arm)
 d <- d %>% mutate(
@@ -87,11 +78,15 @@ res_df <- res_df %>% mutate(
                                      "Targeted metabolomics",  "Untargeted metabolomics", "Microbiome")))
 )
 
-#flip ATE if negative (as direction of first PC doesn't have much meaning without looking at weights)
+# The direction of the first PC has no clear meaning without its loadings, so
+# report the magnitude of the shift: flip negative effects to positive. Flipping
+# negates the CI bounds and swaps them, so the lower bound stays below the upper.
 res_df <- res_df %>% mutate(
-  cil =ifelse(est>0, cil, -cil),
-  ciu =ifelse(est>0, ciu, -ciu),
-  est =ifelse(est>0, est, -est)
-)
+  flip    = est < 0,
+  cil_raw = cil,
+  cil     = ifelse(flip, -ciu, cil),
+  ciu     = ifelse(flip, -cil_raw, ciu),
+  est     = ifelse(flip, -est, est)
+) %>% select(-flip, -cil_raw)
 
 saveRDS(res_df, file=paste0(here::here(),"/results/pca_intervention_effects_results.RDS"))

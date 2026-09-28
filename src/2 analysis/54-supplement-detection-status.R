@@ -1,36 +1,41 @@
 # =============================================================================
 # 54-supplement-detection-status.R
 #
-# Ports the BEP/APSE supplement-DETECTION components of Trenton's "Compartment
-# Tracking" script that were not yet in the repo pipeline. The repo already
-# recomputes blood FDR per compartment x timepoint (script 12 / _blood_helpers.R),
-# runs directional Mummichog (18/25), annotates putative names (23/47), and does
-# 25-ppm cross-compartment mass matching (14/39). What was MISSING and is added
-# here, faithful to Trenton's Compartment_Tracking.Rmd:
+# Compares the FDR-significant BEP-responsive features of maternal plasma,
+# maternal VAMS, milk and infant VAMS (MISAME-III, covariate-adjusted combined
+# arms) with untargeted metabolomics of the BEP supplement (18 APSE replicates run
+# on the same platform), following the compartment-tracking analysis of the original
+# R Markdown workflow. Its per-feature supplement status is the basis of the Results
+# statement that 16 of the 20 up-regulated features linked across compartments were
+# reliably mass-matched to features detected in the supplement (Table S8 caption), and
+# src/metaboanalyst/run-compartment-pathway.R builds Fig. 6D and Table S11 from it.
+# Steps:
+#   (1) supplement detection profile from ProcessedDataMISAME3_VAMS.csv: a feature is
+#       "reliably detected" when present in at least half of the 18 replicates and
+#       "supplement-abundant" when its mean abundance is at least 1 SD above the mean
+#       abundance across supplement features;
+#   (2) BH FDR per compartment x visit on script 50's table, with a stop if the
+#       significant-feature counts differ from those reported by the original
+#       compartment-tracking analysis;
+#   (3) the FDR-significant blood and milk features with their putative names
+#       (scripts 23 and 47);
+#   (4) a 5-level supplement status per feature (No matched supplement feature / Not
+#       detected / Detected / Reliably detected / Supplement-abundant), matching by
+#       exact feature id first, then nearest same-ion-mode feature within 25 ppm;
+#   (5) links across compartments by identical normalized putative name (direction only);
+#   (6) two diagnostic figures (not printed exhibits).
+# Cross-compartment comparison is by direction only, because intensities are not
+# comparable across platforms.
 #
-#   (4) raw APSE supplement DETECTION profile from ProcessedDataMISAME3_VAMS.csv
-#       - a feature is "reliably detected" when present in >= half of the 18 APSE
-#         replicates; "supplement-abundant" when its mean abundance is >= 1 SD
-#         above the mean abundance ACROSS supplement features.
-#   (5) hardcoded significant-count validation (stopifnot) against the counts
-#       Trenton reported for the blood compartments.
-#   (8) graded 5-level supplement_status for every FDR-significant feature
-#       (No matched supplement feature / Not detected / Detected /
-#        Reliably detected / Supplement-abundant), matched exact-id first then
-#        same-ion-mode within 25 ppm.
-#   (9) the putative-NAME cross-compartment link tier (features linked across
-#       compartments by an identical normalized putative name), direction-only.
-#  (10) the two supplement figures: the supplement-status-shaded cross-compartment
-#       tracking line plot, and the stacked supplement-status bar.
-#
-# Cross-compartment comparison is DIRECTION-ONLY (Kim intensity constraint), as
-# in the rest of the blood pipeline. MISAME-III, BEP-vs-control combined arms.
-#
-# Out: results/bep_supplement_detection_profile.csv        (per-feature APSE tiers)
-#      results/supplement_status_fdr_features.csv           (5-level status per FDR feature)
-#      results/compartment_tracking_supplement.xlsx         (all sheets)
-#      figures/supplement_status_by_compartment.png         (stacked bar)
-#      figures/compartment_tracking_supplement_status.png   (tracking line plot)
+# Inputs : data/additional datasets/ProcessedDataMISAME3_VAMS.csv (supplement replicates)
+#          results/blood_mummichog_input.csv (script 50)
+#          results/fdr_sig_putative_annotation.csv (script 23)
+#          results/milk_fdr_sig_putative_annotation.csv (script 47)
+# Outputs: results/supplement_status_fdr_features.csv          (status per FDR-significant feature)
+#          results/bep_supplement_detection_profile.csv        (per-feature supplement tiers)
+#          results/compartment_tracking_supplement.xlsx        (all tables)
+#          figures/supplement_status_by_compartment.png, figures/compartment_tracking_supplement_status.png
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({ library(data.table); library(tidyverse); library(ggrepel) })
@@ -41,13 +46,13 @@ FDR_THRESHOLD <- 0.05
 MASS_TOL_PPM  <- CC_PPM          # 25 ppm, the shared cross-compartment constant
 
 # ---------------------------------------------------------------------------
-# (4) Raw APSE supplement detection profile
+# (1) Supplement detection profile
 # ---------------------------------------------------------------------------
-# ProcessedDataMISAME3_VAMS.csv carries 27 "supplement;..." columns; Trenton used
-# only the 18 that match "^supplement;APSE" (two APSE_Mere donors x 9 injections).
+# ProcessedDataMISAME3_VAMS.csv carries 27 "supplement;..." columns; only the 18
+# that match "^supplement;APSE" (two APSE_Mere donors x 9 injections) are used.
 vams_file <- paste0(root, "data/additional datasets/ProcessedDataMISAME3_VAMS.csv")
 supp_cols <- grep("^supplement;APSE", names(fread(vams_file, nrows = 0)), value = TRUE)
-stopifnot(length(supp_cols) == 18)          # Trenton's guard: 18 APSE replicates
+stopifnot(length(supp_cols) == 18)          # expect exactly 18 APSE replicates
 
 supp_raw <- fread(vams_file,
                   select = c("MZ", "RT", "Metabolite_Feature_Label", supp_cols))
@@ -79,7 +84,7 @@ supplement_profile[, `:=`(
 )]
 
 # "abundant" threshold = mean + 1 SD of the per-feature mean abundance, taken
-# ACROSS supplement features (Trenton's definition).
+# across supplement features (the original compartment-tracking definition).
 abund_threshold <- supplement_profile[
   , mean(mean_supplement_abundance, na.rm = TRUE) + sd(mean_supplement_abundance, na.rm = TRUE)]
 supplement_profile[, supplement_abundant :=
@@ -98,12 +103,12 @@ cat(sprintf("supplement detection profile: %d features | reliably detected %d | 
             sum(supplement_profile$supplement_abundant, na.rm = TRUE)))
 
 # ---------------------------------------------------------------------------
-# (5) Blood significant counts + hardcoded validation
+# (2) Blood significant counts + validation against the reported counts
 # ---------------------------------------------------------------------------
-# Recompute BH FDR within compartment x timepoint on the repo-generated blood
-# hand-off table (script 50), exactly as Trenton did, and gate on his reported
-# counts. compartment labels differ between the two scripts; map to Trenton's.
-blood_in <- fread(paste0(root, "results/blood_mummichog_input_for_trenton.csv"))
+# Recompute BH FDR within compartment x timepoint on script 50's per-feature table,
+# as the original compartment-tracking analysis did, and stop if the counts differ
+# from the ones it reported. Compartment labels are mapped to that analysis's labels.
+blood_in <- fread(paste0(root, "results/blood_mummichog_input.csv"))
 blood_in[, compartment := fcase(
   compartment == "Maternal plasma",                 "Maternal plasma",
   compartment == "Maternal blood (postnatal VAMS)", "Maternal VAMS",
@@ -126,14 +131,14 @@ count_validation <- merge(reported_counts, calc_counts,
 count_validation[is.na(calc_n), calc_n := 0L]
 count_validation[, matches_report := calc_n == reported_n]
 print(count_validation[order(compartment, timepoint)])
-stopifnot(all(count_validation$matches_report))      # Trenton's hard validation gate
-cat("blood significant-count validation: all 9 compartment x timepoint counts match Trenton\n")
+stopifnot(all(count_validation$matches_report))      # stop on any count mismatch
+cat("blood significant-count validation: all 9 compartment x timepoint counts match the reported counts\n")
 
 # ---------------------------------------------------------------------------
-# Assemble FDR-significant features across compartments (blood + milk)
+# (3) Assemble FDR-significant features across compartments (blood + milk)
 # ---------------------------------------------------------------------------
 # Blood: the compartment x timepoint FDR-significant features, with mz / ion mode
-# / direction from the hand-off table and a putative name (where annotated).
+# / direction from script 50's table and a putative name (where annotated).
 blood_ann <- fread(paste0(root, "results/fdr_sig_putative_annotation.csv"))
 blood_ann[, dataset := fcase(
   dataset == "MaternalPlasma",        "Maternal plasma",
@@ -173,7 +178,7 @@ compartment_sig[, normalized_name := gsub("[^a-z0-9]+", "", tolower(putative_nam
 compartment_sig[normalized_name == "", normalized_name := NA_character_]
 
 # ---------------------------------------------------------------------------
-# (8) 5-level supplement_status for every FDR-significant feature
+# (4) 5-level supplement_status for every FDR-significant feature
 # ---------------------------------------------------------------------------
 # Exact feature-id match first (features on the same rLC catalogue as the APSE
 # supplement), else the nearest same-ion-mode supplement feature within 25 ppm.
@@ -202,8 +207,9 @@ if (nrow(mass_src)) {
   h <- foverlaps(B, A, type = "within", nomatch = 0L)
   h <- h[!is.na(mode) & !is.na(i.mode) & mode == i.mode]
   if (nrow(h)) {
-    # foverlaps(x=B, y=A): columns unique to B (supplement_*) stay unprefixed;
-    # only the shared mz/mode clash, where A's copy takes the `i.` prefix.
+    # foverlaps(x = B, y = A): A's columns stay unprefixed; B's columns that clash
+    # with A's (mz, mode) take the `i.` prefix, so i.mz is the supplement m/z.
+    # B-only columns (supplement_*) keep their names.
     h[, ppm := abs(mz - i.mz) / i.mz * 1e6]
     setorder(h, ppm)
     h <- h[!duplicated(row_id)]                      # nearest supplement feature per sig feature
@@ -231,11 +237,11 @@ cat("\nsupplement status of FDR-significant features:\n")
 print(status_summary[order(compartment, timepoint, direction, supplement_status)])
 
 # ---------------------------------------------------------------------------
-# (9) Putative-name cross-compartment link tier (direction-only concordance)
+# (5) Putative-name cross-compartment links (direction-only concordance)
 # ---------------------------------------------------------------------------
-# Features linked across DIFFERENT compartments by an identical normalized
+# Features linked across different compartments by an identical normalized
 # putative name. Concordance is by direction only (intensities are not comparable
-# across platforms). This is the name-based tier the repo's id/mass matcher lacked.
+# across platforms).
 named <- compartment_sig[!is.na(normalized_name)]
 name_pairs <- merge(
   named[, .(normalized_name, c1 = compartment, t1 = timepoint, f1 = feature,
@@ -249,7 +255,7 @@ cat("\nputative-name cross-compartment links (direction concordance):\n")
 print(name_concordance)
 
 # ---------------------------------------------------------------------------
-# (10a) Stacked supplement-status bar
+# (6a) Stacked supplement-status bar
 # ---------------------------------------------------------------------------
 ct_levels <- c("Maternal plasma · incl", "Maternal plasma · tri3", "Maternal plasma · pn12",
                "Maternal VAMS · tri3", "Maternal VAMS · pn56",
@@ -290,7 +296,7 @@ ggsave(paste0(root, "figures/supplement_status_by_compartment.png"),
 cat("\nwrote figures/supplement_status_by_compartment.png\n")
 
 # ---------------------------------------------------------------------------
-# (10b) Supplement-status-shaded cross-compartment tracking line plot
+# (6b) Supplement-status-shaded cross-compartment tracking line plot
 # ---------------------------------------------------------------------------
 # Track putative metabolites that recur in >= 2 compartment x timepoint positions
 # (name-based linkage), one line per metabolite, points shaped by supplement status.

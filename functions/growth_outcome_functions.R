@@ -1,11 +1,25 @@
-
+# =============================================================================
+# functions/growth_outcome_functions.R
+#
+# Helpers for 1 data prep/2-imic_calc_growth_outcomes.R (growth outcomes for
+# Fig S1): measures closest to a target age, centile changes and centile
+# spaces crossed, velocity and growth-faltering measures, WHO length/weight
+# velocity z-scores, and a summary-table builder.
+# Side effect: sourcing this file reads the WHO velocity-standard spreadsheets
+# in metadata/growth standards/ and (re)writes
+# metadata/growth standards/combined_{length,weight}_vel_standards.csv, which
+# the calling script then reads.
+#
+# Inputs:  metadata/growth standards/ttt*_{length,weight}_{boys,girls}_*mon_z.xlsx
+# Outputs: metadata/growth standards/combined_{length,weight}_vel_standards.csv
+# =============================================================================
 
 #function to get measures closest to X months within a window
 #d: data
 #agem: age in months to get the measure by (assuming average months are 30.4067 days)
 #window: window around the target age in months that the measure is allowed to fall 
 #    default: 30.4167 days but that drops more observations than using a larger window like a month in either direction
-#   NOTE!: if the window is too large, there is a danger of including a growth observation before the -omics sample collection
+#   Note: if the window is too large, there is a danger of including a growth observation before the -omics sample collection
 #  So if using this data, after merging to exposure data make sure to clean by dropping obs in the wrong time order based on child age
 get_age_specific_measures <- function(d, agem=6, window=14){
   
@@ -27,7 +41,6 @@ calc_centile_delta <- function(centile, agedays, agemax){
   }
   return(centile_delta)
 }
-
 
 
 #function to calculate number of WHO centile spaces crossed:
@@ -55,10 +68,6 @@ calc_velocity_measures <- function(d1, d2){
   d <- d %>% group_by(studyid, subjid, subjido) %>%
     mutate(n_meas=n()) %>% filter(n_meas>1)
   
-  # d <- d %>% arrange(studyid, subjid, subjido, agedays)
-  # dim(d2)
-  # dim(d %>% distinct(studyid, subjid, subjido))
-  
   df <- d %>% group_by(studyid, subjid, subjido) %>%
     arrange(agedays, .by_group = TRUE) %>%
     mutate(
@@ -79,7 +88,7 @@ calc_velocity_measures <- function(d1, d2){
       weight_centile_vel = weight_centile - lag(weight_centile),
       height_centiles_crossed=mapply(calculateCentileCrossed,height_centile, first(height_centile)),
       weight_centiles_crossed=mapply(calculateCentileCrossed,weight_centile, first(weight_centile)),
-      #Add components of growth faltering for Nolan's exploration
+      # components of the growth-faltering definition, kept as separate indicators
       growth_faltering1_lbw = 1*(birthweight_centile<9 & weight_centiles_crossed<0),
       growth_faltering2_1crossed = 1*(birthweight_centile<91 & birthweight_centile>=9 & weight_centiles_crossed < (-1)),
       growth_faltering3_2crossed = 1*(birthweight_centile>=91 & weight_centiles_crossed < (-2)),
@@ -110,36 +119,32 @@ calc_velocity_measures <- function(d1, d2){
 }
 
 
-
-
 #Load and compile growth velocity standards
 library(readxl)
 
-who_girls_2mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_girls_2mon_z.xlsx")) %>% mutate(sex="female", agerange=2)
-who_girls_3mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_girls_3mon_z.xlsx")) %>% mutate(sex="female", agerange=3)
-who_girls_4mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_girls_4mon_z.xlsx")) %>% mutate(sex="female", agerange=4)
-who_girls_6mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_girls_6mon_z.xlsx")) %>% mutate(sex="female", agerange=6)
-who_boys_2mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_boys_2mon_z.xlsx")) %>% mutate(sex="male", agerange=2)
-who_boys_3mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_boys_3mon_z.xlsx")) %>% mutate(sex="male", agerange=3)
-who_boys_4mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_boys_4mon_z.xlsx")) %>% mutate(sex="male", agerange=4)
-who_boys_6mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_length_boys_6mon_z.xlsx")) %>% mutate(sex="male", agerange=6)
+who_girls_2mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_girls_2mon_z.xlsx")) %>% mutate(sex="female", agerange=2)
+who_girls_3mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_girls_3mon_z.xlsx")) %>% mutate(sex="female", agerange=3)
+who_girls_4mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_girls_4mon_z.xlsx")) %>% mutate(sex="female", agerange=4)
+who_girls_6mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_girls_6mon_z.xlsx")) %>% mutate(sex="female", agerange=6)
+who_boys_2mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_boys_2mon_z.xlsx")) %>% mutate(sex="male", agerange=2)
+who_boys_3mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_boys_3mon_z.xlsx")) %>% mutate(sex="male", agerange=3)
+who_boys_4mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_boys_4mon_z.xlsx")) %>% mutate(sex="male", agerange=4)
+who_boys_6mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_length_boys_6mon_z.xlsx")) %>% mutate(sex="male", agerange=6)
 who_data_length <- bind_rows( who_girls_2mo, who_girls_3mo, who_girls_4mo, who_girls_6mo,
                               who_boys_2mo, who_boys_3mo, who_boys_4mo, who_boys_6mo)
 
-who_weight_girls_1mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-girls-1mon-z.xlsx")) %>% mutate(sex="female", agerange=1)
-who_weight_girls_2mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-girls-2mon-z.xlsx")) %>% mutate(sex="female", agerange=2)
-who_weight_girls_3mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-girls-3mon-z.xlsx")) %>% mutate(sex="female", agerange=3)
-who_weight_girls_4mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_weight_girls_4mon_z.xlsx")) %>% mutate(sex="female", agerange=4)
-who_weight_girls_6mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_weight_girls_6mon_z.xlsx")) %>% mutate(sex="female", agerange=6)
-who_weight_boys_1mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-boys-1mon-z.xlsx")) %>% mutate(sex="male", agerange=1)
-who_weight_boys_2mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-boys-2mon-z.xlsx")) %>% mutate(sex="male", agerange=2)
-who_weight_boys_3mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt-weight-boys-3mon-z.xlsx")) %>% mutate(sex="male", agerange=3)
-who_weight_boys_4mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_weight_boys_4mon_z.xlsx")) %>% mutate(sex="male", agerange=4)
-who_weight_boys_6mo <- read_excel(paste0(here::here(),"/data/metadata/growth standards/ttt_weight_boys_6mon_z.xlsx")) %>% mutate(sex="male", agerange=6)
+who_weight_girls_1mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-girls-1mon-z.xlsx")) %>% mutate(sex="female", agerange=1)
+who_weight_girls_2mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-girls-2mon-z.xlsx")) %>% mutate(sex="female", agerange=2)
+who_weight_girls_3mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-girls-3mon-z.xlsx")) %>% mutate(sex="female", agerange=3)
+who_weight_girls_4mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_weight_girls_4mon_z.xlsx")) %>% mutate(sex="female", agerange=4)
+who_weight_girls_6mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_weight_girls_6mon_z.xlsx")) %>% mutate(sex="female", agerange=6)
+who_weight_boys_1mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-boys-1mon-z.xlsx")) %>% mutate(sex="male", agerange=1)
+who_weight_boys_2mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-boys-2mon-z.xlsx")) %>% mutate(sex="male", agerange=2)
+who_weight_boys_3mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt-weight-boys-3mon-z.xlsx")) %>% mutate(sex="male", agerange=3)
+who_weight_boys_4mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_weight_boys_4mon_z.xlsx")) %>% mutate(sex="male", agerange=4)
+who_weight_boys_6mo <- read_excel(paste0(here::here(),"/metadata/growth standards/ttt_weight_boys_6mon_z.xlsx")) %>% mutate(sex="male", agerange=6)
 who_data_weight <- bind_rows(who_weight_girls_1mo, who_weight_girls_2mo, who_weight_girls_3mo, who_weight_girls_4mo, who_weight_girls_6mo,
                              who_weight_boys_1mo, who_weight_boys_2mo, who_weight_boys_3mo, who_weight_boys_4mo, who_weight_boys_6mo)
-
-
 
 
 #clean/standardize charts
@@ -174,9 +179,8 @@ who_data_weight <- clean_who_vel_standards(who_data_weight)
 who_data_length$Delta <- 0
 
 
-write.csv(who_data_length, file=paste0(here::here(),"/data/metadata/growth standards/combined_length_vel_standards.csv"))
-write.csv(who_data_weight, file=paste0(here::here(),"/data/metadata/growth standards/combined_weight_vel_standards.csv"))
-
+write.csv(who_data_length, file=paste0(here::here(),"/metadata/growth standards/combined_length_vel_standards.csv"))
+write.csv(who_data_weight, file=paste0(here::here(),"/metadata/growth standards/combined_weight_vel_standards.csv"))
 
 
 #function to calculate WHO velocity Z-scores
@@ -239,24 +243,6 @@ calculate_WHO_velocity_zscore <- function(sex, age1, age2, length1, length2, who
     return(NA)
   }
 }
-
-
-# #wrapper function
-# 
-# calc_who_velocity_measures <- function(d, var="vel_z"){
-#   
-#   res = d %>% 
-#     rowwise() %>% 
-#     mutate(vel_z = as.numeric(calculate_velocity_zscore(sex=sex,
-#                                                             age1=agedays_birth,
-#                                                             age2=agedays_3mo,
-#                                                             length1=wtkg_birth*1000,
-#                                                             length2=wtkg_3mo*1000,
-#                                                             who_data=who_data_weight))) %>% ungroup() %>%
-#     rename(!!(vel_z)=var)
-#   
-#   return(res)
-# }
 
 
 #tabulation function

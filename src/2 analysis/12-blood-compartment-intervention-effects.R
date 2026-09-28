@@ -1,40 +1,46 @@
-
 # =============================================================================
-# 12-blood-compartment-intervention-effects.R   [ARM-STRATIFIED]
+# 12-blood-compartment-intervention-effects.R   (arm-stratified)
 #
-# bioTMLE ATE on the blood compartments from 7-blood-compartment-prep.R,
-# mirroring the arm-stratified milk script 2_adjusted_analysis.R.
+# Estimates per-feature BEP average treatment effects (bioTMLE) in the MISAME-III
+# blood compartments, separately by visit, for the Methods' cross-compartment
+# blood analyses. Arms are the full 4-level factorial (Control, IFA-BEP, BEP-IFA,
+# BEP-BEP), each contrasted with Control, mirroring the arm-stratified milk script
+# 2_adjusted_analysis.R. Compartments: maternal plasma, prenatal VAMS, postnatal
+# VAMS split by dyad into maternal and infant, and maternal blood proteomics
+# (depleted and naive). FDR is applied later, in clean_blood_results.R. The
+# covariate-adjusted stratified results feed script 20.
 #
-# STRATIFIED = full 4-level MISAME-3 factorial arm (Control / IFA-BEP / BEP-IFA /
-# BEP-BEP); bioTMLE contrasts each vs Control. Analyze BY VISIT (= timePoint);
-# FDR per visit x dataset in clean_blood_results.R.
-#
-# Postnatal VAMS is split by dyad -> maternal vs infant circulation.
-# Output: results/blood_compartment_intervention_effects_results.RDS
+# Inputs : data/blood/merged_blood_datasets.RDS (1 data prep/7-blood-compartment-prep.R),
+#          metadata/blood_component.Rdata
+# Output : results/blood_compartment_[adjusted_]intervention_effects_results.RDS
+# Settings (set before sourcing): BLOOD_ADJUST, BLOOD_WORKERS, BLOOD_SL_LIB_METAB,
+#          BLOOD_SL_LIB_PROT, N_FEATURES_SUBSET (NULL = all features).
+# [needs restricted data]
 # =============================================================================
 
+# Standalone runs load the config here; the orchestrators load it once and set BLOOD_ORCHESTRATED.
 if (!exists("BLOOD_ORCHESTRATED")) { rm(list = ls()); source(paste0(here::here(), "/src/0-config.R")) }
 
 load(file = paste0(here::here(), "/metadata/blood_component.Rdata"))
 blood <- readRDS(paste0(here::here(), "/data/blood/merged_blood_datasets.RDS"))
 
 if (!exists("BLOOD_ADJUST")) BLOOD_ADJUST <- FALSE
-# Cap parallel workers: SnowParam copies the data to EACH worker (Windows PSOCK),
-# so unbounded workers OOM on the 38k-feature VAMS. Keep small. (override-aware)
+# Cap parallel workers: SnowParam copies the data to each worker (Windows PSOCK),
+# so an unbounded worker count runs out of memory on the 38k-feature VAMS.
 if (!exists("BLOOD_WORKERS")) BLOOD_WORKERS <- 4
-# Per-compartment SuperLearner library: the milk-analysis full library
-# c("SL.mean","SL.glm","SL.glmnet","SL.xgboost") is feasible for the small
-# proteomics datasets but ~31x too slow for 19k-38k untargeted metabolite features,
-# so metabolomics defaults to SL.glm. Orchestrators override these.
+# SuperLearner library per compartment. The full milk library
+# c("SL.mean","SL.glm","SL.glmnet","SL.xgboost") is about 31x too slow for the
+# 19k-38k untargeted metabolite features, so both default to SL.glm; set
+# BLOOD_SL_LIB_PROT before sourcing to use a larger library on proteomics.
 if (!exists("BLOOD_SL_LIB_METAB")) BLOOD_SL_LIB_METAB <- c("SL.glm")
 if (!exists("BLOOD_SL_LIB_PROT"))  BLOOD_SL_LIB_PROT  <- c("SL.glm")
 sl_for <- function(label) if (grepl("Proteomics", label)) BLOOD_SL_LIB_PROT else BLOOD_SL_LIB_METAB
-SCALE_IN_TMLE     <- TRUE               # per instruction
+SCALE_IN_TMLE     <- TRUE               # standardize features inside bioTMLE (effects in SD units)
 Wvars_blood       <- if (BLOOD_ADJUST) Wvars else c("arm", "dummy")  # adjusted = milk Wvars
 .tag              <- if (BLOOD_ADJUST) "adjusted_" else ""            # output filename tag
-if (!exists("N_FEATURES_SUBSET")) N_FEATURES_SUBSET <- NULL  # ALL features by default; set a number (e.g. 100) before sourcing for a fast setup pass
+if (!exists("N_FEATURES_SUBSET")) N_FEATURES_SUBSET <- NULL  # all features by default; set a number (e.g. 100) before sourcing for a quick test run
 
-# Compartment spec: label -> (data.frame, feature set). Postnatal VAMS split by dyad.
+# Compartment spec: label -> (data.frame, feature set). Postnatal VAMS is split by dyad.
 vp <- blood$vams_postnatal
 specs <- list(
   MaternalPlasma         = list(df = blood$maternal_plasma,             Y = blood_components$maternal_plasma),

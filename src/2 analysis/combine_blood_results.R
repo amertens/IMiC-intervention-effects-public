@@ -1,23 +1,23 @@
 # =============================================================================
 # combine_blood_results.R
 #
-# Combines the separate blood-compartment clean result files into ONE tidy master
-# table, analogous to the main milk results
-# (adjusted_combined_arms_intervention_effects_results_clean.RDS).
+# Binds the cleaned blood ATE files (stratified and combined arms, unadjusted and
+# adjusted; any that do not exist are skipped) into one master table, tags each row
+# with its arm coding and adjustment, and harmonizes the schema with the milk results
+# (study, omic, tissue, label_f). The slim CSV of FDR-significant ATEs is the input
+# to 57-table-s10-temporal-persistence.R (Table S10).
 #
-# Binds every available blood clean file across {arm coding} x {adjustment}, tags
-# each row, and harmonizes the schema toward the milk results (adds study, omic,
-# tissue, label_f). Picks up adjusted files automatically once they exist.
-#
-# Output:
-#   results/blood_compartment_all_intervention_effects_results_clean.RDS  (full)
-#   results/blood_compartment_all_FDRsig_ATE.csv                          (slim: FDR-sig ATEs)
+# Inputs : results/blood_compartment_[adjusted_][combined_arms_]intervention_effects_results_clean.RDS
+#          (from clean_blood_results.R)
+# Outputs: results/blood_compartment_all_intervention_effects_results_clean.RDS  (all rows)
+#          results/blood_compartment_all_FDRsig_ATE.csv                          (FDR-significant ATEs)
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(dplyr)})
 r <- paste0(here::here(), "/results/")
 
-# Every blood clean file: tag = "<adjust><coding>"; path built from the two tags.
+# One entry per cleaned blood file: adjustment x arm coding.
 specs <- list(
   list(adj = "unadjusted", coding = "stratified", file = "blood_compartment_intervention_effects_results_clean.RDS"),
   list(adj = "unadjusted", coding = "combined",   file = "blood_compartment_combined_arms_intervention_effects_results_clean.RDS"),

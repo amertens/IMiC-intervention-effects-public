@@ -1,62 +1,67 @@
 # =============================================================================
-# _blood_helpers.R,  shared helpers for the blood / cross-compartment / mummichog pipeline
+# _blood_helpers.R
 #
-# WHY THIS FILE EXISTS
-#   The m/z–RT extractors, the cross-compartment matcher, the threshold-free
-#   concordance methods, and the bioTMLE result-tidier were originally copy-pasted
-#   into several numbered scripts. They drifted out of sync (different names, and a
-#   foverlaps column swap that produced silent zero-matches in one copy). Everything
-#   shared now lives here, once, so the numbered scripts stay short and consistent.
+# Shared helpers for the blood, cross-compartment and Mummichog scripts, defined once
+# so tolerances and methods stay consistent: matching tolerances, m/z-RT feature
+# catalogues, the cross-compartment accurate-mass matcher (±25 ppm within ionization
+# mode, as in the Methods), the threshold-free concordance methods of script 20, and
+# the bioTMLE result tidier used by clean_blood_results.R. Sourced by
+# clean_blood_results.R and scripts 20, 23, 29, 32, 33, 50 and 54.
 #
-# USAGE
-#   source(paste0(here::here(), "/src/2 analysis/_blood_helpers.R"))
-#   (Source 0-config.R first if you need extract_blood_results(), which reuses
-#    extract_res() and ci_to_pvalue() from the config.)
+# Usage  : source(paste0(here::here(), "/src/2 analysis/_blood_helpers.R"))
+#          (source 0-config.R first for extract_blood_results(), which uses
+#          extract_res() and ci_to_pvalue() loaded by the config)
+# Inputs : the m/z-RT extractors read data/additional datasets/
+#          {ProcessedDataMISAME3_*.csv, metabolite_description_vam_with_global_id.csv,
+#          IMiC_alignment.csv}
+# [needs restricted data] (the extractors' catalogue files are not shipped)
 #
-# CONTENTS
+# Contents
 #   1. Tolerances / constants
-#   2. m/z–RT extractors            (feature id -> mz, rt, ionization mode)
+#   2. m/z-RT extractors            (feature id -> mz, rt, ionization mode)
 #   3. Cross-compartment matcher    (match_mzrt = all pairs; best_match = greedy 1:1)
-#   4. Threshold-free concordance   (signed_stat, gsea_es, perm_gsea_p, rrho_directional)
-#   5. bioTMLE result tidier        (extract_blood_results -> long, FDR per visit×dataset)
+#   4. Threshold-free concordance   (signed_stat, gsea_es, perm_gsea_p, rrho_directional,
+#                                    weighted_cor, deming_slope)
+#   5. bioTMLE result tidier        (extract_blood_results -> long, FDR per visit x dataset)
 # =============================================================================
 
 suppressMessages({library(data.table)})
 .bh_datadir <- function() paste0(here::here(), "/data/additional datasets/")
 
 # -- 1. tolerances / constants ------------------------------------------------
-# Cross-compartment feature matching (Kim x Trenton meeting, 2026-06-24).
-# RT is method-aware: V1<->V1 pairs (milk / plasma / prenatal-VAMS, same LCV1 method)
-# align ~linearly so use a tight window; V1<->V3 pairs (anything <-> postnatal VAMS,
-# LCB3) drift non-linearly so use a loose window and lean on m/z.
+# Cross-compartment feature matching. The RT windows are used only when use_rt = TRUE
+# (off by default). RT is method-aware: V1<->V1 pairs (milk / plasma / prenatal VAMS,
+# same LC V1 method) align about linearly, so a tight window; V1<->V3 pairs (anything
+# <-> postnatal VAMS, LC B3) drift non-linearly, so a loose window that leans on m/z.
 CC_PPM         <- 25     # accurate-mass tolerance, +/- ppm
 CC_RT_V1V1     <- 0.20   # tight RT window (same method)
 CC_RT_V1V3     <- 0.50   # loose RT window (cross method)
-CC_EARLY_RT    <- 0.10   # Kim false-positive trim: drop a pair if it elutes before this...
-CC_EARLY_SHIFT <- 0.10   # ...AND its two RTs differ by more than this
+CC_EARLY_RT    <- 0.10   # early-elution false-positive trim: drop a pair that elutes before this...
+CC_EARLY_SHIFT <- 0.10   # ...and whose two RTs differ by more than this
 
-# Mummichog (matches the milk pipeline / Trenton's recipe). Note: MUM_PPM is the
-# database annotation tolerance and is a DIFFERENT quantity from CC_PPM above.
+# Mummichog settings (same as the milk Mummichog analysis). MUM_PPM is the database
+# annotation tolerance, a different quantity from CC_PPM above.
 MUM_PPM    <- 10
 MUM_NET    <- "human_mfn"
 MUM_CUTOFF <- 0.05
 
-# -- 2. m/z–RT extractors -----------------------------------------------------
-# All return data.table(feature [UPPERCASE id], mz, rt, mode).
+# -- 2. m/z-RT extractors -----------------------------------------------------
+# All return data.table(feature [upper-case id], mz, rt, mode).
 ion_of <- function(x) ifelse(grepl("_POS", toupper(x)), "positive",
                       ifelse(grepl("_NEG", toupper(x)), "negative", NA_character_))
 
-# rLC catalogues (maternal plasma / prenatal VAMS) from the processed Sapient tables.
+# rLC catalogues (maternal plasma / prenatal VAMS) from the processed tables of the
+# annotation provider (Sapient).
 mzrt_rlc <- function(file) {
   d <- fread(paste0(.bh_datadir(), file), select = c("MZ", "RT", "Metabolite_Feature_Label"))
   data.table(feature = toupper(d$Metabolite_Feature_Label), mz = d$MZ, rt = d$RT,
              mode = ion_of(d$Metabolite_Feature_Label))[!is.na(mz)]
 }
-# postnatal VAMS, maternal + infant share this one V3 `vam_` catalogue.
-# drop_v3_lipids=TRUE removes the di/triglyceride & cholesterol-ester features that the
-# V3 method captures but V1 does not (Kim's V1<->V3 false-positive trim). Only 37 of
-# 38,761 features carry such a class label, and none are in any current matched pair,
-# so this has no effect on present results, provided for completeness.
+# Postnatal VAMS: maternal and infant share this one V3 `vam_` catalogue.
+# drop_v3_lipids = TRUE removes the di/triglyceride and cholesterol-ester features that
+# the V3 method captures but V1 does not (a V1<->V3 false-positive trim). Only 37 of
+# 38,761 features carry such a class label and none is in a matched pair, so it has no
+# effect on the reported results; it defaults to FALSE.
 mzrt_vams <- function(drop_v3_lipids = FALSE) {
   d <- fread(paste0(.bh_datadir(), "metabolite_description_vam_with_global_id.csv"))
   if (drop_v3_lipids)
@@ -65,8 +70,8 @@ mzrt_vams <- function(drop_v3_lipids = FALSE) {
   data.table(feature = toupper(d$feature_label), mz = d$mz, rt = d$rt_minute,
              mode = tolower(d$ionization_mode))[!is.na(mz) & !is.na(rt)]
 }
-# milk. IMiC cross-study alignment key. misame_only=TRUE keeps just the MISAME-3 ids
-# (for matching against MISAME-3 blood); FALSE also includes CHILD/ELICIT/VITAL.
+# Milk: IMiC cross-study alignment key. misame_only = TRUE keeps just the MISAME-III ids
+# (for matching against MISAME-III blood); FALSE also includes CHILD/ELICIT/VITAL.
 mzrt_milk <- function(misame_only = TRUE) {
   a <- fread(paste0(.bh_datadir(), "IMiC_alignment.csv"))
   d <- data.table(feature = toupper(a$mtb_id_MISAME3), mz = a$mz_MISAME3, rt = a$rt_MISAME3)
@@ -78,16 +83,14 @@ mzrt_milk <- function(misame_only = TRUE) {
 }
 
 # -- 3. cross-compartment matcher ---------------------------------------------
-# PPM match = Kim's formula: |m_A − m_B| / m * 1e6 ≤ CC_PPM (±25 ppm), implemented as
-# the window m_A*(1 ± CC_PPM/1e6). RT is an OPTIONAL confidence filter, per the
-# 2026-06-24 meeting (Trenton: "wouldn't worry about retention time right now"),
-# the FIRST-PASS match is m/z + ionization mode only (use_rt = FALSE). Pass
-# use_rt = TRUE to add the method-aware RT window + Kim's early-elution trim for a
-# higher-confidence list.
+# PPM match: |m_A - m_B| / m * 1e6 <= CC_PPM (±25 ppm), implemented as the window
+# m_A * (1 ± CC_PPM/1e6). The default match uses m/z and ionization mode only
+# (use_rt = FALSE), as in the Methods. use_rt = TRUE adds the method-aware RT window and
+# the early-elution trim as an optional confidence filter.
 #
-# foverlaps note: foverlaps(x = B, y = A) returns A's columns UNPREFIXED and B's with
-# an `i.` prefix. So `feature` is A's, `i.feature` is B's. (Swapping these silently
-# produced zero matches once, keep it here, once.)
+# foverlaps note: foverlaps(x = B, y = A) returns A's columns unprefixed and B's with
+# an `i.` prefix, so `feature` is A's and `i.feature` is B's. Swapping them yields zero
+# matches without an error.
 .mz_join <- function(A, B, rt_tol, same_mode = TRUE, use_rt = FALSE) {
   A <- copy(A); B <- copy(B)
   A[, `:=`(mz_lo = mz*(1 - CC_PPM/1e6), mz_hi = mz*(1 + CC_PPM/1e6))]
@@ -97,7 +100,7 @@ mzrt_milk <- function(misame_only = TRUE) {
     h <- h[!is.na(mode) & !is.na(i.mode) & mode == i.mode]
   if (use_rt) {                                                          # optional RT confidence layer
     h <- h[abs(rt - i.rt) <= rt_tol]
-    h <- h[!(pmin(rt, i.rt) < CC_EARLY_RT & abs(rt - i.rt) > CC_EARLY_SHIFT)]   # Kim FP trim
+    h <- h[!(pmin(rt, i.rt) < CC_EARLY_RT & abs(rt - i.rt) > CC_EARLY_SHIFT)]   # early-elution trim
   }
   h
 }
@@ -121,8 +124,8 @@ best_match <- function(A, B, rt_tol = CC_RT_V1V3, same_mode = TRUE, use_rt = FAL
 signed_stat <- function(pval, est) (-log10(pmax(pval, 1e-300))) * sign(est)
 
 # GSEA running-sum enrichment score of `in_set` within a ranked `stat` vector.
-# Walk features from most to least positive `stat`; a running sum steps UP at each
-# set member (weighted by |stat|) and DOWN at each non-member. The score is the
+# Walk features from most to least positive `stat`; a running sum steps up at each
+# set member (weighted by |stat|) and down at each non-member. The score is the
 # largest deviation of that walk from zero.
 gsea_es <- function(stat, in_set) {
   rank_order <- order(stat, decreasing = TRUE)
@@ -152,7 +155,7 @@ perm_gsea_p <- function(stat, in_set, P = 1000) {
        nes = if (length(same_sign)) observed / mean(abs(same_sign)) else NA_real_,
        p   = (1 + sum(abs(null) >= abs(observed))) / (P + 1))   # +1 smoothing avoids p = 0
 }
-# RRHO directional overlap of two signed-stat vectors over a COMMON item set.
+# RRHO directional overlap of two signed-stat vectors over a common item set.
 # Returns c(concordant, discordant) = peak -log10 hypergeometric p in the
 # up-up/down-down vs up-down/down-up corners (top half only, to avoid the
 # trivial whole-set inflation).

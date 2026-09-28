@@ -1,7 +1,21 @@
+# =============================================================================
+# src/2 analysis/2_adjusted_analysis_combined_arms_unscaled.R
+#
+# Combined-arms version of the adjusted models (as in
+# 2_adjusted_analysis_combined_arms.R) fit on outcomes in native units
+# (scale = FALSE). clean_results.R turns the output into
+# results/adjusted_combined_arms_intervention_effects_unscaled_results_clean.RDS,
+# which build_table_s1.R uses for Table S1 (native-unit arm means and effects).
+#
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/adjusted_combined_arms_{primary,secondary,tertiary}_intervention_effects_results_unscaled.RDS
+#          results/adjusted_combined_arms_intervention_effects_results_unscaled.RDS
+# [needs restricted data]
+# =============================================================================
 
-
-#https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
-#https://joss.theoj.org/papers/10.21105/joss.00295
+# Method references: biotmle vignette
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
+# and https://joss.theoj.org/papers/10.21105/joss.00295
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -9,6 +23,9 @@ source(paste0(here::here(),"/src/0-config.R"))
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 
+# Pool trial arms by the nutritional supplement received during lactation:
+# Misame BEP/BEP and IFA/BEP -> BEP, BEP/IFA (prenatal BEP only) -> Control;
+# Vital BEP arms -> BEP; Elicit Nico+Az. -> Nico, Az. (azithromycin only) -> Control.
 table(d$arm)
 d <- d %>% mutate(
   arm = case_when(
@@ -32,10 +49,7 @@ table(is.na(d$arm))
 missing_W <- d %>% select(all_of(Wvars)) %>% summarise_all(funs(sum(is.na(.))))
 missing_W      
 
-
 SL.lib  = c("SL.mean","SL.glm","SL.glmnet","SL.xgboost")
-
-
 
 res_primary <- d %>% group_by(study, visit) %>%
   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T, g_lib = SL.lib, Q_lib = SL.lib,
@@ -55,9 +69,9 @@ names(res_secondary$res) <- paste0(res_secondary$study, "-", res_secondary$visit
 saveRDS(res_secondary, file=paste0(here::here(),"/results/adjusted_combined_arms_secondary_intervention_effects_results_unscaled.RDS"))
 res_secondary <- readRDS(paste0(here::here(),"/results/adjusted_combined_arms_secondary_intervention_effects_results_unscaled.RDS"))
 
-#temp simplify library
+# Tertiary (targeted metabolomics) native-unit fits use a GLM-only library;
+# these estimates are not reported in a printed exhibit.
 SL.lib  = c("SL.glm")
-
 res_tertiary <- d %>% group_by(study, visit) %>%
   do(res=try(run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T,  g_lib = SL.lib, Q_lib = SL.lib,
                      Yvars=all_milk_components$metabolomics,
@@ -70,4 +84,3 @@ saveRDS(list(res_primary=res_primary,
              res_secondary=res_secondary,
              res_tertiary=res_tertiary),
         file=paste0(here::here(),"/results/adjusted_combined_arms_intervention_effects_results_unscaled.RDS"))
-

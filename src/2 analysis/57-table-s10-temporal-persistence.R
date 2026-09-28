@@ -1,42 +1,28 @@
-# 57-table-s10-temporal-persistence.R
 # =============================================================================
-# Table S10: temporal persistence (accumulation) of FDR-significant UP-REGULATED
-# BEP-associated metabolite features across CONSECUTIVE visits within each blood
-# compartment (MISAME-III).
+# 57-table-s10-temporal-persistence.R
 #
-# WHY THIS SCRIPT EXISTS
-#   Table S10 previously existed ONLY as hand-typed markdown inside
-#   Manuscript/qmd/supplement_v2.qmd -- no script computed it, so nothing could
-#   re-derive or re-check its numbers when the blood TMLE results were re-run.
-#   This script is that missing generator. It reproduces the printed table exactly
-#   (verified 2026-08-16; see results/tables/table_s10_temporal_persistence.csv).
-#
-# DEFINITIONS (these are the ones the printed caption states)
-#   - Universe: the blood bioTMLE average treatment effects, pooled postnatal-BEP
-#     arms vs control ("combined" arm coding), covariate-ADJUSTED, contrast "BEP".
-#   - Significant  = Benjamini-Hochberg q < 0.05 within (dataset x visit).
-#     results/blood_compartment_all_FDRsig_ATE.csv holds ONLY the FDR-significant
-#     rows (sigFDR == 1), so a (dataset, visit) cell absent from the file has zero.
+# Builds Table S10: persistence and emergence of FDR-significant up-regulated
+# BEP-associated metabolite features across consecutive visits within each MISAME-III
+# blood compartment (the Results statement that 100% of infant features significant
+# at 1-2 months remained so at 3-4 months, and 87.5% from 3-4 to 5-6 months).
+# Definitions, as in the table caption:
+#   - Universe: blood bioTMLE ATEs, pooled postnatal-BEP arms vs control (combined arm
+#     coding), covariate-adjusted, contrast "BEP".
+#   - Significant = BH q < 0.05 within dataset x visit. The input holds only the
+#     FDR-significant rows (sigFDR == 1), so a dataset x visit cell absent from it has zero.
 #   - Up-regulated = est > 0.
-#   - Retained     = the SAME analytical feature id (biomarker) is FDR-significantly
-#     up-regulated at BOTH the preceding and the current visit.
-#   - Newly significant = current - retained.
-#   - Retention %  = retained / preceding; undefined ("--") when preceding == 0.
+#   - Retained = the same feature id is FDR-significantly up-regulated at both the
+#     preceding and the current visit; newly significant = current - retained;
+#     retention % = retained / preceding (undefined when preceding == 0).
+# These are group-level feature counts over calendar time, not within-individual
+# accumulation. Counts are up-regulated only: infant blood has 3 / 8 / 17 features at
+# 1-2 / 3-4 / 5-6 months, against 3 / 8 / 18 in both directions (the counts checked in
+# script 54), because one 5-6 month feature is down-regulated.
 #
-#   This describes persistence and emergence of intervention-associated FEATURES
-#   over calendar time. It is NOT within-individual accumulation.
-#
-# NOTE ON A RELATED NUMBER: the retired blood-transfer panel (Panel D of what was then
-#   Fig. S7, cut from the supplement 2026-08-26) reported 3 / 8 / 18 FDR-significant
-#   infant-blood features at 1-2 / 3-4 / 5-6 months. That count is BOTH directions; this table is
-#   up-regulated only, hence 3 / 8 / 17 (one down-regulated feature at 5-6 months).
-#   Both are correct; they answer different questions.
-#
-# Input : results/blood_compartment_all_FDRsig_ATE.csv   (from combine_blood_results.R)
-# Output: results/tables/table_s10_temporal_persistence.csv
-#         results/tables/table_s10_temporal_persistence.md   (paste-ready qmd fragment)
-#
-# Run from repo root: Rscript "src/2 analysis/57-table-s10-temporal-persistence.R"
+# Input  : results/blood_compartment_all_FDRsig_ATE.csv (combine_blood_results.R)
+# Outputs: results/tables/table_s10_temporal_persistence.csv
+#          results/tables/table_s10_temporal_persistence.md (markdown version of the table)
+# [needs restricted data] (upstream blood results)
 # =============================================================================
 suppressMessages({ library(data.table) })
 root <- paste0(here::here(), "/")
@@ -86,7 +72,7 @@ rows <- rbindlist(lapply(SEQ, function(s) {
   }))
 }))
 
-# The printed table shows a compartment's FIRST visit as its own row only when that
+# The printed table shows a compartment's first visit as its own row only when that
 # visit already has significant features (maternal plasma, Inclusion: 16). A first
 # visit with none (infant Birth, maternal-VAMS third trimester) contributes only as
 # the "preceding" column of the next transition, so drop those empty leading rows.

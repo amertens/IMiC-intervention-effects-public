@@ -1,19 +1,16 @@
 # =============================================================================
 # src/2 analysis/1-unadjusted-analysis.R
 #
-# Reads:  data/merged_analysis_datasets.RDS
-#         metadata/milk_component.Rdata
-# Writes: results/unadjusted_intervention_effects_results.RDS
+# Unadjusted, arm-stratified intervention effects (biotmle with only the arm and
+# a constant dummy as covariates) on the primary, secondary and tertiary
+# targeted milk panels, by study and visit. No printed exhibit uses these
+# estimates directly; the script is kept because clean_results.R reads its
+# output and writes results/unadjusted_intervention_effects_results_clean.RDS.
 #
-# Paths above were recovered from this script's syntax tree and are
-# repo-relative; they resolve from the repo root via here::here().
-#
-# Header generated from the code itself; it makes no claim about method.
-# See README.md for run order and results/ARTIFACT_MANIFEST.csv for the
-# exhibit each script feeds.
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/unadjusted_intervention_effects_results.RDS
+# [needs restricted data]
 # =============================================================================
-
-
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -21,17 +18,9 @@ source(paste0(here::here(),"/src/0-config.R"))
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 
-# df <- d %>% filter(study=="Misame", visit ==2) %>% select(arm,iga)
-# ggplot(df, aes(x=arm, y=iga)) + geom_boxplot()
-
+# Unadjusted: the covariate set is the arm plus a constant.
 d$dummy<-1
 Wvars = c("arm","dummy")
-
-# temp <- d %>% group_by(study, visit) %>%
-#   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=F,
-#                      Yvars=c(all_milk_components$macro),
-#                      scale = TRUE))
-
 
 res_primary <- d %>% group_by(study, visit) %>%
   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=F,
@@ -55,7 +44,3 @@ saveRDS(list(res_primary=res_primary,
              res_secondary=res_secondary,
              res_tertiary=res_tertiary),
         file=paste0(here::here(),"/results/unadjusted_intervention_effects_results.RDS"))
-
-
-
-

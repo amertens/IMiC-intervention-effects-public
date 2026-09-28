@@ -1,31 +1,24 @@
-# 3b-SL_vim_individual_lab.R
 # =============================================================================
-# SL arm-classification VIM pipeline, split 2 of 3 (was 3-SL_vim.R).
+# src/2 analysis/3b-SL_vim_individual_lab.R
 #
-# *** This is the stage that feeds the manuscript Figure 1 ML/VIM panel. ***
-# (figure-data/SL_vim_plot_data.RDS, built by
-#  `src/3 visualizations/5-SL_VIM_plots.R` from this script's
-#  results/SL_individual_lab_vim_res.RDS, is what
-#  figure-scripts/manuscript_figures/fig1-ml-vim-classifier.R actually reads.
-#  The leave-one-out stage, 3c, is NOT currently on that path -- its
-#  results/SL_vim_res.RDS is read by 5-SL_VIM_plots.R only in a commented-out
-#  line.)
+# Arm-classification variable importance for Fig 1A. For each trial contrast
+# (one intervention arm vs its control, by study and visit), fits a
+# cross-validated sl3 SuperLearner classifier of arm from the milk components
+# and records the cross-validated AUC: once with all components (the "all"
+# row) and once per component group in all_milk_components (macronutrients,
+# micronutrients, B-vitamins, HMOs, bioactive proteins, targeted
+# metabolomics). The all-components fit is read from data/models/SL_vim_full_fit.RDS
+# when that file exists; otherwise it is fit here and saved there.
+# src/3 visualizations/5-SL_VIM_plots.R turns the AUC table into
+# figure-data/SL_vim_plot_data.RDS, which fig1-ml-vim-classifier.R plots.
 #
-# For each milk-component group, fits a cross-validated SuperLearner classifier
-# using ONLY that group's biomarkers as covariates (the complement of 3c's
-# leave-one-OUT loop). One iteration per group in `all_milk_components`
-# (currently 6: macro, micro, bvit, hmo, protein, metabolomics).
-#
-# Depends on the full-model fit (3a) only to append `full_AUC_res` as the
-# 'all' row of the combined table -- reuses the checkpoint if present instead
-# of re-fitting it.
-#
-# Outputs:
-#   data/models/SL_individual_lab_vim_fits.RDS
-#   results/SL_individual_lab_vim_res.RDS
-#
-# Run from the repo root:
-#   Rscript "src/2 analysis/3b-SL_vim_individual_lab.R"
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+#          data/models/SL_vim_full_fit.RDS (optional; reused if present)
+# Outputs: results/SL_individual_lab_vim_res.RDS
+#          data/models/SL_vim_full_fit.RDS (when fit here)
+#          data/models/SL_individual_lab_vim_fits.RDS (fitted models; not read downstream)
+# Run from the repo root: Rscript "src/2 analysis/3b-SL_vim_individual_lab.R"
+# [needs restricted data]
 # =============================================================================
 
 rm(list=ls())
@@ -40,7 +33,8 @@ library(data.table)
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d <- readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 
-#expand the dataset with contrast variable to group_by()
+# Stack one copy of the data per contrast (intervention arm + its control) so
+# fit_SuperLearner() can group by contrast.
 table(d$studyid, d$arm)
 d1 <- d %>% filter(studyid=="ELICIT", arm %in% c("Control","Az.")) %>% mutate(contrast="Az.")
 d2 <- d %>% filter(studyid=="ELICIT", arm %in% c("Control","Nico")) %>% mutate(contrast="Nico")
@@ -57,13 +51,13 @@ Xvars = as.vector(unlist(all_milk_components))
 table(d$arm)
 table(d$contrast)
 
-#### full-model AUC row (reuse 3a's checkpoint if present) --------------------
+#### all-components AUC row (reuse the saved fit if present) ------------------
 full_fit_path <- paste0(here::here(),"/data/models/SL_vim_full_fit.RDS")
 if (file.exists(full_fit_path)) {
   cat("Reusing existing full-model checkpoint:", full_fit_path, "\n")
   full_AUC_res <- readRDS(full_fit_path)$full_AUC_res
 } else {
-  cat("No full-model checkpoint found -- fitting it now (see 3a-SL_vim_full_model.R).\n")
+  cat("No full-model checkpoint found -- fitting it now.\n")
   set.seed(12345)
   full_SL_fits = fit_SuperLearner(d,outcome="arm", covars=as.vector(unlist(all_milk_components)), slmod=sl, CV=T, family="binomial")
   full_AUC_res = extract_AUC(full_SL_fits)
@@ -85,35 +79,28 @@ for(i in 1:length(all_milk_components)){
 
 names(SL_fits_list_individual_lab) <- names(all_milk_components)
 
-# Save the SMALL, manuscript-critical results table FIRST and unconditionally.
-# The 6 SuperLearner fits above are the expensive part (hours); this table
-# (`results/SL_individual_lab_vim_res.RDS`, KB-sized) is what
-# `src/3 visualizations/5-SL_VIM_plots.R` -> `figure-data/SL_vim_plot_data.RDS`
-# -> manuscript Fig 1 actually reads. The raw multi-GB model-object list saved
-# below is NOT read by anything downstream and has previously failed to write
-# (this repo lives in a OneDrive-synced folder; a ~4GB saveRDS() has died
-# mid-write with "error writing to connection" and left a corrupt file on
-# disk) -- losing that save must not cost us the completed fits.
+# Save the small AUC table (the Fig 1A input) before the multi-GB model list.
+# The model list is not read downstream, and a failed write of that large file
+# should not lose the completed fits.
 full_AUC_res <- full_AUC_res %>% mutate(group='all')
 vim_bio_individual_lab <- rbindlist(lapply(SL_fits_list_individual_lab, function(x) x[[2]]), idcol='group') %>% as.data.frame()
 vim_tab_individual_lab <- bind_rows(full_AUC_res,vim_bio_individual_lab)
 
 saveRDS(vim_tab_individual_lab,file=paste0(here::here(),"/results/SL_individual_lab_vim_res.RDS"))
-cat("wrote results/SL_individual_lab_vim_res.RDS (manuscript-critical, saved first)\n")
+cat("wrote results/SL_individual_lab_vim_res.RDS\n")
 
-# Now attempt the large raw-model-object save. Non-fatal: if it fails, the
-# critical output above is already safe on disk.
+# Save the fitted models. Non-fatal: a failure here leaves the AUC table intact.
 big_fit_path <- paste0(here::here(),"/data/models/SL_individual_lab_vim_fits.RDS")
 big_save_ok <- tryCatch({
   saveRDS(SL_fits_list_individual_lab, file=big_fit_path)
   TRUE
 }, error = function(e) {
-  cat("WARNING: failed to save", big_fit_path, "-", conditionMessage(e), "\n")
-  cat("         (non-fatal -- results/SL_individual_lab_vim_res.RDS above is unaffected)\n")
+  cat("Warning: failed to save", big_fit_path, "-", conditionMessage(e), "\n")
+  cat("         (non-fatal; results/SL_individual_lab_vim_res.RDS is unaffected)\n")
   unlink(big_fit_path)  # remove any partial/corrupt file rather than leave it looking valid
   FALSE
 })
 if (big_save_ok) cat("wrote data/models/SL_individual_lab_vim_fits.RDS\n")
 
 cat("Next: rerun `src/3 visualizations/5-SL_VIM_plots.R` to refresh figure-data/SL_vim_plot_data.RDS,\n")
-cat("      then `figure-scripts/manuscript_figures/fig1-ml-vim-classifier.R` to rebuild Figure 1.\n")
+cat("      then `figure-scripts/manuscript_figures/fig1-ml-vim-classifier.R` to rebuild Fig 1.\n")

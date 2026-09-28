@@ -1,67 +1,38 @@
-# ---------------------------------------------------------------------------
-# Auto-converted from the corresponding .Rmd (knitr::purl). Run via Rscript.
-# Sets the working directory to figure-scripts/manuscript_figures/ so the
-# script's '../../' relative paths resolve to the repo root.
-# ---------------------------------------------------------------------------
+# =============================================================================
+# fig1-ml-vim-classifier.R
+#
+# Builds Fig 1. Panel A: cross-validated AUC (95% CI) of Super Learner classifiers
+# that predict trial arm from each group of milk analytes, by study, contrast and
+# collection time; ELICIT includes the infant-azithromycin arm as a negative control.
+# Panel B: adjusted intervention effect (ATE, 95% CI) on the first principal
+# component of each milk modality.
+#
+# Inputs:  figure-data/SL_vim_plot_data.RDS (written by src/3 visualizations/5-SL_VIM_plots.R)
+#          results/pca_intervention_effects_results.RDS (src/2 analysis/3_adjusted_analysis_pca.R)
+# Outputs: figures/figure1.{png,pdf,eps}
+# [needs restricted data] SL_vim_plot_data.RDS derives from
+# results/SL_individual_lab_vim_res.RDS, which src/2 analysis/3b-SL_vim_individual_lab.R
+# fits on participant-level data and which is not shipped.
+# =============================================================================
 suppressPackageStartupMessages(library(here))
+# the relative '../../' paths below resolve from this folder
 setwd(file.path(here::here(), "figure-scripts/manuscript_figures"))
-
 
 library(tidyverse)
 library(cowplot)
-library(magick)   
-library(tinytex)
-library(tidygraph)
-library(ggraph)
 
-# Science aesthetic: load shared palette (tableau10), theme_imic() floors, and
-# save_figure_3way() (PDF + EPS + PNG export for the typesetter).
+# shared palette (tableau10), theme_imic(), science_dims and save_figure_3way()
 source(file.path(here::here(), "figure-scripts/0_figure-functions.R"))
 
-knitr::opts_chunk$set(
-  echo       = FALSE,
-  warning    = FALSE,
-  message    = FALSE,
-  fig.width  = 8.27,         # should be exactly A4
-  fig.height = 11.69,
-  out.width  = "\\paperwidth",
-  out.height = "\\paperheight",
-  fig.align  = "center",
-  fig.pos    = "!h"          
-)
+# Science 2-column full-page width
+page_w <- science_dims$full_page$width        # 7.25 in (184 mm)
 
-# ── automatic page break after any chunk with 'pagebreak=TRUE' ───────────
-knitr::knit_hooks$set(
-  pagebreak = function(before, options, envir) {
-    if (!before) return("\\newpage")  # insert after the chunk runs
-  }
-)
-
-# ── Science 2-column full-page dimensions (§3.11) ────────────────────────
-page_w <- science_dims$full_page$width        # 7.25 in (184 mm, Science 2-col)
-page_h <- science_dims$full_page$height_max   # 9.5  in (24 cm Science max page height)
-
-#blank plots
-blank_plot <- ggplot() + theme_void()
-
-# ── helper: wrap a PNG as a ggdraw() canvas ─────────────────────────────
-png_to_ggdraw <- function(path){
-  ggdraw() + draw_image(image_read(path))
-}
-
-
-tableau10 <- c("#1F77B4","#FF7F0E","#2CA02C","#D62728",
-               "#9467BD","#8C564B","#E377C2","#7F7F7F","#BCBD22","#17BECF")
-
-
-
-
-
-#Combined SL and PCA plots?
-
-# Full SL variable-importance plot data, which INCLUDES the ELICIT infant-
-# azithromycin NEGATIVE-CONTROL arm (built by src/3 visualizations/5-SL_VIM_plots.R).
+# SL variable-importance plot data, including the ELICIT infant-azithromycin
+# negative-control arm.
 SLvim_all <- readRDS("../../figure-data/SL_vim_plot_data.RDS")
+# "Pre+Postnatal" -> "Pre + Postnatal", matching the spaced "+" of the other
+# combined arms
+levels(SLvim_all$arm_f) <- sub("Pre+Postnatal", "Pre + Postnatal", levels(SLvim_all$arm_f), fixed = TRUE)
 
 # Shared CV-AUC x-range that covers EVERY confidence interval across the three
 # studies (some ci.lb reach ~0.26), so nothing is clipped. Data-driven with
@@ -69,10 +40,9 @@ SLvim_all <- readRDS("../../figure-data/SL_vim_plot_data.RDS")
 slvim_xlim <- c(floor(min(SLvim_all$ci.lb, na.rm = TRUE) / 0.05) * 0.05,
                 min(1.0, ceiling(max(SLvim_all$ci.ub, na.rm = TRUE) / 0.05) * 0.05))
 
-# ---- Rebuild Panel A from underlying data ---------------------------------
-# The ggplot objects stored in SLvim_lab were built with an older ggplot2
-# version and fail grid.draw under current ggplot2; rebuild from each plot's
-# stored $data to guarantee a clean render.
+# ---- Panel A -----------------------------------------------------------------
+# Rebuilt from the plot data rather than from the stored ggplot objects, which
+# were made with an older ggplot2 and fail grid.draw under the current version.
 build_slvim_panel <- function(d, title = "", show_x = FALSE,
                               legend_pos = "none", xlab_text = "",
                               xlim_range = slvim_xlim) {
@@ -82,13 +52,13 @@ build_slvim_panel <- function(d, title = "", show_x = FALSE,
                     "Targeted metabolomics")
   d$group <- factor(d$group, levels = rev(intersect(group_levels, unique(d$group))))
   ggplot(d, aes(x = cvAUC, y = group, colour = visit_f)) +
-    geom_vline(xintercept = 0.5, linetype = "dashed", colour = "grey50") +
+    geom_vline(xintercept = 0.5, linetype = "dashed", colour = "black", linewidth = 0.5) +  # same as Panel B
     geom_linerange(aes(xmin = ci.lb, xmax = ci.ub),
                    position = position_dodge(width = 0.6)) +
     geom_point(size = 1.6, position = position_dodge(width = 0.6)) +
     facet_grid(. ~ arm_f) +
     scale_colour_manual(
-      values = c("<1 month" = "#7F7F7F",     # grey / orange / teal, matching the submission
+      values = c("<1 month" = "#7F7F7F",     # grey / orange / teal
                  "1-2 months" = "#FF7F0E",
                  "2-5 months" = "#17BECF"),
       name = "Collection time") +
@@ -96,11 +66,11 @@ build_slvim_panel <- function(d, title = "", show_x = FALSE,
                        expand = expansion(mult = c(0.01, 0.01))) +
     coord_cartesian(xlim = xlim_range) +   # zoom, not filter -> keeps every CI
     labs(x = if (show_x) "CV-AUC" else xlab_text, y = title) +
-    # base_family added for Helvetica consistency (2026-08-26). Strip background kept
-    # WHITE/blank (reverted from a gray90 fill tried the same day) per author preference
-    # -- Fig 1 should match Fig 2's white-strip forest style, not theme_imic()'s gray90.
+    # white strips (Fig 2's forest style); no horizontal/minor gridlines or y ticks,
+    # as in the other figures
     theme_bw(base_size = 8, base_family = "Helvetica") +
-    theme(strip.background = element_blank(),
+    theme(panel.grid.major.y = element_blank(), panel.grid.minor = element_blank(), axis.ticks.y = element_blank(),
+          strip.background = element_blank(),
           strip.text = element_text(size = 8),
           axis.text = element_text(size = 7),
           axis.title = element_text(size = 8),
@@ -108,25 +78,21 @@ build_slvim_panel <- function(d, title = "", show_x = FALSE,
           legend.text      = element_text(size = 7),
           legend.title     = element_text(size = 7))
 }
-# Authoritative PCA-of-modality ATE results (all 8 milk modalities, INCLUDING
-# Untargeted metabolomics + Microbiome). The old figures/figure-data/ copy was a
-# stale 6-modality subset (dropped untargeted + microbiome), so Panel B was missing
-# two rows; src/2 analysis/3_adjusted_analysis_pca.R writes the full 8 here.
+
+# ---- Panel B -----------------------------------------------------------------
+# ATEs on the first principal component of all 8 milk modalities (including
+# untargeted metabolomics and microbiome).
 pca_df <- readRDS(file="../../results/pca_intervention_effects_results.RDS") %>% filter(measure=="ATE")
 pca_df$studytime <- gsub("-40", "-1.5", pca_df$studytime)
 pca_df$studytime <- gsub("-56", "-2", pca_df$studytime)
 pca_df$studytime <- gsub("Vital", "Mumta-LW", pca_df$studytime)
 pca_df$studytime <- gsub("Misame-1", "Misame (14-21 days)", pca_df$studytime)
-pca_df$studytime <- gsub("Misame-2", "Misame (1-2 mo)", pca_df$studytime)
-pca_df$studytime <- gsub("Misame-3", "Misame (3-4 mo)", pca_df$studytime)
+pca_df$studytime <- gsub("Misame-2", "Misame (1-2 mo.)", pca_df$studytime)
+pca_df$studytime <- gsub("Misame-3", "Misame (3-4 mo.)", pca_df$studytime)
 pca_df$studytime <- gsub("-1.5", " (1.5 mo.)", pca_df$studytime)
 pca_df$studytime <- gsub("Elicit-1", "ELICIT (1 mo.)", pca_df$studytime)
 pca_df$studytime <- gsub("Mumta-LW-2", "Mumta-LW (2 mo.)", pca_df$studytime)
 pca_df$studytime <- gsub("Elicit-5", "ELICIT (5 mo.)", pca_df$studytime)
-
-pca_df$studytime
-
-
 
 p_elicit <- build_slvim_panel(dplyr::filter(SLvim_all, studyid == "ELICIT"),    title = "ELICIT")
 p_vital  <- build_slvim_panel(dplyr::filter(SLvim_all, studyid == "Mumta-LW"),  title = "Mumta-LW")
@@ -136,26 +102,6 @@ p_misame <- build_slvim_panel(dplyr::filter(SLvim_all, studyid == "Misame-III"),
 SLvim_lab_plot <- plot_grid(p_elicit, p_vital, p_misame,
                             ncol = 1, rel_heights = c(1, 1, 1.25),
                             align = "v", axis = "lr")
-SLvim_lab_plot
-
-
-
-
-# p_pca <- ggplot(pca_df, aes(x=label_f, y=est, color=label_f)) + geom_point() +
-#   geom_linerange(aes(ymin=cil, ymax=ciu)) +
-#   geom_hline(yintercept = 0, linetype="dashed") +
-#   coord_flip() +
-#   facet_wrap(studytime~contrast, scale="free") +
-#   #ggtitle("Intervention Effects on the First Principal Component") +
-#   scale_color_manual(values=rev(tableau10)) +
-#   #theme_imic() +
-#   theme(strip.background = element_blank(),
-#         axis.text = element_text(size = 7),
-#         strip.text = element_text(size = 8),
-#         legend.position="none") + 
-#   ylab("Average Treatment Effect") + xlab("Milk modality")
-# 
-# p_pca
 
 pca_df <- pca_df %>% mutate(
   studytime=gsub("Misame","MISAME-III",studytime),
@@ -163,12 +109,7 @@ pca_df <- pca_df %>% mutate(
     grepl("ELICIT",studytime) ~"ELICIT",
     grepl("Mumta-LW",studytime) ~"Mumta-LW",
     grepl("MISAME",studytime) ~"MISAME-III"
-  )#,
-  # studytime=case_when(
-  #   grepl("ELICIT",studytime) ~paste0(studytime,"\nNicotinamide"),
-  #   grepl("Mumta-LW",studytime) ~paste0(studytime,"\nBEP"),
-  #   grepl("MISAME",studytime) ~paste0(studytime,"\nBEP"),
-  # )
+  )
   )
 
 
@@ -194,49 +135,49 @@ pca_df <- pca_df %>% mutate(
 
 p_pca1 <- ggplot(pca_df %>% filter(studyid=="ELICIT"), aes(x=label_f, y=est, color=label_f)) + geom_point() +
   geom_linerange(aes(ymin=cil, ymax=ciu)) +
-  geom_hline(yintercept = 0, linetype="dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed", colour = "black", linewidth = 0.5) +
   coord_flip() +
   facet_grid(~studytime) +
   scale_color_manual(values=rev(tableau10)) +
-  # base_family added for Helvetica consistency; strip stays WHITE/blank (see
-  # build_slvim_panel() above -- reverted from gray90 same day, per author preference).
-  theme_bw(base_family = "Helvetica") +
-  theme(strip.background = element_blank(),
+  theme_bw(base_size = 8, base_family = "Helvetica") +   # same theme as Panel A
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor = element_blank(), axis.ticks.y = element_blank(),
+        strip.background = element_blank(),
         axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
         strip.text = element_text(size = 8),
-        legend.position="none") +
+        legend.position = "none") +
   ylab("") + xlab("")
 
 
 p_pca2 <- ggplot(pca_df %>% filter(studyid=="Mumta-LW"), aes(x=label_f, y=est, color=label_f)) + geom_point() +
   geom_linerange(aes(ymin=cil, ymax=ciu)) +
-  geom_hline(yintercept = 0, linetype="dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed", colour = "black", linewidth = 0.5) +
   coord_flip() +
   facet_grid(~studytime) +
   scale_color_manual(values=rev(tableau10)) +
-  # base_family added for Helvetica consistency; strip stays WHITE/blank (see
-  # build_slvim_panel() above -- reverted from gray90 same day, per author preference).
-  theme_bw(base_family = "Helvetica") +
-  theme(strip.background = element_blank(),
+  theme_bw(base_size = 8, base_family = "Helvetica") +   # same theme as Panel A
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor = element_blank(), axis.ticks.y = element_blank(),
+        strip.background = element_blank(),
         axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
         strip.text = element_text(size = 8),
-        legend.position="none") +
-  ylab("") + xlab("Milk modality")
+        legend.position = "none") +
+  ylab("") + xlab("Milk Modality")
 
 p_pca3 <- ggplot(pca_df %>% filter(studyid=="MISAME-III") %>%
-                   mutate(studytime=factor(studytime, levels = c("MISAME-III (14-21 days)","MISAME-III (1-2 mo)","MISAME-III (3-4 mo)" ))), aes(x=label_f, y=est, color=label_f)) + geom_point() +
+                   mutate(studytime=factor(studytime, levels = c("MISAME-III (14-21 days)","MISAME-III (1-2 mo.)","MISAME-III (3-4 mo.)" ))), aes(x=label_f, y=est, color=label_f)) + geom_point() +
   geom_linerange(aes(ymin=cil, ymax=ciu)) +
-  geom_hline(yintercept = 0, linetype="dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed", colour = "black", linewidth = 0.5) +
   coord_flip() +
   facet_grid(~studytime) +
   scale_color_manual(values=rev(tableau10)) +
-  # base_family added for Helvetica consistency; strip stays WHITE/blank (see
-  # build_slvim_panel() above -- reverted from gray90 same day, per author preference).
-  theme_bw(base_family = "Helvetica") +
-  theme(strip.background = element_blank(),
+  theme_bw(base_size = 8, base_family = "Helvetica") +   # same theme as Panel A
+  theme(panel.grid.major.y = element_blank(), panel.grid.minor = element_blank(), axis.ticks.y = element_blank(),
+        strip.background = element_blank(),
         axis.text = element_text(size = 7),
+        axis.title = element_text(size = 8),
         strip.text = element_text(size = 8),
-        legend.position="none") +
+        legend.position = "none") +
   ylab("Average Treatment Effect") + xlab("")
 
 
@@ -244,35 +185,21 @@ p_pca <- plot_grid(p_pca1 ,
                             p_pca2 , 
                             p_pca3,
                             ncol=1, rel_heights=c(1,1,1.1))
-p_pca
 
-
-
-
-fig_2 <- plot_grid(
+fig_1 <- plot_grid(
   SLvim_lab_plot,
   p_pca,
   align="h",
   axis ="l",
       labels="AUTO",
   ncol = 1, nrow = 2,
-  rel_heights = c(1.25,1)  
+  rel_heights = c(1.25,1)
 )
-fig_2
 
-# Taller height to match the submitted Fig 1 aspect (h/w ~= 1.466, vs 1.31 at the
-# 9.5 in cap); width stays at the Science 2-column 7.25 in.
+# Height follows the submitted Fig 1 aspect (h/w ~= 1.466, taller than the 9.5 in
+# page cap would give); width is the Science 2-column 7.25 in.
 fig1_h <- round(page_w * 1.466, 2)   # ~10.63 in
 
-#save as png (legacy) + 3-way (PDF/EPS/PNG) for Science submission
-ggsave(
-  filename = "../../figures/figure2_PCA.png",
-  plot = fig_2,
-  width = page_w, height = fig1_h,
-  units = "in", dpi = 300
-)
-save_figure_3way(fig_2, name = "figure1",
+save_figure_3way(fig_1, name = "figure1",
                  width = page_w, height = fig1_h,
                  dir = file.path(here::here(), "figures"))
-
-

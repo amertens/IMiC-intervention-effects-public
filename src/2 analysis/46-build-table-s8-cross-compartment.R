@@ -1,21 +1,34 @@
+# =============================================================================
 # 46-build-table-s8-cross-compartment.R
-# Assemble Table S8: cross-compartment BEP-responsive features (MISAME-III),
-# to fill the "Table Sx" placeholder in the blood-results paragraph.
-#   Panel A - named metabolite features increased in BOTH maternal & infant blood (VAMS, 5-6 mo)
-#   Panel B - octenoylcarnitine (m/z 286.202) across milk / plasma / maternal blood / infant blood
-#   Panel C - selenoproteins concordant in milk & maternal blood proteome
-# Writes results/table_s8_cross_compartment.csv + a markdown fragment for supplement_v2.qmd.
+#
+# Builds Table S8, cross-compartment BEP-responsive features in MISAME-III
+# (covariate-adjusted combined-arm ATEs, per dataset x visit BH q-values):
+#   Panel A - named metabolite features increased in both maternal and infant blood
+#             (postnatal VAMS, 5-6 mo; matched by shared feature id)
+#   Panel B - octenoylcarnitine (m/z 286.202) in milk, maternal plasma, maternal
+#             blood and infant blood at each postnatal visit
+#   Panel C - selenoproteins (SELENOP, GPX3) raised in both milk and maternal blood
+#
+# Inputs : results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS
+#          results/adjusted_combined_arms_intervention_effects_proteomics_results_clean_ATE.RDS
+#          results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          results/cross_compartment_proteome_overlap_adjusted.csv (script 13, BLOOD_ADJUST = TRUE)
+# Outputs: results/table_s8_cross_compartment.csv (Panel A)
+#          results/table_s8_fragment.md (Panels A-C as markdown tables)
+# [needs restricted data]
+# =============================================================================
 suppressMessages({ library(data.table) })
 root <- paste0(here::here(), "/")
 low  <- function(x) tolower(as.character(x))
 
 milkC  <- as.data.table(readRDS(paste0(root,"results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS")))
 bloodC <- as.data.table(readRDS(paste0(root,"results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS")))
-# Panel C uses the COVARIATE-ADJUSTED blood proteome (script 13 run with BLOOD_ADJUST=TRUE),
-# matching Panels A/B and the adjusted milk proteome. Until 2026-09-23 it read the
-# unadjusted overlap file (GPX3 +0.91 / SELENOP +0.95 instead of +1.08 / +1.02).
+# Panel C uses the covariate-adjusted blood proteome (script 13 run with
+# BLOOD_ADJUST = TRUE), matching Panels A/B and the adjusted milk proteome.
 prot   <- fread(paste0(root,"results/cross_compartment_proteome_overlap_adjusted.csv"))
 
+# Panel A rows: putatively annotated postnatal-VAMS features with their m/z and ion
+# mode; "*" marks isobaric-ambiguous annotations (more than one candidate compound).
 named <- data.table(
   fid = c("vam_1005523","vam_2001392","vam_2004310","vam_2002077","vam_2002332",
           "vam_1003290","vam_2003705","vam_2000289","vam_2000920","vam_1001196"),
@@ -51,8 +64,8 @@ setnames(A, c("name","mz","mode","maternal","infant"),
 oc_milk <- milkC[measure=="ATE" & study=="Misame" & low(biomarker)=="rlc_pos_mtb_3033006" & visit=="1-2 mo."]
 oc_plas <- getb("MaternalPlasma","rlc_pos_mtb_2679130","pn12")
 # Infant rows are shown at every postnatal visit, to 3 decimals: the 1-2 and 5-6 month
-# estimates coincide at 2 decimals (+1.044 vs +1.043), which a round-2 reviewer read as
-# one estimate carrying two different visit labels. Fig. 6D plots the largest (3-4 mo.).
+# estimates coincide at 2 decimals (+1.044 vs +1.043) and would otherwise look like one
+# estimate under two visit labels. Fig. 6D plots the largest (3-4 mo.).
 cell3 <- function(est, q) ifelse(is.na(est), "—", sprintf("%+.3f (%s)", est, fq(q)))
 inf_oc <- function(v) { r <- getb("VamsPostnatalInfant","vam_1005523",v); cell3(r$est, r$q) }
 B <- data.table(
@@ -68,10 +81,9 @@ B <- data.table(
 # ---- Panel C: selenoproteins (milk & maternal blood proteome) ----
 psel <- prot[uniprot %in% c("P49908","P22352")][order(uniprot, -blood_est)]
 psel <- psel[, .SD[1], by=uniprot]   # one row/protein (best blood hit)
-# The overlap file carries RAW p-values only (milk_pval/blood_pval). Up to 2026-09-23 this
-# panel printed them under a "q" header (GPX3/SELENOP milk "<0.001" vs the Results' Q =
-# 0.014/0.031). Look the BH q-values up in the same result files script 13 read
-# (milk: adjusted combined-arm proteome; blood: bloodC, the adjusted blood results above).
+# The overlap file carries raw p-values only (milk_pval/blood_pval), so the BH q-values
+# are looked up in the same result files script 13 read (milk: adjusted combined-arm
+# proteome; blood: bloodC, the adjusted blood results above).
 milkP  <- as.data.table(readRDS(paste0(root,"results/adjusted_combined_arms_intervention_effects_proteomics_results_clean_ATE.RDS")))
 milk_q  <- mapply(function(u, v) milkP[measure=="ATE" & study=="Misame" & toupper(biomarker)==u & visit==v, pval_adj][1],
                   psel$uniprot, psel$milk_visit)

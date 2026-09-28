@@ -1,7 +1,22 @@
+# =============================================================================
+# src/2 analysis/2_adjusted_analysis_HM_trajectories_combined_arms.R
+#
+# Combined-arms version of 2_adjusted_analysis_HM_trajectories.R: each outcome
+# is replaced by its change from the participant's previous visit (first visits
+# 1 and 40 dropped) and biotmle is fit by study and visit with arms pooled into
+# Control, BEP and Nico. No printed exhibit uses these estimates; the script is
+# kept because clean_results.R reads its output and writes
+# results/adjusted_combined_arms_intervention_effects_traj_results_clean.RDS.
+#
+# Inputs:  data/merged_analysis_datasets.RDS, metadata/milk_component.Rdata
+# Outputs: results/adjusted_combined_arms_HMtraj_{primary,secondary,tertiary}_intervention_effects_results.RDS
+#          results/adjusted_combined_arms_HMtraj_intervention_effects_results.RDS
+# [needs restricted data]
+# =============================================================================
 
-
-#https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
-#https://joss.theoj.org/papers/10.21105/joss.00295
+# Method references: biotmle vignette
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
+# and https://joss.theoj.org/papers/10.21105/joss.00295
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -9,6 +24,9 @@ source(paste0(here::here(),"/src/0-config.R"))
 load(file=paste0(here::here(),"/metadata/milk_component.Rdata"))
 d<-readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS"))
 
+# Pool trial arms by the nutritional supplement received during lactation:
+# Misame BEP/BEP and IFA/BEP -> BEP, BEP/IFA (prenatal BEP only) -> Control;
+# Vital BEP arms -> BEP; Elicit Nico+Az. -> Nico, Az. (azithromycin only) -> Control.
 table(d$arm)
 d <- d %>% mutate(
   arm = case_when(
@@ -34,7 +52,7 @@ missing_W
 
 head(d)
 
-#mutate all- transform the outcomes to a trajectory by subtracting the prior observation
+# Transform each outcome to a trajectory: subtract the participant's previous observation.
 unique(d$visit)
 d$visit <- factor(d$visit, levels=c("1",  "2",  "3",  "5",  "40", "56"))
 levels(d$visit)
@@ -43,11 +61,7 @@ d <- d %>% group_by(study, subjid, subjido) %>% arrange(visit) %>%  mutate_at(va
 
 d <- d %>% filter(!(visit %in% c("1", "40")))
 
-
-
 SL.lib  = c("SL.mean","SL.glm","SL.glmnet","SL.xgboost")
-
-
 
 res_primary <- d %>% group_by(study, visit) %>%
   do(res=run_bioTMLE(d=.,  Wvars = Wvars, bppar.debug=T, g_lib = SL.lib, Q_lib = SL.lib,
@@ -65,7 +79,7 @@ res_secondary <- d %>% group_by(study, visit) %>%
 names(res_secondary$res) <- paste0(res_secondary$study, "-", res_secondary$visit)
 saveRDS(res_secondary, file=paste0(here::here(),"/results/adjusted_combined_arms_HMtraj_secondary_intervention_effects_results.RDS"))
 
-#simpler library
+# GLM-only library for the tertiary (targeted metabolomics) panel.
 SL.lib  = c("SL.glm")
 
 res_tertiary <- d %>% group_by(study, visit) %>%
@@ -80,4 +94,3 @@ saveRDS(list(res_primary=res_primary,
              res_secondary=res_secondary,
              res_tertiary=res_tertiary),
         file=paste0(here::here(),"/results/adjusted_combined_arms_HMtraj_intervention_effects_results.RDS"))
-

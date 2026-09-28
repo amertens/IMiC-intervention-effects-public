@@ -1,17 +1,25 @@
 # =============================================================================
 # 29-figure-overall-shift-agreement.R
 #
-# Figure C (overall directional agreement, beyond the joint-FDR features).
-#   C1  among features BEP clearly moved in the MOTHER (p<0.05), the distribution
-#       of the same features' INFANT effect, split by maternal direction -- the
-#       maternal-up set sits positive, the maternal-down set negative.
-#   C2  share of infant effects agreeing in direction as we tighten the maternal
-#       side (all -> top 1000 -> top 200 -> maternal-FDR-sig). Two series:
-#         same-run maternal<->infant blood (shared ID, no matching) -- rises;
-#         cross-platform milk<->infant (25 ppm mass match) -- stays at chance
-#         (negative control: agreement is recoverable only with exact linkage).
-# Same-run pair = maternal & infant VAMS pn56 (combined-arms / any-postnatal-BEP).
-# Within-dataset, direction-only. Out: figures/cross_compartment/
+# Direction agreement between maternal and infant blood beyond the jointly
+# FDR-significant features (MISAME-III, covariate-adjusted combined arms). The
+# same-run pair is maternal and infant postnatal VAMS at 5-6 mo, which share one
+# feature catalogue and are matched by feature id. The console table's "mat. sig."
+# row for that pair is the Results statement that 16 of 18 maternally significant
+# features agreed in direction in the infant. The two-panel figure is not a printed
+# exhibit:
+#   C1  infant effects of the features BEP moved in the mother (p < 0.05), split by
+#       maternal direction;
+#   C2  share of infant effects agreeing in direction as the maternal side tightens
+#       (all -> top 1000 -> top 200 -> maternal FDR-significant), for the same-run
+#       pair and, as a negative control, milk 1-2 mo vs infant VAMS 1-2 mo matched by
+#       accurate mass (25 ppm).
+#
+# Inputs : results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          results/adjusted_combined_arms_intervention_effects_untargeted_results_clean_ATE.RDS
+#          data/additional datasets/ m/z-RT catalogues (via _blood_helpers.R)
+# Output : figures/cross_compartment/fig_overall_shift_agreement.png; agreement table on the console
+# [needs restricted data]
 # =============================================================================
 suppressMessages({library(data.table); library(ggplot2); library(patchwork)})
 root <- paste0(here::here(), "/")

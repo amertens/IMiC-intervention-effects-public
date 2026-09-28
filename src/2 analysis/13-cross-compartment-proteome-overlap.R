@@ -1,20 +1,21 @@
 # =============================================================================
 # 13-cross-compartment-proteome-overlap.R
 #
-# Cross-compartment concordance of BEP intervention effects between HUMAN MILK and
-# MATERNAL BLOOD proteomes, matched on shared UniProt accession. This is the
-# reviewer-facing "are the same features moving the same way across compartments?"
-# analysis -- the proteomics arm (metabolomics needs m/z-RT alignment, deferred).
+# Compares BEP effects on the milk proteome and the maternal blood proteome in
+# MISAME-III (combined arms), matching proteins by UniProt accession as described in
+# the Methods. For each shared protein it keeps the most significant postnatal effect
+# in each compartment and reports direction agreement and joint FDR significance.
+# When run with BLOOD_ADJUST = TRUE (as run_blood_adjusted_downstream.R does), its
+# overlap file feeds Table S8 panel C via script 46: SELENOP and GPX3 are the only
+# proteins raised in both milk and maternal blood.
 #
-# Inputs (combined-arms, MISAME-3):
-#   milk  : results/adjusted_combined_arms_intervention_effects_proteomics_results_clean_ATE.RDS
-#   blood : results/blood_compartment_combined_arms_intervention_effects_results_clean.RDS
-#           (datasets ProteomicsDepleted [primary] + ProteomicsNaive [sensitivity])
-#
-# Outputs:
-#   results/cross_compartment_proteome_overlap.csv      per-protein milk vs blood ATE
-#   results/cross_compartment_proteome_summary.RDS      concordance summary stats
-#   figures/cross_compartment/proteome_milk_vs_blood_<depleted|naive>.png
+# Inputs : results/adjusted_combined_arms_intervention_effects_proteomics_results_clean_ATE.RDS (milk)
+#          results/blood_compartment_[adjusted_]combined_arms_intervention_effects_results_clean.RDS
+#          (ProteomicsDepleted = primary, ProteomicsNaive = sensitivity)
+# Outputs: results/cross_compartment_proteome_overlap[_adjusted].csv  (per-protein milk vs blood ATE)
+#          results/cross_compartment_proteome_summary[_adjusted].RDS
+#          figures/cross_compartment/proteome_milk_vs_blood_<depleted|naive>[_adjusted].png
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(dplyr); library(ggplot2); library(ggrepel)})
@@ -75,9 +76,8 @@ analyze <- function(blood_label) {
     geom_point(aes(colour = sig_class), alpha = 0.6) +
     geom_text_repel(data = filter(ov, either_sig | !is.na(gene)),
                     aes(label = ifelse(!is.na(gene), gene, uniprot)), size = 3, max.overlaps = 20,
-                    # ggrepel places labels at DRAW time, so set.seed() before the plot call
-                    # does not fix them -- only this argument does. Added 2026-09-08 to match
-                    # the manuscript figure scripts.
+                    # ggrepel places labels at draw time, so set.seed() before the plot
+                    # call does not fix them; only this argument does.
                     seed = 123) +
     scale_colour_manual(values = c("FDR-sig in both" = "#E69F00", "FDR-sig in one" = "#56B4E9", "ns" = "grey75")) +
     labs(x = "Milk proteome ATE (BEP vs control)", y = paste0("Maternal blood ATE (", blood_label, ")"),

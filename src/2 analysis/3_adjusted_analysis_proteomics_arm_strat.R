@@ -1,7 +1,23 @@
+# =============================================================================
+# src/2 analysis/3_adjusted_analysis_proteomics_arm_strat.R
+#
+# Arm-stratified version of 3_adjusted_analysis_proteomics.R: the same protein
+# cleaning and covariate merge with the original trial arms kept, and adjusted
+# biotmle fits (GLM-only library) for each protein by study and visit in Misame
+# and Vital. clean_results.R adds the output to the arm-stratified combined
+# result table, from which 55-proteomics-go-uniprot.R takes the Mumta-LW
+# (Vital) cells of the GO enrichment (Fig 6C, Table S7).
+#
+# Inputs:  data/milk/PBL_{MISAME,VITAL_L,ELICIT}_DIANN_Protein.csv
+#          data/merged_analysis_datasets.RDS
+# Outputs: data/clean milk data/merged_proteomics.RData (overwrites the combined-arms copy)
+#          results/proteomics_intervention_effects_results.RDS
+# [needs restricted data]
+# =============================================================================
 
-
-#https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
-#https://joss.theoj.org/papers/10.21105/joss.00295
+# Method references: biotmle vignette
+# https://www.bioconductor.org/packages/devel/bioc/vignettes/biotmle/inst/doc/exposureBiomarkers.html
+# and https://joss.theoj.org/papers/10.21105/joss.00295
 
 rm(list=ls())
 source(paste0(here::here(),"/src/0-config.R"))
@@ -14,11 +30,9 @@ misame <- read.csv(here("data/milk/PBL_MISAME_DIANN_Protein.csv"))
 vital <- read.csv(here("data/milk/PBL_VITAL_L_DIANN_Protein.csv"))
 elicit <- read.csv(here("data/milk/PBL_ELICIT_DIANN_Protein.csv")) 
 
-
 #-------------------------------------------------------------------------------
 # Clean data
 #-------------------------------------------------------------------------------
-
 
 colnames(misame)[1] <- "bmid"
 colnames(vital)[1] <- "bmid"
@@ -48,13 +62,10 @@ Yvars <- colnames(proteomics)[-c(1:2)]
 d <- readRDS(paste0(here::here(),"/data/merged_analysis_datasets.RDS")) %>%
   select(study, subjid, subjido,  bmid, visit, all_of(Wvars)) %>% distinct()
 
-
-
 d_proteomics <- right_join(d, proteomics, by=c("study","bmid")) 
 dim(d_proteomics)
 
 table(d_proteomics$study, d_proteomics$arm)
-#only in both arms in Misame and Vital
 
 summary(proteomics$A0A075B6I0)
 summary(d_proteomics$A0A075B6I0)
@@ -64,24 +75,23 @@ glimpse(d_proteomics)
 
 save(d_proteomics, file=paste0(here::here(),"/data/clean milk data/merged_proteomics.RData"))
 
-
 #------------------------------------------------------------------------------
 # run analysis 
 #------------------------------------------------------------------------------
 
-# GLM alone, consistent with the other exploratory untargeted omic (untargeted
-# metabolomics) and more stable at the small per-cell proteome n. Reverted from
-# the full ensemble.
+# GLM-only library, as for the untargeted metabolomics; it is more stable at the
+# small per-cell proteome sample sizes.
 SL.lib  = c("SL.glm")
 
 #Check for missingness in adjustment covariates.
 missing_W <- d_proteomics %>% select(all_of(Wvars)) %>% summarise_all(funs(sum(is.na(.))))
 missing_W      
 
-
-#TEMP- DEBUG unmatched (maybe lab) samples
+# Drop proteomics samples with no matching participant record: after the right
+# join above they have no arm (possibly laboratory control samples), so they
+# cannot enter the arm contrast. Elicit is excluded below because its
+# proteomics samples do not cover both arms; only Misame and Vital are modeled.
 d_proteomics <- d_proteomics %>% filter(!is.na(arm))
-
 
 table(d_proteomics$study, d_proteomics$arm)
 table(d_proteomics$study,  d_proteomics$arm, is.na(d_proteomics$A0A075B6H7))
@@ -98,8 +108,4 @@ res <- d_proteomics %>% filter(study!="Elicit") %>%
                      bppar.type = BiocParallel::SnowParam())))
 names(res$res) <- paste0(res$study, "-", res$visit)
 
-#res <- res$res$Misame$res %>% mutate(study="Misame") %>% filter(measure=="ATE")
-
-
 saveRDS(res, file=paste0(here::here(),"/results/proteomics_intervention_effects_results.RDS"))
-

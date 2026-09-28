@@ -1,20 +1,32 @@
 # =============================================================================
 # 15-blood-mummichog-pathway-analysis.R
 #
-# Mummichog pathway enrichment for the blood-compartment metabolome, adapted from
-# Trenton's milk workflow (trenton scripts/imicUntargetedMetabolomicsMummichog.Rmd)
-# so the blood analysis matches the manuscript's milk method exactly.
+# Mummichog pathway enrichment for the MISAME-III blood metabolome (combined-arm
+# ATEs), run with the same settings as the milk Mummichog analysis of the original
+# R Markdown workflow. Compartment x visit runs: maternal plasma 1-2 mo, maternal
+# postnatal VAMS 5-6 mo, infant VAMS 1-2, 3-4 and 5-6 mo. When run with BLOOD_ADJUST
+# = TRUE (as run_blood_adjusted_downstream.R does), its run folders in
+# results/mummichog_output_adjusted/ are read by script 23 (per-feature putative
+# annotations) and script 32 (binomial sign test for pathway direction, Methods).
 #
-# Trenton's recipe (replicated here for blood):
-#   * inputs SPLIT BY ION MODE, tab-delimited, NO header, 4 cols: mz  rt  pval  stat
-#     where stat = -log10(pval); ALL ATE features fed (mummichog -c defines the
-#     significant set vs the full-feature background).
+# Method, per compartment x visit x ionization mode:
+#   * input: tab-delimited, no header, 4 columns mz, rt, pval, stat with
+#     stat = -log10(pval); all ATE features are supplied (mummichog -c 0.05 defines
+#     the significant set against the full-feature background).
 #   * call: conda run -n <env> mummichog -f in -o out -m <mode> -u 10 -n human_mfn -c 0.05
-#   * read tables/mcg_pathwayanalysis_*.xlsx, enrichment_ratio = overlap/pathway_size,
-#     then FDR across pathways within each compartment x mode.
+#   * collect tables/mcg_pathwayanalysis_*.xlsx, enrichment_ratio = overlap/pathway_size,
+#     then BH FDR across pathways within each run.
+# m/z and RT: plasma and prenatal VAMS from ProcessedDataMISAME3_*.csv; postnatal
+# VAMS from metabolite_description_vam_with_global_id.csv.
 #
-# Blood m/z-RT (vs Trenton's IMiC_alignment for milk): plasma/prenatal-VAMS from
-# ProcessedDataMISAME3_*.csv; postnatal VAMS from metabolite_description_vam_*.csv.
+# Inputs : results/blood_compartment_[adjusted_]combined_arms_intervention_effects_results_clean.RDS
+#          data/additional datasets/{ProcessedDataMISAME3_plasma.csv, ProcessedDataMISAME3_VAMS.csv,
+#          metabolite_description_vam_with_global_id.csv}
+# Outputs: results/mummichog_input[_adjusted]/, results/mummichog_output[_adjusted]/,
+#          results/blood_mummichog_pathways[_adjusted].{csv,RDS}
+# Requires the mummichog Python package (conda environment "mummichog"; the conda
+# executable is taken from IMIC_CONDA_CMD) when RUN_MUMMICHOG = TRUE.
+# [needs restricted data]
 # =============================================================================
 
 suppressMessages({library(dplyr); library(data.table)})
@@ -24,20 +36,19 @@ if (!exists("BLOOD_ADJUST")) BLOOD_ADJUST <- FALSE
 indir  <- paste0(root, "results/mummichog_input",  .osuf); dir.create(indir,  showWarnings = FALSE, recursive = TRUE)
 outroot<- paste0(root, "results/mummichog_output", .osuf); dir.create(outroot, showWarnings = FALSE, recursive = TRUE)
 
-# ---- Mummichog run config (match Trenton; edit for this machine) ---------------
-# mummichog is a python package -> two ways to call it:
-#   (A) conda (Trenton): set USE_CONDA<-TRUE, CONDA_ENV to the env holding mummichog.
-#   (B) direct (pip install mummichog): set USE_CONDA<-FALSE; `mummichog` must be on PATH.
-# (override-aware: a wrapper can preset these before sourcing, to keep machine-
-#  specific paths out of the committed defaults.)
+# ---- Mummichog run settings ----------------------------------------------------
+# mummichog is a Python package; two ways to call it:
+#   (A) conda: USE_CONDA <- TRUE and CONDA_ENV = the environment holding mummichog.
+#   (B) direct (pip install mummichog): USE_CONDA <- FALSE; `mummichog` must be on PATH.
+# A wrapper can preset any of these before sourcing.
 if (!exists("RUN_MUMMICHOG"))    RUN_MUMMICHOG <- FALSE     # TRUE once mummichog is installed
 if (!exists("MUMMICHOG_ENGINE")) MUMMICHOG_ENGINE <- "cli"  # "cli" = mummichog CLI; "metaboanalystr" = R fallback
 if (!exists("USE_CONDA"))        USE_CONDA <- TRUE
-if (!exists("CONDA_CMD"))        CONDA_CMD <- "conda"       # full path if not on PATH (e.g. ~/miniconda3/Scripts/conda.exe)
+if (!exists("CONDA_CMD"))        CONDA_CMD <- Sys.getenv("IMIC_CONDA_CMD", "conda")  # full path if conda is not on PATH
 if (!exists("CONDA_ENV"))        CONDA_ENV <- "mummichog"   # conda env holding the `mummichog` python package
 if (!exists("MUMMICHOG"))        MUMMICHOG <- "mummichog"   # direct command (USE_CONDA=FALSE)
 MZ_PPM   <- 10                         # -u
-NET_LIB  <- "human_mfn"                # -n  (human metabolic network, as in the milk paper)
+NET_LIB  <- "human_mfn"                # -n  (human metabolic network, as for milk)
 P_CUTOFF <- 0.05                       # -c  (defines the significant feature set)
 
 # ---- feature -> (mz, rt, ion mode) per compartment -----------------------------
@@ -62,7 +73,7 @@ META <- list(
 blood <- readRDS(paste0(root, "results/blood_compartment_", .btag,
   "combined_arms_intervention_effects_results_clean.RDS"))
 
-# ---- write Trenton-format Mummichog inputs for one compartment x visit ----------
+# ---- write the 4-column Mummichog inputs for one compartment x visit -----------
 # (params comp/vis/ion to avoid colliding with the data columns of the same name.)
 prepare_input <- function(comp, vis) {
   res <- blood %>%
@@ -73,10 +84,10 @@ prepare_input <- function(comp, vis) {
   paths <- character()
   for (ion in c("positive", "negative")) {
     mi <- m %>% filter(mode == ion, !is.na(mz), !is.na(rt)) %>%
-      transmute(mz, rt, pval, stat)                 # 4 cols, exact order Trenton uses
+      transmute(mz, rt, pval, stat)                 # column order mummichog expects
     if (nrow(mi) == 0) next
     f <- paste0(indir, "/", comp, "_", vis, "_", ion, ".txt")
-    fwrite(mi, f, sep = "\t", col.names = FALSE)    # NO header (Trenton: CRITICAL)
+    fwrite(mi, f, sep = "\t", col.names = FALSE)    # no header row, as the milk inputs
     cat(sprintf("  %-26s %-5s %-9s n=%5d  sig(p<%.2f)=%d -> %s\n",
                 comp, vis, ion, nrow(mi), P_CUTOFF, sum(mi$pval < P_CUTOFF), basename(f)))
     paths <- c(paths, f)
@@ -84,10 +95,10 @@ prepare_input <- function(comp, vis) {
   paths
 }
 
-# ---- ENGINE A: Trenton's mummichog CLI (mode inferred from filename) ------------
+# ---- engine A: mummichog CLI (ion mode inferred from the file name) -------------
 run_mummichog_cli <- function(input_file) {
   mode <- if (grepl("_positive\\.txt$", input_file)) "positive" else "negative"
-  name <- sub("\\.txt$", "", basename(input_file))   # mummichog uses -o as a folder NAME in CWD
+  name <- sub("\\.txt$", "", basename(input_file))   # mummichog uses -o as a folder name in the working directory
   inf  <- normalizePath(input_file)
   old  <- setwd(outroot); on.exit(setwd(old))         # output created (timestamped) relative to CWD
   mflags <- c("-f", inf, "-o", name, "-m", mode, "-u", MZ_PPM, "-n", NET_LIB, "-c", P_CUTOFF)
@@ -102,15 +113,15 @@ run_mummichog_cli <- function(input_file) {
   name
 }
 
-# ---- ENGINE B: MetaboAnalystR PerformPSEA (R fallback, no python needed) --------
-# Same params as the CLI (10 ppm, hsa_mfn, p<0.05, per ion mode). MetaboAnalystR
-# reimplements mummichog ("mum","v2"); results are very close but not identical to
-# the v1 CLI used for the milk paper -- prefer the CLI for strict method-matching.
-# NOTE: verify SetPeakFormat()/library codes against your MetaboAnalystR version.
+# ---- engine B: MetaboAnalystR PerformPSEA (R fallback, no Python needed) --------
+# Same parameters as the CLI (10 ppm, hsa_mfn, p < 0.05, per ion mode). MetaboAnalystR
+# reimplements mummichog ("mum", "v2"); results are close to but not identical to the
+# v1 CLI used for milk, so the CLI is the engine used for the reported results.
+# SetPeakFormat() and library codes can differ between MetaboAnalystR versions.
 run_mummichog_metaboanalyst <- function(input_file) {
   suppressMessages(library(MetaboAnalystR))
   mode <- if (grepl("_positive\\.txt$", input_file)) "positive" else "negative"
-  # re-emit our 4-col file with the header MetaboAnalystR expects (m/z, rt, p, t)
+  # re-write the 4-column file with the header MetaboAnalystR expects (m/z, rt, p, t)
   d <- data.table::fread(input_file, header = FALSE,
                          col.names = c("m.z", "r.t", "p.value", "t.score"))
   ma_in <- sub("\\.txt$", "_ma.txt", input_file)
@@ -135,13 +146,13 @@ run_mummichog <- function(input_file) {
   else run_mummichog_cli(input_file)
 }
 
-# ---- collect pathway tables (Trenton reads tables/mcg_pathwayanalysis_*.xlsx) ---
+# ---- collect pathway tables (tables/mcg_pathwayanalysis_*.xlsx) -----------------
 collect_results <- function() {
   fs <- list.files(outroot, pattern = "mcg_pathwayanalysis_.*\\.xlsx$", recursive = TRUE, full.names = TRUE)
   if (length(fs) == 0) { message("No mummichog pathway tables yet."); return(invisible(NULL)) }
-  # mummichog writes a NEW <timestamp>.<source> folder per run and never overwrites, so a
-  # re-run leaves stale folders that would double pathway rows and corrupt the per-source
-  # FDR. Keep only the LATEST-timestamp folder per source.
+  # mummichog writes a new <timestamp>.<source> folder per run and never overwrites, so a
+  # re-run leaves stale folders that would double pathway rows and distort the per-source
+  # FDR. Keep only the latest-timestamp folder per source.
   fold <- basename(dirname(dirname(fs)))                                  # "<ts>.<source>"
   pick <- data.table::data.table(
             f  = fs,
@@ -164,7 +175,7 @@ collect_results <- function() {
 }
 
 # ---- driver --------------------------------------------------------------------
-cat("Writing Mummichog inputs (Trenton format):\n")
+cat("Writing Mummichog inputs (mz, rt, pval, stat):\n")
 inputs <- c(
   prepare_input("MaternalPlasma", "pn12"),
   prepare_input("VamsPostnatalMaternal", "pn56"),

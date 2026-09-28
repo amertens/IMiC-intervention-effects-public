@@ -1,17 +1,23 @@
 # =============================================================================
 # 32-signed-pathway-direction.R
 #
-# Single-null signed confirmation of the §5 directional Mummichog arrows. The §5
-# table assigns up/down by running Mummichog twice (up- and down-subsets, with the
-# other direction's p set to 1), which gives anti-conservative directional p-values
-# because direction correlates with feature class. Here we instead take each
-# pathway's member features (the features Mummichog matched into that pathway in the
-# standard, non-directional run), look up the SIGN of their BEP effect from our ATE
-# results, and test net direction with one binomial sign test (a single null). The
-# direction call should reproduce §5; the p-value is now honest.
-# Blood compartments (the new data): maternal plasma pn12, postnatal maternal VAMS
-# pn56, infant VAMS pn12/34/56. Combined-arms (pooled postnatal-BEP) effects.
-# Out: results/signed_pathway_direction.csv
+# Assigns a direction to each blood Mummichog pathway with the binomial sign test
+# described in the Methods: take the features Mummichog mapped into the pathway in
+# the standard, non-directional run (script 15, adjusted), record the sign of each
+# feature's BEP effect, and test whether the fraction positive differs from 0.5
+# (pathways with at least four members; nominal p-values). One null per pathway
+# avoids the anti-conservative p-values of running Mummichog separately on up and
+# down subsets (script 18), where direction correlates with feature class. Maternal
+# blood results support the Discussion statement that de novo fatty-acid
+# biosynthesis and related eicosanoid pathways were increased in maternal blood.
+# Compartments: maternal plasma 1-2 mo, maternal postnatal VAMS 5-6 mo, infant VAMS
+# 1-2, 3-4, 5-6 mo; covariate-adjusted combined-arm (pooled postnatal-BEP) effects.
+#
+# Inputs : results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
+#          results/mummichog_output_adjusted/ (script 15 run folders)
+#          data/additional datasets/ m/z catalogues (via _blood_helpers.R)
+# Output : results/signed_pathway_direction.csv
+# [needs restricted data]
 # =============================================================================
 suppressMessages({library(data.table)})
 root <- paste0(here::here(), "/")
@@ -21,7 +27,7 @@ up <- function(x) toupper(as.character(x))
 bloodC <- as.data.table(readRDS(paste0(root,"results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS")))
 plmz <- mzrt_rlc("ProcessedDataMISAME3_plasma.csv"); vmz <- mzrt_vams()
 
-# Our per-feature signed statistic for a compartment, keyed by m/z so it can be
+# Per-feature signed statistic for a compartment, keyed by m/z so it can be
 # joined to Mummichog's features. Sign = BEP direction, magnitude = -log10(p).
 # pmax(pval, 1e-300) floors p away from 0 so log10 stays finite.
 sig_tab <- function(ds, vv, mzt){
@@ -70,9 +76,9 @@ for (cc in COMPARTMENTS){
   st <- sig_tab(cc$ds, cc$vv, cc$mzt)
   mem <- rbindlist(lapply(runs_for(cc$base, cc$tok), parse_run), fill=TRUE)
   if(!nrow(mem)) next
-  mem <- merge(unique(mem[, .(pathway, mz)]), st, by="mz")        # member features with our signed stat
+  mem <- merge(unique(mem[, .(pathway, mz)]), st, by="mz")        # member features with their signed stat
   # For each pathway, test whether its members lean up or down with one binomial
-  # sign test on the count of up-features (single null -> honest p-value).
+  # sign test on the count of up-features.
   agg <- mem[, {
       mean_signed_stat <- mean(signed)
       nonzero <- signed[signed != 0]           # drop signed==0 (est==0 or p==1): uninformative for a sign test
@@ -88,7 +94,7 @@ res <- rbindlist(out, fill=TRUE)[order(compartment, sign_test_p)]
 fwrite(res, paste0(root, "results/signed_pathway_direction.csv"))
 
 KEY <- "Fatty Acid Biosynthesis|Arachidonic|Leukotriene|Ascorbate|Carnitine|Prostaglandin"
-cat("=== SIGNED DIRECTION for the key §5/§6 pathways (single-null sign test) ===\n")
+cat("=== Signed direction of the lipid, carnitine and ascorbate pathways (sign test) ===\n")
 print(res[grepl(KEY, pathway, ignore.case=TRUE) & n_members>=4,
           .(compartment, pathway, n_members, frac_up, mean_signed, direction, sign_test_p)], nrow=60)
 cat("\nSaved results/signed_pathway_direction.csv (", nrow(res), "compartment x pathway rows )\n")
