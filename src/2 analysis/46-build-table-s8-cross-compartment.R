@@ -13,7 +13,7 @@
 #          results/adjusted_combined_arms_intervention_effects_proteomics_results_clean_ATE.RDS
 #          results/blood_compartment_adjusted_combined_arms_intervention_effects_results_clean.RDS
 #          results/cross_compartment_proteome_overlap_adjusted.csv (script 13, BLOOD_ADJUST = TRUE)
-# Outputs: results/table_s8_cross_compartment.csv (Panel A)
+# Outputs: results/table_s8_cross_compartment.csv (Panels A-C)
 #          results/table_s8_fragment.md (Panels A-C as markdown tables)
 # [needs restricted data]
 # =============================================================================
@@ -40,7 +40,7 @@ named <- data.table(
 
 # table-cell formatters: fq() renders a q-value ("<0.001" below threshold, else 2 sig figs);
 # cell() renders "+est (q)" for a filled cell or an em dash when the effect is missing.
-fq <- function(q) ifelse(is.na(q), "n/a", ifelse(q < 1e-3, "<0.001", formatC(q, format="g", digits=2)))
+fq <- function(q) ifelse(is.na(q), "n/a", ifelse(q < 1e-3, "<0.001", formatC(q, format="g", digits=2, flag="#")))
 cell <- function(est, q) ifelse(is.na(est), "—", sprintf("%+.2f (%s)", est, fq(q)))
 # getb(): look up one blood feature's ATE (est + adjusted p) for a given dataset/feature/visit
 getb <- function(ds, k, v) {
@@ -96,8 +96,11 @@ C <- data.table(
   `Maternal blood, ΔSD (q)`= mapply(cell, psel$blood_est, blood_q))
 
 # ---- write ----
+# One CSV with all three panels; each panel keeps its own columns (blank elsewhere).
 fwrite(rbind(
   data.table(panel="A", A[, lapply(.SD, as.character)]),
+  data.table(panel="B", B[, lapply(.SD, as.character)]),
+  data.table(panel="C", C[, lapply(.SD, as.character)]),
   fill=TRUE), paste0(root,"results/table_s8_cross_compartment.csv"))
 
 # render a data.table as a GitHub-flavoured markdown table (header / separator / body rows)

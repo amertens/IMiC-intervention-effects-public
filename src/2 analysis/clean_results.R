@@ -198,7 +198,9 @@ write.csv(res_metabolomics,file=paste0(here::here(),"/results/subsetted results/
 # Same subsets from the arm-stratified results.
 head(res_combined_arm_strat)
 res_combined_arm_strat <- res_combined_arm_strat %>% filter(measure=="ATE")
-res_combined_arm_strat <- left_join(res_combined_arm_strat,res_combined_arm_strat_unscaled, by=c("studytime","contrast","biomarker"))
+# ATE rows only on the unscaled side, as in the pooled join above; without the filter each
+# effect row was duplicated by the arm-mean (MN) rows of the unscaled results.
+res_combined_arm_strat <- left_join(res_combined_arm_strat,res_combined_arm_strat_unscaled %>% filter(measure=="ATE"), by=c("studytime","contrast","biomarker","measure"))
 
 res = res_combined_arm_strat %>% select(study, visit, contrast, category , biomarker, label_f,  est, cil, ciu, pval, pval_adj, sig, sigFDR, est_unscaled, cil_unscaled, ciu_unscaled, pval_adj_unscaled)
 res$biomarker = str_to_lower(res$biomarker)
